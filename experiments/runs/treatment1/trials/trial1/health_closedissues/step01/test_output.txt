@@ -1,0 +1,102 @@
+test_cli_emits_json (test_health_closedissues.SummaryTests) ... ok
+test_metrics_and_best_direction (test_health_closedissues.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+{
+  "best": {
+    "ACC+": {
+      "configuration": {
+        "Max_depth": "3",
+        "Min_impurity_decrease": "0.1",
+        "Min_sample_leaves": "2",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "value": 0.7
+    },
+    "MRE-": {
+      "configuration": {
+        "Max_depth": "3",
+        "Min_impurity_decrease": "0.1",
+        "Min_sample_leaves": "2",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "value": 0.4
+    },
+    "PRED40+": {
+      "configuration": {
+        "Max_depth": "3",
+        "Min_impurity_decrease": "0.1",
+        "Min_sample_leaves": "2",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "value": 0.5
+    }
+  },
+  "configurations": {
+    "Max_depth": {
+      "counts": {
+        "3": 1
+      },
+      "max": 3.0,
+      "min": 3.0,
+      "unique": 1
+    },
+    "Min_impurity_decrease": {
+      "counts": {
+        "0.1": 1
+      },
+      "max": 0.1,
+      "min": 0.1,
+      "unique": 1
+    },
+    "Min_sample_leaves": {
+      "counts": {
+        "2": 1
+      },
+      "max": 2.0,
+      "min": 2.0,
+      "unique": 1
+    },
+    "N_estimators": {
+      "counts": {
+        "10": 1
+      },
+      "max": 10.0,
+      "min": 10.0,
+      "unique": 1
+    },
+    "criterion": {
+      "counts": {
+        "squared_error": 1
+      },
+      "unique": 1
+    }
+  },
+  "metrics": {
+    "ACC+": {
+      "max": 0.7,
+      "mean": 0.7,
+      "median": 0.7,
+      "min": 0.7
+    },
+    "MRE-": {
+      "max": 0.4,
+      "mean": 0.4,
+      "median": 0.4,
+      "min": 0.4
+    },
+    "PRED40+": {
+      "max": 0.5,
+      "mean": 0.5,
+      "median": 0.5,
+      "min": 0.5
+    }
+  },
+  "rows": 1
+}

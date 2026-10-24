@@ -1,0 +1,5 @@
+project=1 predicted_effort=79.933 person-months
+projects=93 leave_one_out_mae=258.243 leave_one_out_mape=57.22%
+real 0.33
+user 0.32
+sys 0.00

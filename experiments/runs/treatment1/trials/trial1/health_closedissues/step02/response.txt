@@ -1,0 +1,24 @@
+# Implementation
+
+Complete source code is in `source/health_closedissues.py`; tests are in `tests/test_health_closedissues.py`.
+
+# Run command
+
+```bash
+python3 experiments/runs/treatment1/trials/trial1/health_closedissues/step02/source/health_closedissues.py moot/optimize/hpo/Health-ClosedIssues0000.csv --n-estimators 100 --criterion squared_error --min-sample-leaves 5 --min-impurity-decrease 1.0 --max-depth 10 --neighbors 5
+```
+
+# Approach
+
+The implementation reads prior configurations with `csv.DictReader`, scales numeric configuration differences by each column's observed range, adds a mismatch penalty for the categorical criterion, and selects the nearest configurations. It predicts `MRE-`, `ACC+`, and `PRED40+` using inverse-distance weighting; an exact historical configuration returns its observed targets. It uses only the Python standard library.
+
+# Tests and observed run
+
+Four unit tests passed. The measured command output was `predicted_error_mre=0.488780`, `predicted_accuracy=0.619960`, and `predicted_pred40=0.271431`; `/usr/bin/time -p` reported 0.04 seconds elapsed.
+
+# Assumptions and limitations
+
+- Lower `MRE-` means lower error and higher `ACC+` means better accuracy.
+- The CSV is historical training data; predictions are heuristic and are not a substitute for full evaluation.
+- Numeric columns are comparable after min-max range scaling, while criterion mismatch has unit distance.
+- Missing values, nonnumeric configuration values, and malformed rows are rejected or may raise a parsing error; no uncertainty interval or cross-validation is provided.

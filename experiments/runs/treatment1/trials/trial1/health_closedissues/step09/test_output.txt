@@ -1,0 +1,12 @@
+test_flags_extreme_measurement (test_health_closedissues.DetectorTests) ... ok
+test_ignores_configuration_column (test_health_closedissues.DetectorTests) ... ok
+test_reports_invalid_measurements (test_health_closedissues.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+real 0.04
+user 0.03
+sys 0.01
+TEST_RC=0

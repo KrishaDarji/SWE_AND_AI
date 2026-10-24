@@ -1,0 +1,7 @@
+configuration=N_estimators=100.0,Min_sample_leaves=5.0,Min_impurity_decrease=1.0,Max_depth=10.0,criterion=squared_error
+predicted_error_mre=0.488780
+predicted_accuracy=0.619960
+predicted_pred40=0.271431
+real 0.04
+user 0.03
+sys 0.00

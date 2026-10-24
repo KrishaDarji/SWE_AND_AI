@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+09,1,1,software project planning,spot,115,115,true,0.03,0,"3 unittest tests passed; implementation exited 0; 12 effort outliers reported; no invalid effort values; duplicate id 29; measured /usr/bin/time real seconds"

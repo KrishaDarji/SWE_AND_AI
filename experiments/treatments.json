@@ -1,0 +1,16 @@
+{
+  "treatments": [
+    {"id": 1, "writer": "LLM", "background": "plain_python", "reuse_instructed": false},
+    {"id": 2, "writer": "LLM", "background": "plain_python", "reuse_instructed": true},
+    {"id": 3, "writer": "LLM", "background": "scikit_learn", "reuse_instructed": false},
+    {"id": 4, "writer": "LLM", "background": "scikit_learn", "reuse_instructed": true},
+    {"id": 5, "writer": "LLM", "background": "ezr", "reuse_instructed": false},
+    {"id": 6, "writer": "LLM", "background": "ezr", "reuse_instructed": true},
+    {"id": 7, "writer": "human_team", "background": "team_prior_skills", "reuse_instructed": true}
+  ],
+  "domains": ["x264", "nasa93dem", "health_closedissues"],
+  "ladder_steps": 10,
+  "minimum_repeats": 3,
+  "recommended_repeats": 10,
+  "ideal_repeats": 20
+}

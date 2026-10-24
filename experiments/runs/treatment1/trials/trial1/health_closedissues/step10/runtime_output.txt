@@ -1,0 +1,8 @@
+rows=10000 training=8000 candidates=2000
+surrogate_score=0.825763
+baseline_score=0.662549
+surrogate_configuration=140,1,0.5,13,poisson
+baseline_configuration=110,2,0.25,17,absolute_error
+real 17.43
+user 17.21
+sys 0.08

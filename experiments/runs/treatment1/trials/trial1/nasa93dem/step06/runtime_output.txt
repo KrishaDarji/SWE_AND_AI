@@ -1,0 +1,13 @@
+NASA93 historical effort justification
+Records used: 93
+Target size: 20.00 KLOC
+Median historical effort intensity: 4.84 person-months/KLOC
+Median-intensity estimate: 96.9 person-months
+Log-log historical trend estimate: 112.0 person-months (slope 0.93)
+Recommended planning estimate: 104.4 person-months
+Historical effort range: 8.4 to 8211.0 person-months
+Median absolute deviation from recommendation: 87.5 person-months
+Justification: this recommendation combines a robust historical intensity baseline with the dataset's size trend; it is a planning baseline, not a guarantee.
+real 0.02
+user 0.01
+sys 0.00

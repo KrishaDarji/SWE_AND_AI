@@ -1,0 +1,19 @@
+Approach
+========
+The complete implementation is source/predict_effort.py. It reads NASA93 CSV data, encodes ordinal ratings as ordered numeric values, includes log project size (Kloc+), year, and center, and fits a ridge-regularized least-squares model to log(Effort-). Predictions are transformed back with exp(). Leave-one-out evaluation reports measured MAE and MAPE.
+
+Tests
+=====
+The complete test suite is tests/test_predict_effort.py. It checks loading, numeric features, positive finite predictions, and finite leave-one-out metrics. Test output is in test_output.txt.
+
+Run command
+===========
+python3 source/predict_effort.py ../../../../../../../moot/optimize/process/nasa93dem.csv --row 1
+
+Measured result
+===============
+93 projects; project 1 predicted effort 79.933 person-months; leave-one-out MAE 258.243 person-months; leave-one-out MAPE 57.22%. The recorded wall-clock runtime was 0.33 seconds.
+
+Assumptions and limitations
+===========================
+Effort- is treated as person-months and Kloc+ is converted from thousands of lines to no target feature (the model uses log1p(Kloc+)). Ordinal ratings are assumed monotonic. The dataset is small, the model is not calibrated for unseen organizations or domains, and leave-one-out estimates are sensitive to outliers. No third-party packages or prior implementation were used.

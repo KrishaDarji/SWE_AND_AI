@@ -1,0 +1,7 @@
+Complete source code: source/justify.py
+Tests: tests/test_justify.py
+Run command: python3 source/justify.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach: parse valid CSV rows, score each historical configuration as ACC+ + PRED40+ - MRE-, rank by that score, and recommend the modal parameter values among the top 10% of observations. The report includes aggregate evidence and a validation/causality caveat.
+
+Assumptions and limitations: higher ACC+ and PRED40+ are desirable and lower MRE- is desirable; the composite gives them equal weight. The data is observational, may contain correlated trials, and does not prove that the recommended settings cause better future performance. Held-out validation is required.

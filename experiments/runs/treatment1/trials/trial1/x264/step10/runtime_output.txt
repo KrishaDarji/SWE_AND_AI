@@ -1,0 +1,12 @@
+rows=1152
+objective=Performance-
+maximize=False
+baseline_score=244.28
+race_score=244.28
+baseline_evaluations=32
+race_evaluations=56
+race_improvement=0.0
+real 0.03
+user 0.02
+sys 0.00
+run_status=0

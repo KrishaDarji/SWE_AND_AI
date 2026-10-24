@@ -1,0 +1,22 @@
+You are running Treatment 1, Trial 1, Dataset 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: No
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Dataset path: moot/optimize/config/X264_AllMeasurements.csv
+- Current skill: remember
+- Current requirement: Summarize encoder settings and quality measures from historical runs.
+
+Use only the Python standard library.
+
+Implement this skill independently.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation of the approach.
+5. Known assumptions and limitations.

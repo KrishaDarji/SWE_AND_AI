@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,1,machine-learning model configuration,race,146,146,1,17.43,0,"3 tests passed; 10000 rows; 8000 training and 2000 candidates; surrogate score 0.825763 vs baseline 0.662549; seeded baseline budget 10"

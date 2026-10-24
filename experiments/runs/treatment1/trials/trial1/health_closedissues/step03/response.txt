@@ -1,0 +1,11 @@
+Implemented an independent Python-standard-library certifier in source/certify.py.
+
+Run command:
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+python3 source/certify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv ACC+ PRED40+
+
+Approach: treat rows as paired repeated measurements, orient the difference so a positive value means improvement, calculate the mean difference, standard error, normal-approximation two-sided p-value, and confidence interval. A change is meaningful only when p < alpha and the confidence interval is entirely positive.
+
+Assumptions and limitations: samples must be aligned pairs and contain at least two finite values. The normal approximation is intended for reasonably large samples; it is not a replacement for a paired t test or a nonparametric test. The supplied CSV contains configuration rows rather than repeated runs of the same configurations, so a direct comparison of ACC+ and PRED40+ is illustrative, not a causal model-versus-model certification. Use the same metric for baseline and candidate when comparing repeated evaluations; pass --lower-is-better for error metrics.
+
+Complete source code is in source/certify.py and tests are in tests/test_certify.py.

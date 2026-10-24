@@ -1,0 +1,5 @@
+You are running Treatment 1, Trial 1, Dataset 2 of a controlled experiment.
+
+Treatment: Writer LLM; Background plain Python only; Reuse instructed No; Domain software project planning; Dataset nasa93dem.csv; Current skill blame; Requirement: Explain which project characteristics are responsible for high software development effort.
+
+Use only the Python standard library. Implement this skill independently. Save source, tests, outputs, and measured metrics in this step directory.

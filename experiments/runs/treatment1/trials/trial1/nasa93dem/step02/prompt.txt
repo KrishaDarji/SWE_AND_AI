@@ -1,0 +1,2 @@
+You are running Treatment 1, Trial 1, Dataset 2 of a controlled experiment.
+Implement the guess skill independently using only Python standard library to predict software project effort before completion from moot/optimize/process/nasa93dem.csv. Save source, tests, execution outputs, and measured metrics in this directory. Reuse is not instructed.

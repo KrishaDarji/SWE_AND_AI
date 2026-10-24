@@ -1,0 +1,20 @@
+Complete source code: source/remember.py
+Tests: tests/test_remember.py
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step01/source/remember.py moot/optimize/config/X264_AllMeasurements.csv --top 5
+
+Approach:
+Read the CSV with csv.DictReader, identify all columns except Performance- as
+encoder settings, compute count/min/max/mean/median/population standard
+deviation for Performance-, count each setting value, and rank the best and
+worst historical runs. Lower Performance- values are treated as better because
+the supplied measure is a cost-like benchmark. Output is JSON.
+
+Assumptions and limitations:
+- The CSV has a numeric Performance- column and one row per historical run.
+- All non-measure columns are treated as encoder settings.
+- The direction of optimization is inferred as lower-is-better.
+- This is descriptive only; it does not infer causality, fit a predictive
+  model, or estimate uncertainty.
+- Complete source and tests are stored in the paths listed above.

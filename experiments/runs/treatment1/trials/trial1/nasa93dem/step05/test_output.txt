@@ -1,0 +1,12 @@
+test_constant_characteristics_are_ignored (test_blame.BlameTests) ... ok
+test_known_driver_is_reported (test_blame.BlameTests) ... ok
+test_outputs_are_not_treated_as_drivers (test_blame.BlameTests) ... ok
+test_ranks_use_average_ties (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.006s
+
+OK
+real 0.05
+user 0.04
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,1,video encoding,race,132,132,true,0.03,0,"INVALID FOR FINAL COMPARISON: baseline used 32 evaluations while race used 56; clean rerun required; standard library only"

@@ -1,0 +1,21 @@
+1. Complete source code
+
+The complete standard-library implementation is in source/health_closedissues.py. It reads CSV rows, infers outcome columns from a trailing '+' or '-', rejects non-finite values as invalid, and identifies robust outliers using median/MAD (with an IQR fallback).
+
+2. Tests
+
+tests/test_health_closedissues.py contains four intended tests; the executed suite reported 3 tests because the current checked-in test file contains three tests. All 3 passed.
+
+3. Command
+
+python3 experiments/runs/treatment1/trials/trial1/health_closedissues/step09/source/health_closedissues.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+4. Approach
+
+For each inferred quality column, parse finite numeric values, calculate the median and a robust scale, and flag values whose robust score exceeds 3.5. Report row numbers, invalid values, medians, scales, and outliers as JSON. Configuration columns are ignored.
+
+5. Assumptions and limitations
+
+The dataset convention is that metric names end in '+' or '-'. A distributional outlier is only a candidate anomaly; it is not proof of an evaluation error. Bounded or highly discrete metrics can produce many statistical outliers, so the report requires human review. Duplicate configurations and cross-metric causal validity are not inferred.
+
+Observed result: 10,000 rows, no invalid measurements, and candidate outlier counts ACC+=2124, MRE-=1496, PRED40+=1707. The final command returned 0 and took 0.07 seconds (wall time).

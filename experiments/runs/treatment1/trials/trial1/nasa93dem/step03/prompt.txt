@@ -1,0 +1,1 @@
+Treatment 1, Trial 1, Dataset 2. Implement the certify skill independently using only Python standard library. Determine whether one software project effort estimator is meaningfully more accurate than another than noise, using nasa93dem.csv. Return complete source, tests, run command, explanation, assumptions, and measured artifacts.

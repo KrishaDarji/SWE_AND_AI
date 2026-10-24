@@ -1,0 +1,9 @@
+test_loads_expected_dataset_and_numeric_outcomes ... ok
+test_rejects_missing_required_field ... ok
+test_report_mentions_effort ... ok
+test_summary_has_consistent_statistics ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK

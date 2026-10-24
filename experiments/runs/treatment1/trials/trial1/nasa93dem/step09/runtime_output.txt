@@ -1,0 +1,15 @@
+rows=93 valid=93 median=252 mad=202
+invalid_rows=none
+duplicate_ids=29
+OUTLIER row=43 id=42 value=2400 robust_score=7.172
+OUTLIER row=44 id=43 value=1368 robust_score=3.726
+OUTLIER row=47 id=46 value=2400 robust_score=7.172
+OUTLIER row=55 id=54 value=2120 robust_score=6.237
+OUTLIER row=60 id=59 value=4560 robust_score=14.385
+OUTLIER row=63 id=62 value=2460 robust_score=7.373
+OUTLIER row=82 id=81 value=1350 robust_score=3.666
+OUTLIER row=86 id=85 value=4178.2 robust_score=13.110
+OUTLIER row=87 id=86 value=1772.5 robust_score=5.077
+OUTLIER row=88 id=87 value=1645.9 robust_score=4.654
+OUTLIER row=89 id=88 value=1924.5 robust_score=5.585
+OUTLIER row=91 id=90 value=8211 robust_score=26.576

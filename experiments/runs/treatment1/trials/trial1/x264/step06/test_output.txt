@@ -1,0 +1,8 @@
+test_csv_reader_converts_measurement (test_justify.JustifyTests) ... ok
+test_output_contains_action_and_limitation (test_justify.JustifyTests) ... ok
+test_recommends_lowest_measurement (test_justify.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

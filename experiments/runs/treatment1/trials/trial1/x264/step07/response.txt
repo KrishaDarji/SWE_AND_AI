@@ -1,0 +1,10 @@
+Complete source: source/choose.py
+Tests: tests/test_choose.py
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step07/source/choose.py moot/optimize/config/X264_AllMeasurements.csv --max-performance 300.0
+
+Approach: read the CSV with csv.DictReader, treat Performance- as the constrained and minimized measurement, retain rows at or below the maximum, and return the lowest observed value plus its feature settings.
+
+Assumptions and limitations: lower Performance- is better; the dataset has no separate quality column or supplied threshold, so the quality constraint is represented by --max-performance (default 300.0). This is an observed-candidate selector, not a causal optimizer; ties retain the first row, malformed measurements fail, and production validation is still required.
+
+Measured result: 2 tests passed. The full dataset selected Performance- 244.230000 in 0.02 seconds wall time.

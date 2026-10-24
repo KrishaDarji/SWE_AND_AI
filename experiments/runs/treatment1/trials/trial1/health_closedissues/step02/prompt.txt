@@ -1,0 +1,15 @@
+You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: No
+- Domain: machine-learning model configuration
+- Dataset: Health-ClosedIssues0000.csv
+- Dataset path: moot/optimize/hpo/Health-ClosedIssues0000.csv
+- Current skill: guess
+- Current requirement: Predict model error and accuracy before a full evaluation.
+
+Use only the Python standard library. Implement this skill independently. Do not reuse or assume any previous skill, architecture, generated code, or previous conversation.
+
+Return complete source code, tests, one run command, a short explanation, and known assumptions and limitations. Save outputs in this step directory and record actual measured metrics.

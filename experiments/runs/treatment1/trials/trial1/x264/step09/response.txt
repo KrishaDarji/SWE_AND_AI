@@ -1,0 +1,25 @@
+Complete source code: source/anomaly_detector.py
+Tests: tests/test_anomaly_detector.py
+
+Run command (from this step09 directory):
+python3 -m unittest discover -s tests -v
+python3 source/anomaly_detector.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Approach:
+Read the CSV with csv.DictReader, parse the Performance- column, report malformed
+or non-finite measurements, and score finite values using the median and scaled
+median absolute deviation (robust z-score). A score above 3.5 is reported as an
+anomaly. An IQR-derived fallback is used when MAD is zero. The detector reports
+the summary and does not alter the input data.
+
+Assumptions and limitations:
+- Performance- is the benchmark measurement to screen.
+- A global robust outlier is treated as suspicious, not automatically erroneous.
+- This dataset has unique configurations, so repeated-run disagreement cannot be
+  tested.
+- Global screening can miss contextual or configuration-specific anomalies.
+- The command uses an absolute dataset path because the output directory is nested.
+
+Measured result: all 3 tests passed; the X264 dataset contained 1,152 valid rows,
+no invalid measurements, and no values above the robust threshold. Source and test
+code total 99 LOC, with 99 new LOC as reuse was not instructed.

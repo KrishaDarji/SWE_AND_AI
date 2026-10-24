@@ -1,0 +1,11 @@
+Complete source: source/flow.py
+Tests: tests/test_flow.py
+
+Run command:
+python3 source/flow.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach: ConfigurationFlow accepts each CSV result individually, keeps running averages for MRE-, ACC+, and PRED40+, and retains the best configuration for each metric (minimum MRE-, maximum ACC+ and PRED40+). The CSV reader streams rows through the same one-at-a-time API.
+
+Assumptions and limitations: the CSV contains the required headers and numeric target values; configuration values are preserved as strings for reporting; ties keep the first result; this is a result aggregator, not a model trainer or predictor.
+
+Verification: 3 tests passed and the implementation processed 10,000 dataset rows successfully. Measured wall-clock runtime is recorded in metrics.csv.

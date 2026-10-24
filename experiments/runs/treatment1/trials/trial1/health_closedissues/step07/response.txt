@@ -1,0 +1,8 @@
+Implemented `source/choose.py` and tests in `tests/test_choose.py`.
+
+Approach: read the evaluated configurations with `csv.DictReader`; require exactly one constraint; maximize `ACC+` under an accuracy floor or minimize `MRE-` under an error ceiling. Break ties using the other metric and then input order.
+
+Run command:
+python3 -m unittest discover -s tests -v && python3 source/choose.py moot/optimize/hpo/Health-ClosedIssues0000.csv --min-accuracy 0.8
+
+Assumptions and limitations: ACC+ is treated as an accuracy in [0, 1], MRE- is a non-negative error, and the CSV already contains evaluated configurations. No model is trained and no unseen configuration is predicted.

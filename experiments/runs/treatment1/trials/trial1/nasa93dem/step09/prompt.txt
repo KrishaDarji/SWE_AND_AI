@@ -1,0 +1,17 @@
+You are running Treatment 1, Trial 1, Dataset 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: No
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Dataset path: moot/optimize/process/nasa93dem.csv
+- Current skill: spot
+- Current requirement: Detect an anomalous software project effort measurement or potential data error in historical NASA93 projects.
+
+Use only the Python standard library.
+
+Implement this skill independently. Do not reuse or assume
+any previous skill, architecture, generated code, or
+previous conversation.

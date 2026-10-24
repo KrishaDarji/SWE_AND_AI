@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "writer": "LLM",
+  "background": "ezr",
+  "reuse_instructed": false,
+  "status": "prepared",
+  "domains": [
+    "x264",
+    "nasa93dem",
+    "health_closedissues"
+  ],
+  "ladder_steps": 10
+}

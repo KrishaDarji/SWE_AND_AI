@@ -1,0 +1,9 @@
+test_dataset_loaded (test_predict_effort.EffortTests) ... ok
+test_features_are_numeric_and_stable (test_predict_effort.EffortTests) ... ok
+test_leave_one_out_metrics (test_predict_effort.EffortTests) ... ok
+test_prediction_is_positive (test_predict_effort.EffortTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.304s
+
+OK

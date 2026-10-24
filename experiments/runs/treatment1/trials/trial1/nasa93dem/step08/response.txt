@@ -1,0 +1,18 @@
+Approach
+========
+The implementation fits a deterministic additive model in log-effort space. For each categorical cost-driver level, it computes a smoothed mean effect relative to the global mean. It then evaluates every valid candidate that changes exactly one driver to another level observed in the dataset and selects the lowest strictly improving estimate, with deterministic tie-breaking. Constant fields naturally produce no useful change.
+
+Source: source/optimizer.py
+Tests: tests/test_optimizer.py
+
+Run command
+===========
+python3 source/optimizer.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --row 1
+
+Measured result
+===============
+The command recommended `pmat h -> n`, reducing estimated effort from 0.952990 to 0.545429 for project 1. The test suite passed 4 tests.
+
+Assumptions and limitations
+===========================
+Effort is treated as a positive continuous response and modeled from categorical drivers only. The model estimates association, not causation; it does not encode external project constraints or guarantee that a real project can change a driver. Only one driver and one observed level change are considered, and the dataset's empirical levels define the candidate set. Smoothing uses one pseudo-observation at the global mean to reduce sparse-group effects.

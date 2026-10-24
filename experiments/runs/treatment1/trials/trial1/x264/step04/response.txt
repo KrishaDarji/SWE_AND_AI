@@ -1,0 +1,26 @@
+Complete source code: `source/flow.py`
+Tests: `tests/test_flow.py`
+
+Run command:
+`printf '%s\n' '{"configuration":{"ref":1},"measurement":100}' '{"configuration":{"ref":2},"measurement":120}' | python3 source/flow.py`
+
+Approach:
+FlowEvaluator consumes one JSON benchmark result per input line. It keeps
+observations grouped by configuration, ranks configurations by mean measured
+performance (lower is better), estimates standard error for repeated results,
+and reports whether the best result is sufficiently separated from the
+runner-up. It deliberately waits for repeated measurements before declaring
+evidence sufficient.
+
+Assumptions and limitations:
+- `Performance-` is lower-is-better and callers provide already parsed
+  configuration dictionaries and numeric measurements.
+- Configuration values are represented by their string forms for grouping.
+- The sufficiency rule is a practical screening heuristic, not a formal
+  hypothesis test; it uses two standard errors and a configurable percentage
+  margin.
+- Results are held in memory and input is JSON Lines; the CSV dataset is not
+  loaded automatically because this skill evaluates arriving results.
+
+The complete independent implementation is in `source/flow.py` (88 LOC),
+with three standard-library unit tests in `tests/test_flow.py`.

@@ -1,0 +1,9 @@
+projects=93
+model=driver_smoothed_log_effects mae=143687.576190
+historical_baseline=leave_one_out_median mae=544.229032
+model_wins=41
+model_better=False
+real 0.06
+user 0.05
+sys 0.00
+TEST_STATUS=0 RUN_STATUS=0

@@ -1,0 +1,14 @@
+# Implementation response
+
+Complete source code: `source/remember.py`
+Tests: `tests/test_remember.py`
+
+Run command:
+
+    python3 experiments/runs/treatment1/trials/trial1/nasa93dem/step01/source/remember.py moot/optimize/process/nasa93dem.csv
+
+Approach: load and validate the CSV with `csv.DictReader`, parse outcome measures as floats, summarize project counts and categorical driver frequencies, and calculate population mean, median, minimum, maximum, and standard deviation for Kloc+, Effort-, Defects-, and MonthsX. The CLI emits a readable report or JSON with `--json`.
+
+Assumptions and limitations: blank categorical values are treated as their literal trimmed values; the dataset's numeric outcome fields are required and must be parseable; statistics are descriptive and population standard deviations, not predictive estimates; no external packages or prior implementation are used.
+
+Measured result: 93 projects loaded; all 4 tests passed; implementation exited successfully. Metrics are recorded in `metrics.csv`.

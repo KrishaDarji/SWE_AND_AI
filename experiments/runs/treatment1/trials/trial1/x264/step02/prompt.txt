@@ -1,0 +1,20 @@
+You are running Treatment 1, Trial 1, Dataset 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: No
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Dataset path: moot/optimize/config/X264_AllMeasurements.csv
+- Current skill: guess
+- Current requirement: Predict encoding time before running a new configuration.
+
+Use only the Python standard library.
+
+Implement this skill independently. Do not reuse or assume any previous skill,
+architecture, generated code, or previous conversation.
+
+Return complete source code, tests, one run command, an explanation, and known
+assumptions and limitations. Save outputs in this step directory and record
+actual measured metrics. Do not fabricate results.

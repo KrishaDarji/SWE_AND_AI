@@ -1,0 +1,11 @@
+test_counts_and_ranks_lower_measure_first (test_remember.RememberTests) ... ok
+test_missing_measure_fails_clearly (test_remember.RememberTests) ... ok
+test_real_dataset_schema_and_json_serializable (test_remember.RememberTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

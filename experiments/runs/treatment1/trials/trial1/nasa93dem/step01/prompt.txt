@@ -1,0 +1,5 @@
+# Treatment 1, Trial 1, Dataset 2
+# Skill: remember
+# Requirement: Summarize project characteristics and effort measures from historical NASA93 runs.
+# Implement independently using only the Python standard library. Dataset: moot/optimize/process/nasa93dem.csv.
+# Required deliverables: source code, tests, run command, approach, assumptions/limitations, and measured metrics.

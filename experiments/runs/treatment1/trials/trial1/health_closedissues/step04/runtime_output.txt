@@ -1,0 +1,37 @@
+{
+  "average_metrics": {
+    "ACC+": 0.49593851329765815,
+    "MRE-": 0.7090939764346321,
+    "PRED40+": 0.14684285714285678
+  },
+  "best_configurations": {
+    "ACC+": {
+      "ACC+": 1.0,
+      "Max_depth": "10",
+      "Min_impurity_decrease": "3",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "MRE-": {
+      "MRE-": 0.0,
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "PRED40+": {
+      "Max_depth": "19",
+      "Min_impurity_decrease": "0.25",
+      "Min_sample_leaves": "1",
+      "N_estimators": "40",
+      "PRED40+": 1.0,
+      "criterion": "squared_error"
+    }
+  },
+  "records_seen": 10000
+}
+real 0.04
+user 0.03
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,1,software project planning, race,105,105,true,0.06,0,"3 unittest tests passed; implementation exited 0; leave-one-out driver estimator compared with historical median baseline; measured /usr/bin/time real seconds"

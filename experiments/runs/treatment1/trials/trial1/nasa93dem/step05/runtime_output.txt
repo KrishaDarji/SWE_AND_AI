@@ -1,0 +1,17 @@
+Projects analyzed: 93
+Effort range: 8.4 to 8211.0 person-months
+Characteristics most associated with high effort (absolute Spearman rank association):
+1. centerX [numeric, 5 levels]: rho=+0.625, high-minus-low effort=+556.3; higher levels tend to increase effort.
+2. YearX [numeric, 14 levels]: rho=-0.505, high-minus-low effort=-491.4; higher levels tend to decrease effort.
+3. data [ordinal, 4 levels]: rho=+0.373, high-minus-low effort=+422.2; higher levels tend to increase effort.
+4. acap [ordinal, 3 levels]: rho=+0.350, high-minus-low effort=+492.5; higher levels tend to increase effort.
+5. pcap [ordinal, 3 levels]: rho=+0.348, high-minus-low effort=+523.3; higher levels tend to increase effort.
+6. sced [ordinal, 2 levels]: rho=+0.275, high-minus-low effort=+547.9; higher levels tend to increase effort.
+7. rely [ordinal, 4 levels]: rho=+0.270, high-minus-low effort=+545.8; higher levels tend to increase effort.
+8. plex [ordinal, 4 levels]: rho=+0.249, high-minus-low effort=+10.1; higher levels tend to increase effort.
+9. cplx [ordinal, 5 levels]: rho=+0.228, high-minus-low effort=+57.4; higher levels tend to increase effort.
+10. apex [ordinal, 4 levels]: rho=+0.153, high-minus-low effort=+344.6; higher levels tend to increase effort.
+Interpretation: these are associations in this observational dataset, not causal effects.
+real 0.02
+user 0.01
+sys 0.00

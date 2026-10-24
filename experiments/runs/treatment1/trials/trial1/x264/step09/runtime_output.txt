@@ -1,0 +1,6 @@
+rows=1152 valid=1152 median=452.779 mad=153.089
+invalid_rows=none
+outliers=none
+real 0.03
+user 0.02
+sys 0.00

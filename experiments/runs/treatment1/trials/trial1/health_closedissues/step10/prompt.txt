@@ -1,0 +1,6 @@
+You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
+Treatment: Writer LLM; background plain Python only; reuse instructed: No.
+Domain: machine-learning model configuration. Dataset: Health-ClosedIssues0000.csv.
+Skill: race. Requirement: Compare our model configuration optimization strategy
+against a simple baseline search strategy. Implement independently and save the
+source, tests, outputs, and measured metrics in step10.

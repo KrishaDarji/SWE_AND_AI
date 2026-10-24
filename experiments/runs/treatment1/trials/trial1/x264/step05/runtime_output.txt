@@ -1,0 +1,20 @@
+x264 slow-encode blame report
+Higher Performance- values mean slower encodes.
+Setting             mean-on  mean-off  slowdown  samples(on/off)
+ref_9               646.237   369.512  276.725  384/768
+no_fast_pskip       490.265   433.243   57.022  576/576
+no_mbtree           487.124   436.384   50.740  576/576
+rc_lookahead_60     462.399   461.431    0.968  384/768
+no_deblock          461.905   461.602    0.303  576/576
+rc_lookahead_40     461.910   461.675    0.235  384/768
+no_weightb          461.665   461.842   -0.176  576/576
+ref_5               461.609   461.826   -0.216  384/768
+rc_lookahead_20     460.951   462.155   -1.203  384/768
+no_cabac            457.828   465.679   -7.852  576/576
+no_8x8dct           451.372   472.136  -20.764  576/576
+no_mixed_refs       430.207   493.300  -63.093  576/576
+ref_1               277.415   553.923 -276.508  384/768
+
+Most associated with slow encodes: ref_9 (276.725 slower on average when enabled).
+
+Measured timing: real 0.03s, user 0.02s, sys 0.00s.

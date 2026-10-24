@@ -1,0 +1,8 @@
+test_analysis_is_positive_and_uses_all_records (test_justify.JustifyTests) ... ok
+test_loader_skips_invalid_rows (test_justify.JustifyTests) ... ok
+test_render_contains_pm_decision (test_justify.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

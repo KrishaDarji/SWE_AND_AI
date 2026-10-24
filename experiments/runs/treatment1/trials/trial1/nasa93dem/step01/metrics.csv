@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+01,1,1,software project planning,remember,95,95,1,0.000005291,"93 projects; stdlib only; 4 tests passed; no reuse instructed"

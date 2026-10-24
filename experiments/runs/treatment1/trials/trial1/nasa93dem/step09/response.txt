@@ -1,0 +1,10 @@
+Implemented an independent standard-library anomaly detector in source/anomaly_detector.py.
+
+Approach: parse the NASA93 CSV, validate finite non-negative Effort- values, identify duplicate project IDs, and score effort values using a robust median/MAD scale. The command reports suspicious rows and scores. Tests cover an extreme effort, malformed data plus duplicate IDs, and a missing target column.
+
+Run from the repository root:
+python3 experiments/runs/treatment1/trials/trial1/nasa93dem/step09/source/anomaly_detector.py moot/optimize/process/nasa93dem.csv
+
+Tests: 3 tests passed. The measured dataset run completed successfully, found 12 robust effort outliers, no invalid effort values, and duplicate ID 29. Runtime was 0.03 seconds (real time).
+
+Known assumptions and limitations: Effort- is the relevant effort measurement; robust threshold 3.5 is heuristic; an outlier is a review signal, not proof of an error; duplicate IDs may be valid repeated records or a data issue; no domain-specific causal validation is performed.

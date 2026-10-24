@@ -1,0 +1,14 @@
+test_defaults_to_worst_baseline (test_fix.FixTests) ... ok
+test_requires_measured_baseline (test_fix.FixTests) ... ok
+test_smallest_improving_change (test_fix.FixTests) ... ok
+test_exact_prediction (test_health_closedissues.RecommendationTests) ... ok
+test_read_rows_rejects_empty (test_health_closedissues.RecommendationTests) ... ok
+test_suggests_improving_nearest_row (test_health_closedissues.RecommendationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

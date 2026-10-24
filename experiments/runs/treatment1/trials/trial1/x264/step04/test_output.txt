@@ -1,0 +1,11 @@
+test_invalid_values (test_flow.FlowTests) ... ok
+test_one_observation_waits_for_noise_estimate (test_flow.FlowTests) ... ok
+test_streaming_ranking_and_recommendation (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

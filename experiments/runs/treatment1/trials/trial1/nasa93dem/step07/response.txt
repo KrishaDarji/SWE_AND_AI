@@ -1,0 +1,20 @@
+Source: source/project_planner.py
+Tests: tests/test_project_planner.py
+
+Run command:
+python3 source/project_planner.py moot/optimize/process/nasa93dem.csv --budget 100
+
+Approach:
+Load the CSV with csv.DictReader, retain the project id and planning metrics,
+filter projects whose Effort- is within the supplied budget, and select the
+minimum effort. Ties are resolved by defects, months, KLOC, and id so results
+are deterministic. The CLI emits JSON.
+
+Assumptions and limitations:
+“Best” is interpreted as least estimated effort because the requirement gives
+only an effort constraint. Defects, duration, and size are tie-breakers rather
+than a multi-objective optimization. Numeric CSV fields must be present and
+valid; the tool does not estimate missing values or validate domain ranges.
+
+Measured result (budget 100): project 58, effort 8.4, defects 28.0, months
+4.9, KLOC 0.9. Tests: 4 passed. Runtime: 0.02 seconds (real time).

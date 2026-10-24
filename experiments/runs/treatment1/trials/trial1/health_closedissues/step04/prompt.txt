@@ -1,0 +1,1 @@
+You are running Treatment 1, Trial 1, Dataset 3. Implement the flow skill independently using only Python standard library. Evaluate model configurations as new evaluation results arrive one at a time. Dataset: moot/optimize/hpo/Health-ClosedIssues0000.csv. Save source, tests, outputs, and measured metrics in this directory.

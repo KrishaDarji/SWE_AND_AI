@@ -1,0 +1,11 @@
+Source: source/certify.py
+Tests: tests/test_certify.py
+
+Approach: rank configurations by lower Performance-, estimate measurement noise with the robust MAD of leave-one-out nearest-neighbor residuals, and call the winner meaningfully faster only when its improvement over the runner-up exceeds two noise scales.
+
+Command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step03/source/certify.py moot/optimize/config/X264_AllMeasurements.csv
+
+Result: the fastest observed configuration is 244.230, versus 244.277 for the runner-up. The 0.047 improvement is not meaningfully faster than the estimated noise scale of 14.5535; certification is false.
+
+Known assumptions and limitations: lower Performance- means faster; settings and measurements are numeric; the dataset has 1,152 unique configurations and no replicated configuration measurements, so this is a screening estimate rather than a direct experimental significance test. Replicates or repeated runs would provide a stronger noise estimate. Only Python standard-library modules are used.

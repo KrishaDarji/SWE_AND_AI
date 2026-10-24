@@ -1,0 +1,5 @@
+{
+  "neighbor_spread": 3.6573562704348186,
+  "neighbors_used": 3,
+  "predicted_time": 268.72
+}

@@ -1,0 +1,17 @@
+You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
+
+Treatment: Writer LLM; background plain Python only; reuse instructed No; domain open-source project health; dataset Health-ClosedIssues0000.csv; current skill fix.
+
+Requirement: Suggest the smallest change to issue-management practices or project-health factors that improves slow issue closure. Use only the Python standard library. Implement independently. Return complete source code, tests, one run command, short approach, and assumptions/limitations. Run tests and implementation, capture actual outputs and metrics.
+You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
+Treatment: Writer LLM; background plain Python only; reuse instructed: No.
+Domain: machine-learning model configuration.
+Dataset: Health-ClosedIssues0000.csv at moot/optimize/hpo/Health-ClosedIssues0000.csv.
+Current skill: fix.
+Requirement: Suggest the smallest model configuration change that reduces
+prediction error or improves accuracy.
+
+Use only the Python standard library. Implement this skill independently. Do
+not reuse or assume any previous skill, architecture, generated code, or
+previous conversation. Return complete source code, tests, one run command,
+short approach, assumptions, and limitations. Save outputs in step08.

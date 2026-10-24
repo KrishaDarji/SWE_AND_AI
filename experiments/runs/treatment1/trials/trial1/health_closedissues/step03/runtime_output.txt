@@ -1,0 +1,10 @@
+n=10000
+mean_improvement=-0.3490956562
+std_improvement=0.1741767468
+ci_low=-0.3525094577
+ci_high=-0.3456818546
+p_value=0
+meaningful=0
+real 0.05
+user 0.04
+sys 0.00

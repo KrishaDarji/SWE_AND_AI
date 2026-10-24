@@ -1,0 +1,21 @@
+Implemented `race` independently with Python's standard library.
+
+Approach: load the X264 measurements, treat `Performance-` as a minimization
+objective, and compare a deterministic fixed-budget random-search baseline with
+a successive-halving race. Both use the same seeded candidate sample. The race
+evaluates candidates in rounds and retains the better half after each round.
+
+Run command:
+`PYTHONPATH=source python3 source/race.py moot/optimize/config/X264_AllMeasurements.csv --budget 32 --rounds 3 --seed 7`
+
+Tests:
+`PYTHONPATH=source python3 -m unittest discover -s tests -v`
+
+Measured result: 3 tests passed; 1,152 rows loaded; baseline used 32
+evaluations and race used 56 evaluations, so this comparison is not fair and
+must not be used as a final result.
+
+Assumptions and limitations: lower `Performance-` is better; each CSV row is an
+independent already-measured configuration; the race is a deterministic
+benchmark over existing measurements rather than a live encoder; ties and
+candidate sampling are seed-dependent; the baseline is intentionally simple.

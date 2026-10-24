@@ -1,0 +1,8 @@
+Implemented `source/justify.py`, an independent Python-standard-library command-line program. It reads the x264 measurement CSV, selects the observed configuration with the lowest `Performance-`, compares it with the dataset mean, and prints an administrator-facing recommendation with evidence, rollout guidance, and limitations.
+
+Tests are in `tests/test_justify.py`.
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step06/source/justify.py moot/optimize/config/X264_AllMeasurements.csv
+
+Assumptions and limitations: lower `Performance-` is preferred; the CSV contains numeric measurements and binary/configuration fields; the best observed row is a candidate rather than a causal guarantee; workload drift, quality constraints, and feature interactions require production validation.

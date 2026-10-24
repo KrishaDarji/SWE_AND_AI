@@ -1,0 +1,12 @@
+test_compare_reports_both_strategies (test_race.RaceTests) ... ok
+test_deterministic_baseline (test_race.RaceTests) ... ok
+test_load_and_minimize (test_race.RaceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+real 0.05
+user 0.03
+sys 0.01
+test_status=0

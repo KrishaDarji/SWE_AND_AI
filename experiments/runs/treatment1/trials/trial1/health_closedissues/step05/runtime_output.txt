@@ -1,0 +1,14 @@
+BLAME ANALYSIS
+rows: 10000
+requirement: explain settings associated with high MRE or low ACC
+ranked findings:
+1. Min_sample_leaves: higher values are associated with worse results (MRE r=0.803, ACC r=-0.799; mean setting in high-error half=14.217, low-error half=6.740; low-accuracy half=6.793, high-accuracy half=14.217; cuts MRE=0.809, ACC=0.440)
+2. criterion: absolute_error: MRE=0.751, ACC=0.478, n=3302; poisson: MRE=0.703, ACC=0.501, n=3335; squared_error: MRE=0.674, ACC=0.509, n=3363
+3. Min_impurity_decrease: higher values are associated with worse results (MRE r=0.068, ACC r=-0.057; mean setting in high-error half=5.011, low-error half=4.982; low-accuracy half=4.979, high-accuracy half=5.014; cuts MRE=0.809, ACC=0.440)
+4. N_estimators: lower values are associated with worse results (MRE r=-0.006, ACC r=0.013; mean setting in high-error half=108.198, low-error half=103.923; low-accuracy half=104.062, high-accuracy half=108.087; cuts MRE=0.809, ACC=0.440)
+5. Max_depth: higher values are associated with worse results (MRE r=0.008, ACC r=-0.011; mean setting in high-error half=10.633, low-error half=10.413; low-accuracy half=10.405, high-accuracy half=10.643; cuts MRE=0.809, ACC=0.440)
+interpretation: positive MRE association means higher error; negative ACC association means lower accuracy.
+limitation: these are observational associations over tested configurations, not causal effects or a controlled sensitivity test.
+real 0.10
+user 0.09
+sys 0.00

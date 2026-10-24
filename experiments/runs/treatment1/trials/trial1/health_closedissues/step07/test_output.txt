@@ -1,0 +1,8 @@
+test_accuracy_constraint_maximizes_accuracy_then_error (test_choose.ChooseTests) ... ok
+test_error_constraint_minimizes_error_then_accuracy (test_choose.ChooseTests) ... ok
+test_requires_an_eligible_configuration (test_choose.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

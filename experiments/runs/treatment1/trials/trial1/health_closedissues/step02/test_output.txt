@@ -1,0 +1,9 @@
+test_csv_reader (test_health_closedissues.PredictorTests) ... ok
+test_exact_configuration_returns_observed_targets (test_health_closedissues.PredictorTests) ... ok
+test_invalid_neighbor_count_rejected (test_health_closedissues.PredictorTests) ... ok
+test_prediction_is_bounded_by_neighbor_targets (test_health_closedissues.PredictorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

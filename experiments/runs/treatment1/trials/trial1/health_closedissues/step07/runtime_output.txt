@@ -1,0 +1,6 @@
+mre=0.029750
+accuracy=1.000000
+configuration=MRE-=0.029749631811487497,ACC+=1,PRED40+=1,N_estimators=10,criterion=squared_error,Min_sample_leaves=1,Min_impurity_decrease=3,Max_depth=10
+real 0.03
+user 0.03
+sys 0.00

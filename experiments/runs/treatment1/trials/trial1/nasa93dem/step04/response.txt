@@ -1,0 +1,14 @@
+Complete source: source/flow.py
+Tests: tests/test_flow.py
+
+Approach
+The evaluator accepts one project estimate and then its actual effort, records absolute relative error, and updates cumulative mean/median error and tolerance pass rate. The CSV runner uses an expanding historical mean, computed only from earlier projects, so estimates are evaluated in arrival order without future leakage.
+
+Run command
+python3 source/flow.py ../../../../../../../moot/optimize/process/nasa93dem.csv
+
+Tests
+python3 -m unittest discover -s tests -v
+
+Assumptions and limitations
+Effort- is the observed effort in person-month-like units and must be positive. The first estimate uses its actual value because no prior measurements exist; this makes the first score optimistic. Subsequent estimates use only the historical mean and do not model NASA cost drivers. The 25% tolerance is configurable. This is an online evaluation utility, not a calibrated production estimator.

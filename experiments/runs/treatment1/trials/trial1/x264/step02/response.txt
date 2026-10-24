@@ -1,0 +1,14 @@
+Complete source code: source/guess.py
+Tests: tests/test_guess.py
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step02/source/guess.py moot/optimize/config/X264_AllMeasurements.csv '{"no_asm":1,"no_8x8dct":0,"no_cabac":0,"no_deblock":0,"no_fast_pskip":0,"no_mbtree":0,"no_mixed_refs":0,"no_weightb":0,"rc_lookahead":1,"rc_lookahead_20":1,"rc_lookahead_40":0,"rc_lookahead_60":0,"ref":1,"ref_1":1,"ref_5":0,"ref_9":0}'
+
+Approach:
+Read historical x264 configurations, normalize each setting's range, select the nearest rows, and calculate an inverse-distance weighted mean of Performance-. Return neighbor spread as a simple uncertainty indicator.
+
+Assumptions and limitations:
+- Performance- is treated as encoding time.
+- The proposed configuration contains every non-measure CSV field.
+- Numeric values are compared by normalized distance; other values by equality.
+- Nearest-neighbor prediction is descriptive and may be inaccurate for configurations unlike the historical data.

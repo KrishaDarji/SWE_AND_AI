@@ -1,0 +1,8 @@
+Complete source code: source/fix.py
+Tests: tests/test_fix.py
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step08/source/fix.py moot/optimize/config/X264_AllMeasurements.csv '<JSON configuration>'
+
+Approach: Load the CSV with the standard library, validate a binary configuration, find the measured baseline, and evaluate all one-setting flips. Return the highest-scoring measured neighbor that is strictly better than the baseline. One-setting changes are the smallest non-zero Hamming-distance changes. Ties are deterministic by score and setting name.
+
+Assumptions and limitations: `Performance-` is treated as a higher-is-faster score. The current configuration must exactly match a measured row. Settings are binary, and duplicate rows are averaged. The method only considers measured one-bit neighbors and cannot recommend an unmeasured configuration or multi-setting change.

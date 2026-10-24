@@ -1,0 +1,8 @@
+Complete source: source/justify.py
+Tests: tests/test_justify.py
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/nasa93dem/step06/source/justify.py moot/optimize/process/nasa93dem.csv --kloc 20
+
+Approach: load positive Kloc+/Effort- pairs, calculate a robust median effort-per-KLOC estimate and a log-log historical trend, then recommend their midpoint and report the evidence for a project manager.
+
+Assumptions and limitations: --kloc is the planned size in thousands of lines of code; NASA93 projects are relevant historical analogues; effort is measured in person-months; no categorical project adjustments are inferred; the estimate is a planning baseline and uncertainty is substantial, especially because the historical effort range is wide.

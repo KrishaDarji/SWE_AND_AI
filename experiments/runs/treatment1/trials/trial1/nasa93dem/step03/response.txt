@@ -1,0 +1,23 @@
+Implementation
+==============
+Complete source code is in source/certify.py and tests are in tests/test_certify.py. The implementation uses only Python's standard library.
+
+Approach
+========
+The size estimator fits log(effort) from log(Kloc). The full estimator adds the NASA cost-driver ratings and normalized year. Both are evaluated on the same deterministic 10-fold splits repeated 10 times. The comparison uses paired mean relative error, a two-sided paired sign-flip permutation test, and a percentile bootstrap confidence interval for size-error minus full-error.
+
+Measured result
+===============
+93 projects; size mean relative error 0.6741; full mean relative error 0.7404; difference -0.0664; 95% bootstrap interval [-0.1461, 0.0088]; permutation p-value 0.0945. The size estimator had the lower observed error, but the interval includes zero and p > 0.05, so neither estimator is certified as meaningfully more accurate at the 5% level.
+
+Run command
+===========
+python3 source/certify.py ../../../../../../../moot/optimize/process/nasa93dem.csv
+
+Tests
+=====
+python3 -m unittest discover -s tests -v
+
+Assumptions and limitations
+===========================
+Effort- is treated as person-months. Rating values are ordinal and mapped from VL through EH. The fixed folds and random seeds make the result reproducible, but this is still a small observational dataset; the choice of estimators, metric, fold design, and significance threshold can affect conclusions. The permutation test assesses paired prediction-error differences, not causal superiority.

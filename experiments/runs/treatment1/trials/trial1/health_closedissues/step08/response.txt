@@ -1,0 +1,32 @@
+Implemented `source/fix.py` and `tests/test_fix.py`.
+
+Approach: parse the CSV using the standard library, use the highest-MRE observed configuration as the default slow-closure baseline, and enumerate configurations differing in exactly one setting. A candidate is accepted only when its measured MRE is lower; candidates are ranked by lowest MRE, then smallest numeric setting distance, then setting name. A JSON baseline can be supplied for reproducibility.
+
+Run commands:
+`python3 -m unittest discover -s tests -v`
+`python3 source/fix.py moot/optimize/hpo/Health-ClosedIssues0000.csv`
+
+Assumptions and limitations: MRE- represents closure slowness/error and lower is better; each proposed configuration must be observed in the dataset; correlations are not causal; the default baseline is the highest-MRE row; categorical changes have distance one; duplicate configurations use their best measured MRE.
+Implemented independently in source/health_closedissues.py with tests in
+tests/test_health_closedissues.py.
+
+Approach: read the CSV using csv.DictReader, normalize numeric configuration
+distance and account for categorical changes, predict the baseline using
+inverse-distance neighbors, then scan observed configurations. Choose the
+nearest observed configuration that lowers MRE- or raises ACC+, with gain as
+the tie-break. Observed candidate rows use their measured outcomes, avoiding
+an unbounded nested search.
+
+Run command:
+python3 source/health_closedissues.py moot/optimize/hpo/Health-ClosedIssues0000.csv --n-estimators 40 --criterion squared_error --min-sample-leaves 3 --min-impurity-decrease 2.75 --max-depth 10
+
+Tests:
+python3 -m unittest discover -s tests -v
+
+Assumptions and limitations: the CSV is representative; only configurations
+present in the CSV are proposed; “smallest” means normalized Euclidean change
+for numeric fields plus one per categorical change; nearest-neighbor estimates
+are heuristic and do not establish causal improvement. The measured run
+recommended N_estimators=20, Min_sample_leaves=3, Min_impurity_decrease=2.5,
+Max_depth=9, criterion=squared_error, with predicted MRE 0.259205 and ACC
+0.661006.

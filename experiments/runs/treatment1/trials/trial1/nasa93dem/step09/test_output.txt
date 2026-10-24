@@ -1,0 +1,8 @@
+test_flags_extreme_effort (test_anomaly_detector.AnomalyDetectorTests) ... ok
+test_rejects_missing_target (test_anomaly_detector.AnomalyDetectorTests) ... ok
+test_reports_invalid_and_duplicate_ids (test_anomaly_detector.AnomalyDetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

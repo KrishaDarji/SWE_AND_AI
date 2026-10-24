@@ -1,0 +1,8 @@
+projects=93
+size_mre=0.6741 full_mre=0.7404
+difference_size_minus_full=-0.0664
+95pct_ci=[-0.1461, 0.0088] p_value=0.0945
+meaningfully_more_accurate=False winner=size
+real 4.94
+user 4.91
+sys 0.02

@@ -1,0 +1,9 @@
+test_loads_dataset (test_project_planner.ProjectPlannerTests) ... ok
+test_rejects_impossible_budget (test_project_planner.ProjectPlannerTests) ... ok
+test_selects_lowest_effort_feasible_project (test_project_planner.ProjectPlannerTests) ... ok
+test_tie_breaks_are_deterministic (test_project_planner.ProjectPlannerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

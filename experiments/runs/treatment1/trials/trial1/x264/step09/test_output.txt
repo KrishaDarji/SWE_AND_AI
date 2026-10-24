@@ -1,0 +1,8 @@
+test_does_not_flag_normal_spread (test_anomaly_detector.DetectorTests) ... ok
+test_flags_robust_extreme (test_anomaly_detector.DetectorTests) ... ok
+test_invalid_measurement_is_reported (test_anomaly_detector.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

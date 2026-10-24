@@ -1,0 +1,263 @@
+SHRINKING-CODE EXPERIMENT — TREATMENT PROMPTS
+===============================================
+
+Use one fresh chat/context for every treatment trial and every ladder step.
+Reuse is an explicit prompt instruction, never hidden conversation memory.
+
+Every treatment runs the same ten skills across the same three domains:
+remember, guess, certify, flow, blame, justify, choose, fix, spot, race.
+
+
+TREATMENT 1 — LLM / PLAIN PYTHON / NO REUSE
+============================================
+
+Do:
+- Use plain Python only.
+- Use a fresh chat for every step and trial.
+- Give the current domain, dataset schema, skill, and one requirement.
+- Save prompt, response, code, tests, errors, and metrics.
+
+Do not:
+- Do not instruct reuse.
+- Do not provide previous generated skill code as reusable architecture.
+- Do not use scikit-learn or ezr.
+- Do not use another treatment's output.
+
+Prompt:
+
+You are running Treatment 1 of a controlled experiment.
+Treatment: LLM, plain Python, no reuse.
+Domain: [DOMAIN]
+Dataset: [DATASET]
+Skill: [SKILL]
+Requirement: [REQUIREMENT]
+
+Use only the Python standard library. Implement this skill independently.
+Do not reuse or assume any previous skill, architecture, or generated code.
+Return complete source code, tests, and one run command. State assumptions and
+limitations.
+
+
+TREATMENT 2 — LLM / PLAIN PYTHON / REUSE INSTRUCTED
+====================================================
+
+Do:
+- Use plain Python only.
+- Use a fresh chat for every step and trial.
+- Supply previous skill code explicitly.
+- Explicitly request reuse and extension.
+- Save prompt, response, code, tests, errors, and metrics.
+
+Do not:
+- Do not rely on chat memory for reuse.
+- Do not use code from another treatment or trial.
+- Do not use scikit-learn or ezr.
+
+Prompt:
+
+You are running Treatment 2 of a controlled experiment.
+Treatment: LLM, plain Python, reuse instructed.
+Domain: [DOMAIN]
+Dataset: [DATASET]
+Skill: [SKILL]
+Requirement: [REQUIREMENT]
+
+Use only the Python standard library. Reuse and extend the previous skills
+supplied below. Do not create an unrelated implementation.
+
+Previous skill code:
+[PASTE PREVIOUS SKILL CODE]
+
+Return complete updated source code, tests, and one run command. State what was
+reused and what new code was added.
+
+
+TREATMENT 3 — LLM / SCIKIT-LEARN / NO REUSE
+===========================================
+
+Do:
+- Use scikit-learn as the allowed background.
+- Use a fresh chat for every step and trial.
+- Implement the current skill independently.
+- Save prompt, response, code, tests, errors, and metrics.
+
+Do not:
+- Do not instruct reuse.
+- Do not provide previous skill code as reusable architecture.
+- Do not use ezr or another treatment's output.
+
+Prompt:
+
+You are running Treatment 3 of a controlled experiment.
+Treatment: LLM, scikit-learn available, no reuse.
+Domain: [DOMAIN]
+Dataset: [DATASET]
+Skill: [SKILL]
+Requirement: [REQUIREMENT]
+
+Use scikit-learn where appropriate. Implement this skill independently.
+Do not reuse or assume any previous skill, architecture, or generated code.
+Return complete source code, tests, and one run command. State assumptions and
+limitations.
+
+
+TREATMENT 4 — LLM / SCIKIT-LEARN / REUSE INSTRUCTED
+===================================================
+
+Do:
+- Use scikit-learn as the allowed background.
+- Use a fresh chat for every step and trial.
+- Supply previous skill code explicitly.
+- Explicitly request reuse and extension.
+- Save prompt, response, code, tests, errors, and metrics.
+
+Do not:
+- Do not rely on chat memory.
+- Do not use code from another treatment or trial.
+- Do not use ezr unless separately approved.
+
+Prompt:
+
+You are running Treatment 4 of a controlled experiment.
+Treatment: LLM, scikit-learn available, reuse instructed.
+Domain: [DOMAIN]
+Dataset: [DATASET]
+Skill: [SKILL]
+Requirement: [REQUIREMENT]
+
+Use scikit-learn where appropriate. Reuse and extend the previous skills
+supplied below. Do not rebuild the system as an unrelated program.
+
+Previous skill code:
+[PASTE PREVIOUS SKILL CODE]
+
+Return complete updated source code, tests, and one run command. Describe what
+was reused and what new code was introduced.
+
+
+TREATMENT 5 — LLM / EZR / NO REUSE
+==================================
+
+Do:
+- Use ezr as the allowed background.
+- Use a fresh chat for every step and trial.
+- Implement each current skill independently.
+- Save prompt, response, code, tests, errors, and metrics.
+
+Do not:
+- Do not instruct reuse.
+- Do not provide previous skill code as reusable architecture.
+- Do not use another treatment's output.
+
+Prompt:
+
+You are running Treatment 5 of a controlled experiment.
+Treatment: LLM, ezr available, no reuse.
+Domain: [DOMAIN]
+Dataset: [DATASET]
+Skill: [SKILL]
+Requirement: [REQUIREMENT]
+
+Use the approved ezr background. Implement this skill independently. Do not
+reuse or assume any previous skill, architecture, or generated code.
+Return complete source code, tests, and one run command. State assumptions and
+limitations.
+
+
+TREATMENT 6 — LLM / EZR / REUSE INSTRUCTED
+==========================================
+
+Do:
+- Use ezr as the allowed background.
+- Use a fresh chat for every step and trial.
+- Supply previous skill code explicitly.
+- Explicitly request reuse and extension.
+- Save prompt, response, code, tests, errors, and metrics.
+
+Do not:
+- Do not rely on chat memory.
+- Do not use code from another treatment or trial.
+- Do not silently change the requirement.
+
+Prompt:
+
+You are running Treatment 6 of a controlled experiment.
+Treatment: LLM, ezr available, reuse instructed.
+Domain: [DOMAIN]
+Dataset: [DATASET]
+Skill: [SKILL]
+Requirement: [REQUIREMENT]
+
+Use the approved ezr background. Reuse and extend the previous skills supplied
+below. Do not create an unrelated replacement architecture.
+
+Previous skill code:
+[PASTE PREVIOUS SKILL CODE]
+
+Return complete updated source code, tests, and one run command. Describe what
+was reused and what new code was introduced.
+
+
+TREATMENT 7 — HUMAN TEAM / TEAM PRIOR SKILLS / REUSE
+====================================================
+
+Do:
+- Build the human reference implementation in src/core.
+- Reuse earlier skills as much as possible.
+- Use domain adapters instead of copying the full implementation.
+- Tag step1 through step10 in Git.
+- Run all ten skills for all three domains.
+- Record new LOC, reused LOC, tests, errors, runtime, and quality.
+
+Do not:
+- Do not use generated code from Treatments 1–6.
+- Do not omit a poor-performing domain.
+- Do not claim reuse without measuring it.
+
+Human sequence:
+
+[ ] remember
+[ ] guess
+[ ] certify
+[ ] flow
+[ ] blame
+[ ] justify
+[ ] choose
+[ ] fix
+[ ] spot
+[ ] race
+
+
+INPUTS FOR EVERY PROMPT
+=======================
+
+Paste only the relevant inputs:
+
+- Treatment number and condition.
+- Trial number.
+- Domain and dataset.
+- One customer requirement from docs/requirements/.
+- Current skill name.
+- Dataset schema and allowed background.
+- Previous skill code only for reuse-instructed treatments.
+
+Save each run under:
+
+experiments/runs/treatmentN/trials/trialM/domain/stepK/
+
+Save:
+
+- prompt.txt
+- response.txt
+- generated source code
+- tests and test output
+- runtime output
+- errors
+- total LOC
+- new LOC
+- reused LOC
+- quality metrics
+
+The reuse pairs (2, 4, and 6) use fresh chats too. Their reuse condition is
+created by explicitly pasting previous code into the prompt, not by allowing
+the chat to remember it.

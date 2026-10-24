@@ -1,0 +1,8 @@
+Implemented `source/blame.py`, which reads the CSV, compares mean `Performance-` when each binary setting is enabled versus disabled, and ranks settings by the resulting slowdown. Higher values are treated as slower encodes.
+
+Tests are in `tests/test_blame.py`.
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial1/x264/step05/source/blame.py moot/optimize/config/X264_AllMeasurements.csv
+
+Assumptions and limitations: `Performance-` is a numeric duration-like measure where larger means slower; settings use `1` and `0`; the ranked differences are associations, not causal effects; confounding and interactions are not modeled; columns that lack both states are omitted.

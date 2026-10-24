@@ -1,0 +1,6 @@
+You are running Treatment 1, Trial 1, Dataset 1 of a controlled experiment.
+Treatment: Writer LLM; Background plain Python only; Reuse instructed: No.
+Domain: video encoding; Dataset: X264_AllMeasurements.csv; Skill: spot.
+Requirement: Detect an anomalous benchmark result or measurement error.
+Implement independently using only the Python standard library. Return source,
+tests, one command, explanation, assumptions, and limitations.

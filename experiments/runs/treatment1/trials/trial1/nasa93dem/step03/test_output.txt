@@ -1,0 +1,9 @@
+test_certification_is_reproducible_and_complete (test_certify.CertificationTests) ... ok
+test_dataset_and_feature_shapes (test_certify.CertificationTests) ... ok
+test_evaluation_has_one_error_per_project_per_fold (test_certify.CertificationTests) ... ok
+test_models_predict_positive_finite_effort (test_certify.CertificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 5.396s
+
+OK

@@ -1,0 +1,11 @@
+Historical model-configuration justification
+Records used: 10000 (top 1000 by composite score)
+Composite score: ACC+ + PRED40+ - MRE- (higher is better)
+Historical score: mean -0.0663; median -0.3692
+Top-group mean score: 1.2313
+Recommended configuration (modal values among top group): N_estimators=120, criterion=squared_error, Min_sample_leaves=2, Min_impurity_decrease=0.75, Max_depth=19
+Best observed evidence: score 1.9703, MRE- 0.0297, ACC+ 1.0000, PRED40+ 1.0000
+Use this as a starting point, then confirm with held-out validation; historical observations do not establish causality.
+real 0.05
+user 0.04
+sys 0.00

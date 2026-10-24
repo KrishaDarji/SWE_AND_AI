@@ -1,0 +1,11 @@
+test_best_one_setting_improvement (test_fix.FixTests) ... ok
+test_no_improvement (test_fix.FixTests) ... ok
+test_requires_exact_configuration (test_fix.FixTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

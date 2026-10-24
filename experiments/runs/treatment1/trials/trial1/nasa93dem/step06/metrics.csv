@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+step06,treatment1,trial1,software project planning,justify,120,120,3/3,0.02,0,"93 NASA93 records; 20 KLOC example; median/trend midpoint recommendation 104.4 person-months; stdlib only"

@@ -1,0 +1,14 @@
+Approach: load nasa93dem.csv with csv.DictReader, fit smoothed per-driver categorical effects in log-effort space, and evaluate with leave-one-out predictions. The comparison baseline is the median historical Effort- value from the other projects. The command reports mean absolute error and the number of projects where the model wins.
+
+Complete source code is in source/race_estimator.py. Tests are in tests/test_race_estimator.py.
+
+Run command:
+python3 source/race_estimator.py ../../../../../../../moot/optimize/process/nasa93dem.csv
+
+Measured result: 93 projects; model MAE 143687.576190; historical-baseline MAE 544.229032; model wins 41 projects; model_better=False. Tests: 3 passed. Implementation exit status: 0.
+
+Assumptions and limitations:
+- Effort- is the target and all listed categorical drivers are usable predictors.
+- Leave-one-out evaluation is used to avoid scoring each row on a model trained on itself.
+- The baseline is intentionally simple: the training-set median effort.
+- The smoothed additive model does not model interactions, missing values, or uncertainty; extreme predictions indicate this simple model is a weak fit for this dataset.

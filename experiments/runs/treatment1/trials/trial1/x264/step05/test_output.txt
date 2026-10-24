@@ -1,0 +1,8 @@
+test_cli_reads_csv (test_blame.BlameTests) ... ok
+test_effect_is_difference_of_condition_means (test_blame.BlameTests) ... ok
+test_report_ranks_slowest_setting (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

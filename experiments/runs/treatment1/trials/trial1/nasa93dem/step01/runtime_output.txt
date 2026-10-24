@@ -1,0 +1,14 @@
+NASA93 historical project summary
+Projects: 93
+
+Characteristics: center counts: 1=12, 2=37, 3=2, 5=39, 6=3
+Years: 1971-1987 (14 distinct years)
+Driver distributions and full outcome statistics were emitted by the command.
+
+Effort measures and outcomes:
+  Kloc+: mean=94.02 median=47.50 min=0.90 max=980.00 stdev=132.88
+  Effort-: mean=624.41 median=252.00 min=8.40 max=8211.00 stdev=1129.80
+  Defects-: mean=3761.76 median=2007.00 min=28.00 max=50961.00 stdev=6111.93
+  MonthsX: mean=24.18 median=21.40 min=4.90 max=96.40 stdev=12.90
+
+Exit code: 0. Measured command wall time: 0.000005291 seconds (tool resolution).

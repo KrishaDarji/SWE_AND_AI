@@ -1,0 +1,9 @@
+test_bad_input_rejected (test_certify.CertifyTests) ... ok
+test_error_improvement_is_sign_reversed (test_certify.CertifyTests) ... ok
+test_noise_is_not_meaningful (test_certify.CertifyTests) ... ok
+test_strong_accuracy_improvement_is_meaningful (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

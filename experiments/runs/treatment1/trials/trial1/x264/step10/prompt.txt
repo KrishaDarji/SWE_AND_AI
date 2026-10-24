@@ -1,0 +1,7 @@
+You are running Treatment 1, Trial 1, Dataset 1 of a controlled experiment.
+Treatment: Writer LLM; background plain Python only; reuse instructed: No.
+Domain: video encoding. Dataset: X264_AllMeasurements.csv.
+Skill: race. Requirement: Compare the system against a baseline search strategy.
+Implement independently using only the standard library. Return source, tests,
+one run command, approach, assumptions, and limitations; run everything and
+record actual metrics.

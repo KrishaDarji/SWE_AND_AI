@@ -1,0 +1,8 @@
+test_estimate_is_positive_and_finite (test_race_estimator.RaceEstimatorTests) ... ok
+test_evaluation_is_deterministic_and_compares_baseline (test_race_estimator.RaceEstimatorTests) ... ok
+test_loads_dataset (test_race_estimator.RaceEstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.037s
+
+OK

@@ -1,0 +1,13 @@
+{
+  "id": 4,
+  "writer": "LLM",
+  "background": "scikit_learn",
+  "reuse_instructed": true,
+  "status": "prepared",
+  "domains": [
+    "x264",
+    "nasa93dem",
+    "health_closedissues"
+  ],
+  "ladder_steps": 10
+}

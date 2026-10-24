@@ -1,0 +1,11 @@
+Complete source code is saved in source/blame.py and complete tests are saved in tests/test_blame.py.
+
+Run command:
+
+    python3 experiments/runs/treatment1/trials/trial1/nasa93dem/step05/source/blame.py moot/optimize/process/nasa93dem.csv
+
+Approach: read the CSV with csv.DictReader; parse numeric fields and map COCOMO ordinal ratings (vl through xh) to ordered integers; exclude identifiers, known output measures, and constant fields; calculate Spearman rank association with Effort-; and report the strongest associations with the effort difference between the lower and upper half of each characteristic. Tests cover ties, dataset loading, constant-field filtering, output exclusion, and a known varying driver.
+
+Measured result: 93 projects were analyzed. The strongest associations were centerX (rho +0.625), YearX (-0.505), data (+0.373), acap (+0.350), and pcap (+0.348). These are observational associations, not causal findings.
+
+Known assumptions and limitations: ordinal ratings are treated as equally spaced; categorical values not in the COCOMO scale are alphabetically encoded; the median split is a descriptive summary; missing values are not specially imputed; correlation does not establish causation; and centerX/YearX may reflect project or historical confounding rather than controllable effort drivers.

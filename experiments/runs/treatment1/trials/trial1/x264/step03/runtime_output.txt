@@ -1,0 +1,14 @@
+{
+  "best_measurement": 244.23,
+  "improvement": 0.046999999999997044,
+  "meaningfully_faster": false,
+  "noise_method": "1.4826 * MAD of leave-one-out nearest-neighbor residuals",
+  "noise_scale": 14.55349811999997,
+  "rows": 1152,
+  "runner_up_measurement": 244.277,
+  "threshold": 2.0,
+  "unique_configurations": 1152
+}
+real 1.45
+user 1.42
+sys 0.01

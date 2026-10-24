@@ -1,0 +1,6 @@
+You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
+Treatment: Writer LLM; Background plain Python only; Reuse instructed: No.
+Domain: machine-learning model configuration.
+Dataset: moot/optimize/hpo/Health-ClosedIssues0000.csv.
+Skill: certify. Requirement: Determine whether an improvement in model accuracy or error is statistically meaningful rather than due to measurement noise.
+Implement independently with the Python standard library and save source, tests, run outputs, and measured metrics.

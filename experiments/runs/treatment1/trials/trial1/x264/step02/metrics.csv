@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,1,1,x264,guess,132,132,1,0.20,0,"3/3 tests passed; nearest-neighbor encoding-time prediction; independent plain-Python implementation"

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,1,1,software project planning,certify,194,194,1,4.94,0,"93 projects; measured size MRE 0.6741 vs full MRE 0.7404; difference -0.0664; 95% CI [-0.1461, 0.0088]; permutation p=0.0945; no meaningful difference certified"

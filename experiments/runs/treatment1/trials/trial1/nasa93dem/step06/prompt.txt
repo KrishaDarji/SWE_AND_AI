@@ -1,0 +1,1 @@
+Treatment 1, Trial 1, Dataset 2. Implement the justify skill independently using only Python standard library. Justify a recommended software project effort estimate to a project manager using historical NASA93 evidence. Dataset: moot/optimize/process/nasa93dem.csv. Provide source, tests, run command, explanation, assumptions, and measured metrics.
