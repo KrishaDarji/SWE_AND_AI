@@ -1,0 +1,1 @@
+Implemented an independent streaming configuration evaluator in source/flow.py. It consumes one validation result at a time, minimizes MRE-, maximizes ACC+ and PRED40+, skips malformed results, and retains the first configuration on exact ties. Tests cover incremental updates, invalid input, and deterministic ties.

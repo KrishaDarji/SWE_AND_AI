@@ -1,0 +1,8 @@
+Welch certification (higher metric is treated as improvement)
+control n=576 mean=465.679493; treatment n=576 mean=457.827700
+difference=-7.851793 95%CI=[-26.629393, 10.925806]
+t=-0.819568 df=1149.97 one_sided_p=0.794 Cohen_d=-0.048293
+STATISTICALLY_CREDIBLE=NO
+real 0.02
+user 0.01
+sys 0.00

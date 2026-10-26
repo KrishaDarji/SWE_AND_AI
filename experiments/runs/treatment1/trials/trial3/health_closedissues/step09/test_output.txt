@@ -1,0 +1,7 @@
+test_bad_number (test_spot_quality.SpotTests) ... ok
+test_range_error (test_spot_quality.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

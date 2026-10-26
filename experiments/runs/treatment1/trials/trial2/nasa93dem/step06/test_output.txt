@@ -1,0 +1,10 @@
+test_dataset_loads_and_has_expected_population (test_justify_estimate.EstimateTests) ... ok
+test_estimate_has_point_and_ordered_band (test_justify_estimate.EstimateTests) ... ok
+test_invalid_schema_is_rejected (test_justify_estimate.EstimateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+
+TEST_STATUS=0

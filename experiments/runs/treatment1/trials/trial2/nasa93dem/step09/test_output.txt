@@ -1,0 +1,10 @@
+test_cli_reads_csv (test_spot.SpotTests) ... ok
+test_empty_input (test_spot.SpotTests) ... ok
+test_scale_adjusted_outlier_ranks_first (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+id,score,mean_score,signals
+1,0.733,0.697,Effort-,Defects-,MonthsX

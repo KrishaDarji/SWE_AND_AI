@@ -1,0 +1,8 @@
+Complete source code: source/blame.py
+Tests: tests/test_blame.py
+Run command:
+cd /Users/RadhaKrishna/Desktop/SWE_AND_AI && python3 -m unittest discover -s experiments/runs/treatment1/trials/trial2/x264/tests -t experiments/runs/treatment1/trials/trial2/x264 && python3 experiments/runs/treatment1/trials/trial2/x264/source/blame.py moot/optimize/config/X264_AllMeasurements.csv
+
+Approach: read the CSV with csv.DictReader, treat Performance- as encode runtime, define slow encodes as the top quartile by runtime, and compare each binary setting's enabled and disabled groups. Rank settings using standardized mean-runtime difference plus slow-rate lift, while also reporting point-biserial correlation.
+
+Assumptions and limitations: binary columns are encoded as 0/1; larger Performance- means slower; the top 25% is a useful operational definition of slow; observational associations do not establish causation; interactions among settings are not modeled; missing or malformed values are not supported.

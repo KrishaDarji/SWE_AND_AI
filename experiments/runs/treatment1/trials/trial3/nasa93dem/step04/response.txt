@@ -1,0 +1,8 @@
+Complete source: source/flow.py
+Tests: tests/test_flow.py
+Run command:
+  printf '%s\n' '{"id":"proposal-1","centerX":"2","YearX":"1979","prec":"h","flex":"h","resl":"h"}' | python3 source/flow.py --dataset moot/optimize/process/nasa93dem.csv --proposals -
+
+Approach: load historical projects with csv.DictReader, rank each arriving proposal by a mixed numeric/categorical distance, estimate four outcomes from the nearest five projects, and emit confidence plus risk flags as JSON. Proposals with known outcomes can be added to the stream context.
+
+Assumptions and limitations: proposal fields use the dataset's names and categorical values; numeric distance is scaled by a fixed 100-unit factor; nearest-neighbor estimates are simple averages, not calibrated forecasts; missing fields are treated as mismatches; no external packages or persistence are used.

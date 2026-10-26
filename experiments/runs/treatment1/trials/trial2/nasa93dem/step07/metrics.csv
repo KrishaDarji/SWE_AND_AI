@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+07,1,2,software project planning,choose,96,96,1,0.88,0,"3 unittest cases passed; implementation run passed; budget=1000"

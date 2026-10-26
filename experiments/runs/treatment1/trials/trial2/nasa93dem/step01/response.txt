@@ -1,0 +1,10 @@
+1. Complete source code: `source/summarize.py` (88 LOC). It loads and validates the CSV, calculates mean/median size, effort, defects, and months, groups projects by year and delivery-duration band, and renders a readable report.
+
+2. Tests: `tests/test_summarize.py` (42 LOC), with two unittest cases covering parsing, aggregates, duration bands, and report sections. Test result: 2 tests passed.
+
+3. Command:
+`python3 experiments/runs/treatment1/trials/trial2/nasa93dem/step01/source/summarize.py moot/optimize/process/nasa93dem.csv`
+
+4. Approach: use `csv.DictReader` and standard-library `statistics`; convert the five required outcome fields to numeric values; summarize all 93 records overall, by historical year, and by delivery duration (<=12, 12-24, >24 months).
+
+5. Assumptions and limitations: `Kloc+`, `Effort-`, `Defects-`, and `MonthsX` are treated as numeric outcomes; missing or malformed required values fail fast; duration bands are descriptive rather than quality judgments; the dataset does not provide an explicit success/failure label, so delivery outcome means size, effort, defects, and elapsed months.

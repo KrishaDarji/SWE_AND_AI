@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,2,video encoding,race,97,97,1,0.03,0,"128 evaluations each; baseline best=246.487; race best=246.487; dataset_rows=1152; standard library only"

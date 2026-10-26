@@ -1,0 +1,16 @@
+X264 quality certification
+Interpretation: lower Performance- is better; improvement is top quartile versus remaining rows.
+n=1152
+q1=294.361000
+improved_n=288
+comparison_n=864
+improved_mean=268.976146
+comparison_mean=526.012747
+difference=257.036601
+ci_low=247.772574
+ci_high=266.252959
+p_value=0.000100
+statistically_credible=YES
+real 3.89
+user 3.87
+sys 0.02

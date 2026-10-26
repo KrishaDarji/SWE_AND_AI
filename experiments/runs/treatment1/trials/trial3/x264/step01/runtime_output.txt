@@ -1,0 +1,24 @@
+Historical encoder-run summary
+
+Runs: 1152
+
+Encoder settings (binary columns):
+- no_asm: enabled 1152/1152 (100.00%)
+- no_8x8dct: enabled 576/1152 (50.00%)
+- no_cabac: enabled 576/1152 (50.00%)
+- no_deblock: enabled 576/1152 (50.00%)
+- no_fast_pskip: enabled 576/1152 (50.00%)
+- no_mbtree: enabled 576/1152 (50.00%)
+- no_mixed_refs: enabled 576/1152 (50.00%)
+- no_weightb: enabled 576/1152 (50.00%)
+- rc_lookahead: enabled 1152/1152 (100.00%)
+- rc_lookahead_20: enabled 384/1152 (33.33%)
+- rc_lookahead_40: enabled 384/1152 (33.33%)
+- rc_lookahead_60: enabled 384/1152 (33.33%)
+- ref: enabled 1152/1152 (100.00%)
+- ref_1: enabled 384/1152 (33.33%)
+- ref_5: enabled 384/1152 (33.33%)
+- ref_9: enabled 384/1152 (33.33%)
+
+Quality/performance measures:
+- Performance-: min 244.230, max 821.963, mean 461.754, median 452.779

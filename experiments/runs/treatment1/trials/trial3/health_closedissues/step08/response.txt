@@ -1,0 +1,17 @@
+Complete source code: source/hpo_fix.py
+Tests: tests/test_hpo_fix.py
+
+Command:
+python3 experiments/runs/treatment1/trials/trial3/health_closedissues/source/hpo_fix.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach:
+Load the CSV with csv.DictReader, parse the five hyperparameters, use the first data row as the current configuration, and keep observed rows with a lower MRE-. Rank candidates by the number of changed hyperparameters, then lower MRE-, then row number. The measured recommendation changes N_estimators 40 to 10 and Min_impurity_decrease 2.75 to 5.0, improving MRE by 0.0475699558174.
+
+Assumptions and limitations:
+- The first data row is the baseline configuration.
+- MRE- is the error metric and lower is better.
+- Only configurations already present in the dataset are considered.
+- “Smallest” means fewest changed hyperparameter fields; no model is retrained.
+- The result is observational and does not establish causal improvement.
+
+Tests: 3 tests passed. Runtime: 0.05 seconds.

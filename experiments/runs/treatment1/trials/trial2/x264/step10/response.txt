@@ -1,0 +1,27 @@
+Implementation: source/race_search.py
+Tests: tests/test_race_search.py
+
+Run command (from this directory):
+python3 -m unittest discover -s tests -v && python3 source/race_search.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --budget 128
+
+Approach:
+The loader parses the binary configuration columns and Performance- objective.
+The baseline randomly orders unique dataset rows and evaluates the first 128.
+The race uses successive-halving rounds: each round evaluates new candidates,
+combines them with current survivors, and retains the four lowest scores. Both
+strategies use exactly 128 evaluations, with seed 7.
+
+Measured result:
+The dataset has 1,152 rows. Baseline evaluations: 128; race evaluations: 128.
+Both best observed scores were 246.487, so race minus baseline was 0.000.
+The test suite ran 4 tests successfully. Runtime was 0.03 seconds (wall time).
+
+Complete source code is in source/race_search.py and complete tests are in
+tests/test_race_search.py; no code was copied from prior trials or steps.
+
+Assumptions and limitations:
+Performance- is minimized. Each CSV row is treated as one deterministic
+evaluation, so this does not model measurement noise. The race is a simple
+successive-halving strategy and has no statistical confidence testing. Results
+depend on the fixed random seed and candidate order; the dataset is used as the
+search space and evaluation oracle.

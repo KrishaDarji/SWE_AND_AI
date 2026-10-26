@@ -1,0 +1,5 @@
+id,score,mean_score,signals
+89,5.309,2.596,Effort-,Defects-,MonthsX
+real 0.02
+user 0.01
+sys 0.00

@@ -1,0 +1,7 @@
+test_missing_dataset_is_rejected (test_process_fix.ProcessFixTests) ... ok
+test_real_dataset_has_recommendation (test_process_fix.ProcessFixTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

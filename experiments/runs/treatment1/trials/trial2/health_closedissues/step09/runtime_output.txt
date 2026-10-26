@@ -1,0 +1,24 @@
+rows=10000 findings=683
+line=7557 kind=robust_outlier metric=ACC+ score=12.5427 value=1 median=0.439923102
+line=7397 kind=robust_outlier metric=ACC+ score=11.1506 value=0.937840436 median=0.439923102
+line=2708 kind=robust_outlier metric=ACC+ score=10.9999 value=0.931111823 median=0.439923102
+line=7870 kind=robust_outlier metric=ACC+ score=10.8421 value=0.9240628 median=0.439923102
+line=3956 kind=robust_outlier metric=ACC+ score=10.2537 value=0.89778917 median=0.439923102
+line=9918 kind=robust_outlier metric=ACC+ score=10.2465 value=0.89746876 median=0.439923102
+line=2400 kind=robust_outlier metric=ACC+ score=10.2106 value=0.895866709 median=0.439923102
+line=7023 kind=robust_outlier metric=ACC+ score=10.2106 value=0.895866709 median=0.439923102
+line=8447 kind=robust_outlier metric=ACC+ score=10.1891 value=0.894905479 median=0.439923102
+line=3699 kind=robust_outlier metric=ACC+ score=10.1389 value=0.892662608 median=0.439923102
+line=8004 kind=robust_outlier metric=ACC+ score=9.97385 value=0.885293175 median=0.439923102
+line=1169 kind=robust_outlier metric=ACC+ score=9.85187 value=0 median=0.439923102
+line=4752 kind=robust_outlier metric=ACC+ score=9.78729 value=0.876962512 median=0.439923102
+line=7447 kind=robust_outlier metric=ACC+ score=9.75141 value=0.875360461 median=0.439923102
+line=5618 kind=robust_outlier metric=ACC+ score=9.73706 value=0.874719641 median=0.439923102
+line=7770 kind=robust_outlier metric=ACC+ score=9.73706 value=0.874719641 median=0.439923102
+line=3931 kind=robust_outlier metric=ACC+ score=9.64378 value=0.87055431 median=0.439923102
+line=6858 kind=robust_outlier metric=ACC+ score=9.64378 value=0.87055431 median=0.439923102
+line=7307 kind=robust_outlier metric=ACC+ score=9.5218 value=0.865107337 median=0.439923102
+line=7412 kind=robust_outlier metric=ACC+ score=9.39982 value=0.859660365 median=0.439923102
+real 0.06
+user 0.05
+sys 0.00

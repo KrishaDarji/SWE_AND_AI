@@ -1,0 +1,8 @@
+test_load_rows_reads_csv (test_process_change.ProcessChangeTests) ... ok
+test_recommendation_has_positive_reduction (test_process_change.ProcessChangeTests) ... ok
+test_risk_is_defects_per_kloc (test_process_change.ProcessChangeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

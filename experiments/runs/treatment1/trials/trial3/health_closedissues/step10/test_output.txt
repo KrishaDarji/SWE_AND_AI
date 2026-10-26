@@ -1,0 +1,7 @@
+test_missing_metric_fails (test_config_selector.SelectorTests) ... ok
+test_reads_rows_and_selects (test_config_selector.SelectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

@@ -1,0 +1,8 @@
+test_cli_json (test_model_quality_summary.SummaryTests) ... ok
+test_summary_groups_metrics_and_configurations (test_model_quality_summary.SummaryTests) ... ok
+test_text_rendering (test_model_quality_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.023s
+
+OK

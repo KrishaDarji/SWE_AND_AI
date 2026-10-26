@@ -1,0 +1,17 @@
+Complete source: source/certify.py
+Tests: tests/test_certify.py
+
+Run command:
+python3 source/certify.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach: treat the `criterion` value as the configuration family. Normalize
+MRE in the lower-is-better direction and ACC/PRED40 in the higher-is-better
+direction, average the three equally weighted normalized metrics, and compare
+family means. A deterministic independent bootstrap estimates a 95% confidence
+interval for each pairwise mean-score difference. A family is called reliable
+when that interval excludes zero.
+
+Assumptions and limitations: the CSV's criterion field defines the family;
+metrics are equally weighted; min-max normalization uses the complete dataset;
+rows are treated as independent; bootstrap results are approximate and use a
+fixed seed; this is observational evidence, not a causal experiment.

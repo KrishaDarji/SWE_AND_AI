@@ -1,0 +1,9 @@
+test_both_strategies_use_exact_budget (test_race_search.RaceSearchTests) ... ok
+test_loads_expected_shape (test_race_search.RaceSearchTests) ... ok
+test_rejects_bad_budget (test_race_search.RaceSearchTests) ... ok
+test_seeded_results_are_reproducible (test_race_search.RaceSearchTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.016s
+
+OK

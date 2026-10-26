@@ -1,0 +1,9 @@
+test_csv_loader_and_cli (test_predictor.PredictorTests) ... ok
+test_learns_linear_relationship (test_predictor.PredictorTests) ... ok
+test_rejects_missing_and_extra_fields (test_predictor.PredictorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.021s
+
+OK
+test_exit_code=0

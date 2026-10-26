@@ -1,0 +1,4 @@
+1. Complete source code: source/fix_slow_config.py. Tests: tests/test_fix_slow_config.py.
+2. Command: python3 -m unittest discover -s experiments/runs/treatment1/trials/trial2/x264/step08/tests -v && python3 experiments/runs/treatment1/trials/trial2/x264/step08/source/fix_slow_config.py moot/optimize/config/X264_AllMeasurements.csv
+3. Approach: read the CSV with the standard-library csv module, identify the slowest row unless --config supplies a JSON configuration, enumerate rows differing in exactly one setting, retain only faster rows, and choose the largest measured improvement with deterministic tie-breaking.
+4. Assumptions and limitations: Performance- is numeric and larger is better; settings are categorical strings; a supplied configuration is matched to the nearest measured configuration; recommendations are limited to observed one-setting neighbors and cannot predict unmeasured combinations.

@@ -1,0 +1,9 @@
+Estimate for 10.0 KLOC: 49.0 person-months over 13.2 months.
+Recommended planning range: 34.8-74.5 person-months and 11.1-14.9 months.
+
+Why this is defensible: NASA93 has 93 usable projects; this uses the median of 24 projects nearest in size. The median limits outliers, and the interquartile range makes uncertainty visible.
+
+Sponsor decision: fund to the midpoint estimate, retain the planning range as contingency, and revisit after requirements and team capability are validated. Historical evidence is not a guarantee; scope, staffing, complexity, and delivery practices can move the result outside it.
+real 0.02
+user 0.01
+sys 0.00

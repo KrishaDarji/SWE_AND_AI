@@ -1,0 +1,7 @@
+test_analysis_reads_csv_and_is_deterministic (test_certify.CertifyTests) ... ok
+test_percentile (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

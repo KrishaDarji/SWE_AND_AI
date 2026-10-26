@@ -1,0 +1,8 @@
+test_default_constraint_is_median (test_choose_config.ChooseConfigTests) ... ok
+test_rejects_constraint_with_no_feasible_rows (test_choose_config.ChooseConfigTests) ... ok
+test_selects_lowest_feasible_configuration (test_choose_config.ChooseConfigTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.070s
+
+OK

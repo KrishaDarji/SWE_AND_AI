@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+09,1,3,software project planning,spot,114,114,1,0.02,0,"Tests: 2 passed; spot_record=59; runtime measured with /usr/bin/time -p; LOC counts source and test Python files"

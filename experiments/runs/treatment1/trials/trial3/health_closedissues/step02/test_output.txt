@@ -1,0 +1,11 @@
+test_dataset_and_encoding (test_guess.GuessTests) ... ok
+test_prediction_is_bounded (test_guess.GuessTests) ... ok
+test_validation_is_deterministic (test_guess.GuessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.046s
+
+OK
+real 0.08
+user 0.07
+sys 0.01

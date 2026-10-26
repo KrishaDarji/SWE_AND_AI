@@ -1,0 +1,25 @@
+1. Complete source code
+
+See source/selector.py. It is self-contained and uses only Python's standard library. It loads the CSV, normalizes MRE- as an inverted error score plus ACC+ and PRED40+, averages them into one shared utility metric, selects by a multi-round race, and compares with a historical ACC-only baseline.
+
+2. Tests
+
+See tests/test_selector.py and test_output.txt. Both tests passed.
+
+3. Command
+
+python3 source/selector.py ../../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Run tests with:
+
+python3 -m unittest discover -s tests -v
+
+4. Approach
+
+The selector repeatedly retains the top half of candidates by shared utility until one remains. The historical baseline chooses the highest ACC+ row. Both are reported using the same normalized three-metric utility, making the comparison directly comparable.
+
+5. Known assumptions and limitations
+
+The CSV rows are treated as historical observations, with no train/test split or statistical uncertainty model. Min-max normalization is dataset-dependent. The historical baseline is operationalized as ACC-only selection because no separate baseline specification was supplied. Ties are possible and are reported explicitly.
+
+Measured result: 10,000 rows processed; selector utility 0.990083456; baseline utility 0.990083456; winner tie; runtime approximately 0.06 seconds.

@@ -1,0 +1,9 @@
+Approach: read the CSV with csv.DictReader, treat lower Performance- as better, and compare the lowest-performance quartile (288 configurations) with the remaining 864 configurations. Estimate a 95% bootstrap confidence interval for the mean difference and a seeded randomization-test p-value.
+
+Result: statistically_credible=YES relative to this dataset distribution. The lower quartile mean was 268.976146 versus 526.012747 for the remaining rows, an improvement of 257.036601 units. The 95% bootstrap interval was [247.772574, 266.252959], and the randomization p-value was 0.000100.
+
+Complete source: source/certify.py
+Tests: tests/test_certify.py
+Run command: python3 experiments/runs/treatment1/trials/trial3/x264/source/certify.py moot/optimize/config/X264_AllMeasurements.csv
+
+Assumptions and limitations: lower Performance- means better performance; the dataset has one observation per configuration and no explicit baseline or repeated runs; the quartile comparison is distributional and does not establish causality or generalization to unseen workloads; the p-value is a finite seeded randomization estimate.

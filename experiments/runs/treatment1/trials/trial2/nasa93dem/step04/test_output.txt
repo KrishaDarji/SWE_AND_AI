@@ -1,0 +1,8 @@
+test_baseline_is_numeric (test_flow.FlowTests) ... ok
+test_high_risk_proposal_is_deferred (test_flow.FlowTests) ... ok
+test_loads_dataset_and_assesses_every_proposal (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

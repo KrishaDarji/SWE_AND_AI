@@ -1,0 +1,12 @@
+test_bad_header_is_rejected (test_flow.FlowTests) ... ok
+test_dominance_handles_all_objectives (test_flow.FlowTests) ... ok
+test_empty_input (test_flow.FlowTests) ... ok
+test_streaming_summary_and_best_score (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+real 0.06
+user 0.03
+sys 0.01

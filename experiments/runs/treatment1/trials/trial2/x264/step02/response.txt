@@ -1,0 +1,11 @@
+Complete source code is in `source/x264_time_predictor.py` and complete tests are in `tests/test_x264_time_predictor.py`.
+
+Run command (from this directory):
+
+    python3 -m unittest discover -s tests -v && python3 source/x264_time_predictor.py ../../../../../../moot/optimize/config/X264_AllMeasurements.csv '{"no_asm":0,"no_8x8dct":0,"no_cabac":0,"no_deblock":0,"no_fast_pskip":0,"no_mbtree":0,"no_mixed_refs":0,"no_weightb":0,"rc_lookahead":0,"rc_lookahead_20":0,"rc_lookahead_40":0,"rc_lookahead_60":0,"ref":0,"ref_1":0,"ref_5":0,"ref_9":0}'
+
+Approach: load the CSV with `csv.DictReader`, validate binary settings and numeric targets, rank historical configurations by Hamming distance, and calculate an inverse-distance-weighted mean over the nearest k rows. The output also reports neighbor spread and nearest distance as uncertainty/context.
+
+Assumptions and limitations: the target column is named `Performance-`; all predictors are binary; historical configurations are representative; Hamming distance treats every setting as equally important; this is an observational estimate, not a causal model; uncertainty is the standard deviation of selected neighbors and is not a confidence interval; no train/test split is performed for this pre-run lookup tool.
+
+The source is 81 lines and the tests are 40 lines. No prior implementation was reused.

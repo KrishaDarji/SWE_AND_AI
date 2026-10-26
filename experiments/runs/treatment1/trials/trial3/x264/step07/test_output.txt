@@ -1,0 +1,8 @@
+test_rejects_empty_feasible_set (test_choose_config.ChooseConfigTests) ... ok
+test_requires_measurement_column (test_choose_config.ChooseConfigTests) ... ok
+test_selects_lowest_feasible_measurement (test_choose_config.ChooseConfigTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

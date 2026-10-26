@@ -1,0 +1,29 @@
+1. Complete source code
+
+Saved in source/remember.py. It reads the CSV with csv.DictReader, validates the requested numeric measure, computes count/min/max/mean/median/population standard deviation, counts each encoder setting's values, and reports the best and worst runs. The complete source is the file source/remember.py.
+
+2. Tests
+
+Saved in tests/test_remember.py. The three tests cover statistics and ordering, real-dataset schema/JSON serialization, and invalid input handling.
+
+3. Command
+
+python3 -m unittest discover -s experiments/runs/treatment1/trials/trial2/x264/step01/tests -v
+
+Run the summarizer with:
+
+python3 experiments/runs/treatment1/trials/trial2/x264/step01/source/remember.py moot/optimize/config/X264_AllMeasurements.csv --top 3
+
+4. Approach
+
+The implementation independently parses the historical CSV using only the standard library. It treats Performance- as the quality measure, ranks lower values as better, summarizes all 16 encoder-setting columns, and emits deterministic, indented JSON.
+
+5. Assumptions and limitations
+
+- Performance- is assumed to be the relevant numeric quality/cost measure; lower values are ranked as better.
+- Settings are summarized as their CSV string values, which preserves categorical encodings exactly.
+- Standard deviation is population standard deviation.
+- The full dataset is loaded into memory.
+- No external packages, prior implementation, or prior source files are used.
+
+Measured result: 3 tests passed; implementation runtime was 0.02 seconds; error count was 0. Dataset rows: 1,152.

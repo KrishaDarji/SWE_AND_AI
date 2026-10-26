@@ -1,0 +1,7 @@
+test_outlier_ranks_first (test_spot.SpotTests) ... ok
+test_real_file_has_rows_and_cli_output (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+OK

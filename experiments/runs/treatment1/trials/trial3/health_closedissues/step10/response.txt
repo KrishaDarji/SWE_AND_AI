@@ -1,0 +1,14 @@
+Approach
+--------
+The implementation uses only Python's standard library. It reads the CSV, treats the first 70% of rows as historical training data, and holds out the final 30% for protocol accounting. The selector maximizes the mean of three normalized objectives: ACC and PRED40 are maximized, while MRE is minimized. The historical baseline maximizes ACC alone. Both selected historical rows are reported with the same normalized utility metric and the same tie-break rule.
+
+Command
+-------
+python3 source/config_selector.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Source: source/config_selector.py
+Tests: tests/test_config_selector.py
+
+Assumptions and limitations
+---------------------------
+The CSV contains one measured result per configuration and does not provide repeated configurations for an unseen rerun. Therefore the holdout is reported for protocol accounting, while the selected rows are scored by their historical observed outcomes. The 70/30 chronological split assumes row order is a meaningful historical order. The utility weights all three outcomes equally and uses min-max scaling from the training partition. This is a deterministic comparison, not a statistical significance test.

@@ -1,0 +1,8 @@
+Complete source code is in source/certify.py and tests are in tests/test_certify.py.
+
+Run command (from the repository root):
+python3 experiments/runs/treatment1/trials/trial2/nasa93dem/step03/source/certify.py moot/optimize/process/nasa93dem.csv
+
+Approach: compare the default pmat=h and pmat=l process groups on Effort-. Report group means and their difference, use a two-sided permutation test for the null of no cost difference, and use bootstrap resampling for a 95% confidence interval. A group is certified as genuinely less costly only when its mean is lower, the confidence interval for the difference is wholly below zero, and p < 0.05.
+
+Assumptions and limitations: pmat is used as the process discriminator and Effort- as cost because the dataset has no explicit process identifier. The result is observational, not causal; groups may differ in other project attributes. The bootstrap and permutation estimates use a fixed seed and finite resamples. The implementation expects numeric cost values and nonempty groups.

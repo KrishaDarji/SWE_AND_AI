@@ -1,0 +1,15 @@
+Implementation: source/effort_estimator.py
+Tests: tests/test_effort_estimator.py
+Run command:
+python3 experiments/runs/treatment1/trials/trial3/nasa93dem/step02/source/effort_estimator.py --dataset moot/optimize/process/nasa93dem.csv --kloc 10 --budget 1000
+
+Approach:
+Load positive Kloc+ and Effort- pairs from the CSV and fit a log-linear model:
+log(effort) = intercept + slope * log(KLOC). Estimate effort by exponentiating the prediction. If a budget is supplied, approve when estimated effort is within budget.
+
+The complete source code and tests are in the linked files in this directory. The measured example estimated 58.93 person-months and returned APPROVE. Tests passed: 4 tests.
+
+Assumptions and limitations:
+- KLOC is the only proposal input; other project attributes are not modeled.
+- The dataset is assumed to have positive numeric Kloc+ and Effort- columns.
+- A log-linear fit is a simple baseline and does not provide uncertainty intervals or causal estimates.

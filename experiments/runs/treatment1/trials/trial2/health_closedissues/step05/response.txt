@@ -1,0 +1,18 @@
+Complete source code: source/blame.py
+Tests: tests/test_blame.py
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/health_closedissues/step05/source/blame.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach:
+Read the CSV with csv.DictReader, validate required fields, and define high model error as MRE- at or above the empirical 75th percentile. For numeric hyperparameters, compare high-error and overall means and calculate Spearman rank correlation with MRE-. For categorical values, report group high-error rates and each group's share of high-error rows. The report is descriptive and does not claim causation.
+
+Observed result:
+10,000 rows; threshold 0.825184; 2,507 high-error rows. Min_sample_leaves was the strongest numeric association (Spearman rho +0.7475; high-error mean 14.134424 versus overall mean 10.479600). N_estimators was nearly unrelated (rho -0.0042). Min_impurity_decrease and Max_depth were weakly related (rho +0.0328 and +0.0153).
+
+Assumptions and limitations:
+- MRE- is interpreted as model error, where larger values mean worse error.
+- “High” means the top quartile, with ties at the cutoff included.
+- Results are observational associations among tested configurations, not causal effects.
+- The analysis does not fit interactions, control for confounding, or estimate uncertainty.
+- Only the hyperparameters present in this CSV are analyzed.

@@ -1,17 +1,57 @@
 You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
 
-Treatment: Writer LLM; background plain Python only; reuse instructed No; domain open-source project health; dataset Health-ClosedIssues0000.csv; current skill fix.
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: No
+- Domain: machine-learning model configuration
+- Dataset: Health-ClosedIssues0000.csv
+- Dataset path: moot/optimize/hpo/Health-ClosedIssues0000.csv
+- Current skill: fix
+- Current requirement: Suggest the smallest hyperparameter change that improves model error.
 
-Requirement: Suggest the smallest change to issue-management practices or project-health factors that improves slow issue closure. Use only the Python standard library. Implement independently. Return complete source code, tests, one run command, short approach, and assumptions/limitations. Run tests and implementation, capture actual outputs and metrics.
-You are running Treatment 1, Trial 1, Dataset 3 of a controlled experiment.
-Treatment: Writer LLM; background plain Python only; reuse instructed: No.
-Domain: machine-learning model configuration.
-Dataset: Health-ClosedIssues0000.csv at moot/optimize/hpo/Health-ClosedIssues0000.csv.
-Current skill: fix.
-Requirement: Suggest the smallest model configuration change that reduces
-prediction error or improves accuracy.
+Use only the Python standard library.
 
-Use only the Python standard library. Implement this skill independently. Do
-not reuse or assume any previous skill, architecture, generated code, or
-previous conversation. Return complete source code, tests, one run command,
-short approach, assumptions, and limitations. Save outputs in step08.
+Implement this skill independently. Do not reuse or assume any previous skill,
+architecture, generated code, earlier trial output, or previous conversation.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation of the approach.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+experiments/runs/treatment1/trials/trial1/health_closedissues/step08/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+For Treatment 1, new_loc should normally be close to total_loc because reuse is
+not instructed.
+
+Run the tests and implementation, capture outputs and runtime, and record
+actual measured metrics. Do not fabricate results.
+
+Do not save files in the parent health_closedissues directory.
+Do not copy code or context from other trials, other steps, or previous chats.

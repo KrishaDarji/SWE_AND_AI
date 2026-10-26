@@ -1,0 +1,8 @@
+Baseline row 2: MRE=0.314874815906
+Suggested row 1946: MRE=0.267304860088
+Change 2 hyperparameter(s): N_estimators: 40 -> 10, Min_impurity_decrease: 2.75 -> 5.0
+Absolute MRE improvement: 0.0475699558174
+real 0.05
+user 0.04
+sys 0.00
+exit_status=0

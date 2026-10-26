@@ -1,0 +1,4 @@
+{"best": {"ACC+": 1.0, "MRE-": 0.029749631811487497, "PRED40+": 1.0, "configuration": {"ACC+": "1", "MRE-": "0.029749631811487497", "Max_depth": "10", "Min_impurity_decrease": "3", "Min_sample_leaves": "1", "N_estimators": "10", "PRED40+": "1", "criterion": "squared_error"}, "row": 7556, "score": 0.9900834560628375}, "observations": 10000, "pareto_size": 2}
+real 0.06
+user 0.05
+sys 0.00

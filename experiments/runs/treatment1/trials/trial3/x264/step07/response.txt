@@ -1,0 +1,7 @@
+Complete source: source/choose_config.py
+Tests: tests/test_choose_config.py
+Run command: python3 source/choose_config.py moot/optimize/config/X264_AllMeasurements.csv --max-performance 300
+
+Approach: parse the CSV with csv.DictReader, validate the measured Performance- values, retain rows satisfying the caller's maximum constraint, and return the row with the smallest feasible measurement. The command emits JSON and returns a nonzero status for invalid input or an empty feasible set.
+
+Assumptions and limitations: the dataset has no separate quality column, so the explicit maximum Performance- is used as the quality constraint. Lower Performance- is treated as better. Ties retain the first row. The caller must choose an appropriate threshold; the program does not infer one.

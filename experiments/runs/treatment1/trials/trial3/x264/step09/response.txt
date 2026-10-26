@@ -1,0 +1,20 @@
+Source: source/anomaly_detector.py
+Tests: tests/test_anomaly_detector.py
+
+Run command:
+python3 source/anomaly_detector.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Approach:
+Read the CSV with csv.DictReader, select the last finite numeric column as the
+benchmark measurement, and compute its median and median absolute deviation
+(MAD). Report rows whose modified z-score has absolute value at least 3.5,
+including the row number, value, score, and configuration fields.
+
+Assumptions and limitations:
+- The last finite numeric CSV column is the response measurement.
+- Rows are independent enough for a robust global screen.
+- A MAD of zero treats values different from the median as infinitely unusual.
+- This detects marginal outliers; it does not model interactions among encoder
+  settings, repeated-run variance, or causal measurement error.
+- The detector does not infer whether an anomaly is high or low quality beyond
+  the sign of the score.

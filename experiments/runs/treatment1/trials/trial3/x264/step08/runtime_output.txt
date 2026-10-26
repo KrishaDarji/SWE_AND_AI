@@ -1,0 +1,13 @@
+{
+  "dataset": "moot/optimize/config/X264_AllMeasurements.csv",
+  "improved_performance": 671.4,
+  "improvement": 150.563,
+  "neighbor_row": 889,
+  "setting_change": {
+    "from": "0",
+    "name": "no_mixed_refs",
+    "to": "1"
+  },
+  "target_performance": 821.963,
+  "target_row": 870
+}

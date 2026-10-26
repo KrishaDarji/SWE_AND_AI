@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,3,x264,race,127,127,true,0.02,0,"64 evaluations per method; race and baseline both maximize Performance-; race=809.970, baseline=310.793"

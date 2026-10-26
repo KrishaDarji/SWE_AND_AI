@@ -1,0 +1,7 @@
+test_baseline_uses_accuracy (test_selector.SelectorTests) ... ok
+test_utilities_invert_error_and_race (test_selector.SelectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

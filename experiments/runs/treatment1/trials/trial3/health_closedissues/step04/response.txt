@@ -1,0 +1,9 @@
+Implementation: source/flow.py
+Tests: tests/test_flow.py
+
+Run command:
+python3 source/flow.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach: read CSV records incrementally, score each validation result using the three objectives (minimize MRE-, maximize ACC+ and PRED40+), retain the best weighted score, and update a Pareto frontier after every observation.
+
+Assumptions and limitations: metric columns are numeric and named MRE-, ACC+, and PRED40+; larger ACC+ and PRED40+ and smaller MRE- are better. The weighted score gives equal importance to the three normalized objectives. Pareto-frontier updates are correct but can become quadratic in frontier size.

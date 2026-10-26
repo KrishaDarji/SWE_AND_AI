@@ -1,0 +1,7 @@
+test_cli_emits_json (test_predictor.PredictorTests) ... ok
+test_predictions_are_bounded (test_predictor.PredictorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.191s
+
+OK

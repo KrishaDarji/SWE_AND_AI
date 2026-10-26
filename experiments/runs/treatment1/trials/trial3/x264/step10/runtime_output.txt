@@ -1,0 +1,6 @@
+method=race_successive_halving; evaluations=64; best_performance=809.970000
+method=baseline_sequential; evaluations=64; best_performance=310.793000
+comparison_delta=499.177000
+real 0.02
+user 0.01
+sys 0.00

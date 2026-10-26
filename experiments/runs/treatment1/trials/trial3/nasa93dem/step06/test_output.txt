@@ -1,0 +1,8 @@
+test_bad_csv_rows_are_skipped (test_justify_estimate.EstimateTests) ... ok
+test_nearest_peer_median (test_justify_estimate.EstimateTests) ... ok
+test_render_has_sponsor_case (test_justify_estimate.EstimateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

@@ -1,0 +1,15 @@
+1. Complete source code
+See source/justify_estimate.py. It is a standalone Python 3 program using only argparse, csv, math, statistics, and sys. It reads NASA93 records, selects nearest-size peers, computes median effort/months and quartile ranges, and renders a sponsor justification. Tests are in tests/test_justify_estimate.py.
+
+2. Tests
+Three unittest tests cover nearest-peer median selection, malformed-row handling, and sponsor-facing uncertainty language. The executed result was 3 tests passed.
+
+3. Command
+python3 experiments/runs/treatment1/trials/trial3/nasa93dem/step06/source/justify_estimate.py moot/optimize/process/nasa93dem.csv --kloc 10
+
+4. Approach
+Use the nearest 25 percent of projects by KLOC (with a minimum of five), then report medians as the estimate and the 25th-75th percentile interval as the planning range. The explanation directly addresses evidence, uncertainty, and the sponsor decision.
+
+5. Assumptions and limitations
+The requested target size was unspecified, so the example command uses 10 KLOC. Historical NASA93 projects may not match the sponsor's team, scope, technology, or constraints. Nearest-size matching is a simple heuristic; the range is descriptive rather than a calibrated confidence interval. Invalid rows are skipped.
+

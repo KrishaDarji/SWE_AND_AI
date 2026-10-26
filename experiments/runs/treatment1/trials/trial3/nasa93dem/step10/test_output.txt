@@ -1,0 +1,8 @@
+test_knn_prediction_is_finite (test_race_estimator.RaceEstimatorTests) ... ok
+test_loads_all_records_and_numeric_target (test_race_estimator.RaceEstimatorTests) ... ok
+test_shared_evaluation_returns_same_metric_type (test_race_estimator.RaceEstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.012s
+
+OK

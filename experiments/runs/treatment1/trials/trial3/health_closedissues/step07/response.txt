@@ -1,0 +1,7 @@
+Source: source/choose_config.py
+Tests: tests/test_choose_config.py
+Run: python3 source/choose_config.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach: score each row as 0.4*ACC+ + 0.4*PRED40+ + 0.2*(1-MRE-) and select the maximum. Ties prefer lower MRE-, higher accuracy, higher PRED40+, then the earlier row.
+
+Assumptions and limitations: metrics are numeric and bounded [0,1]; ACC+ and PRED40+ are higher-is-better and MRE- is lower-is-better. Weights encode the intended balance and may need domain validation. This selects an evaluated row; it does not retrain or independently validate a model.

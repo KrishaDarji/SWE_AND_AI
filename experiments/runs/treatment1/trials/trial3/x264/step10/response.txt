@@ -1,0 +1,6 @@
+Implemented an independent successive-halving race search and deterministic sequential baseline for x264 configurations. Both use a 64-evaluation budget and maximize the Performance- metric. See source/race_search.py and tests/test_race_search.py.
+
+Run command:
+python3 -m unittest discover -s experiments/runs/treatment1/trials/trial3/x264/step10/tests && python3 experiments/runs/treatment1/trials/trial3/x264/step10/source/race_search.py moot/optimize/config/X264_AllMeasurements.csv 64
+
+Assumptions and limitations: Performance- is treated as a maximization metric; each CSV row is one noiseless evaluation; the race uses deterministic shuffling and successive halving; it may lose to the baseline because the table has one score per configuration and no noisy partial observations.

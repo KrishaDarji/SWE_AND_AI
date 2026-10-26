@@ -1,0 +1,12 @@
+Approach: load nasa93dem.csv, treat Effort- as cost and Kloc+ as delivered value, then solve an exact 0/1 knapsack with effort rounded to hundredths. The selected rows include all original categorical settings.
+
+Complete source code is in source/project_selector.py and tests are in tests/test_project_selector.py.
+
+Run:
+python3 experiments/runs/treatment1/trials/trial2/nasa93dem/step07/source/project_selector.py moot/optimize/process/nasa93dem.csv --budget 1000
+
+Assumptions and limitations:
+- Fixed budget is supplied by --budget and is measured in the dataset's Effort- units.
+- Kloc+ is used as delivered-value proxy; no separate business-value column exists.
+- The exact dynamic program scales effort to hundredths and is intended for moderate budgets.
+- This is a project-selection model, not a causal recommendation about changing project attributes.

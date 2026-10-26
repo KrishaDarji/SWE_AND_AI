@@ -1,0 +1,18 @@
+test_classifies_binary_settings_and_measures (test_x264_summary.SummaryTests) ... ok
+test_cli_accepts_whitespace_and_empty_path_errors (test_x264_summary.SummaryTests) ... error: [Errno 2] No such file or directory: '/does/not/exist.csv'
+ok
+test_reads_real_dataset (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+OK
+Historical encoder-run summary
+
+Runs: 1
+
+Encoder settings (binary columns):
+- flag: enabled 1/1 (100.00%)
+
+Quality/performance measures:
+- measure: min 5.500, max 5.500, mean 5.500, median 5.500

@@ -1,0 +1,98 @@
+Excessive effort analysis (upper quartile rule)
+Rows: 93
+Excessive-effort threshold (75th percentile): 600.00
+Projects at/above threshold: 24
+
+Factors ranked by between-category effort separation:
+- Defects-: score=1276443.04
+  8848: n=1, median_effort=8211.00, excessive_rate=100.0%
+  50961: n=1, median_effort=4560.00, excessive_rate=100.0%
+  6266: n=1, median_effort=4178.20, excessive_rate=100.0%
+- MonthsX: score=1268983.34
+  53.1: n=1, median_effort=8211.00, excessive_rate=100.0%
+  96.4: n=1, median_effort=4560.00, excessive_rate=100.0%
+  47.3: n=1, median_effort=4178.20, excessive_rate=100.0%
+- Kloc+: score=1157437.59
+  233: n=1, median_effort=8211.00, excessive_rate=100.0%
+  980: n=1, median_effort=4560.00, excessive_rate=100.0%
+  271: n=1, median_effort=2460.00, excessive_rate=100.0%
+- time: score=533487.03
+  xh: n=8, median_effort=1848.50, excessive_rate=87.5%
+  h: n=13, median_effort=458.00, excessive_rate=46.2%
+  vh: n=18, median_effort=215.50, excessive_rate=16.7%
+- rely: score=436736.41
+  vh: n=10, median_effort=1709.20, excessive_rate=80.0%
+  l: n=2, median_effort=1296.00, excessive_rate=50.0%
+  h: n=42, median_effort=326.40, excessive_rate=26.2%
+- YearX: score=376906.43
+  1974: n=1, median_effort=4560.00, excessive_rate=100.0%
+  1975: n=2, median_effort=1560.00, excessive_rate=100.0%
+  1978: n=4, median_effort=678.00, excessive_rate=75.0%
+- centerX: score=278251.94
+  6: n=3, median_effort=2400.00, excessive_rate=100.0%
+  5: n=39, median_effort=571.40, excessive_rate=46.2%
+  2: n=37, median_effort=82.00, excessive_rate=8.1%
+- cplx: score=244671.87
+  l: n=3, median_effort=973.00, excessive_rate=66.7%
+  xh: n=5, median_effort=1924.50, excessive_rate=60.0%
+  vh: n=17, median_effort=648.00, excessive_rate=52.9%
+- stor: score=208809.17
+  xh: n=13, median_effort=648.00, excessive_rate=53.8%
+  h: n=10, median_effort=580.50, excessive_rate=50.0%
+  vh: n=21, median_effort=240.00, excessive_rate=23.8%
+- plex: score=194707.39
+  h: n=22, median_effort=651.50, excessive_rate=54.5%
+  vl: n=4, median_effort=623.50, excessive_rate=50.0%
+  n: n=53, median_effort=117.60, excessive_rate=15.1%
+- data: score=183795.15
+  h: n=17, median_effort=1181.00, excessive_rate=58.8%
+  vh: n=8, median_effort=181.00, excessive_rate=25.0%
+  n: n=31, median_effort=300.00, excessive_rate=22.6%
+- acap: score=77374.11
+  h: n=51, median_effort=420.00, excessive_rate=37.3%
+  vh: n=10, median_effort=215.50, excessive_rate=20.0%
+  n: n=32, median_effort=75.00, excessive_rate=9.4%
+- pvol: score=73808.64
+  n: n=19, median_effort=252.00, excessive_rate=36.8%
+  h: n=9, median_effort=480.00, excessive_rate=33.3%
+  l: n=65, median_effort=240.00, excessive_rate=21.5%
+- pcap: score=73320.77
+  h: n=39, median_effort=400.00, excessive_rate=33.3%
+  vh: n=10, median_effort=425.00, excessive_rate=30.0%
+  n: n=44, median_effort=115.80, excessive_rate=18.2%
+- sced: score=69635.50
+  n: n=59, median_effort=400.00, excessive_rate=32.2%
+  l: n=34, median_effort=118.80, excessive_rate=14.7%
+- pmat: score=64743.54
+  l: n=20, median_effort=501.70, excessive_rate=40.0%
+  h: n=43, median_effort=278.00, excessive_rate=27.9%
+  n: n=30, median_effort=132.00, excessive_rate=13.3%
+- apex: score=29518.80
+  l: n=1, median_effort=648.00, excessive_rate=100.0%
+  h: n=46, median_effort=276.00, excessive_rate=30.4%
+  n: n=34, median_effort=117.60, excessive_rate=20.6%
+- ltex: score=5910.20
+  l: n=6, median_effort=259.00, excessive_rate=33.3%
+  n: n=14, median_effort=162.00, excessive_rate=28.6%
+  h: n=69, median_effort=252.00, excessive_rate=26.1%
+- tool: score=2794.18
+  h: n=10, median_effort=528.50, excessive_rate=40.0%
+  n: n=83, median_effort=215.00, excessive_rate=24.1%
+- prec: score=0.00
+  h: n=93, median_effort=252.00, excessive_rate=25.8%
+- flex: score=0.00
+  h: n=93, median_effort=252.00, excessive_rate=25.8%
+- resl: score=0.00
+  h: n=93, median_effort=252.00, excessive_rate=25.8%
+- team: score=0.00
+  vh: n=93, median_effort=252.00, excessive_rate=25.8%
+- ruse: score=0.00
+  n: n=93, median_effort=252.00, excessive_rate=25.8%
+- docu: score=0.00
+  n: n=93, median_effort=252.00, excessive_rate=25.8%
+- pcon: score=0.00
+  n: n=93, median_effort=252.00, excessive_rate=25.8%
+- site: score=0.00
+  n: n=93, median_effort=252.00, excessive_rate=25.8%
+
+Interpretation: the leading factors are the strongest observed associations in this dataset, not causal effects.

@@ -1,0 +1,8 @@
+test_bootstrap_is_reproducible (test_certify.CertifyTests) ... ok
+test_certifies_clear_difference (test_certify.CertifyTests) ... ok
+test_missing_group_fails (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.010s
+
+OK

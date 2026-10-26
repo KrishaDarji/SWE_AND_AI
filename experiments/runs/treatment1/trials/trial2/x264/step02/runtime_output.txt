@@ -1,0 +1,18 @@
+{
+  "nearest_distance": 5,
+  "neighbor_stddev_seconds": 129.39310281132785,
+  "neighbor_times_seconds": [
+    268.72,
+    270.657,
+    271.967,
+    444.6,
+    445.577,
+    442.25,
+    611.043
+  ],
+  "neighbors_used": 7,
+  "predicted_seconds": 393.5448571428571
+}
+real 0.02
+user 0.02
+sys 0.00

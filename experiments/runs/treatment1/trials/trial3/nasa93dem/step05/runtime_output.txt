@@ -1,0 +1,20 @@
+Rows: 93
+Excessive-effort threshold (75th percentile): 600.00
+Projects at or above threshold: 24
+
+Factors most associated with excessive effort:
+- YearX: highest 1974 (n=1, mean effort=4560.00, high-rate=100%); lowest 1987 (n=2, mean effort=55.00); spread=4505.00
+- time: highest xh (n=8, mean effort=2964.26, high-rate=88%); lowest n (n=54, mean effort=334.39); spread=2629.87
+- centerX: highest 6 (n=3, mean effort=2560.00, high-rate=100%); lowest 1 (n=12, mean effort=139.92); spread=2420.08
+- rely: highest vh (n=10, mean effort=2467.21, high-rate=80%); lowest n (n=39, mean effort=269.16); spread=2198.05
+- cplx: highest xh (n=5, mean effort=1901.90, high-rate=60%); lowest h (n=58, mean effort=315.24); spread=1586.66
+- stor: highest xh (n=13, mean effort=1668.85, high-rate=54%); lowest n (n=49, mean effort=323.25); spread=1345.60
+- plex: highest vl (n=4, mean effort=1559.25, high-rate=50%); lowest l (n=14, mean effort=346.86); spread=1212.39
+- data: highest h (n=17, mean effort=1522.19, high-rate=59%); lowest vh (n=8, mean effort=365.12); spread=1157.07
+- pvol: highest n (n=19, mean effort=1158.59, high-rate=37%); lowest l (n=65, mean effort=477.54); spread=681.06
+- acap: highest h (n=51, mean effort=876.12, high-rate=37%); lowest n (n=32, mean effort=301.34); spread=574.78
+
+Interpretation: these are associations from grouped observations, not causal effects. Numeric-looking fields are treated as categories when their values repeat.
+real 0.02
+user 0.01
+sys 0.00

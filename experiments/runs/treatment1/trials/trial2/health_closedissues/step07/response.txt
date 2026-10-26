@@ -1,0 +1,9 @@
+Source: source/choose_config.py
+Tests: tests/test_choose_config.py
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/health_closedissues/step07/source/choose_config.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach: Read the CSV with the standard-library csv module and score every configuration using 0.40 * ACC+ + 0.40 * PRED40+ + 0.20 * (1 - MRE-). Select the highest-scoring row; exact ties keep the first row for deterministic behavior. The test suite covers balanced selection, missing columns, and empty input.
+
+Assumptions and limitations: Objective values are expected to be normalized to [0, 1], with ACC+ and PRED40+ higher being better and MRE- lower being better. The weights are a simple fixed preference, not learned from the data. The program selects an existing configuration and does not train or validate a model.

@@ -1,0 +1,12 @@
+CERTIFY
+rows=10000 families=3 family_field=criterion
+family=absolute_error n=3302 mean_score=0.284533
+family=poisson n=3335 mean_score=0.310228
+family=squared_error n=3363 mean_score=0.338433
+comparison=absolute_error vs poisson difference=-0.025695 ci95=[-0.034157,-0.017019] p_left_better=0.0000 status=reliable
+comparison=absolute_error vs squared_error difference=-0.053900 ci95=[-0.063041,-0.044951] p_left_better=0.0000 status=reliable
+comparison=poisson vs squared_error difference=-0.028205 ci95=[-0.037374,-0.019177] p_left_better=0.0000 status=reliable
+best_mean_family=squared_error
+real 4.37
+user 4.34
+sys 0.02

@@ -1,0 +1,4 @@
+{"configuration": {"ACC+": "1", "MRE-": "0.029749631811487497", "Max_depth": "10", "Min_impurity_decrease": "3", "Min_sample_leaves": "1", "N_estimators": "10", "PRED40+": "1", "criterion": "squared_error"}, "score": 0.994050073638}
+real 0.03
+user 0.02
+sys 0.00

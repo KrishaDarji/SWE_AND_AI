@@ -1,0 +1,10 @@
+Source: source/justify.py
+
+Tests: tests/test_justify.py
+
+Run command:
+python3 source/justify.py moot/optimize/config/X264_AllMeasurements.csv
+
+Approach: validate the CSV using csv.reader, group repeated binary configurations, summarize each group's Performance- values, and select the observed configuration with the highest mean. The output names enabled options and gives sample size, range, standard deviation, and rank so an administrator can review the recommendation.
+
+Assumptions and limitations: Performance- is the objective and higher is better; the file's rows are representative; repeated measurements are summarized by an unweighted arithmetic mean; this is an offline recommendation and does not establish safety, throughput, quality, or causal effects in production. A representative validation and rollback threshold are still required.

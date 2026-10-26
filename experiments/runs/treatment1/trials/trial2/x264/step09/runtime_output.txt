@@ -1,0 +1,15 @@
+rows=1152 features=16 residual_median=0.003000 mad=0.579500
+anomalies=304
+row=872 value=821.963000 predicted=783.493000 residual=38.470000 score=44.772 neighbors=7
+row=941 value=821.510000 predicted=783.517000 residual=37.993000 score=44.217 neighbors=7
+row=1111 value=821.757000 predicted=783.777000 residual=37.980000 score=44.202 neighbors=7
+row=939 value=821.760000 predicted=783.783000 residual=37.977000 score=44.199 neighbors=7
+row=1110 value=821.527000 predicted=783.877000 residual=37.650000 score=43.818 neighbors=7
+row=867 value=821.520000 predicted=784.020000 residual=37.500000 score=43.643 neighbors=7
+row=1074 value=818.040000 predicted=780.930000 residual=37.110000 score=43.190 neighbors=7
+row=787 value=817.793000 predicted=780.930000 residual=36.863000 score=42.902 neighbors=7
+row=915 value=817.990000 predicted=781.163000 residual=36.827000 score=42.860 neighbors=7
+row=795 value=817.340000 predicted=780.657000 residual=36.683000 score=42.693 neighbors=7
+real 0.03
+user 0.02
+sys 0.00

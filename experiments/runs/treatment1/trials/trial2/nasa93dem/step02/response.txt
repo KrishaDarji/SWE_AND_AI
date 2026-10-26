@@ -1,0 +1,6 @@
+Implemented a standalone NASA93 effort estimator. It loads historical CSV rows, computes mixed numeric/categorical nearest-neighbor similarity, estimates Effort- in person-months, reports uncertainty, and approves only when both configured effort and uncertainty thresholds pass.
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/nasa93dem/step02/source/estimate_effort.py moot/optimize/process/nasa93dem.csv '{"prec":"h","flex":"h","team":"h","pmat":"h"}'
+
+Tests are in tests/test_estimate_effort.py. Assumptions and limitations: Effort- is the target; omitted proposal fields are ignored; categorical values use exact case-insensitive matching; nearest-neighbor estimates are heuristic and thresholds are defaults, not validated business policy.

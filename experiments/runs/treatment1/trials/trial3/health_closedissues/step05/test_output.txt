@@ -1,0 +1,8 @@
+test_analysis_identifies_high_error_group (test_blame.BlameTests) ... ok
+test_load_rows (test_blame.BlameTests) ... ok
+test_pearson_direction (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

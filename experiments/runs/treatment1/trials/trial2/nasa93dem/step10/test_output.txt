@@ -1,0 +1,8 @@
+test_baseline_uses_training_only (test_race_estimator.RaceEstimatorTests) ... ok
+test_dataset_shape_and_numeric_targets (test_race_estimator.RaceEstimatorTests) ... ok
+test_leave_one_out_predictions_are_finite (test_race_estimator.RaceEstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.101s
+
+OK

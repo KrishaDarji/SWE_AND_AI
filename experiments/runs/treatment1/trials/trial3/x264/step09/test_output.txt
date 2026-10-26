@@ -1,0 +1,10 @@
+test_cli_emits_json (test_anomaly_detector.DetectorTests) ... ok
+test_constant_column_does_not_flag_equal_values (test_anomaly_detector.DetectorTests) ... ok
+test_flags_extreme_measurement_and_preserves_configuration (test_anomaly_detector.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+TEST_STATUS=0

@@ -1,0 +1,12 @@
+Genuine lower-cost process: pmat=n
+n_cheaper: 30
+n_comparison: 20
+median_cheaper: 132.0
+median_comparison: 501.7
+median_difference: -369.7
+bootstrap_95_low: -588.0
+bootstrap_95_high: -77.0
+certified: true
+real 0.09
+user 0.08
+sys 0.00

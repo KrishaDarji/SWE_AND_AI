@@ -1,0 +1,6 @@
+Implemented an independent k-nearest-neighbor effort estimator. Categorical cost-driver levels are encoded as ordinal values; predictions are inverse-distance weighted over seven neighbors. The historical baseline predicts the median training effort. Both use the same fixed every-third-record holdout and mean absolute error (MAE) on Effort-. Tests use unittest and the implementation uses only the Python standard library.
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial3/nasa93dem/step10/source/race_estimator.py moot/optimize/process/nasa93dem.csv
+
+Assumptions and limitations: the supplied categorical levels are ordered; unknown levels map to neutral level n; the fixed holdout is deterministic but not cross-validated; effort is the only target; small-data nearest-neighbor results can be sensitive to k and ordinal encoding; this is a comparison rather than a production estimator.

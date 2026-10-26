@@ -1,0 +1,4 @@
+{"configuration": {"Max_depth": "10", "Min_impurity_decrease": "3", "Min_sample_leaves": "1", "N_estimators": "10", "criterion": "squared_error"}, "metrics": {"ACC+": 1.0, "MRE-": 0.029749631811487497, "PRED40+": 1.0}, "row_number": 7557, "score": 0.9940500736377026}
+real 0.03
+user 0.03
+sys 0.00

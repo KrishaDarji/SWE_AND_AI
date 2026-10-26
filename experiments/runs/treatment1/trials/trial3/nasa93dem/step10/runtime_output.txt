@@ -1,0 +1,7 @@
+NASA93 race comparison
+protocol: fixed every-third-record holdout; metric: effort MAE
+rows=93 test_rows=31
+estimator_mae=521.417484
+historical_baseline_mae=644.048387
+winner=estimator
+runtime_seconds=0.012666

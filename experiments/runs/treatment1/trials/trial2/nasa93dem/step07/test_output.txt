@@ -1,0 +1,8 @@
+test_budget_is_respected_and_value_is_maximized (test_project_selector.SelectorTests) ... ok
+test_loader_reads_required_fields (test_project_selector.SelectorTests) ... ok
+test_negative_budget_rejected (test_project_selector.SelectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

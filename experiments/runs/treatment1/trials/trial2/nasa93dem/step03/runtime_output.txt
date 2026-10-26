@@ -1,0 +1,13 @@
+CERTIFY
+feature=pmat left=h right=l cost=Effort-
+n_left=43 n_right=20
+mean_left=791.5837 mean_right=817.6600
+mean_difference_left_minus_right=-26.0763
+permutation_p_value=0.950702 bootstrap_95ci=[-669.9174, 602.5599]
+verdict=NOT CERTIFIED AS LESS COSTLY
+real 0.38
+user 0.37
+sys 0.00
+
+TEST_EXIT=0
+RUN_EXIT=0

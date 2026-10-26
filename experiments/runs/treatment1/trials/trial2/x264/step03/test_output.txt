@@ -1,0 +1,7 @@
+test_detects_clear_improvement (test_certify.CertifyTests) ... ok
+test_rejects_empty_group (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

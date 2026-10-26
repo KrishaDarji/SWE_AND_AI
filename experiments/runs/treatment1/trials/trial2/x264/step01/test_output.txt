@@ -1,0 +1,8 @@
+test_invalid_measure_and_top (test_remember.RememberTests) ... ok
+test_real_dataset_is_serializable (test_remember.RememberTests) ... ok
+test_statistics_and_order (test_remember.RememberTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+OK

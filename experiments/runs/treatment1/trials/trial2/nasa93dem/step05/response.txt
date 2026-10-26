@@ -1,0 +1,8 @@
+Complete source code: source/blame.py
+Tests: tests/test_blame.py
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/nasa93dem/step05/source/blame.py moot/optimize/process/nasa93dem.csv
+
+Approach: classify excessive effort as projects at or above the 75th percentile of Effort-. For every non-ID project factor, group rows by observed value, report group median effort and excessive-effort rate, and rank factors by weighted between-group effort separation. This is descriptive association analysis; it does not claim causality.
+
+Assumptions and limitations: CSV values are treated as categorical labels, missing labels remain blank, Effort- is numeric, and the upper quartile is an appropriate definition of excessive effort. Small groups can produce unstable rates, confounding is not controlled, and no causal inference or statistical significance test is provided.

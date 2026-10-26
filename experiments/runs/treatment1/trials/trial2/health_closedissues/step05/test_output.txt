@@ -1,0 +1,8 @@
+test_analyze_marks_top_quartile (test_blame.BlameTests) ... ok
+test_rank_correlation_detects_increasing_relation (test_blame.BlameTests) ... ok
+test_read_rows_rejects_missing_columns (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

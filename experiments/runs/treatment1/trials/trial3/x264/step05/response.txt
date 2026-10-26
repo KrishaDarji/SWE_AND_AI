@@ -1,0 +1,12 @@
+Complete source code: `source/blame.py`
+
+Complete tests: `tests/test_blame.py`
+
+Run command:
+`python3 experiments/runs/treatment1/trials/trial3/x264/step05/source/blame.py moot/optimize/config/X264_AllMeasurements.csv`
+
+Approach: read the CSV with `csv.DictReader`, detect the performance column, validate binary setting columns, compute each setting's mean performance when enabled and disabled, rank the enabled-minus-disabled differences, and list the slowest observed configurations. The output explicitly treats the ranking as an unadjusted association because settings may be correlated.
+
+Assumptions and limitations: `Performance-` is an encode-time-like measure where larger values mean slower encodes; settings are binary; every usable row has numeric performance and binary settings; mean differences are descriptive rather than causal and do not control for interactions or one-hot encoding structure.
+
+The source and tests are included in this directory; the test run passed 2 tests.

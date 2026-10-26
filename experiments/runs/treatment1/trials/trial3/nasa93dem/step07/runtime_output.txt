@@ -1,0 +1,6 @@
+budget=1000.00 effort=999.00 value=199.1596
+selected_count=21 project_ids=3,4,5,6,7,10,11,13,15,18,19,20,21,33,34,35,58,63,71,78,92
+kloc=513.30 defects=19761.00
+real 1.08
+user 1.06
+sys 0.01

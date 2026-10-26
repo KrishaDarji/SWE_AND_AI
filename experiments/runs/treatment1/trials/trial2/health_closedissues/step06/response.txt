@@ -1,0 +1,12 @@
+Complete source code: `source/justify_config.py`
+
+Tests: `tests/test_justify_config.py`
+
+Run command:
+`python3 experiments/runs/treatment1/trials/trial2/health_closedissues/step06/source/justify_config.py moot/optimize/hpo/Health-ClosedIssues0000.csv`
+
+Approach: load the CSV with `csv.DictReader`, validate and convert the required fields, min-max normalize the three objectives (lower MRE is better; higher ACC and PRED40 are better), and choose the row with the highest equal-weight mean desirability. Ties favor fewer estimators, shallower depth, and larger leaves. The implementation uses only the Python standard library.
+
+Observed result: 10,000 rows were considered. The recommended configuration is criterion=`squared_error`, N_estimators=10, Min_sample_leaves=1, Min_impurity_decrease=3.0, Max_depth=10, from source row 7557, with score 0.9900834560628375.
+
+Assumptions and limitations: the CSV objectives are comparable after min-max normalization; all three objectives receive equal weight; the best observed row is a recommendation, not a retrained or statistically validated model; ties are resolved by a simple-complexity heuristic; no external libraries or hyperparameter search are used.

@@ -1,0 +1,13 @@
+{
+  "affected_records": 6,
+  "baseline_risk": 41.41672751572868,
+  "cost_units": 2,
+  "estimated_risk_reduction": 26.190176440882126,
+  "factor": "ltex",
+  "from": "l",
+  "method": "empirical defect-density comparison by adjacent rating",
+  "to": "vl"
+}
+real 0.02
+user 0.01
+sys 0.00

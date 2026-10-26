@@ -1,0 +1,7 @@
+test_real_dataset_shape_and_duration_stats (test_summarize_projects.SummaryTests) ... ok
+test_small_dataset_and_empty_dataset_error (test_summarize_projects.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

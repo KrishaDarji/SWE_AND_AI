@@ -1,0 +1,8 @@
+test_no_improvement (test_fix_slow_config.SuggestionTests) ... ok
+test_real_dataset_has_recommendation (test_fix_slow_config.SuggestionTests) ... ok
+test_selects_best_one_flip (test_fix_slow_config.SuggestionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK

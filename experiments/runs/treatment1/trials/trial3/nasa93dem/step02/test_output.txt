@@ -1,0 +1,13 @@
+test_cli_budget_decision (test_effort_estimator.EffortEstimatorTests) ... ok
+test_estimate_is_positive_and_increases_with_size (test_effort_estimator.EffortEstimatorTests) ... ok
+test_invalid_kloc (test_effort_estimator.EffortEstimatorTests) ... ok
+test_loads_positive_observations (test_effort_estimator.EffortEstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+observations=93
+estimated_effort=58.93 person-months
+model=exp(1.943379 + 0.926371*ln(KLOC))
+decision=APPROVE

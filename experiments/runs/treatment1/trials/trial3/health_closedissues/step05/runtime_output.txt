@@ -1,0 +1,15 @@
+Rows: 10000
+Mean MRE-: 0.709094
+High-error cutoff (top 20%): 0.860677 (2001 rows)
+Numeric hyperparameters (positive correlation/high mean indicates association with high error):
+- N_estimators: correlation=-0.0064, overall_mean=106.0610, high_mean=108.5957
+- Min_sample_leaves: correlation=0.8034, overall_mean=10.4796, high_mean=14.2169
+- Min_impurity_decrease: correlation=0.0676, overall_mean=4.9962, high_mean=5.0401
+- Max_depth: correlation=0.0077, overall_mean=10.5230, high_mean=10.6312
+Categorical hyperparameters:
+- criterion=absolute_error: count=3302, mean_MRE-=0.750869
+- criterion=poisson: count=3335, mean_MRE-=0.703403
+- criterion=squared_error: count=3363, mean_MRE-=0.673720
+real 0.07
+user 0.06
+sys 0.00

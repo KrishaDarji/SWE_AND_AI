@@ -1,0 +1,5 @@
+For a 20 KLOC system, I recommend planning for 112.0 person-months and 16.4 months. This is grounded in 93 historical NASA projects and log-linear relationships between size and each outcome. An 80% historical prediction band is 40.0-313.4 person-months and 13.2-20.5 months. The range is the honest protection against project-specific uncertainty; it should be narrowed after requirements, staffing, and technology are known.
+Point estimate: 112.0 person-months; 16.4 months
+real 0.03
+user 0.02
+sys 0.00

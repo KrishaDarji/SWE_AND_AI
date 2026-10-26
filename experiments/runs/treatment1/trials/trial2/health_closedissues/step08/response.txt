@@ -1,0 +1,19 @@
+1. Complete source code
+
+See source/hyperparameter_fix.py. It reads the CSV, uses the first data row as the current configuration, and considers only candidates with exactly one changed hyperparameter and lower MRE.
+
+2. Tests
+
+See tests/test_hyperparameter_fix.py. The four standard-library unittest cases cover numeric changes, categorical changes, rejection of multi-parameter changes, and CSV reading. All 4 tests pass.
+
+3. Command
+
+python3 experiments/runs/treatment1/trials/trial2/health_closedissues/step08/source/hyperparameter_fix.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+4. Approach
+
+The first CSV row is treated as the current model. Each later row is compared across the five hyperparameters. A candidate is eligible only when exactly one value differs and its MRE is lower. Eligible candidates are ranked by absolute numeric change (or one unit for criterion), then lower MRE and row order. On this dataset, the only one-parameter neighbor changes Max_depth from 10 to 9 but increases MRE, so the measured result is “No improving one-hyperparameter change found.”
+
+5. Assumptions and limitations
+
+The first data row is the baseline; the dataset does not identify a separate production baseline. MRE- is the error metric and lower is better. A one-step suggestion is limited to configurations explicitly present in the CSV, so it cannot propose an unobserved value or establish causality. Only the Python standard library is used.

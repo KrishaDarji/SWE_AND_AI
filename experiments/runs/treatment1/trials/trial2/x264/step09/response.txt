@@ -1,0 +1,8 @@
+Source: experiments/runs/treatment1/trials/trial2/x264/step09/source/detect_anomaly.py
+Tests: experiments/runs/treatment1/trials/trial2/x264/step09/tests/test_detect_anomaly.py
+Command: python3 -m unittest discover -s experiments/runs/treatment1/trials/trial2/x264/step09/tests -v
+Implementation command (from repository root): python3 experiments/runs/treatment1/trials/trial2/x264/step09/source/detect_anomaly.py moot/optimize/config/X264_AllMeasurements.csv
+
+Approach: model each measurement using the median performance of configurations one bit away in the binary configuration space. Compute residuals and use the median absolute deviation (MAD), scaled robustly, to flag rows with score at least 6.
+
+Assumptions and limitations: the feature columns are binary, Performance- is numeric, and nearby configurations provide a useful expected value. This is a screening heuristic, not proof of measurement error; effects can be non-linear, missing neighbors reduce confidence, and the threshold may miss subtle anomalies or flag legitimate interaction effects.

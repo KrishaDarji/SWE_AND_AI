@@ -1,0 +1,8 @@
+test_best_updates_only_when_lower_value_arrives (test_flow.FlowTests) ... ok
+test_invalid_input_is_rejected (test_flow.FlowTests) ... ok
+test_streaming_csv_preserves_arrival_order (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

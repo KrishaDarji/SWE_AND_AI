@@ -1,0 +1,8 @@
+test_csv_is_processed_in_arrival_order (test_flow_evaluator.FlowEvaluatorTests) ... ok
+test_invalid_score_is_rejected (test_flow_evaluator.FlowEvaluatorTests) ... ok
+test_updates_only_on_lower_score (test_flow_evaluator.FlowEvaluatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

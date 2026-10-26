@@ -1,0 +1,20 @@
+{
+  "project_count": 93,
+  "year_range": [
+    1971,
+    1987
+  ],
+  "projects_by_year": {
+    "1971": 1, "1974": 1, "1975": 2, "1976": 2, "1977": 10, "1978": 4,
+    "1979": 19, "1980": 11, "1982": 13, "1983": 7, "1984": 7, "1985": 6,
+    "1986": 8, "1987": 2
+  },
+  "outcomes": {
+    "Kloc+": {"min": 0.9, "median": 47.5, "max": 980.0, "mean": 94.02204301075268},
+    "Effort-": {"min": 8.4, "median": 252.0, "max": 8211.0, "mean": 624.4118279569892},
+    "Defects-": {"min": 28.0, "median": 2007.0, "max": 50961.0, "mean": 3761.7634408602153},
+    "MonthsX": {"min": 4.9, "median": 21.4, "max": 96.4, "mean": 24.176344086021505}
+  }
+}
+
+Measured execution time: 0.02 seconds (implementation command, /usr/bin/time real).

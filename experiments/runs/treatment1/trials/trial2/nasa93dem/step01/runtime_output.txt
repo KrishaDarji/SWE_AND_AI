@@ -1,0 +1,31 @@
+NASA93 historical project delivery summary
+
+Projects analyzed: 93
+
+Overall outcomes (mean; median in parentheses):
+- Size: KLOC: 94.02 (47.50)
+- Effort: person-months: 624.41 (252.00)
+- Defects: count: 3761.76 (2007.00)
+- Delivery time: months: 24.18 (21.40)
+
+Projects by historical year: 1971: 1, 1974: 1, 1975: 2, 1976: 2, 1977: 10, 1978: 4, 1979: 19, 1980: 11, 1982: 13, 1983: 7, 1984: 7, 1985: 6, 1986: 8, 1987: 2
+Delivery-duration bands: long (>24 months): 41, medium (12-24 months): 41, short (<=12 months): 11
+
+Year-level project counts and mean delivery months:
+- 1971: 1 projects, 25.00 months
+- 1974: 1 projects, 96.40 months
+- 1975: 2 projects, 37.05 months
+- 1976: 2 projects, 36.70 months
+- 1977: 10 projects, 32.22 months
+- 1978: 4 projects, 31.90 months
+- 1979: 19 projects, 21.72 months
+- 1980: 11 projects, 27.55 months
+- 1982: 13 projects, 21.69 months
+- 1983: 7 projects, 20.74 months
+- 1984: 7 projects, 20.09 months
+- 1985: 6 projects, 15.23 months
+- 1986: 8 projects, 16.41 months
+- 1987: 2 projects, 11.80 months
+real 0.03
+user 0.02
+sys 0.00

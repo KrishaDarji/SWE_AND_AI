@@ -1,0 +1,8 @@
+test_balanced_score_selects_joint_quality (test_choose_config.ChooseConfigTests) ... ok
+test_empty_file (test_choose_config.ChooseConfigTests) ... ok
+test_rejects_missing_columns (test_choose_config.ChooseConfigTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

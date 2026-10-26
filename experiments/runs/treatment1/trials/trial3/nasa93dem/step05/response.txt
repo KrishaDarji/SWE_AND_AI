@@ -1,0 +1,7 @@
+Complete source code: source/blame.py
+Tests: tests/test_blame.py
+Run command: python3 source/blame.py moot/optimize/process/nasa93dem.csv
+
+Approach: read the CSV with csv.DictReader, define excessive effort as effort at or above the inclusive 75th percentile, group each non-identifier/non-outcome factor by level, and rank factors by the spread between their highest and lowest group mean effort. The report also shows each top level's sample size and excessive-effort rate.
+
+Assumptions and limitations: Effort- is the outcome; Kloc+, Defects-, and MonthsX are excluded as outcome or closely related outcome fields. Missing/non-numeric effort values are not handled because this dataset is expected to be complete. Grouped differences are observational associations, small groups can be unstable, and no causal or confounding adjustment is attempted.

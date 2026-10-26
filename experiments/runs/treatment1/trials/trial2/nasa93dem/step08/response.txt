@@ -1,0 +1,11 @@
+Complete source code: source/process_fix.py
+Tests: tests/test_process_fix.py
+
+Run command:
+python3 source/process_fix.py ../../../../../../../moot/optimize/process/nasa93dem.csv
+
+Approach: estimate risk as mean defect density (Defects-/Kloc+). For each categorical process driver, compare adjacent rating levels, estimate the risk reduction from observed defect densities, assign one cost unit per rating step, and select the lowest-cost positive reduction. The implementation uses only the Python standard library.
+
+Measured result: changing ltex from l to vl was selected, with estimated risk reduction 26.190176440882126 and cost 2 units. Tests passed: 2.
+
+Assumptions and limitations: rating order is the conventional vl < l < n < h < vh < xh order; adjacent observed groups are treated as comparable; historical associations are not causal estimates; cost units are a relative proxy rather than monetary costs; omitted or confounded project factors can change the recommendation.

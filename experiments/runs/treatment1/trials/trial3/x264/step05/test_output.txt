@@ -1,0 +1,7 @@
+test_ranks_slow_setting_first (test_blame.BlameTests) ... ok
+test_read_and_render (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

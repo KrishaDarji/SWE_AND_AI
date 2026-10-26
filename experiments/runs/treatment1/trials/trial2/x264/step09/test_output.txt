@@ -1,0 +1,8 @@
+test_flags_isolated_large_residual (test_detect_anomaly.DetectorTests) ... ok
+test_reads_trimmed_numeric_values (test_detect_anomaly.DetectorTests) ... ok
+test_rejects_non_binary_feature (test_detect_anomaly.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK

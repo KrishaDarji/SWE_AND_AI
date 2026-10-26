@@ -1,0 +1,15 @@
+Implementation: `source/flow.py` maintains the best (lowest) `Performance-`
+value as each CSV row arrives and emits one JSON record per observation. It
+accepts a CSV path or stdin and uses only the Python standard library.
+
+Tests: `tests/test_flow.py` covers improvement detection, arrival order, and
+invalid numeric input.
+
+Run command:
+PYTHONPATH=experiments/runs/treatment1/trials/trial2/x264/step04/source python3 -m unittest discover -s experiments/runs/treatment1/trials/trial2/x264/step04/tests -v
+python3 experiments/runs/treatment1/trials/trial2/x264/step04/source/flow.py moot/optimize/config/X264_AllMeasurements.csv
+
+Assumptions and limitations: lower performance is better; the input has a
+header named `Performance-`; each row is independent; malformed rows fail
+with an error; the full input is not retained by the evaluator, but each
+emitted result includes the current best configuration.

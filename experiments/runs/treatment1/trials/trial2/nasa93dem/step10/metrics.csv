@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,2,software project planning,race,135,135,1,0.16,0,"135 source and test LOC; 93-row leave-one-out MAE; k=5 normalized mixed-type kNN vs median historical effort/KLOC baseline; estimator_mae=440.2479569892473; baseline_mae=343.78498870379315"

@@ -1,0 +1,8 @@
+test_maximum_for_metric_without_minus (test_justify.JustifyTests) ... ok
+test_minimum_for_trailing_minus_metric (test_justify.JustifyTests) ... ok
+test_real_dataset_shape (test_justify.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

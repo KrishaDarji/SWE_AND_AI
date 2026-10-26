@@ -1,0 +1,23 @@
+X264 slow-encode blame report
+================================
+Rows: 1152 | settings: 16
+Runtime: min=244.230, mean=461.754, max=821.963
+Slow threshold (top 25%): 580.738
+
+Ranked by standardized runtime delta + slow-rate lift (positive means slower when enabled):
+setting | mean_on | mean_off | delta | slow_lift | correlation | score
+ref_9 | 646.237 | 369.512 | +276.725 | +0.750 | +0.803 | +2.453
+no_fast_pskip | 490.265 | 433.243 | +57.022 | +0.167 | +0.175 | +0.518
+no_mbtree | 487.124 | 436.384 | +50.740 | +0.007 | +0.156 | +0.319
+rc_lookahead_60 | 462.399 | 461.431 | +0.968 | +0.004 | +0.003 | +0.010
+rc_lookahead_40 | 461.910 | 461.675 | +0.235 | +0.004 | +0.001 | +0.005
+no_deblock | 461.905 | 461.602 | +0.303 | +0.000 | +0.001 | +0.002
+no_weightb | 461.665 | 461.842 | -0.176 | -0.003 | -0.001 | -0.005
+rc_lookahead_20 | 460.951 | 462.155 | -1.203 | -0.008 | -0.003 | -0.015
+no_cabac | 457.828 | 465.679 | -7.852 | -0.007 | -0.024 | -0.055
+no_8x8dct | 451.372 | 472.136 | -20.764 | -0.007 | -0.064 | -0.135
+
+Interpretation: positive-ranked settings are associated with slower encodes in this dataset; this is not a causal proof.
+real 0.06
+user 0.05
+sys 0.00

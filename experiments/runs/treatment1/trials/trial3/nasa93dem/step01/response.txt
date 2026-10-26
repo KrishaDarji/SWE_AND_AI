@@ -1,0 +1,8 @@
+Complete source code: source/summarize_projects.py
+Tests: tests/test_summarize_projects.py
+Run command:
+python3 experiments/runs/treatment1/trials/trial3/nasa93dem/step01/source/summarize_projects.py moot/optimize/process/nasa93dem.csv
+
+Approach: read the CSV with the standard-library csv module, validate and convert the numeric outcome fields, then report project count, year range, project counts by year, and min/median/mean/max for Kloc+, Effort-, Defects-, and MonthsX. MonthsX is treated as delivery duration.
+
+Assumptions and limitations: field names and numeric encodings match nasa93dem.csv; the metric suffixes are reported as supplied rather than reinterpreted; summary statistics do not establish causal relationships or predict future delivery performance.

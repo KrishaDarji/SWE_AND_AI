@@ -1,0 +1,8 @@
+Complete source code: source/predictor.py
+Tests: tests/test_predictor.py
+Run command:
+python3 source/predictor.py --dataset moot/optimize/config/X264_AllMeasurements.csv --config '{"no_asm":1,"no_8x8dct":0,"no_cabac":0,"no_deblock":0,"no_fast_pskip":0,"no_mbtree":0,"no_mixed_refs":0,"no_weightb":0,"rc_lookahead":1,"rc_lookahead_20":0,"rc_lookahead_40":1,"rc_lookahead_60":0,"ref":1,"ref_1":0,"ref_5":1,"ref_9":0}'
+
+Approach: load the CSV, fit an ordinary least-squares linear model with a tiny ridge penalty using standard-library Gaussian elimination, and predict from a validated JSON configuration. The penalty keeps the solve stable for correlated binary options.
+
+Assumptions and limitations: the target column is named Performance-; all feature and target values are numeric; the new configuration contains exactly the training feature names; the model is linear and does not provide uncertainty estimates or extrapolation warnings; the reported unit is inherited from the dataset.

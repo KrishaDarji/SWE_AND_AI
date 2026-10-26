@@ -1,0 +1,8 @@
+test_assessment_has_expected_contract (test_flow.FlowTests) ... ok
+test_missing_history_is_rejected (test_flow.FlowTests) ... ok
+test_stream_accepts_json_like_records (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

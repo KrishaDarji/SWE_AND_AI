@@ -1,0 +1,15 @@
+Implemented an independent standard-library Python flow assessor.
+
+Source: source/flow.py
+Tests: tests/test_flow.py
+Run command: python3 source/flow.py moot/optimize/process/nasa93dem.csv
+
+The assessor computes dataset medians and evaluates each incoming proposal with
+weighted effort, defect, and schedule risk ratios. It emits a JSON portfolio
+assessment and labels each proposal prioritize, review, or defer.
+
+Assumptions and limitations: the CSV has the expected Effort-, Defects-, and
+MonthsX columns; all proposals are assessed against one batch baseline; the
+heuristic is not a calibrated project-success model; categorical drivers are
+not independently modeled; and missing or malformed numeric values cause an
+input error.

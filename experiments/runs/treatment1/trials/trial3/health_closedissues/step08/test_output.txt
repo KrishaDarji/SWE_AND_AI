@@ -1,0 +1,9 @@
+test_change_count_and_output (test_hpo_fix.SuggestionTests) ... ok
+test_minimizes_changed_parameters_then_error (test_hpo_fix.SuggestionTests) ... ok
+test_tie_uses_lower_error (test_hpo_fix.SuggestionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+exit_status=0

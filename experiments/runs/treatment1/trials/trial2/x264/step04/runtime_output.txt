@@ -1,0 +1,8 @@
+Command: /usr/bin/time -p python3 source/flow.py moot/optimize/config/X264_AllMeasurements.csv | tail -n 1
+Rows evaluated: 1152
+Final best index: 71
+Final best performance: 244.23
+real 0.04
+user 0.03
+sys 0.00
+Final emitted result: index 1152, performance 643.983, improved false.

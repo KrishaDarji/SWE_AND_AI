@@ -1,0 +1,22 @@
+# Source code
+See source/certify.py (complete implementation): it loads the CSV with csv, compares Effort- for pmat=n against pmat=l, and certifies the lower-cost process only when its median is lower and the reproducible 95% bootstrap interval for the median difference stays below zero.
+
+# Tests
+See tests/test_certify.py (three standard-library unittest tests covering reproducibility, positive certification, and missing groups).
+
+# Command
+From the repository root:
+
+    python3 experiments/runs/treatment1/trials/trial3/nasa93dem/step03/source/certify.py moot/optimize/process/nasa93dem.csv
+
+# Approach
+Effort- is treated as cost. The process groups are pmat=n versus pmat=l; the dataset has 30 and 20 observations respectively. A fixed-seed bootstrap estimates the 95% interval for the difference in medians. Certification requires a negative observed difference and an interval wholly below zero.
+
+# Measured result
+The implementation reported pmat=n as genuinely lower-cost: median effort 132.0 versus 501.7, difference -369.7, bootstrap 95% interval [-588.0, -77.0]. Tests: 3 passed. Runtime: 0.09 seconds. Full captured output is in runtime_output.txt; test output is in test_output.txt.
+
+# Assumptions and limitations
+- Effort- is the cost proxy and lower values are better.
+- pmat=n and pmat=l are the selected process definitions; this is observational data, not a randomized experiment.
+- Bootstrap uncertainty is reproducible but not a causal guarantee and does not adjust for confounding variables.
+- The analysis uses medians and does not model project size, defects, or other covariates.

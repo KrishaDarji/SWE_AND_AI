@@ -1,0 +1,7 @@
+Implemented an independent standard-library nearest-neighbor predictor. It loads configuration/result rows, estimates validation mean absolute error for MRE- and ACC+, and predicts error and accuracy for a selected configuration row. Tests and measured command output are recorded alongside this response.
+
+Source: source/guess.py
+Tests: tests/test_guess.py
+Run: python3 source/guess.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Assumptions and limitations: CSV target values are numeric, accuracy is ACC+, and the first row is selected by default. The estimate is a local k=7 inverse-distance average after standard-deviation scaling; it is not a trained model and validation is a deterministic 5% holdout. Runtime grows quadratically with the validation sample and training set.

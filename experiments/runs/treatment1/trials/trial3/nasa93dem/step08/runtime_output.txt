@@ -1,0 +1,15 @@
+{
+  "baseline_risk": 41.41672751572868,
+  "recommendation": {
+    "baseline_risk": 41.41672751572868,
+    "cost": 255.96666666666667,
+    "field": "pmat",
+    "from_level": 3,
+    "risk": 40.023944011630206,
+    "risk_reduction": 1.3927835040984746,
+    "to_level": 2
+  }
+}
+real 0.02
+user 0.01
+sys 0.00

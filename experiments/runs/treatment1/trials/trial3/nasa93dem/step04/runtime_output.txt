@@ -1,0 +1,4 @@
+{"confidence": "low", "estimates": {"Defects-": 474.6, "Effort-": 65.52, "Kloc+": 15.22, "MonthsX": 12.36}, "neighbors": 5, "proposal": "proposal-1", "risk_flags": ["low_similarity"], "similarity_distance": 4.3589}
+real 0.02
+user 0.01
+sys 0.00

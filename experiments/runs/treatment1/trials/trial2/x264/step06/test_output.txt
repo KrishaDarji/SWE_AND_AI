@@ -1,0 +1,8 @@
+test_rejects_non_binary_configuration (test_justify.JustifyTests) ... ok
+test_rejects_wrong_width (test_justify.JustifyTests) ... ok
+test_selects_highest_mean_and_renders_reason (test_justify.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

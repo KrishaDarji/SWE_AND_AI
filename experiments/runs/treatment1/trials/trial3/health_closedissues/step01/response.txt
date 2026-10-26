@@ -1,0 +1,6 @@
+Implemented a standard-library CSV summarizer. It reports row count, count/min/max/mean/median/stdev for MRE-, ACC+, and PRED40+, and frequency distributions for all remaining configuration columns. It supports readable text output and --json output.
+
+Run command:
+python3 source/model_quality_summary.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Assumptions and limitations: the first three named quality columns are the quality metrics; every other column is a configuration setting. Numeric quality values must be finite numbers. The full input is loaded into memory, and no model fitting or statistical validation is performed.

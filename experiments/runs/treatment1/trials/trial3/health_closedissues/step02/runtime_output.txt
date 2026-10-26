@@ -1,0 +1,7 @@
+validation_mae_mre=0.024086
+validation_mae_acc=0.014348
+predicted_error_mre=0.365438
+predicted_accuracy=0.672449
+real 60.60
+user 59.91
+sys 0.27

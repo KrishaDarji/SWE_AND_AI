@@ -1,0 +1,15 @@
+Complete source: source/spot.py
+Tests: tests/test_spot.py
+
+Run command:
+python3 source/spot.py moot/optimize/process/nasa93dem.csv --top 1
+
+Approach: read the CSV, normalize Effort-, Defects-, and MonthsX by Kloc+, take
+log ratios, and rank records by robust median/MAD deviation. The measured top
+candidate is project id 89 (score 5.309; mean score 2.596), whose scale-adjusted
+outcomes are unusually high relative to the historical records.
+
+Assumptions and limitations: Kloc+ and all three outcomes are numeric and
+positive; robust univariate scores do not prove that a record is erroneous;
+relationships among categorical project attributes are not modeled; the result
+is sensitive to the selected outcome fields and the small historical sample.

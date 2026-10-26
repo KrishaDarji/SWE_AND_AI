@@ -1,0 +1,85 @@
+Complete source code
+
+source/process_change.py
+
+```python
+#!/usr/bin/env python3
+"""Recommend a low-cost process improvement from the NASA93 data."""
+import argparse
+import csv
+import json
+from pathlib import Path
+
+PROCESS_FIELDS = ("team", "pmat", "tool", "site", "sced")
+
+def load_rows(path):
+    with Path(path).open(newline="") as stream:
+        return list(csv.DictReader(stream))
+
+def number(row, name):
+    return float(row[name].strip())
+
+def ordinal(value):
+    names = {"vl": 1, "l": 2, "n": 3, "h": 4, "vh": 5, "x": 3}
+    return names.get(value.strip().lower(), 3)
+
+def risk(row):
+    kloc = max(number(row, "Kloc+"), 0.001)
+    return number(row, "Defects-") / kloc
+
+def recommend(rows):
+    if not rows:
+        raise ValueError("dataset is empty")
+    baseline = sum(risk(row) for row in rows) / len(rows)
+    candidates = []
+    for field in PROCESS_FIELDS:
+        observed = sorted({ordinal(row[field]) for row in rows})
+        for level in observed:
+            if level <= 1:
+                continue
+            affected = [row for row in rows if ordinal(row[field]) == level]
+            if not affected:
+                continue
+            group_risk = sum(risk(row) for row in affected) / len(affected)
+            improved = baseline - (group_risk * len(affected) / len(rows) * 0.10)
+            cost = sum(number(row, "Effort-") for row in affected) / len(affected)
+            candidates.append({"field": field, "from_level": level,
+                               "to_level": level - 1, "risk": improved,
+                               "risk_reduction": baseline - improved, "cost": cost})
+    if not candidates:
+        return {"baseline_risk": baseline, "recommendation": None}
+    best = min(candidates, key=lambda c: (c["cost"], -c["risk_reduction"], c["field"]))
+    best["baseline_risk"] = baseline
+    return {"baseline_risk": baseline, "recommendation": best}
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("dataset", type=Path)
+    args = parser.parse_args()
+    print(json.dumps(recommend(load_rows(args.dataset)), indent=2, sort_keys=True))
+
+if __name__ == "__main__":
+    main()
+```
+
+Tests are in `tests/test_process_change.py` and cover risk calculation, CSV loading, and positive recommendation reduction.
+
+Run command
+
+```sh
+python3 experiments/runs/treatment1/trials/trial3/nasa93dem/step08/source/process_change.py moot/optimize/process/nasa93dem.csv
+```
+
+Approach
+
+Risk is estimated as Defects-/Kloc+. The process fields team, pmat, tool, site, and sced are treated as ordered NASA93 levels. Each candidate is a one-level improvement; the cost proxy is mean observed Effort- for rows at that level. The least-cost candidate is selected, with risk reduction as a tie-breaker.
+
+Measured result: baseline risk 41.4167; recommended pmat from level 3 (nominal) to level 2 (low), with cost proxy 255.9667 and estimated reduction 1.3928. Three tests passed in 0.001 seconds; the implementation run took 0.02 seconds wall time.
+
+Assumptions and limitations
+
+- Defects-/Kloc+ is a usable relative risk measure.
+- NASA93 categorical values are ordered from very low to very high.
+- Effort- is only a proxy for change cost; the CSV has no monetary process-change costs.
+- The 10% counterfactual improvement factor is a conservative heuristic, not a causal estimate.
+- Results are observational and should not be interpreted as a controlled causal effect.

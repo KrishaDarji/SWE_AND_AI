@@ -1,0 +1,4 @@
+Implemented an independent standard-library anomaly spotter. It compares each record with the closest historical records sharing the same categorical profile, uses robust median/MAD residuals for effort, defects, and schedule, and reports the highest-scoring record.
+
+Run command:
+python3 source/spot.py moot/optimize/process/nasa93dem.csv

@@ -1,0 +1,7 @@
+test_load_and_aggregate (test_summarize.SummarizeTests) ... ok
+test_render_contains_outcome_sections (test_summarize.SummarizeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

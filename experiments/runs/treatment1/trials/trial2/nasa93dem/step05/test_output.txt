@@ -1,0 +1,8 @@
+test_analysis_finds_expected_rows_and_factors (test_blame.BlameTests) ... ok
+test_percentile_interpolates (test_blame.BlameTests) ... ok
+test_render_has_explanation (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+OK

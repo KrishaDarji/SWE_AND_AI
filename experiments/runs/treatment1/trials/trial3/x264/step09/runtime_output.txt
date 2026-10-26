@@ -1,0 +1,11 @@
+{
+  "anomalies": [],
+  "mad": 153.0885,
+  "measurement": "Performance-",
+  "median": 452.7785,
+  "row_count": 1152,
+  "threshold": 3.5
+}
+real 0.03
+user 0.02
+sys 0.00

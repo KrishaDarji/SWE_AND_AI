@@ -1,0 +1,9 @@
+The implementation compares the default no_cabac=1 group with no_cabac=0 using Welch's two-sample test. A quality/performance improvement is treated as a higher Performance- value. It reports the mean difference, 95% confidence interval, one-sided p-value, effect size, and a statistically credible YES/NO decision at alpha=0.05.
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/x264/step03/source/certify.py moot/optimize/config/X264_AllMeasurements.csv
+
+Tests:
+python3 -m unittest discover -s tests -v
+
+Assumptions and limitations: rows are treated as independent; the default contrast and direction are assumptions because the dataset does not identify a treatment column or quality metric. The p-value uses a normal-tail approximation for Welch's statistic (appropriate here for large groups), not a full t CDF. Statistical significance does not establish causal improvement or practical importance.

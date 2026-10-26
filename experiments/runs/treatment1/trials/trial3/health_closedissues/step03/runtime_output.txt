@@ -1,0 +1,8 @@
+Configuration family: criterion
+absolute_error: n=3302, mean_utility=-0.146400, 95%_bootstrap_CI=[-0.164412, -0.127948]
+poisson: n=3335, mean_utility=-0.069316, 95%_bootstrap_CI=[-0.087079, -0.051622]
+squared_error: n=3363, mean_utility=0.015300, 95%_bootstrap_CI=[-0.005896, 0.035548]
+CERTIFIED: squared_error is reliably better than every other family.
+real 9.21
+user 9.15
+sys 0.04

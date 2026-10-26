@@ -1,0 +1,10 @@
+test_balanced_candidate_wins (test_choose_config.ChooseTests) ... ok
+test_invalid_and_empty_inputs_fail (test_choose_config.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

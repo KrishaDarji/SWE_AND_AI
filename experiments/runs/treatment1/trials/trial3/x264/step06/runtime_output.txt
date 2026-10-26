@@ -1,0 +1,32 @@
+{
+  "dataset_rows": 1152,
+  "direction": "minimize",
+  "improvement_vs_median_percent": 46.059717941554204,
+  "median_metric": 452.7785,
+  "metric": "Performance-",
+  "observed_metric": 244.23,
+  "rank": 1,
+  "recommended_configuration": {
+    "no_8x8dct": "1",
+    "no_asm": "1",
+    "no_cabac": "1",
+    "no_deblock": "1",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  }
+}
+Recommendation: deploy the configuration above for validation because it is the best observed row.
+Caveat: this is observational evidence; validate on representative workloads before rollout.
+real 0.02
+user 0.01
+sys 0.00

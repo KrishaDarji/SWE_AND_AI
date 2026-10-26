@@ -1,0 +1,13 @@
+Approach: the estimator is deterministic 5-nearest-neighbor regression. Numeric predictors are standardized by training-set population standard deviation; categorical predictors use mismatch distance. The historical baseline predicts query KLOC multiplied by the training-only median effort/KLOC. Both use identical leave-one-out evaluation over all 93 rows and report effort MAE.
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/nasa93dem/step10/source/race_estimator.py moot/optimize/process/nasa93dem.csv
+
+Tests:
+python3 -m unittest discover -s experiments/runs/treatment1/trials/trial2/nasa93dem/step10/tests -v
+
+Measured result: estimator MAE 440.2479569892473; historical-baseline MAE 343.78498870379315. The estimator did not beat this baseline on this dataset. Tests: 3 passed. Runtime: 0.16 seconds. Error count: 0.
+
+Complete source code is in source/race_estimator.py and complete tests are in tests/test_race_estimator.py. The source uses only Python standard-library modules.
+
+Assumptions and limitations: Effort- is the target; idX, Defects-, and MonthsX are excluded to avoid identifiers and alternate outcomes. Kloc+ is available at prediction time. Mixed-type distance and k=5 are simple deterministic choices; no hyperparameter tuning or uncertainty intervals are provided. The baseline is historical median productivity and can be affected by small or unrepresentative training samples.

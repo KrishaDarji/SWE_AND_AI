@@ -1,0 +1,7 @@
+observations=93
+estimated_effort=58.93 person-months
+model=exp(1.943379 + 0.926371*ln(KLOC))
+decision=APPROVE
+real 0.02
+user 0.01
+sys 0.00

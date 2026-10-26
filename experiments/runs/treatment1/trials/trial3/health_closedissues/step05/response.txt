@@ -1,0 +1,8 @@
+1. Complete source code: source/blame.py
+2. Tests: tests/test_blame.py
+3. Command:
+   python3 experiments/runs/treatment1/trials/trial3/health_closedissues/source/blame.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+4. Approach: Read the CSV with the standard-library csv module, treat MRE- as model error, define high error as the top 20% by MRE-, and compare numeric hyperparameters using Pearson correlation and high-subset versus overall means. Compare criterion values by group mean error.
+5. Assumptions and limitations: Higher MRE- means higher error; associations are descriptive and do not establish causality; Pearson correlation captures only linear association; tied cutoff values can make the high-error group slightly larger than 20%; rows are assumed valid and complete for the required columns.
+
+Measured result: Min_sample_leaves is the strongest numeric association (correlation 0.8034; high-error mean 14.2169 versus overall 10.4796). `criterion=absolute_error` has the highest mean MRE- (0.750869), followed by poisson (0.703403) and squared_error (0.673720). Other numeric associations are weak.

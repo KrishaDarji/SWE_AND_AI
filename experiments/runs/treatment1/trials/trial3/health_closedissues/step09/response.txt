@@ -1,0 +1,6 @@
+The implementation is in source/spot_quality.py. It profiles MRE-, ACC+, and PRED40+ with robust outlier checks, validates expected ranges, and checks duplicate configurations for conflicting quality. Tests are in tests/test_spot_quality.py.
+
+Run:
+python3 source/spot_quality.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Assumptions and limitations: +/- suffixes indicate lower-is-better or higher-is-better quality, respectively. Rules are heuristic and cannot prove an experimental error or causality.

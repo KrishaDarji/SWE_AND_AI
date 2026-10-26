@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,1,3,software project planning,race,121,121,1,0.012666,0,"93 rows; 31-row fixed every-third holdout; effort MAE; estimator=521.417484; historical_baseline=644.048387; winner=estimator"

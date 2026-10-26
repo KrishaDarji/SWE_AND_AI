@@ -1,0 +1,10 @@
+{
+  "estimator_better": false,
+  "estimator_mae": 440.2479569892473,
+  "historical_baseline_mae": 343.78498870379315,
+  "metric": "MAE effort",
+  "projects": 93
+}
+real 0.16
+user 0.13
+sys 0.01

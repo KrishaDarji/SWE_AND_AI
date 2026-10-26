@@ -1,0 +1,21 @@
+{
+  "configuration": {
+    "Max_depth": 10,
+    "Min_impurity_decrease": 3.0,
+    "Min_sample_leaves": 1,
+    "N_estimators": 10,
+    "criterion": "squared_error"
+  },
+  "justification": "This row maximizes the equal-weight mean of min-max normalized desirability: lower MRE and higher ACC/PRED40. The selected configuration is therefore balanced across all three observed validation objectives; tie-breaking favors a simpler model.",
+  "objective_desirability": {
+    "ACC+": 1.0,
+    "MRE-": 0.9702503681885125,
+    "PRED40+": 1.0
+  },
+  "rows_considered": 10000,
+  "score": 0.9900834560628375,
+  "source_row": 7557
+}
+real 0.05
+user 0.04
+sys 0.00

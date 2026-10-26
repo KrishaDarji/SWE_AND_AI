@@ -1,0 +1,12 @@
+rows=10000
+selector_utility=0.990083456
+baseline_utility=0.990083456
+winner=tie
+selector_config={'N_estimators': '10', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '3', 'Max_depth': '10'}
+baseline_config={'N_estimators': '10', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '3', 'Max_depth': '10'}
+real 0.06
+user 0.05
+sys 0.00
+
+TEST_STATUS=0
+RUN_STATUS=0

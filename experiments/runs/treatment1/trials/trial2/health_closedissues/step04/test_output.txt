@@ -1,0 +1,8 @@
+test_equal_scores_keep_first_result (test_flow.FlowTests) ... ok
+test_invalid_result_is_skipped (test_flow.FlowTests) ... ok
+test_updates_incrementally_and_uses_directions (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

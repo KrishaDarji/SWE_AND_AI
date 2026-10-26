@@ -1,0 +1,15 @@
+Complete source code: source/predictor.py
+Tests: tests/test_predictor.py
+
+Run command:
+python3 experiments/runs/treatment1/trials/trial2/health_closedissues/step02/source/predictor.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach:
+Load the CSV with csv.DictReader, encode numeric fields directly and categorical fields with deterministic one-hot columns, fit separate ridge-stabilized ordinary least-squares models for MRE- and ACC+, then clamp predictions to [0, 1]. The CLI accepts an optional JSON configuration and otherwise predicts the first dataset configuration.
+
+Known assumptions and limitations:
+- MRE- and ACC+ are treated as continuous targets bounded between zero and one.
+- Linear relationships may not capture nonlinear interactions among hyperparameters.
+- Missing or malformed numeric configuration values are not supported during prediction.
+- The default configuration is the first data row; no external validation set is used.
+- Only Python standard-library modules are used.

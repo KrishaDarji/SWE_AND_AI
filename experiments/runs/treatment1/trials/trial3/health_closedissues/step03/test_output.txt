@@ -1,0 +1,12 @@
+test_score_direction (test_certify.CertifyTests) ... ok
+test_winner_on_clear_synthetic_data (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.005s
+
+OK
+Configuration family: criterion
+best: n=30, mean_utility=1.700000, 95%_bootstrap_CI=[1.700000, 1.700000]
+other1: n=30, mean_utility=-0.500000, 95%_bootstrap_CI=[-0.500000, -0.500000]
+other2: n=30, mean_utility=-0.500000, 95%_bootstrap_CI=[-0.500000, -0.500000]
+CERTIFIED: best is reliably better than every other family.

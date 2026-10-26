@@ -1,0 +1,7 @@
+test_load_and_exact_neighbor (test_x264_time_predictor.PredictorTests) ... ok
+test_weighted_neighbors_and_validation (test_x264_time_predictor.PredictorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
