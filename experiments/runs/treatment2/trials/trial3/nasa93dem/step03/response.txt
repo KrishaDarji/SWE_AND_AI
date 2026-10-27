@@ -1,0 +1,7 @@
+Step 3 reuses the Step 2 project model, CSV repository, summary service, effort estimator, CLI, and all Step 2 tests. It adds certification of two process values using median effort per KLOC and a seeded one-sided permutation test. The CLI command is:
+
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --compare-attribute pmat --process-a h --process-b n
+
+All seven tests pass. On this dataset, pmat=h has median effort/KLOC 5.03 and pmat=n has 3.67; the result is “no genuine cost advantage established” for h over n under the test.
+
+Known assumptions and limitations: effort/KLOC is used as the cost metric; the selected CSV categorical field represents the process; missing or non-positive KLOC rows are excluded; the finite permutation p-value is an estimate; certification uses p < .05 and does not prove causality or generalize beyond this historical sample.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,2,1,video encoding,certify,170,42,true,0.03,0,"Reused Step 1 summary and Step 2 prediction APIs/CLI; added matched-pair exact sign-test certification; test runtime 0.05s and implementation runtime 0.03s measured with /usr/bin/time -p"

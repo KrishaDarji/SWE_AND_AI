@@ -1,0 +1,14 @@
+test_exact_configuration_returns_measure (test_prediction.PredictionTests) ... ok
+test_mean_of_nearest_neighbors (test_prediction.PredictionTests) ... ok
+test_missing_setting_is_actionable (test_prediction.PredictionTests) ... ok
+test_bad_number_is_actionable (test_summary.SummaryTests) ... ok
+test_default_measure_and_setting_counts (test_summary.SummaryTests) ... ok
+test_multiple_measures (test_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

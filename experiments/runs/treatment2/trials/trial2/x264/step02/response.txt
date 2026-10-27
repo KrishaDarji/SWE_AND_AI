@@ -1,0 +1,11 @@
+Complete updated source code is in source/x264_summary.py and complete tests are in tests/test_x264_summary.py.
+
+Run tests:
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial2/x264/step02/tests -v
+
+Run the implementation:
+python3 experiments/runs/treatment2/trials/trial2/x264/step02/source/x264_summary.py moot/optimize/config/X264_AllMeasurements.csv --predict-json '{"no_asm":1,"no_8x8dct":0,"no_cabac":0,"no_deblock":0,"no_fast_pskip":0,"no_mbtree":0,"no_mixed_refs":0,"no_weightb":0,"rc_lookahead":1,"rc_lookahead_20":1,"rc_lookahead_40":0,"rc_lookahead_60":0,"ref":1,"ref_1":1,"ref_5":0,"ref_9":0}'
+
+Reused Step 1's Dataset model, CSV loading, binary-setting discovery, statistics, summary output, and default summary CLI behavior. Step 2 adds predict(), exact-match lookup, nearest-Hamming-neighbor averaging, and prediction CLI options.
+
+Assumptions and limitations: settings are binary 0/1 columns; the first non-binary column is the default encoding-time measure; prediction requires every setting; unseen configurations are estimated from all nearest rows at minimum Hamming distance; this is a simple baseline and does not model interactions or uncertainty.

@@ -1,0 +1,13 @@
+setting=ref_9 enabled_n=384 disabled_n=768 enabled_mean=646.236776 disabled_mean=369.512007 penalty=276.724770
+setting=no_fast_pskip enabled_n=576 disabled_n=576 enabled_mean=490.264656 disabled_mean=433.242536 penalty=57.022120
+setting=no_mbtree enabled_n=576 disabled_n=576 enabled_mean=487.123510 disabled_mean=436.383682 penalty=50.739828
+setting=rc_lookahead_60 enabled_n=384 disabled_n=768 enabled_mean=462.398859 disabled_mean=461.430965 penalty=0.967895
+setting=no_deblock enabled_n=576 disabled_n=576 enabled_mean=461.905083 disabled_mean=461.602109 penalty=0.302974
+setting=rc_lookahead_40 enabled_n=384 disabled_n=768 enabled_mean=461.910432 disabled_mean=461.675178 penalty=0.235254
+setting=no_weightb enabled_n=576 disabled_n=576 enabled_mean=461.665486 disabled_mean=461.841707 penalty=-0.176220
+setting=ref_5 enabled_n=384 disabled_n=768 enabled_mean=461.609310 disabled_mean=461.825740 penalty=-0.216430
+setting=rc_lookahead_20 enabled_n=384 disabled_n=768 enabled_mean=460.951497 disabled_mean=462.154646 penalty=-1.203148
+setting=no_cabac enabled_n=576 disabled_n=576 enabled_mean=457.827700 disabled_mean=465.679493 penalty=-7.851793
+setting=no_8x8dct enabled_n=576 disabled_n=576 enabled_mean=451.371686 disabled_mean=472.135507 penalty=-20.763821
+setting=no_mixed_refs enabled_n=576 disabled_n=576 enabled_mean=430.207038 disabled_mean=493.300155 penalty=-63.093116
+setting=ref_1 enabled_n=384 disabled_n=768 enabled_mean=277.414703 disabled_mean=553.923043 penalty=-276.508340

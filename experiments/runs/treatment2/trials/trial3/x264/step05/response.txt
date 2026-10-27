@@ -1,0 +1,23 @@
+Implemented Step 5 by reusing the complete Step 4 source and tests and adding
+an x264_summary.blame module, its blame.py CLI, exports, and Step 5 tests.
+The blame analysis validates binary settings, computes enabled and disabled
+mean encode times, ranks settings by enabled-minus-disabled penalty, and
+preserves all prior summary, prediction, certification, streaming, and CLI
+behavior.
+
+Run command:
+python3 -m unittest discover -s tests -p 'test_*.py' && python3 source/blame.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Reused: all Step 4 source modules and all Step 1-4 tests, carried forward into
+Step 5 without copying from any other treatment or trial. New code is the
+blame API, CLI, package exports, and tests.
+
+Assumptions and limitations: the final CSV column is the measure unless
+--measure is supplied; every setting is expected to be binary 0/1; the result
+is an observational univariate association and does not control for correlated
+settings or establish causality; settings lacking both states are omitted;
+positive penalty means the enabled state has a higher mean encode time.
+
+Measured result: 13 tests passed. On X264_AllMeasurements.csv, ref_9 had the
+largest positive penalty (276.724770), followed by no_fast_pskip (57.022120)
+and no_mbtree (50.739828).

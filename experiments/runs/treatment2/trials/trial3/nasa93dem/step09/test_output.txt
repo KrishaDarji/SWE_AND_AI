@@ -1,0 +1,28 @@
+test_justification_handles_no_usable_history (test_justification.JustificationTests) ... ok
+test_justification_rejects_non_positive_size (test_justification.JustificationTests) ... ok
+test_justification_reuses_median_estimate_and_shows_spread (test_justification.JustificationTests) ... ok
+test_budget_must_be_non_negative (test_optimizer.OptimizerTests) ... ok
+test_maximizes_value_under_fixed_budget (test_optimizer.OptimizerTests) ... ok
+test_rejects_unknown_or_negative_value (test_optimizer.OptimizerTests) ... ok
+test_arriving_proposals_are_assessed_sequentially (test_project_history.SummaryTests) ... ok
+test_blame_handles_missing_effort (test_project_history.SummaryTests) ... ok
+test_blame_ranks_categorical_and_numeric_associations (test_project_history.SummaryTests) ... ok
+test_certifier_reports_insufficient_data (test_project_history.SummaryTests) ... ok
+test_certifier_uses_normalized_effort_and_requires_evidence (test_project_history.SummaryTests) ... ok
+test_effort_estimate_rejects_non_positive_size (test_project_history.SummaryTests) ... ok
+test_effort_estimate_uses_median_productivity (test_project_history.SummaryTests) ... ok
+test_empty_input_is_safe (test_project_history.SummaryTests) ... ok
+test_repository_reads_trimmed_values (test_project_history.SummaryTests) ... ok
+test_summary_aggregates_present_values (test_project_history.SummaryTests) ... ok
+test_unknown_history_is_not_approved (test_project_history.SummaryTests) ... ok
+test_chooses_cheapest_lower_risk_process (test_risk.RiskRecommendationTests) ... ok
+test_missing_current_process_is_safe (test_risk.RiskRecommendationTests) ... ok
+test_reports_no_change_when_no_lower_risk_exists (test_risk.RiskRecommendationTests) ... ok
+test_can_inspect_requested_project_and_handles_missing (test_spot.SpotTests) ... ok
+test_requires_usable_history (test_spot.SpotTests) ... ok
+test_spots_large_productivity_departure (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.008s
+
+OK

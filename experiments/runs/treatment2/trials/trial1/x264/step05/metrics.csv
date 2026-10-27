@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+05,2,1,video encoding,blame,276,57,true,0.04,0,"Reused Step 4 source and tests; added slow-tail enrichment and marginal setting-penalty analysis; 8 tests passed; implementation runtime measured with /usr/bin/time -p"

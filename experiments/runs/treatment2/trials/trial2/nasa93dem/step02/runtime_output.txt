@@ -1,0 +1,11 @@
+{
+  "estimated_effort": 48.0,
+  "historical_projects": 7,
+  "lower_effort": 25.97938144329897,
+  "method": "median effort/KLOC of nearest historical projects",
+  "proposed_kloc": 10.0,
+  "upper_effort": 86.66666666666666
+}
+real 0.03
+user 0.02
+sys 0.00

@@ -1,0 +1,37 @@
+{
+  "dataset": "/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+  "dataset_mean": 461.7535963541667,
+  "evidence_rows": 1152,
+  "improvement_percent_vs_mean": 47.10815423456395,
+  "improvement_vs_mean": 217.5235963541667,
+  "limitations": [
+    "Benchmark associations are not causal.",
+    "The dataset may not represent production content.",
+    "A single fastest row may need repeat measurements."
+  ],
+  "observed_row": 71,
+  "performance": 244.23,
+  "rationale": "Recommend this configuration because it has the lowest observed encoding time in the supplied benchmark data. It is estimated to be 217.524 time units (47.11%) faster than the dataset mean. Validate on representative production clips before rollout.",
+  "recommendation": {
+    "no_8x8dct": "1",
+    "no_asm": "1",
+    "no_cabac": "1",
+    "no_deblock": "1",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "selection": "fastest observed configuration"
+}
+real 0.03
+user 0.02
+sys 0.00

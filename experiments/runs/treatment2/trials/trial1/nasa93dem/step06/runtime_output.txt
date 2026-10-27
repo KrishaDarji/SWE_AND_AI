@@ -1,0 +1,32 @@
+{
+  "estimate": {
+    "approval": "approve",
+    "budget": 1000.0,
+    "dataset": "/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+    "effort": 48.4375,
+    "effort_per_kloc_median": 4.84375,
+    "historical_projects": 93,
+    "kloc": 10.0,
+    "planning_high": 71.25,
+    "planning_low": 35.294117647058826
+  },
+  "evidence": {
+    "historical_effort_per_kloc_median": 4.84375,
+    "historical_effort_per_kloc_planning_high": 7.125,
+    "historical_effort_per_kloc_planning_low": 3.5294117647058822,
+    "historical_projects": 93,
+    "planning_range_covers_middle": "25th_to_75th_percentile"
+  },
+  "recommendation": "approve",
+  "risks_and_limitations": [
+    "Historical projects may differ from the proposed project's scope, team, or technology.",
+    "The range describes observed effort intensity and is not a confidence interval.",
+    "No schedule, staffing, requirements volatility, or contingency adjustment is modeled."
+  ],
+  "sponsor_message": "The point estimate is based on the median effort per KLOC from 93 historical projects. The planning range uses the middle 50% of observed effort intensity; approval is recommended only when the stated budget covers its upper bound."
+}
+real 0.03
+user 0.02
+sys 0.00
+
+RUN_EXIT_CODE=0

@@ -1,0 +1,9 @@
+Implemented Step 6 in source/nasa93_summary.py by reusing the existing loader, validation, percentile calculation, and estimate_effort function. Added justify_estimate for a sponsor-facing recommendation with historical evidence, planning-range interpretation, budget decision logic, and explicit limitations. Added CLI options --justify-kloc and --justify-budget. The full prior test suite plus Step 6 tests pass. See source/ for the complete updated source code and tests/ for the complete test suite.
+
+Run command:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Implementation command:
+python3 source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --justify-kloc 10 --justify-budget 1000
+
+Assumptions and limitations: effort scales linearly with KLOC; the median is the point estimate; the 25th-75th percentiles are a planning range, not a confidence interval; historical projects may not match the proposal; schedule, staffing, scope volatility, and contingency are not modeled. Only Python standard-library modules are used.

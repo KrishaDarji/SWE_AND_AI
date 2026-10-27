@@ -1,0 +1,120 @@
+{
+  "effort_threshold": 252.0,
+  "excessive_projects": 47,
+  "factors": [
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 19,
+      "excessive_rate": 0.8636363636363636,
+      "factor": "plex",
+      "lift": 0.35826001955034215,
+      "mean_effort": 1285.6863636363637,
+      "projects": 22,
+      "score": 1.6803884418135748,
+      "value": "h"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 30,
+      "excessive_rate": 0.7692307692307693,
+      "factor": "centerX",
+      "lift": 0.2638544251447478,
+      "mean_effort": 1011.1358974358975,
+      "projects": 39,
+      "score": 1.64777035689751,
+      "value": "5"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 9,
+      "excessive_rate": 0.24324324324324326,
+      "factor": "centerX",
+      "lift": -0.26213310084277824,
+      "mean_effort": 222.9189189189189,
+      "projects": 37,
+      "score": 1.5944934037573362,
+      "value": "2"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 14,
+      "excessive_rate": 0.8235294117647058,
+      "factor": "cplx",
+      "lift": 0.31815306767868434,
+      "mean_effort": 1341.270588235294,
+      "projects": 17,
+      "score": 1.3117787031534998,
+      "value": "vh"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 14,
+      "excessive_rate": 0.8235294117647058,
+      "factor": "data",
+      "lift": 0.31815306767868434,
+      "mean_effort": 1522.1941176470589,
+      "projects": 17,
+      "score": 1.3117787031534998,
+      "value": "h"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 9,
+      "excessive_rate": 0.28125,
+      "factor": "acap",
+      "lift": -0.2241263440860215,
+      "mean_effort": 301.34375,
+      "projects": 32,
+      "score": 1.2678500619662023,
+      "value": "n"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 9,
+      "excessive_rate": 0.9,
+      "factor": "pcap",
+      "lift": 0.3946236559139785,
+      "mean_effort": 678.4,
+      "projects": 10,
+      "score": 1.2479095712707478,
+      "value": "vh"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 9,
+      "excessive_rate": 0.9,
+      "factor": "rely",
+      "lift": 0.3946236559139785,
+      "mean_effort": 2467.21,
+      "projects": 10,
+      "score": 1.2479095712707478,
+      "value": "vh"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 9,
+      "excessive_rate": 0.9,
+      "factor": "stor",
+      "lift": 0.3946236559139785,
+      "mean_effort": 887.7,
+      "projects": 10,
+      "score": 1.2479095712707478,
+      "value": "h"
+    },
+    {
+      "baseline_rate": 0.5053763440860215,
+      "excessive_projects": 11,
+      "excessive_rate": 0.8461538461538461,
+      "factor": "stor",
+      "lift": 0.34077750206782464,
+      "mean_effort": 1668.853846153846,
+      "projects": 13,
+      "score": 1.2286907572300774,
+      "value": "xh"
+    }
+  ],
+  "project_count": 93
+}
+real 0.03
+user 0.02
+sys 0.00

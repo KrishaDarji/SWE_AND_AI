@@ -1,0 +1,8 @@
+Implemented Step 7 by extending the Step 6 source. Added choose_configuration() and the --choose CLI mode. It scores a shortlist of observed configurations using min-max normalized quality, minimizes MRE-, maximizes ACC+ and PRED* metrics, and blends observed and nearest-neighbor predicted quality with --prediction-weight (default 0.5).
+
+Reused: all Step 6 source modules and all Step 1-6 tests were copied into this step and remain passing. Existing summary, prediction, certification, streaming evaluation, blame, and justification behavior is unchanged.
+
+Run:
+python3 -m unittest discover -s tests -p 'test_*.py' && python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --choose --neighbors 5
+
+Known assumptions and limitations: quality columns are inferred from MRE/ACC/PRED prefixes unless explicitly supplied; min-max normalization is sensitive to observed extrema; nearest-neighbor prediction is descriptive rather than causal; large datasets use a quality-ranked 25-candidate shortlist to keep runtime bounded; the default confidence and tie-breaking behavior from earlier steps is retained.

@@ -1,0 +1,11 @@
+Step 7 adds `choose()` to the reused x264_summary.py module. It selects the highest objective value among observed rows whose quality measure is at least the requested threshold, with deterministic setting-tuple tie breaking, and reports an explicit no-feasible result.
+
+Complete updated source code: source/x264_summary.py
+Tests for Step 1-6 regression behavior and Step 7: tests/test_x264_summary.py
+
+Run command:
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --choose --min-quality 800
+
+Reuse: Step 6's complete module and regression tests were extended in place; all earlier APIs and CLI branches remain available.
+
+Assumptions and limitations: quality constraints are inclusive (`quality >= minimum_quality`); objective is maximized; when omitted, both measures default to the first dataset measure (`Performance-` here). Selection is observational and limited to configurations present in the CSV; it does not estimate unseen configurations or establish causality.

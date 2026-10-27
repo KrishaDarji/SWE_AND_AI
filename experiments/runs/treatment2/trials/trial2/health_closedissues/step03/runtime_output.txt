@@ -1,0 +1,22 @@
+{
+  "confidence": 0.95,
+  "confidence_interval": [
+    0.02591424983914581,
+    0.036356954183519696
+  ],
+  "effect_threshold": 0.0,
+  "family_a": "squared_error",
+  "family_b": "absolute_error",
+  "family_column": "criterion",
+  "higher_is_better": true,
+  "mean_a": 0.5088244263981059,
+  "mean_b": 0.47779311364779153,
+  "metric": "ACC+",
+  "observed_effect_a_minus_b": 0.031031312750314344,
+  "reliably_better": true,
+  "sample_sizes": {
+    "a": 3363,
+    "b": 3302
+  },
+  "verdict": "A reliably better than B"
+}

@@ -1,0 +1,22 @@
+{
+  "accuracy": 1.0,
+  "candidates": 10000,
+  "configuration": {
+    "Max_depth": "10",
+    "Min_impurity_decrease": "3",
+    "Min_sample_leaves": "1",
+    "N_estimators": "10",
+    "criterion": "squared_error"
+  },
+  "error": 0.029749631811487497,
+  "prediction_quality": 1.0,
+  "score": 1.0,
+  "source": "moot/optimize/hpo/Health-ClosedIssues0000.csv",
+  "weights": {
+    "accuracy": 0.5,
+    "prediction_quality": 0.5
+  }
+}
+real 0.05
+user 0.04
+sys 0.00

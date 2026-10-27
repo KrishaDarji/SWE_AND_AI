@@ -1,0 +1,24 @@
+{
+  "constraints_checked": {
+    "budget": true,
+    "max_months": false
+  },
+  "decision": "approve",
+  "estimate": {
+    "approval": "approve",
+    "budget": 1000.0,
+    "dataset": "moot/optimize/process/nasa93dem.csv",
+    "effort": 48.4375,
+    "effort_per_kloc_median": 4.84375,
+    "historical_projects": 93,
+    "kloc": 10.0,
+    "planning_high": 71.25,
+    "planning_low": 35.294117647058826
+  },
+  "expected_defects": 389.8666666666667,
+  "expected_months": 5.3076923076923075,
+  "proposal_id": "P-CLI"
+}
+real 0.03
+user 0.02
+sys 0.00

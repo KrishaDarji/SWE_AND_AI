@@ -1,0 +1,8 @@
+test_loads_all_historical_projects (test_nasa93_summary.SummaryTests) ... ok
+test_outcomes_and_derived_rates_are_present (test_nasa93_summary.SummaryTests) ... ok
+test_result_is_json_serializable (test_nasa93_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

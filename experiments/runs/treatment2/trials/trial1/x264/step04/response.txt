@@ -1,0 +1,11 @@
+Complete updated source: source/x264_summary.py
+Tests: tests/test_x264_summary.py
+
+Run the implementation with:
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --stream < benchmark_results.jsonl
+
+Each JSONL record may be {"configuration": {"NAME": "VALUE"}, "performance": NUMBER}; records may also use setting fields plus "Performance-". The online evaluator updates the received count, lower-is-better incumbent, and ranking after every result.
+
+Reused: the Step 1 summary and CSV reader, Step 2 prediction, Step 3 matched-pair certification, JSON CLI, and their behavior. Added only the streaming evaluator, stream CLI mode, and Step 4 tests.
+
+Assumptions and limitations: Performance- is lower-is-better; all results in one stream use the same setting names; results are held in memory and ranking is recomputed on each update; ties retain arrival order; the stream is JSON Lines; the positional dataset argument remains required for compatibility although stream mode does not read it.

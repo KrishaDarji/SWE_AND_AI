@@ -1,0 +1,10 @@
+Step 9 adds spot(path), --spot, and --z-threshold to the reused Step 8 model_quality_summary.py module. It reports invalid metrics, out-of-range ACC+/PRED*+ values, robust median/MAD outliers, and conflicting metrics for duplicate configurations. Existing Step 1-8 APIs and CLI modes remain available.
+
+Complete source: source/model_quality_summary.py
+Tests: tests/test_model_quality_summary.py
+Run tests: python3 -m unittest discover -s experiments/runs/treatment2/trials/trial1/health_closedissues/step09/tests -v
+Run implementation: python3 experiments/runs/treatment2/trials/trial1/health_closedissues/step09/source/model_quality_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --spot
+
+Reuse: extended Treatment 2 Step 8, which contains all prior summary, prediction, certification, evaluation, blame, justification, choice, and change-suggestion behavior. No Treatment 1 code was used.
+
+Limitations: +/- suffixes identify metrics; ACC+ and PRED*+ are assumed to be in [0,1]; robust outliers use a default 3.5 modified-z threshold; duplicate configurations compare exact strings; findings require human review and do not prove causality or error.

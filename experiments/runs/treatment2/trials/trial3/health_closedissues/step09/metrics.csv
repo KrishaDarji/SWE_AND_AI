@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,2,3,machine-learning model configuration,spot,575,70,1,0.06,0,"26 unittest tests passed; real Health-ClosedIssues0000.csv anomaly scan completed; source LOC counted across main.py and model_summary.py; new_loc is the Step 9 diff versus Step 8; runtime is measured /usr/bin/time real seconds; standard library only"

@@ -1,0 +1,9 @@
+Implemented Step 4 by extending the Step 3 source in source/model_summary.py and source/main.py.
+
+Complete updated source code is in source/main.py and source/model_summary.py. The previous summarize_csv, predict_quality, certify_families APIs and CLI modes remain available. Added OnlineEvaluator.observe(configuration, validation_results), snapshot(), evaluate_stream(records), and the --evaluate-stream JSON-lines CLI mode. Each observation is validated and incorporated immediately; history preserves arrival order and the incumbent is updated using Pareto-style dominance, minimizing MRE-prefixed metrics and maximizing other metrics.
+
+Tests include all inherited Step 1-3 tests and Step 4 tests. The measured test run passed 15 tests. The real dataset implementation run passed and summarized 10,000 rows. Outputs are in test_output.txt and runtime_output.txt.
+
+Reused: the Step 3 source and its CSV parsing, numeric handling, summary, prediction, certification, quality-prefix conventions, CLI, and all prior tests. New LOC is the added Step 4 diff versus Step 3 only.
+
+Assumptions and limitations: validation result names are quality metric names; MRE-prefixed metrics are minimized and all other metrics maximized; a candidate replaces the incumbent only when it is at least as good on every tracked metric and strictly better on one; ties and trade-offs retain the earlier incumbent; observations are treated as final; no statistical uncertainty, repeated-trial aggregation, persistence, or concurrency is provided. Only Python standard-library modules are used.

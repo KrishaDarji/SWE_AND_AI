@@ -1,0 +1,12 @@
+{
+  "budget": 100.0,
+  "candidate_count": 31,
+  "constraints": {"max_defects": null, "max_months": null},
+  "decision": "select",
+  "objective": "maximize KLOC+ subject to Effort- <= budget",
+  "selected": {"Defects-": 7867.0, "Effort-": 97.0, "KLOC+": 165.0, "MonthsX": 31.5, "id": "78"}
+}
+real 0.04
+user 0.02
+sys 0.00
+

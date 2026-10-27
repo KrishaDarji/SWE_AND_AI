@@ -1,0 +1,11 @@
+Step 6 is complete.
+
+Added `source/project_summary/justify.py` and `source/justify.py`. The new API composes the existing estimate, proposal assessment, and factor-association functions to produce a decision, historical range, evidence, caveats, and a sponsor message. The prior Step 1-5 source and tests were reused unchanged except for the package exports and the added Step 6 test module.
+
+Run command:
+python3 -m unittest discover -s tests -q
+
+Implementation command:
+python3 source/justify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv P-6 10 10000 10000
+
+Known assumptions and limitations: effort is treated as the historical effort field; nearest-project median effort/KLOC is only a screening estimate; the min/max neighbor range is not a probabilistic confidence interval; factor associations are non-causal signals; sponsor wording assumes the proposal ID, KLOC, budget, and capacity are supplied.

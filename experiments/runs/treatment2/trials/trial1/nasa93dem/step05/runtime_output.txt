@@ -1,0 +1,655 @@
+{
+  "cutoff": 4.84375,
+  "definition": "effort_per_kloc above dataset median",
+  "factors": [
+    {
+      "factor": "stor",
+      "levels": [
+        {
+          "count": 10,
+          "excess_rate": 1.0,
+          "level": "h",
+          "lift": 0.5053763440860215,
+          "median_effort_per_kloc": 7.022588532883642
+        },
+        {
+          "count": 13,
+          "excess_rate": 0.8461538461538461,
+          "level": "xh",
+          "lift": 0.35153019023986765,
+          "median_effort_per_kloc": 23.512857142857143
+        },
+        {
+          "count": 49,
+          "excess_rate": 0.32653061224489793,
+          "level": "n",
+          "lift": -0.16809304366908057,
+          "median_effort_per_kloc": 4.285714285714286
+        },
+        {
+          "count": 21,
+          "excess_rate": 0.42857142857142855,
+          "level": "vh",
+          "lift": -0.06605222734254995,
+          "median_effort_per_kloc": 4.666666666666667
+        }
+      ],
+      "strongest_level": "h",
+      "strongest_lift": 0.5053763440860215
+    },
+    {
+      "factor": "tool",
+      "levels": [
+        {
+          "count": 10,
+          "excess_rate": 1.0,
+          "level": "h",
+          "lift": 0.5053763440860215,
+          "median_effort_per_kloc": 7.810173958882446
+        },
+        {
+          "count": 83,
+          "excess_rate": 0.43373493975903615,
+          "level": "n",
+          "lift": -0.060888716154942346,
+          "median_effort_per_kloc": 4.653061224489796
+        }
+      ],
+      "strongest_level": "h",
+      "strongest_lift": 0.5053763440860215
+    },
+    {
+      "factor": "centerX",
+      "levels": [
+        {
+          "count": 12,
+          "excess_rate": 0.08333333333333333,
+          "level": "1",
+          "lift": -0.4112903225806452,
+          "median_effort_per_kloc": 3.192920353982301
+        },
+        {
+          "count": 3,
+          "excess_rate": 0.3333333333333333,
+          "level": "6",
+          "lift": -0.16129032258064518,
+          "median_effort_per_kloc": 4.653061224489796
+        },
+        {
+          "count": 39,
+          "excess_rate": 0.6153846153846154,
+          "level": "5",
+          "lift": 0.12076095947063692,
+          "median_effort_per_kloc": 5.405405405405405
+        },
+        {
+          "count": 37,
+          "excess_rate": 0.4864864864864865,
+          "level": "2",
+          "lift": -0.008137169427491986,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "1",
+      "strongest_lift": -0.4112903225806452
+    },
+    {
+      "factor": "time",
+      "levels": [
+        {
+          "count": 8,
+          "excess_rate": 0.875,
+          "level": "xh",
+          "lift": 0.3803763440860215,
+          "median_effort_per_kloc": 26.295827505827504
+        },
+        {
+          "count": 13,
+          "excess_rate": 0.8461538461538461,
+          "level": "h",
+          "lift": 0.35153019023986765,
+          "median_effort_per_kloc": 6.816666666666666
+        },
+        {
+          "count": 18,
+          "excess_rate": 0.8333333333333334,
+          "level": "vh",
+          "lift": 0.33870967741935487,
+          "median_effort_per_kloc": 7.1704090457041545
+        },
+        {
+          "count": 54,
+          "excess_rate": 0.24074074074074073,
+          "level": "n",
+          "lift": -0.2538829151732378,
+          "median_effort_per_kloc": 3.894805194805195
+        }
+      ],
+      "strongest_level": "xh",
+      "strongest_lift": 0.3803763440860215
+    },
+    {
+      "factor": "pvol",
+      "levels": [
+        {
+          "count": 19,
+          "excess_rate": 0.8421052631578947,
+          "level": "n",
+          "lift": 0.3474816072439162,
+          "median_effort_per_kloc": 6.461538461538462
+        },
+        {
+          "count": 9,
+          "excess_rate": 0.6666666666666666,
+          "level": "h",
+          "lift": 0.17204301075268813,
+          "median_effort_per_kloc": 5.88
+        },
+        {
+          "count": 65,
+          "excess_rate": 0.36923076923076925,
+          "level": "l",
+          "lift": -0.12539288668320925,
+          "median_effort_per_kloc": 4.504504504504505
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": 0.3474816072439162
+    },
+    {
+      "factor": "YearX",
+      "levels": [
+        {
+          "count": 6,
+          "excess_rate": 0.16666666666666666,
+          "level": "1985",
+          "lift": -0.32795698924731187,
+          "median_effort_per_kloc": 3.6702619414483824
+        },
+        {
+          "count": 10,
+          "excess_rate": 0.8,
+          "level": "1977",
+          "lift": 0.30537634408602155,
+          "median_effort_per_kloc": 16.263211382113823
+        },
+        {
+          "count": 8,
+          "excess_rate": 0.75,
+          "level": "1986",
+          "lift": 0.2553763440860215,
+          "median_effort_per_kloc": 5.3881578947368425
+        },
+        {
+          "count": 4,
+          "excess_rate": 0.25,
+          "level": "1978",
+          "lift": -0.2446236559139785,
+          "median_effort_per_kloc": 4.333333333333334
+        },
+        {
+          "count": 13,
+          "excess_rate": 0.6923076923076923,
+          "level": "1982",
+          "lift": 0.1976840363937138,
+          "median_effort_per_kloc": 5.030674846625766
+        },
+        {
+          "count": 19,
+          "excess_rate": 0.3157894736842105,
+          "level": "1979",
+          "lift": -0.178834182229768,
+          "median_effort_per_kloc": 4.390243902439025
+        },
+        {
+          "count": 7,
+          "excess_rate": 0.5714285714285714,
+          "level": "1984",
+          "lift": 0.0768049155145929,
+          "median_effort_per_kloc": 5.3052631578947365
+        },
+        {
+          "count": 7,
+          "excess_rate": 0.42857142857142855,
+          "level": "1983",
+          "lift": -0.06605222734254995,
+          "median_effort_per_kloc": 3.2
+        },
+        {
+          "count": 11,
+          "excess_rate": 0.5454545454545454,
+          "level": "1980",
+          "lift": 0.050830889540566915,
+          "median_effort_per_kloc": 5.095238095238095
+        }
+      ],
+      "strongest_level": "1985",
+      "strongest_lift": -0.32795698924731187
+    },
+    {
+      "factor": "cplx",
+      "levels": [
+        {
+          "count": 5,
+          "excess_rate": 0.8,
+          "level": "xh",
+          "lift": 0.30537634408602155,
+          "median_effort_per_kloc": 6.542857142857143
+        },
+        {
+          "count": 17,
+          "excess_rate": 0.7647058823529411,
+          "level": "vh",
+          "lift": 0.2700822264389626,
+          "median_effort_per_kloc": 14.609756097560975
+        },
+        {
+          "count": 3,
+          "excess_rate": 0.3333333333333333,
+          "level": "l",
+          "lift": -0.16129032258064518,
+          "median_effort_per_kloc": 3.4176325957147875
+        },
+        {
+          "count": 58,
+          "excess_rate": 0.39655172413793105,
+          "level": "h",
+          "lift": -0.09807193177604745,
+          "median_effort_per_kloc": 4.58041958041958
+        },
+        {
+          "count": 10,
+          "excess_rate": 0.5,
+          "level": "n",
+          "lift": 0.005376344086021501,
+          "median_effort_per_kloc": 4.931645569620253
+        }
+      ],
+      "strongest_level": "xh",
+      "strongest_lift": 0.30537634408602155
+    },
+    {
+      "factor": "rely",
+      "levels": [
+        {
+          "count": 10,
+          "excess_rate": 0.8,
+          "level": "vh",
+          "lift": 0.30537634408602155,
+          "median_effort_per_kloc": 24.417640692640692
+        },
+        {
+          "count": 39,
+          "excess_rate": 0.38461538461538464,
+          "level": "n",
+          "lift": -0.11000827129859386,
+          "median_effort_per_kloc": 4.0
+        },
+        {
+          "count": 42,
+          "excess_rate": 0.5238095238095238,
+          "level": "h",
+          "lift": 0.029185867895545337,
+          "median_effort_per_kloc": 5.1802942182689025
+        }
+      ],
+      "strongest_level": "vh",
+      "strongest_lift": 0.30537634408602155
+    },
+    {
+      "factor": "data",
+      "levels": [
+        {
+          "count": 17,
+          "excess_rate": 0.7647058823529411,
+          "level": "h",
+          "lift": 0.2700822264389626,
+          "median_effort_per_kloc": 7.325641025641025
+        },
+        {
+          "count": 37,
+          "excess_rate": 0.24324324324324326,
+          "level": "l",
+          "lift": -0.25138041267073524,
+          "median_effort_per_kloc": 4.0
+        },
+        {
+          "count": 8,
+          "excess_rate": 0.625,
+          "level": "vh",
+          "lift": 0.1303763440860215,
+          "median_effort_per_kloc": 4.979254949086079
+        },
+        {
+          "count": 31,
+          "excess_rate": 0.6129032258064516,
+          "level": "n",
+          "lift": 0.11827956989247312,
+          "median_effort_per_kloc": 5.3052631578947365
+        }
+      ],
+      "strongest_level": "h",
+      "strongest_lift": 0.2700822264389626
+    },
+    {
+      "factor": "plex",
+      "levels": [
+        {
+          "count": 4,
+          "excess_rate": 0.75,
+          "level": "vl",
+          "lift": 0.2553763440860215,
+          "median_effort_per_kloc": 16.263211382113823
+        },
+        {
+          "count": 22,
+          "excess_rate": 0.5909090909090909,
+          "level": "h",
+          "lift": 0.09628543499511244,
+          "median_effort_per_kloc": 6.679761904761905
+        },
+        {
+          "count": 53,
+          "excess_rate": 0.41509433962264153,
+          "level": "n",
+          "lift": -0.07952931629133697,
+          "median_effort_per_kloc": 4.615384615384615
+        },
+        {
+          "count": 14,
+          "excess_rate": 0.5714285714285714,
+          "level": "l",
+          "lift": 0.0768049155145929,
+          "median_effort_per_kloc": 4.979254949086079
+        }
+      ],
+      "strongest_level": "vl",
+      "strongest_lift": 0.2553763440860215
+    },
+    {
+      "factor": "apex",
+      "levels": [
+        {
+          "count": 12,
+          "excess_rate": 0.25,
+          "level": "vh",
+          "lift": -0.2446236559139785,
+          "median_effort_per_kloc": 3.6
+        },
+        {
+          "count": 46,
+          "excess_rate": 0.5652173913043478,
+          "level": "h",
+          "lift": 0.07059373539036928,
+          "median_effort_per_kloc": 5.0469829929331365
+        },
+        {
+          "count": 34,
+          "excess_rate": 0.47058823529411764,
+          "level": "n",
+          "lift": -0.02403542061986086,
+          "median_effort_per_kloc": 4.794090056285178
+        }
+      ],
+      "strongest_level": "vh",
+      "strongest_lift": -0.2446236559139785
+    },
+    {
+      "factor": "ltex",
+      "levels": [
+        {
+          "count": 14,
+          "excess_rate": 0.7142857142857143,
+          "level": "n",
+          "lift": 0.2196620583717358,
+          "median_effort_per_kloc": 5.3881578947368425
+        },
+        {
+          "count": 6,
+          "excess_rate": 0.6666666666666666,
+          "level": "l",
+          "lift": 0.17204301075268813,
+          "median_effort_per_kloc": 21.05725971370143
+        },
+        {
+          "count": 69,
+          "excess_rate": 0.43478260869565216,
+          "level": "h",
+          "lift": -0.05984104721832634,
+          "median_effort_per_kloc": 4.653061224489796
+        },
+        {
+          "count": 4,
+          "excess_rate": 0.5,
+          "level": "vl",
+          "lift": 0.005376344086021501,
+          "median_effort_per_kloc": 9.104878048780488
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": 0.2196620583717358
+    },
+    {
+      "factor": "acap",
+      "levels": [
+        {
+          "count": 10,
+          "excess_rate": 0.7,
+          "level": "vh",
+          "lift": 0.20537634408602146,
+          "median_effort_per_kloc": 5.116659009215967
+        },
+        {
+          "count": 51,
+          "excess_rate": 0.45098039215686275,
+          "level": "h",
+          "lift": -0.04364326375711575,
+          "median_effort_per_kloc": 4.642335766423358
+        },
+        {
+          "count": 32,
+          "excess_rate": 0.5,
+          "level": "n",
+          "lift": 0.005376344086021501,
+          "median_effort_per_kloc": 4.87051282051282
+        }
+      ],
+      "strongest_level": "vh",
+      "strongest_lift": 0.20537634408602146
+    },
+    {
+      "factor": "sced",
+      "levels": [
+        {
+          "count": 34,
+          "excess_rate": 0.29411764705882354,
+          "level": "l",
+          "lift": -0.20050600885515496,
+          "median_effort_per_kloc": 4.447374203471765
+        },
+        {
+          "count": 59,
+          "excess_rate": 0.6101694915254238,
+          "level": "n",
+          "lift": 0.11554583561144527,
+          "median_effort_per_kloc": 5.526315789473684
+        }
+      ],
+      "strongest_level": "l",
+      "strongest_lift": -0.20050600885515496
+    },
+    {
+      "factor": "pmat",
+      "levels": [
+        {
+          "count": 30,
+          "excess_rate": 0.3333333333333333,
+          "level": "n",
+          "lift": -0.16129032258064518,
+          "median_effort_per_kloc": 3.675
+        },
+        {
+          "count": 43,
+          "excess_rate": 0.5813953488372093,
+          "level": "h",
+          "lift": 0.08677169292323084,
+          "median_effort_per_kloc": 5.030674846625766
+        },
+        {
+          "count": 20,
+          "excess_rate": 0.55,
+          "level": "l",
+          "lift": 0.055376344086021545,
+          "median_effort_per_kloc": 5.25032175032175
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": -0.16129032258064518
+    },
+    {
+      "factor": "pcap",
+      "levels": [
+        {
+          "count": 10,
+          "excess_rate": 0.4,
+          "level": "vh",
+          "lift": -0.09462365591397848,
+          "median_effort_per_kloc": 3.7857142857142856
+        },
+        {
+          "count": 44,
+          "excess_rate": 0.5227272727272727,
+          "level": "n",
+          "lift": 0.028103616813294208,
+          "median_effort_per_kloc": 4.888589627864652
+        },
+        {
+          "count": 39,
+          "excess_rate": 0.48717948717948717,
+          "level": "h",
+          "lift": -0.00744416873449133,
+          "median_effort_per_kloc": 4.8
+        }
+      ],
+      "strongest_level": "vh",
+      "strongest_lift": -0.09462365591397848
+    },
+    {
+      "factor": "docu",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "n",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "flex",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "h",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "h",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "pcon",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "n",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "prec",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "h",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "h",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "resl",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "h",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "h",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "ruse",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "n",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "site",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "n",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "n",
+      "strongest_lift": 0.0
+    },
+    {
+      "factor": "team",
+      "levels": [
+        {
+          "count": 93,
+          "excess_rate": 0.4946236559139785,
+          "level": "vh",
+          "lift": 0.0,
+          "median_effort_per_kloc": 4.84375
+        }
+      ],
+      "strongest_level": "vh",
+      "strongest_lift": 0.0
+    }
+  ],
+  "overall_excess_rate": 0.4946236559139785,
+  "project_count": 93
+}
+real 0.03
+user 0.02
+sys 0.00

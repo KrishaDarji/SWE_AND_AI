@@ -1,0 +1,11 @@
+Implemented Step 5 in `source/x264_summary.py` and saved the complete updated source there.
+
+The new `blame_slow_encodes` API and `--blame` CLI rank binary settings using two descriptive signals: the mean encoding-time penalty when a setting is 1 rather than 0, and enrichment of that setting in the slowest 10% of rows. Existing summary, prediction, certification, and streaming behavior is reused unchanged.
+
+Tests are in `tests/test_x264_summary.py`; all 8 tests passed. Run with:
+
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --blame
+
+On the real dataset, `ref_9` is the strongest slow-tail association: mean penalty 276.72 time units and slow-tail enrichment 0.667. `no_fast_pskip` is next by tail enrichment (0.293) and has a 57.02 mean penalty; `no_mbtree` follows (0.121 enrichment, 50.74 penalty). These are observational associations, not causal proof.
+
+Known limitations: the analysis treats Performance- as lower-is-better encoding time; it only analyzes binary 0/1 settings; it uses marginal comparisons and does not control for interactions or confounding; the slow tail is defined by a configurable quantile; and all CSV rows are loaded into memory.

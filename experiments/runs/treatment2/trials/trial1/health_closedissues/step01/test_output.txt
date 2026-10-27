@@ -1,0 +1,8 @@
+test_classification_uses_metric_suffix (test_model_quality_summary.SummaryTests) ... ok
+test_end_to_end_summary (test_model_quality_summary.SummaryTests) ... ok
+test_numeric_and_categorical_statistics (test_model_quality_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

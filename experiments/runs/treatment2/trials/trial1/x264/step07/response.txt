@@ -1,0 +1,10 @@
+Complete updated source code: source/x264_summary.py
+
+Tests: tests/test_x264_summary.py contains the reused Step 1-6 regression tests plus Step 7 tests for a quality floor, an inclusive quality range, infeasible bounds, and invalid bounds.
+
+Run command:
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --quality-column Performance- --maximum-quality 270
+
+Reuse: Step 7 starts from the Step 6 Treatment 2 module and test suite. It retains all prior APIs and CLI modes and adds select_best_configuration plus the quality-constraint CLI options.
+
+Assumptions and limitations: quality is a numeric CSV column and bounds are inclusive; performance is lower-is-better; selection is limited to observed rows and breaks ties by earlier row; missing/non-numeric rows are ignored; the supplied dataset has only Performance- as a numeric measure, so the measured real-dataset run constrains that column. The result is observational and should be validated on representative production clips.

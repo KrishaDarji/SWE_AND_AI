@@ -1,0 +1,11 @@
+test_certification_finds_credible_faster_candidate (test_x264_summary.SummaryTests) ... ok
+test_certification_rejects_no_evidence (test_x264_summary.SummaryTests) ... ok
+test_online_evaluator_rejects_bad_configuration (test_x264_summary.SummaryTests) ... ok
+test_online_evaluator_updates_best_one_result_at_a_time (test_x264_summary.SummaryTests) ... ok
+test_step1_summary_and_step2_prediction (test_x264_summary.SummaryTests) ... ok
+test_stream_evaluation_accepts_json_like_records (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

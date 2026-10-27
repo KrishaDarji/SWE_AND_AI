@@ -1,0 +1,12 @@
+Step 2 is implemented in source/model_quality_summary.py.
+
+Complete updated source code: source/model_quality_summary.py (153 lines). It retains the Step 1 APIs and CLI and adds Prediction, _distance, predict, and --predict/--neighbors.
+
+Tests: tests/test_model_quality_summary.py contains all three existing Step 1 tests plus two Step 2 prediction tests.
+
+Run implementation:
+python3 source/model_quality_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --predict '{"N_estimators":100,"criterion":"squared_error","Min_sample_leaves":4,"Min_impurity_decrease":1.0,"Max_depth":10}' --neighbors 5
+
+Reuse: extended only the Treatment 2 Step 1 source and tests. The predictor reuses read_rows, _number, classify_columns, and the existing JSON CLI.
+
+Assumptions and limitations: historical rows are representative; mixed-type distance uses raw numeric differences and categorical mismatch penalties; predictions are distance-weighted averages, not a trained model; no full evaluation is performed.

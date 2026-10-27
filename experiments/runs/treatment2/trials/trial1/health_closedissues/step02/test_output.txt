@@ -1,0 +1,10 @@
+test_classification_uses_metric_suffix ... ok
+test_end_to_end_summary ... ok
+test_numeric_and_categorical_statistics ... ok
+test_prediction_rejects_invalid_neighbor_count ... ok
+test_prediction_uses_nearest_configuration_and_metrics ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK

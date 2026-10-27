@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,2,2,video encoding,spot,481,54,true,0.03,0,"19 tests passed including Step 1-8 regression coverage and 2 Step 9 anomaly tests; --anomalies completed on 1152-row dataset; runtime is measured /usr/bin/time real seconds; new_loc is diff-added source lines versus Step 8"

@@ -1,0 +1,12 @@
+test_certification_detects_credible_improvement (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_previous_reusable_schema (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_previous_summary_and_prediction_behavior (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_real_dataset_certification_is_reported (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_real_dataset_can_be_consumed_as_an_online_stream (test_x264_summary.OnlineEvaluationTests) ... ok
+test_results_are_processed_one_at_a_time_and_best_updates (test_x264_summary.OnlineEvaluationTests) ... ok
+test_ties_are_deterministic_and_invalid_results_rejected (test_x264_summary.OnlineEvaluationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.130s
+
+OK

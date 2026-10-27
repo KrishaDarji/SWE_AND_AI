@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+09,2,1,video encoding,spot,478,96,true,1.44,0,"Reused Treatment 2 Step 7 implementation and Step 8 suggestion behavior; added robust local-neighbor anomaly detection and CLI; 16 tests passed; runtime measured with /usr/bin/time -p on X264_AllMeasurements.csv"

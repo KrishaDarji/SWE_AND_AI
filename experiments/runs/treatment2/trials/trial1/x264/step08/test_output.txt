@@ -1,0 +1,14 @@
+test_classifies_settings_and_measures (test_x264_summary.SummaryTests) ... ok
+test_no_change_when_no_neighbor_improves (test_x264_summary.SummaryTests) ... ok
+test_prediction_exact_match (test_x264_summary.SummaryTests) ... ok
+test_prediction_unseen_configuration (test_x264_summary.SummaryTests) ... ok
+test_real_dataset_shape (test_x264_summary.SummaryTests) ... ok
+test_suggests_one_setting_change (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.008s
+
+OK
+real 0.06
+user 0.04
+sys 0.01

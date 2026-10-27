@@ -1,0 +1,19 @@
+test_real_dataset_blame_has_all_settings_and_cutoff (test_x264_summary.BlameTests) ... ok
+test_slow_tail_ranks_setting_that_marks_slow_rows (test_x264_summary.BlameTests) ... ok
+test_certification_detects_credible_improvement (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_previous_reusable_schema (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_previous_summary_and_prediction_behavior (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_real_dataset_certification_is_reported (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_justification_reuses_observed_best_and_exposes_caveats (test_x264_summary.JustificationTests) ... ok
+test_real_dataset_justification_is_admin_ready (test_x264_summary.JustificationTests) ... ok
+test_real_dataset_can_be_consumed_as_an_online_stream (test_x264_summary.OnlineEvaluationTests) ... ok
+test_results_are_processed_one_at_a_time_and_best_updates (test_x264_summary.OnlineEvaluationTests) ... ok
+test_ties_are_deterministic_and_invalid_results_rejected (test_x264_summary.OnlineEvaluationTests) ... ok
+test_choose_reports_infeasible_constraint (test_x264_summary.QualityConstraintTests) ... ok
+test_choose_selects_best_feasible_configuration (test_x264_summary.QualityConstraintTests) ... ok
+test_real_dataset_quality_constraint_preserves_configuration_shape (test_x264_summary.QualityConstraintTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 2.291s
+
+OK

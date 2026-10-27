@@ -1,0 +1,10 @@
+test_effort_estimate_rejects_non_positive_size (test_project_history.SummaryTests) ... ok
+test_effort_estimate_uses_median_productivity (test_project_history.SummaryTests) ... ok
+test_empty_input_is_safe (test_project_history.SummaryTests) ... ok
+test_repository_reads_trimmed_values (test_project_history.SummaryTests) ... ok
+test_summary_aggregates_present_values (test_project_history.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

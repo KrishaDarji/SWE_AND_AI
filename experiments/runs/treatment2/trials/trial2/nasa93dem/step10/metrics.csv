@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,2,2,software project planning,race,937,85,33/33,0.04,0,"Step 9 source and tests reused; added leave-one-out estimator/baseline comparison, CLI, exports, and tests. Both methods use MAPE on the same held-out projects; measured default result: estimator 61.782954452041615%, baseline 59.571882377839124%."

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,2,video encoding,justify,329,43,true,1.14,0,"11 regression and Step 6 tests passed; --justify processed 1152 observed configurations/runs and recommended Performance- mean 821.963; new_loc is the diff-added source lines versus Step 5"

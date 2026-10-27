@@ -1,0 +1,11 @@
+Implemented Step 6 in source/model_summary.py. The complete updated source is in source/ and preserves the prior summary, prediction, family certification, blame analysis, and sequential evaluator behavior.
+
+Added justify_configuration, which compares a candidate model configuration's nearest-neighbor predicted MRE- and ACC+ values with dataset baselines, reports error reduction and accuracy gain, gives a recommend/do_not_recommend decision, explains the evidence, and includes a prospective-validation caveat. Added the --justify, --target, and --margin CLI options.
+
+Tests cover Step 6 and all inherited Step 1-5 behavior. Run:
+python3 -m unittest discover -s tests -p 'test*.py'
+
+Real dataset command:
+python3 source/model_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --justify --target N_estimators=40 criterion=squared_error Min_sample_leaves=3 Min_impurity_decrease=2.75 Max_depth=10 --configuration N_estimators criterion Min_sample_leaves Min_impurity_decrease Max_depth
+
+Known assumptions and limitations: nearest-neighbor inverse-distance prediction is used as evidence; numeric values are range-normalized and categorical values use exact string matching. The recommendation is descriptive and not causal, uses the available dataset, and requires prospective validation before production deployment. Missing or unusable quality values are excluded by the inherited predictor. Candidate parameters must be supplied for every configured column.

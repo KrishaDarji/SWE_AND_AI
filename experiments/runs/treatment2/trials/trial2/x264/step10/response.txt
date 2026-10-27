@@ -1,0 +1,8 @@
+Implemented Step 10 by extending the reused x264_summary.py module. Added compare_search(), which compares a deterministic staged racing strategy with a sequential-prefix baseline. Both use the same finite dataset, budget of 64 evaluations, batch size 8, and maximize Performance-. Added CLI flags --compare-search, --budget, and --batch-size.
+
+Tests: 21 passed, including all Step 1-9 regression tests and Step 10 tests.
+Measured run: staged race objective 310.58; baseline objective 310.793; system gain -0.21300000000002228. Runtime measured with /usr/bin/time: real 0.03 seconds.
+
+Reuse: copied the Step 9 source and tests as the direct base, retaining all existing APIs and behavior, then added only the search comparison and its tests.
+
+Assumptions and limitations: each CSV row is treated as one candidate evaluation and rows are unique in this dataset. The baseline is the sequential prefix of the same candidate order. This evaluates search selection over recorded measurements, not live encoder wall-clock cost or causal performance. Performance- is treated as a maximization objective.

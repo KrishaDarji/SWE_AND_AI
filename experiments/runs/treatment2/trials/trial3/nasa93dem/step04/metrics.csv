@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,2,3,software project planning,flow,319,72,true,0.03,0,"9 unittest tests passed; CLI portfolio assessment completed on 93-project NASA93 dataset; total LOC is measured Step 4 source lines and new LOC is the 72-line delta beyond Step 3 source"

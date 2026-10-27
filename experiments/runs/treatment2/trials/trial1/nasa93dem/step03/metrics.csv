@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,2,1,software project planning,certify,192,54,true,0.03,0,"8 tests passed including reused Step 1-2 coverage; comparison CLI completed successfully; new_loc is diff-added source lines beyond Step 2"

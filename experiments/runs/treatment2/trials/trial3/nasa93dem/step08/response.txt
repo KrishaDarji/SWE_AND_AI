@@ -1,0 +1,8 @@
+Step 8 adds `recommend_cheapest_risk_change` in `source/project_history/risk.py` and the `--recommend-risk ATTRIBUTE CURRENT` CLI option. It reuses the Step 7 Project model, CSV repository, and CLI flow. Risk is median observed defects/KLOC; cost is median effort/KLOC. It selects the lowest-cost alternative whose observed median risk is lower than the current process, and explicitly reports insufficient data or no qualifying change.
+
+Run command:
+python3 -m unittest discover -s tests -v && python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --recommend-risk sced n
+
+Complete updated source code is in `source/` (all reused modules plus `project_history/risk.py`), and regression plus Step 8 tests are in `tests/`. All 20 tests passed. The implementation command exited successfully.
+
+Assumptions and limitations: risk is estimated from defects per KLOC; cost is effort per KLOC; medians are used for robustness; only records with positive KLOC, defects, and effort contribute; process comparisons are observational and do not establish causation; ties are resolved by process value; a current process must be supplied.

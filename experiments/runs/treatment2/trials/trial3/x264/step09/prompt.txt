@@ -1,0 +1,84 @@
+You are running Treatment 2, Trial 3, Dataset 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Dataset path: /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+- Current skill: spot
+- Current requirement: Detect an anomalous benchmark result or possible measurement error.
+
+Project directory:
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264
+
+Use only the Python standard library.
+
+Reuse and extend all previous Treatment 2 Trial 3, Dataset 1 implementations.
+Do not create an unrelated standalone implementation.
+Keep all previous behavior working while adding Step 9.
+
+Read the previous source code from:
+
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step01/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step02/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step03/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step04/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step05/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step06/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step07/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step08/source/
+
+Read the previous tests from:
+
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step01/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step02/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step03/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step04/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step05/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step06/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step07/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step08/tests/
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 9 and existing Step 1–8 behavior.
+3. One command to run the implementation.
+4. A short explanation of what was reused.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial3/x264/step09/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Record these metrics in metrics.csv:
+
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+For Treatment 2, new_loc must measure only the code added beyond the reused previous implementation.
+
+Run the tests and implementation, capture outputs and runtime, and record actual measured results. Do not fabricate results.
+
+Do not save files in the parent x264 directory.
+Do not copy code from other treatments, other trials, other datasets, or previous chats.
+Reuse must come only from the Treatment 2 files in the paths above.

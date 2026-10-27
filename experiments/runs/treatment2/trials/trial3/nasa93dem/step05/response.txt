@@ -1,0 +1,11 @@
+Implemented Step 5 by extending the Step 4 project_history package.
+
+New capability: explain_excessive_effort defines excessive effort as effort above the median by default, ranks categorical attributes by excessive-effort rate difference, and ranks parsed numeric fields by absolute Spearman correlation with effort. The main CLI exposes this with --blame.
+
+Run command:
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --blame
+
+Tests: all 11 tests passed. Observed execution: 93 projects; threshold 252.00; 46 excessive-effort projects.
+
+Known limitations: these are descriptive associations, not causal claims; missing effort records are excluded; the median is the default threshold; small groups, confounding, and statistical significance are not controlled.
+

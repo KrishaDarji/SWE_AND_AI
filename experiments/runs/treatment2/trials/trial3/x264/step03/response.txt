@@ -1,0 +1,10 @@
+Implemented Step 3 in source/ while preserving Step 1 summary and Step 2 prediction behavior.
+
+Added x264_summary.certify.certify_improvement, a certify.py CLI, and Step 3 tests plus copied Step 1-2 regression tests. It uses exact-configuration comparison, Welch's statistic, a normal-approximation two-sided p-value, and a 95% confidence interval.
+
+The recorded X264 run compared the first two dataset configurations. Each has one observation, so the result is not statistically credible: improvement=0.703, p_value=nan, credible=False.
+
+Run command:
+python3 source/certify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --measure Performance- --baseline no_asm=1 no_8x8dct=0 no_cabac=0 no_deblock=0 no_fast_pskip=0 no_mbtree=0 no_mixed_refs=0 no_weightb=0 rc_lookahead=1 rc_lookahead_20=1 rc_lookahead_40=0 rc_lookahead_60=0 ref=1 ref_1=1 ref_5=0 ref_9=0 --candidate no_asm=1 no_8x8dct=0 no_cabac=0 no_deblock=1 no_fast_pskip=0 no_mbtree=0 no_mixed_refs=0 no_weightb=0 rc_lookahead=1 rc_lookahead_20=1 rc_lookahead_40=0 rc_lookahead_60=0 ref=1 ref_1=1 ref_5=0 ref_9=0
+
+Complete updated implementation is in source/; tests are in tests/. Assumptions: lower Performance- is better unless --higher-is-better is supplied; configurations must exactly match; at least two observations per group are required; the p-value uses a normal approximation and 1.96 confidence multiplier; no multiplicity correction or randomization test is performed.

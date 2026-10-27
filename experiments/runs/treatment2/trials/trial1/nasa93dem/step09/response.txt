@@ -1,0 +1,12 @@
+Implemented Step 9 in source/nasa93_summary.py and retained all Step 1-8 behavior.
+
+New capability: spot_inconsistent_project(path, threshold=3.5), plus the --spot-inconsistent CLI mode. It compares per-KLOC effort, defects, and months with robust median/MAD modified z-scores and reports the highest-scoring project for review.
+
+The complete updated source is in source/nasa93_summary.py. The complete regression and Step 9 tests are in tests/test_nasa93_summary.py.
+
+Measured result on nasa93dem.csv: project 89 is the strongest inconsistency; its maximum absolute modified z-score is 34.39225277673923, driven by effort per KLOC. This is a statistical review flag, not proof of a bad record.
+
+Run command:
+python3 -m unittest discover -s step09/tests -v
+
+Assumptions and limitations: Kloc+ must be positive; ratios are used to normalize project size; MAD-based scores are robust but descriptive; zero MAD produces an infinite score for any non-median value; no causal explanation or data correction is inferred.

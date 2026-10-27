@@ -1,0 +1,247 @@
+{
+  "baseline_risk": 0.4946236559139785,
+  "candidate_count": 25,
+  "candidates": [
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 12,
+      "estimated_cost": 3.192920353982301,
+      "estimated_risk": 0.08333333333333333,
+      "factor": "centerX",
+      "recommended_level": "1",
+      "risk_reduction": 0.4112903225806452
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 7,
+      "estimated_cost": 3.2,
+      "estimated_risk": 0.42857142857142855,
+      "factor": "YearX",
+      "recommended_level": "1983",
+      "risk_reduction": 0.06605222734254995
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 3,
+      "estimated_cost": 3.4176325957147875,
+      "estimated_risk": 0.3333333333333333,
+      "factor": "cplx",
+      "recommended_level": "l",
+      "risk_reduction": 0.16129032258064518
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 12,
+      "estimated_cost": 3.6,
+      "estimated_risk": 0.25,
+      "factor": "apex",
+      "recommended_level": "vh",
+      "risk_reduction": 0.2446236559139785
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 6,
+      "estimated_cost": 3.6702619414483824,
+      "estimated_risk": 0.16666666666666666,
+      "factor": "YearX",
+      "recommended_level": "1985",
+      "risk_reduction": 0.32795698924731187
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 30,
+      "estimated_cost": 3.675,
+      "estimated_risk": 0.3333333333333333,
+      "factor": "pmat",
+      "recommended_level": "n",
+      "risk_reduction": 0.16129032258064518
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 10,
+      "estimated_cost": 3.7857142857142856,
+      "estimated_risk": 0.4,
+      "factor": "pcap",
+      "recommended_level": "vh",
+      "risk_reduction": 0.09462365591397848
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 54,
+      "estimated_cost": 3.894805194805195,
+      "estimated_risk": 0.24074074074074073,
+      "factor": "time",
+      "recommended_level": "n",
+      "risk_reduction": 0.2538829151732378
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 37,
+      "estimated_cost": 4.0,
+      "estimated_risk": 0.24324324324324326,
+      "factor": "data",
+      "recommended_level": "l",
+      "risk_reduction": 0.25138041267073524
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 39,
+      "estimated_cost": 4.0,
+      "estimated_risk": 0.38461538461538464,
+      "factor": "rely",
+      "recommended_level": "n",
+      "risk_reduction": 0.11000827129859386
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 49,
+      "estimated_cost": 4.285714285714286,
+      "estimated_risk": 0.32653061224489793,
+      "factor": "stor",
+      "recommended_level": "n",
+      "risk_reduction": 0.16809304366908057
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 4,
+      "estimated_cost": 4.333333333333334,
+      "estimated_risk": 0.25,
+      "factor": "YearX",
+      "recommended_level": "1978",
+      "risk_reduction": 0.2446236559139785
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 19,
+      "estimated_cost": 4.390243902439025,
+      "estimated_risk": 0.3157894736842105,
+      "factor": "YearX",
+      "recommended_level": "1979",
+      "risk_reduction": 0.178834182229768
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 34,
+      "estimated_cost": 4.447374203471765,
+      "estimated_risk": 0.29411764705882354,
+      "factor": "sced",
+      "recommended_level": "l",
+      "risk_reduction": 0.20050600885515496
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 65,
+      "estimated_cost": 4.504504504504505,
+      "estimated_risk": 0.36923076923076925,
+      "factor": "pvol",
+      "recommended_level": "l",
+      "risk_reduction": 0.12539288668320925
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 58,
+      "estimated_cost": 4.58041958041958,
+      "estimated_risk": 0.39655172413793105,
+      "factor": "cplx",
+      "recommended_level": "h",
+      "risk_reduction": 0.09807193177604745
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 53,
+      "estimated_cost": 4.615384615384615,
+      "estimated_risk": 0.41509433962264153,
+      "factor": "plex",
+      "recommended_level": "n",
+      "risk_reduction": 0.07952931629133697
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 51,
+      "estimated_cost": 4.642335766423358,
+      "estimated_risk": 0.45098039215686275,
+      "factor": "acap",
+      "recommended_level": "h",
+      "risk_reduction": 0.04364326375711575
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 3,
+      "estimated_cost": 4.653061224489796,
+      "estimated_risk": 0.3333333333333333,
+      "factor": "centerX",
+      "recommended_level": "6",
+      "risk_reduction": 0.16129032258064518
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 83,
+      "estimated_cost": 4.653061224489796,
+      "estimated_risk": 0.43373493975903615,
+      "factor": "tool",
+      "recommended_level": "n",
+      "risk_reduction": 0.060888716154942346
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 69,
+      "estimated_cost": 4.653061224489796,
+      "estimated_risk": 0.43478260869565216,
+      "factor": "ltex",
+      "recommended_level": "h",
+      "risk_reduction": 0.05984104721832634
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 21,
+      "estimated_cost": 4.666666666666667,
+      "estimated_risk": 0.42857142857142855,
+      "factor": "stor",
+      "recommended_level": "vh",
+      "risk_reduction": 0.06605222734254995
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 34,
+      "estimated_cost": 4.794090056285178,
+      "estimated_risk": 0.47058823529411764,
+      "factor": "apex",
+      "recommended_level": "n",
+      "risk_reduction": 0.02403542061986086
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 39,
+      "estimated_cost": 4.8,
+      "estimated_risk": 0.48717948717948717,
+      "factor": "pcap",
+      "recommended_level": "h",
+      "risk_reduction": 0.00744416873449133
+    },
+    {
+      "baseline_risk": 0.4946236559139785,
+      "count": 37,
+      "estimated_cost": 4.84375,
+      "estimated_risk": 0.4864864864864865,
+      "factor": "centerX",
+      "recommended_level": "2",
+      "risk_reduction": 0.008137169427491986
+    }
+  ],
+  "cost_definition": "median historical effort per KLOC",
+  "decision": "recommend",
+  "risk_definition": "effort_per_kloc above dataset median",
+  "selected": {
+    "baseline_risk": 0.4946236559139785,
+    "count": 12,
+    "estimated_cost": 3.192920353982301,
+    "estimated_risk": 0.08333333333333333,
+    "factor": "centerX",
+    "recommended_level": "1",
+    "risk_reduction": 0.4112903225806452
+  }
+}
+real 0.04
+user 0.02
+sys 0.00
+IMPLEMENTATION_STATUS=0

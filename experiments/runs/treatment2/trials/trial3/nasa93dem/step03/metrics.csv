@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,2,3,software project planning,certify,247,64,true,0.14,0,"7 unittest tests passed; certification command completed on 93-project NASA93 dataset; new LOC is Step 3 source delta beyond Step 2's 183 source LOC"

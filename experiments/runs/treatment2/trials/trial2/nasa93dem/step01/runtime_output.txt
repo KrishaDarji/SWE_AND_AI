@@ -1,0 +1,13 @@
+Command: /usr/bin/time -p env PYTHONPATH=source python3 source/summarize.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Measured CLI output:
+project_count=93
+year_range=[1971, 1987]
+totals: kloc=8744.05, effort=58070.299999999996, defects=349844.0, months=2248.4000000000005
+averages: kloc=94.02204301075268, effort=624.4118279569892, defects=3761.7634408602153, months=24.176344086021512
+maximums: effort project 90=8211.0; defects project 59=50961.0; months project 59=96.4
+minimums: effort project 6=8.4; defects project 58=28.0; months project 58=4.9
+
+real 0.03
+user 0.02
+sys 0.00

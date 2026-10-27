@@ -1,0 +1,65 @@
+{
+  "baseline_risk": 4.84375,
+  "candidates": [
+    {
+      "baseline_risk": 4.84375,
+      "change_cost": 139.91666666666666,
+      "estimated_risk": 3.192920353982301,
+      "factor": "centerX",
+      "from_value": "any other observed value",
+      "projects": 12,
+      "risk_reduction": 1.6508296460176992,
+      "to_value": "1"
+    },
+    {
+      "baseline_risk": 4.84375,
+      "change_cost": 255.96666666666667,
+      "estimated_risk": 3.675,
+      "factor": "pmat",
+      "from_value": "any other observed value",
+      "projects": 30,
+      "risk_reduction": 1.1687500000000002,
+      "to_value": "n"
+    },
+    {
+      "baseline_risk": 4.84375,
+      "change_cost": 269.1589743589744,
+      "estimated_risk": 4.0,
+      "factor": "rely",
+      "from_value": "any other observed value",
+      "projects": 39,
+      "risk_reduction": 0.84375,
+      "to_value": "n"
+    },
+    {
+      "baseline_risk": 4.84375,
+      "change_cost": 276.79411764705884,
+      "estimated_risk": 4.447374203471765,
+      "factor": "sced",
+      "from_value": "any other observed value",
+      "projects": 34,
+      "risk_reduction": 0.3963757965282353,
+      "to_value": "l"
+    },
+    {
+      "baseline_risk": 4.84375,
+      "change_cost": 315.2448275862069,
+      "estimated_risk": 4.58041958041958,
+      "factor": "cplx",
+      "from_value": "any other observed value",
+      "projects": 58,
+      "risk_reduction": 0.26333041958042,
+      "to_value": "h"
+    }
+  ],
+  "recommendation": {
+    "baseline_risk": 4.84375,
+    "change_cost": 139.91666666666666,
+    "estimated_risk": 3.192920353982301,
+    "factor": "centerX",
+    "from_value": "any other observed value",
+    "projects": 12,
+    "risk_reduction": 1.6508296460176992,
+    "to_value": "1"
+  }
+}

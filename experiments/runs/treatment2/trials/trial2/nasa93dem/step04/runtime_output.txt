@@ -1,0 +1,13 @@
+{
+  "decision": "approve",
+  "estimated_effort": 48.0,
+  "proposal_id": "P-1",
+  "proposed_kloc": 10.0,
+  "reasons": [],
+  "remaining_budget": 10000.0,
+  "remaining_capacity": 10000.0,
+  "screening_upper_effort": 86.66666666666666
+}
+real 0.03
+user 0.02
+sys 0.00

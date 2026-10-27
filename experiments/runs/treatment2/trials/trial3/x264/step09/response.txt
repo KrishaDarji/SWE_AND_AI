@@ -1,0 +1,15 @@
+Complete updated source code is in source/. It includes the fully reused Step 8 implementation and the Step 9 additions:
+
+- x264_summary/anomaly.py: robust anomaly detection using median/MAD, with IQR fallback when MAD is zero.
+- x264_summary/__init__.py: exports Anomaly and detect_anomalies.
+- detect.py: command-line interface for the detector.
+
+Tests are in tests/. All prior Step 1-8 tests were reused and run alongside two Step 9 tests. The one command to run the implementation is:
+
+python3 source/detect.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Reuse: Step 08/source was copied as the complete baseline; no files from other treatments, trials, or chats were used. Existing APIs and CLIs were left unchanged.
+
+Assumptions and limitations: the final CSV column is the default benchmark measure; an anomaly is a two-sided robust outlier with score greater than 3.5; with one observation per configuration, this detects dataset-level measurement outliers rather than estimating within-configuration repeatability. It reports candidates for review and does not prove measurement error or remove data. Constant data has no detectable outlier.
+
+Verification: 22 tests passed. The real dataset completed successfully and produced no anomalies at the default threshold.

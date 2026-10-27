@@ -1,0 +1,10 @@
+test_certifies_reliably_better_family (test_model_summary.CompatibilityAndCertificationTests) ... ok
+test_lower_metric_direction (test_model_summary.CompatibilityAndCertificationTests) ... ok
+test_missing_family_rejected (test_model_summary.CompatibilityAndCertificationTests) ... ok
+test_step1_summary_behavior (test_model_summary.CompatibilityAndCertificationTests) ... ok
+test_step2_prediction_behavior (test_model_summary.CompatibilityAndCertificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.011s
+
+OK

@@ -1,0 +1,13 @@
+Implemented Step 10 in source/nasa93_summary.py and retained all Step 1-9 behavior.
+
+New capability: compare_estimators(path), plus the --compare-estimators CLI mode. It uses leave-one-out cross-validation on all 93 projects and evaluates both methods with mean absolute error (MAE): the existing size-adjusted median historical effort/KLOC estimator and a simple median historical total-effort baseline.
+
+Measured result on nasa93dem.csv: the existing estimator MAE was 343.78498870379315; the baseline MAE was 544.2290322580645; the estimator was better by 200.4440435542714 MAE units.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial1/nasa93dem/step10/source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --compare-estimators
+
+Tests:
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial1/nasa93dem/step10/tests -v
+
+Reused the complete Step 9 source and regression tests, adding only the Step 10 estimator comparison, CLI option, and two tests. Known limitations: leave-one-out estimates are descriptive for this dataset; the baseline ignores project size; the estimator assumes effort scales with KLOC and uses medians only; no uncertainty interval or causal conclusion is provided.

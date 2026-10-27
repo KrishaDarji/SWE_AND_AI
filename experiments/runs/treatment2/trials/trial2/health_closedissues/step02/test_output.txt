@@ -1,0 +1,11 @@
+test_existing_summary_behavior (test_model_summary.SummaryAndPredictionTests) ... ok
+test_invalid_prediction_target_is_rejected (test_model_summary.SummaryAndPredictionTests) ... ok
+test_prediction_uses_similar_configuration (test_model_summary.SummaryAndPredictionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+real 0.06
+user 0.03
+sys 0.01

@@ -1,0 +1,11 @@
+Implemented Step 8 by reusing the complete Step 7 source and tests.
+
+Added `project_summary.risk.recommend_process_change` and the `risk.py` CLI. It evaluates observed categorical process settings, treats median effort/KLOC as estimated risk, uses mean effort as the available cost proxy, filters small groups, and selects the lowest-cost group with lower risk.
+
+Command: `python3 -m unittest discover -s experiments/runs/treatment2/trials/trial2/nasa93dem/step08/tests -p 'test_*.py'`
+
+Implementation command: `python3 experiments/runs/treatment2/trials/trial2/nasa93dem/step08/source/risk.py moot/optimize/process/nasa93dem.csv --top 5`
+
+Measured result: 27/27 tests passed. Recommendation: centerX=1, reducing median effort/KLOC risk from 4.84375 to 3.192920353982301; mean effort cost proxy 139.91666666666666.
+
+Assumptions: process changes are observed categorical values; risk is median effort/KLOC; cheapest uses mean historical effort because no price field exists; associations are observational, not causal; minimum group size defaults to 3.

@@ -1,0 +1,23 @@
+Implemented Step 5 by reusing the complete Step 4 source and tests and adding:
+
+- source/project_summary/blame.py: reusable `blame_factors` analysis and serializable result models.
+- source/blame.py: command-line interface for the analysis.
+- exports from `project_summary.__init__`.
+- tests/test_blame.py: Step 5 API, validation, and CLI coverage.
+
+The analysis marks projects with effort at or above the dataset median as excessive by default,
+then ranks categorical factor values by excessive-effort rate lift. The ranking score weights
+the absolute lift by the square root of the group size. The CLI output for this dataset reports
+a median threshold of 252.0 and 47 excessive projects; the leading associated value is `plex=h`.
+
+All 17 tests passed, including the reused Step 1-4 tests.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial2/nasa93dem/step05/source/blame.py moot/optimize/process/nasa93dem.csv --top 10
+
+Known assumptions and limitations:
+- “Excessive” is operationally defined as effort >= the dataset median unless --threshold is supplied.
+- Associations are univariate and categorical; they do not establish causality or control confounding.
+- Outcome and identifier columns are excluded from factor ranking.
+- Groups smaller than three projects are excluded by default.
+- The dataset schema is assumed to be nasa93dem-compatible with the reused loader.

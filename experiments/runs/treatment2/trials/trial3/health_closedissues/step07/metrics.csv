@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,2,3,machine-learning model configuration,choose,456,87,1,1.23,0,"21 unittest tests passed; real dataset --choose CLI completed successfully; runtime measured with /usr/bin/time real seconds; standard library only; new_loc is Step 7 source LOC beyond reused Step 6 source"

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,2,3,machine-learning model configuration,race,636,60,1,1.07,0,"28 unittest tests passed; real Health-ClosedIssues0000.csv baseline comparison completed; baseline is first valid observed row; total_loc counts source/*.py; new_loc is the Step 9-to-10 source diff; runtime is measured /usr/bin/time real seconds; standard library only"

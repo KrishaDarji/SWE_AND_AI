@@ -1,0 +1,11 @@
+test_budget_approval_uses_upper_planning_estimate (test_nasa93_summary.SummaryTests) ... ok
+test_estimate_has_range_and_requires_budget_for_approval (test_nasa93_summary.SummaryTests) ... ok
+test_estimate_rejects_non_positive_size (test_nasa93_summary.SummaryTests) ... ok
+test_loads_all_historical_projects (test_nasa93_summary.SummaryTests) ... ok
+test_outcomes_and_derived_rates_are_present (test_nasa93_summary.SummaryTests) ... ok
+test_result_is_json_serializable (test_nasa93_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK

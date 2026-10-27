@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,2,1,machine-learning model configuration,choose,365,45,true,0.05,0,"16 tests passed; balanced ACC+ and PRED40+ on 10000 dataset rows; selected score 1.0; new_loc is the added-line count versus reused Step 6 source"

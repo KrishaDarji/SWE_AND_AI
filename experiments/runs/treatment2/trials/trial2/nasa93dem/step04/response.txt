@@ -1,0 +1,19 @@
+Step 4 complete.
+
+Complete updated source code is in source/ and complete tests are in tests/.
+The reused source includes the Step 1 summary and loader, Step 2 effort estimator, and Step 3 cost certification. Step 4 adds project_summary.assess.assess_proposal, ProposalAssessment, and the assess.py CLI.
+
+The new assessment estimates effort from nearby historical projects, compares the point estimate to remaining budget, compares the conservative upper screening bound to remaining capacity, and returns approve or hold with reasons.
+
+Run command:
+python3 -m unittest discover -s tests -v
+
+Implementation command:
+python3 source/assess.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv P-1 10 10000 10000
+
+Known assumptions and limitations:
+- Budget and capacity are expressed in the same effort units as the dataset.
+- Approval requires both checks to pass; otherwise the proposal is held.
+- The screening range is based on nearest-project effort/KLOC rates and is not a calibrated probabilistic forecast.
+- Proposals are assessed independently; callers must decrement portfolio limits after an approval.
+- Only the Python standard library is used.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,2,1,machine-learning model configuration,certify,233,81,true,8.30,0,"7 tests passed; certification compared criterion=poisson against criterion=squared_error across MRE-, ACC+, and PRED40+ with 2000 bootstrap resamples; reliable winner was squared_error"

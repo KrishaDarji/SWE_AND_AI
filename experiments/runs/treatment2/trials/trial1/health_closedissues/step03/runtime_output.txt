@@ -1,0 +1,42 @@
+{
+  "confidence": 0.95,
+  "family_a": "poisson",
+  "family_b": "squared_error",
+  "family_field": "criterion",
+  "metrics": {
+    "ACC+": {
+      "difference": -0.007914163808974584,
+      "direction": "higher_is_better",
+      "interval": [
+        -0.013153427094921066,
+        -0.0027037931568620888
+      ],
+      "winner": "squared_error"
+    },
+    "MRE-": {
+      "difference": -0.029682229691322615,
+      "direction": "higher_is_better",
+      "interval": [
+        -0.03936046746992661,
+        -0.020354447028711142
+      ],
+      "winner": "squared_error"
+    },
+    "PRED40+": {
+      "difference": -0.04701998433687454,
+      "direction": "higher_is_better",
+      "interval": [
+        -0.06094916094902719,
+        -0.033560255682022616
+      ],
+      "winner": "squared_error"
+    }
+  },
+  "reliable_winner": "squared_error",
+  "samples_a": 3335,
+  "samples_b": 3363,
+  "source": "/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+}
+real 8.30
+user 8.25
+sys 0.03

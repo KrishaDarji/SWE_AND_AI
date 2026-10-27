@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,2,2,video encoding,choose,385,57,true,0.04,0,"14 regression and Step 7 tests passed; --choose processed the real dataset with minimum Performance- 800 and selected observed mean 821.963 from 24 feasible rows; new_loc is the diff-added source lines versus Step 6"

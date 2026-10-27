@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,3,software project planning,fix,612,61,true,0.04,0,"20 unittest tests passed; Step 7 source reused; risk recommendation added; implementation and tests exited successfully; new LOC counts added source lines beyond Step 7"

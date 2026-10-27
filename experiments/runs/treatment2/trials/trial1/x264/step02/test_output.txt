@@ -1,0 +1,9 @@
+test_classifies_settings_and_measures (test_x264_summary.SummaryTests) ... ok
+test_prediction_exact_match (test_x264_summary.SummaryTests) ... ok
+test_prediction_unseen_configuration (test_x264_summary.SummaryTests) ... ok
+test_real_dataset_shape (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.007s
+
+OK

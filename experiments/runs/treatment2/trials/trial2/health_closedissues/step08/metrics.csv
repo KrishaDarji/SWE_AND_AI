@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,2,machine-learning model configuration,fix,469,56,1,0.05,0,"14 tests passed; 10000 rows evaluated; smallest improving observed change had Hamming distance 2 and reduced MRE- by 0.04756995581737844; new_loc is added source lines versus Step 7"

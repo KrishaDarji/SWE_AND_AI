@@ -1,0 +1,19 @@
+Implemented Step 9 by extending the reused Step 8 source.
+
+Added spot_quality_anomalies(), which reports missing/non-finite quality values,
+robust median/MAD or IQR outliers, and disagreements between repeated identical
+configurations. Added --spot-anomalies to the existing CLI. All Step 1-8 tests
+and the new Step 9 tests are included in tests/. The complete updated source is
+in source/main.py and source/model_summary.py.
+
+Command:
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --spot-anomalies
+
+Reuse: Step 8 source and tests from this exact Treatment 2 Trial 3 Dataset 3
+directory; no other treatment, trial, dataset, or chat was used.
+
+Assumptions and limitations: quality columns are inferred from MRE/ACC/PRED
+prefixes unless explicitly supplied; robust outlier flags are screening signals,
+not proof of measurement error; duplicate disagreement only indicates that a
+configuration was observed more than once with differing quality values; all
+processing uses Python standard-library modules only.

@@ -1,0 +1,74 @@
+You are running Treatment 2, Trial 2, Dataset 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: plain Python only
+- Reuse instructed: Yes
+- Domain: machine-learning model configuration
+- Dataset: Health-ClosedIssues0000.csv
+- Dataset path: /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+- Current skill: flow
+- Current requirement: Evaluate configurations as validation results arrive one at a time.
+
+Project directory:
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues
+
+Use only the Python standard library.
+
+Reuse and extend all previous Treatment 2 Trial 2, Dataset 3 implementations.
+Do not create an unrelated standalone implementation.
+Keep all previous behavior working while adding Step 4.
+
+Read the previous source code from:
+
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step01/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step02/source/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step03/source/
+
+Read the previous tests from:
+
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step01/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step02/tests/
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step03/tests/
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 4 and existing Step 1–3 behavior.
+3. One command to run the implementation.
+4. A short explanation of what was reused.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+
+/Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial2/health_closedissues/step04/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Record these metrics in metrics.csv:
+
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+For Treatment 2, new_loc must measure only the code added beyond the reused previous implementation.
+
+Run the tests and implementation, capture outputs and runtime, and record actual measured results. Do not fabricate results.
+
+Do not save files in the parent health_closedissues directory.
+Do not copy code from other treatments, other trials, other datasets, or previous chats.
+Reuse must come only from the Treatment 2 files in the paths above.

@@ -1,0 +1,3 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,2,3,software project planning,blame,407,89,1,0.030630,0,Standard library only; reused Step 4 source and tests; 11 tests passed; 93 projects analyzed; median threshold 252.00; 46 excessive-effort projects.
+

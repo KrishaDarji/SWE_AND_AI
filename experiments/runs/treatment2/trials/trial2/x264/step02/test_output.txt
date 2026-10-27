@@ -1,0 +1,12 @@
+test_prediction_exact_match (test_x264_summary.SummaryAndPredictionTests) ... ok
+test_prediction_unseen_configuration_uses_nearest_neighbors (test_x264_summary.SummaryAndPredictionTests) ... ok
+test_step1_real_dataset_summary_still_works (test_x264_summary.SummaryAndPredictionTests) ... ok
+test_step1_reusable_schema_still_works (test_x264_summary.SummaryAndPredictionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.031s
+
+OK
+real 0.08
+user 0.06
+sys 0.01

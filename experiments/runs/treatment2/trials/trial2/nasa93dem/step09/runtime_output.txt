@@ -1,0 +1,12 @@
+[
+  {
+    "effort_per_kloc": 89.37931034482759,
+    "historical_median": 4.84375,
+    "project_id": "89",
+    "reason": "higher effort per KLOC than the historical median",
+    "robust_score": 34.39178160933118
+  }
+]
+real 0.03
+user 0.02
+sys 0.00

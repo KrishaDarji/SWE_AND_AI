@@ -1,0 +1,61 @@
+{
+  "baseline": {
+    "configuration": {
+      "no_8x8dct": 0,
+      "no_asm": 1,
+      "no_cabac": 0,
+      "no_deblock": 0,
+      "no_fast_pskip": 1,
+      "no_mbtree": 1,
+      "no_mixed_refs": 1,
+      "no_weightb": 1,
+      "rc_lookahead": 1,
+      "rc_lookahead_20": 1,
+      "rc_lookahead_40": 0,
+      "rc_lookahead_60": 0,
+      "ref": 1,
+      "ref_1": 1,
+      "ref_5": 0,
+      "ref_9": 0
+    },
+    "evaluations": 64,
+    "measure": "Performance-",
+    "name": "sequential_prefix",
+    "objective": 310.793
+  },
+  "batch_size": 8,
+  "budget": 64,
+  "limitations": [
+    "Rows are pre-recorded candidates; results measure search selection on this dataset, not live encoding cost."
+  ],
+  "measure": "Performance-",
+  "same_budget": true,
+  "system": {
+    "configuration": {
+      "no_8x8dct": 0,
+      "no_asm": 1,
+      "no_cabac": 0,
+      "no_deblock": 0,
+      "no_fast_pskip": 1,
+      "no_mbtree": 1,
+      "no_mixed_refs": 0,
+      "no_weightb": 0,
+      "rc_lookahead": 1,
+      "rc_lookahead_20": 1,
+      "rc_lookahead_40": 0,
+      "rc_lookahead_60": 0,
+      "ref": 1,
+      "ref_1": 1,
+      "ref_5": 0,
+      "ref_9": 0
+    },
+    "evaluations": 64,
+    "measure": "Performance-",
+    "name": "staged_race",
+    "objective": 310.58
+  },
+  "system_gain": -0.21300000000002228
+}
+real 0.03
+user 0.02
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,2,software project planning,fix,785,94,27/27,0.04,0,"Step 7 reused; added risk recommendation package (74 LOC) and CLI (20 LOC). New LOC excludes reused source and tests."

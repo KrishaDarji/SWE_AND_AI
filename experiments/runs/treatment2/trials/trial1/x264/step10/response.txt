@@ -1,0 +1,12 @@
+Implemented Step 10 in source/x264_summary.py.
+
+Complete updated source code: source/x264_summary.py
+Tests covering inherited Steps 1-9 and new Step 10: tests/test_x264_summary.py
+
+Step 10 adds compare_search_strategies() and --compare-search. The race local search and seeded random-without-replacement baseline evaluate the same number of distinct observed configurations and minimize Performance- (lower is better). The command used is:
+
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --compare-search --budget 32 --seed 0
+
+Reuse: the complete Step 9 module and its inherited tests were carried forward; only the Step 10 comparison API, CLI options, and tests were added.
+
+Assumptions and limitations: the CSV rows are treated as the observable search space; missing/non-numeric Performance- rows are excluded; configurations are deduplicated for evaluation; the race is deterministic and local/Hamming-neighborhood based; the random baseline is reproducible only for a supplied seed; benchmark associations do not establish production causality.

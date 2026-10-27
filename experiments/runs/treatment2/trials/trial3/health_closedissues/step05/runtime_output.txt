@@ -1,0 +1,66 @@
+{
+  "associations": [
+    {
+      "association_score": 0.8034282342453826,
+      "correlation": 0.8034282342453826,
+      "high_error_mean": 14.134423613881133,
+      "hyperparameter": "Min_sample_leaves",
+      "low_error_mean": 9.256772988122247,
+      "type": "numeric"
+    },
+    {
+      "association_score": 0.06763095991581541,
+      "correlation": 0.06763095991581541,
+      "high_error_mean": 5.044974072596729,
+      "hyperparameter": "Min_impurity_decrease",
+      "low_error_mean": 4.9798478580008005,
+      "type": "numeric"
+    },
+    {
+      "association_score": 0.04177549259377822,
+      "hyperparameter": "criterion",
+      "levels": [
+        {
+          "count": 3302,
+          "high_error_rate": 0.6326468806783767,
+          "mean_error": 0.7508694690284082,
+          "value": "absolute_error"
+        },
+        {
+          "count": 3335,
+          "high_error_rate": 0.06206896551724138,
+          "mean_error": 0.7034025255399244,
+          "value": "poisson"
+        },
+        {
+          "count": 3363,
+          "high_error_rate": 0.06274159976211716,
+          "mean_error": 0.6737202958486018,
+          "value": "squared_error"
+        }
+      ],
+      "type": "categorical"
+    },
+    {
+      "association_score": 0.0077350014763595,
+      "correlation": 0.0077350014763595,
+      "high_error_mean": 10.671320303151177,
+      "hyperparameter": "Max_depth",
+      "low_error_mean": 10.47337515014013,
+      "type": "numeric"
+    },
+    {
+      "association_score": 0.006365798539962191,
+      "correlation": -0.006365798539962191,
+      "high_error_mean": 99.40566414040686,
+      "hyperparameter": "N_estimators",
+      "low_error_mean": 108.28773521953823,
+      "type": "numeric"
+    }
+  ],
+  "error_column": "MRE-",
+  "high_error_count": 2507,
+  "high_error_threshold": 0.8251840942562592,
+  "overall_mean_error": 0.70909397643463,
+  "row_count": 10000
+}

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,2,3,software project planning,spot,671,59,true,0.07,0,"23 unittest tests passed; Step 8 source and tests reused; robust historical inconsistency spotting added; real nasa93dem command selected project 89; total LOC is source Python lines and new LOC is the source diff beyond Step 8"

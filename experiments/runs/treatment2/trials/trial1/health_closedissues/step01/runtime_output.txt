@@ -1,0 +1,20 @@
+{
+  "column_count": 8,
+  "columns": [
+    {"count": 10000, "kind": "numeric", "maximum": 1.0, "mean": 0.70909397643463, "median": 0.8091310751104565, "minimum": 0.0, "missing": 0, "mode": null, "name": "MRE-", "values": null},
+    {"count": 10000, "kind": "numeric", "maximum": 1.0, "mean": 0.49593851329765903, "median": 0.43992310157000963, "minimum": 0.0, "missing": 0, "mode": null, "name": "ACC+", "values": null},
+    {"count": 10000, "kind": "numeric", "maximum": 1.0, "mean": 0.14684285714285714, "median": 0.0, "minimum": 0.0, "missing": 0, "mode": null, "name": "PRED40+", "values": null},
+    {"count": 10000, "kind": "numeric", "maximum": 200.0, "mean": 106.061, "median": 110.0, "minimum": 10.0, "missing": 0, "mode": null, "name": "N_estimators", "values": null},
+    {"count": 10000, "kind": "categorical", "maximum": null, "mean": null, "median": null, "minimum": null, "missing": 0, "mode": "squared_error", "name": "criterion", "values": {"absolute_error": 3302, "poisson": 3335, "squared_error": 3363}},
+    {"count": 10000, "kind": "numeric", "maximum": 20.0, "mean": 10.4796, "median": 11.0, "minimum": 1.0, "missing": 0, "mode": null, "name": "Min_sample_leaves", "values": null},
+    {"count": 10000, "kind": "numeric", "maximum": 10.0, "mean": 4.996175, "median": 5.0, "minimum": 0.0, "missing": 0, "mode": null, "name": "Min_impurity_decrease", "values": null},
+    {"count": 10000, "kind": "numeric", "maximum": 20.0, "mean": 10.523, "median": 11.0, "minimum": 1.0, "missing": 0, "mode": null, "name": "Max_depth", "values": null}
+  ],
+  "configuration_fields": ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"],
+  "metric_fields": ["MRE-", "ACC+", "PRED40+"],
+  "row_count": 10000,
+  "source": "/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+}
+real 0.07
+user 0.05
+sys 0.01

@@ -1,0 +1,7 @@
+Complete updated source code is in source/. Tests for the new prediction behavior and the reused Step 1 summary behavior are in tests/. Run with:
+
+PYTHONPATH=source python3 source/predict.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv no_asm=1 no_8x8dct=0 no_cabac=0 no_deblock=0 no_fast_pskip=0 no_mbtree=0 no_mixed_refs=0 no_weightb=0 rc_lookahead=1 rc_lookahead_20=1 rc_lookahead_40=0 rc_lookahead_60=0 ref=1 ref_1=1 ref_5=0 ref_9=0 --neighbors 5
+
+The implementation reuses Step 1's package layout and summary code, adding a normalized nearest-neighbor predictor and CLI. It uses only Python standard-library modules.
+
+Assumptions and limitations: all configuration columns are numeric; the final CSV column is the default target; distance is a normalized absolute difference over settings; categorical/binary settings are therefore treated numerically; predictions are averages of the closest rows and are not confidence intervals; the dataset must contain at least one row.

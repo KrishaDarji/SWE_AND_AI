@@ -1,0 +1,14 @@
+Step 7 is implemented in source/x264_summary/choose.py and source/choose.py.
+
+Complete updated source code is in source/; it includes the reused Step 1-6 modules and the new choose API/CLI. Complete tests are in tests/; they include all prior tests plus test_choose.py.
+
+The selector groups rows by settings, computes per-configuration means, keeps configurations whose quality mean satisfies the inclusive minimum or maximum bound, and selects the best objective mean with deterministic setting-order tie breaking. It supports higher-is-better or lower-is-better quality and objective directions.
+
+Reuse: copied the complete Step 06 source and tests from this same Treatment 2 Trial 3, then added only the Step 7 selector, export, CLI, and tests.
+
+Validation: 18 tests passed. The dataset run selected the configuration printed in runtime_output.txt under Performance- <= 300, with 336 feasible configurations.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial3/x264/step07/source/choose.py moot/optimize/config/X264_AllMeasurements.csv --quality-measure Performance- --maximum-quality 300 --objective-measure Performance-
+
+Assumptions and limitations: constraints apply to the mean of observed rows; only observed configurations can be selected; missing or nonnumeric measures are errors; the implementation does not infer unobserved configurations or provide statistical confidence bounds. The sample run uses Performance- as both quality and objective because Dataset 1 exposes that measure.

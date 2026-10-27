@@ -1,0 +1,24 @@
+test_invalid_quantile_and_missing_error_are_rejected (test_blame.BlameTests) ... ok
+test_numeric_and_categorical_associations_are_ranked (test_blame.BlameTests) ... ok
+test_balanced_score_selects_best_candidate (test_choose.ChooseConfigurationTests) ... ok
+test_error_metric_is_lower_is_better (test_choose.ChooseConfigurationTests) ... ok
+test_invalid_inputs_are_rejected (test_choose.ChooseConfigurationTests) ... ok
+test_recommends_candidate_better_than_baseline (test_justify.JustificationTests) ... ok
+test_rejects_missing_candidate_parameter (test_justify.JustificationTests) ... ok
+test_certification_compatibility (test_previous_behavior.AllBehaviorTests) ... ok
+test_incremental_best_and_arrival_order (test_previous_behavior.AllBehaviorTests) ... ok
+test_invalid_incremental_result_rejected (test_previous_behavior.AllBehaviorTests) ... ok
+test_lower_is_better_and_ties_keep_first (test_previous_behavior.AllBehaviorTests) ... ok
+test_summary_and_prediction_compatibility (test_previous_behavior.AllBehaviorTests) ... ok
+test_flags_range_outlier_and_duplicate_inconsistency (test_spot.SpotTests) ... ok
+test_rejects_bad_inputs (test_spot.SpotTests) ... ok
+test_prefers_smallest_change (test_suggest.SuggestChangeTests) ... ok
+test_reports_no_improvement_and_validates_baseline (test_suggest.SuggestChangeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.002s
+
+OK
+real 0.06
+user 0.04
+sys 0.01

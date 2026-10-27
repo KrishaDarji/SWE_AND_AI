@@ -1,0 +1,17 @@
+Step 8 is complete.
+
+Updated source: source/x264_summary.py
+Tests: tests/test_x264_summary.py
+
+The reused Step 7 implementation remains intact. Step 8 adds improve(), which validates a complete binary configuration, evaluates every one-setting flip with the existing nearest-neighbor predictor, and recommends the highest strictly positive predicted improvement. The CLI exposes this as --improve-json.
+
+Command to run:
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --improve-json '{"no_asm":1,"no_8x8dct":0,"no_cabac":0,"no_deblock":0,"no_fast_pskip":0,"no_mbtree":0,"no_mixed_refs":0,"no_weightb":0,"rc_lookahead":1,"rc_lookahead_20":1,"rc_lookahead_40":0,"rc_lookahead_60":0,"ref":1,"ref_1":1,"ref_5":0,"ref_9":0}'
+
+Measured result: 17 regression and Step 8 tests passed. The implementation command completed in 0.06 seconds. For the supplied slow configuration, the recommendation is ref_1: 1 -> 0, with predicted Performance- improvement 171.951 (268.720 to 440.671).
+
+Known assumptions and limitations:
+- Performance- is treated as the measure to maximize, matching the existing implementation.
+- “Smallest” means exactly one binary setting flip; all 16 one-flip neighbors are evaluated.
+- Predictions are based on observed exact or minimum-Hamming-distance rows and are not causal guarantees.
+- The result should be validated with representative production clips before rollout.

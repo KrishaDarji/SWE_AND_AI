@@ -1,0 +1,9 @@
+test_certification_reports_pair (test_model_summary.Step3Tests) ... ok
+test_cli_certification (test_model_summary.Step3Tests) ... ok
+test_step1_summary (test_model_summary.Step3Tests) ... ok
+test_step2_prediction (test_model_summary.Step3Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.024s
+
+OK

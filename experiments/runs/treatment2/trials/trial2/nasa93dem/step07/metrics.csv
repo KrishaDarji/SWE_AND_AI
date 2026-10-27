@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,2,2,software project planning,choose,579,107,24/24,0.04,0,"Step 6 reused; new optimizer LOC: 84 package + 23 CLI."

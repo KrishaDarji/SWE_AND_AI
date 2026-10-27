@@ -1,0 +1,12 @@
+test_invalid_quantile_and_missing_error_are_rejected (test_blame.BlameTests) ... ok
+test_numeric_and_categorical_associations_are_ranked (test_blame.BlameTests) ... ok
+test_certification_compatibility (test_previous_behavior.AllBehaviorTests) ... ok
+test_incremental_best_and_arrival_order (test_previous_behavior.AllBehaviorTests) ... ok
+test_invalid_incremental_result_rejected (test_previous_behavior.AllBehaviorTests) ... ok
+test_lower_is_better_and_ties_keep_first (test_previous_behavior.AllBehaviorTests) ... ok
+test_summary_and_prediction_compatibility (test_previous_behavior.AllBehaviorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

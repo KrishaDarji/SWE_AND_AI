@@ -1,0 +1,12 @@
+Step 9 is complete.
+
+The reused x264_summary.py retains all Step 1-8 APIs and CLI modes and adds detect_anomalies() plus --anomalies. The detector uses a median/MAD robust screen: repeated binary configurations are compared within configuration; if configurations are unique, it uses one global comparison group. It reports row number, configuration, value, median, MAD, robust score, and a review limitation.
+
+Tests: 19 passed, covering inherited Step 1-8 behavior and Step 9 repeated-configuration and unique-configuration anomaly cases.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial2/x264/step09/source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --anomalies
+
+Reuse: Step 8 source and tests were carried into Step 9; only anomaly detection, CLI dispatch/options, and two new tests were added. New source LOC is measured as the 54 added lines relative to Step 8.
+
+Assumptions and limitations: binary columns define configurations; nonnumeric measurements are ignored; threshold 3.5 is a screening default; MAD=0 flags any exact deviation; an anomaly is not proof of measurement error and should be reviewed against benchmark logs and rerun.

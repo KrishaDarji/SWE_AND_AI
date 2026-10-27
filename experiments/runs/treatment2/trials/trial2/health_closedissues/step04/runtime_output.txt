@@ -1,0 +1,38 @@
+{
+  "best": {
+    "ACC+": 0.9,
+    "configuration": {
+      "depth": 5
+    },
+    "index": 1
+  },
+  "evaluated": 3,
+  "higher_is_better": true,
+  "metric": "ACC+",
+  "results": [
+    {
+      "ACC+": 0.7,
+      "configuration": {
+        "depth": 3
+      },
+      "index": 0
+    },
+    {
+      "ACC+": 0.9,
+      "configuration": {
+        "depth": 5
+      },
+      "index": 1
+    },
+    {
+      "ACC+": 0.8,
+      "configuration": {
+        "depth": 7
+      },
+      "index": 2
+    }
+  ]
+}
+real 0.02
+user 0.01
+sys 0.00

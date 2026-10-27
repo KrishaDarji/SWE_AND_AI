@@ -1,0 +1,15 @@
+Step 7 is implemented in source/nasa93_summary.py.
+
+The reused implementation preserves Steps 1-6: loading and summaries, effort estimation, cost comparison, proposal assessment, factor analysis, and evidence-backed justification. Step 7 adds choose_project_settings(), which treats KLOC as delivered value, Effort as budget consumption, and optionally filters by schedule and defects. Ties are deterministic: lower effort, then source order.
+
+Tests in tests/test_nasa93_summary.py cover all prior behavior plus Step 7 selection, constraints, no-feasible-setting behavior, and validation. The complete updated source code is the file source/nasa93_summary.py.
+
+Run:
+python3 experiments/runs/treatment2/trials/trial1/nasa93dem/step07/source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --choose-budget 100
+
+Known assumptions and limitations:
+- Historical rows are treated as candidate project settings; KLOC is a proxy for delivered value.
+- Effort and constraints are compared directly in the dataset's units.
+- This is descriptive selection, not a causal or predictive optimization model.
+- Only observed rows can be selected; staffing, risk, requirements volatility, and uncertainty are not modeled.
+

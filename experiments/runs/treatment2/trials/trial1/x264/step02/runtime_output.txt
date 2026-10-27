@@ -1,0 +1,9 @@
+{
+  "method": "exact-match",
+  "nearest_distance": 0,
+  "predicted_time": 268.72,
+  "rows_used": 1152
+}
+real 0.03
+user 0.02
+sys 0.00

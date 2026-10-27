@@ -1,0 +1,15 @@
+Implemented Step 2 by extending source/nasa93_summary.py.
+
+Complete updated source code: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+
+Run command:
+python3 source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --estimate-kloc 10 --budget 100
+
+Step 2 estimates effort from the median historical Effort-/Kloc+ rate, reports a 25th–75th percentile planning range, and recommends approval only when a supplied budget covers the upper planning estimate. Without a budget it returns needs_budget_review.
+
+Reused: Step 1 load_projects, validation, summary statistics, derived indicators, JSON CLI behavior, and all three Step 1 tests.
+
+Assumptions and limitations: effort scales linearly with KLOC; historical projects are treated as the reference population; no proposal-specific cost drivers are modeled; approval is a budget-screening recommendation, not a delivery guarantee; KLOC must be positive and budget must be non-negative.
+
+Validation: 6 tests passed. The measured implementation run estimated 10 KLOC at 48.4375 effort units, planning range 35.294117647058826–71.25, and returned approve for budget 100.

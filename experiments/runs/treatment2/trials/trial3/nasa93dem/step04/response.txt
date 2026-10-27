@@ -1,0 +1,7 @@
+Step 4 extends the reused Step 3 project-history package with `project_history.portfolio.assess_proposals` and `ProposalAssessment`. Proposals are evaluated in arrival order using the existing median effort-per-KLOC estimator. Approved proposals reserve estimated effort; optional per-proposal and cumulative portfolio limits can reject later proposals. The CLI retains all prior options and adds `--proposals` (JSON array or newline-delimited JSON) and `--portfolio-budget`.
+
+Complete updated source is in `source/`; the reused Step 1-3 source and tests were carried forward, with the Step 4 portfolio module, exports, CLI options, and two regression tests added. The test suite passed all 9 tests. The implementation command used was:
+
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --proposals proposals.json --portfolio-budget 250
+
+Known assumptions and limitations: proposal input requires an id (or uses its arrival position) and numeric positive KLOC; historical median effort/KLOC is the only estimate; proposals are independent and assessed greedily in arrival order; approval is a screening decision, not a schedule or optimization; JSON and CSV errors are surfaced by the standard library. The historical estimator raises ValueError for non-positive KLOC.

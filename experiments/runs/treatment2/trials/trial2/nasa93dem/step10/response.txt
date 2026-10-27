@@ -1,0 +1,13 @@
+Implemented Step 10 by reusing the complete Step 9 source tree and tests. Added `project_summary.compare_estimators` and the `compare.py` CLI.
+
+The comparison uses deterministic leave-one-out evaluation on all 93 valid projects. Both methods predict the held-out project's effort from effort/KLOC rates and report the same metric, MAPE. The estimator uses the median rate among the nearest KLOC neighbors; the historical baseline uses the median rate across all available training projects.
+
+Run command:
+
+    python3 source/compare.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Verification: 33/33 tests passed. With the default seven neighbors, estimator MAPE was 61.782954452041615% and baseline MAPE was 59.571882377839124%; the estimator was not better on this dataset under this protocol.
+
+Reused: all Step 9 package modules, CLI wrappers, and Step 1-9 tests. New code is limited to the comparison module, CLI, package exports, and comparison tests.
+
+Assumptions and limitations: MAPE excludes records with non-positive KLOC or effort; the dataset currently has 93 evaluable records. The baseline is intentionally simple and uses only the historical effort/KLOC median. Leave-one-out estimates are descriptive and do not establish statistical significance.

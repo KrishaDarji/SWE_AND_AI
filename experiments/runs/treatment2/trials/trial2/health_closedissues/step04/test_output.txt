@@ -1,0 +1,13 @@
+test_certification_compatibility (test_model_summary.AllBehaviorTests) ... ok
+test_incremental_best_and_arrival_order (test_model_summary.AllBehaviorTests) ... ok
+test_invalid_incremental_result_rejected (test_model_summary.AllBehaviorTests) ... ok
+test_lower_is_better_and_ties_keep_first (test_model_summary.AllBehaviorTests) ... ok
+test_summary_and_prediction_compatibility (test_model_summary.AllBehaviorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
+real 0.06
+user 0.03
+sys 0.01

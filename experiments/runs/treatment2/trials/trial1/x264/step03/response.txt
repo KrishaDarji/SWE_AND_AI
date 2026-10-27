@@ -1,0 +1,9 @@
+Implemented Step 3 certification in source/x264_summary.py.
+
+The implementation reuses Step 1's CSV summary API/CLI and Step 2's nearest-configuration prediction API/CLI, then adds certify_improvement and matching CLI options. Certification pairs baseline and candidate rows over identical unchanged settings, measures baseline time minus candidate time, and applies a one-sided exact sign test. A result is credible only when the mean improvement is positive and p_value is below alpha (default 0.05).
+
+Tests cover the existing summary and prediction behavior plus credible and non-credible certification cases. Run with:
+
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial1/x264/step03/tests -v
+
+Known assumptions and limitations: Performance- is treated as a lower-is-better time metric; rows are matched only when all unchanged settings agree; duplicate rows for a matched configuration are collapsed by the current dataset row order; the exact sign test ignores ties; no claim is made about practical significance; and the test has limited power when there are few matched pairs. No third-party packages are used.

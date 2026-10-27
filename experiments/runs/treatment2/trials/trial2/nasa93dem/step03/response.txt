@@ -1,0 +1,22 @@
+Step 3 is complete. The complete updated source is in source/, including all Step 2 files plus:
+
+- source/project_summary/certify.py: CostComparison and certify_less_costly(). It compares mean effort, computes a seeded bootstrap confidence interval, and runs a one-sided permutation test. Process A is certified genuinely less costly only when the interval is wholly below zero and p < 1-confidence.
+- source/certify.py: CLI that selects two process groups by an existing CSV attribute.
+- project_summary/__init__.py exports the new API while retaining Steps 1–2 exports.
+
+Run tests:
+PYTHONPATH=source python3 -m unittest discover -s tests -v
+
+Run implementation:
+PYTHONPATH=source python3 source/certify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv sced l n --resamples 2000
+
+Reuse: all Step 2 source files and tests were carried forward from this trial. The new code only adds the certification module, CLI, exports, and certification tests; summary and estimation behavior remains covered by the reused tests.
+
+Measured results: 10 tests passed. The implementation ran in 0.201 seconds. For the selected NASA93 groups, sced=l had mean effort 276.79 versus 824.73 for sced=n; the mean difference was -547.94, the 95% bootstrap interval was [-944.22, -209.35], and the permutation p-value was 0.00250, so process A was certified genuinely less costly under this analysis.
+
+Assumptions and limitations:
+- “Cost” is represented by the dataset's Effort- field; lower effort means lower cost.
+- The CLI compares groups defined by one exact categorical CSV attribute and does not establish causality.
+- The bootstrap and permutation results are approximate and use a fixed seed for reproducibility.
+- This is an observational historical comparison; confounding, selection bias, unequal project mix, and multiple comparisons are not controlled.
+- At least 100 resamples and non-empty groups are required.

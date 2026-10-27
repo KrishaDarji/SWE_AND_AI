@@ -1,0 +1,14 @@
+Step 2 is implemented in source/model_summary.py. It preserves Step 1's summarize_rows, summarize_csv, and summary CLI behavior, and adds predict_quality plus --predict KEY=VALUE arguments.
+
+Complete updated source code: see source/model_summary.py in this same output directory.
+
+Run command:
+python3 source/model_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --predict N_estimators=100 criterion=squared_error Min_sample_leaves=4 Min_impurity_decrease=1.0 Max_depth=10
+
+Reuse: the Step 1 CSV parsing, finite-number handling, numeric summaries, categorical summaries, validation, and summary CLI were retained and extended. New code parses a target configuration, normalizes numeric configuration distances, handles categorical mismatches, selects the 25 nearest completed configurations, and computes inverse-distance weighted predictions for MRE- and ACC+.
+
+Measured result: predicted MRE- = 0.4081708424392955 and ACC+ = 0.6511599050329805, using 25 neighbors. Tests: 3 passed.
+
+Assumptions and limitations: the CSV rows are treated as prior completed evaluations; numeric fields are min-max normalized and categorical fields use a unit mismatch penalty; inverse-distance weighting is a heuristic, not a calibrated uncertainty estimate; no train/test split or full model evaluation is performed; the target must provide all five configuration fields.
+
+The complete source, tests, test output, runtime output, and metrics are stored under this step02 directory.

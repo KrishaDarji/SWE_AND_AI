@@ -1,0 +1,14 @@
+Historical projects: 93
+Project years: 1971-1987
+Total size (KLOC): 8744.05
+Total effort: 58070.30 person-months
+Total reported defects: 349844.00
+Average delivery duration: 24.18 months
+Projects with recorded delivery duration: 93/93
+Portfolio assessments:
+apollo: approved; estimated effort 48.44; cumulative 48.4375
+orion: approved; estimated effort 121.09; cumulative 169.53125
+real 0.03
+user 0.02
+sys 0.00
+RUN_STATUS=0

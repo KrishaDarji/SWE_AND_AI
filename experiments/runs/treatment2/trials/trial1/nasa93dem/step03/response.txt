@@ -1,0 +1,11 @@
+Implemented Step 3 in source/nasa93_summary.py and preserved all Step 1-2 functions and CLI modes. The new compare_costs function compares effort per KLOC for two CSV-defined groups using median difference, a seeded permutation test, and a bootstrap 95% interval. It reports genuinely_less_costly only when group A has a lower median and one-sided permutation p < 0.05.
+
+Complete updated source code: source/nasa93_summary.py
+Tests covering reused Step 1-2 behavior and Step 3: tests/test_nasa93_summary.py
+
+Run command:
+python3 source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --compare-field centerX --process-a 1 --process-b 2 --samples 300
+
+Reuse: copied and extended the Step 2 Treatment 2 module and its tests; no Treatment 1 code or external packages were used.
+
+Assumptions and limitations: process groups are represented by an existing categorical CSV column; cost means Effort-/Kloc; this is observational and does not adjust for confounders; permutation and bootstrap results are simulation-based and use a fixed seed; at least two projects per group are required.

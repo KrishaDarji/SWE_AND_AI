@@ -1,0 +1,9 @@
+test_cli_emits_json (test_summary.SummaryTests) ... ok
+test_empty_collection_is_rejected (test_summary.SummaryTests) ... ok
+test_loads_all_projects_and_outcomes (test_summary.SummaryTests) ... ok
+test_summary_has_totals_and_year_cohorts (test_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.028s
+
+OK

@@ -1,0 +1,8 @@
+test_cli_emits_json (test_model_summary.SummaryTests) ... ok
+test_explicit_quality_column (test_model_summary.SummaryTests) ... ok
+test_quality_and_configuration_summary (test_model_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.024s
+
+OK

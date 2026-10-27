@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,2,3,video encoding,certify,322,126,true,0.03,0,"stdlib-only; 1152 rows; reused Step 2 implementation; 9 tests passed; exact configuration comparison; one observation per compared group so credible=false"

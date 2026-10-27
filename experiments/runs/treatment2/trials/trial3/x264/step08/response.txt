@@ -1,0 +1,16 @@
+Implemented Step 8 by reusing the complete Step 7 source and tests, then adding
+suggest_setting_change() and the suggest.py command-line wrapper. The suggestion
+examines observed configurations at Hamming distance one from a supplied baseline
+and selects the best mean objective among them.
+
+Tests: 20 passed, 0 failed.
+Dataset run: for the slowest observed baseline, changing no_mixed_refs from 0 to 1
+changed Performance- from 821.963 to 671.400, an improvement of 150.563.
+
+Run command:
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial3/x264/step08/tests -t experiments/runs/treatment2/trials/trial3/x264/step08/tests
+
+Assumptions and limitations: the baseline must be fully specified and observed;
+only observed one-setting changes are considered; means are unweighted; the
+default objective is the final CSV column and is treated as lower-is-better;
+the result is observational and does not establish causality.

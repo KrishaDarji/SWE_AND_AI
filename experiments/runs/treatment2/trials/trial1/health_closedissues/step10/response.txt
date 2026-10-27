@@ -1,0 +1,8 @@
+Step 10 reuses Step 9's model_quality_summary.py and its full test suite. It adds compare_baseline(), which compares choose() with the first dataset row as the deterministic historical incumbent. Both use the same weighted mean objective of ACC+ and PRED40+ (equal weights by default; higher is better). The CLI exposes --compare-baseline.
+
+Measured result on Health-ClosedIssues0000.csv: selector score 1.0; historical baseline score 0.6495399826063075; score delta 0.3504600173936925; selector_wins true. Tests: 25 passed. Runtime: 0.06 seconds (real time reported by /usr/bin/time).
+
+Known assumptions and limitations: the first CSV row is treated as the historical baseline; this assumes row order represents historical order. The comparison is observational and evaluates recorded rows, not an independently held-out future set. Unique configurations and dataset measurement noise may limit generalization. Only Python standard-library modules are used.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial1/health_closedissues/step10/source/model_quality_summary.py moot/optimize/hpo/Health-ClosedIssues0000.csv --compare-baseline

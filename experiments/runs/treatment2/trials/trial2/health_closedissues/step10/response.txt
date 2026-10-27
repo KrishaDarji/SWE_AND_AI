@@ -1,0 +1,7 @@
+Implemented Step 10 by extending the reused Step 9 model_summary.py.
+
+Added compare_with_historical_baseline(), which validates an observed historical configuration and compares it with choose_configuration() using the same min-max normalization, metric directions, weights, and weighted objective. Added the --compare-baseline CLI mode and two focused tests. All Step 1-9 regression tests were copied and retained.
+
+Measured result on Health-ClosedIssues0000.csv using the first dataset row as the historical baseline: selector score 0.9940500736377025, historical score 0.6722793051394444, difference 0.32177076849825803, selector_better true. Test suite: 18 passed. Runtime: 0.08 seconds real time.
+
+Complete source is in source/model_summary.py; tests are in tests/.

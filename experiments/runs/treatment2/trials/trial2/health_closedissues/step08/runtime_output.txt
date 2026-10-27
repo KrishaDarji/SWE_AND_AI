@@ -1,0 +1,31 @@
+{
+  "baseline": {
+    "Max_depth": "10",
+    "Min_impurity_decrease": "2.75",
+    "Min_sample_leaves": "3",
+    "N_estimators": "40",
+    "criterion": "squared_error"
+  },
+  "baseline_error": 0.3148748159057436,
+  "candidate": {
+    "changed": {
+      "Min_impurity_decrease": {"from": "2.75", "to": "5"},
+      "N_estimators": {"from": "40", "to": "10"}
+    },
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "5",
+      "Min_sample_leaves": "3",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "distance": 2,
+    "error": 0.2673048600883652,
+    "error_reduction": 0.04756995581737844,
+    "index": 1944
+  },
+  "recommendation": "change"
+}
+real 0.05
+user 0.04
+sys 0.00

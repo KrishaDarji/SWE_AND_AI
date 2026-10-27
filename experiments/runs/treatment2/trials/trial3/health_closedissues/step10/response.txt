@@ -1,0 +1,1 @@
+Step 10 extends the Step 9 selector with compare_with_historical_baseline(). The baseline is the first observed row with finite values for every selected quality metric. The report compares observed quality deltas for the selector's recommended configuration and includes a CLI option, --compare-baseline.

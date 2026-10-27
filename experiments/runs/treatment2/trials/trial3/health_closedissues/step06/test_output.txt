@@ -1,0 +1,24 @@
+test_cli_emits_json (test_step1.SummaryTests) ... ok
+test_explicit_quality_column (test_step1.SummaryTests) ... ok
+test_quality_and_configuration_summary (test_step1.SummaryTests) ... ok
+test_cli_prediction (test_step2.SummaryAndPredictionTests) ... ok
+test_cli_summary_emits_json (test_step2.SummaryAndPredictionTests) ... ok
+test_existing_summary_behavior (test_step2.SummaryAndPredictionTests) ... ok
+test_explicit_quality_column (test_step2.SummaryAndPredictionTests) ... ok
+test_prediction_uses_closest_configuration (test_step2.SummaryAndPredictionTests) ... ok
+test_certification_reports_pair (test_step3.Step3Tests) ... ok
+test_cli_certification (test_step3.Step3Tests) ... ok
+test_step1_summary (test_step3.Step3Tests) ... ok
+test_step2_prediction (test_step3.Step3Tests) ... ok
+test_stream_and_cli (test_step4.OnlineEvaluationTests) ... ok
+test_updates_incumbent_one_result_at_a_time (test_step4.OnlineEvaluationTests) ... ok
+test_validation_is_required_and_finite (test_step4.OnlineEvaluationTests) ... ok
+test_cli_blame (test_step5.BlameTests) ... ok
+test_numeric_and_categorical_associations (test_step5.BlameTests) ... ok
+test_cli_accepts_explicit_configuration (test_step6.JustificationTests) ... ok
+test_recommends_observed_configuration_and_evidence (test_step6.JustificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.173s
+
+OK

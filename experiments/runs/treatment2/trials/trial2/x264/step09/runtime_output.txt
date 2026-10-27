@@ -1,0 +1,16 @@
+{
+  "anomalies": [],
+  "anomaly_count": 0,
+  "comparison_groups": 1,
+  "has_anomaly": false,
+  "limitations": [
+    "An anomaly is a review signal; it does not establish a bad benchmark run."
+  ],
+  "measure": "Performance-",
+  "method": "median/MAD robust screen",
+  "observations": 1152,
+  "threshold": 3.5
+}
+real 0.03
+user 0.02
+sys 0.00

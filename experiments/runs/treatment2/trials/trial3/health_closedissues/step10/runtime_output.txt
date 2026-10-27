@@ -1,0 +1,64 @@
+{
+  "all_metrics_improved": true,
+  "baseline": {
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "2.75",
+      "Min_sample_leaves": "3",
+      "N_estimators": "40",
+      "criterion": "squared_error"
+    },
+    "quality": {
+      "ACC+": 0.7276513937840435,
+      "MRE-": 0.3148748159057436,
+      "PRED40+": 0.5714285714285714
+    },
+    "row_index": 0
+  },
+  "caveat": "The first observed row is a historical baseline; this comparison is observational.",
+  "deltas": {
+    "ACC+": {
+      "baseline": 0.7276513937840435,
+      "delta": 0.27234860621595647,
+      "improved": true,
+      "selected": 1.0
+    },
+    "MRE-": {
+      "baseline": 0.3148748159057436,
+      "delta": -0.28512518409425613,
+      "improved": true,
+      "selected": 0.029749631811487497
+    },
+    "PRED40+": {
+      "baseline": 0.5714285714285714,
+      "delta": 0.4285714285714286,
+      "improved": true,
+      "selected": 1.0
+    }
+  },
+  "metrics_improved": 3,
+  "quality_columns": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "selected": {
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "3",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "quality": {
+      "ACC+": 1.0,
+      "MRE-": 0.029749631811487497,
+      "PRED40+": 1.0
+    },
+    "row_index": 7555
+  },
+  "selection": "balanced observed and predicted quality"
+}
+real 1.07
+user 1.05
+sys 0.01

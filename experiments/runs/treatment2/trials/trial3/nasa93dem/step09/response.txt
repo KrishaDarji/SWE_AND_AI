@@ -1,0 +1,8 @@
+Step 9 adds `project_history.spot.spot_inconsistent_project` and the existing CLI option `--spot [PROJECT_ID]`. It reuses all Step 8 source modules and tests. The detector compares effort/KLOC with the historical median using a modified z-score based on MAD; it reports the most unusual usable record by default, or a requested project, and handles insufficient or missing data explicitly.
+
+Run command:
+python3 -m unittest discover -s tests -v && python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --spot
+
+Measured result: 23 tests passed. The real dataset command completed successfully and selected project 89 as inconsistent, with productivity 89.38 effort/KLOC versus historical median 4.84 and modified z-score 34.39.
+
+Assumptions and limitations: effort/KLOC is used as the consistency signal; MAD is robust to outliers; the threshold is 3.5; the result is descriptive and does not prove a data error or causal explanation; records without positive KLOC or effort are excluded; a zero MAD produces an infinite score for any departure from the median.

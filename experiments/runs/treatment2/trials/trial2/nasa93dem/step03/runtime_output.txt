@@ -1,0 +1,23 @@
+{
+  "confidence": 0.95,
+  "cost_field": "effort",
+  "difference_interval": [
+    -944.2217921236293,
+    -209.35117397806576
+  ],
+  "difference_mean_a_minus_b": -547.9397806580259,
+  "genuinely_less_costly": true,
+  "mean_a": 276.79411764705884,
+  "mean_b": 824.7338983050847,
+  "median_a": 118.8,
+  "median_b": 400.0,
+  "method": "bootstrap confidence interval plus one-sided permutation test",
+  "permutation_p_value": 0.0024987506246876563,
+  "process_a": "l",
+  "process_b": "n",
+  "sample_a": 34,
+  "sample_b": 59
+}
+PYTHONPATH=source python3 source/certify.py  sced l n --resamples 2000 >   0.19s user 0.01s system 99% cpu 0.201 total
+
+implementation_exit=0

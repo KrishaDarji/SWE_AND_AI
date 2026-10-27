@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,2,software project planning,justify,580,88,21/21,0.04,0,"Step 5 source/tests reused; Step 6 adds sponsor justification API, CLI, and tests. Runtime is timed implementation CLI runtime."

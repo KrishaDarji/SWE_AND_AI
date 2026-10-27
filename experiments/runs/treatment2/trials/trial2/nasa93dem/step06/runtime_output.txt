@@ -1,0 +1,21 @@
+{
+  "caveats": [
+    "The range reflects historical analogs, not a guaranteed outcome.",
+    "Factor associations are signals, not causal explanations."
+  ],
+  "decision": "approve",
+  "estimated_effort": 48.0,
+  "evidence": [
+    "The central estimate is 48.0 effort units from the median effort/KLOC of 7 nearest historical projects.",
+    "The historical screening range is 26.0 to 86.7 effort units.",
+    "Relevant historical risk signals include plex=h (lift 0.36), centerX=5 (lift 0.26), centerX=2 (lift -0.26)."
+  ],
+  "historical_projects": 7,
+  "lower_effort": 25.97938144329897,
+  "proposal_id": "P-6",
+  "sponsor_message": "Sponsor recommendation: APPROVE proposal P-6 at 48.0 effort units. The decision reflects no budget or capacity constraint was triggered. Plan against the 86.7 upper screening value and review the stated caveats.",
+  "upper_effort": 86.66666666666666
+}
+real 0.04
+user 0.03
+sys 0.00

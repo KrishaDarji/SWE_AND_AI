@@ -1,0 +1,58 @@
+real 0.06
+user 0.05
+sys 0.00
+{
+  "baseline": {
+    "best_configuration": {
+      "no_8x8dct": "1",
+      "no_asm": "1",
+      "no_cabac": "0",
+      "no_deblock": "1",
+      "no_fast_pskip": "1",
+      "no_mbtree": "0",
+      "no_mixed_refs": "1",
+      "no_weightb": "1",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    },
+    "best_objective": 260.55,
+    "best_row": 116,
+    "evaluations": 32,
+    "strategy": "random_without_replacement"
+  },
+  "budget": 32,
+  "dataset": "moot/optimize/config/X264_AllMeasurements.csv",
+  "objective": "Performance- (lower is better)",
+  "race": {
+    "best_configuration": {
+      "no_8x8dct": "1",
+      "no_asm": "1",
+      "no_cabac": "1",
+      "no_deblock": "1",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    },
+    "best_objective": 244.23,
+    "best_row": 71,
+    "evaluations": 32,
+    "strategy": "race_local_search"
+  },
+  "race_minus_baseline": -16.32000000000002,
+  "seed": 0
+}

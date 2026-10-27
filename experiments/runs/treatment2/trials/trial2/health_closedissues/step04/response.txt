@@ -1,0 +1,6 @@
+Implemented Step 4 by extending the reused model_summary.py with SequentialEvaluator and a --sequential JSON-lines CLI mode.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial2/health_closedissues/step04/source/model_summary.py RESULTS.jsonl --sequential
+
+The input is one JSON object per line with configuration and validation_result fields. Existing summary, prediction, and family-certification behavior remains available. Tests cover Steps 1-3 compatibility and incremental higher/lower-is-better evaluation.

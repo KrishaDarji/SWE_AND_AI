@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,2,video encoding,fix,425,40,true,0.06,0,"17 regression and Step 8 tests passed; --improve-json evaluated 16 one-setting neighbors and recommended ref_1 1->0 with predicted Performance- improvement 171.951; new_loc is the diff-added source lines versus Step 7"

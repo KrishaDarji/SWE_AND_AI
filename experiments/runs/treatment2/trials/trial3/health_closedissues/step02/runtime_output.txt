@@ -1,0 +1,20 @@
+{
+  "configuration": {
+    "Max_depth": 15,
+    "Min_impurity_decrease": 0.75,
+    "Min_sample_leaves": 3,
+    "N_estimators": 130,
+    "criterion": "squared_error"
+  },
+  "neighbors_used": 5,
+  "predicted_quality": {
+    "ACC+": 0.7062452213201275,
+    "MRE-": 0.242952490833044,
+    "PRED40+": 0.788722709300217
+  }
+}
+real 0.06
+user 0.05
+sys 0.00
+test_status=0
+runtime_status=0

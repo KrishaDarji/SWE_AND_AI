@@ -1,0 +1,28 @@
+{
+  "best": {
+    "arrival_index": 31,
+    "configuration": {
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "is_best": true,
+    "validation_results": {
+      "ACC+": "0.7901313681512335",
+      "MRE-": "0",
+      "PRED40+": "0.8571428571428571"
+    }
+  },
+  "evaluated": 10000,
+  "metric_fields": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "source": "moot/optimize/hpo/Health-ClosedIssues0000.csv"
+}
+real 31.92
+user 31.79
+sys 0.11

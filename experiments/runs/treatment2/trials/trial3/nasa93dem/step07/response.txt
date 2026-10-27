@@ -1,0 +1,14 @@
+Implemented Step 7 by extending the Step 6 project_history package.
+
+Complete updated source is in source/. The new optimizer.py adds maximize_delivered_value, which estimates each proposal's effort using the existing historical median effort/KLOC estimator and selects an exact 0/1 knapsack subset maximizing delivered value within a fixed effort budget. The CLI adds --optimize-proposals and --value-budget. Existing summary, estimation, certification, portfolio, blame, and justification behavior remains available.
+
+Tests are in tests/. All copied Step 1-6 regression tests remain, with three Step 7 optimizer tests added. The full suite passed: 17 tests.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial3/nasa93dem/step07/source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --optimize-proposals /private/tmp/nasa93_value_proposals.json --value-budget 500 --blame
+
+Measured implementation result: the NASA93 summary reported 93 projects, and the optimizer selected navigation and science for delivered value 175.00 at estimated effort 460.16 of the 500.00 budget. The test run took 0.07 seconds and the implementation run took 0.04 seconds according to /usr/bin/time.
+
+Reused: all Step 6 source modules and tests from this same Treatment 2 Trial 3 path, including the model, CSV repository, summary service, estimator, certifier, portfolio assessment, blame analysis, justification, CLI, and regression tests. New LOC is measured as Step 7 source LOC minus Step 6 source LOC.
+
+Assumptions and limitations: delivered value is a caller-supplied numeric proposal field; effort is the historical median effort/KLOC estimate; proposals are indivisible; the optimizer is exact but assumes a 0/1 selection model; missing historical evidence is rejected rather than treated as zero cost; ties favor lower effort. This is a planning optimization, not a guarantee of realized value or causal model.

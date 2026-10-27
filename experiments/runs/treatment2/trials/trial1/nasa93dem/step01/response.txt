@@ -1,0 +1,9 @@
+Complete source code: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+Run command: python3 source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+The reusable API is summarize_projects(path). It delegates validated CSV ingestion to load_projects(path), computes aggregate min/median/mean/max statistics for Kloc+, Effort-, Defects-, and MonthsX, and adds row-level effort-per-KLOC, defects-per-KLOC, and months-per-KLOC indicators. The JSON-compatible result is designed for later skills to consume without changing the ingestion layer.
+
+Assumptions and limitations: the CSV has a header and the four outcome columns; outcome values are finite numeric values; idX identifies a project when present; all rows are loaded in memory; zero-KLOC projects receive null rate indicators; the summary describes associations and outcomes but does not infer causal relationships, predict future projects, or determine whether higher/lower values are desirable.
+
+Measured execution: 3 unit tests passed and the implementation completed successfully. The captured CLI runtime was 0.03 seconds (real time).

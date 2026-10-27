@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,2,3,video encoding,spot,907,99,22/22,0.03,0,"stdlib-only; reused Step 1-8 source; robust median/MAD anomaly detection with IQR fallback; 1152-row dataset produced no flagged rows at threshold 3.5"

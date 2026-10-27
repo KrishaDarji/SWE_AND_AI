@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,2,2,machine-learning model configuration,race,618,76,1,0.08,0,"18 tests passed; selector compared with first observed historical configuration using identical weighted normalized MRE-/ACC+/PRED40+ objective; selector score 0.9940500736377025 versus historical 0.6722793051394444"

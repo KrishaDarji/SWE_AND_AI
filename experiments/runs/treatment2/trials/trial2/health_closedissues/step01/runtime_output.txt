@@ -1,0 +1,18 @@
+{
+  "configuration": {
+    "Max_depth": {"count": 10000, "kind": "numeric", "maximum": 20.0, "mean": 10.523, "median": 11.0, "minimum": 1.0},
+    "Min_impurity_decrease": {"count": 10000, "kind": "numeric", "maximum": 10.0, "mean": 4.996175, "median": 5.0, "minimum": 0.0},
+    "Min_sample_leaves": {"count": 10000, "kind": "numeric", "maximum": 20.0, "mean": 10.4796, "median": 11.0, "minimum": 1.0},
+    "N_estimators": {"count": 10000, "kind": "numeric", "maximum": 200.0, "mean": 106.061, "median": 110.0, "minimum": 10.0},
+    "criterion": {"count": 10000, "kind": "categorical", "unique": 3, "values": {"absolute_error": 3302, "poisson": 3335, "squared_error": 3363}}
+  },
+  "quality_metrics": {
+    "ACC+": {"count": 10000, "maximum": 1.0, "mean": 0.49593851329765903, "median": 0.43992310157000963, "minimum": 0.0},
+    "MRE-": {"count": 10000, "maximum": 1.0, "mean": 0.70909397643463, "median": 0.8091310751104565, "minimum": 0.0},
+    "PRED40+": {"count": 10000, "maximum": 1.0, "mean": 0.14684285714285714, "median": 0.0, "minimum": 0.0}
+  },
+  "row_count": 10000
+}
+real 0.06
+user 0.05
+sys 0.00

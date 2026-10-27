@@ -1,0 +1,14 @@
+Complete updated source code: source/x264_summary.py
+Complete tests: tests/test_x264_summary.py
+
+Run tests:
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial2/x264/step03/tests -v
+
+Run implementation:
+python3 experiments/runs/treatment2/trials/trial2/x264/step03/source/x264_summary.py moot/optimize/config/X264_AllMeasurements.csv --certify
+
+Reused: Step 1 Dataset model, CSV loading, binary-setting discovery, statistics, summary, and CLI; Step 2 prediction, exact-match lookup, nearest-neighbor averaging, and prediction CLI. Step 3 adds certify() and --certify using a Welch z approximation.
+
+Result: at alpha=0.05, credible positive improvements in Performance- were observed for no_fast_pskip, no_mbtree, and ref_9. no_asm, rc_lookahead, and ref were not testable because they have no value-0 observations.
+
+Assumptions and limitations: Performance- is treated as higher-is-better; settings are binary; the test uses independent group means and a normal-reference Welch approximation; it does not adjust for multiple comparisons or model interactions, and is not a substitute for repeated randomized runs.

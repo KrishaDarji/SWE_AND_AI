@@ -1,0 +1,8 @@
+Implemented Step 5 by extending x264_summary.py with blame(). It ranks binary settings by association with the slowest measurement tail, returning the slow-tail cutoff, per-value run counts, slow counts, slow rates, means, and deterministic rankings. The CLI supports --blame and --slow-fraction. The reused summary, prediction, certification, and online evaluation behavior remains covered by regression tests.
+
+The complete updated source is in source/x264_summary.py and the complete test suite is in tests/test_x264_summary.py.
+
+Command:
+python3 source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --blame
+
+Assumptions and limitations: Performance- is treated as a larger-is-slower measurement because the dataset's observed values are ranked directly. The default slow tail is the highest 10% of numeric observations; ties at the cutoff can include more rows than the nominal fraction. Results are associations, not causal effects, and binary settings may be confounded by the experiment design. Only numeric measurement rows are analyzed.

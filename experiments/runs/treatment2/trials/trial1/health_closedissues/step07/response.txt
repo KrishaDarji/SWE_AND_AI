@@ -1,0 +1,18 @@
+Step 7 completed.
+
+Complete updated source code: source/model_quality_summary.py
+Tests covering existing Step 1-6 behavior and Step 7: tests/test_model_quality_summary.py
+
+Run command:
+python3 source/model_quality_summary.py moot/optimize/hpo/Health-ClosedIssues0000.csv --choose
+
+What was reused:
+The Step 6 module was carried forward unchanged except for the new Choice result, choose() function, and --choose CLI options. Existing summary, prediction, certification, evaluation, blame, and justification behavior and tests were retained.
+
+Step 7 chooses among complete observed rows using a weighted average of ACC+ and PRED40+ (equal weights by default), with lower MRE- as a deterministic tie-breaker. The dataset run selected criterion=squared_error, N_estimators=10, Min_sample_leaves=1, Min_impurity_decrease=3, Max_depth=10, with score 1.0.
+
+Known assumptions and limitations:
+- ACC+ and PRED40+ are treated as higher-is-better metrics on compatible scales.
+- The chooser selects an observed row; it does not extrapolate or fit a model.
+- Rows missing either required metric are ignored.
+- Associations in the closed dataset do not guarantee future performance.

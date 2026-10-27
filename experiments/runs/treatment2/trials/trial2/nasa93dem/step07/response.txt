@@ -1,0 +1,7 @@
+Step 7 completed. Complete updated source code is in source/. It preserves Step 6 and adds source/project_summary/optimize.py and source/optimize.py. The optimizer uses mean historical KLOC as delivered-value proxy, mean effort as budget proxy, and ranks feasible observed categorical settings by value per effort.
+
+All 24 regression and Step 7 tests passed.
+
+Run: python3 source/optimize.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv 1000 --settings sced --top 5
+
+Reuse: complete Step 6 source and tests from this same Treatment 2 Trial 2 run. Limitations: proxies and historical means are assumptions; associations are not causal; only observed groups are considered.

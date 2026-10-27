@@ -1,0 +1,18 @@
+Complete updated source code is in source/x264_summary.py, with regression and Step 4 tests in tests/test_x264_summary.py.
+
+Run tests:
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial2/x264/step04/tests -v
+
+Run the implementation:
+python3 experiments/runs/treatment2/trials/trial2/x264/step04/source/x264_summary.py moot/optimize/config/X264_AllMeasurements.csv --online
+
+Reused Step 3's Dataset model, CSV loading, binary-setting discovery, statistics, summary output, prediction, certification, and existing CLI behavior. Step 4 adds OnlineEvaluator for one-result-at-a-time updates, running per-configuration means, deterministic best-configuration selection, validation, snapshots, and evaluate_rows() plus --online.
+
+Measured result: 7 tests passed. The online run consumed 1,152 benchmark rows and saw 1,152 configurations; the best observed Performance- mean was 821.963 for one configuration. Implementation runtime was 1.18 seconds.
+
+Assumptions and limitations:
+- Performance- is treated as higher-is-better, matching the earlier certification behavior.
+- Each arriving result contains every binary setting and one finite numeric measurement.
+- Configuration results are aggregated by arithmetic running mean; no confidence intervals, stopping rule, or uncertainty-aware ranking is added.
+- Ties are resolved lexicographically by the binary configuration tuple.
+- The online CLI currently streams rows from a CSV in file order; callers needing live external benchmarks should call OnlineEvaluator.add_result() from their own standard-library integration.

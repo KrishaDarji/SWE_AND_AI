@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,3,software project planning,justify,472,65,14/14,0.03,0,"Step 1-5 regression tests plus Step 6 justification tests; CLI completed successfully on nasa93dem.csv"

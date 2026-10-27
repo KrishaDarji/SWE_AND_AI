@@ -1,0 +1,197 @@
+{
+  "columns": 17,
+  "dataset": "moot/optimize/config/X264_AllMeasurements.csv",
+  "encoder_settings": [
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "minimum": 1.0,
+      "name": "no_asm",
+      "unique": 1,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_8x8dct",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_cabac",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_deblock",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_fast_pskip",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_mbtree",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_mixed_refs",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.5,
+      "median": 0.5,
+      "minimum": 0.0,
+      "name": "no_weightb",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "minimum": 1.0,
+      "name": "rc_lookahead",
+      "unique": 1,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.3333333333333333,
+      "median": 0.0,
+      "minimum": 0.0,
+      "name": "rc_lookahead_20",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.3333333333333333,
+      "median": 0.0,
+      "minimum": 0.0,
+      "name": "rc_lookahead_40",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.3333333333333333,
+      "median": 0.0,
+      "minimum": 0.0,
+      "name": "rc_lookahead_60",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "minimum": 1.0,
+      "name": "ref",
+      "unique": 1,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.3333333333333333,
+      "median": 0.0,
+      "minimum": 0.0,
+      "name": "ref_1",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.3333333333333333,
+      "median": 0.0,
+      "minimum": 0.0,
+      "name": "ref_5",
+      "unique": 2,
+      "values": null
+    },
+    {
+      "count": 1152,
+      "kind": "encoder_setting",
+      "maximum": 1.0,
+      "mean": 0.3333333333333333,
+      "median": 0.0,
+      "minimum": 0.0,
+      "name": "ref_9",
+      "unique": 2,
+      "values": null
+    }
+  ],
+  "other_columns": [],
+  "quality_measures": [
+    {
+      "count": 1152,
+      "kind": "quality_measure",
+      "maximum": 821.963,
+      "mean": 461.7535963541667,
+      "median": 452.7785,
+      "minimum": 244.23,
+      "name": "Performance-",
+      "unique": 1127,
+      "values": null
+    }
+  ],
+  "rows": 1152
+}

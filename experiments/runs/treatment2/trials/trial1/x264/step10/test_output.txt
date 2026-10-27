@@ -1,0 +1,23 @@
+test_anomaly_detection_reports_insufficient_neighbors (test_x264_summary.SummaryTests) ... ok
+test_blame_ranks_setting_in_slow_tail (test_x264_summary.SummaryTests) ... ok
+test_blame_rejects_invalid_quantile (test_x264_summary.SummaryTests) ... ok
+test_certification_finds_credible_faster_candidate (test_x264_summary.SummaryTests) ... ok
+test_certification_rejects_no_evidence (test_x264_summary.SummaryTests) ... ok
+test_detects_local_timing_outlier (test_x264_summary.SummaryTests) ... ok
+test_justification_predicts_requested_unseen_configuration (test_x264_summary.SummaryTests) ... ok
+test_justification_recommends_fastest_observed_configuration (test_x264_summary.SummaryTests) ... ok
+test_online_evaluator_rejects_bad_configuration (test_x264_summary.SummaryTests) ... ok
+test_online_evaluator_updates_best_one_result_at_a_time (test_x264_summary.SummaryTests) ... ok
+test_quality_constraint_requires_valid_bounds (test_x264_summary.SummaryTests) ... ok
+test_selects_fastest_configuration_meeting_quality_floor (test_x264_summary.SummaryTests) ... ok
+test_selects_with_quality_range_and_rejects_infeasible_bound (test_x264_summary.SummaryTests) ... ok
+test_step10_compares_equal_budget_and_objective (test_x264_summary.SummaryTests) ... ok
+test_step10_rejects_invalid_budget (test_x264_summary.SummaryTests) ... ok
+test_step1_summary_and_step2_prediction (test_x264_summary.SummaryTests) ... ok
+test_stream_evaluation_accepts_json_like_records (test_x264_summary.SummaryTests) ... ok
+test_suggest_setting_change_preserves_step8_behavior (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.006s
+
+OK

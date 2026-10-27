@@ -1,0 +1,15 @@
+Step 10 adds a bounded race comparison while preserving all Step 1-9 source and tests.
+
+Complete updated source code is in source/. The reused files are the complete Step 9 source snapshot; the new files are source/x264_summary/race.py and source/race.py. Complete tests are in tests/, including all reused Step 1-9 tests plus tests/test_race.py.
+
+The system search examines the first N unique configurations in dataset order. The baseline examines N unique configurations selected by a deterministic seeded random search. Both use the same budget N and minimize the same mean objective metric. The race API is compare_searches(path, measure, budget, seed).
+
+Validation: 24/24 tests passed.
+Dataset run: Performance-, budget 64, seed 0. System objective 259.807000; baseline objective 246.487000; both evaluated 64 configurations. Runtime was 0.047 seconds wall-clock.
+
+Reused: all Step 9 command-line tools and x264_summary package modules, including summary, prediction, streaming evaluation, certification, blame, justification, choice, suggestion, and anomaly detection. No code from other treatments or trials was used.
+
+Assumptions and limitations: the baseline is a seeded uniform random search over observed unique configurations; it is reproducible but not an optimizer for unseen configurations. The system strategy is the existing row-order search, so results depend on CSV ordering. Objective means aggregate duplicate measurements by configuration. Search budget is capped at the number of observed configurations, and lower objective values are treated as better.
+
+Run command:
+PYTHONPATH=experiments/runs/treatment2/trials/trial3/x264/step10/source python3 experiments/runs/treatment2/trials/trial3/x264/step10/source/race.py moot/optimize/config/X264_AllMeasurements.csv --measure Performance- --budget 64 --seed 0

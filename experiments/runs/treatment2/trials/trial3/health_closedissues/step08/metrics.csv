@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,3,machine-learning model configuration,fix,504,42,1,0.04,0,"24 unittest tests passed; real dataset --suggest-smallest-change completed successfully; runtime is measured /usr/bin/time real seconds; standard library only; new_loc is the added Step 8 diff versus Step 7"

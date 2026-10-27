@@ -1,0 +1,12 @@
+Implemented Step 9 in source/model_summary.py.
+
+Complete updated source: source/model_summary.py
+Tests: tests/test_spot.py plus the reused Step 1–8 regression tests copied from Step 8.
+Run command:
+python3 source/model_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --spot
+
+Reuse: the complete Step 8 module and its public APIs/CLI behavior were extended. The only new capability is spot_quality_anomalies and --spot.
+
+Observed run: 10,000 rows, 2,151 flagged rows, no duplicate-configuration inconsistencies. Tests passed: 16.
+
+Assumptions and limitations: MRE- is treated as nonnegative; ACC+ and PRED40+ are expected in [0,1]. Outliers use a univariate robust median/MAD screen and duplicate disagreement is not causal evidence. Flags require review of the original experiment and metric definition. Rows with too little variation for MAD screening are not robust-outlier flagged.

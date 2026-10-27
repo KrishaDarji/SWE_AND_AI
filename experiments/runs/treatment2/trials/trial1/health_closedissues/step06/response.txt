@@ -1,0 +1,13 @@
+Step 6 adds justify(), which recommends the best observed complete configuration from evaluate_file() and includes supporting nearest-neighbor prediction, blame analysis, rationale, and caveats. The CLI exposes --justify. Steps 1-5 behavior remains in the reused module.
+
+Complete updated source code: source/model_quality_summary.py
+Tests for Steps 1-5 and Step 6: tests/test_model_quality_summary.py
+
+Run command:
+python3 source/model_quality_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --justify --neighbors 5
+
+Known assumptions and limitations:
+- The recommendation is the best observed row under the existing metric ordering (error minimized, then accuracy maximized), not a newly trained model.
+- Prediction is distance-weighted nearest-neighbor evidence over configuration fields.
+- Blame results are independent associations and do not establish causality; sparse groups can be unstable.
+- Dataset values are parsed as strings for configurations and finite floats for metrics.

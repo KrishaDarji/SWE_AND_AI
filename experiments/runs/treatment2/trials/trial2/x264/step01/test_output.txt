@@ -1,0 +1,7 @@
+test_load_and_summarize_real_dataset (test_x264_summary.SummaryTests) ... ok
+test_reusable_schema_with_multiple_measures (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.025s
+
+OK

@@ -1,0 +1,17 @@
+{
+  "baseline_configuration": {
+    "Max_depth": "10",
+    "Min_impurity_decrease": "2.75",
+    "Min_sample_leaves": "3",
+    "N_estimators": "40",
+    "criterion": "squared_error"
+  },
+  "baseline_error": 0.3148748159057436,
+  "candidate_count": 0,
+  "change_count": null,
+  "recommendation": null,
+  "selection": "no observed one-hyperparameter improvement"
+}
+real 0.04
+user 0.03
+sys 0.00

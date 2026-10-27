@@ -1,0 +1,4 @@
+Added project_summary.spot_inconsistent and the source/spot.py CLI. The detector
+uses robust effort-per-KLOC deviation (median and MAD), returns ranked records,
+and reports project 89 as the most inconsistent record in nasa93dem.csv.
+Step 8 source and tests were reused unchanged except for the Step 9 additions.

@@ -1,0 +1,18 @@
+Implemented Step 10 by reusing the complete Step 9 source and regression tests.
+
+Added:
+- project_history.baseline.historical_baseline: median historical effort, independent of size.
+- project_history.baseline.compare_estimators: compares the existing median-productivity estimator with the baseline and reports absolute errors.
+- CLI flags --compare-baseline and --actual-effort.
+- tests/test_baseline.py with validation and comparison coverage.
+
+All 26 tests pass. The real NASA93 command completed successfully with the new comparison output and the existing inconsistency-spotting output. Complete updated source is in source/ and complete tests are in tests/.
+
+Run command:
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --kloc 10 --compare-baseline --actual-effort 35 --spot
+
+Assumptions and limitations:
+- The simple historical baseline is the median recorded effort and intentionally ignores proposed project size.
+- Absolute error comparison requires a supplied actual effort; this run uses 35 person-months as the evaluation target.
+- This is an observational historical comparison, not a train/test evaluation or causal claim.
+- Missing effort values are excluded; no external packages are used.

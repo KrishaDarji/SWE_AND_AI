@@ -1,0 +1,33 @@
+Historical projects: 93
+Project years: 1971-1987
+Total size (KLOC): 8744.05
+Total effort: 58070.30 person-months
+Total reported defects: 349844.00
+Average delivery duration: 24.18 months
+Projects with recorded delivery duration: 93/93
+Proposed size (KLOC): 100.00
+Estimated effort: 484.38 person-months
+Approval: approved
+Sponsor justification:
+Estimate justification: 484.38 person-months
+Evidence: 93 historical projects with usable size and effort
+Method: proposed KLOC x median effort/KLOC (4.84)
+Historical productivity range translated to this size: 352.94-712.50 person-months
+Confidence: planning baseline, not a guarantee
+Caveats: historical spread is uncertainty evidence, not a guarantee or causal proof
+Excessive-effort threshold: 252.00
+Excessive-effort projects: 46
+Categorical factors:
+centerX: 6 1.00 vs 2 0.24
+plex: vl 1.00 vs n 0.34
+data: h 0.82 vs vh 0.25
+pcap: vh 0.90 vs n 0.34
+apex: l 1.00 vs n 0.44
+Numeric factors:
+MonthsX: Spearman 0.91
+Defects-: Spearman 0.85
+Kloc+: Spearman 0.83
+YearX: Spearman -0.51
+real 0.03
+user 0.02
+sys 0.00

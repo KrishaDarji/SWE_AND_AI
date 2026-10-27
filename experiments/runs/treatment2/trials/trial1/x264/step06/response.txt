@@ -1,0 +1,17 @@
+Complete updated source code:
+- source/x264_summary.py
+
+Tests:
+- tests/test_x264_summary.py
+- 10 tests passed, covering inherited Step 1-5 behavior plus recommendation selection and unseen-configuration justification.
+
+Implementation command:
+python3 /Users/RadhaKrishna/Desktop/SWE_AND_AI/experiments/runs/treatment2/trials/trial1/x264/step06/source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --justify
+
+Step 6 adds justify_recommendation(), which selects the fastest observed configuration by default or evaluates a requested configuration, compares its performance with the dataset mean, and emits administrator-facing rationale and limitations. The CLI exposes this as --justify.
+
+Reuse: Step 06 starts from the Step 05 Treatment 2 source and tests. It preserves summary_csv, predict_encoding_time, certify_improvement, OnlineBenchmarkEvaluator, evaluate_stream, blame_slow_encodes, and their CLI modes. No Treatment 1 or external implementation was used.
+
+Measured dataset result: the fastest observed row is row 71 with performance 244.23, versus a dataset mean of 461.7535963541667; the observed result is 47.10815423456395% below the mean.
+
+Assumptions and limitations: lower Performance- is better; the fastest observed row is a recommendation, not causal proof; the benchmark may not represent production clips; and production rollout should use repeated validation on representative content.

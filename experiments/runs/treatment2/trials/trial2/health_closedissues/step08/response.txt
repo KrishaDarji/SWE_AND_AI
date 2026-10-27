@@ -1,0 +1,24 @@
+Implemented Step 8 by extending the reused Step 7 `model_summary.py`.
+
+New behavior:
+- Added `suggest_hyperparameter_change`, which searches observed configurations for lower `MRE-`.
+- Ranks candidates by smallest Hamming distance from the baseline, then lower error and input order.
+- Added the `--suggest` CLI mode using `--target` and optional `--configuration`.
+
+Reused:
+- The complete Step 7 source and all Step 1-7 behavior.
+- All Step 7 tests, plus two focused Step 8 tests.
+
+Validation:
+- 14 tests passed.
+- The real dataset baseline had MRE-=0.3148748159057436.
+- The smallest observed improvement changed two parameters (`N_estimators` 40 to 10 and `Min_impurity_decrease` 2.75 to 5), reducing MRE- to 0.2673048600883652 (reduction 0.04756995581737844).
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial2/health_closedissues/step08/source/model_summary.py moot/optimize/hpo/Health-ClosedIssues0000.csv --suggest --target N_estimators=40 criterion=squared_error Min_sample_leaves=3 Min_impurity_decrease=2.75 Max_depth=10 --configuration N_estimators criterion Min_sample_leaves Min_impurity_decrease Max_depth
+
+Assumptions and limitations:
+- “Smallest” means minimum Hamming distance among configurations observed in the CSV.
+- The recommendation is observational and does not establish causality.
+- It only compares complete rows with finite error and requires the baseline to be present.
+- A two-parameter change was the smallest improving change available for the selected real-dataset baseline.

@@ -1,0 +1,24 @@
+Step 1 result
+
+Complete source code: source/main.py and source/project_history/ contain the complete implementation. The command is:
+
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Measured result:
+- 93 historical projects, spanning 1971-1987
+- 8,744.05 KLOC total
+- 58,070.30 person-months total effort
+- 349,844 reported defects
+- 24.18 months average delivery duration
+- 93/93 projects have a recorded delivery duration
+
+Reusable design: CsvProjectRepository owns CSV parsing, Project and Summary are immutable domain models, summarize_projects is an input-agnostic aggregation service, and main.py is only the command-line adapter. Later skills can reuse the repository and service with another source or add new reporting adapters without changing the aggregation logic.
+
+Tests: tests/test_project_history.py covers aggregation, empty input, and CSV parsing. The test run passed 3 tests; its full captured output is in test_output.txt. The implementation output and timing are in runtime_output.txt.
+
+Assumptions and limitations:
+- NASA93 column names Kloc+, Effort-, Defects-, and MonthsX are treated as size, effort, defects, and delivery duration.
+- Blank or non-numeric values become unavailable and are excluded from the corresponding aggregate.
+- A project is counted as having a delivery outcome when MonthsX is present; this does not assess schedule success against a target because the dataset has no target date or planned duration.
+- Numeric totals are rounded only for display, not during aggregation.
+- The implementation reads the CSV lazily, but aggregation materializes the projects to compute multiple statistics.

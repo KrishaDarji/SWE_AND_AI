@@ -1,0 +1,11 @@
+test_empty_input_is_safe (test_project_history.SummaryTests) ... ok
+test_repository_reads_trimmed_values (test_project_history.SummaryTests) ... ok
+test_summary_aggregates_present_values (test_project_history.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+real 0.04
+user 0.03
+sys 0.00

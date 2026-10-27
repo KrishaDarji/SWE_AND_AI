@@ -1,0 +1,17 @@
+Step 2 adds proposal screening to the reused Step 1 historical-project package.
+
+Complete updated source code is in source/: the original repository, models, summary service, and CLI remain present; estimator.py adds median historical effort-per-KLOC estimation. The CLI accepts --kloc and optional --max-effort and reports estimated effort and approval status.
+
+Tests are in tests/test_project_history.py. The 3 Step 1 tests remain and 2 Step 2 tests cover median productivity and invalid proposal size.
+
+Run command:
+python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --kloc 50 --max-effort 400
+
+Reused: Project, Summary, CsvProjectRepository, summarize_projects, CSV field mapping, display summary, and the existing CLI entry point. No code was copied from other treatments or trials.
+
+Assumptions and limitations:
+- Effort is estimated as proposed KLOC times the median effort/KLOC among historical rows with positive KLOC and recorded effort.
+- The estimator does not adjust for team, complexity, schedule, or other categorical NASA93 attributes.
+- Approval means only that the estimate is at or below the optional max-effort threshold; it is not a business or risk decision.
+- Non-positive proposed KLOC is rejected; unavailable historical effort produces an unavailable estimate.
+- Existing Step 1 missing-value handling and summary semantics are unchanged.

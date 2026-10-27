@@ -1,0 +1,10 @@
+Implemented Step 6 by carrying forward all Step 5 source and tests and adding an evidence-based configuration justification API, CLI, exports, and three Step 6 tests.
+
+Run command:
+python3 -m unittest discover -s tests -p 'test_*.py' && python3 source/justify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+The CLI selected the best observed configuration for Performance-: mean 244.230000 over 1 sample, with a 0.047000 margin over the runner-up. The full suite passed 16 tests.
+
+Reused: the complete Step 5 source tree and all Step 1–5 tests, including summary, prediction, certification, streaming evaluation, and blame behavior. New code is the justification API, CLI, package exports, and tests.
+
+Assumptions and limitations: the final CSV column is the measure unless --measure is supplied; configurations must match observed rows; ranking is based on observed means and is descriptive, not causal; ties use deterministic setting order; small sample counts can make a recommendation fragile; all settings are treated as string values.

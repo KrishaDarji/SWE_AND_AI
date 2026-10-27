@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,1,software project planning,justify,354,41,1,0.03,0,"12 tests passed; implementation exited 0; new_loc is the source diff versus Treatment 2 Step 5"

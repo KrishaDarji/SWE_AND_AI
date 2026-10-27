@@ -1,0 +1,30 @@
+test_assesses_approved_arriving_proposal (test_nasa93_summary.Step4Tests) ... ok
+test_proposal_validation (test_nasa93_summary.Step4Tests) ... ok
+test_rejects_proposal_that_breaks_budget (test_nasa93_summary.Step4Tests) ... ok
+test_review_without_constraints_and_batch_preserves_arrival_order (test_nasa93_summary.Step4Tests) ... ok
+test_step10_cli_mode_is_available (test_nasa93_summary.Step4Tests) ... ok
+test_step10_compares_estimators_with_same_mae_protocol (test_nasa93_summary.Step4Tests) ... ok
+test_step1_summary_is_preserved (test_nasa93_summary.Step4Tests) ... ok
+test_step2_estimate_is_preserved (test_nasa93_summary.Step4Tests) ... ok
+test_step3_comparison_is_preserved (test_nasa93_summary.Step4Tests) ... ok
+test_step5_is_deterministic_and_validates_level_count (test_nasa93_summary.Step4Tests) ... ok
+test_step5_ranks_factors_associated_with_excessive_effort (test_nasa93_summary.Step4Tests) ... ok
+test_step6_budget_justification_changes_recommendation (test_nasa93_summary.Step4Tests) ... ok
+test_step6_justifies_estimate_with_evidence_and_limitations (test_nasa93_summary.Step4Tests) ... ok
+test_step6_validates_estimate_inputs (test_nasa93_summary.Step4Tests) ... ok
+test_step7_applies_schedule_and_quality_constraints (test_nasa93_summary.Step4Tests) ... ok
+test_step7_reports_no_feasible_setting_and_validates_budget (test_nasa93_summary.Step4Tests) ... ok
+test_step7_selects_highest_value_within_budget (test_nasa93_summary.Step4Tests) ... ok
+test_step8_candidates_are_cost_ordered_and_level_count_validated (test_nasa93_summary.Step4Tests) ... ok
+test_step8_cli_mode_is_available (test_nasa93_summary.Step4Tests) ... ok
+test_step8_recommends_a_cheapest_supported_risk_reduction (test_nasa93_summary.Step4Tests) ... ok
+test_step9_spots_a_deterministic_historical_inconsistency (test_nasa93_summary.Step4Tests) ... ok
+test_step9_validates_threshold_and_preserves_cli (test_nasa93_summary.Step4Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.018s
+
+OK
+real 0.08
+user 0.05
+sys 0.01

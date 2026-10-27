@@ -1,0 +1,11 @@
+test_certification_finds_credible_faster_candidate (test_x264_summary.SummaryTests) ... ok
+test_certification_rejects_no_evidence (test_x264_summary.SummaryTests) ... ok
+test_step1_summary_and_step2_prediction (test_x264_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+real 0.05
+user 0.04
+sys 0.01

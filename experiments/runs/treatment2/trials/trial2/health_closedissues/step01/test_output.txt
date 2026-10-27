@@ -1,0 +1,11 @@
+test_empty_rows_are_rejected (test_model_summary.SummaryTests) ... ok
+test_missing_column_is_rejected (test_model_summary.SummaryTests) ... ok
+test_quality_and_configuration_roles (test_model_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+real 0.05
+user 0.03
+sys 0.01

@@ -1,0 +1,7 @@
+Implemented Step 5 by extending the Step 4 source. Complete updated code is in source/main.py and source/model_summary.py. The new blame_high_error function ranks configuration hyperparameters associated with high MRE- error using numeric Pearson correlation and high-versus-low error means, and categorical level means and high-error rates. The CLI exposes --blame, --error-column, and --high-percentile.
+
+Tests in tests/ include all inherited Step 1-4 tests plus Step 5 tests. The measured suite passed 17 tests. The real dataset command ran successfully in 0.05 seconds and produced runtime_output.txt.
+
+Reused: Step 4 source and all prior CSV parsing, numeric handling, summary, prediction, family certification, streaming evaluation, CLI behavior, and tests. New LOC measures only the Step 5 source diff versus Step 4.
+
+Assumptions and limitations: MRE- is the default error metric; quality columns recognized by the existing MRE/ACC/PRED prefixes are excluded from hyperparameter analysis. High error means values at or above the selected percentile threshold. Results describe association, not causation; correlations do not control for interactions or confounding, and categorical results can be unstable for small groups. Only Python standard-library modules are used.

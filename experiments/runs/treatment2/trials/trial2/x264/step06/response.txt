@@ -1,0 +1,14 @@
+Step 6 is implemented in source/x264_summary.py.
+
+Complete updated source code: the complete executable source is that file; it retains all Step 1-5 functions and CLI modes and adds justify(...) plus --justify.
+
+Tests: tests/test_x264_summary.py contains the full Step 1-5 regression coverage and two Step 6 tests. The suite passed: 11 tests, 0 failures.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial2/x264/step06/source/x264_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --justify
+
+Measured recommendation: recommend the highest observed configuration with Performance- mean 821.963. It was observed once among 1,152 configurations/runs. The supporting screening identified positive effects for no_fast_pskip, no_mbtree, and ref_9. The justification warns that this is observational evidence and should be validated on representative production clips with a staged rollout.
+
+Reuse: Step 06 starts from the complete Step 05 implementation and preserves loading, summary, prediction, certification, online evaluation, blame analysis, and their CLI options. New code is limited to justify(...), its CLI branch, and regression tests.
+
+Assumptions and limitations: Performance- is treated as the metric to maximize, as established by the prior implementation. The recommendation selects an observed configuration, so it does not claim performance for an unobserved configuration. The Welch-normal screening and slow-tail association are dependency-free evidence screens, not causal or production guarantees.

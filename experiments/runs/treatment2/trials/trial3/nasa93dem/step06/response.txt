@@ -1,0 +1,15 @@
+Implemented Step 6 by extending the Step 05 project_history package.
+
+Complete updated source is in source/. It includes all reused Step 1-5 modules plus project_history/justification.py and the updated package exports and CLI. The new --justify option explains the median effort/KLOC estimate, reports the translated historical productivity spread, states the evidence count, and explicitly labels the result as a planning baseline rather than a guarantee. Existing --kloc, --blame, comparison, proposal, and summary behavior remains available.
+
+Tests are in tests/. The suite contains the copied Step 1-5 regression tests and three Step 6 tests. The test suite passed: 14 tests.
+
+Run command:
+python3 -m unittest discover -s experiments/runs/treatment2/trials/trial3/nasa93dem/step06/tests -p 'test*.py' -v
+
+Example implementation command:
+python3 experiments/runs/treatment2/trials/trial3/nasa93dem/step06/source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --kloc 100 --justify --blame
+
+Reused: the Step 05 model, repository, summary service, estimator, certifier, portfolio assessment, blame analysis, CLI, and regression tests from this same Treatment 2 Trial 3 path. No other treatment, trial, or chat source was used.
+
+Assumptions and limitations: effort/KLOC is used as a planning baseline; the displayed range is an empirical quartile-style spread, not a formal prediction interval. The evidence is descriptive and does not establish causation. Rows missing positive KLOC or effort are excluded from the benchmark. Sponsor justification requires --kloc and uses the existing estimate path.

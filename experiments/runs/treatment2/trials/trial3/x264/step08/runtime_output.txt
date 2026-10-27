@@ -1,0 +1,6 @@
+baseline=no_asm=1,no_8x8dct=0,no_cabac=0,no_deblock=1,no_fast_pskip=1,no_mbtree=1,no_mixed_refs=0,no_weightb=1,rc_lookahead=1,rc_lookahead_20=1,rc_lookahead_40=0,rc_lookahead_60=0,ref=1,ref_1=0,ref_5=0,ref_9=1
+candidate=no_asm=1,no_8x8dct=0,no_cabac=0,no_deblock=1,no_fast_pskip=1,no_mbtree=1,no_mixed_refs=1,no_weightb=1,rc_lookahead=1,rc_lookahead_20=1,rc_lookahead_40=0,rc_lookahead_60=0,ref=1,ref_1=0,ref_5=0,ref_9=1
+changed_setting=no_mixed_refs baseline_mean=821.963000 candidate_mean=671.400000 improvement=150.563000
+real 0.04
+user 0.03
+sys 0.01

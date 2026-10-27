@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,3,video encoding,fix,808,100,20/20,0.04,0,"Step 7 cumulative source reused; Step 8 adds one-setting suggestion API and CLI; measured on X264_AllMeasurements.csv"

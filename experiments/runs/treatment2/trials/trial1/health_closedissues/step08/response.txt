@@ -1,0 +1,12 @@
+Complete updated source code: source/model_quality_summary.py
+
+Tests: tests/test_model_quality_summary.py. The suite covers all inherited Step 1-7 behavior and Step 8 recommendation/error/CLI behavior.
+
+Run command:
+python3 source/model_quality_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --suggest-change '{"N_estimators":"170","criterion":"squared_error","Min_sample_leaves":"17","Min_impurity_decrease":"4.25","Max_depth":"13"}'
+
+Step 8 adds suggest_change(), which searches observed rows differing in exactly one hyperparameter, keeps only rows with lower MRE-, and ranks by smallest numeric change (categorical changes have size 1), then error and deterministic field/value order. It reused the Step 7 CSV loading, metric classification, numeric parsing, CLI, and JSON serialization.
+
+Measured result: changing Min_impurity_decrease from 4.25 to 7 reduced observed MRE- from 0.8111929307805595 to 0.806480118, an improvement of 0.004712812780559572.
+
+Assumptions and limitations: recommendations are restricted to observed configurations and one changed field; they are observational rather than causal; numeric distance is on the raw parameter scale; the supplied configuration must exactly match an observed row with numeric error; missing or unobserved candidates produce a ValueError.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,1,machine-learning model configuration,justify,316,39,true,31.84,0,"14 tests passed; justification completed on Health-ClosedIssues0000.csv; new_loc is added-line count versus the reused Step 5 source"

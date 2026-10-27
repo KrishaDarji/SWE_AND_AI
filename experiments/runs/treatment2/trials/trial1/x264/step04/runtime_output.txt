@@ -1,0 +1,32 @@
+{
+  "best": {
+    "configuration": {
+      "preset": "slow",
+      "threads": "2"
+    },
+    "index": 2,
+    "performance": 12.0
+  },
+  "ranking": [
+    {
+      "configuration": {
+        "preset": "slow",
+        "threads": "2"
+      },
+      "index": 2,
+      "performance": 12.0
+    },
+    {
+      "configuration": {
+        "preset": "fast",
+        "threads": "1"
+      },
+      "index": 1,
+      "performance": 30.0
+    }
+  ],
+  "received": 2
+}
+real 0.03
+user 0.02
+sys 0.00

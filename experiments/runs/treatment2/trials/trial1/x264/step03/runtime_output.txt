@@ -1,0 +1,55 @@
+{
+  "alpha": 0.05,
+  "baseline": {
+    "no_8x8dct": "0",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "candidate": {
+    "no_8x8dct": "0",
+    "no_asm": "0",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "changed_settings": [
+    "no_asm"
+  ],
+  "credible": false,
+  "mean_improvement": null,
+  "p_value": 1.0,
+  "pairs": 0,
+  "test": "one-sided exact sign test",
+  "ties": 0,
+  "wins": 0
+}
+real 0.03
+user 0.02
+sys 0.00
+
+TEST_STATUS=0
+IMPLEMENTATION_STATUS=0

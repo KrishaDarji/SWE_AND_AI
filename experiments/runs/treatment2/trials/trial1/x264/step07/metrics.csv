@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+07,2,1,video encoding,choose,382,48,true,0.03,0,"Reused Step 06 source and tests; added constrained observed-configuration selection and CLI; 13 tests passed; runtime measured with /usr/bin/time -p on X264_AllMeasurements.csv"

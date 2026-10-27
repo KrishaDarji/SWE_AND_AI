@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,2,3,video encoding,race,1000,93,24/24,0.047,0,"stdlib-only; reused Step 1-9 source and tests; equal-budget row-order system versus seeded random baseline on mean Performance-; budget=64; 1152 unique observed configurations"

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,2,2,video encoding,blame,286,52,1,0.05,0,"9 regression and Step 5 tests passed; runtime is /usr/bin/time real seconds for --blame command; new_loc is the diff-added source lines versus Step 4"

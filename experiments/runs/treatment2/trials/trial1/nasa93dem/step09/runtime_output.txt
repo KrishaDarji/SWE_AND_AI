@@ -1,0 +1,37 @@
+{
+  "absolute_scores": {
+    "defects_per_kloc": 1.4697464284226749,
+    "effort_per_kloc": 34.39225277673923,
+    "months_per_kloc": 3.3054286287089005
+  },
+  "dataset_mads": {
+    "defects_per_kloc": 7.807804878048781,
+    "effort_per_kloc": 1.6579092920353986,
+    "months_per_kloc": 0.3307692307692308
+  },
+  "dataset_medians": {
+    "defects_per_kloc": 38.986666666666665,
+    "effort_per_kloc": 4.84375,
+    "months_per_kloc": 0.5307692307692308
+  },
+  "inconsistent": true,
+  "method": "maximum absolute modified z-score across per-KLOC ratios",
+  "project": {
+    "Defects-": 406.0,
+    "Effort-": 648.0,
+    "Kloc+": 7.25,
+    "MonthsX": 15.6,
+    "id": "89"
+  },
+  "project_count": 93,
+  "ratios": {
+    "defects_per_kloc": 56.0,
+    "effort_per_kloc": 89.37931034482759,
+    "months_per_kloc": 2.1517241379310343
+  },
+  "score": 34.39225277673923,
+  "threshold": 3.5
+}
+real 0.03
+user 0.02
+sys 0.00

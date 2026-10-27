@@ -1,0 +1,14 @@
+Step 1 is implemented in source/x264_summary.py, with tests in tests/test_x264_summary.py.
+
+Run command:
+python3 step01/source/x264_summary.py ../../../../../moot/optimize/config/X264_AllMeasurements.csv
+
+The source is complete and reusable: load_dataset discovers binary setting columns and non-binary measurement columns; summarize computes overall statistics and per-setting value-group statistics; main provides a standard-library CLI. It supports multiple quality measures without changes to the summarization code.
+
+Tests: 2 tests passed. The implementation processed 1,152 runs, 16 settings, and the Performance- measure.
+
+Assumptions and limitations:
+- Binary numeric columns (0 or 1) are encoder settings; all other numeric columns are measures.
+- The CSV is rectangular, has a header, and contains numeric values in classified columns.
+- Empty setting groups are reported with count 0 and null statistics.
+- No causal inference or interaction analysis is performed; summaries are descriptive.

@@ -1,0 +1,17 @@
+{
+  "bootstrap_95_high": -1.1464832249788,
+  "bootstrap_95_low": -2.7733333333333334,
+  "count_a": 12,
+  "count_b": 37,
+  "genuinely_less_costly": true,
+  "group_a": "1",
+  "group_b": "2",
+  "group_field": "centerX",
+  "median_cost_a": 3.192920353982301,
+  "median_cost_b": 4.84375,
+  "median_difference_a_minus_b": -1.6508296460176992,
+  "permutation_p_value": 0.0033222591362126247
+}
+real 0.03
+user 0.02
+sys 0.00

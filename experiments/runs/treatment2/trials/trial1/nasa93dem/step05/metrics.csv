@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,2,1,software project planning,blame,314,58,true,0.03,0,"9 tests passed including Step 1-4 regression coverage; factor-analysis CLI completed successfully; new_loc is diff-added source lines beyond Step 4; runtime is /usr/bin/time real seconds"

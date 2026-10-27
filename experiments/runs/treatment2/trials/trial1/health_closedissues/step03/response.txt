@@ -1,0 +1,12 @@
+Complete updated source: source/model_quality_summary.py.
+
+Tests: tests/test_model_quality_summary.py contains all Step 1 and Step 2 tests plus Step 3 certification tests. The suite ran successfully: 7 tests passed.
+
+Run implementation:
+python3 source/model_quality_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --certify '{"field":"criterion","a":"poisson","b":"squared_error","metrics":["MRE-","ACC+","PRED40+"]}' --resamples 2000
+
+The certification result for this run is reliable_winner = squared_error. All three requested metric bootstrap intervals excluded zero in favor of squared_error.
+
+Reused: the Step 2 source was extended in place, preserving Step 1 summary APIs, Step 2 nearest-neighbor prediction, JSON output, and CLI behavior. The Step 3 code adds Certification, certify, bootstrap resampling, and --certify options. No Treatment 1 or external implementation was used.
+
+Assumptions and limitations: rows are treated as independent historical observations; family comparisons are unadjusted comparisons of observed metric means; bootstrap intervals quantify sampling uncertainty, not causal effects; all requested metrics must favor the same family for reliable_winner; missing metric values are omitted; deterministic seed 0 is used by the CLI.

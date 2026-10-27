@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,3,video encoding,justify,603,98,true,0.04,0,"16 tests passed; justify CLI processed X264_AllMeasurements.csv; total_loc is Python source lines; new_loc is code added beyond Step 5 (65 API + 31 CLI + 2 exports)"

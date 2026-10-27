@@ -1,0 +1,10 @@
+test_certification_detects_credible_improvement (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_previous_reusable_schema (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_previous_summary_and_prediction_behavior (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+test_real_dataset_certification_is_reported (test_x264_summary.CompatibilityAndCertificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.048s
+
+OK
+

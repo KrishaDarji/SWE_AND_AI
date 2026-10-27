@@ -1,0 +1,43 @@
+Step 2 is complete.
+
+Complete updated source code is saved under source/. It includes every reused
+Step 1 file plus these additions:
+
+source/project_summary/estimate.py
+  Defines EffortEstimate and estimate_effort(). The estimator selects the
+  nearest historical projects by KLOC, uses the median effort/KLOC rate for
+  the point estimate, and reports the min/max selected rates as a screening
+  range.
+
+source/estimate.py
+  CLI usage:
+  PYTHONPATH=source python3 source/estimate.py DATA.csv PROPOSED_KLOC
+
+The package __init__.py exports EffortEstimate and estimate_effort while
+retaining the Step 1 exports. Tests are in tests/test_summary.py (reused) and
+tests/test_estimate.py (new). The complete test and implementation outputs are
+in test_output.txt and runtime_output.txt.
+
+Run tests:
+PYTHONPATH=source python3 -m unittest discover -s tests -v
+
+Run implementation:
+PYTHONPATH=source python3 source/estimate.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv 10
+
+Reuse: copied the Step 1 project_summary package and summary tests, preserving
+its loader, Project model, DatasetSummary model, summary function, and summary
+CLI. Step 2 only adds the estimator, estimator CLI, exports, and estimator
+tests.
+
+Assumptions and limitations:
+- Effort is estimated from historical effort/KLOC ratios and assumes KLOC is a
+  meaningful size predictor.
+- The default neighborhood is the seven closest historical KLOC values.
+- The reported range is the min/max effort implied by those selected cases,
+  not a statistical confidence interval.
+- No similarity features beyond KLOC, outlier treatment, validation split, or
+  approval policy is implemented.
+- Proposed KLOC and historical KLOC must be positive.
+
+Measured result: 7 tests passed; implementation runtime was 0.03 seconds;
+the 10 KLOC proposal estimate was 48.0 effort units.

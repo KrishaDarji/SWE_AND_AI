@@ -1,0 +1,7 @@
+Complete source: source/x264_summary.py
+Tests: tests/test_x264_summary.py
+Run command: python3 source/x264_summary.py moot/optimize/config/X264_AllMeasurements.csv
+
+The reusable API is summarize_csv(path). It detects binary numeric columns as encoder settings and other numeric columns as quality measures, while retaining statistics and a JSON-compatible result for later skills to extend.
+
+Assumptions and limitations: the CSV has a header; blank or non-finite values are not supported as numeric observations; binary settings are represented as exactly 0/1; all rows are loaded in memory; the dataset's `Performance-` field is treated as a quality measure without inferring whether higher or lower is better.

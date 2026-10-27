@@ -1,0 +1,19 @@
+Implemented Step 8 by extending the complete Step 7 source.
+
+Complete updated source code:
+- source/main.py
+- source/model_summary.py
+
+Added `suggest_smallest_change()` and `--suggest-smallest-change`. The current configuration is the first observed CSV row. The function searches observed rows that differ in exactly one configuration field, requires a lower MRE- error, and selects deterministically by error, field name, and value. Existing Step 1-7 APIs and CLI modes remain available.
+
+Tests:
+- tests/test_step1.py through tests/test_step7.py are reused regression tests.
+- tests/test_step8.py covers no-change handling, one-field improvements, and the CLI.
+- Measured result: 24 tests passed.
+
+Run command:
+python3 -m unittest discover -s tests -p 'test_*.py' && python3 source/main.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --suggest-smallest-change
+
+The real dataset command found no observed one-hyperparameter improvement from its first row; its baseline MRE- was 0.3148748159057436.
+
+Known assumptions and limitations: the first row represents the current configuration; only observed rows are considered; exactly one configuration field must change; MRE- is the error metric; ties are deterministic; the result is empirical association and does not establish causation or production performance. Only Python standard-library modules are used.

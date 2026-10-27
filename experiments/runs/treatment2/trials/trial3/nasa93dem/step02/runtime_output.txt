@@ -1,0 +1,11 @@
+Historical projects: 93
+Project years: 1971-1987
+Total size (KLOC): 8744.05
+Total effort: 58070.30 person-months
+Total reported defects: 349844.00
+Average delivery duration: 24.18 months
+Projects with recorded delivery duration: 93/93
+Proposed size (KLOC): 50.00
+Estimated effort: 242.19 person-months
+Approval: approved
+python3 source/main.py  --kloc 50 --max-effort 400  0.02s user 0.01s system 94% cpu 0.030 total

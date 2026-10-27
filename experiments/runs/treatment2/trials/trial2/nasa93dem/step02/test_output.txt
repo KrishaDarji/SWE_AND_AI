@@ -1,0 +1,12 @@
+test_estimate_cli_emits_json (test_estimate.EstimateTests) ... ok
+test_estimate_is_deterministic_and_has_screening_range (test_estimate.EstimateTests) ... ok
+test_invalid_proposal_is_rejected (test_estimate.EstimateTests) ... ok
+test_cli_emits_json (test_summary.SummaryTests) ... ok
+test_empty_collection_is_rejected (test_summary.SummaryTests) ... ok
+test_loads_all_projects_and_outcomes (test_summary.SummaryTests) ... ok
+test_summary_has_totals_and_year_cohorts (test_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.063s
+
+OK

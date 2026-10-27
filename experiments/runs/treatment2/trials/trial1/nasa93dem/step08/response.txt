@@ -1,0 +1,16 @@
+# Step 8 result
+
+The reused `nasa93_summary.py` module now adds `recommend_process_change()` and the `--recommend-process-change` CLI mode. The complete updated source is in `source/nasa93_summary.py`; the complete inherited-plus-Step-8 test suite is in `tests/test_nasa93_summary.py`.
+
+The reused Step 5 factor analysis supplies the risk data. Estimated risk is the historical rate of projects whose effort/KLOC exceeds the dataset median. Because nasa93dem.csv has no process-change prices, median historical effort/KLOC is used as the cost proxy. Candidates have at least the configured observations and lower risk than baseline, then are ordered by cost.
+
+Observed result: recommend `centerX=1`; baseline risk 0.4946236559, estimated risk 0.0833333333, risk reduction 0.4112903226, and estimated cost 3.192920354 effort/KLOC.
+
+Tests: 18 passed. Implementation exit status: 0. Runtime: 0.04 seconds.
+
+Run command:
+python3 experiments/runs/treatment2/trials/trial1/nasa93dem/step08/source/nasa93_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --recommend-process-change
+
+Reused: the Step 7 source and test suite from Treatment 2 were extended; all Step 1-7 public functions and tests remain present.
+
+Assumptions and limitations: risk is a descriptive historical proxy, not a causal probability; factor levels are treated as actionable process changes; median effort/KLOC is only a cost proxy because no change-price field exists; sparse groups are excluded by the minimum observation count; observational confounding and future-project differences are not modeled.

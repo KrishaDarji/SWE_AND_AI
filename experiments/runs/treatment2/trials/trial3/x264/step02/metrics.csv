@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,2,3,video encoding,guess,196,92,true,0.03,0,"stdlib-only; 1152 rows; reused Step 1's 104 LOC; 6 tests passed; nearest-neighbor prediction"

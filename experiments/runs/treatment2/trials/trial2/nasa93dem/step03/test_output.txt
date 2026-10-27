@@ -1,0 +1,15 @@
+test_cli_selects_groups_and_emits_json (test_certify.CertifyTests) ... ok
+test_inconclusive_identical_groups_are_not_certified (test_certify.CertifyTests) ... ok
+test_strongly_cheaper_group_is_certified (test_certify.CertifyTests) ... ok
+test_estimate_cli_emits_json (test_estimate.EstimateTests) ... ok
+test_estimate_is_deterministic_and_has_screening_range (test_estimate.EstimateTests) ... ok
+test_invalid_proposal_is_rejected (test_estimate.EstimateTests) ... ok
+test_cli_emits_json (test_summary.SummaryTests) ... ok
+test_empty_collection_is_rejected (test_summary.SummaryTests) ... ok
+test_loads_all_projects_and_outcomes (test_summary.SummaryTests) ... ok
+test_summary_has_totals_and_year_cohorts (test_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.171s
+
+OK

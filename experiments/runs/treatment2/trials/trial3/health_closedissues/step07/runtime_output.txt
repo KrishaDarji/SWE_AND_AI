@@ -1,0 +1,18 @@
+{
+  "recommended_configuration": {
+    "Max_depth": "10",
+    "Min_impurity_decrease": "3",
+    "Min_sample_leaves": "1",
+    "N_estimators": "10",
+    "criterion": "squared_error"
+  },
+  "selection": "balanced observed and predicted quality",
+  "prediction_weight": 0.5,
+  "candidates_considered": 25,
+  "predicted_quality": {
+    "ACC+": 0.9999999999947978,
+    "MRE-": 0.029749631815264327,
+    "PRED40+": 0.9999999999982795
+  },
+  "timing_seconds": 1.23
+}

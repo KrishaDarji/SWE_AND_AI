@@ -1,0 +1,18 @@
+Step 9 completed.
+
+Complete updated source code: source/x264_summary.py
+Complete regression and Step 9 tests: tests/test_x264_summary.py
+
+Reuse:
+- Based on the fullest Treatment 2 Step 7 implementation, retaining prior APIs.
+- Restored Step 8's one-setting suggestion API and CLI behavior.
+- Added detect_anomalies() and --anomalies.
+
+Anomaly method: robust MAD-based residual scores against Hamming-distance-one neighbors; flags are possible measurement errors, not proof.
+
+Measured run: 16 tests passed, 0 failed; dataset run 1.44 seconds real time; 0 errors; 1,152 rows evaluated; anomalies reported at default threshold.
+
+Command:
+python experiments/runs/treatment2/trials/trial1/x264/step09/source/x264_summary.py moot/optimize/config/X264_AllMeasurements.csv --anomalies
+
+Limitations: assumes numeric lower-is-better Performance-, meaningful one-setting neighbors, and excludes missing/non-numeric values.

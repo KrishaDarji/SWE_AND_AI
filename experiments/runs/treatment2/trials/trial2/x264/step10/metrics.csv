@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,2,2,video encoding,race,543,62,1,0.03,0,"21 tests passed; staged_race and sequential_prefix used budget=64 and objective=Performance-; measured system objective=310.58, baseline objective=310.793"

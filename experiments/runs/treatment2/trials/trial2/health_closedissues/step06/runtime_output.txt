@@ -1,0 +1,33 @@
+{
+  "baseline": {
+    "ACC+": 0.49593851329765903,
+    "MRE-": 0.70909397643463
+  },
+  "caveat": "Validate prospectively before production deployment.",
+  "configuration": {
+    "Max_depth": "10",
+    "Min_impurity_decrease": "2.75",
+    "Min_sample_leaves": "3",
+    "N_estimators": "40",
+    "criterion": "squared_error"
+  },
+  "deltas": {
+    "accuracy_gain": 0.23171287307613564,
+    "error_reduction": 0.39421915515453715
+  },
+  "margin": 0.0,
+  "nearest_distance": 0.0,
+  "neighbors_used": 25,
+  "predictions": {
+    "ACC+": 0.7276513863737947,
+    "MRE-": 0.31487482128009286
+  },
+  "reasons": [
+    "predicted error is below the dataset baseline",
+    "predicted accuracy is at or above the dataset baseline"
+  ],
+  "recommendation": "recommend"
+}
+real 0.06
+user 0.05
+sys 0.00

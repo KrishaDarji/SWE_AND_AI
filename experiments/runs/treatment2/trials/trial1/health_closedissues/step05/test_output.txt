@@ -1,0 +1,16 @@
+test_blame_ranks_values_associated_with_high_error (test_model_quality_summary.SummaryTests) ... ok
+test_blame_rejects_unknown_metric_and_bad_quantile (test_model_quality_summary.SummaryTests) ... ok
+test_certification_identifies_reliable_family (test_model_quality_summary.SummaryTests) ... ok
+test_certification_requires_both_families (test_model_quality_summary.SummaryTests) ... ok
+test_classification_uses_metric_suffix (test_model_quality_summary.SummaryTests) ... ok
+test_end_to_end_summary (test_model_quality_summary.SummaryTests) ... ok
+test_incremental_evaluation_rejects_missing_validation_result (test_model_quality_summary.SummaryTests) ... ok
+test_incremental_evaluation_updates_best_as_results_arrive (test_model_quality_summary.SummaryTests) ... ok
+test_numeric_and_categorical_statistics (test_model_quality_summary.SummaryTests) ... ok
+test_prediction_rejects_invalid_neighbor_count (test_model_quality_summary.SummaryTests) ... ok
+test_prediction_uses_nearest_configuration_and_metrics (test_model_quality_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.004s
+
+OK

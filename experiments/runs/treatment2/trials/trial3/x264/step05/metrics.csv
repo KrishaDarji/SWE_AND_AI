@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,2,3,video encoding,blame,505,80,true,0.03,0,"13 tests passed; blame CLI processed X264_AllMeasurements.csv; total_loc is Python source lines; new_loc is Step 5 source added beyond Step 4"

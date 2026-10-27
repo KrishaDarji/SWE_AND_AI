@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,1,machine-learning model configuration,fix,419,55,true,0.05,0,"19 tests passed; reused Step 7 source and behavior; suggested Min_impurity_decrease 4.25 -> 7 on the 10000-row dataset, reducing observed MRE- by 0.004712812780559572"

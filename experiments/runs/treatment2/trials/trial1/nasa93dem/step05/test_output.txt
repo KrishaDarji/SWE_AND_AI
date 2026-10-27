@@ -1,0 +1,14 @@
+test_assesses_approved_arriving_proposal (test_nasa93_summary.Step4Tests) ... ok
+test_proposal_validation (test_nasa93_summary.Step4Tests) ... ok
+test_rejects_proposal_that_breaks_budget (test_nasa93_summary.Step4Tests) ... ok
+test_review_without_constraints_and_batch_preserves_arrival_order (test_nasa93_summary.Step4Tests) ... ok
+test_step1_summary_is_preserved (test_nasa93_summary.Step4Tests) ... ok
+test_step2_estimate_is_preserved (test_nasa93_summary.Step4Tests) ... ok
+test_step3_comparison_is_preserved (test_nasa93_summary.Step4Tests) ... ok
+test_step5_is_deterministic_and_validates_level_count (test_nasa93_summary.Step4Tests) ... ok
+test_step5_ranks_factors_associated_with_excessive_effort (test_nasa93_summary.Step4Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.008s
+
+OK

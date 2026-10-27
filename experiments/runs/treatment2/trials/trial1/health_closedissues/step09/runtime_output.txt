@@ -1,0 +1,3 @@
+Command: python3 step09/source/model_quality_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --spot
+Measured with /usr/bin/time -p: real 0.12, user 0.10, sys 0.01.
+Dataset result: row_count=10000, metric_fields=[MRE-, ACC+, PRED40+], finding_count=3620. Findings are diagnostic candidates, not proof of measurement error.

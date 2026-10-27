@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,2,3,machine-learning model configuration,justify,369,54,1,0.13,0,"19 unittest tests passed; real dataset justification CLI completed successfully; runtime is measured /usr/bin/time real seconds; standard library only; new_loc is the Step 6 source diff versus Step 5"

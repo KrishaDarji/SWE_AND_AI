@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,2,3,software project planning,choose,547,75,17/17,0.04,0,"Step 6 source reused; exact 0/1 value maximization added; test runtime 0.07s"

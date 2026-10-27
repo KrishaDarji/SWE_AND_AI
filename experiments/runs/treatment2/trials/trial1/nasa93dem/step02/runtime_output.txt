@@ -1,0 +1,16 @@
+{
+  "approval": "approve",
+  "budget": 100.0,
+  "dataset": "/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "effort": 48.4375,
+  "effort_per_kloc_median": 4.84375,
+  "historical_projects": 93,
+  "kloc": 10.0,
+  "planning_high": 71.25,
+  "planning_low": 35.294117647058826
+}
+
+Measured /usr/bin/time -p:
+real 0.02
+user 0.02
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,2,2,machine-learning model configuration,certify,174,52,1,2.469198625,0,"5 tests passed; dataset certification: squared_error reliably better than absolute_error on ACC+ (95% bootstrap CI for mean difference 0.025914 to 0.036357; 10000 rows)"

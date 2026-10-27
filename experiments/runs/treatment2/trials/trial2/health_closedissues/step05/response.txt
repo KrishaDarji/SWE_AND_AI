@@ -1,0 +1,9 @@
+Implemented Step 5 in source/model_summary.py. The complete updated source is the file in source/; it preserves summarize_rows, predict_quality, certify_families, SequentialEvaluator, and their CLI behavior, and adds blame_hyperparameters plus --blame, --error, and --high-quantile.
+
+Tests include all Step 4 compatibility tests and new Step 5 tests in tests/. High error is defined as error at or above the empirical requested quantile (75% by default). Numeric parameters report high/low means and binary-indicator Pearson correlation; categorical parameters report high-error rates by value. Associations are descriptive and do not establish causation.
+
+Run:
+python3 -m unittest discover -s tests -p 'test*.py'
+python3 source/model_summary.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv --blame --error MRE- --high-quantile 0.75 --configuration N_estimators criterion Min_sample_leaves Min_impurity_decrease Max_depth
+
+Known limitations: quantile ties can produce more than 25% high-error rows; missing/non-numeric error rows are excluded; categorical values are stringified; associations are univariate and descriptive, so confounding and causality are not addressed.

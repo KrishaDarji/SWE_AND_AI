@@ -1,0 +1,12 @@
+Implemented Step 5 in source/nasa93_summary.py.
+
+Complete updated source code: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+
+Step 5 adds analyze_effort_factors(), which defines excessive effort as effort/KLOC above the dataset median, evaluates every non-outcome project factor, excludes levels with fewer than three projects, and ranks factor levels by excess-rate lift over the overall excessive-effort rate. The CLI supports --analyze-factors and --minimum-level-count.
+
+Reused all Step 4 behavior and source, including loading, summaries, estimates, cost comparisons, proposal assessment, and CLI modes. The Step 5 tests include all prior regression coverage plus factor ranking, determinism, and validation.
+
+Assumptions and limitations: effort intensity is effort divided by KLOC; the median is the threshold; associations are descriptive and do not establish causation; categorical values are compared as exact strings; small groups are filtered by the minimum level count; confounding, interactions, and statistical significance are not modeled.
+
+Measured result: 9 tests passed; the factor-analysis CLI completed successfully. See test_output.txt and runtime_output.txt.

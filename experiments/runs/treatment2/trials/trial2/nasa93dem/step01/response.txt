@@ -1,0 +1,12 @@
+Step 1 implements a reusable historical-project summarizer.
+
+Source design: loading, domain models, aggregation, and CLI presentation are separate. Project preserves raw attributes while exposing typed delivery outcomes (KLOC, effort, defects, months). The summary is a dataclass with JSON-friendly output, including totals, averages, extrema, and year cohorts, so later skills can add filters or reports without changing the loader.
+
+Run command:
+PYTHONPATH=source python3 source/summarize.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Assumptions and limitations:
+- The six required columns are present and numeric outcome fields are valid.
+- Delivery outcomes are represented by effort, defects, and months; KLOC is included as project size context.
+- Numeric values are parsed as floats; no imputation or outlier treatment is performed.
+- The year summary is descriptive and does not infer causality or predict future delivery.

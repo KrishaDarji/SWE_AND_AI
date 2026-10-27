@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,2,1,software project planning,fix,442,41,1,0.04,0,"18 tests passed; reused Step 1-7 implementation; risk proxy is above-median effort/KLOC; cost proxy is median effort/KLOC"

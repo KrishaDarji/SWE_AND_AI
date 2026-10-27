@@ -1,0 +1,973 @@
+{
+  "dataset": "moot/optimize/process/nasa93dem.csv",
+  "outcomes": [
+    {
+      "count": 93,
+      "field": "Kloc+",
+      "maximum": 980.0,
+      "mean": 94.02204301075268,
+      "median": 47.5,
+      "minimum": 0.9
+    },
+    {
+      "count": 93,
+      "field": "Effort-",
+      "maximum": 8211.0,
+      "mean": 624.4118279569893,
+      "median": 252.0,
+      "minimum": 8.4
+    },
+    {
+      "count": 93,
+      "field": "Defects-",
+      "maximum": 50961.0,
+      "mean": 3761.7634408602153,
+      "median": 2007.0,
+      "minimum": 28.0
+    },
+    {
+      "count": 93,
+      "field": "MonthsX",
+      "maximum": 96.4,
+      "mean": 24.176344086021505,
+      "median": 21.4,
+      "minimum": 4.9
+    }
+  ],
+  "project_count": 93,
+  "projects": [
+    {
+      "Defects-": 808.0,
+      "Effort-": 117.6,
+      "Kloc+": 25.9,
+      "MonthsX": 15.3,
+      "defects_per_kloc": 31.1969111969112,
+      "effort_per_kloc": 4.54054054054054,
+      "id": "1",
+      "months_per_kloc": 0.5907335907335908
+    },
+    {
+      "Defects-": 767.0,
+      "Effort-": 117.6,
+      "Kloc+": 24.6,
+      "MonthsX": 15.0,
+      "defects_per_kloc": 31.178861788617883,
+      "effort_per_kloc": 4.780487804878049,
+      "id": "2",
+      "months_per_kloc": 0.6097560975609756
+    },
+    {
+      "Defects-": 240.0,
+      "Effort-": 31.2,
+      "Kloc+": 7.7,
+      "MonthsX": 10.1,
+      "defects_per_kloc": 31.16883116883117,
+      "effort_per_kloc": 4.0519480519480515,
+      "id": "3",
+      "months_per_kloc": 1.3116883116883116
+    },
+    {
+      "Defects-": 256.0,
+      "Effort-": 36.0,
+      "Kloc+": 8.2,
+      "MonthsX": 10.4,
+      "defects_per_kloc": 31.219512195121954,
+      "effort_per_kloc": 4.390243902439025,
+      "id": "4",
+      "months_per_kloc": 1.2682926829268295
+    },
+    {
+      "Defects-": 302.0,
+      "Effort-": 25.2,
+      "Kloc+": 9.7,
+      "MonthsX": 11.0,
+      "defects_per_kloc": 31.134020618556704,
+      "effort_per_kloc": 2.597938144329897,
+      "id": "5",
+      "months_per_kloc": 1.1340206185567012
+    },
+    {
+      "Defects-": 69.0,
+      "Effort-": 8.4,
+      "Kloc+": 2.2,
+      "MonthsX": 6.6,
+      "defects_per_kloc": 31.36363636363636,
+      "effort_per_kloc": 3.818181818181818,
+      "id": "6",
+      "months_per_kloc": 2.9999999999999996
+    },
+    {
+      "Defects-": 109.0,
+      "Effort-": 10.8,
+      "Kloc+": 3.5,
+      "MonthsX": 7.8,
+      "defects_per_kloc": 31.142857142857142,
+      "effort_per_kloc": 3.085714285714286,
+      "id": "7",
+      "months_per_kloc": 2.2285714285714286
+    },
+    {
+      "Defects-": 2077.0,
+      "Effort-": 352.8,
+      "Kloc+": 66.6,
+      "MonthsX": 21.0,
+      "defects_per_kloc": 31.186186186186188,
+      "effort_per_kloc": 5.297297297297298,
+      "id": "8",
+      "months_per_kloc": 0.31531531531531537
+    },
+    {
+      "Defects-": 226.0,
+      "Effort-": 72.0,
+      "Kloc+": 7.5,
+      "MonthsX": 13.6,
+      "defects_per_kloc": 30.133333333333333,
+      "effort_per_kloc": 9.6,
+      "id": "9",
+      "months_per_kloc": 1.8133333333333332
+    },
+    {
+      "Defects-": 566.0,
+      "Effort-": 72.0,
+      "Kloc+": 20.0,
+      "MonthsX": 14.4,
+      "defects_per_kloc": 28.3,
+      "effort_per_kloc": 3.6,
+      "id": "10",
+      "months_per_kloc": 0.72
+    },
+    {
+      "Defects-": 188.0,
+      "Effort-": 24.0,
+      "Kloc+": 6.0,
+      "MonthsX": 9.9,
+      "defects_per_kloc": 31.333333333333332,
+      "effort_per_kloc": 4.0,
+      "id": "11",
+      "months_per_kloc": 1.6500000000000001
+    },
+    {
+      "Defects-": 2832.0,
+      "Effort-": 360.0,
+      "Kloc+": 100.0,
+      "MonthsX": 25.2,
+      "defects_per_kloc": 28.32,
+      "effort_per_kloc": 3.6,
+      "id": "12",
+      "months_per_kloc": 0.252
+    },
+    {
+      "Defects-": 456.0,
+      "Effort-": 36.0,
+      "Kloc+": 11.3,
+      "MonthsX": 12.8,
+      "defects_per_kloc": 40.35398230088495,
+      "effort_per_kloc": 3.1858407079646014,
+      "id": "13",
+      "months_per_kloc": 1.1327433628318584
+    },
+    {
+      "Defects-": 5434.0,
+      "Effort-": 215.0,
+      "Kloc+": 100.0,
+      "MonthsX": 30.1,
+      "defects_per_kloc": 54.34,
+      "effort_per_kloc": 2.15,
+      "id": "14",
+      "months_per_kloc": 0.301
+    },
+    {
+      "Defects-": 626.0,
+      "Effort-": 48.0,
+      "Kloc+": 20.0,
+      "MonthsX": 15.1,
+      "defects_per_kloc": 31.3,
+      "effort_per_kloc": 2.4,
+      "id": "15",
+      "months_per_kloc": 0.755
+    },
+    {
+      "Defects-": 4342.0,
+      "Effort-": 360.0,
+      "Kloc+": 100.0,
+      "MonthsX": 28.0,
+      "defects_per_kloc": 43.42,
+      "effort_per_kloc": 3.6,
+      "id": "16",
+      "months_per_kloc": 0.28
+    },
+    {
+      "Defects-": 4868.0,
+      "Effort-": 324.0,
+      "Kloc+": 150.0,
+      "MonthsX": 32.5,
+      "defects_per_kloc": 32.45333333333333,
+      "effort_per_kloc": 2.16,
+      "id": "17",
+      "months_per_kloc": 0.21666666666666667
+    },
+    {
+      "Defects-": 986.0,
+      "Effort-": 60.0,
+      "Kloc+": 31.5,
+      "MonthsX": 17.6,
+      "defects_per_kloc": 31.3015873015873,
+      "effort_per_kloc": 1.9047619047619047,
+      "id": "18",
+      "months_per_kloc": 0.5587301587301587
+    },
+    {
+      "Defects-": 470.0,
+      "Effort-": 48.0,
+      "Kloc+": 15.0,
+      "MonthsX": 13.6,
+      "defects_per_kloc": 31.333333333333332,
+      "effort_per_kloc": 3.2,
+      "id": "19",
+      "months_per_kloc": 0.9066666666666666
+    },
+    {
+      "Defects-": 1276.0,
+      "Effort-": 60.0,
+      "Kloc+": 32.5,
+      "MonthsX": 20.8,
+      "defects_per_kloc": 39.261538461538464,
+      "effort_per_kloc": 1.8461538461538463,
+      "id": "20",
+      "months_per_kloc": 0.64
+    },
+    {
+      "Defects-": 614.0,
+      "Effort-": 60.0,
+      "Kloc+": 19.7,
+      "MonthsX": 13.9,
+      "defects_per_kloc": 31.16751269035533,
+      "effort_per_kloc": 3.0456852791878175,
+      "id": "21",
+      "months_per_kloc": 0.7055837563451777
+    },
+    {
+      "Defects-": 2077.0,
+      "Effort-": 300.0,
+      "Kloc+": 66.6,
+      "MonthsX": 21.0,
+      "defects_per_kloc": 31.186186186186188,
+      "effort_per_kloc": 4.504504504504505,
+      "id": "22",
+      "months_per_kloc": 0.31531531531531537
+    },
+    {
+      "Defects-": 920.0,
+      "Effort-": 120.0,
+      "Kloc+": 29.5,
+      "MonthsX": 16.0,
+      "defects_per_kloc": 31.1864406779661,
+      "effort_per_kloc": 4.067796610169491,
+      "id": "23",
+      "months_per_kloc": 0.5423728813559322
+    },
+    {
+      "Defects-": 575.0,
+      "Effort-": 90.0,
+      "Kloc+": 15.0,
+      "MonthsX": 15.2,
+      "defects_per_kloc": 38.333333333333336,
+      "effort_per_kloc": 6.0,
+      "id": "24",
+      "months_per_kloc": 1.0133333333333332
+    },
+    {
+      "Defects-": 1553.0,
+      "Effort-": 210.0,
+      "Kloc+": 38.0,
+      "MonthsX": 21.3,
+      "defects_per_kloc": 40.86842105263158,
+      "effort_per_kloc": 5.526315789473684,
+      "id": "25",
+      "months_per_kloc": 0.5605263157894737
+    },
+    {
+      "Defects-": 427.0,
+      "Effort-": 48.0,
+      "Kloc+": 10.0,
+      "MonthsX": 12.4,
+      "defects_per_kloc": 42.7,
+      "effort_per_kloc": 4.8,
+      "id": "26",
+      "months_per_kloc": 1.24
+    },
+    {
+      "Defects-": 765.0,
+      "Effort-": 70.0,
+      "Kloc+": 15.4,
+      "MonthsX": 14.5,
+      "defects_per_kloc": 49.675324675324674,
+      "effort_per_kloc": 4.545454545454545,
+      "id": "27",
+      "months_per_kloc": 0.9415584415584415
+    },
+    {
+      "Defects-": 2409.0,
+      "Effort-": 239.0,
+      "Kloc+": 48.5,
+      "MonthsX": 21.4,
+      "defects_per_kloc": 49.670103092783506,
+      "effort_per_kloc": 4.927835051546392,
+      "id": "28",
+      "months_per_kloc": 0.44123711340206184
+    },
+    {
+      "Defects-": 810.0,
+      "Effort-": 82.0,
+      "Kloc+": 16.3,
+      "MonthsX": 14.8,
+      "defects_per_kloc": 49.69325153374233,
+      "effort_per_kloc": 5.030674846625766,
+      "id": "29",
+      "months_per_kloc": 0.9079754601226994
+    },
+    {
+      "Defects-": 636.0,
+      "Effort-": 62.0,
+      "Kloc+": 12.8,
+      "MonthsX": 13.6,
+      "defects_per_kloc": 49.6875,
+      "effort_per_kloc": 4.84375,
+      "id": "29",
+      "months_per_kloc": 1.0625
+    },
+    {
+      "Defects-": 1619.0,
+      "Effort-": 170.0,
+      "Kloc+": 32.6,
+      "MonthsX": 18.7,
+      "defects_per_kloc": 49.66257668711656,
+      "effort_per_kloc": 5.214723926380368,
+      "id": "31",
+      "months_per_kloc": 0.5736196319018404
+    },
+    {
+      "Defects-": 1763.0,
+      "Effort-": 192.0,
+      "Kloc+": 35.5,
+      "MonthsX": 19.3,
+      "defects_per_kloc": 49.66197183098591,
+      "effort_per_kloc": 5.408450704225352,
+      "id": "32",
+      "months_per_kloc": 0.543661971830986
+    },
+    {
+      "Defects-": 172.0,
+      "Effort-": 18.0,
+      "Kloc+": 5.5,
+      "MonthsX": 9.1,
+      "defects_per_kloc": 31.272727272727273,
+      "effort_per_kloc": 3.272727272727273,
+      "id": "33",
+      "months_per_kloc": 1.6545454545454545
+    },
+    {
+      "Defects-": 324.0,
+      "Effort-": 50.0,
+      "Kloc+": 10.4,
+      "MonthsX": 11.2,
+      "defects_per_kloc": 31.153846153846153,
+      "effort_per_kloc": 4.8076923076923075,
+      "id": "34",
+      "months_per_kloc": 1.0769230769230769
+    },
+    {
+      "Defects-": 437.0,
+      "Effort-": 60.0,
+      "Kloc+": 14.0,
+      "MonthsX": 12.4,
+      "defects_per_kloc": 31.214285714285715,
+      "effort_per_kloc": 4.285714285714286,
+      "id": "35",
+      "months_per_kloc": 0.8857142857142858
+    },
+    {
+      "Defects-": 290.0,
+      "Effort-": 42.0,
+      "Kloc+": 6.5,
+      "MonthsX": 12.0,
+      "defects_per_kloc": 44.61538461538461,
+      "effort_per_kloc": 6.461538461538462,
+      "id": "36",
+      "months_per_kloc": 1.8461538461538463
+    },
+    {
+      "Defects-": 683.0,
+      "Effort-": 60.0,
+      "Kloc+": 13.0,
+      "MonthsX": 14.8,
+      "defects_per_kloc": 52.53846153846154,
+      "effort_per_kloc": 4.615384615384615,
+      "id": "37",
+      "months_per_kloc": 1.1384615384615384
+    },
+    {
+      "Defects-": 3343.0,
+      "Effort-": 444.0,
+      "Kloc+": 90.0,
+      "MonthsX": 26.7,
+      "defects_per_kloc": 37.144444444444446,
+      "effort_per_kloc": 4.933333333333334,
+      "id": "38",
+      "months_per_kloc": 0.29666666666666663
+    },
+    {
+      "Defects-": 420.0,
+      "Effort-": 42.0,
+      "Kloc+": 8.0,
+      "MonthsX": 12.5,
+      "defects_per_kloc": 52.5,
+      "effort_per_kloc": 5.25,
+      "id": "39",
+      "months_per_kloc": 1.5625
+    },
+    {
+      "Defects-": 887.0,
+      "Effort-": 114.0,
+      "Kloc+": 16.0,
+      "MonthsX": 16.4,
+      "defects_per_kloc": 55.4375,
+      "effort_per_kloc": 7.125,
+      "id": "40",
+      "months_per_kloc": 1.025
+    },
+    {
+      "Defects-": 7998.0,
+      "Effort-": 1248.0,
+      "Kloc+": 177.9,
+      "MonthsX": 31.5,
+      "defects_per_kloc": 44.95784148397976,
+      "effort_per_kloc": 7.0151770657672845,
+      "id": "41",
+      "months_per_kloc": 0.17706576728499157
+    },
+    {
+      "Defects-": 8543.0,
+      "Effort-": 2400.0,
+      "Kloc+": 302.0,
+      "MonthsX": 38.4,
+      "defects_per_kloc": 28.288079470198674,
+      "effort_per_kloc": 7.947019867549669,
+      "id": "42",
+      "months_per_kloc": 0.1271523178807947
+    },
+    {
+      "Defects-": 9820.0,
+      "Effort-": 1368.0,
+      "Kloc+": 282.1,
+      "MonthsX": 37.3,
+      "defects_per_kloc": 34.81035093938319,
+      "effort_per_kloc": 4.849344204182914,
+      "id": "43",
+      "months_per_kloc": 0.13222261609358382
+    },
+    {
+      "Defects-": 8518.0,
+      "Effort-": 973.0,
+      "Kloc+": 284.7,
+      "MonthsX": 38.1,
+      "defects_per_kloc": 29.91921320688444,
+      "effort_per_kloc": 3.4176325957147875,
+      "id": "44",
+      "months_per_kloc": 0.13382507903055849
+    },
+    {
+      "Defects-": 2327.0,
+      "Effort-": 400.0,
+      "Kloc+": 79.0,
+      "MonthsX": 26.9,
+      "defects_per_kloc": 29.455696202531644,
+      "effort_per_kloc": 5.063291139240507,
+      "id": "45",
+      "months_per_kloc": 0.34050632911392403
+    },
+    {
+      "Defects-": 18447.0,
+      "Effort-": 2400.0,
+      "Kloc+": 423.0,
+      "MonthsX": 41.9,
+      "defects_per_kloc": 43.60992907801418,
+      "effort_per_kloc": 5.673758865248227,
+      "id": "46",
+      "months_per_kloc": 0.09905437352245862
+    },
+    {
+      "Defects-": 5092.0,
+      "Effort-": 420.0,
+      "Kloc+": 190.0,
+      "MonthsX": 30.3,
+      "defects_per_kloc": 26.8,
+      "effort_per_kloc": 2.210526315789474,
+      "id": "47",
+      "months_per_kloc": 0.15947368421052632
+    },
+    {
+      "Defects-": 2007.0,
+      "Effort-": 252.0,
+      "Kloc+": 47.5,
+      "MonthsX": 22.3,
+      "defects_per_kloc": 42.252631578947366,
+      "effort_per_kloc": 5.3052631578947365,
+      "id": "48",
+      "months_per_kloc": 0.4694736842105263
+    },
+    {
+      "Defects-": 1058.0,
+      "Effort-": 107.0,
+      "Kloc+": 21.0,
+      "MonthsX": 21.3,
+      "defects_per_kloc": 50.38095238095238,
+      "effort_per_kloc": 5.095238095238095,
+      "id": "49",
+      "months_per_kloc": 1.0142857142857142
+    },
+    {
+      "Defects-": 4815.0,
+      "Effort-": 571.4,
+      "Kloc+": 78.0,
+      "MonthsX": 30.5,
+      "defects_per_kloc": 61.73076923076923,
+      "effort_per_kloc": 7.325641025641025,
+      "id": "50",
+      "months_per_kloc": 0.391025641025641
+    },
+    {
+      "Defects-": 704.0,
+      "Effort-": 98.8,
+      "Kloc+": 11.4,
+      "MonthsX": 15.5,
+      "defects_per_kloc": 61.75438596491228,
+      "effort_per_kloc": 8.666666666666666,
+      "id": "51",
+      "months_per_kloc": 1.3596491228070176
+    },
+    {
+      "Defects-": 1191.0,
+      "Effort-": 155.0,
+      "Kloc+": 19.3,
+      "MonthsX": 18.6,
+      "defects_per_kloc": 61.70984455958549,
+      "effort_per_kloc": 8.031088082901555,
+      "id": "52",
+      "months_per_kloc": 0.9637305699481866
+    },
+    {
+      "Defects-": 4840.0,
+      "Effort-": 750.0,
+      "Kloc+": 101.0,
+      "MonthsX": 32.4,
+      "defects_per_kloc": 47.92079207920792,
+      "effort_per_kloc": 7.425742574257426,
+      "id": "53",
+      "months_per_kloc": 0.3207920792079208
+    },
+    {
+      "Defects-": 11761.0,
+      "Effort-": 2120.0,
+      "Kloc+": 219.0,
+      "MonthsX": 42.8,
+      "defects_per_kloc": 53.70319634703196,
+      "effort_per_kloc": 9.680365296803654,
+      "id": "54",
+      "months_per_kloc": 0.19543378995433788
+    },
+    {
+      "Defects-": 2685.0,
+      "Effort-": 370.0,
+      "Kloc+": 50.0,
+      "MonthsX": 25.4,
+      "defects_per_kloc": 53.7,
+      "effort_per_kloc": 7.4,
+      "id": "55",
+      "months_per_kloc": 0.508
+    },
+    {
+      "Defects-": 6293.0,
+      "Effort-": 1181.0,
+      "Kloc+": 227.0,
+      "MonthsX": 33.8,
+      "defects_per_kloc": 27.722466960352424,
+      "effort_per_kloc": 5.202643171806168,
+      "id": "56",
+      "months_per_kloc": 0.1488986784140969
+    },
+    {
+      "Defects-": 2950.0,
+      "Effort-": 278.0,
+      "Kloc+": 70.0,
+      "MonthsX": 20.2,
+      "defects_per_kloc": 42.142857142857146,
+      "effort_per_kloc": 3.9714285714285715,
+      "id": "57",
+      "months_per_kloc": 0.28857142857142853
+    },
+    {
+      "Defects-": 28.0,
+      "Effort-": 8.4,
+      "Kloc+": 0.9,
+      "MonthsX": 4.9,
+      "defects_per_kloc": 31.11111111111111,
+      "effort_per_kloc": 9.333333333333334,
+      "id": "58",
+      "months_per_kloc": 5.444444444444445
+    },
+    {
+      "Defects-": 50961.0,
+      "Effort-": 4560.0,
+      "Kloc+": 980.0,
+      "MonthsX": 96.4,
+      "defects_per_kloc": 52.001020408163264,
+      "effort_per_kloc": 4.653061224489796,
+      "id": "59",
+      "months_per_kloc": 0.09836734693877551
+    },
+    {
+      "Defects-": 8547.0,
+      "Effort-": 720.0,
+      "Kloc+": 350.0,
+      "MonthsX": 35.7,
+      "defects_per_kloc": 24.42,
+      "effort_per_kloc": 2.057142857142857,
+      "id": "60",
+      "months_per_kloc": 0.10200000000000001
+    },
+    {
+      "Defects-": 2404.0,
+      "Effort-": 458.0,
+      "Kloc+": 70.0,
+      "MonthsX": 27.5,
+      "defects_per_kloc": 34.34285714285714,
+      "effort_per_kloc": 6.542857142857143,
+      "id": "61",
+      "months_per_kloc": 0.39285714285714285
+    },
+    {
+      "Defects-": 9308.0,
+      "Effort-": 2460.0,
+      "Kloc+": 271.0,
+      "MonthsX": 43.4,
+      "defects_per_kloc": 34.34686346863469,
+      "effort_per_kloc": 9.07749077490775,
+      "id": "62",
+      "months_per_kloc": 0.16014760147601476
+    },
+    {
+      "Defects-": 2743.0,
+      "Effort-": 162.0,
+      "Kloc+": 90.0,
+      "MonthsX": 25.0,
+      "defects_per_kloc": 30.477777777777778,
+      "effort_per_kloc": 1.8,
+      "id": "63",
+      "months_per_kloc": 0.2777777777777778
+    },
+    {
+      "Defects-": 1219.0,
+      "Effort-": 150.0,
+      "Kloc+": 40.0,
+      "MonthsX": 18.9,
+      "defects_per_kloc": 30.475,
+      "effort_per_kloc": 3.75,
+      "id": "64",
+      "months_per_kloc": 0.4725
+    },
+    {
+      "Defects-": 4210.0,
+      "Effort-": 636.0,
+      "Kloc+": 137.0,
+      "MonthsX": 32.2,
+      "defects_per_kloc": 30.72992700729927,
+      "effort_per_kloc": 4.642335766423358,
+      "id": "65",
+      "months_per_kloc": 0.23503649635036497
+    },
+    {
+      "Defects-": 5848.0,
+      "Effort-": 882.0,
+      "Kloc+": 150.0,
+      "MonthsX": 36.2,
+      "defects_per_kloc": 38.986666666666665,
+      "effort_per_kloc": 5.88,
+      "id": "66",
+      "months_per_kloc": 0.24133333333333334
+    },
+    {
+      "Defects-": 8477.0,
+      "Effort-": 444.0,
+      "Kloc+": 339.0,
+      "MonthsX": 45.9,
+      "defects_per_kloc": 25.00589970501475,
+      "effort_per_kloc": 1.3097345132743363,
+      "id": "67",
+      "months_per_kloc": 0.13539823008849558
+    },
+    {
+      "Defects-": 10313.0,
+      "Effort-": 192.0,
+      "Kloc+": 240.0,
+      "MonthsX": 37.1,
+      "defects_per_kloc": 42.97083333333333,
+      "effort_per_kloc": 0.8,
+      "id": "68",
+      "months_per_kloc": 0.15458333333333335
+    },
+    {
+      "Defects-": 6129.0,
+      "Effort-": 576.0,
+      "Kloc+": 144.0,
+      "MonthsX": 28.8,
+      "defects_per_kloc": 42.5625,
+      "effort_per_kloc": 4.0,
+      "id": "69",
+      "months_per_kloc": 0.2
+    },
+    {
+      "Defects-": 6136.0,
+      "Effort-": 432.0,
+      "Kloc+": 151.0,
+      "MonthsX": 26.2,
+      "defects_per_kloc": 40.63576158940398,
+      "effort_per_kloc": 2.8609271523178808,
+      "id": "70",
+      "months_per_kloc": 0.17350993377483442
+    },
+    {
+      "Defects-": 1555.0,
+      "Effort-": 72.0,
+      "Kloc+": 34.0,
+      "MonthsX": 16.2,
+      "defects_per_kloc": 45.73529411764706,
+      "effort_per_kloc": 2.1176470588235294,
+      "id": "71",
+      "months_per_kloc": 0.4764705882352941
+    },
+    {
+      "Defects-": 4907.0,
+      "Effort-": 300.0,
+      "Kloc+": 98.0,
+      "MonthsX": 24.4,
+      "defects_per_kloc": 50.07142857142857,
+      "effort_per_kloc": 3.061224489795918,
+      "id": "72",
+      "months_per_kloc": 0.24897959183673468
+    },
+    {
+      "Defects-": 4256.0,
+      "Effort-": 300.0,
+      "Kloc+": 85.0,
+      "MonthsX": 23.2,
+      "defects_per_kloc": 50.07058823529412,
+      "effort_per_kloc": 3.5294117647058822,
+      "id": "73",
+      "months_per_kloc": 0.27294117647058824
+    },
+    {
+      "Defects-": 813.0,
+      "Effort-": 240.0,
+      "Kloc+": 20.0,
+      "MonthsX": 12.8,
+      "defects_per_kloc": 40.65,
+      "effort_per_kloc": 12.0,
+      "id": "74",
+      "months_per_kloc": 0.64
+    },
+    {
+      "Defects-": 4511.0,
+      "Effort-": 600.0,
+      "Kloc+": 111.0,
+      "MonthsX": 23.5,
+      "defects_per_kloc": 40.63963963963964,
+      "effort_per_kloc": 5.405405405405405,
+      "id": "75",
+      "months_per_kloc": 0.21171171171171171
+    },
+    {
+      "Defects-": 7553.0,
+      "Effort-": 756.0,
+      "Kloc+": 162.0,
+      "MonthsX": 32.4,
+      "defects_per_kloc": 46.623456790123456,
+      "effort_per_kloc": 4.666666666666667,
+      "id": "76",
+      "months_per_kloc": 0.19999999999999998
+    },
+    {
+      "Defects-": 17597.0,
+      "Effort-": 1200.0,
+      "Kloc+": 352.0,
+      "MonthsX": 42.9,
+      "defects_per_kloc": 49.99147727272727,
+      "effort_per_kloc": 3.409090909090909,
+      "id": "77",
+      "months_per_kloc": 0.121875
+    },
+    {
+      "Defects-": 7867.0,
+      "Effort-": 97.0,
+      "Kloc+": 165.0,
+      "MonthsX": 31.5,
+      "defects_per_kloc": 47.67878787878788,
+      "effort_per_kloc": 0.5878787878787879,
+      "id": "78",
+      "months_per_kloc": 0.19090909090909092
+    },
+    {
+      "Defects-": 2004.0,
+      "Effort-": 409.0,
+      "Kloc+": 60.0,
+      "MonthsX": 24.9,
+      "defects_per_kloc": 33.4,
+      "effort_per_kloc": 6.816666666666666,
+      "id": "79",
+      "months_per_kloc": 0.415
+    },
+    {
+      "Defects-": 3340.0,
+      "Effort-": 703.0,
+      "Kloc+": 100.0,
+      "MonthsX": 29.6,
+      "defects_per_kloc": 33.4,
+      "effort_per_kloc": 7.03,
+      "id": "80",
+      "months_per_kloc": 0.29600000000000004
+    },
+    {
+      "Defects-": 2984.0,
+      "Effort-": 1350.0,
+      "Kloc+": 32.0,
+      "MonthsX": 33.6,
+      "defects_per_kloc": 93.25,
+      "effort_per_kloc": 42.1875,
+      "id": "81",
+      "months_per_kloc": 1.05
+    },
+    {
+      "Defects-": 2227.0,
+      "Effort-": 480.0,
+      "Kloc+": 53.0,
+      "MonthsX": 28.8,
+      "defects_per_kloc": 42.0188679245283,
+      "effort_per_kloc": 9.056603773584905,
+      "id": "82",
+      "months_per_kloc": 0.5433962264150943
+    },
+    {
+      "Defects-": 1594.0,
+      "Effort-": 599.0,
+      "Kloc+": 41.0,
+      "MonthsX": 23.0,
+      "defects_per_kloc": 38.8780487804878,
+      "effort_per_kloc": 14.609756097560975,
+      "id": "83",
+      "months_per_kloc": 0.5609756097560976
+    },
+    {
+      "Defects-": 933.0,
+      "Effort-": 430.0,
+      "Kloc+": 24.0,
+      "MonthsX": 19.2,
+      "defects_per_kloc": 38.875,
+      "effort_per_kloc": 17.916666666666668,
+      "id": "84",
+      "months_per_kloc": 0.7999999999999999
+    },
+    {
+      "Defects-": 6266.0,
+      "Effort-": 4178.2,
+      "Kloc+": 165.0,
+      "MonthsX": 47.3,
+      "defects_per_kloc": 37.97575757575758,
+      "effort_per_kloc": 25.32242424242424,
+      "id": "85",
+      "months_per_kloc": 0.2866666666666666
+    },
+    {
+      "Defects-": 2468.0,
+      "Effort-": 1772.5,
+      "Kloc+": 65.0,
+      "MonthsX": 34.5,
+      "defects_per_kloc": 37.96923076923077,
+      "effort_per_kloc": 27.26923076923077,
+      "id": "86",
+      "months_per_kloc": 0.5307692307692308
+    },
+    {
+      "Defects-": 2658.0,
+      "Effort-": 1645.9,
+      "Kloc+": 70.0,
+      "MonthsX": 35.4,
+      "defects_per_kloc": 37.97142857142857,
+      "effort_per_kloc": 23.512857142857143,
+      "id": "87",
+      "months_per_kloc": 0.5057142857142857
+    },
+    {
+      "Defects-": 2102.0,
+      "Effort-": 1924.5,
+      "Kloc+": 50.0,
+      "MonthsX": 34.2,
+      "defects_per_kloc": 42.04,
+      "effort_per_kloc": 38.49,
+      "id": "88",
+      "months_per_kloc": 0.684
+    },
+    {
+      "Defects-": 406.0,
+      "Effort-": 648.0,
+      "Kloc+": 7.25,
+      "MonthsX": 15.6,
+      "defects_per_kloc": 56.0,
+      "effort_per_kloc": 89.37931034482759,
+      "id": "89",
+      "months_per_kloc": 2.1517241379310343
+    },
+    {
+      "Defects-": 8848.0,
+      "Effort-": 8211.0,
+      "Kloc+": 233.0,
+      "MonthsX": 53.1,
+      "defects_per_kloc": 37.97424892703863,
+      "effort_per_kloc": 35.24034334763949,
+      "id": "90",
+      "months_per_kloc": 0.22789699570815453
+    },
+    {
+      "Defects-": 1253.0,
+      "Effort-": 480.0,
+      "Kloc+": 16.3,
+      "MonthsX": 21.5,
+      "defects_per_kloc": 76.87116564417178,
+      "effort_per_kloc": 29.447852760736193,
+      "id": "91",
+      "months_per_kloc": 1.3190184049079754
+    },
+    {
+      "Defects-": 477.0,
+      "Effort-": 12.0,
+      "Kloc+": 6.2,
+      "MonthsX": 15.4,
+      "defects_per_kloc": 76.93548387096774,
+      "effort_per_kloc": 1.9354838709677418,
+      "id": "92",
+      "months_per_kloc": 2.4838709677419355
+    },
+    {
+      "Defects-": 231.0,
+      "Effort-": 38.0,
+      "Kloc+": 3.0,
+      "MonthsX": 12.0,
+      "defects_per_kloc": 77.0,
+      "effort_per_kloc": 12.666666666666666,
+      "id": "93",
+      "months_per_kloc": 4.0
+    }
+  ]
+}
+real 0.03
+user 0.02
+sys 0.00

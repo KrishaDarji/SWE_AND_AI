@@ -1,0 +1,38 @@
+test_approval_uses_historical_estimate_and_limits (test_assess.AssessmentTests) ... ok
+test_cli_emits_json (test_assess.AssessmentTests) ... ok
+test_hold_explains_budget_and_capacity_failures (test_assess.AssessmentTests) ... ok
+test_negative_limits_are_rejected (test_assess.AssessmentTests) ... ok
+test_cli_emits_json (test_blame.BlameTests) ... ok
+test_explicit_threshold_and_validation (test_blame.BlameTests) ... ok
+test_ranks_factor_values_and_uses_median_default (test_blame.BlameTests) ... ok
+test_cli_selects_groups_and_emits_json (test_certify.CertifyTests) ... ok
+test_inconclusive_identical_groups_are_not_certified (test_certify.CertifyTests) ... ok
+test_strongly_cheaper_group_is_certified (test_certify.CertifyTests) ... ok
+test_cli_emits_comparison_json (test_compare.ComparisonTests) ... ok
+test_same_protocol_compares_both_methods (test_compare.ComparisonTests) ... ok
+test_validation (test_compare.ComparisonTests) ... ok
+test_estimate_cli_emits_json (test_estimate.EstimateTests) ... ok
+test_estimate_is_deterministic_and_has_screening_range (test_estimate.EstimateTests) ... ok
+test_invalid_proposal_is_rejected (test_estimate.EstimateTests) ... ok
+test_cli_emits_json (test_justify.JustificationTests) ... ok
+test_invalid_factor_limit_is_rejected (test_justify.JustificationTests) ... ok
+test_justification_contains_range_evidence_and_caveats (test_justify.JustificationTests) ... ok
+test_tight_limits_are_explained (test_justify.JustificationTests) ... ok
+test_cli_emits_json (test_optimize.OptimizationTests) ... ok
+test_no_feasible_setting_is_rejected (test_optimize.OptimizationTests) ... ok
+test_selects_feasible_settings_and_ranks_efficiency (test_optimize.OptimizationTests) ... ok
+test_candidate_order_is_cheapest_first (test_risk.RiskTests) ... ok
+test_cli_emits_json (test_risk.RiskTests) ... ok
+test_recommends_a_real_risk_reducing_change (test_risk.RiskTests) ... ok
+test_cli_emits_json (test_spot.SpotTests) ... ok
+test_spots_highest_historical_deviation (test_spot.SpotTests) ... ok
+test_top_is_sorted_and_validated (test_spot.SpotTests) ... ok
+test_cli_emits_json (test_summary.SummaryTests) ... ok
+test_empty_collection_is_rejected (test_summary.SummaryTests) ... ok
+test_loads_all_projects_and_outcomes (test_summary.SummaryTests) ... ok
+test_summary_has_totals_and_year_cohorts (test_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.466s
+
+OK

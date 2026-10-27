@@ -1,0 +1,39 @@
+{
+  "budget": 1000.0,
+  "recommendations": [
+    {
+      "feasible": true,
+      "mean_effort": 276.79411764705884,
+      "mean_kloc": 66.26470588235294,
+      "projects": 34,
+      "settings": {
+        "sced": "l"
+      },
+      "value_per_effort": 0.23940070130698118
+    },
+    {
+      "feasible": true,
+      "mean_effort": 824.7338983050847,
+      "mean_kloc": 110.0177966101695,
+      "projects": 59,
+      "settings": {
+        "sced": "n"
+      },
+      "value_per_effort": 0.13339793215274368
+    }
+  ],
+  "selected": {
+    "feasible": true,
+    "mean_effort": 276.79411764705884,
+    "mean_kloc": 66.26470588235294,
+    "projects": 34,
+    "settings": {
+      "sced": "l"
+    },
+    "value_per_effort": 0.23940070130698118
+  },
+  "settings_columns": [
+    "sced"
+  ],
+  "value_metric": "kloc"
+}

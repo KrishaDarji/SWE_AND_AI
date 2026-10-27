@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,2,1,software project planning,race,555,48,true,0.03,0,"22 tests passed including Step 1-9 regression coverage; CLI completed successfully; leave-one-out MAE comparison used identical held-out folds and metric; estimator MAE 343.78498870379315 versus baseline MAE 544.2290322580645; new_loc is diff-added source lines beyond Treatment 2 Step 9"

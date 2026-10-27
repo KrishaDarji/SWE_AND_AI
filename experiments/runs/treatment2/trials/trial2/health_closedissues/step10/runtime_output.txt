@@ -1,0 +1,46 @@
+{
+  "caveat": "This is retrospective comparison on observed evaluations; validate prospectively.",
+  "historical_baseline": {
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "2.75",
+      "Min_sample_leaves": "3",
+      "N_estimators": "40",
+      "criterion": "squared_error"
+    },
+    "index": 0,
+    "metrics": {
+      "ACC+": 0.7276513937840435,
+      "MRE-": 0.3148748159057436,
+      "PRED40+": 0.5714285714285714
+    },
+    "score": 0.6722793051394444
+  },
+  "objective": "weighted normalized MRE-/ACC+/PRED40+",
+  "score_difference_selector_minus_historical": 0.32177076849825803,
+  "selector": {
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "3",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "index": 7555,
+    "metrics": {
+      "ACC+": 1.0,
+      "MRE-": 0.029749631811487497,
+      "PRED40+": 1.0
+    },
+    "score": 0.9940500736377025
+  },
+  "selector_better": true,
+  "weights": {
+    "ACC+": 0.5,
+    "MRE-": 0.2,
+    "PRED40+": 0.3
+  }
+}
+real 0.08
+user 0.07
+sys 0.01
