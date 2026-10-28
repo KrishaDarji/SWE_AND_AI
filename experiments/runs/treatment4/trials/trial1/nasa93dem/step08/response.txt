@@ -1,0 +1,92 @@
+Treatment 4, Trial 1, NASA93 Step 8: completed.
+
+Complete updated Python application code is in source/. All seven allowed Step 7
+modules are copied byte-for-byte: summarize.py, predict_effort.py, justify.py,
+blame.py, certify.py, choose.py, flow.py. New reusable code is source/fix.py.
+All seven prior test modules are copied byte-for-byte; tests/test_fix.py adds nine
+Step 8 tests. No dataset, Step 7, dependency, or other repository files were modified.
+Only the allowed Step 7 source/tests and specified dataset were used as project inputs.
+
+Reuse and implementation
+The existing normalization, seed-42 grouped partition, training-only preprocessing,
+200-tree forest, and effort estimation are reused through predict_effort.evaluate
+and estimate. The general prediction API still accepts missing predictors.
+The repair API recommend(rows, proposal) rejects unknown fields and requires all
+22 categorical predictors to be present and nonmissing after normalization.
+JSON loading reuses duplicate-key rejection. Novel nonmissing category strings
+remain accepted under the existing encoder behavior; they require human review.
+
+The new workflow searches only complete normalized training configurations,
+collapses duplicates to their earliest CSV data row, and requires strictly lower
+predicted effort. It minimizes the number of changed fields, then predicted effort,
+then the one-based CSV data-row number. Comparisons have no tolerance. It returns
+an explicit no_improving_candidate status, null recommendation/cost/reduction,
+and an empty changes list when no improvement is available.
+
+Demonstration result
+The proposal contains only predictors of CSV data row 1, the earliest
+training row, selected without examining its observed effort value. The complete
+original and recommended predictor dictionaries are in repair.json; the input
+proposal is also saved in example_proposal.json.
+Original predicted Effort-: 89.412802776683
+Recommended historical configuration: CSV data row 37
+Recommended predicted Effort-: 87.370702688540
+Predicted reduction: 2.042100088143 (unspecified effort units)
+Change cost: 6 differing categorical predictor fields
+- pmat: h -> n
+- rely: h -> n
+- data: l -> n
+- pvol: l -> n
+- ltex: h -> n
+- sced: l -> n
+
+Candidate scope: 68 training rows, 68 complete rows,
+27 duplicate complete rows collapsed, 41 unique configurations evaluated,
+1 strictly improving configuration, 25 held-out rows excluded.
+No held-out outcome values guide fitting, proposal selection, recommendation,
+or tie-breaking. The reused evaluation function computes held-out diagnostics,
+but the recommendation reads only its partition and dependency version metadata.
+
+Validation and measured metrics
+All 69/69 tests passed (60 preserved tests and 9 new Step 8 tests).
+Tests cover independent exhaustive minimality, cost/prediction/CSV tie priorities,
+changed fields, strict improvement, no improvement, duplicate configurations,
+incomplete training candidates, invalid and incomplete proposals, duplicate JSON
+keys, normalization, CLI behavior, no mutation, earliest-training-row proposal,
+and full recommendation invariance after changing held-out effort values.
+All seven preserved CLI demonstrations passed; outputs are under regression/.
+Step 8 demo wall time: 1.689404208 seconds.
+Test suite wall time: 28.197280250 seconds.
+Preserved regression demos combined wall time: 10.743450085 seconds.
+Application total LOC: 1093; added application LOC: 117.
+LOC counts nonblank, non-comment-only source/ Python lines, including docstrings;
+new LOC counts insert/replace new-side lines relative to allowed Step 7 source.
+The root-level experiment runner is instrumentation and is outside source/ LOC.
+Unexpected failed commands: 1, a premature metrics.csv inspection while the runner
+was still executing. The failure is preserved in inspection_failure.txt and the
+runtime audit. No application/test failures or code repair attempts occurred.
+Expected negative-test subprocess failures are excluded from error_count.
+
+Commands and artifacts
+See run_instructions.txt for exact test, repair, full-experiment, and seven
+regression-demo commands. run_experiment.py accepts the dataset path, records
+subprocess wall times and actual outcomes, and writes metrics.csv. Test output is
+in test_output.txt; command output and timings are in runtime_output.txt.
+execution_history.json preserves measured attempt history; prompt.txt preserves
+the supplied request. Python 3.12.6 and scikit-learn 1.6.0 were used.
+
+Assumptions and limitations
+The dataset supplies neither intervention costs nor a calibrated risk measure.
+Lower predicted Effort- is only an illustrative planning proxy, not failure
+probability or measured risk. Cost is an equally weighted field count, not
+monetary or operational cost. Physical effort units are unspecified.
+Historical combinations do not establish feasibility for this proposal, and not
+all project characteristics are controllable process settings. A human must
+review feasibility, controllability, dependencies, actual costs, and proposal-time
+availability. A lower model prediction can reflect observational associations,
+confounding, estimation error, or search optimism. No causal savings, calibrated
+risk reduction, guaranteed budget compliance, or global real-world cheapest
+intervention is established. Missing-target eligibility follows the unchanged
+existing partition; candidates with missing predictors are excluded. No package
+installation, dependency changes, causal validation, or uncertainty calibration
+was performed.

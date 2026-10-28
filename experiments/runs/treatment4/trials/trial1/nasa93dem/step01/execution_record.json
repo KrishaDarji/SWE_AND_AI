@@ -1,0 +1,32 @@
+{
+  "python_executable": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+  "scikit_learn": "1.6.0",
+  "source_loc": 131,
+  "results": {
+    "tests": {
+      "exit_code": 0,
+      "wall_seconds": 0.062089666025713086,
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01/tests",
+        "-v"
+      ]
+    },
+    "demo": {
+      "exit_code": 0,
+      "wall_seconds": 0.03560716693755239,
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01/source/summarize.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01"
+      ]
+    }
+  },
+  "repair_attempts": []
+}

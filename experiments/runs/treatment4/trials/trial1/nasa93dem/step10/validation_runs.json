@@ -1,0 +1,171 @@
+[
+  {
+    "label": "tests",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 1,
+    "seconds": 27.529501666896977
+  },
+  {
+    "label": "step1",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/summarize.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--output-dir",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/summary"
+    ],
+    "returncode": 0,
+    "seconds": 0.03193870896939188
+  },
+  {
+    "label": "step2",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/predict_effort.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--proposal",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/proposal.json",
+      "--evaluation",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/evaluation.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.9199325839290395
+  },
+  {
+    "label": "step3",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/spot.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/spot.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.833328792010434
+  },
+  {
+    "label": "step4",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/blame.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/blame.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.9181031660409644
+  },
+  {
+    "label": "step5",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/fix.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--demo",
+      "--example-proposal",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/complete_proposal.json",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/fix.json"
+    ],
+    "returncode": 0,
+    "seconds": 1.0684611659962684
+  },
+  {
+    "label": "step6",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/choose.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--budget",
+      "1000",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/choose.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.8283688749652356
+  },
+  {
+    "label": "step7",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/justify.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--proposal",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/proposal.json",
+      "--illustrative",
+      "--output-dir",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/justify"
+    ],
+    "returncode": 0,
+    "seconds": 1.2801109999418259
+  },
+  {
+    "label": "step8",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/certify.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/certify.json"
+    ],
+    "returncode": 0,
+    "seconds": 0.39287149999290705
+  },
+  {
+    "label": "step9",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/flow.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/regression_demos/flow.json"
+    ],
+    "returncode": 0,
+    "seconds": 6.649810208939016
+  },
+  {
+    "label": "step10",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "source/race.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+      "--seeds",
+      "42",
+      "43",
+      "44",
+      "45",
+      "46",
+      "47",
+      "48",
+      "49",
+      "50",
+      "51",
+      "--output",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/race.json"
+    ],
+    "returncode": 0,
+    "seconds": 1.5364823329728097
+  },
+  {
+    "label": "tests_repaired",
+    "command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "seconds": 34.36785262497142
+  }
+]

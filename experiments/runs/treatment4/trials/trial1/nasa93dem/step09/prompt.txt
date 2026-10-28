@@ -1,0 +1,153 @@
+You are running Treatment 4, Trial 1, Dataset 2, Step 9 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Current skill: spot
+- Current requirement: Spot a project record that looks inconsistent with the historical data.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, NASA93 implementation.
+Preserve Steps 1–8 behavior and tests while adding Step 9.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/tests/
+
+Allowed references:
+- The specified NASA93 dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, Health, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Previous saved reports or recommendations outside this step.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement reusable anomaly screening for historical project records.
+
+Choose and document an appropriate method.
+State the input fields, preprocessing, score direction, threshold,
+and limitations. Use seed 42 if randomness is involved.
+Do not invent ordinal mappings for categorical predictors.
+
+Report:
+- Ranked records using one-based CSV data-row identities.
+- Scores and whether each record crosses the stated threshold.
+- Supporting evidence explaining what is unusual.
+- Relevant observed project characteristics and outcomes.
+- Suggested checks for a planning manager.
+
+Keep display limits separate from anomaly flags.
+Do not automatically label the top records anomalous.
+Do not assume unusually high effort means a recording error or
+poor performance; scope and project size may explain it.
+
+If using prediction residuals:
+- Generate predictions without training on the evaluated record.
+- Keep identical predictor configurations together when splitting.
+- Fit learned preprocessing only on each training partition.
+- Reuse the existing training/estimation machinery where appropriate.
+- Do not use training residuals as evidence of unseen prediction error.
+
+Exclude identifiers and X-suffixed metadata from model inputs.
+Clearly distinguish outcome fields used for retrospective screening
+from fields available at proposal time.
+Do not use Effort- as an input when predicting Effort-.
+
+The dataset has no verified anomaly labels.
+Do not invent precision, recall, detection accuracy, or confirmed errors.
+Describe flags as exploratory investigation priorities.
+Physical units are unspecified.
+Do not delete, repair, or modify original records.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 9 and preserved Steps 1–8 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- anomalies.json
+- run_instructions.txt
+
+anomalies.json must include method settings, field roles,
+score and threshold definitions, ranked findings, flagged count,
+supporting evidence, missing-data handling, and limitations.
+
+Test scoring and threshold rules, ties, constant data, missing values,
+small or invalid inputs, and reproducibility.
+Use independently checkable synthetic examples.
+If using residuals, test record/group exclusion from training.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 9; treatment: 4; trial: 1; domain: nasa93dem; skill: spot.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 9 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to NASA93 Step 8 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–8 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 8 files, or other repository files.
+Write only inside the absolute Step 9 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

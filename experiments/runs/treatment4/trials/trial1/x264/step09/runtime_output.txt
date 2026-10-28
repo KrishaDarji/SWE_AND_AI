@@ -1,0 +1,1285 @@
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/remember.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/remember'
+Historical encoder runs: 1152
+Settings: 16
+Unique configurations: 1152
+Repeated configuration rows: 0
+Duplicate measurement rows: 0
+Objective: Performance- (minimize; units unspecified)
+Objective statistics: {"count": 1152, "max": 821.963, "mean": 461.7535963541667, "median": 452.7785, "min": 244.23, "population_stddev": 162.49115009089647, "q25": 294.361, "q75": 580.73775}
+No separate quality measures are present in this dataset.
+Setting distributions (value: count; mean Performance-):
+  no_asm [constant]: 1: 1152; mean=461.753596
+  no_8x8dct: 0: 576; mean=472.135507; 1: 576; mean=451.371686
+  no_cabac: 0: 576; mean=465.679493; 1: 576; mean=457.827700
+  no_deblock: 0: 576; mean=461.602109; 1: 576; mean=461.905083
+  no_fast_pskip: 0: 576; mean=433.242536; 1: 576; mean=490.264656
+  no_mbtree: 0: 576; mean=436.383682; 1: 576; mean=487.123510
+  no_mixed_refs: 0: 576; mean=493.300155; 1: 576; mean=430.207038
+  no_weightb: 0: 576; mean=461.841707; 1: 576; mean=461.665486
+  rc_lookahead [constant]: 1: 1152; mean=461.753596
+  rc_lookahead_20: 0: 768; mean=462.154646; 1: 384; mean=460.951497
+  rc_lookahead_40: 0: 768; mean=461.675178; 1: 384; mean=461.910432
+  rc_lookahead_60: 0: 768; mean=461.430965; 1: 384; mean=462.398859
+  ref [constant]: 1: 1152; mean=461.753596
+  ref_1: 0: 768; mean=553.923043; 1: 384; mean=277.414703
+  ref_5: 0: 768; mean=461.825740; 1: 384; mean=461.609310
+  ref_9: 0: 768; mean=369.512007; 1: 384; mean=646.236776
+Best objective: 244.23; tied runs: 1
+  {"Performance-": 244.23, "data_row": 71, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.277, "data_row": 103, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 1.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.28, "data_row": 122, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 1.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.303, "data_row": 75, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.333, "data_row": 121, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 1.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+All non-objective columns are treated as recorded encoder settings.
+Names and encoded values are preserved; flag semantics are not inferred.
+Conditional objective statistics describe associations, not causal effects.
+Repeated rows remain in all statistics; no measurements are imputed.
+Top runs are ordered by ascending objective, then original CSV order.
+
+wall_seconds=0.053630500; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/guess.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/guess'
+{"baseline_mae": 135.97237591832706, "model_mae": 0.23840590909086787, "split": {"method": "GroupShuffleSplit", "seed": 42, "test_count": 231, "test_data_rows": [5, 12, 18, 20, 22, 27, 28, 32, 33, 36, 37, 40, 46, 59, 61, 63, 65, 77, 82, 83, 85, 86, 89, 94, 99, 106, 116, 122, 138, 141, 145, 156, 159, 170, 177, 187, 195, 204, 208, 210, 216, 223, 225, 228, 240, 243, 253, 259, 260, 262, 263, 264, 268, 269, 271, 277, 279, 288, 290, 302, 315, 322, 326, 328, 329, 331, 332, 336, 337, 341, 344, 359, 362, 363, 380, 387, 388, 396, 405, 408, 418, 421, 425, 431, 433, 436, 438, 443, 445, 447, 452, 459, 461, 485, 491, 492, 496, 499, 500, 502, 504, 507, 510, 517, 521, 523, 536, 539, 540, 542, 543, 548, 550, 554, 560, 568, 569, 572, 573, 575, 579, 593, 594, 598, 600, 610, 617, 626, 627, 630, 633, 647, 667, 672, 691, 697, 700, 703, 708, 717, 718, 721, 723, 730, 731, 748, 766, 767, 768, 770, 771, 778, 782, 793, 796, 801, 802, 819, 822, 838, 839, 842, 852, 856, 858, 874, 875, 886, 891, 893, 895, 909, 917, 923, 925, 926, 927, 931, 936, 942, 948, 949, 951, 952, 960, 967, 969, 970, 981, 983, 986, 997, 1000, 1007, 1009, 1011, 1012, 1013, 1019, 1024, 1025, 1030, 1031, 1032, 1033, 1039, 1044, 1048, 1052, 1058, 1063, 1064, 1066, 1070, 1071, 1084, 1085, 1090, 1091, 1094, 1101, 1102, 1111, 1112, 1114, 1115, 1120, 1127, 1147, 1148, 1149], "test_fraction_of_unique_configurations": 0.2, "train_count": 921, "train_data_rows": [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 19, 21, 23, 24, 25, 26, 29, 30, 31, 34, 35, 38, 39, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 60, 62, 64, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 84, 87, 88, 90, 91, 92, 93, 95, 96, 97, 98, 100, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 117, 118, 119, 120, 121, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 139, 140, 142, 143, 144, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 157, 158, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 171, 172, 173, 174, 175, 176, 178, 179, 180, 181, 182, 183, 184, 185, 186, 188, 189, 190, 191, 192, 193, 194, 196, 197, 198, 199, 200, 201, 202, 203, 205, 206, 207, 209, 211, 212, 213, 214, 215, 217, 218, 219, 220, 221, 222, 224, 226, 227, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 241, 242, 244, 245, 246, 247, 248, 249, 250, 251, 252, 254, 255, 256, 257, 258, 261, 265, 266, 267, 270, 272, 273, 274, 275, 276, 278, 280, 281, 282, 283, 284, 285, 286, 287, 289, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 316, 317, 318, 319, 320, 321, 323, 324, 325, 327, 330, 333, 334, 335, 338, 339, 340, 342, 343, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 360, 361, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 381, 382, 383, 384, 385, 386, 389, 390, 391, 392, 393, 394, 395, 397, 398, 399, 400, 401, 402, 403, 404, 406, 407, 409, 410, 411, 412, 413, 414, 415, 416, 417, 419, 420, 422, 423, 424, 426, 427, 428, 429, 430, 432, 434, 435, 437, 439, 440, 441, 442, 444, 446, 448, 449, 450, 451, 453, 454, 455, 456, 457, 458, 460, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 486, 487, 488, 489, 490, 493, 494, 495, 497, 498, 501, 503, 505, 506, 508, 509, 511, 512, 513, 514, 515, 516, 518, 519, 520, 522, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 537, 538, 541, 544, 545, 546, 547, 549, 551, 552, 553, 555, 556, 557, 558, 559, 561, 562, 563, 564, 565, 566, 567, 570, 571, 574, 576, 577, 578, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 595, 596, 597, 599, 601, 602, 603, 604, 605, 606, 607, 608, 609, 611, 612, 613, 614, 615, 616, 618, 619, 620, 621, 622, 623, 624, 625, 628, 629, 631, 632, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 668, 669, 670, 671, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 692, 693, 694, 695, 696, 698, 699, 701, 702, 704, 705, 706, 707, 709, 710, 711, 712, 713, 714, 715, 716, 719, 720, 722, 724, 725, 726, 727, 728, 729, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 769, 772, 773, 774, 775, 776, 777, 779, 780, 781, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 794, 795, 797, 798, 799, 800, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 820, 821, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 840, 841, 843, 844, 845, 846, 847, 848, 849, 850, 851, 853, 854, 855, 857, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 876, 877, 878, 879, 880, 881, 882, 883, 884, 885, 887, 888, 889, 890, 892, 894, 896, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 910, 911, 912, 913, 914, 915, 916, 918, 919, 920, 921, 922, 924, 928, 929, 930, 932, 933, 934, 935, 937, 938, 939, 940, 941, 943, 944, 945, 946, 947, 950, 953, 954, 955, 956, 957, 958, 959, 961, 962, 963, 964, 965, 966, 968, 971, 972, 973, 974, 975, 976, 977, 978, 979, 980, 982, 984, 985, 987, 988, 989, 990, 991, 992, 993, 994, 995, 996, 998, 999, 1001, 1002, 1003, 1004, 1005, 1006, 1008, 1010, 1014, 1015, 1016, 1017, 1018, 1020, 1021, 1022, 1023, 1026, 1027, 1028, 1029, 1034, 1035, 1036, 1037, 1038, 1040, 1041, 1042, 1043, 1045, 1046, 1047, 1049, 1050, 1051, 1053, 1054, 1055, 1056, 1057, 1059, 1060, 1061, 1062, 1065, 1067, 1068, 1069, 1072, 1073, 1074, 1075, 1076, 1077, 1078, 1079, 1080, 1081, 1082, 1083, 1086, 1087, 1088, 1089, 1092, 1093, 1095, 1096, 1097, 1098, 1099, 1100, 1103, 1104, 1105, 1106, 1107, 1108, 1109, 1110, 1113, 1116, 1117, 1118, 1119, 1121, 1122, 1123, 1124, 1125, 1126, 1128, 1129, 1130, 1131, 1132, 1133, 1134, 1135, 1136, 1137, 1138, 1139, 1140, 1141, 1142, 1143, 1144, 1145, 1146, 1150, 1151, 1152]}}
+
+wall_seconds=1.048710417; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/choose.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/choose'
+{
+  "strategy": {
+    "name": "Sequential random-forest lower-confidence heuristic with exploration",
+    "initial_points": 5,
+    "initial_rule": "Seeded uniform sampling without replacement; all points count toward budget.",
+    "surrogate": "RandomForestRegressor; refit only on evaluated settings and outcomes.",
+    "trees": 64,
+    "acquisition": "Minimize tree-prediction mean minus one population standard deviation.",
+    "exploration": "After initialization, every fifth evaluation is uniform among remaining rows.",
+    "ties": "Acquisition ties: earliest CSV row. Observed objective ties: first evaluated.",
+    "budget_rule": "Positive integer at most candidate count; evaluate exactly budget distinct rows.",
+    "uncertainty": "Tree spread is an exploration heuristic, not a calibrated confidence bound."
+  },
+  "budget": 20,
+  "seed": 42,
+  "actual_evaluation_count": 20,
+  "candidate_count": 1152,
+  "features": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9"
+  ],
+  "objective": "Performance-",
+  "direction": "minimize",
+  "units": null,
+  "evaluation_history": [
+    {
+      "evaluation": 1,
+      "data_row": 229,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 295.68,
+      "reason": "initial uniform",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 295.68
+    },
+    {
+      "evaluation": 2,
+      "data_row": 52,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 310.217,
+      "reason": "initial uniform",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 302.94849999999997
+    },
+    {
+      "evaluation": 3,
+      "data_row": 564,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 495.45,
+      "reason": "initial uniform",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 367.11566666666664
+    },
+    {
+      "evaluation": 4,
+      "data_row": 502,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 463.347,
+      "reason": "initial uniform",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 391.1735
+    },
+    {
+      "evaluation": 5,
+      "data_row": 458,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 426.75,
+      "reason": "initial uniform",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 398.2888
+    },
+    {
+      "evaluation": 6,
+      "data_row": 280,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 299.89,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 261.67011508294604,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 381.889
+    },
+    {
+      "evaluation": 7,
+      "data_row": 279,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 0.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 310.673,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 263.37953696971516,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 371.7152857142857
+    },
+    {
+      "evaluation": 8,
+      "data_row": 320,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 299.677,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 265.6125091252216,
+      "best_so_far": {
+        "data_row": 229,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 0.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 295.68
+      },
+      "observed_mean": 362.71049999999997
+    },
+    {
+      "evaluation": 9,
+      "data_row": 372,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 279.853,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 263.3925791873012,
+      "best_so_far": {
+        "data_row": 372,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 0.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 1.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 1.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 279.853
+      },
+      "observed_mean": 353.50411111111106
+    },
+    {
+      "evaluation": 10,
+      "data_row": 290,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 279.037,
+      "reason": "uniform exploration",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 290,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 0.0,
+          "no_cabac": 0.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 0.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 1.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 279.037
+      },
+      "observed_mean": 346.0574
+    },
+    {
+      "evaluation": 11,
+      "data_row": 351,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 252.737,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 243.3473781121017,
+      "best_so_far": {
+        "data_row": 351,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 1.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 252.737
+      },
+      "observed_mean": 337.57372727272724
+    },
+    {
+      "evaluation": 12,
+      "data_row": 191,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 251.53,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 228.57664760350144,
+      "best_so_far": {
+        "data_row": 191,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 251.53
+      },
+      "observed_mean": 330.40341666666666
+    },
+    {
+      "evaluation": 13,
+      "data_row": 178,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 256.273,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 243.6745505345759,
+      "best_so_far": {
+        "data_row": 191,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 0.0,
+          "rc_lookahead_40": 1.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 251.53
+      },
+      "observed_mean": 324.7010769230769
+    },
+    {
+      "evaluation": 14,
+      "data_row": 80,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 249.463,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 245.22198620567985,
+      "best_so_far": {
+        "data_row": 80,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.463
+      },
+      "observed_mean": 319.3269285714286
+    },
+    {
+      "evaluation": 15,
+      "data_row": 214,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 291.577,
+      "reason": "uniform exploration",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 80,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.463
+      },
+      "observed_mean": 317.47693333333336
+    },
+    {
+      "evaluation": 16,
+      "data_row": 79,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 260.617,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 226.86964790825223,
+      "best_so_far": {
+        "data_row": 80,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.463
+      },
+      "observed_mean": 313.92318750000004
+    },
+    {
+      "evaluation": 17,
+      "data_row": 14,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 0.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 266.527,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 243.75703075286182,
+      "best_so_far": {
+        "data_row": 80,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 0.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.463
+      },
+      "observed_mean": 311.13517647058825
+    },
+    {
+      "evaluation": 18,
+      "data_row": 127,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 249.41,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 243.67281430744782,
+      "best_so_far": {
+        "data_row": 127,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.41
+      },
+      "observed_mean": 307.706
+    },
+    {
+      "evaluation": 19,
+      "data_row": 104,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      },
+      "Performance-": 249.44,
+      "reason": "surrogate mean minus tree stddev",
+      "acquisition_score": 243.6552622093963,
+      "best_so_far": {
+        "data_row": 127,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.41
+      },
+      "observed_mean": 304.63936842105267
+    },
+    {
+      "evaluation": 20,
+      "data_row": 1136,
+      "settings": {
+        "no_asm": 1.0,
+        "no_8x8dct": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 0.0,
+        "ref_9": 1.0
+      },
+      "Performance-": 608.68,
+      "reason": "uniform exploration",
+      "acquisition_score": null,
+      "best_so_far": {
+        "data_row": 127,
+        "settings": {
+          "no_asm": 1.0,
+          "no_8x8dct": 1.0,
+          "no_cabac": 1.0,
+          "no_deblock": 1.0,
+          "no_fast_pskip": 1.0,
+          "no_mbtree": 0.0,
+          "no_mixed_refs": 1.0,
+          "no_weightb": 1.0,
+          "rc_lookahead": 1.0,
+          "rc_lookahead_20": 1.0,
+          "rc_lookahead_40": 0.0,
+          "rc_lookahead_60": 0.0,
+          "ref": 1.0,
+          "ref_1": 1.0,
+          "ref_5": 0.0,
+          "ref_9": 0.0
+        },
+        "Performance-": 249.41
+      },
+      "observed_mean": 319.8414
+    }
+  ],
+  "selected_candidate": {
+    "data_row": 127,
+    "settings": {
+      "no_asm": 1.0,
+      "no_8x8dct": 1.0,
+      "no_cabac": 1.0,
+      "no_deblock": 1.0,
+      "no_fast_pskip": 1.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 1.0,
+      "no_weightb": 1.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 1.0,
+      "rc_lookahead_40": 0.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    },
+    "Performance-": 249.41
+  },
+  "quality_constraint_limitation": "No separate quality measurement exists in this dataset. The quality constraint cannot be verified; no quality values or satisfaction claim are supplied.",
+  "quality_constraint_verified": false,
+  "claim": "Best evaluated candidate within budget; global optimality is not claimed.",
+  "dataset": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+  "versions": {
+    "python": "3.12.6",
+    "scikit_learn": "1.6.0"
+  },
+  "post_selection_audit": {
+    "phase": "After selection frozen; full-target access used only for this audit.",
+    "selection_sha256": "0a29d1aaf66a67200aca02abf40a2e4d38d4c201d3932478eb08696c152ec831",
+    "dataset_minimum": 244.23,
+    "selected_value": 249.41,
+    "absolute_gap": 5.180000000000007,
+    "gap_percent_of_minimum": 2.120951562052167,
+    "rows_inspected": 1152,
+    "fed_back_into_selection": false,
+    "quality_constraint_limitation": "No separate quality measurement exists in this dataset. The quality constraint cannot be verified; no quality values or satisfaction claim are supplied."
+  }
+}
+
+wall_seconds=1.393076000; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/blame.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/blame'
+Larger Performance- means worse measured encoding performance. The ranking prioritizes settings whose observed value groups separate overall mean outcomes most strongly. Use group means and counts to identify the values accompanying slower encodes. Correlated encoded choices can share credit; validate changes with controlled measurements.
+Rows: 1152; Performance- units unspecified.
+Rank 1: ref_9: eta squared 0.644502. Highest observed mean Performance- 646.237 at [1.0]; lowest 369.512 at [0.0]; mean gap 276.725 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=369.512; vs overall=-92.2416 (lower)
+  value=1; n=384; mean=646.237; vs overall=+184.483 (higher)
+Rank 2: ref_1: eta squared 0.643494. Highest observed mean Performance- 553.923 at [0.0]; lowest 277.415 at [1.0]; mean gap 276.508 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=553.923; vs overall=+92.1694 (higher)
+  value=1; n=384; mean=277.415; vs overall=-184.339 (lower)
+Rank 3: no_mixed_refs: eta squared 0.037692. Highest observed mean Performance- 493.3 at [0.0]; lowest 430.207 at [1.0]; mean gap 63.0931 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=493.3; vs overall=+31.5466 (higher)
+  value=1; n=576; mean=430.207; vs overall=-31.5466 (lower)
+Rank 4: no_fast_pskip: eta squared 0.030787. Highest observed mean Performance- 490.265 at [1.0]; lowest 433.243 at [0.0]; mean gap 57.0221 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=433.243; vs overall=-28.5111 (lower)
+  value=1; n=576; mean=490.265; vs overall=+28.5111 (higher)
+Rank 5: no_mbtree: eta squared 0.024377. Highest observed mean Performance- 487.124 at [1.0]; lowest 436.384 at [0.0]; mean gap 50.7398 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=436.384; vs overall=-25.3699 (lower)
+  value=1; n=576; mean=487.124; vs overall=+25.3699 (higher)
+Rank 6: no_8x8dct: eta squared 0.004082. Highest observed mean Performance- 472.136 at [0.0]; lowest 451.372 at [1.0]; mean gap 20.7638 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=472.136; vs overall=+10.3819 (higher)
+  value=1; n=576; mean=451.372; vs overall=-10.3819 (lower)
+Rank 7: no_cabac: eta squared 0.000584. Highest observed mean Performance- 465.679 at [0.0]; lowest 457.828 at [1.0]; mean gap 7.85179 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=465.679; vs overall=+3.9259 (higher)
+  value=1; n=576; mean=457.828; vs overall=-3.9259 (lower)
+Rank 8: rc_lookahead_20: eta squared 0.000012. Highest observed mean Performance- 462.155 at [0.0]; lowest 460.951 at [1.0]; mean gap 1.20315 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=462.155; vs overall=+0.401049 (higher)
+  value=1; n=384; mean=460.951; vs overall=-0.802099 (lower)
+Rank 9: rc_lookahead_60: eta squared 0.000008. Highest observed mean Performance- 462.399 at [1.0]; lowest 461.431 at [0.0]; mean gap 0.967895 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=461.431; vs overall=-0.322632 (lower)
+  value=1; n=384; mean=462.399; vs overall=+0.645263 (higher)
+Rank 10: no_deblock: eta squared 0.000001. Highest observed mean Performance- 461.905 at [1.0]; lowest 461.602 at [0.0]; mean gap 0.302974 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=461.602; vs overall=-0.151487 (lower)
+  value=1; n=576; mean=461.905; vs overall=+0.151487 (higher)
+Rank 11: rc_lookahead_40: eta squared 0.000000. Highest observed mean Performance- 461.91 at [1.0]; lowest 461.675 at [0.0]; mean gap 0.235254 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=461.675; vs overall=-0.078418 (lower)
+  value=1; n=384; mean=461.91; vs overall=+0.156836 (higher)
+Rank 12: ref_5: eta squared 0.000000. Highest observed mean Performance- 461.826 at [0.0]; lowest 461.609 at [1.0]; mean gap 0.21643 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=461.826; vs overall=+0.0721432 (higher)
+  value=1; n=384; mean=461.609; vs overall=-0.144286 (lower)
+Rank 13: no_weightb: eta squared 0.000000. Highest observed mean Performance- 461.842 at [0.0]; lowest 461.665 at [1.0]; mean gap 0.17622 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=461.842; vs overall=+0.0881102 (higher)
+  value=1; n=576; mean=461.665; vs overall=-0.0881102 (lower)
+Constant settings: no_asm, rc_lookahead, ref
+Exploratory observational associations, not proven causal effects or significance tests; no p-values or multiplicity-adjusted claims.
+Each setting is assessed marginally. Other settings, interactions, sampling imbalance and unrecorded workload or hardware can confound the ranking.
+Correlated or redundant encodings can share the same association; their scores must not be added or interpreted as independent contributions.
+Different indicators for one encoded choice can be mutually exclusive; changing one alone may be invalid. Names do not establish encoder semantics.
+Eta squared measures separation of observed value-group means, not direction, fitted-model feature importance, or a guaranteed improvement.
+All exact observed numeric values are treated as categories. Many levels and singleton groups can inflate eta squared; no out-of-sample guarantee is made.
+Every row has equal weight, including duplicates. Counts are not independent replicate counts or uncertainty estimates.
+Constants cannot support comparisons; zero score does not exclude interactions or distribution differences beyond the mean.
+Performance- is minimized; physical units and output quality are unspecified. Larger means indicate worse measured outcomes, not a known number of seconds.
+No model is fitted by this diagnosis, so model evaluation and random seed are not applicable. Step 2 prediction remains a separate holdout-evaluated tool.
+Scores use floating-point arithmetic; exact score ties share competition rank and are displayed alphabetically. Near ties have no stability guarantee.
+
+wall_seconds=0.098615292; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/fix.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/fix' --baseline-row 1
+Recorded-configuration repair (Performance- minimized; units unspecified)
+Baseline: {"Performance-": 268.72, "data_row": 1, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+Every recorded CSV data row, including duplicates; full-data objective access.
+Among strictly lower observed Performance- rows, minimize differing encoded setting columns, then Performance-, then 1-based CSV data row. Exact numeric comparisons; no tolerance.
+Searched 1152 rows; strictly improving rows: 138.
+Recommended recorded row: {"Performance-": 254.587, "data_row": 65, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+Changed no_8x8dct: 0.0 -> 1.0
+Change cost: 1; observed objective reduction: 14.133000000000038.
+Offline exhaustive search over all recorded measurements with full-data objective access; not budgeted search or evaluation on unseen configurations.
+Encoded-column distance is a proxy for change size, not a measured operational cost. Redundant or one-hot columns may represent one underlying choice.
+Only recorded configurations are recommended; setting semantics and validity of unseen combinations are not inferred.
+A lower historical outcome does not prove causal, repeatable, or statistically certified improvement. Selection on the same history can be optimistic.
+Duplicate configurations remain separate observations; a lower observation for identical settings has change cost zero and does not imply that any setting repair occurred.
+Performance- is minimized; physical units are unspecified. No quality measurements are available and quality preservation is not established.
+CSV numeric fields are parsed as finite floats by the reused loader; exact float comparisons define changes and ties. Near ties have no stability guarantee.
+
+wall_seconds=0.047740083; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/justify.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/justify'
+Platform administrator: retrospective encoder recommendation
+Recommend recorded settings {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}.
+Observed Performance-: 244.23 at CSV data row 71; minimize; units unspecified.
+Reuse Step 1 ascending Performance- ranking; exact numeric ties select the earliest CSV data row (1-based). No tolerance or setting preference.
+Exact best-value ties: 1; data rows [71].
+Recorded outcomes for this same configuration: [244.23] at data rows [71].
+Historical summary: {"count": 1152, "max": 821.963, "mean": 461.7535963541667, "median": 452.7785, "min": 244.23, "population_stddev": 162.49115009089647, "q25": 294.361, "q75": 580.73775}.
+Competition rank 1; strictly better/equal/strictly worse counts: 0/1/1151.
+Strictly worse historical rows: 99.91319444444444%; empirical CDF at chosen observation: 0.0008680555555555555.
+Fraction of historical rows with Performance- <= recommended observation.
+Median Performance- of every historical measurement row, including duplicates; average the two middle values for an even count. This is a distribution reference, not an encoder configuration.
+Reference Performance-: 452.7785; recommended minus reference: -208.54850000000002; observed reduction: 208.54850000000002.
+Observed reduction as percent of reference: 46.059717941554204; 100*(reference-recommended)/reference only for positive reference; otherwise null.
+Setting-level context from the preserved marginal diagnosis (not contributions to the chosen outcome):
+  ref_9=0.0: diagnosis rank=1; eta squared=0.6445017930440725; matching-value group count=768, mean Performance-=369.51200651041665, mean minus overall=-92.24158984375003. Marginal group association only; not an individual contribution.
+  ref_1=1.0: diagnosis rank=2; eta squared=0.6434940424637342; matching-value group count=384, mean Performance-=277.414703125, mean minus overall=-184.33889322916667. Marginal group association only; not an individual contribution.
+  no_mixed_refs=0.0: diagnosis rank=3; eta squared=0.03769159718307721; matching-value group count=576, mean Performance-=493.3001545138889, mean minus overall=31.546558159722224. Marginal group association only; not an individual contribution.
+  no_fast_pskip=0.0: diagnosis rank=4; eta squared=0.030786994902991933; matching-value group count=576, mean Performance-=433.24253645833335, mean minus overall=-28.51105989583334. Marginal group association only; not an individual contribution.
+  no_mbtree=0.0: diagnosis rank=5; eta squared=0.024376905125970356; matching-value group count=576, mean Performance-=436.3836822916667, mean minus overall=-25.369914062500015. Marginal group association only; not an individual contribution.
+  no_8x8dct=1.0: diagnosis rank=6; eta squared=0.004082208133125627; matching-value group count=576, mean Performance-=451.3716857638889, mean minus overall=-10.381910590277812. Marginal group association only; not an individual contribution.
+  no_cabac=1.0: diagnosis rank=7; eta squared=0.0005837384643700195; matching-value group count=576, mean Performance-=457.82769965277777, mean minus overall=-3.925896701388922. Marginal group association only; not an individual contribution.
+  rc_lookahead_20=1.0: diagnosis rank=8; eta squared=1.2183343356475464e-05; matching-value group count=384, mean Performance-=460.9514973958333, mean minus overall=-0.8020989583333744. Marginal group association only; not an individual contribution.
+  rc_lookahead_60=0.0: diagnosis rank=9; eta squared=7.884681107352773e-06; matching-value group count=768, mean Performance-=461.43096484375, mean minus overall=-0.32263151041667015. Marginal group association only; not an individual contribution.
+  no_deblock=1.0: diagnosis rank=10; eta squared=8.691428974406844e-07; matching-value group count=576, mean Performance-=461.9050833333333, mean minus overall=0.15148697916663423. Marginal group association only; not an individual contribution.
+  rc_lookahead_40=0.0: diagnosis rank=11; eta squared=4.658024278248687e-07; matching-value group count=768, mean Performance-=461.67517838541664, mean minus overall=-0.07841796875004547. Marginal group association only; not an individual contribution.
+  ref_5=0.0: diagnosis rank=12; eta squared=3.9424094379868277e-07; matching-value group count=768, mean Performance-=461.82573958333336, mean minus overall=0.07214322916667015. Marginal group association only; not an individual contribution.
+  no_weightb=0.0: diagnosis rank=13; eta squared=2.940311709064498e-07; matching-value group count=576, mean Performance-=461.84170659722224, mean minus overall=0.08811024305555293. Marginal group association only; not an individual contribution.
+  no_asm=1.0: diagnosis rank=None; eta squared=None; matching-value group count=1152, mean Performance-=461.7535963541667, mean minus overall=0.0. Constant setting; no between-value comparison.
+  rc_lookahead=1.0: diagnosis rank=None; eta squared=None; matching-value group count=1152, mean Performance-=461.7535963541667, mean minus overall=0.0. Constant setting; no between-value comparison.
+  ref=1.0: diagnosis rank=None; eta squared=None; matching-value group count=1152, mean Performance-=461.7535963541667, mean minus overall=0.0. Constant setting; no between-value comparison.
+All value-group summaries and pairwise setting relationships are in justification.json under diagnosis; correlated scores are not summed.
+This is a retrospective recommendation among recorded rows, not an optimum over unseen configurations.
+Selecting the minimum from the same history creates selection optimism; a single best observation supplies no statistical certainty or repeatability guarantee.
+Historical rows may differ in workload, hardware, other settings, or unrecorded conditions. Rows are equally weighted, including duplicates; counts do not establish independent replication.
+Setting-level group means and eta squared are marginal associations, not explanations of this individual outcome or causal effects. Correlated scores are never added.
+Encoded setting names and values are preserved without inferring flag semantics or validity of unobserved combinations.
+Performance- is minimized; physical units are unspecified. No output-quality, memory, or resource-use measurements are inferred.
+No model predictions, p-values, confidence intervals, or significance claims are used in this justification. The historical median is not a randomized control.
+Validate the candidate under the administrator's workload with repeated controlled measurements and required quality/resource checks before operational adoption.
+Exact floating-point equality defines ties; near ties and rounding can affect ordering. Unsupported nonfinite computed statistics are rejected.
+
+wall_seconds=0.115748750; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/flow.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/flow'
+Replay every CSV data row exactly once in original file order, starting at 1; CSV order is not evidence of real chronological order.
+{"best": {"Performance-": 244.23, "arrival_index": 71, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}, "best_tie_count": 1, "count": 1152, "mean": 461.7535963541664, "population_stddev": 162.49115009089672, "population_variance": 26403.373857862323}
+
+wall_seconds=0.072489500; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/certify.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/regression_demos/certify'
+{
+  "group_selection_rule": "Before interpretation: baseline no_8x8dct=0; candidate no_8x8dct=1; include every observed row; no objective-based selection.",
+  "objective": "Performance-",
+  "units": null,
+  "quality_measures": [],
+  "quality_limitation": "No separate output-quality measure is available; this certifies Performance- association only, with smaller values preferred.",
+  "comparison": {
+    "baseline_n": 576,
+    "candidate_n": 576,
+    "baseline_mean": 472.1355069444445,
+    "candidate_mean": 451.37168576388893,
+    "difference_candidate_minus_baseline": -20.763821180555567,
+    "direction": "minimize",
+    "observed_improvement": 20.763821180555567,
+    "alpha": 0.05,
+    "minimum_practical_improvement": 1.0,
+    "method": "Monte Carlo permutation with plus-one correction",
+    "statistic": "absolute difference of sample means",
+    "alternative": "two-sided",
+    "null": "identical exchangeable distributions",
+    "p_value": 0.03,
+    "extreme_assignments": 599,
+    "draws": 19999,
+    "possible_assignments": 1437720876318332009683259587032873310441972309826298712101268327714316639199228399006415862823498941014138183549132772614669936162235025433664909409705020328197527464223867579462872482547622061849326387766097252783531488806968999602556082472539452650859688604619344508049225231280172132293843168494383901576815818956640708942360615191230129557700,
+    "seed": 42031,
+    "monte_carlo_standard_error_approx": 0.0012062338081814817,
+    "statistically_detected_difference": true,
+    "observed_practical_improvement": true,
+    "credible_improvement_conditional_on_assumptions": true,
+    "conclusion": "Statistically detected improvement with an observed effect meeting the practical threshold, conditional on exchangeability assumptions."
+  },
+  "unique_configurations": 1152,
+  "repeated_configuration_rows": 0,
+  "assumptions_and_limitations": [
+    "Independent observations and exchangeable group labels under the null of identical distributions; no normality assumption.",
+    "Historical configurations are not randomized samples; dependence, heteroskedasticity, confounding and selection can invalidate the p-value interpretation.",
+    "Other encoder settings may differ between groups; association does not establish causal improvement.",
+    "Comparisons across different configurations do not establish repeatability for an individual configuration.",
+    "Observed CSV measurements only; model predictions are not independent observed measurements and are never used here.",
+    "One prespecified comparison; no multiple-comparison search or adjustment.",
+    "The 1.0-unit default practical threshold is illustrative, not validated domain relevance; physical units are unspecified.",
+    "Practical criterion uses the observed effect; no confidence bound or population-effect guarantee is supplied.",
+    "A nonsignificant test is not evidence of equivalence; small samples have low power and coarse exact p-values.",
+    "Monte Carlo p-values have sampling error; seed and draw count are recorded."
+  ],
+  "dataset": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+}
+
+wall_seconds=0.754112834; exit=0
+
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/spot.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09'
+Exploratory screen: 1152 rows; 204 flagged; threshold=33.8781905; showing up to 10 records.
+{"Performance-": 821.963, "data_row": 871, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [871], "explanation": "Absolute difference from the median of other nearby configurations is 92.9215; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 729.0414999999999, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 57.4764999999999, "neighbor_configuration_median_max": 821.757, "neighbor_configuration_median_min": 310.217, "neighbor_data_rows": [52, 684, 775, 786, 793, 794, 796, 799, 812, 834, 837, 839, 840, 844, 858, 865, 866, 868, 869, 870, 872, 874, 875, 876, 880, 882, 889, 890, 892, 895, 940, 1110], "signed_difference": 92.92150000000002, "within_neighbor_configuration_median_range": false}, "flagged": true, "rank": 1, "score": 92.92150000000002, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 1.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 821.52, "data_row": 866, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [866], "explanation": "Absolute difference from the median of other nearby configurations is 92.0715; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 729.4485, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 57.8834999999999, "neighbor_configuration_median_max": 821.963, "neighbor_configuration_median_min": 310.177, "neighbor_data_rows": [36, 682, 770, 785, 786, 788, 791, 794, 810, 833, 834, 836, 839, 842, 850, 865, 867, 868, 869, 871, 872, 873, 874, 876, 879, 881, 882, 884, 887, 890, 938, 1109], "signed_difference": 92.07150000000009, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 2, "score": 92.07150000000009, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 1.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 821.757, "data_row": 1110, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [1110], "explanation": "Absolute difference from the median of other nearby configurations is 91.7535; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 730.0035, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 58.404999999999994, "neighbor_configuration_median_max": 821.963, "neighbor_configuration_median_min": 310.317, "neighbor_data_rows": [207, 436, 871, 940, 1037, 1059, 1073, 1075, 1076, 1078, 1085, 1091, 1097, 1101, 1102, 1103, 1105, 1107, 1108, 1109, 1111, 1112, 1115, 1117, 1118, 1120, 1133, 1139, 1141, 1142, 1144, 1150], "signed_difference": 91.75349999999999, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 3, "score": 91.75349999999999, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 1.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 0.0, "rc_lookahead_40": 1.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 821.527, "data_row": 1109, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [1109], "explanation": "Absolute difference from the median of other nearby configurations is 91.2435; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 730.2835, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 58.685, "neighbor_configuration_median_max": 821.76, "neighbor_configuration_median_min": 310.287, "neighbor_data_rows": [196, 420, 866, 938, 1033, 1057, 1073, 1074, 1075, 1077, 1081, 1089, 1097, 1098, 1099, 1101, 1105, 1106, 1107, 1110, 1111, 1112, 1113, 1115, 1116, 1118, 1129, 1137, 1141, 1142, 1143, 1147], "signed_difference": 91.2435, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 4, "score": 91.2435, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 1.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 0.0, "rc_lookahead_40": 1.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 821.76, "data_row": 938, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [938], "explanation": "Absolute difference from the median of other nearby configurations is 91.1965; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 730.5635, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 58.91500000000007, "neighbor_configuration_median_max": 821.527, "neighbor_configuration_median_min": 310.227, "neighbor_data_rows": [298, 580, 866, 898, 913, 914, 916, 919, 922, 929, 930, 932, 935, 937, 939, 940, 941, 943, 944, 946, 949, 951, 952, 956, 978, 994, 1001, 1002, 1004, 1007, 1015, 1109], "signed_difference": 91.19649999999997, "within_neighbor_configuration_median_range": false}, "flagged": true, "rank": 5, "score": 91.19649999999997, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 1.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 0.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 1.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 821.51, "data_row": 940, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [940], "explanation": "Absolute difference from the median of other nearby configurations is 91.17; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 730.34, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 58.69150000000006, "neighbor_configuration_median_max": 821.963, "neighbor_configuration_median_min": 310.327, "neighbor_data_rows": [300, 591, 871, 903, 914, 921, 922, 924, 927, 930, 933, 935, 936, 937, 938, 939, 942, 943, 944, 951, 954, 955, 956, 960, 986, 999, 1002, 1003, 1004, 1008, 1020, 1110], "signed_difference": 91.17, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 6, "score": 91.17, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 1.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 0.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 1.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 817.34, "data_row": 794, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [794], "explanation": "Absolute difference from the median of other nearby configurations is 89.435; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 727.905, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 56.13650000000002, "neighbor_configuration_median_max": 821.963, "neighbor_configuration_median_min": 310.577, "neighbor_data_rows": [51, 666, 770, 773, 775, 776, 780, 785, 786, 788, 791, 793, 795, 796, 797, 799, 800, 807, 810, 811, 812, 816, 828, 839, 866, 869, 871, 872, 876, 890, 922, 1075], "signed_difference": 89.43500000000003, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 7, "score": 89.43500000000003, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 817.793, "data_row": 786, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [786], "explanation": "Absolute difference from the median of other nearby configurations is 89.343; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 728.4499999999999, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 56.516499999999965, "neighbor_configuration_median_max": 821.963, "neighbor_configuration_median_min": 310.58, "neighbor_data_rows": [35, 658, 769, 770, 772, 775, 778, 785, 787, 788, 789, 791, 792, 793, 794, 796, 799, 802, 809, 810, 812, 815, 823, 834, 865, 866, 868, 871, 874, 882, 914, 1073], "signed_difference": 89.34300000000002, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 8, "score": 89.34300000000002, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 818.04, "data_row": 1073, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [1073], "explanation": "Absolute difference from the median of other nearby configurations is 88.9685; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 729.0714999999999, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 57.116499999999974, "neighbor_configuration_median_max": 821.757, "neighbor_configuration_median_min": 310.697, "neighbor_data_rows": [195, 419, 786, 914, 1025, 1033, 1034, 1035, 1037, 1045, 1057, 1058, 1059, 1061, 1065, 1074, 1075, 1076, 1077, 1078, 1079, 1081, 1082, 1083, 1085, 1097, 1105, 1109, 1110, 1111, 1115, 1141], "signed_difference": 88.96850000000002, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 9, "score": 88.96850000000002, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 0.0, "rc_lookahead_40": 1.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+{"Performance-": 817.99, "data_row": 914, "evidence": {"direction_vs_neighbors": "higher", "excluded_configuration_data_rows": [914], "explanation": "Absolute difference from the median of other nearby configurations is 88.6515; screening threshold is 33.8782; strictly exceeds the threshold.", "kth_distance": 0.15384615384615385, "local_median_Performance-": 729.3385, "nearest_distance": 0.07692307692307693, "neighbor_configuration_count": 32, "neighbor_configuration_median_MAD": 57.36149999999996, "neighbor_configuration_median_max": 821.76, "neighbor_configuration_median_min": 310.607, "neighbor_data_rows": [274, 579, 786, 897, 898, 900, 903, 906, 913, 915, 916, 917, 919, 920, 921, 922, 924, 927, 930, 937, 938, 940, 943, 951, 962, 993, 994, 996, 999, 1002, 1010, 1073], "signed_difference": 88.65150000000008, "within_neighbor_configuration_median_range": true}, "flagged": true, "rank": 10, "score": 88.65150000000008, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 1.0, "no_mbtree": 1.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 0.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 1.0, "ref": 1.0, "ref_1": 0.0, "ref_5": 0.0, "ref_9": 1.0}, "suggested_checks": ["Locate the original log using the 1-based CSV data-row identity; verify parsing and transcription.", "Confirm encoder version, effective flags, input video, workload, hardware and measurement units.", "Repeat this configuration and nearby controls with randomized order and multiple independent runs.", "Check system load, thermal throttling, caching, warm-up, timeouts and incomplete encodes.", "Verify output validity and quality before interpreting unusually low Performance- as an improvement."], "threshold": 33.878190450000105}
+Flags are investigation priorities, not confirmed measurement errors. Units unspecified.
+
+wall_seconds=0.982552542; exit=0
+
+Dataset SHA256 before/after: 00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864; unchanged=True

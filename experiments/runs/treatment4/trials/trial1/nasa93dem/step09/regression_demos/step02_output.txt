@@ -1,0 +1,12 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/predict_effort.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--proposal', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/proposal.json', '--evaluation', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/evaluation.json']
+Return code: 0
+Wall seconds: 0.931140416
+{
+  "estimated Effort-": 524.3361077067672,
+  "units": "unspecified",
+  "training_samples": 68,
+  "evaluation_samples": 25,
+  "model_mae": 531.2119860706141,
+  "baseline_mae": 674.0317647058823,
+  "decision_note": "An effort estimate alone does not justify approving a proposal."
+}

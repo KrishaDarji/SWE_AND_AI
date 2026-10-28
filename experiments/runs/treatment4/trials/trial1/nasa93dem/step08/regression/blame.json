@@ -1,0 +1,2006 @@
+{
+  "target": "Effort-",
+  "objective": "minimize",
+  "units": "unspecified",
+  "project_count": 93,
+  "observed_effort_summary": {
+    "count": 93,
+    "sum": 58070.3,
+    "mean": 624.4118279569892,
+    "std_sample": 1135.9280652026785,
+    "min": 8.4,
+    "q25": 70.0,
+    "median": 252.0,
+    "q75": 600.0,
+    "max": 8211.0
+  },
+  "missing_effort_count": 0,
+  "predictor_fields": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "excluded_from_ranking": [
+    "Effort-",
+    "Defects-",
+    "Kloc+",
+    "all X-suffixed metadata",
+    "unknown fields"
+  ],
+  "method": {
+    "name": "Univariate categorical eta squared on raw observed Effort-",
+    "formula": "eta2 = sum_g n_g * (mean_g - mean_all)^2 / sum_i (effort_i - mean_all)^2",
+    "interpretation": "Fraction of within-sample raw effort variation between observed categories, ranging from 0 to 1; strength has no sign.",
+    "eligible_rows": "For each factor: observed nonnegative finite effort and nonmissing normalized category only.",
+    "undefined": "null score and no rank for fewer than two observed categories or zero total effort variance.",
+    "ordering": "Descending eta2 rounded to 12 decimal places; equal rounded scores share competition rank, then factor name alphabetical. Undefined factors are separate.",
+    "direction": "Category mean minus the feature-specific eligible mean; higher/lower/equal uses relative tolerance 1e-12 and absolute tolerance 1e-12. Medians and quartiles are also reported.",
+    "small_category_threshold": 5,
+    "inference": "Exploratory only; no significance tests, multiplicity claims or certified wins.",
+    "fitting": "No fitted model or learned preprocessing; no train/evaluation split is required for descriptive summaries.",
+    "seed": 42,
+    "seed_usage": "No randomness in this method."
+  },
+  "ranked_findings": [
+    {
+      "factor": "time",
+      "status": "rankable",
+      "eta_squared": 0.4179432592506268,
+      "rank": 1,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 49614293.557384536,
+        "within": 69096302.8196047,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 13,
+          "observed_effort_count": 13,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 13,
+            "sum": 9543.0,
+            "mean": 734.0769230769231,
+            "std_sample": 737.3069760439521,
+            "min": 90.0,
+            "q25": 370.0,
+            "median": 458.0,
+            "q75": 750.0,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 109.66509511993388,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 54,
+          "observed_effort_count": 54,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 54,
+            "sum": 18057.0,
+            "mean": 334.3888888888889,
+            "std_sample": 504.19119676277745,
+            "min": 8.4,
+            "q25": 48.5,
+            "median": 156.0,
+            "q75": 360.0,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -290.0229390681003,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 18,
+          "observed_effort_count": 18,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 18,
+            "sum": 6756.2,
+            "mean": 375.34444444444443,
+            "std_sample": 371.0868983725926,
+            "min": 12.0,
+            "q25": 86.2,
+            "median": 215.5,
+            "q75": 548.55,
+            "max": 1248.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -249.06738351254478,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "xh",
+          "missing_predictor": false,
+          "project_count": 8,
+          "observed_effort_count": 8,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 8,
+            "sum": 23714.1,
+            "mean": 2964.2625,
+            "std_sample": 2584.5360511746453,
+            "min": 72.0,
+            "q25": 1571.9250000000002,
+            "median": 1848.5,
+            "q75": 4273.65,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 2339.8506720430105,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "time: association strength eta2=0.417943; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "rely",
+      "status": "rankable",
+      "eta_squared": 0.3421470962868604,
+      "rank": 2,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 40616485.84886836,
+        "within": 78094110.52812088,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 42,
+          "observed_effort_count": 42,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 42,
+            "sum": 20309.0,
+            "mean": 483.54761904761904,
+            "std_sample": 621.8698398194912,
+            "min": 8.4,
+            "q25": 52.5,
+            "median": 326.4,
+            "q75": 626.75,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -140.86420890937018,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 2,
+          "observed_effort_count": 2,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 2,
+            "sum": 2592.0,
+            "mean": 1296.0,
+            "std_sample": 1561.291772859897,
+            "min": 192.0,
+            "q25": 744.0,
+            "median": 1296.0,
+            "q75": 1848.0,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 671.5881720430108,
+          "observed_mean_direction": "higher",
+          "small_category": true
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 39,
+          "observed_effort_count": 39,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 39,
+            "sum": 10497.2,
+            "mean": 269.1589743589744,
+            "std_sample": 300.12956914073726,
+            "min": 24.0,
+            "q25": 66.0,
+            "median": 170.0,
+            "q75": 342.0,
+            "max": 1368.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -355.25285359801484,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 10,
+          "observed_effort_count": 10,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 10,
+            "sum": 24672.1,
+            "mean": 2467.21,
+            "std_sample": 2502.8410014976535,
+            "min": 107.0,
+            "q25": 781.25,
+            "median": 1709.2,
+            "q75": 3614.7749999999996,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 1842.7981720430107,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "rely: association strength eta2=0.342147; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "cplx",
+      "status": "rankable",
+      "eta_squared": 0.19168030678001796,
+      "rank": 3,
+      "nonmissing_category_count_all_rows": 5,
+      "constant_all_rows": false,
+      "observed_category_count": 5,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 22754483.531580187,
+        "within": 95956112.84540907,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 58,
+          "observed_effort_count": 58,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 58,
+            "sum": 18284.2,
+            "mean": 315.2448275862069,
+            "std_sample": 464.98597457528126,
+            "min": 8.4,
+            "q25": 60.0,
+            "median": 118.8,
+            "q75": 360.0,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -309.1670003707823,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 3,
+          "observed_effort_count": 3,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 3,
+            "sum": 2533.0,
+            "mean": 844.3333333333334,
+            "std_sample": 598.4649808746818,
+            "min": 192.0,
+            "q25": 582.5,
+            "median": 973.0,
+            "q75": 1170.5,
+            "max": 1368.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 219.92150537634416,
+          "observed_mean_direction": "higher",
+          "small_category": true
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 10,
+          "observed_effort_count": 10,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 10,
+            "sum": 4942.0,
+            "mean": 494.2,
+            "std_sample": 692.614659581117,
+            "min": 48.0,
+            "q25": 153.0,
+            "median": 320.0,
+            "q75": 429.0,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -130.21182795698923,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 17,
+          "observed_effort_count": 17,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 17,
+            "sum": 22801.6,
+            "mean": 1341.270588235294,
+            "std_sample": 2029.6902450758053,
+            "min": 12.0,
+            "q25": 409.0,
+            "median": 648.0,
+            "q75": 1350.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 716.8587602783049,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "xh",
+          "missing_predictor": false,
+          "project_count": 5,
+          "observed_effort_count": 5,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 5,
+            "sum": 9509.5,
+            "mean": 1901.9,
+            "std_sample": 1780.7298503703475,
+            "min": 107.0,
+            "q25": 458.0,
+            "median": 1924.5,
+            "q75": 2460.0,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 1277.4881720430108,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "cplx: association strength eta2=0.191680; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "stor",
+      "status": "rankable",
+      "eta_squared": 0.16358483064534204,
+      "rank": 4,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 19419252.80413734,
+        "within": 99291343.5728519,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 10,
+          "observed_effort_count": 10,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 10,
+            "sum": 8877.0,
+            "mean": 887.7,
+            "std_sample": 807.5338383002907,
+            "min": 107.0,
+            "q25": 379.75,
+            "median": 580.5,
+            "q75": 1123.5,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 263.28817204301083,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 49,
+          "observed_effort_count": 49,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 49,
+            "sum": 15839.2,
+            "mean": 323.24897959183676,
+            "std_sample": 517.1606528771825,
+            "min": 8.4,
+            "q25": 48.0,
+            "median": 117.6,
+            "q75": 360.0,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -301.16284836515246,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 21,
+          "observed_effort_count": 21,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 21,
+            "sum": 11659.0,
+            "mean": 555.1904761904761,
+            "std_sample": 980.5066353190895,
+            "min": 12.0,
+            "q25": 82.0,
+            "median": 240.0,
+            "q75": 576.0,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -69.22135176651307,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "xh",
+          "missing_predictor": false,
+          "project_count": 13,
+          "observed_effort_count": 13,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 13,
+            "sum": 21695.1,
+            "mean": 1668.8538461538462,
+            "std_sample": 2261.20604752397,
+            "min": 60.0,
+            "q25": 430.0,
+            "median": 648.0,
+            "q75": 1772.5,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 1044.4420181968571,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "stor: association strength eta2=0.163585; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "plex",
+      "status": "rankable",
+      "eta_squared": 0.15253724439705924,
+      "rank": 5,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 18107787.252077464,
+        "within": 100602809.12491179,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 22,
+          "observed_effort_count": 22,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 22,
+            "sum": 28285.1,
+            "mean": 1285.6863636363637,
+            "std_sample": 1818.4613483710564,
+            "min": 72.0,
+            "q25": 414.75,
+            "median": 651.5,
+            "q75": 1534.4250000000002,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 661.2745356793745,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 14,
+          "observed_effort_count": 14,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 14,
+            "sum": 4856.0,
+            "mean": 346.85714285714283,
+            "std_sample": 426.6069812878318,
+            "min": 12.0,
+            "q25": 73.0,
+            "median": 203.5,
+            "q75": 384.5,
+            "max": 1350.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -277.5546850998464,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 53,
+          "observed_effort_count": 53,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 53,
+            "sum": 18692.2,
+            "mean": 352.68301886792455,
+            "std_sample": 567.753594215446,
+            "min": 8.4,
+            "q25": 48.0,
+            "median": 117.6,
+            "q75": 360.0,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -271.72880908906467,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vl",
+          "missing_predictor": false,
+          "project_count": 4,
+          "observed_effort_count": 4,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 4,
+            "sum": 6237.0,
+            "mean": 1559.25,
+            "std_sample": 2002.6784356622675,
+            "min": 430.0,
+            "q25": 556.75,
+            "median": 623.5,
+            "q75": 1626.0,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 934.8381720430108,
+          "observed_mean_direction": "higher",
+          "small_category": true
+        }
+      ],
+      "explanation": "plex: association strength eta2=0.152537; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "data",
+      "status": "rankable",
+      "eta_squared": 0.1439884021292339,
+      "rank": 6,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 17092949.088131104,
+        "within": 101617647.28885815,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 17,
+          "observed_effort_count": 17,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 17,
+            "sum": 25877.3,
+            "mean": 1522.1941176470589,
+            "std_sample": 1986.1598643710015,
+            "min": 98.8,
+            "q25": 400.0,
+            "median": 1181.0,
+            "q75": 1645.9,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 897.7822896900697,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 37,
+          "observed_effort_count": 37,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 37,
+            "sum": 13696.0,
+            "mean": 370.1621621621622,
+            "std_sample": 821.2361046858812,
+            "min": 8.4,
+            "q25": 48.0,
+            "median": 72.0,
+            "q75": 360.0,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -254.24966579482702,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 31,
+          "observed_effort_count": 31,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 31,
+            "sum": 15576.0,
+            "mean": 502.4516129032258,
+            "std_sample": 652.0495297500887,
+            "min": 12.0,
+            "q25": 102.0,
+            "median": 300.0,
+            "q75": 528.0,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -121.96021505376342,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 8,
+          "observed_effort_count": 8,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 8,
+            "sum": 2921.0,
+            "mean": 365.125,
+            "std_sample": 457.6116374331904,
+            "min": 62.0,
+            "q25": 79.0,
+            "median": 181.0,
+            "q75": 368.25,
+            "max": 1350.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -259.2868279569892,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        }
+      ],
+      "explanation": "data: association strength eta2=0.143988; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "acap",
+      "status": "rankable",
+      "eta_squared": 0.06061626094121256,
+      "rank": 7,
+      "nonmissing_category_count_all_rows": 3,
+      "constant_all_rows": false,
+      "observed_category_count": 3,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 7195792.486474542,
+        "within": 111514803.89051469,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 51,
+          "observed_effort_count": 51,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 51,
+            "sum": 44682.3,
+            "mean": 876.1235294117647,
+            "std_sample": 1414.70304001769,
+            "min": 24.0,
+            "q25": 158.5,
+            "median": 420.0,
+            "q75": 819.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 251.7117014547755,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 32,
+          "observed_effort_count": 32,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 32,
+            "sum": 9643.0,
+            "mean": 301.34375,
+            "std_sample": 575.0976584319145,
+            "min": 8.4,
+            "q25": 37.5,
+            "median": 75.0,
+            "q75": 313.2,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -323.0680779569892,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 10,
+          "observed_effort_count": 10,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 10,
+            "sum": 3745.0,
+            "mean": 374.5,
+            "std_sample": 364.03792537469377,
+            "min": 62.0,
+            "q25": 104.0,
+            "median": 215.5,
+            "q75": 556.75,
+            "max": 1181.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -249.9118279569892,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        }
+      ],
+      "explanation": "acap: association strength eta2=0.060616; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "pvol",
+      "status": "rankable",
+      "eta_squared": 0.057823009747575815,
+      "rank": 8,
+      "nonmissing_category_count_all_rows": 3,
+      "constant_all_rows": false,
+      "observed_category_count": 3,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 6864203.9714471875,
+        "within": 111846392.40554206,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 9,
+          "observed_effort_count": 9,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 9,
+            "sum": 5017.0,
+            "mean": 557.4444444444445,
+            "std_sample": 526.8569803825112,
+            "min": 12.0,
+            "q25": 192.0,
+            "median": 480.0,
+            "q75": 882.0,
+            "max": 1368.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -66.96738351254476,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 65,
+          "observed_effort_count": 65,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 65,
+            "sum": 31040.0,
+            "mean": 477.53846153846155,
+            "std_sample": 767.1059427509646,
+            "min": 8.4,
+            "q25": 62.0,
+            "median": 240.0,
+            "q75": 458.0,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -146.87336641852767,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 19,
+          "observed_effort_count": 19,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 19,
+            "sum": 22013.3,
+            "mean": 1158.5947368421052,
+            "std_sample": 1999.5120019849521,
+            "min": 42.0,
+            "q25": 94.4,
+            "median": 252.0,
+            "q75": 1413.45,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 534.182908885116,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "pvol: association strength eta2=0.057823; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "pcap",
+      "status": "rankable",
+      "eta_squared": 0.057440803237252765,
+      "rank": 9,
+      "nonmissing_category_count_all_rows": 3,
+      "constant_all_rows": false,
+      "observed_category_count": 3,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 6818832.008667571,
+        "within": 111891764.36832167,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 39,
+          "observed_effort_count": 39,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 39,
+            "sum": 35943.3,
+            "mean": 921.623076923077,
+            "std_sample": 1581.8631520526237,
+            "min": 24.0,
+            "q25": 124.4,
+            "median": 400.0,
+            "q75": 819.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 297.21124896608774,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 44,
+          "observed_effort_count": 44,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 44,
+            "sum": 15343.0,
+            "mean": 348.70454545454544,
+            "std_sample": 543.3886946442946,
+            "min": 8.4,
+            "q25": 42.0,
+            "median": 115.8,
+            "q75": 379.75,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -275.7072825024438,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 10,
+          "observed_effort_count": 10,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 10,
+            "sum": 6784.0,
+            "mean": 678.4,
+            "std_sample": 675.61004531707,
+            "min": 72.0,
+            "q25": 333.0,
+            "median": 425.0,
+            "q75": 689.75,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 53.98817204301076,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "pcap: association strength eta2=0.057441; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "sced",
+      "status": "rankable",
+      "eta_squared": 0.05455369312943364,
+      "rank": 10,
+      "nonmissing_category_count_all_rows": 2,
+      "constant_all_rows": false,
+      "observed_category_count": 2,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 6476101.4459623275,
+        "within": 112234494.93102692,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 34,
+          "observed_effort_count": 34,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 34,
+            "sum": 9411.0,
+            "mean": 276.79411764705884,
+            "std_sample": 347.0584248615493,
+            "min": 8.4,
+            "q25": 60.0,
+            "median": 118.8,
+            "q75": 300.0,
+            "max": 1248.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -347.6177103099304,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 59,
+          "observed_effort_count": 59,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 59,
+            "sum": 48659.3,
+            "mean": 824.7338983050847,
+            "std_sample": 1366.2158900193767,
+            "min": 12.0,
+            "q25": 94.4,
+            "median": 400.0,
+            "q75": 735.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 200.3220703480955,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "sced: association strength eta2=0.054554; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "pmat",
+      "status": "rankable",
+      "eta_squared": 0.050721244838131924,
+      "rank": 11,
+      "nonmissing_category_count_all_rows": 3,
+      "constant_all_rows": false,
+      "observed_category_count": 3,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 6021149.223717928,
+        "within": 112689447.15327132,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 43,
+          "observed_effort_count": 43,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 43,
+            "sum": 34038.1,
+            "mean": 791.5837209302325,
+            "std_sample": 1444.5567889956574,
+            "min": 8.4,
+            "q25": 66.0,
+            "median": 278.0,
+            "q75": 838.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 167.1718929732433,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 20,
+          "observed_effort_count": 20,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 20,
+            "sum": 16353.2,
+            "mean": 817.66,
+            "std_sample": 1083.605309967367,
+            "min": 72.0,
+            "q25": 218.75,
+            "median": 501.7,
+            "q75": 751.5,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 193.24817204301075,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 30,
+          "observed_effort_count": 30,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 30,
+            "sum": 7679.0,
+            "mean": 255.96666666666667,
+            "std_sample": 307.1771906193258,
+            "min": 12.0,
+            "q25": 48.0,
+            "median": 132.0,
+            "q75": 360.0,
+            "max": 1350.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -368.4451612903225,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        }
+      ],
+      "explanation": "pmat: association strength eta2=0.050721; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "apex",
+      "status": "rankable",
+      "eta_squared": 0.023125557900776177,
+      "rank": 12,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 2745248.7699517356,
+        "within": 115965347.60703751,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 46,
+          "observed_effort_count": 46,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 46,
+            "sum": 35636.3,
+            "mean": 774.7021739130435,
+            "std_sample": 1380.1662530272101,
+            "min": 48.0,
+            "q25": 117.75,
+            "median": 276.0,
+            "q75": 726.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 150.29034595605424,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 1,
+          "observed_effort_count": 1,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 1,
+            "sum": 648.0,
+            "mean": 648.0,
+            "std_sample": null,
+            "min": 648.0,
+            "q25": 648.0,
+            "median": 648.0,
+            "q75": 648.0,
+            "max": 648.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 23.588172043010786,
+          "observed_mean_direction": "higher",
+          "small_category": true
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 34,
+          "observed_effort_count": 34,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 34,
+            "sum": 13684.0,
+            "mean": 402.47058823529414,
+            "std_sample": 616.9867163883218,
+            "min": 8.4,
+            "q25": 39.0,
+            "median": 117.6,
+            "q75": 454.5,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -221.94123972169507,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 12,
+          "observed_effort_count": 12,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 12,
+            "sum": 8102.0,
+            "mean": 675.1666666666666,
+            "std_sample": 1267.943993123107,
+            "min": 24.0,
+            "q25": 48.0,
+            "median": 342.0,
+            "q75": 472.25,
+            "max": 4560.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 50.754838709677415,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        }
+      ],
+      "explanation": "apex: association strength eta2=0.023126; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "ltex",
+      "status": "rankable",
+      "eta_squared": 0.00463015880599406,
+      "rank": 13,
+      "nonmissing_category_count_all_rows": 4,
+      "constant_all_rows": false,
+      "observed_category_count": 4,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 549648.9131797233,
+        "within": 118160947.46380953,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 69,
+          "observed_effort_count": 69,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 69,
+            "sum": 45680.3,
+            "mean": 662.0333333333333,
+            "std_sample": 1261.1879861355123,
+            "min": 8.4,
+            "q25": 72.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 37.62150537634409,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "l",
+          "missing_predictor": false,
+          "project_count": 6,
+          "observed_effort_count": 6,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 6,
+            "sum": 2564.0,
+            "mean": 427.3333333333333,
+            "std_sample": 525.3580366442172,
+            "min": 12.0,
+            "q25": 36.5,
+            "median": 259.0,
+            "q75": 606.0,
+            "max": 1350.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -197.0784946236559,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 14,
+          "observed_effort_count": 14,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 14,
+            "sum": 8222.0,
+            "mean": 587.2857142857143,
+            "std_sample": 810.7048622195217,
+            "min": 42.0,
+            "q25": 67.5,
+            "median": 162.0,
+            "q75": 822.25,
+            "max": 2400.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -37.12611367127488,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        },
+        {
+          "category": "vl",
+          "missing_predictor": false,
+          "project_count": 4,
+          "observed_effort_count": 4,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 4,
+            "sum": 1604.0,
+            "mean": 401.0,
+            "std_sample": 159.50130615975115,
+            "min": 215.0,
+            "q25": 323.75,
+            "median": 395.0,
+            "q75": 472.25,
+            "max": 599.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -223.4118279569892,
+          "observed_mean_direction": "lower",
+          "small_category": true
+        }
+      ],
+      "explanation": "ltex: association strength eta2=0.004630; direction is shown by each category mean relative to 624.412."
+    },
+    {
+      "factor": "tool",
+      "status": "rankable",
+      "eta_squared": 0.0021890098555123858,
+      "rank": 14,
+      "nonmissing_category_count_all_rows": 2,
+      "constant_all_rows": false,
+      "observed_category_count": 2,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 259858.66542298236,
+        "within": 118450737.71156627,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 10,
+          "observed_effort_count": 10,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 10,
+            "sum": 7767.0,
+            "mean": 776.7,
+            "std_sample": 720.5163349216233,
+            "min": 72.0,
+            "q25": 433.5,
+            "median": 528.5,
+            "q75": 1047.75,
+            "max": 2460.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 152.28817204301083,
+          "observed_mean_direction": "higher",
+          "small_category": false
+        },
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 83,
+          "observed_effort_count": 83,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 83,
+            "sum": 50303.3,
+            "mean": 606.0638554216868,
+            "std_sample": 1177.9397248004684,
+            "min": 8.4,
+            "q25": 60.0,
+            "median": 215.0,
+            "q75": 573.7,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": -18.34797253530246,
+          "observed_mean_direction": "lower",
+          "small_category": false
+        }
+      ],
+      "explanation": "tool: association strength eta2=0.002189; direction is shown by each category mean relative to 624.412."
+    }
+  ],
+  "unranked_factors": [
+    {
+      "factor": "prec",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "prec: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "flex",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "flex: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "resl",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "h",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "resl: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "team",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "vh",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "team: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "ruse",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "ruse: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "docu",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "docu: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "pcon",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "pcon: constant_on_observed_rows; no supported between-category strength ranking."
+    },
+    {
+      "factor": "site",
+      "status": "constant_on_observed_rows",
+      "eta_squared": null,
+      "rank": null,
+      "nonmissing_category_count_all_rows": 1,
+      "constant_all_rows": true,
+      "observed_category_count": 1,
+      "eligible_effort_summary": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      },
+      "excluded_missing_predictor_count": 0,
+      "missing_effort_count": 0,
+      "sums_of_squares": {
+        "between": 0.0,
+        "within": 118710596.37698925,
+        "total": 118710596.37698925
+      },
+      "categories": [
+        {
+          "category": "n",
+          "missing_predictor": false,
+          "project_count": 93,
+          "observed_effort_count": 93,
+          "missing_effort_count": 0,
+          "effort_summary": {
+            "count": 93,
+            "sum": 58070.3,
+            "mean": 624.4118279569892,
+            "std_sample": 1135.9280652026785,
+            "min": 8.4,
+            "q25": 70.0,
+            "median": 252.0,
+            "q75": 600.0,
+            "max": 8211.0
+          },
+          "included_in_score": true,
+          "mean_minus_eligible_mean": 0.0,
+          "observed_mean_direction": "equal",
+          "small_category": false
+        }
+      ],
+      "explanation": "site: constant_on_observed_rows; no supported between-category strength ranking."
+    }
+  ],
+  "constant_factors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "ruse",
+    "docu",
+    "pcon",
+    "site"
+  ],
+  "limitations": [
+    "Exploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.",
+    "Higher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.",
+    "Kloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.",
+    "Correlated factors can share the same association; univariate scores do not isolate independent contributions or interactions.",
+    "Observational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.",
+    "Small categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.",
+    "Eta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.",
+    "Missing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.",
+    "Constant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.",
+    "Physical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.",
+    "All data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used."
+  ],
+  "manager_explanation": "Project factors accompanying higher observed effort (physical units unspecified).\nThis is an exploratory description of raw effort, not a diagnosis of budget overrun or excessive effort.\nRanking uses categorical eta squared: between-category variation divided by total variation.\nThe score measures association strength; category means below supply direction. No category ordering is assumed.\nRank 1: time, eta2=0.417943, eligible n=93.\n  'h': projects=13, observed n=13, mean=734.0769230769231, median=458.0; higher than eligible mean; small-category warning=False.\n  'n': projects=54, observed n=54, mean=334.3888888888889, median=156.0; lower than eligible mean; small-category warning=False.\n  'vh': projects=18, observed n=18, mean=375.34444444444443, median=215.5; lower than eligible mean; small-category warning=False.\n  'xh': projects=8, observed n=8, mean=2964.2625, median=1848.5; higher than eligible mean; small-category warning=False.\nRank 2: rely, eta2=0.342147, eligible n=93.\n  'h': projects=42, observed n=42, mean=483.54761904761904, median=326.4; lower than eligible mean; small-category warning=False.\n  'l': projects=2, observed n=2, mean=1296.0, median=1296.0; higher than eligible mean; small-category warning=True.\n  'n': projects=39, observed n=39, mean=269.1589743589744, median=170.0; lower than eligible mean; small-category warning=False.\n  'vh': projects=10, observed n=10, mean=2467.21, median=1709.2; higher than eligible mean; small-category warning=False.\nRank 3: cplx, eta2=0.191680, eligible n=93.\n  'h': projects=58, observed n=58, mean=315.2448275862069, median=118.8; lower than eligible mean; small-category warning=False.\n  'l': projects=3, observed n=3, mean=844.3333333333334, median=973.0; higher than eligible mean; small-category warning=True.\n  'n': projects=10, observed n=10, mean=494.2, median=320.0; lower than eligible mean; small-category warning=False.\n  'vh': projects=17, observed n=17, mean=1341.270588235294, median=648.0; higher than eligible mean; small-category warning=False.\n  'xh': projects=5, observed n=5, mean=1901.9, median=1924.5; higher than eligible mean; small-category warning=False.\nRank 4: stor, eta2=0.163585, eligible n=93.\n  'h': projects=10, observed n=10, mean=887.7, median=580.5; higher than eligible mean; small-category warning=False.\n  'n': projects=49, observed n=49, mean=323.24897959183676, median=117.6; lower than eligible mean; small-category warning=False.\n  'vh': projects=21, observed n=21, mean=555.1904761904761, median=240.0; lower than eligible mean; small-category warning=False.\n  'xh': projects=13, observed n=13, mean=1668.8538461538462, median=648.0; higher than eligible mean; small-category warning=False.\nRank 5: plex, eta2=0.152537, eligible n=93.\n  'h': projects=22, observed n=22, mean=1285.6863636363637, median=651.5; higher than eligible mean; small-category warning=False.\n  'l': projects=14, observed n=14, mean=346.85714285714283, median=203.5; lower than eligible mean; small-category warning=False.\n  'n': projects=53, observed n=53, mean=352.68301886792455, median=117.6; lower than eligible mean; small-category warning=False.\n  'vl': projects=4, observed n=4, mean=1559.25, median=623.5; higher than eligible mean; small-category warning=True.\nRank 6: data, eta2=0.143988, eligible n=93.\n  'h': projects=17, observed n=17, mean=1522.1941176470589, median=1181.0; higher than eligible mean; small-category warning=False.\n  'l': projects=37, observed n=37, mean=370.1621621621622, median=72.0; lower than eligible mean; small-category warning=False.\n  'n': projects=31, observed n=31, mean=502.4516129032258, median=300.0; lower than eligible mean; small-category warning=False.\n  'vh': projects=8, observed n=8, mean=365.125, median=181.0; lower than eligible mean; small-category warning=False.\nRank 7: acap, eta2=0.060616, eligible n=93.\n  'h': projects=51, observed n=51, mean=876.1235294117647, median=420.0; higher than eligible mean; small-category warning=False.\n  'n': projects=32, observed n=32, mean=301.34375, median=75.0; lower than eligible mean; small-category warning=False.\n  'vh': projects=10, observed n=10, mean=374.5, median=215.5; lower than eligible mean; small-category warning=False.\nRank 8: pvol, eta2=0.057823, eligible n=93.\n  'h': projects=9, observed n=9, mean=557.4444444444445, median=480.0; lower than eligible mean; small-category warning=False.\n  'l': projects=65, observed n=65, mean=477.53846153846155, median=240.0; lower than eligible mean; small-category warning=False.\n  'n': projects=19, observed n=19, mean=1158.5947368421052, median=252.0; higher than eligible mean; small-category warning=False.\nRank 9: pcap, eta2=0.057441, eligible n=93.\n  'h': projects=39, observed n=39, mean=921.623076923077, median=400.0; higher than eligible mean; small-category warning=False.\n  'n': projects=44, observed n=44, mean=348.70454545454544, median=115.8; lower than eligible mean; small-category warning=False.\n  'vh': projects=10, observed n=10, mean=678.4, median=425.0; higher than eligible mean; small-category warning=False.\nRank 10: sced, eta2=0.054554, eligible n=93.\n  'l': projects=34, observed n=34, mean=276.79411764705884, median=118.8; lower than eligible mean; small-category warning=False.\n  'n': projects=59, observed n=59, mean=824.7338983050847, median=400.0; higher than eligible mean; small-category warning=False.\nRank 11: pmat, eta2=0.050721, eligible n=93.\n  'h': projects=43, observed n=43, mean=791.5837209302325, median=278.0; higher than eligible mean; small-category warning=False.\n  'l': projects=20, observed n=20, mean=817.66, median=501.7; higher than eligible mean; small-category warning=False.\n  'n': projects=30, observed n=30, mean=255.96666666666667, median=132.0; lower than eligible mean; small-category warning=False.\nRank 12: apex, eta2=0.023126, eligible n=93.\n  'h': projects=46, observed n=46, mean=774.7021739130435, median=276.0; higher than eligible mean; small-category warning=False.\n  'l': projects=1, observed n=1, mean=648.0, median=648.0; higher than eligible mean; small-category warning=True.\n  'n': projects=34, observed n=34, mean=402.47058823529414, median=117.6; lower than eligible mean; small-category warning=False.\n  'vh': projects=12, observed n=12, mean=675.1666666666666, median=342.0; higher than eligible mean; small-category warning=False.\nRank 13: ltex, eta2=0.004630, eligible n=93.\n  'h': projects=69, observed n=69, mean=662.0333333333333, median=252.0; higher than eligible mean; small-category warning=False.\n  'l': projects=6, observed n=6, mean=427.3333333333333, median=259.0; lower than eligible mean; small-category warning=False.\n  'n': projects=14, observed n=14, mean=587.2857142857143, median=162.0; lower than eligible mean; small-category warning=False.\n  'vl': projects=4, observed n=4, mean=401.0, median=395.0; lower than eligible mean; small-category warning=True.\nRank 14: tool, eta2=0.002189, eligible n=93.\n  'h': projects=10, observed n=10, mean=776.7, median=528.5; higher than eligible mean; small-category warning=False.\n  'n': projects=83, observed n=83, mean=606.0638554216868, median=215.0; lower than eligible mean; small-category warning=False.\nConstant factors across nonmissing inputs: prec, flex, resl, team, ruse, docu, pcon, site\nprec: constant_on_observed_rows; no supported between-category strength ranking.\nflex: constant_on_observed_rows; no supported between-category strength ranking.\nresl: constant_on_observed_rows; no supported between-category strength ranking.\nteam: constant_on_observed_rows; no supported between-category strength ranking.\nruse: constant_on_observed_rows; no supported between-category strength ranking.\ndocu: constant_on_observed_rows; no supported between-category strength ranking.\npcon: constant_on_observed_rows; no supported between-category strength ranking.\nsite: constant_on_observed_rows; no supported between-category strength ranking.\nPlanning use: review these historical category groups alongside project scope, size and context; the ranking does not show savings from changing a factor.\nExploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.\nHigher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.\nKloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.\nCorrelated factors can share the same association; univariate scores do not isolate independent contributions or interactions.\nObservational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.\nSmall categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.\nEta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.\nMissing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.\nConstant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.\nPhysical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.\nAll data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used.\n",
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+}

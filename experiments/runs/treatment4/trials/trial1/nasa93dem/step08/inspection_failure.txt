@@ -1,0 +1,4 @@
+Unexpected failed inspection attempt (exit 1): cat repair.json; cat metrics.csv
+repair.json was read successfully; metrics.csv did not yet exist because run_experiment.py was still executing.
+Stderr: cat: metrics.csv: No such file or directory
+No application or test repair was required. Include this one unexpected failed command in metrics.error_count.

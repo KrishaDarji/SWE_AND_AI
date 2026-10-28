@@ -1,0 +1,60 @@
+{
+  "test_seconds": 14.985110916895792,
+  "passed_tests": 50,
+  "total_tests": 50,
+  "demo_seconds": {
+    "step1": 0.030238832929171622,
+    "step2": 0.9352992499480024,
+    "step3": 6.628138000029139,
+    "step4": 0.3772733339574188,
+    "step5": 0.9129601250169799,
+    "step6": 1.1948046670295298
+  },
+  "unexpected_failed_commands": 0,
+  "preserved_source": [
+    {
+      "file": "blame.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "certify.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "flow.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "predict_effort.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "summarize.py",
+      "identical_to_step5": true
+    }
+  ],
+  "preserved_tests": [
+    {
+      "file": "test_blame.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "test_flow.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "test_summarize.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "test_predict_effort.py",
+      "identical_to_step5": true
+    },
+    {
+      "file": "test_certify.py",
+      "identical_to_step5": true
+    }
+  ],
+  "loc_rule": "Nonblank, non-comment-only Python source lines; docstrings included; added insert/replace new-side lines via SequenceMatcher with autojunk=False.",
+  "repair_attempts": []
+}

@@ -1,0 +1,144 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 7 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: choose
+- Current requirement: Select the best configuration under a quality constraint.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1–6 behavior and tests while adding Step 7.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Inspect the actual dataset schema.
+Performance- is minimized; physical units are unspecified.
+There is no separate quality measurement, so the stated quality
+constraint cannot be verified. Explicitly report that limitation.
+Do not invent quality values or claim the constraint is satisfied.
+
+Demonstrate the supported portion: select a strong configuration
+while evaluating a limited number of candidates.
+
+Implement a reusable budgeted selector:
+- Accept an evaluation budget and random seed as arguments.
+- Use budget 20 and seed 42 for the recorded demo.
+- Make all candidate settings available to the selector.
+- Reveal objective values only for explicitly evaluated candidates.
+- Count every objective evaluation, including initial training points.
+- Return the best observed candidate within the budget.
+- Record evaluation order, observed outcomes, and best-so-far history.
+
+Choose and document the selection strategy.
+Reuse earlier machinery where appropriate, without forcing reuse.
+
+Do not use previous steps' recommended row, saved results, full-data
+rankings, target summaries, or a model fitted on all targets to guide
+selection. The algorithm must not access unevaluated objectives.
+Reused code must obey this same information boundary.
+
+After selection is frozen, a separate audit may inspect all objectives
+to report the selected value's gap from the dataset minimum.
+Audit results must never feed back into selection.
+Do not claim the budgeted result is the global best.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 7 and preserved Steps 1–6 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step07/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- selection.json
+- run_instructions.txt
+
+selection.json must include the strategy, budget, seed, actual
+evaluation count, evaluation history, selected candidate,
+quality-constraint limitation, and separate post-selection audit.
+
+Test budget enforcement, reproducibility, ties, invalid budgets,
+and selection of the best evaluated candidate.
+Verify that the selector cannot inspect objective values except
+through counted evaluations. Keep audit access separate.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 7 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 6 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–6 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 6 files, or other repository files.
+Write only inside the absolute Step 7 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

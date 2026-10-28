@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,4,1,nasa93dem,spot,1227,134,0,0.839656250,2,68/69 tests passed; test_seconds=23.671558708; regression_demo_seconds=12.049385540; initial output-directory ls failed because directory did not yet exist; created directory; no code/test repair needed; error_count includes that initial inspection failure; threshold heuristic; no verified anomaly labels; source LOC excludes validation runner

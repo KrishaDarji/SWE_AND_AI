@@ -1,0 +1,122 @@
+Illustrative demo proposal; not an actual approval request
+Proposal model estimate: Effort- = 556.216082; physical units unspecified.
+Model: RandomForestRegressor; settings: {"bootstrap": true, "ccp_alpha": 0.0, "criterion": "squared_error", "max_depth": null, "max_features": 1.0, "max_leaf_nodes": null, "max_samples": null, "min_impurity_decrease": 0.0, "min_samples_leaf": 2, "min_samples_split": 2, "min_weight_fraction_leaf": 0.0, "monotonic_cst": null, "n_estimators": 200, "n_jobs": 1, "oob_score": false, "random_state": 42, "verbose": 0, "warm_start": false}.
+Normalization, explicit missing level and one-hot encoding reuse the preserved estimator; all learned preprocessing uses training rows only.
+Proposal characteristics (missing includes omitted keys and normalized missing tokens):
+  prec: raw='h', normalized='h', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  flex: raw='h', normalized='h', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  resl: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  team: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pmat: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  rely: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  data: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  cplx: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  ruse: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  docu: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  time: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  stor: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pvol: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  acap: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pcap: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pcon: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  apex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  plex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  ltex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  tool: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  site: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  sced: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+Historical training context: n=68, mean=611.9529411764706, median=276.0, range=[8.4, 8211.0]; exact normalized configuration count=0.
+Nearest historical training examples (equal-weight nominal mismatch; comparability is not established):
+  Data row index=0, mismatched predictors=20, observed effort=117.6.
+  Data row index=1, mismatched predictors=20, observed effort=117.6.
+  Data row index=2, mismatched predictors=20, observed effort=31.2.
+  Data row index=3, mismatched predictors=20, observed effort=36.0.
+  Data row index=4, mismatched predictors=20, observed effort=25.2.
+Separate aggregate evaluation: held-out n=25; model MAE=531.211986; training-mean baseline MAE=674.031765; constant baseline prediction=611.952941.
+These MAEs describe one held-out partition, not this proposal error or an uncertainty interval.
+Global historical associations (training only; no causal effects or additive contributions to the proposal prediction):
+  time: eta squared=0.380858; eligible n=68.
+  rely: eta squared=0.352133; eligible n=68.
+  data: eta squared=0.236565; eligible n=68.
+  stor: eta squared=0.208024; eligible n=68.
+  plex: eta squared=0.193139; eligible n=68.
+  cplx: eta squared=0.158574; eligible n=68.
+  apex: eta squared=0.094778; eligible n=68.
+  pvol: eta squared=0.083268; eligible n=68.
+  acap: eta squared=0.075705; eligible n=68.
+  pcap: eta squared=0.067631; eligible n=68.
+  pmat: eta squared=0.046810; eligible n=68.
+  sced: eta squared=0.036288; eligible n=68.
+  ltex: eta squared=0.004727; eligible n=68.
+  tool: eta squared=0.000367; eligible n=68.
+Local model sensitivity: each query changes one field, holding other proposal inputs fixed. These are model responses, not feasible plans or causal effort savings; deltas must not be summed.
+  resl: None -> 'h': estimate=556.216082, delta=0.000000, training level support=68.
+  team: None -> 'vh': estimate=556.216082, delta=0.000000, training level support=68.
+  pmat: None -> 'h': estimate=561.421921, delta=5.205839, training level support=31.
+  pmat: None -> 'l': estimate=763.343614, delta=207.127533, training level support=13.
+  pmat: None -> 'n': estimate=473.004186, delta=-83.211895, training level support=24.
+  rely: None -> 'h': estimate=579.797058, delta=23.580976, training level support=38.
+  rely: None -> 'l': estimate=723.327308, delta=167.111226, training level support=2.
+  rely: None -> 'n': estimate=478.736000, delta=-77.480081, training level support=21.
+  rely: None -> 'vh': estimate=1159.137281, delta=602.921199, training level support=7.
+  data: None -> 'h': estimate=762.508293, delta=206.292212, training level support=14.
+  data: None -> 'l': estimate=414.186737, delta=-142.029344, training level support=27.
+  data: None -> 'n': estimate=511.584439, delta=-44.631643, training level support=25.
+  data: None -> 'vh': estimate=600.026974, delta=43.810893, training level support=2.
+  cplx: None -> 'h': estimate=561.032703, delta=4.816621, training level support=43.
+  cplx: None -> 'l': estimate=594.022998, delta=37.806917, training level support=3.
+  cplx: None -> 'n': estimate=587.928837, delta=31.712756, training level support=6.
+  cplx: None -> 'vh': estimate=553.067373, delta=-3.148708, training level support=16.
+  ruse: None -> 'n': estimate=556.216082, delta=0.000000, training level support=68.
+  docu: None -> 'n': estimate=556.216082, delta=0.000000, training level support=68.
+  time: None -> 'h': estimate=595.478692, delta=39.262611, training level support=10.
+  time: None -> 'n': estimate=499.814836, delta=-56.401245, training level support=41.
+  time: None -> 'vh': estimate=546.131282, delta=-10.084800, training level support=11.
+  time: None -> 'xh': estimate=1996.314962, delta=1440.098881, training level support=6.
+  stor: None -> 'h': estimate=728.927017, delta=172.710936, training level support=7.
+  stor: None -> 'n': estimate=545.534075, delta=-10.682006, training level support=41.
+  stor: None -> 'vh': estimate=532.334115, delta=-23.881967, training level support=9.
+  stor: None -> 'xh': estimate=580.607948, delta=24.391867, training level support=11.
+  pvol: None -> 'h': estimate=596.493282, delta=40.277200, training level support=7.
+  pvol: None -> 'l': estimate=551.383332, delta=-4.832750, training level support=44.
+  pvol: None -> 'n': estimate=544.588973, delta=-11.627108, training level support=17.
+  acap: None -> 'h': estimate=556.720578, delta=0.504496, training level support=36.
+  acap: None -> 'n': estimate=483.075603, delta=-73.140478, training level support=29.
+  acap: None -> 'vh': estimate=561.652285, delta=5.436203, training level support=3.
+  pcap: None -> 'h': estimate=538.773239, delta=-17.442843, training level support=25.
+  pcap: None -> 'n': estimate=542.529420, delta=-13.686662, training level support=35.
+  pcap: None -> 'vh': estimate=669.476653, delta=113.260571, training level support=8.
+  pcon: None -> 'n': estimate=556.216082, delta=0.000000, training level support=68.
+  apex: None -> 'h': estimate=573.908320, delta=17.692238, training level support=30.
+  apex: None -> 'l': estimate=556.216082, delta=0.000000, training level support=1.
+  apex: None -> 'n': estimate=534.513043, delta=-21.703038, training level support=29.
+  apex: None -> 'vh': estimate=555.630248, delta=-0.585833, training level support=8.
+  plex: None -> 'h': estimate=559.576587, delta=3.360506, training level support=12.
+  plex: None -> 'l': estimate=563.615082, delta=7.399000, training level support=6.
+  plex: None -> 'n': estimate=573.691903, delta=17.475821, training level support=47.
+  plex: None -> 'vl': estimate=559.233082, delta=3.017000, training level support=3.
+  ltex: None -> 'h': estimate=549.799082, delta=-6.417000, training level support=49.
+  ltex: None -> 'l': estimate=556.036082, delta=-0.180000, training level support=6.
+  ltex: None -> 'n': estimate=569.205153, delta=12.989071, training level support=10.
+  ltex: None -> 'vl': estimate=565.052648, delta=8.836567, training level support=3.
+  tool: None -> 'h': estimate=594.299334, delta=38.083252, training level support=7.
+  tool: None -> 'n': estimate=524.336108, delta=-31.879974, training level support=61.
+  site: None -> 'n': estimate=556.216082, delta=0.000000, training level support=68.
+  sced: None -> 'l': estimate=560.834488, delta=4.618407, training level support=22.
+  sced: None -> 'n': estimate=562.315713, delta=6.099632, training level support=46.
+Limitations:
+Physical effort units are unspecified. MAE is aggregate held-out error, not an interval for this proposal; no confidence or prediction interval is supplied.
+Historical observational associations and local model sensitivity establish neither causal savings nor operational feasibility. Sensitivities are not additive contributions.
+Small, potentially related historical projects and one grouped split limit generalization; identical inputs are grouped, but broader project dependencies may remain.
+Missing inputs use the existing explicit missing level; unseen categories encode as zeros. Either can place the proposal outside well-supported training combinations.
+Equal-weight nominal similarity is descriptive and does not establish project comparability; marginal category support does not establish joint support.
+Delivered size, defects, identifiers and other metadata are excluded. Proposal-time availability of supplied predictors must be verified.
+Training-based global associations can be confounded by project size and correlated characteristics; small categories and extreme efforts can dominate.
+Random forest averages historical training outcomes and may miss novel or extreme effort. Missing-target rows are excluded without imputation.
+An effort estimate alone does not justify approving a proposal.
+Information needed before approval:
+Confirm scope, deliverables, project size, acceptance criteria and proposal-time predictor ratings with accountable owners.
+Specify effort units and conversion to cost, staffing capacity, schedule dependencies and a sponsor-approved budget.
+Review comparable projects, novelty, risks, alternatives, expected benefits and contingency requirements; validate on relevant recent projects.
+Obtain explicit sponsor acceptance of uncertainty and decision criteria before approval.
+Evidence supports review of an estimate, not automatic approval.

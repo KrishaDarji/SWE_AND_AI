@@ -1,0 +1,15 @@
+Recorded-configuration repair (Performance- minimized; units unspecified)
+Baseline: {"Performance-": 268.72, "data_row": 1, "settings": {"no_8x8dct": 0.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+Every recorded CSV data row, including duplicates; full-data objective access.
+Among strictly lower observed Performance- rows, minimize differing encoded setting columns, then Performance-, then 1-based CSV data row. Exact numeric comparisons; no tolerance.
+Searched 1152 rows; strictly improving rows: 138.
+Recommended recorded row: {"Performance-": 254.587, "data_row": 65, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 0.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+Changed no_8x8dct: 0.0 -> 1.0
+Change cost: 1; observed objective reduction: 14.133000000000038.
+Offline exhaustive search over all recorded measurements with full-data objective access; not budgeted search or evaluation on unseen configurations.
+Encoded-column distance is a proxy for change size, not a measured operational cost. Redundant or one-hot columns may represent one underlying choice.
+Only recorded configurations are recommended; setting semantics and validity of unseen combinations are not inferred.
+A lower historical outcome does not prove causal, repeatable, or statistically certified improvement. Selection on the same history can be optimistic.
+Duplicate configurations remain separate observations; a lower observation for identical settings has change cost zero and does not imply that any setting repair occurred.
+Performance- is minimized; physical units are unspecified. No quality measurements are available and quality preservation is not established.
+CSV numeric fields are parsed as finite floats by the reused loader; exact float comparisons define changes and ties. Near ties have no stability guarantee.

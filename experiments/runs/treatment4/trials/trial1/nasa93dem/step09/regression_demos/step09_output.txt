@@ -1,0 +1,81 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/spot.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/anomalies.json', '--limit', '10']
+Return code: 0
+Wall seconds: 0.842010125
+Exploratory historical screening: 0 flags / 93 rows.
+max over usable observed fields of abs(log1p(value)-median(log1p(reference)))/max(1.4826*MAD,log(2)); higher is more unusual
+Threshold: score > 3.5; units unspecified.
+Displaying 10 rows; display limit never changes flags or JSON rankings.
+Rank 1, CSV data row 58: score=2.8705059830036346, flagged=False
+  Outcomes: {"Defects-": 28.0, "Effort-": 8.4, "Kloc+": 0.9}
+  Characteristics: {"acap": "n", "apex": "n", "cplx": "h", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "n", "pcon": "n", "plex": "n", "pmat": "h", "prec": "h", "pvol": "l", "rely": "h", "resl": "h", "ruse": "n", "sced": "l", "site": "n", "stor": "n", "team": "vh", "time": "n", "tool": "n"}
+  Defects-: observed=28.0, raw historical median=2007.0, signed log score=-2.870506, below.
+  Kloc+: observed=0.9, raw historical median=47.5, signed log score=-2.084374, below.
+  Effort-: observed=8.4, raw historical median=252.0, signed log score=-2.041222, below.
+Rank 2, CSV data row 6: score=2.2735905143682897, flagged=False
+  Outcomes: {"Defects-": 69.0, "Effort-": 8.4, "Kloc+": 2.2}
+  Characteristics: {"acap": "n", "apex": "n", "cplx": "h", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "n", "pcon": "n", "plex": "n", "pmat": "h", "prec": "h", "pvol": "l", "rely": "h", "resl": "h", "ruse": "n", "sced": "l", "site": "n", "stor": "n", "team": "vh", "time": "n", "tool": "n"}
+  Defects-: observed=69.0, raw historical median=2007.0, signed log score=-2.273591, below.
+  Effort-: observed=8.4, raw historical median=252.0, signed log score=-2.041222, below.
+  Kloc+: observed=2.2, raw historical median=47.5, signed log score=-1.748980, below.
+Rank 3, CSV data row 59: score=2.190638593305726, flagged=False
+  Outcomes: {"Defects-": 50961.0, "Effort-": 4560.0, "Kloc+": 980.0}
+  Characteristics: {"acap": "h", "apex": "vh", "cplx": "xh", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "h", "pcon": "n", "plex": "vl", "pmat": "l", "prec": "h", "pvol": "l", "rely": "vh", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "vh", "team": "vh", "time": "xh", "tool": "n"}
+  Defects-: observed=50961.0, raw historical median=2007.0, signed log score=2.190639, above.
+  Kloc+: observed=980.0, raw historical median=47.5, signed log score=1.934658, above.
+  Effort-: observed=4560.0, raw historical median=252.0, signed log score=1.792772, above.
+Rank 4, CSV data row 90: score=2.1573231053700375, flagged=False
+  Outcomes: {"Defects-": 8848.0, "Effort-": 8211.0, "Kloc+": 233.0}
+  Characteristics: {"acap": "h", "apex": "h", "cplx": "vh", "data": "h", "docu": "n", "flex": "h", "ltex": "h", "pcap": "h", "pcon": "n", "plex": "h", "pmat": "h", "prec": "h", "pvol": "n", "rely": "vh", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "xh", "team": "vh", "time": "xh", "tool": "n"}
+  Effort-: observed=8211.0, raw historical median=252.0, signed log score=2.157323, above.
+  Kloc+: observed=233.0, raw historical median=47.5, signed log score=1.012529, above.
+  Defects-: observed=8848.0, raw historical median=2007.0, signed log score=1.004681, above.
+Rank 5, CSV data row 7: score=1.9674204145452572, flagged=False
+  Outcomes: {"Defects-": 109.0, "Effort-": 10.8, "Kloc+": 3.5}
+  Characteristics: {"acap": "n", "apex": "n", "cplx": "h", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "n", "pcon": "n", "plex": "n", "pmat": "h", "prec": "h", "pvol": "l", "rely": "h", "resl": "h", "ruse": "n", "sced": "l", "site": "n", "stor": "n", "team": "vh", "time": "n", "tool": "n"}
+  Defects-: observed=109.0, raw historical median=2007.0, signed log score=-1.967420, below.
+  Effort-: observed=10.8, raw historical median=252.0, signed log score=-1.900256, below.
+  Kloc+: observed=3.5, raw historical median=47.5, signed log score=-1.529634, below.
+Rank 6, CSV data row 92: score=1.8402166315345623, flagged=False
+  Outcomes: {"Defects-": 477.0, "Effort-": 12.0, "Kloc+": 6.2}
+  Characteristics: {"acap": "n", "apex": "n", "cplx": "vh", "data": "n", "docu": "n", "flex": "h", "ltex": "l", "pcap": "n", "pcon": "n", "plex": "l", "pmat": "n", "prec": "h", "pvol": "h", "rely": "h", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "vh", "team": "vh", "time": "vh", "tool": "n"}
+  Effort-: observed=12.0, raw historical median=252.0, signed log score=-1.840217, below.
+  Kloc+: observed=6.2, raw historical median=47.5, signed log score=-1.227242, below.
+  Defects-: observed=477.0, raw historical median=2007.0, signed log score=-0.972247, below.
+Rank 7, CSV data row 85: score=1.7385767853460532, flagged=False
+  Outcomes: {"Defects-": 6266.0, "Effort-": 4178.2, "Kloc+": 165.0}
+  Characteristics: {"acap": "h", "apex": "h", "cplx": "vh", "data": "h", "docu": "n", "flex": "h", "ltex": "h", "pcap": "h", "pcon": "n", "plex": "h", "pmat": "h", "prec": "h", "pvol": "n", "rely": "vh", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "xh", "team": "vh", "time": "xh", "tool": "n"}
+  Effort-: observed=4178.2, raw historical median=252.0, signed log score=1.738577, above.
+  Kloc+: observed=165.0, raw historical median=47.5, signed log score=0.791634, above.
+  Defects-: observed=6266.0, raw historical median=2007.0, signed log score=0.770977, above.
+Rank 8, CSV data row 33: score=1.6606907196703367, flagged=False
+  Outcomes: {"Defects-": 172.0, "Effort-": 18.0, "Kloc+": 5.5}
+  Characteristics: {"acap": "n", "apex": "n", "cplx": "h", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "n", "pcon": "n", "plex": "n", "pmat": "h", "prec": "h", "pvol": "l", "rely": "h", "resl": "h", "ruse": "n", "sced": "l", "site": "n", "stor": "n", "team": "vh", "time": "n", "tool": "n"}
+  Defects-: observed=172.0, raw historical median=2007.0, signed log score=-1.660691, below.
+  Effort-: observed=18.0, raw historical median=252.0, signed log score=-1.604961, below.
+  Kloc+: observed=5.5, raw historical median=47.5, signed log score=-1.293046, below.
+Rank 9, CSV data row 93: score=1.6054136966328882, flagged=False
+  Outcomes: {"Defects-": 231.0, "Effort-": 38.0, "Kloc+": 3.0}
+  Characteristics: {"acap": "n", "apex": "n", "cplx": "vh", "data": "n", "docu": "n", "flex": "h", "ltex": "l", "pcap": "n", "pcon": "n", "plex": "l", "pmat": "n", "prec": "h", "pvol": "h", "rely": "h", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "vh", "team": "vh", "time": "vh", "tool": "n"}
+  Kloc+: observed=3.0, raw historical median=47.5, signed log score=-1.605414, below.
+  Defects-: observed=231.0, raw historical median=2007.0, signed log score=-1.461914, below.
+  Effort-: observed=38.0, raw historical median=252.0, signed log score=-1.159157, below.
+Rank 10, CSV data row 11: score=1.6007719225226906, flagged=False
+  Outcomes: {"Defects-": 188.0, "Effort-": 24.0, "Kloc+": 6.0}
+  Characteristics: {"acap": "h", "apex": "vh", "cplx": "h", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "h", "pcon": "n", "plex": "n", "pmat": "n", "prec": "h", "pvol": "l", "rely": "n", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "n", "team": "vh", "time": "n", "tool": "n"}
+  Defects-: observed=188.0, raw historical median=2007.0, signed log score=-1.600772, below.
+  Effort-: observed=24.0, raw historical median=252.0, signed log score=-1.434830, below.
+  Kloc+: observed=6.0, raw historical median=47.5, signed log score=-1.245366, below.
+Verify original source, transcription, missing entries, field definitions and measurement units.
+Compare scope, delivered size, complexity, reuse and reporting coverage with comparable projects.
+Check whether effort and defects cover the same lifecycle and deliverables as size.
+Ask project owners about legitimate exceptional circumstances before interpreting a flag.
+Flags are exploratory investigation priorities, not confirmed errors or poor performance.
+No verified anomaly labels: precision, recall and detection accuracy cannot be estimated.
+Marginal outcome screening misses unusual combinations and configuration-conditional inconsistencies.
+Large effort or defects may reflect scope and size; this method does not adjust for them.
+Full historical reference includes each evaluated record; these are not unseen prediction errors.
+Median/MAD can mask clusters; small references and missing outcomes weaken comparability.
+The 3.5 threshold is a heuristic, not a probability or calibrated false-positive rate; maximum over three fields adds multiplicity.
+The log(2) scale floor is an explicit conservative practical convention on 1+value, sensitive to unspecified measurement units.
+Physical units are unspecified. No causal, success, failure, or proposal-time prediction claims.
+No categorical ordinal mappings, supervised predictions, record deletion or repair are performed.

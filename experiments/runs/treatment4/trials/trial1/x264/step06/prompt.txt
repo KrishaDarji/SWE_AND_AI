@@ -1,0 +1,141 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 6 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: justify
+- Current requirement: Justify a recommended configuration to a platform administrator.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1–5 behavior and tests while adding Step 6.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step05/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step05/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reusable, evidence-based explanation of a recommended
+encoder configuration.
+
+For the demo, use the best observed configuration from the existing
+Step 1 ranking, with a documented deterministic tie rule.
+This is a retrospective recommendation from recorded measurements,
+not a claim about unseen configurations.
+
+Explain:
+- The recommended settings and observed Performance-.
+- Why it was selected and how ties were handled.
+- Its position relative to the historical distribution.
+- Its difference from a clearly defined historical reference.
+- Relevant setting-level evidence from the existing diagnosis.
+- What the evidence cannot establish.
+
+Performance- is minimized; physical units are unspecified.
+Do not invent quality, memory, or resource-use measurements.
+Keep marginal associations separate from explanations of an
+individual outcome. Do not add correlated feature scores together
+or claim they establish causality.
+
+Reuse earlier loading, ranking, summary, diagnosis, or comparison
+machinery where appropriate.
+Do not claim statistical certainty from a single best observation.
+Clearly distinguish observed evidence, model predictions if used,
+and assumptions.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 6 and preserved Steps 1–5 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- justification.json
+- justification.txt
+- run_instructions.txt
+
+Provide structured evidence in justification.json and a readable
+client explanation in justification.txt.
+Ensure every numerical claim can be traced to computed evidence.
+
+Test recommendation selection, ties, reference comparisons,
+evidence consistency, and invalid inputs using independently
+checkable examples.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 6 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 5 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–5 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 5 files, or other repository files.
+Write only inside the absolute Step 6 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

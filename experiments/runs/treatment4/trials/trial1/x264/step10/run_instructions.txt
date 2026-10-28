@@ -1,0 +1,41 @@
+Run with the existing python3 environment containing scikit-learn 1.6.0. No packages were installed or changed.
+
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10"
+
+# Full preserved and Step 10 test suite (100 tests):
+X264_DATASET="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest discover -s tests -v
+
+# Step 10 recorded comparison; dataset, budget and seeds are arguments:
+python3 -B source/race.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10" --budget 20 --seeds 42 43 44 45 46 47 48 49 50 51
+
+# Reproduce demo, all Steps 1–9 demos, all tests and measured metrics:
+python3 -B run_experiment.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+# Individual regression demo commands (all were executed):
+python3 -B source/remember.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/remember"
+python3 -B source/blame.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/blame"
+python3 -B source/guess.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/guess"
+python3 -B source/certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/certify"
+python3 -B source/fix.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/fix" --baseline-row 1
+python3 -B source/justify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/justify"
+python3 -B source/choose.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/choose"
+python3 -B source/flow.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/flow"
+python3 -B source/spot.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --output-dir "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/regression_demos/spot"
+
+The full reproduction command overwrites current Step 10 recorded outputs with the new run's actual timings. The original recorded demo was executed before regression demos and full-data test checks. run_experiment.py is experiment bookkeeping outside source/, excluded from application LOC.
+
+Artifacts:
+source/: complete updated application, including nine byte-identical preserved modules and race.py.
+tests/: all nine byte-identical preserved test modules and test_race.py.
+frozen_selections.json: all 20 search runs serialized before any full-data audit.
+race.json: methods, budgets, seeds, selections, histories, separate audit results, summaries, pending statistical analysis, and limitations.
+per_seed.csv: one row per method and seed with observed objective, count, post-selection gap and search runtime.
+runtime_output.txt: captured demo and regression commands, stdout, stderr, exits and subprocess wall times.
+test_output.txt: full suite output, commands, exit and test subprocess wall time.
+metrics.csv: required metrics, exact counts, timings and dataset hash checks.
+execution_summary.json: readable metric notes and preservation checks.
+response.txt: implementation explanation, results, limitations and artifact index.
+
+Runtime: per-method search time starts immediately before search invocation and stops on return. It includes validation/initialization inside each selector, counted oracle CSV access, model work and history construction; it excludes shared settings loading, oracle construction, imports, serialization and audit. The metrics runtime_seconds field measures the entire Step 10 demo subprocess, including interpreter startup, imports, settings loading, all 20 runs, freeze, audits and output. Regression and test subprocess times are separate in notes.
+
+Reproducibility applies to evaluation orders, observed objectives, selections and gaps. Wall times vary, so complete race.json bytes and freeze hashes (which include timing fields) vary across invocations.

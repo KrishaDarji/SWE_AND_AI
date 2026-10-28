@@ -1,0 +1,604 @@
+Step 2 adds settings-only prediction of Performance- (minimized, units unspecified).
+
+Reuse: source/remember.py and tests/test_remember.py are byte-identical copies of the allowed Step 1 files. Historical summaries and validation are preserved. guess.py reuses Measurements and load_measurements rather than introducing a separate CSV parser.
+
+Added: a random-forest regression CLI and API, deterministic grouped holdout evaluation, a training-mean DummyRegressor baseline, strict numeric configuration validation, evaluation.json with split row IDs and held-out predictions, and seven Step 2 tests.
+
+Actual schema: 1,152 records, 16 numeric binary encoder settings plus Performance-. All configurations are unique; no missing fields. no_asm, rc_lookahead, and ref are constant. Names and encoded values are retained without inferred semantics.
+
+Evaluation: GroupShuffleSplit, random_state=42, test_size=0.2 of unique configurations; 921 training rows and 231 held-out rows. Groups prevent identical settings from crossing partitions if future data contain repeats. No preprocessing is fitted or needed. Features exclude Performance-. The model retains only the training fit for predictions; no refit on held-out targets occurs. RandomForestRegressor uses 200 trees, squared_error criterion, max_depth=None, min_samples_split=2, min_samples_leaf=1, max_features=1.0, bootstrap=True, random_state=42, n_jobs=1; remaining installed scikit-learn 1.6.0 defaults apply. Python 3.12.6; no packages were installed or changed.
+
+Measured model MAE: 0.23840590909086787.
+Measured training-mean baseline MAE: 135.97237591832706.
+The forest has lower MAE on this fixed holdout; this does not establish transfer to different workloads.
+
+Validation: 15/15 tests passed (8 preserved Step 1 tests, 7 Step 2 tests); both demos exited 0. Application LOC=275; added application LOC=109. Runtime=4.762576790992171 seconds, the measured sum of the test process and both demo processes; each duration is recorded in run_records.json. test_pass in metrics.csv is the count of passed tests. error_count=1 records the initial unavailable python command (exit 127), repaired by using python3. No failing test run was discarded. The error printed inside the successful overwrite-protection test is expected.
+
+Assumptions and limitations: all non-objective columns are encoder settings. One fixed random holdout provides no confidence interval, tuning study, temporal generalization assessment, or cross-video/hardware assessment. Constant columns carry no learned variation. Prediction accepts exactly the 16 settings, each finite numeric and in its observed training domain. This catches unsupported per-setting values but does not certify valid combinations. No external encoder is invoked. The example_config.json is the first historical row's settings, used only to demonstrate the pre-run prediction interface; it is not claimed to be an unseen configuration. Supply a new configuration in the same settings-only JSON schema to predict before running it. No quality objectives, physical units, uncertainty intervals, or model extrapolation claims are invented.
+
+Files: source/ contains the complete application; tests/ contains the complete preserved and new test suites; evaluation.json records MAEs, settings, versions, row partitions and predictions; metrics.csv records experiment metrics. test_output.txt and runtime_output.txt preserve captured process outputs and timings. input_verification.json records the dataset digest and byte-identical Step 1 copies.
+
+Commands (run with the existing Python environment):
+
+```sh
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02'
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+export PYTHONDONTWRITEBYTECODE=1
+python3 -B -m unittest discover -s tests -v
+python3 -B source/remember.py "$X264_DATASET" --output-dir demo_step1
+python3 -B source/guess.py "$X264_DATASET" --output-dir . --config example_config.json
+```
+
+Complete application and tests:
+
+source/guess.py
+```python
+"""Predict Performance- using encoder settings and a reproducible holdout."""
+
+import argparse
+import json
+import math
+from pathlib import Path
+import platform
+
+import sklearn
+from sklearn.dummy import DummyRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GroupShuffleSplit
+
+from remember import OBJECTIVE, load_measurements
+
+
+SEED = 42
+TEST_SIZE = 0.2
+MODEL_SETTINGS = dict(n_estimators=200, criterion="squared_error", max_depth=None,
+                      min_samples_split=2, min_samples_leaf=1, max_features=1.0,
+                      bootstrap=True, random_state=SEED, n_jobs=1)
+
+
+def evaluate(data):
+    """Fit once on training rows; repeated configurations stay in one partition."""
+    features = [list(row[:-1]) for row in data.rows]
+    targets = [row[-1] for row in data.rows]
+    identities = {key: index for index, key in enumerate(sorted(set(map(tuple, features))))}
+    groups = [identities[tuple(row)] for row in features]
+    if len(identities) < 2:
+        raise ValueError("Evaluation needs at least two distinct configurations")
+    splitter = GroupShuffleSplit(n_splits=1, test_size=TEST_SIZE, random_state=SEED)
+    train, test = next(splitter.split(features, groups=groups))
+    x_train = [features[i] for i in train]
+    y_train = [targets[i] for i in train]
+    x_test = [features[i] for i in test]
+    y_test = [targets[i] for i in test]
+    model = RandomForestRegressor(**MODEL_SETTINGS).fit(x_train, y_train)
+    baseline = DummyRegressor(strategy="mean").fit(x_train, y_train)
+    predicted = model.predict(x_test)
+    baseline_predicted = baseline.predict(x_test)
+    report = {
+        "objective": OBJECTIVE, "direction": "minimize", "units": None,
+        "features": list(data.settings),
+        "versions": {"python": platform.python_version(), "scikit_learn": sklearn.__version__},
+        "split": {"method": "GroupShuffleSplit", "seed": SEED,
+                  "test_fraction_of_unique_configurations": TEST_SIZE,
+                  "train_count": len(train), "test_count": len(test),
+                  "train_data_rows": [int(i) + 1 for i in train],
+                  "test_data_rows": [int(i) + 1 for i in test]},
+        "model": {"class": "RandomForestRegressor", "settings": dict(MODEL_SETTINGS)},
+        "preprocessing": "None; finite numeric settings in CSV column order",
+        "model_mae": float(mean_absolute_error(y_test, predicted)),
+        "baseline": {"class": "DummyRegressor", "strategy": "mean",
+                     "training_mean": float(baseline.constant_[0, 0])},
+        "baseline_mae": float(mean_absolute_error(y_test, baseline_predicted)),
+        "held_out_predictions": [
+            {"data_row": int(i) + 1, "actual": actual, "predicted": float(prediction)}
+            for i, actual, prediction in zip(test, y_test, predicted)
+        ],
+        "limitations": [
+            "One fixed holdout; no hyperparameter search or uncertainty calibration.",
+            "Random configuration holdout does not measure transfer to new videos or hardware.",
+            "Units and flag semantics are unspecified; no causal interpretation.",
+            "Constant settings have no measured effect; extrapolation is unsupported.",
+            "Predictions retain the training-only fit; evaluation rows are never used to fit.",
+            "Per-setting domain checks do not establish validity of combined encoder settings.",
+        ],
+    }
+    return model, report
+
+
+def predict_configuration(model, data, report, configuration):
+    """Require every setting, no target, and values observed in training only."""
+    if not isinstance(configuration, dict) or set(configuration) != set(data.settings):
+        raise ValueError("Configuration must contain exactly the encoder settings; exclude Performance-")
+    train_rows = [data.rows[i - 1] for i in report["split"]["train_data_rows"]]
+    values = []
+    for index, name in enumerate(data.settings):
+        value = configuration[name]
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+            raise ValueError(f"Setting {name} must be a finite number")
+        if value not in {row[index] for row in train_rows}:
+            raise ValueError(f"Setting {name} is outside the observed training domain")
+        values.append(float(value))
+    return {"settings": dict(zip(data.settings, values)),
+            "predicted_Performance-": float(model.predict([values])[0]),
+            "units": None, "fit": "training partition only"}
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("dataset", type=Path)
+    parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--config", type=Path, help="JSON object with encoder settings only")
+    args = parser.parse_args(argv)
+    try:
+        data = load_measurements(args.dataset)
+        model, report = evaluate(data)
+        if args.config:
+            config = json.loads(args.config.read_text(encoding="utf-8"))
+            report["configuration_prediction"] = predict_configuration(model, data, report, config)
+        target = args.output_dir / "evaluation.json"
+        protected = [args.dataset.resolve()]
+        if args.config:
+            protected.append(args.config.resolve())
+        if target.resolve() in protected:
+            raise ValueError("Output must not overwrite an input")
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(report, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+    except (OSError, ValueError) as error:
+        parser.exit(2, f"error: {error}\n")
+    print(json.dumps({key: report[key] for key in ("model_mae", "baseline_mae", "split")},
+                     sort_keys=True))
+    if "configuration_prediction" in report:
+        print(json.dumps(report["configuration_prediction"], sort_keys=True))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+source/remember.py
+```python
+"""Validated descriptive summaries of historical encoder measurements."""
+
+import argparse
+import csv
+import json
+import math
+import statistics
+from dataclasses import dataclass
+from pathlib import Path
+
+
+OBJECTIVE = "Performance-"
+
+
+@dataclass(frozen=True)
+class Measurements:
+    """Numeric records in CSV order; row numbers refer to data rows, starting at 1."""
+
+    settings: tuple[str, ...]
+    rows: tuple[tuple[float, ...], ...]
+
+
+def load_measurements(path):
+    """Read numeric settings and the registered objective without changing the CSV."""
+    with Path(path).open(newline="", encoding="utf-8-sig") as stream:
+        reader = csv.reader(stream)
+        header = next(reader, None)
+        if not header or any(not name.strip() for name in header):
+            raise ValueError("CSV must have nonempty column names")
+        if len(set(header)) != len(header):
+            raise ValueError("Duplicate column names")
+        if OBJECTIVE not in header:
+            raise ValueError(f"Missing registered objective: {OBJECTIVE}")
+        settings = tuple(name for name in header if name != OBJECTIVE)
+        if not settings:
+            raise ValueError("CSV must contain encoder settings")
+        order = [header.index(name) for name in (*settings, OBJECTIVE)]
+        records = []
+        for line, cells in enumerate(reader, start=2):
+            if len(cells) != len(header):
+                raise ValueError(f"CSV line {line}: expected {len(header)} fields")
+            try:
+                values = tuple(float(cells[index]) for index in order)
+            except ValueError as error:
+                raise ValueError(f"CSV line {line}: missing or nonnumeric value") from error
+            if not all(math.isfinite(value) for value in values):
+                raise ValueError(f"CSV line {line}: nonfinite value")
+            records.append(values)
+    if not records:
+        raise ValueError("CSV has no measurement rows")
+    return Measurements(settings, tuple(records))
+
+
+def percentile(values, fraction):
+    """Linearly interpolate the sorted sample at (n - 1) * fraction."""
+    if not values or not 0 <= fraction <= 1:
+        raise ValueError("Percentile needs values and a fraction between 0 and 1")
+    ordered = sorted(values)
+    position = (len(ordered) - 1) * fraction
+    lower = math.floor(position)
+    upper = math.ceil(position)
+    return ordered[lower] + (ordered[upper] - ordered[lower]) * (position - lower)
+
+
+def describe(values):
+    """Use population standard deviation for the complete supplied history."""
+    return {
+        "count": len(values),
+        "min": min(values),
+        "q25": percentile(values, 0.25),
+        "median": statistics.median(values),
+        "q75": percentile(values, 0.75),
+        "max": max(values),
+        "mean": statistics.mean(values),
+        "population_stddev": statistics.pstdev(values),
+    }
+
+
+def summarize(data, top_n=5):
+    """Return JSON-compatible facts; conditional statistics do not imply causation."""
+    if top_n < 1:
+        raise ValueError("top_n must be positive")
+    objectives = [row[-1] for row in data.rows]
+    setting_summary = {}
+    for index, name in enumerate(data.settings):
+        groups = {}
+        for row in data.rows:
+            groups.setdefault(row[index], []).append(row[-1])
+        setting_summary[name] = {
+            "constant": len(groups) == 1,
+            "binary": set(groups).issubset({0.0, 1.0}),
+            "values": [
+                {
+                    "value": value,
+                    "count": len(group),
+                    "fraction": len(group) / len(data.rows),
+                    "objective": describe(group),
+                }
+                for value, group in sorted(groups.items())
+            ],
+        }
+    ranked = sorted(enumerate(data.rows, start=1), key=lambda item: item[1][-1])
+
+    def record(item):
+        number, row = item
+        return {
+            "data_row": number,
+            "settings": dict(zip(data.settings, row[:-1])),
+            OBJECTIVE: row[-1],
+        }
+
+    configurations = {row[:-1] for row in data.rows}
+    best_value = min(objectives)
+    return {
+        "row_count": len(data.rows),
+        "setting_count": len(data.settings),
+        "columns": [*data.settings, OBJECTIVE],
+        "objective": {"name": OBJECTIVE, "direction": "minimize", "units": None,
+                      "statistics": describe(objectives)},
+        "quality_measures": [],
+        "quality_note": "No separate quality measures are present in this dataset.",
+        "unique_configurations": len(configurations),
+        "repeated_configuration_rows": len(data.rows) - len(configurations),
+        "duplicate_measurement_rows": len(data.rows) - len(set(data.rows)),
+        "settings": setting_summary,
+        "best_runs": [record(item) for item in ranked if item[1][-1] == best_value],
+        "top_runs": [record(item) for item in ranked[:top_n]],
+        "interpretation": [
+            "All non-objective columns are treated as recorded encoder settings.",
+            "Names and encoded values are preserved; flag semantics are not inferred.",
+            "Conditional objective statistics describe associations, not causal effects.",
+            "Repeated rows remain in all statistics; no measurements are imputed.",
+            "Top runs are ordered by ascending objective, then original CSV order.",
+        ],
+    }
+
+
+def render_text(summary):
+    stats = summary["objective"]["statistics"]
+    lines = [
+        f"Historical encoder runs: {summary['row_count']}",
+        f"Settings: {summary['setting_count']}",
+        f"Unique configurations: {summary['unique_configurations']}",
+        f"Repeated configuration rows: {summary['repeated_configuration_rows']}",
+        f"Duplicate measurement rows: {summary['duplicate_measurement_rows']}",
+        "Objective: Performance- (minimize; units unspecified)",
+        "Objective statistics: " + json.dumps(stats, sort_keys=True),
+        summary["quality_note"],
+        "Setting distributions (value: count; mean Performance-):",
+    ]
+    for name, setting in summary["settings"].items():
+        values = "; ".join(
+            f"{item['value']:g}: {item['count']}; mean={item['objective']['mean']:.6f}"
+            for item in setting["values"]
+        )
+        lines.append(f"  {name}{' [constant]' if setting['constant'] else ''}: {values}")
+    lines.append(f"Best objective: {stats['min']}; tied runs: {len(summary['best_runs'])}")
+    for run in summary["top_runs"]:
+        lines.append("  " + json.dumps(run, sort_keys=True))
+    lines.extend(summary["interpretation"])
+    return "\n".join(lines) + "\n"
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("dataset", type=Path, help="Path to X264_AllMeasurements.csv")
+    parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--top", type=int, default=5)
+    args = parser.parse_args(argv)
+    try:
+        summary = summarize(load_measurements(args.dataset), args.top)
+        summary["dataset"] = str(args.dataset)
+        report = render_text(summary)
+        targets = [args.output_dir / name for name in ("summary.json", "summary.txt")]
+        if any(target.resolve() == args.dataset.resolve() for target in targets):
+            raise ValueError("Output must not overwrite the dataset")
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        targets[0].write_text(json.dumps(summary, indent=2, allow_nan=False) + "\n",
+                              encoding="utf-8")
+        targets[1].write_text(report, encoding="utf-8")
+    except (OSError, ValueError) as error:
+        parser.exit(2, f"error: {error}\n")
+    print(report, end="")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+tests/test_guess.py
+```python
+"""Holdout isolation, prediction validation, and CLI integration tests."""
+
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+
+STEP = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(STEP / "source"))
+import guess
+from remember import Measurements, load_measurements
+
+
+class PredictionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.data = Measurements(("a", "b"), tuple(
+            (float(i % 2), float(i), float(i * i + 2)) for i in range(24)))
+        cls.model, cls.report = guess.evaluate(cls.data)
+
+    def test_repeatability_and_independent_mae_baseline(self):
+        model, report = guess.evaluate(self.data)
+        self.assertEqual(report, self.report)
+        self.assertEqual(model.n_features_in_, 2)
+        train = report["split"]["train_data_rows"]
+        test = report["split"]["test_data_rows"]
+        self.assertFalse(set(train) & set(test))
+        self.assertEqual(set(train + test), set(range(1, 25)))
+        mean = sum(self.data.rows[i - 1][-1] for i in train) / len(train)
+        self.assertAlmostEqual(report["baseline"]["training_mean"], mean)
+        baseline_mae = sum(abs(self.data.rows[i - 1][-1] - mean) for i in test) / len(test)
+        self.assertAlmostEqual(report["baseline_mae"], baseline_mae)
+        model_mae = sum(abs(p["actual"] - p["predicted"])
+                        for p in report["held_out_predictions"]) / len(test)
+        self.assertAlmostEqual(report["model_mae"], model_mae)
+
+    def test_evaluation_targets_do_not_affect_fit(self):
+        held_out = set(self.report["split"]["test_data_rows"])
+        changed = Measurements(self.data.settings, tuple(
+            (*row[:-1], row[-1] + 10000 if i in held_out else row[-1])
+            for i, row in enumerate(self.data.rows, 1)))
+        model, report = guess.evaluate(changed)
+        self.assertEqual(self.report["split"], report["split"])
+        self.assertEqual([p["predicted"] for p in self.report["held_out_predictions"]],
+                         [p["predicted"] for p in report["held_out_predictions"]])
+        self.assertEqual(self.report["baseline"], report["baseline"])
+        self.assertNotEqual(self.report["model_mae"], report["model_mae"])
+
+    def test_repeated_configurations_are_grouped(self):
+        repeated = Measurements(self.data.settings, self.data.rows + self.data.rows)
+        _, report = guess.evaluate(repeated)
+        partitions = [{repeated.rows[i - 1][:-1] for i in report["split"][key]}
+                      for key in ("train_data_rows", "test_data_rows")]
+        self.assertFalse(partitions[0] & partitions[1])
+        with self.assertRaises(ValueError):
+            guess.evaluate(Measurements(("a",), ((1., 2.), (1., 3.))))
+
+    def test_prediction_schema_domain_and_column_order(self):
+        row = self.data.rows[self.report["split"]["train_data_rows"][0] - 1]
+        config = {"b": row[1], "a": row[0]}
+        prediction = guess.predict_configuration(self.model, self.data, self.report, config)
+        self.assertEqual(prediction["predicted_Performance-"], self.model.predict([row[:-1]])[0])
+        for bad in ({"a": 1}, {**config, "Performance-": 1},
+                    {**config, "a": float("nan")}, {**config, "a": "1"},
+                    {**config, "a": True}, {**config, "a": 9}, []):
+            with self.subTest(config=bad), self.assertRaises(ValueError):
+                guess.predict_configuration(self.model, self.data, self.report, bad)
+
+    def test_evaluation_only_setting_value_is_rejected(self):
+        train_values = {self.data.rows[i - 1][1]
+                        for i in self.report["split"]["train_data_rows"]}
+        heldout_only = {row[1] for row in self.data.rows} - train_values
+        self.assertTrue(heldout_only)
+        with self.assertRaisesRegex(ValueError, "training domain"):
+            guess.predict_configuration(self.model, self.data, self.report,
+                                        {"a": 0, "b": next(iter(heldout_only))})
+
+    def test_actual_dataset_cli_prediction_and_input_preservation(self):
+        dataset = Path(os.environ["X264_DATASET"])
+        before = dataset.read_bytes()
+        data = load_measurements(dataset)
+        with tempfile.TemporaryDirectory(dir=STEP / "tests") as tmp:
+            directory = Path(tmp)
+            config = directory / "config.json"
+            config.write_text(json.dumps(dict(zip(data.settings, data.rows[0][:-1]))))
+            process = subprocess.run([sys.executable, "-B", str(STEP / "source" / "guess.py"),
+                                      str(dataset), "--config", str(config),
+                                      "--output-dir", str(directory)], capture_output=True, text=True)
+            self.assertEqual(process.returncode, 0, process.stderr)
+            report = json.loads((directory / "evaluation.json").read_text())
+            self.assertEqual((report["split"]["train_count"], report["split"]["test_count"]),
+                             (921, 231))
+            self.assertEqual(report["features"], list(data.settings))
+            self.assertNotIn("Performance-", report["features"])
+            self.assertIn("configuration_prediction", report)
+            self.assertIsNone(report["units"])
+        self.assertEqual(dataset.read_bytes(), before)
+
+    def test_cli_invalid_config_preserves_input(self):
+        with tempfile.TemporaryDirectory(dir=STEP / "tests") as tmp:
+            directory = Path(tmp)
+            dataset = directory / "data.csv"
+            dataset.write_text("a,Performance-\n0,2\n1,3\n")
+            config = directory / "bad.json"
+            config.write_text('{"Performance-": 1}')
+            process = subprocess.run([sys.executable, "-B", str(STEP / "source" / "guess.py"),
+                                      str(dataset), "--config", str(config),
+                                      "--output-dir", str(directory)], capture_output=True, text=True)
+            self.assertEqual(process.returncode, 2)
+            self.assertIn("exactly the encoder settings", process.stderr)
+            self.assertFalse((directory / "evaluation.json").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+tests/test_remember.py
+```python
+"""Behavioral tests using local fixtures and the supplied historical dataset."""
+
+import csv
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+
+
+STEP = Path(__file__).resolve().parents[1]
+SOURCE = STEP / "source" / "remember.py"
+sys.path.insert(0, str(SOURCE.parent))
+import remember
+
+
+class SummaryTests(unittest.TestCase):
+    def setUp(self):
+        self.workspace = tempfile.TemporaryDirectory(dir=STEP / "tests")
+        self.addCleanup(self.workspace.cleanup)
+        self.directory = Path(self.workspace.name)
+
+    def dataset(self, text):
+        path = self.directory / "input.csv"
+        path.write_text(text, encoding="utf-8")
+        return path
+
+    def test_statistics_rankings_and_distributions(self):
+        path = self.dataset("flag,constant,Performance-\n0,1,4\n1,1,2\n0,1,2\n1,1,8\n")
+        result = remember.summarize(remember.load_measurements(path), 3)
+        stats = result["objective"]["statistics"]
+        self.assertEqual((stats["mean"], stats["median"], stats["q25"], stats["q75"]),
+                         (4, 3, 2, 5))
+        self.assertAlmostEqual(stats["population_stddev"], 6 ** 0.5)
+        self.assertEqual([row["data_row"] for row in result["top_runs"]], [2, 3, 1])
+        self.assertEqual([row["data_row"] for row in result["best_runs"]], [2, 3])
+        self.assertEqual(result["unique_configurations"], 2)
+        self.assertEqual(result["repeated_configuration_rows"], 2)
+        self.assertTrue(result["settings"]["constant"]["constant"])
+        group = result["settings"]["flag"]["values"][0]
+        self.assertEqual((group["count"], group["fraction"], group["objective"]["mean"]),
+                         (2, 0.5, 3))
+        self.assertEqual(result["quality_measures"], [])
+
+    def test_objective_position_whitespace_and_duplicates(self):
+        path = self.dataset("Performance-,flag\n 3.5 ,1\n3.5,1\n")
+        result = remember.summarize(remember.load_measurements(path))
+        self.assertEqual(result["duplicate_measurement_rows"], 1)
+        self.assertEqual(result["objective"]["statistics"]["population_stddev"], 0)
+        self.assertEqual(result["top_runs"][0]["settings"], {"flag": 1})
+
+    def test_rejects_invalid_csv(self):
+        cases = ["", "a,a,Performance-\n1,1,2\n", "a\n1\n",
+                 "a,Performance-\n", "a,Performance-\n1\n",
+                 "a,Performance-\n1,2,3\n", "a,Performance-\n,2\n",
+                 "a,Performance-\n1,nan\n", "a,Performance-\ninf,2\n",
+                 "a,Performance-\nx,2\n", ",Performance-\n1,2\n",
+                 "Performance-\n2\n"]
+        for text in cases:
+            with self.subTest(csv=text), self.assertRaises(ValueError):
+                remember.load_measurements(self.dataset(text))
+
+    def test_single_row_and_invalid_top(self):
+        data = remember.load_measurements(self.dataset("flag,Performance-\n1,7\n"))
+        self.assertEqual(remember.summarize(data)["objective"]["statistics"]["q25"], 7)
+        with self.assertRaises(ValueError):
+            remember.summarize(data, 0)
+
+    def test_cli_writes_valid_reports_and_preserves_input(self):
+        path = self.dataset("flag,Performance-\n0,9\n1,2\n")
+        before = path.read_bytes()
+        output = self.directory / "reports"
+        process = subprocess.run([sys.executable, str(SOURCE), str(path),
+                                  "--output-dir", str(output), "--top", "1"],
+                                 capture_output=True, text=True)
+        self.assertEqual(process.returncode, 0, process.stderr)
+        report = json.loads((output / "summary.json").read_text())
+        self.assertEqual(report["top_runs"][0]["Performance-"], 2)
+        self.assertEqual(len(report["top_runs"]), 1)
+        self.assertEqual((output / "summary.txt").read_text(), process.stdout)
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_cli_failure_is_actionable(self):
+        path = self.dataset("flag,Performance-\n1,nan\n")
+        process = subprocess.run([sys.executable, str(SOURCE), str(path),
+                                  "--output-dir", str(self.directory / "reports")],
+                                 capture_output=True, text=True)
+        self.assertEqual(process.returncode, 2)
+        self.assertIn("nonfinite", process.stderr)
+        self.assertFalse((self.directory / "reports").exists())
+
+    def test_cli_refuses_to_overwrite_dataset(self):
+        path = self.directory / "summary.json"
+        path.write_text("flag,Performance-\n1,2\n")
+        before = path.read_bytes()
+        with self.assertRaises(SystemExit) as result:
+            remember.main([str(path), "--output-dir", str(self.directory)])
+        self.assertEqual(result.exception.code, 2)
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_actual_dataset_matches_independent_csv_calculations(self):
+        path = Path(os.environ["X264_DATASET"])
+        with path.open(newline="") as stream:
+            reader = csv.DictReader(stream)
+            columns = reader.fieldnames
+            rows = list(reader)
+        result = remember.summarize(remember.load_measurements(path))
+        objectives = [float(row["Performance-"]) for row in rows]
+        self.assertEqual(result["row_count"], 1152)
+        self.assertEqual(result["setting_count"], 16)
+        self.assertEqual(set(result["columns"]), set(columns))
+        self.assertEqual(result["objective"]["statistics"]["min"], min(objectives))
+        self.assertAlmostEqual(result["objective"]["statistics"]["mean"],
+                               sum(objectives) / len(objectives))
+        for name, setting in result["settings"].items():
+            self.assertTrue(setting["binary"])
+            self.assertEqual(sum(group["count"] for group in setting["values"]), len(rows))
+            for group in setting["values"]:
+                expected = [float(row["Performance-"]) for row in rows
+                            if float(row[name]) == group["value"]]
+                self.assertEqual(group["count"], len(expected))
+                self.assertAlmostEqual(group["objective"]["mean"], sum(expected) / len(expected))
+
+
+if __name__ == "__main__":
+    unittest.main()
+```

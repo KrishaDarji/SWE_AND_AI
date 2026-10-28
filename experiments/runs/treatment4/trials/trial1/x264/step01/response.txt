@@ -1,0 +1,499 @@
+Treatment 4 / Trial 1 / Dataset 1 / Step 1 — remember
+
+Approach
+The implementation reads the actual CSV with the standard library, validates the
+schema and finite numeric cells, and keeps the CSV unchanged. Reusable functions
+load_measurements(), describe(), summarize(), and render_text() separate loading,
+statistics, structured reporting, and presentation. Measurements preserves the
+setting names and numeric encodings. Later steps can import these functions.
+
+The actual schema has 16 binary encoder-setting columns plus Performance-.
+The settings are no_asm, no_8x8dct, no_cabac, no_deblock, no_fast_pskip,
+no_mbtree, no_mixed_refs, no_weightb, rc_lookahead, rc_lookahead_20,
+rc_lookahead_40, rc_lookahead_60, ref, ref_1, ref_5, and ref_9.
+no_asm, rc_lookahead, and ref are constant at 1 in this history.
+All 1,152 rows are unique configurations, with no duplicate measurement rows.
+Performance- is minimized. Its minimum is 244.230, mean 461.7535963541667,
+median 452.7785, and maximum 821.963. The best run is data row 71 (1-based,
+excluding the header); summary.json contains its complete configuration.
+There are no separate quality measures in the supplied dataset.
+
+Each setting has value frequencies and conditional objective statistics. The
+reports include quartiles, population standard deviation, all tied best runs,
+and the top five runs in ascending objective order. summary.json provides full
+precision and summary.txt provides a readable report. Quartiles use linear
+interpolation at (n - 1) * fraction; ties retain CSV order.
+
+Dependencies
+Python 3.12.6 and installed scikit-learn 1.6.0 were verified. This descriptive
+summarization does not need an estimator, scaler, predictor, or clustering model;
+standard-library statistics are appropriate. No packages were installed and no
+dependency versions were changed.
+
+Commands (run from the workspace root)
+The supplied relative dataset path is inside SWE_AND_AI/ in this workspace.
+The implementation accepts any explicit dataset path as its positional argument.
+Use -B to avoid Python bytecode files outside the intended artifacts.
+
+Run tests:
+```sh
+X264_DATASET="$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" python3 -B -m unittest discover -s experiments/runs/treatment4/trials/trial1/x264/step01/tests -v
+```
+Run implementation:
+```sh
+python3 -B experiments/runs/treatment4/trials/trial1/x264/step01/source/remember.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --output-dir experiments/runs/treatment4/trials/trial1/x264/step01 --top 5
+```
+Reproduce the measured run (tests, implementation, logs, checksum, metrics):
+```sh
+python3 -B experiments/runs/treatment4/trials/trial1/x264/step01/run_experiment.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+```
+The runner appends test and runtime logs, preserving earlier attempts, and writes
+metrics.csv for its latest run. Fixture directories are created under tests/ and
+removed after each test. The integration test requires X264_DATASET as above.
+
+Measured results
+8 tests passed; test_pass=1. Application exit code 0.
+Application wall time: 0.051171500 seconds.
+total_loc=166; new_loc=166.
+error_count=2: two preflight command failures.
+Application runtime includes subprocess startup and report writes; tests and
+preflight are excluded. LOC counts nonblank, non-comment-only Python lines in
+source/, including docstrings, excluding tests and the experiment runner.
+The dataset's SHA256 before and after matched (see runtime_output.txt).
+
+Failures and repairs
+The first preflight used python, which is unavailable (exit 127). The second used
+the supplied dataset path relative to the workspace root, where it does not
+exist (exit 1, FileNotFoundError). Repaired by using python3 and locating the same
+CSV under SWE_AND_AI/. These failures and the traceback are retained in
+preflight_output.txt. There were no test or application failures and no repairs
+to application code following the first test run. An error message in the
+successful overwrite-protection test is the expected rejected operation.
+
+Known assumptions and limitations
+All non-objective columns in this inspected schema are encoder settings. The
+implementation requires unique, nonempty column names, the exact registered
+objective name, at least one setting, and finite numeric values in every cell.
+Malformed, missing, and nonnumeric values are rejected rather than imputed.
+No quality measures, objective units, flag semantics, timestamps, clip identities,
+or chronological ordering are inferred. The empty quality_measures list reports
+the absence of separate quality columns in this specific schema; a future schema
+with additional outcomes will need an explicit setting/outcome classification.
+No decoding of one-hot groups or external x264 documentation is assumed.
+Conditional averages are descriptive associations, not estimates of causal
+setting effects. Repeated records would be retained and weighted as rows.
+Population standard deviation describes this supplied history, not uncertainty.
+Best runs describe observations only, with no claim about unseen configurations.
+The data and reports are held in memory, suitable for 1,152 rows but not intended
+as a streaming implementation for very large histories. API callers should use
+load_measurements() to construct the validated Measurements object. No training
+or predictive evaluation is warranted for this summarization task.
+The runner's two initial preflight errors are specific to this archived run.
+
+Artifacts
+prompt.txt: original task
+source/remember.py: complete reusable application
+ tests/test_remember.py: complete tests
+run_experiment.py: execution and metric capture harness
+summary.json and summary.txt: historical-run summaries
+test_output.txt and runtime_output.txt: captured commands, outputs, exit codes, timings
+preflight_output.txt: initial failures and repairs
+metrics.csv: measured experiment metrics
+response.txt: this explanation, commands, complete source, tests, and harness
+
+Complete application source: source/remember.py
+```python
+"""Validated descriptive summaries of historical encoder measurements."""
+
+import argparse
+import csv
+import json
+import math
+import statistics
+from dataclasses import dataclass
+from pathlib import Path
+
+
+OBJECTIVE = "Performance-"
+
+
+@dataclass(frozen=True)
+class Measurements:
+    """Numeric records in CSV order; row numbers refer to data rows, starting at 1."""
+
+    settings: tuple[str, ...]
+    rows: tuple[tuple[float, ...], ...]
+
+
+def load_measurements(path):
+    """Read numeric settings and the registered objective without changing the CSV."""
+    with Path(path).open(newline="", encoding="utf-8-sig") as stream:
+        reader = csv.reader(stream)
+        header = next(reader, None)
+        if not header or any(not name.strip() for name in header):
+            raise ValueError("CSV must have nonempty column names")
+        if len(set(header)) != len(header):
+            raise ValueError("Duplicate column names")
+        if OBJECTIVE not in header:
+            raise ValueError(f"Missing registered objective: {OBJECTIVE}")
+        settings = tuple(name for name in header if name != OBJECTIVE)
+        if not settings:
+            raise ValueError("CSV must contain encoder settings")
+        order = [header.index(name) for name in (*settings, OBJECTIVE)]
+        records = []
+        for line, cells in enumerate(reader, start=2):
+            if len(cells) != len(header):
+                raise ValueError(f"CSV line {line}: expected {len(header)} fields")
+            try:
+                values = tuple(float(cells[index]) for index in order)
+            except ValueError as error:
+                raise ValueError(f"CSV line {line}: missing or nonnumeric value") from error
+            if not all(math.isfinite(value) for value in values):
+                raise ValueError(f"CSV line {line}: nonfinite value")
+            records.append(values)
+    if not records:
+        raise ValueError("CSV has no measurement rows")
+    return Measurements(settings, tuple(records))
+
+
+def percentile(values, fraction):
+    """Linearly interpolate the sorted sample at (n - 1) * fraction."""
+    if not values or not 0 <= fraction <= 1:
+        raise ValueError("Percentile needs values and a fraction between 0 and 1")
+    ordered = sorted(values)
+    position = (len(ordered) - 1) * fraction
+    lower = math.floor(position)
+    upper = math.ceil(position)
+    return ordered[lower] + (ordered[upper] - ordered[lower]) * (position - lower)
+
+
+def describe(values):
+    """Use population standard deviation for the complete supplied history."""
+    return {
+        "count": len(values),
+        "min": min(values),
+        "q25": percentile(values, 0.25),
+        "median": statistics.median(values),
+        "q75": percentile(values, 0.75),
+        "max": max(values),
+        "mean": statistics.mean(values),
+        "population_stddev": statistics.pstdev(values),
+    }
+
+
+def summarize(data, top_n=5):
+    """Return JSON-compatible facts; conditional statistics do not imply causation."""
+    if top_n < 1:
+        raise ValueError("top_n must be positive")
+    objectives = [row[-1] for row in data.rows]
+    setting_summary = {}
+    for index, name in enumerate(data.settings):
+        groups = {}
+        for row in data.rows:
+            groups.setdefault(row[index], []).append(row[-1])
+        setting_summary[name] = {
+            "constant": len(groups) == 1,
+            "binary": set(groups).issubset({0.0, 1.0}),
+            "values": [
+                {
+                    "value": value,
+                    "count": len(group),
+                    "fraction": len(group) / len(data.rows),
+                    "objective": describe(group),
+                }
+                for value, group in sorted(groups.items())
+            ],
+        }
+    ranked = sorted(enumerate(data.rows, start=1), key=lambda item: item[1][-1])
+
+    def record(item):
+        number, row = item
+        return {
+            "data_row": number,
+            "settings": dict(zip(data.settings, row[:-1])),
+            OBJECTIVE: row[-1],
+        }
+
+    configurations = {row[:-1] for row in data.rows}
+    best_value = min(objectives)
+    return {
+        "row_count": len(data.rows),
+        "setting_count": len(data.settings),
+        "columns": [*data.settings, OBJECTIVE],
+        "objective": {"name": OBJECTIVE, "direction": "minimize", "units": None,
+                      "statistics": describe(objectives)},
+        "quality_measures": [],
+        "quality_note": "No separate quality measures are present in this dataset.",
+        "unique_configurations": len(configurations),
+        "repeated_configuration_rows": len(data.rows) - len(configurations),
+        "duplicate_measurement_rows": len(data.rows) - len(set(data.rows)),
+        "settings": setting_summary,
+        "best_runs": [record(item) for item in ranked if item[1][-1] == best_value],
+        "top_runs": [record(item) for item in ranked[:top_n]],
+        "interpretation": [
+            "All non-objective columns are treated as recorded encoder settings.",
+            "Names and encoded values are preserved; flag semantics are not inferred.",
+            "Conditional objective statistics describe associations, not causal effects.",
+            "Repeated rows remain in all statistics; no measurements are imputed.",
+            "Top runs are ordered by ascending objective, then original CSV order.",
+        ],
+    }
+
+
+def render_text(summary):
+    stats = summary["objective"]["statistics"]
+    lines = [
+        f"Historical encoder runs: {summary['row_count']}",
+        f"Settings: {summary['setting_count']}",
+        f"Unique configurations: {summary['unique_configurations']}",
+        f"Repeated configuration rows: {summary['repeated_configuration_rows']}",
+        f"Duplicate measurement rows: {summary['duplicate_measurement_rows']}",
+        "Objective: Performance- (minimize; units unspecified)",
+        "Objective statistics: " + json.dumps(stats, sort_keys=True),
+        summary["quality_note"],
+        "Setting distributions (value: count; mean Performance-):",
+    ]
+    for name, setting in summary["settings"].items():
+        values = "; ".join(
+            f"{item['value']:g}: {item['count']}; mean={item['objective']['mean']:.6f}"
+            for item in setting["values"]
+        )
+        lines.append(f"  {name}{' [constant]' if setting['constant'] else ''}: {values}")
+    lines.append(f"Best objective: {stats['min']}; tied runs: {len(summary['best_runs'])}")
+    for run in summary["top_runs"]:
+        lines.append("  " + json.dumps(run, sort_keys=True))
+    lines.extend(summary["interpretation"])
+    return "\n".join(lines) + "\n"
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("dataset", type=Path, help="Path to X264_AllMeasurements.csv")
+    parser.add_argument("--output-dir", required=True, type=Path)
+    parser.add_argument("--top", type=int, default=5)
+    args = parser.parse_args(argv)
+    try:
+        summary = summarize(load_measurements(args.dataset), args.top)
+        summary["dataset"] = str(args.dataset)
+        report = render_text(summary)
+        targets = [args.output_dir / name for name in ("summary.json", "summary.txt")]
+        if any(target.resolve() == args.dataset.resolve() for target in targets):
+            raise ValueError("Output must not overwrite the dataset")
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        targets[0].write_text(json.dumps(summary, indent=2, allow_nan=False) + "\n",
+                              encoding="utf-8")
+        targets[1].write_text(report, encoding="utf-8")
+    except (OSError, ValueError) as error:
+        parser.exit(2, f"error: {error}\n")
+    print(report, end="")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+
+Complete tests: tests/test_remember.py
+```python
+"""Behavioral tests using local fixtures and the supplied historical dataset."""
+
+import csv
+import json
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+import unittest
+
+
+STEP = Path(__file__).resolve().parents[1]
+SOURCE = STEP / "source" / "remember.py"
+sys.path.insert(0, str(SOURCE.parent))
+import remember
+
+
+class SummaryTests(unittest.TestCase):
+    def setUp(self):
+        self.workspace = tempfile.TemporaryDirectory(dir=STEP / "tests")
+        self.addCleanup(self.workspace.cleanup)
+        self.directory = Path(self.workspace.name)
+
+    def dataset(self, text):
+        path = self.directory / "input.csv"
+        path.write_text(text, encoding="utf-8")
+        return path
+
+    def test_statistics_rankings_and_distributions(self):
+        path = self.dataset("flag,constant,Performance-\n0,1,4\n1,1,2\n0,1,2\n1,1,8\n")
+        result = remember.summarize(remember.load_measurements(path), 3)
+        stats = result["objective"]["statistics"]
+        self.assertEqual((stats["mean"], stats["median"], stats["q25"], stats["q75"]),
+                         (4, 3, 2, 5))
+        self.assertAlmostEqual(stats["population_stddev"], 6 ** 0.5)
+        self.assertEqual([row["data_row"] for row in result["top_runs"]], [2, 3, 1])
+        self.assertEqual([row["data_row"] for row in result["best_runs"]], [2, 3])
+        self.assertEqual(result["unique_configurations"], 2)
+        self.assertEqual(result["repeated_configuration_rows"], 2)
+        self.assertTrue(result["settings"]["constant"]["constant"])
+        group = result["settings"]["flag"]["values"][0]
+        self.assertEqual((group["count"], group["fraction"], group["objective"]["mean"]),
+                         (2, 0.5, 3))
+        self.assertEqual(result["quality_measures"], [])
+
+    def test_objective_position_whitespace_and_duplicates(self):
+        path = self.dataset("Performance-,flag\n 3.5 ,1\n3.5,1\n")
+        result = remember.summarize(remember.load_measurements(path))
+        self.assertEqual(result["duplicate_measurement_rows"], 1)
+        self.assertEqual(result["objective"]["statistics"]["population_stddev"], 0)
+        self.assertEqual(result["top_runs"][0]["settings"], {"flag": 1})
+
+    def test_rejects_invalid_csv(self):
+        cases = ["", "a,a,Performance-\n1,1,2\n", "a\n1\n",
+                 "a,Performance-\n", "a,Performance-\n1\n",
+                 "a,Performance-\n1,2,3\n", "a,Performance-\n,2\n",
+                 "a,Performance-\n1,nan\n", "a,Performance-\ninf,2\n",
+                 "a,Performance-\nx,2\n", ",Performance-\n1,2\n",
+                 "Performance-\n2\n"]
+        for text in cases:
+            with self.subTest(csv=text), self.assertRaises(ValueError):
+                remember.load_measurements(self.dataset(text))
+
+    def test_single_row_and_invalid_top(self):
+        data = remember.load_measurements(self.dataset("flag,Performance-\n1,7\n"))
+        self.assertEqual(remember.summarize(data)["objective"]["statistics"]["q25"], 7)
+        with self.assertRaises(ValueError):
+            remember.summarize(data, 0)
+
+    def test_cli_writes_valid_reports_and_preserves_input(self):
+        path = self.dataset("flag,Performance-\n0,9\n1,2\n")
+        before = path.read_bytes()
+        output = self.directory / "reports"
+        process = subprocess.run([sys.executable, str(SOURCE), str(path),
+                                  "--output-dir", str(output), "--top", "1"],
+                                 capture_output=True, text=True)
+        self.assertEqual(process.returncode, 0, process.stderr)
+        report = json.loads((output / "summary.json").read_text())
+        self.assertEqual(report["top_runs"][0]["Performance-"], 2)
+        self.assertEqual(len(report["top_runs"]), 1)
+        self.assertEqual((output / "summary.txt").read_text(), process.stdout)
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_cli_failure_is_actionable(self):
+        path = self.dataset("flag,Performance-\n1,nan\n")
+        process = subprocess.run([sys.executable, str(SOURCE), str(path),
+                                  "--output-dir", str(self.directory / "reports")],
+                                 capture_output=True, text=True)
+        self.assertEqual(process.returncode, 2)
+        self.assertIn("nonfinite", process.stderr)
+        self.assertFalse((self.directory / "reports").exists())
+
+    def test_cli_refuses_to_overwrite_dataset(self):
+        path = self.directory / "summary.json"
+        path.write_text("flag,Performance-\n1,2\n")
+        before = path.read_bytes()
+        with self.assertRaises(SystemExit) as result:
+            remember.main([str(path), "--output-dir", str(self.directory)])
+        self.assertEqual(result.exception.code, 2)
+        self.assertEqual(path.read_bytes(), before)
+
+    def test_actual_dataset_matches_independent_csv_calculations(self):
+        path = Path(os.environ["X264_DATASET"])
+        with path.open(newline="") as stream:
+            reader = csv.DictReader(stream)
+            columns = reader.fieldnames
+            rows = list(reader)
+        result = remember.summarize(remember.load_measurements(path))
+        objectives = [float(row["Performance-"]) for row in rows]
+        self.assertEqual(result["row_count"], 1152)
+        self.assertEqual(result["setting_count"], 16)
+        self.assertEqual(set(result["columns"]), set(columns))
+        self.assertEqual(result["objective"]["statistics"]["min"], min(objectives))
+        self.assertAlmostEqual(result["objective"]["statistics"]["mean"],
+                               sum(objectives) / len(objectives))
+        for name, setting in result["settings"].items():
+            self.assertTrue(setting["binary"])
+            self.assertEqual(sum(group["count"] for group in setting["values"]), len(rows))
+            for group in setting["values"]:
+                expected = [float(row["Performance-"]) for row in rows
+                            if float(row[name]) == group["value"]]
+                self.assertEqual(group["count"], len(expected))
+                self.assertAlmostEqual(group["objective"]["mean"], sum(expected) / len(expected))
+
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+Complete measurement harness: run_experiment.py
+```python
+"""Run tests and the application, preserving logs and measuring actual runtime."""
+
+import csv
+import hashlib
+from importlib.metadata import version
+import os
+from pathlib import Path
+import subprocess
+import sys
+import time
+
+
+def main():
+    step = Path(__file__).resolve().parent
+    if len(sys.argv) != 2:
+        raise SystemExit("usage: python3 run_experiment.py DATASET")
+    dataset = Path(sys.argv[1]).resolve()
+    environment = dict(os.environ, PYTHONDONTWRITEBYTECODE="1", X264_DATASET=str(dataset))
+    before = hashlib.sha256(dataset.read_bytes()).hexdigest()
+    test_command = [sys.executable, "-B", "-m", "unittest", "discover", "-s",
+                    str(step / "tests"), "-v"]
+    runtime_command = [sys.executable, "-B", str(step / "source" / "remember.py"),
+                       str(dataset), "--output-dir", str(step)]
+    results = []
+    for label, command in [("test", test_command), ("runtime", runtime_command)]:
+        start = time.perf_counter()
+        process = subprocess.run(command, capture_output=True, text=True, env=environment)
+        elapsed = time.perf_counter() - start
+        with (step / f"{label}_output.txt").open("a", encoding="utf-8") as stream:
+            stream.write(f"Command argv: {command!r}\n")
+            stream.write(f"Python: {sys.version}\nscikit-learn: {version('scikit-learn')}\n")
+            stream.write(process.stdout)
+            stream.write(process.stderr)
+            stream.write(f"Exit code: {process.returncode}\nElapsed seconds: {elapsed:.9f}\n")
+        results.append((process.returncode, elapsed))
+    unchanged = before == hashlib.sha256(dataset.read_bytes()).hexdigest()
+    with (step / "runtime_output.txt").open("a", encoding="utf-8") as stream:
+        stream.write(f"Dataset SHA256 before: {before}\nDataset unchanged: {unchanged}\n")
+    total_loc = sum(1 for path in (step / "source").rglob("*.py")
+                    for line in path.read_text().splitlines()
+                    if line.strip() and not line.lstrip().startswith("#"))
+    fields = ["step", "treatment", "trial", "domain", "skill", "total_loc", "new_loc",
+              "test_pass", "runtime_seconds", "error_count", "notes"]
+    errors = 2 + sum(code != 0 for code, _ in results) + int(not unchanged)
+    notes = (
+        "2 preflight failures preserved in preflight_output.txt: python unavailable; "
+        "dataset absent at supplied relative path. Repaired using python3 and the same "
+        "dataset under SWE_AND_AI/. No package changes or application repair attempts. "
+        "test_pass is boolean (1=entire suite passed). error_count includes preflight "
+        "failures and failed test/application processes or dataset mutation. "
+        "runtime_seconds measures application subprocess wall time including startup "
+        "and report writes; excludes tests. LOC includes docstrings; excludes blank "
+        "and comment-only lines. Dataset SHA256 unchanged=" + str(unchanged)
+    )
+    with (step / "metrics.csv").open("w", newline="", encoding="utf-8") as stream:
+        writer = csv.DictWriter(stream, fieldnames=fields)
+        writer.writeheader()
+        writer.writerow(dict(zip(fields, [1, 4, 1, "x264", "remember", total_loc, total_loc,
+                                         int(results[0][0] == 0), f"{results[1][1]:.9f}",
+                                         errors, notes])))
+    print(f"Tests exit={results[0][0]}; application exit={results[1][0]}; "
+          f"runtime={results[1][1]:.9f}s; LOC={total_loc}; errors={errors}; "
+          f"dataset unchanged={unchanged}")
+    return int(any(code != 0 for code, _ in results) or not unchanged)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+```
+

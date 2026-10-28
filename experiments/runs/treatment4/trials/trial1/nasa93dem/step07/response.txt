@@ -1,0 +1,53 @@
+Step 7 completed: Treatment 4, Trial 1, NASA93, choose.
+
+Result
+Budget 100 is illustrative in unspecified effort units, not a monetary budget or sponsor-approved threshold. Selected one-based CSV data row 78 (header excluded): Kloc+ = 165, observed Effort- = 97, Defects- = 7867; 97 <= 100 with 3 effort units remaining. All 93 rows have both required outcomes: 31 feasible, 62 over budget, 0 excluded for missing selection outcomes. Independent raw-CSV Decimal parsing and exhaustive pairwise dominance confirmed the winner.
+
+Selection rule
+Among recorded rows with both observed Effort- and Kloc+, require Effort- <= budget; maximize Kloc+, then minimize Effort-, then choose the earliest one-based CSV data-row number.
+Identity is CSV data-row number, never assumed-unique idX. selection.json contains all 22 recorded characteristics, observed outcomes, metadata, feasibility evidence, candidate counts, every eligible candidate's feasibility, excluded-row reasons, summaries, and the readable explanation. No unseen categorical combination is invented.
+
+Complete code and tests
+source/ contains all updated application code: summarize.py, predict_effort.py, flow.py, certify.py, blame.py, justify.py, choose.py.
+tests/ contains six preserved Step 6 test modules plus test_choose.py (10 new tests). All 60 tests passed, including preserved Steps 1–6 behavior. All six regression demo subprocesses and the Step 7 demo returned zero. preservation_check.json confirms that the six inherited source files and six inherited test files are byte-identical to the allowed Step 6 inputs.
+
+Reuse and additions
+Reused read_projects for exact schema, missing-token and finite-number validation; PREDICTORS, METADATA and OBJECTIVES for field roles; numeric_summary for feasible-outcome summaries; normalize_proposal only on the selected row's known categorical characteristics. Preserved prediction, sequential processing, comparison, association and explanation behavior. Added choose(rows, budget), inclusive budget filtering, maximum-size selection, deterministic ties, row-based identity, missing-outcome accounting, explicit no-feasible results, numeric budget/outcome validation, structured and readable evidence, and a dataset/budget CLI. No model fit is needed for retrospective selection; scikit-learn 1.6.0 remains used by preserved modeling machinery.
+
+The preserved justification tests require an example proposal outside the authorized previous inputs. A new empty illustrative proposal {} was constructed inside Step 7; no previous proposal file was read. The tests themselves were preserved unchanged.
+
+Execution and metrics
+Python: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3; scikit-learn 1.6.0; no packages installed or versions changed.
+Tests: 60/60 passed; test subprocess wall time 19.797971375 seconds.
+Step 7 demo subprocess wall time: 0.827919375 seconds, including interpreter/import/CLI/output overhead only. Regression-demo timings are recorded separately in metrics.csv notes and execution_history.jsonl.
+Application LOC: 976; added application LOC relative to Step 6: 120 (insert/replace new-side nonblank, non-comment-only lines, including docstrings; excludes tests and record_run.py).
+Unexpected failed commands/execution attempts: 0. No application repair attempts were needed. Expected invalid-input test subprocess exits are excluded from error_count. The initial blocked response and verbatim user correction are preserved in run_history.txt as an input-path correction, not an application failure.
+
+Commands
+Run from:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step07
+
+Tests:
+python3 -B -m unittest discover -s tests -v
+
+Step 7 demo:
+python3 -B source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --budget 100 --output selection.json
+
+Full reproduction, including preserved Steps 1–6 demos and metrics:
+python3 -B record_run.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+run_instructions.txt includes absolute working-directory setup, individual regression-demo commands, and output conventions. test_output.txt, runtime_output.txt and regression_demo_output.txt preserve actual subprocess output. execution_history.jsonl stores commands, exit codes and timings. independent_verification.json stores the independent check.
+
+Assumptions and limitations
+- The supplied budget is illustrative in unspecified effort units, not a monetary budget or sponsor-approved threshold.
+- Kloc+ is delivered code size, an illustrative value proxy, not demonstrated business value. More code is not necessarily better for a real client.
+- Historical outcomes illustrate constrained selection; they do not prove a proposed project will satisfy the budget.
+- Select one recorded project, not a portfolio or an unseen combination of categorical settings.
+- No proposal-time prediction is performed. Delivered Kloc+, Effort-, Defects- and X metadata are never proposal-time predictor inputs.
+- Rows missing either required selection outcome are excluded, never imputed. Missing defects do not exclude a candidate.
+- This demonstration has no objective-evaluation budget and does not perform budgeted benchmark search.
+- Feasibility uses an inclusive comparison of parsed finite numeric effort with the budget, with no tolerance or unit conversion.
+- Categorical ratings retain the loader's string normalization; their operational availability at proposal time is not established.
+- Required selection outcomes must be finite nonnegative numbers when present; invalid values are rejected. Missing Defects- does not exclude a row. Per-outcome missing counts can overlap; the exclusion total counts each excluded row once.
+- Budget 0 is valid. Invalid budgets exit 2; valid no-feasible queries exit 0 with status no_feasible_candidate and selected_project null. The reusable API can represent an empty candidate collection, while the preserved CSV loader rejects empty datasets.
+- No business utility, scope comparability, causal effect, quality trade-off, portfolio decision, prediction guarantee, or future budget compliance is established. Real choices need client-specific benefits and costs; delivered code volume alone is insufficient.

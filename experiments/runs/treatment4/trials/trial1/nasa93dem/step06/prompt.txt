@@ -1,0 +1,152 @@
+You are running Treatment 4, Trial 1, Dataset 2, Step 6 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Current skill: justify
+- Current requirement: Justify an estimate to a skeptical project sponsor.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, NASA93 implementation.
+Preserve Steps 1–5 behavior and tests while adding Step 6.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step05/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step05/tests/
+
+Allowed references:
+- The specified NASA93 dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, Health, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Previous saved reports or proposal files outside this step.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reusable evidence-based explanation of a proposal's
+estimated Effort-.
+
+Accept a proposal JSON containing only the existing allowed predictor
+fields. Create a clearly labeled illustrative proposal for the demo.
+Reuse the existing normalization, training, and estimation machinery.
+
+Preserve Step 2's deterministic training/evaluation partition.
+Fit the model and all learned preprocessing on training rows only.
+Do not use held-out targets to fit or tune the explanation.
+Use seed 42 for any additional randomized procedure.
+
+Explain:
+- The proposal's supplied and missing characteristics.
+- Its estimated effort and the model used.
+- Relevant historical training-data context.
+- The separate held-out model MAE and training-mean baseline MAE.
+- Supporting evidence for the explanation.
+- Important limitations and information needed before approval.
+
+Choose and document a suitable explanation method.
+Clearly distinguish:
+- This proposal's model estimate.
+- Aggregate model evaluation quality.
+- Global historical associations.
+- Any local model behavior used to explain the estimate.
+
+Do not present Step 5's marginal associations as causal effects
+or as additive contributions to this proposal's prediction.
+If showing hypothetical changes, label them model sensitivity;
+do not claim operational feasibility or causal effort savings.
+Do not invent a confidence interval from MAE.
+An effort estimate alone does not justify approving a proposal.
+Physical units are unspecified.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 6 and preserved Steps 1–5 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step06/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- justification.json
+- justification.txt
+- example_proposal.json
+- run_instructions.txt
+
+Ensure numerical claims in the readable explanation can be traced
+to structured computed evidence in justification.json.
+
+Test prediction/explanation consistency, missing and unseen categories,
+forbidden input fields, evidence calculations, and reproducibility.
+Verify that held-out target changes cannot alter the proposal estimate
+or its training-based explanation; evaluation metrics may change.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 6; treatment: 4; trial: 1; domain: nasa93dem; skill: justify.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 6 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to NASA93 Step 5 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–5 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 5 files, or other repository files.
+Write only inside the absolute Step 6 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

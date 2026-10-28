@@ -1,0 +1,45 @@
+Run with the existing Python 3.12.6 / scikit-learn 1.6.0 environment; install nothing.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step05'
+export PYTHONDONTWRITEBYTECODE=1
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+# Entire suite: preserved Steps 1–4 plus Step 5.
+python3 -B -m unittest discover -s tests -v
+
+# Step 5: dataset path is a positional argument.
+python3 -B source/blame.py "$X264_DATASET" --output-dir .
+
+# Preserved demos. demo_config.json contains the first observed configuration,
+# with Performance- excluded. Each tool also accepts another dataset path.
+python3 -B source/remember.py "$X264_DATASET" --output-dir regression_demos/remember
+python3 -B source/guess.py "$X264_DATASET" --config demo_config.json --output-dir regression_demos/guess
+python3 -B source/flow.py "$X264_DATASET" --output-dir regression_demos/flow
+python3 -B source/certify.py "$X264_DATASET" --output-dir regression_demos/certify
+
+# Reproduce all tests/demos and measured metrics in one command.
+# This refreshes the logs and metrics with the new run's measured values.
+python3 -B run_validation.py
+
+Reusable API (add source/ to Python's import path):
+from remember import load_measurements
+from blame import diagnose, render_text
+report = diagnose(load_measurements(dataset_path))
+print(render_text(report))
+
+Artifacts:
+- source/: complete updated implementation, including unchanged Steps 1–4.
+- tests/: all unchanged prior tests plus test_blame.py.
+- blame.json: full ranked evidence, method settings, all pair correlations,
+  constant settings, explanations and limitations.
+- blame.txt: client-readable rendering, also captured in runtime_output.txt.
+- regression_demos/: actual JSON/text reports from all preserved demos.
+- test_output.txt: full unittest stdout/stderr, command, exit code and wall time.
+- runtime_output.txt: demo stdout/stderr, commands, exit codes and wall times,
+  dataset checksum and byte-for-byte preservation checks.
+- metrics.csv: measured metrics; notes include passed/total counts, separate test
+  and regression-demo wall times, seeds and measurement conventions.
+- prompt.txt: supplied request; response.txt: implementation report.
+
+All generated files are inside this Step 5 directory. Python -B prevents bytecode
+writes. Tests create temporary fixtures inside this directory's tests/ folder.

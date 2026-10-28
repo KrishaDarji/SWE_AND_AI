@@ -1,0 +1,6 @@
+{
+  "working_directory": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI",
+  "dataset": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+  "dataset_sha256": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+  "step1_source_and_test_copies_byte_identical": true
+}

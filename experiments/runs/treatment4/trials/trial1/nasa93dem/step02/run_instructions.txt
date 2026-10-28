@@ -1,0 +1,56 @@
+Run with the existing python3 (Python 3.12.6, scikit-learn 1.6.0).
+No package installations or dependency changes are needed.
+
+Set paths in zsh/bash:
+STEP='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step02'
+DATA='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+export PYTHONDONTWRITEBYTECODE=1
+export NASA93_DATASET="$DATA"
+export TMPDIR="$STEP/tests"
+
+Run all Step 1 and Step 2 tests:
+python3 -m unittest discover -s "$STEP/tests" -v
+
+Run preserved Step 1 behavior:
+python3 "$STEP/source/summarize.py" "$DATA" --output-dir "$STEP/step01_regression"
+
+Run Step 2 effort estimation and held-out evaluation:
+python3 "$STEP/source/predict_effort.py" "$DATA" --proposal "$STEP/example_proposal.json" --evaluation "$STEP/evaluation.json"
+
+example_proposal.json is an illustrative proposal with plausible categorical
+values, not an independently observed new project or a holdout accuracy claim.
+The demo fits only the deterministic training partition, evaluates the held-out
+partition, and estimates the example with that same training-only model.
+The only proposal JSON keys permitted are:
+prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced
+Values must be categorical strings or null. Omitted keys, null and Step 1
+missing tokens become missing. All target, metadata and unknown keys are
+rejected, including any X-suffixed key. Duplicate JSON keys are rejected.
+To predict another proposal, replace the --proposal argument with its JSON path.
+
+Re-run both demos and suite with measured subprocess wall times and LOC:
+python3 "$STEP/measure_run.py" "$DATA"
+This appends raw logs and execution_measurements.jsonl, and updates metrics.csv
+and evaluation.json. Unexpected failed subprocesses are retained and counted
+across runner invocations. Expected negative tests are not counted as failures.
+The runner is measurement tooling outside source/ and is excluded from app LOC.
+Only the Step 2 demo subprocess duration is used as runtime_seconds.
+
+GroupShuffleSplit holds out 25% of distinct normalized predictor tuples
+(rounded up), seed 42. This fraction applies to groups, not rows. No stratification,
+cross-validation, parameter search or held-out tuning is performed. All eligible
+rows of a tuple stay together. Missing Effort- rows are excluded before splitting.
+All preprocessing and RandomForestRegressor fitting use training rows only.
+One-hot encoding imposes no ordinal mapping; unseen levels are all zeros.
+Missing values receive an empty-string categorical level; if never seen in
+training, this level is handled as unknown at prediction time. Even all-missing
+training columns are retained. The forest uses 200 trees, min_samples_leaf=2,
+random_state=42, n_jobs=1; all remaining settings are installed sklearn defaults
+and are fully recorded in evaluation.json. Settings were chosen without outcomes.
+Training-mean baseline and row-weighted MAE use the same held-out rows.
+
+Units are unspecified. Proposal-time availability of the 22 fields is assumed.
+An effort estimate alone does not justify approving a proposal. One small,
+historical grouped split provides no future-accuracy or uncertainty guarantee.
+Related but nonidentical projects may cross partitions. Delivered Kloc+ and all
+other outcomes/metadata are excluded. No full-dataset refit is used for the demo.

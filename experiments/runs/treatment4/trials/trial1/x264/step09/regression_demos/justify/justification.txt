@@ -1,0 +1,40 @@
+Platform administrator: retrospective encoder recommendation
+Recommend recorded settings {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}.
+Observed Performance-: 244.23 at CSV data row 71; minimize; units unspecified.
+Reuse Step 1 ascending Performance- ranking; exact numeric ties select the earliest CSV data row (1-based). No tolerance or setting preference.
+Exact best-value ties: 1; data rows [71].
+Recorded outcomes for this same configuration: [244.23] at data rows [71].
+Historical summary: {"count": 1152, "max": 821.963, "mean": 461.7535963541667, "median": 452.7785, "min": 244.23, "population_stddev": 162.49115009089647, "q25": 294.361, "q75": 580.73775}.
+Competition rank 1; strictly better/equal/strictly worse counts: 0/1/1151.
+Strictly worse historical rows: 99.91319444444444%; empirical CDF at chosen observation: 0.0008680555555555555.
+Fraction of historical rows with Performance- <= recommended observation.
+Median Performance- of every historical measurement row, including duplicates; average the two middle values for an even count. This is a distribution reference, not an encoder configuration.
+Reference Performance-: 452.7785; recommended minus reference: -208.54850000000002; observed reduction: 208.54850000000002.
+Observed reduction as percent of reference: 46.059717941554204; 100*(reference-recommended)/reference only for positive reference; otherwise null.
+Setting-level context from the preserved marginal diagnosis (not contributions to the chosen outcome):
+  ref_9=0.0: diagnosis rank=1; eta squared=0.6445017930440725; matching-value group count=768, mean Performance-=369.51200651041665, mean minus overall=-92.24158984375003. Marginal group association only; not an individual contribution.
+  ref_1=1.0: diagnosis rank=2; eta squared=0.6434940424637342; matching-value group count=384, mean Performance-=277.414703125, mean minus overall=-184.33889322916667. Marginal group association only; not an individual contribution.
+  no_mixed_refs=0.0: diagnosis rank=3; eta squared=0.03769159718307721; matching-value group count=576, mean Performance-=493.3001545138889, mean minus overall=31.546558159722224. Marginal group association only; not an individual contribution.
+  no_fast_pskip=0.0: diagnosis rank=4; eta squared=0.030786994902991933; matching-value group count=576, mean Performance-=433.24253645833335, mean minus overall=-28.51105989583334. Marginal group association only; not an individual contribution.
+  no_mbtree=0.0: diagnosis rank=5; eta squared=0.024376905125970356; matching-value group count=576, mean Performance-=436.3836822916667, mean minus overall=-25.369914062500015. Marginal group association only; not an individual contribution.
+  no_8x8dct=1.0: diagnosis rank=6; eta squared=0.004082208133125627; matching-value group count=576, mean Performance-=451.3716857638889, mean minus overall=-10.381910590277812. Marginal group association only; not an individual contribution.
+  no_cabac=1.0: diagnosis rank=7; eta squared=0.0005837384643700195; matching-value group count=576, mean Performance-=457.82769965277777, mean minus overall=-3.925896701388922. Marginal group association only; not an individual contribution.
+  rc_lookahead_20=1.0: diagnosis rank=8; eta squared=1.2183343356475464e-05; matching-value group count=384, mean Performance-=460.9514973958333, mean minus overall=-0.8020989583333744. Marginal group association only; not an individual contribution.
+  rc_lookahead_60=0.0: diagnosis rank=9; eta squared=7.884681107352773e-06; matching-value group count=768, mean Performance-=461.43096484375, mean minus overall=-0.32263151041667015. Marginal group association only; not an individual contribution.
+  no_deblock=1.0: diagnosis rank=10; eta squared=8.691428974406844e-07; matching-value group count=576, mean Performance-=461.9050833333333, mean minus overall=0.15148697916663423. Marginal group association only; not an individual contribution.
+  rc_lookahead_40=0.0: diagnosis rank=11; eta squared=4.658024278248687e-07; matching-value group count=768, mean Performance-=461.67517838541664, mean minus overall=-0.07841796875004547. Marginal group association only; not an individual contribution.
+  ref_5=0.0: diagnosis rank=12; eta squared=3.9424094379868277e-07; matching-value group count=768, mean Performance-=461.82573958333336, mean minus overall=0.07214322916667015. Marginal group association only; not an individual contribution.
+  no_weightb=0.0: diagnosis rank=13; eta squared=2.940311709064498e-07; matching-value group count=576, mean Performance-=461.84170659722224, mean minus overall=0.08811024305555293. Marginal group association only; not an individual contribution.
+  no_asm=1.0: diagnosis rank=None; eta squared=None; matching-value group count=1152, mean Performance-=461.7535963541667, mean minus overall=0.0. Constant setting; no between-value comparison.
+  rc_lookahead=1.0: diagnosis rank=None; eta squared=None; matching-value group count=1152, mean Performance-=461.7535963541667, mean minus overall=0.0. Constant setting; no between-value comparison.
+  ref=1.0: diagnosis rank=None; eta squared=None; matching-value group count=1152, mean Performance-=461.7535963541667, mean minus overall=0.0. Constant setting; no between-value comparison.
+All value-group summaries and pairwise setting relationships are in justification.json under diagnosis; correlated scores are not summed.
+This is a retrospective recommendation among recorded rows, not an optimum over unseen configurations.
+Selecting the minimum from the same history creates selection optimism; a single best observation supplies no statistical certainty or repeatability guarantee.
+Historical rows may differ in workload, hardware, other settings, or unrecorded conditions. Rows are equally weighted, including duplicates; counts do not establish independent replication.
+Setting-level group means and eta squared are marginal associations, not explanations of this individual outcome or causal effects. Correlated scores are never added.
+Encoded setting names and values are preserved without inferring flag semantics or validity of unobserved combinations.
+Performance- is minimized; physical units are unspecified. No output-quality, memory, or resource-use measurements are inferred.
+No model predictions, p-values, confidence intervals, or significance claims are used in this justification. The historical median is not a randomized control.
+Validate the candidate under the administrator's workload with repeated controlled measurements and required quality/resource checks before operational adoption.
+Exact floating-point equality defines ties; near ties and rounding can affect ordering. Unsupported nonfinite computed statistics are rejected.

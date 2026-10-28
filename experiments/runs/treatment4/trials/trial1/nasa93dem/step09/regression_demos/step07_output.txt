@@ -1,0 +1,266 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/fix.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--demo', '--example-proposal', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/fix_proposal.json', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/fix.json']
+Return code: 0
+Wall seconds: 1.112681708
+{
+  "status": "recommendation",
+  "target": "Effort-",
+  "units": "unspecified",
+  "original_proposal": {
+    "prec": "h",
+    "flex": "h",
+    "resl": "h",
+    "team": "vh",
+    "pmat": "h",
+    "rely": "h",
+    "data": "l",
+    "cplx": "h",
+    "ruse": "n",
+    "docu": "n",
+    "time": "n",
+    "stor": "n",
+    "pvol": "l",
+    "acap": "n",
+    "pcap": "n",
+    "pcon": "n",
+    "apex": "n",
+    "plex": "n",
+    "ltex": "h",
+    "tool": "n",
+    "site": "n",
+    "sced": "l"
+  },
+  "normalized_proposal": {
+    "prec": "h",
+    "flex": "h",
+    "resl": "h",
+    "team": "vh",
+    "pmat": "h",
+    "rely": "h",
+    "data": "l",
+    "cplx": "h",
+    "ruse": "n",
+    "docu": "n",
+    "time": "n",
+    "stor": "n",
+    "pvol": "l",
+    "acap": "n",
+    "pcap": "n",
+    "pcon": "n",
+    "apex": "n",
+    "plex": "n",
+    "ltex": "h",
+    "tool": "n",
+    "site": "n",
+    "sced": "l"
+  },
+  "original_predicted_effort": 89.41280277668291,
+  "recommended_candidate": {
+    "csv_data_row": 37,
+    "predictors": {
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "n",
+      "rely": "n",
+      "data": "n",
+      "cplx": "h",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "n",
+      "pvol": "n",
+      "acap": "n",
+      "pcap": "n",
+      "pcon": "n",
+      "apex": "n",
+      "plex": "n",
+      "ltex": "n",
+      "tool": "n",
+      "site": "n",
+      "sced": "n"
+    },
+    "predicted_effort": 87.37070268853954,
+    "change_cost": 6,
+    "changed_fields": [
+      {
+        "field": "pmat",
+        "old": "h",
+        "new": "n"
+      },
+      {
+        "field": "rely",
+        "old": "h",
+        "new": "n"
+      },
+      {
+        "field": "data",
+        "old": "l",
+        "new": "n"
+      },
+      {
+        "field": "pvol",
+        "old": "l",
+        "new": "n"
+      },
+      {
+        "field": "ltex",
+        "old": "h",
+        "new": "n"
+      },
+      {
+        "field": "sced",
+        "old": "l",
+        "new": "n"
+      }
+    ]
+  },
+  "changed_fields": [
+    {
+      "field": "pmat",
+      "old": "h",
+      "new": "n"
+    },
+    {
+      "field": "rely",
+      "old": "h",
+      "new": "n"
+    },
+    {
+      "field": "data",
+      "old": "l",
+      "new": "n"
+    },
+    {
+      "field": "pvol",
+      "old": "l",
+      "new": "n"
+    },
+    {
+      "field": "ltex",
+      "old": "h",
+      "new": "n"
+    },
+    {
+      "field": "sced",
+      "old": "l",
+      "new": "n"
+    }
+  ],
+  "change_cost": 6,
+  "predicted_reduction": 2.0421000881433713,
+  "no_improvement_reason": null,
+  "search": {
+    "scope": "Complete predictor configurations observed in training rows only; duplicates collapsed to earliest CSV data row.",
+    "training_rows": 68,
+    "excluded_incomplete_training_rows": 0,
+    "complete_training_rows": 68,
+    "duplicate_complete_rows": 27,
+    "unique_candidates_evaluated": 41,
+    "improving_candidates": 1,
+    "training_csv_data_rows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      58,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      71,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      83,
+      84,
+      85,
+      86,
+      87,
+      89,
+      90,
+      91,
+      92,
+      93
+    ],
+    "held_out_rows_excluded": 25,
+    "tie_rule": "Strictly lower predicted effort; minimize differing normalized fields, then predicted effort, then earliest one-based CSV data row. Exact comparisons, no tolerance.",
+    "change_cost_definition": "Number of differing normalized categorical predictor fields"
+  },
+  "model": {
+    "implementation": "Unchanged predict_effort.evaluate, fit_training, normalization and estimate",
+    "seed": 42,
+    "fit_scope": "training only; no full-data refit",
+    "partition": "Existing seed-42 grouped partition; identical normalized predictors stay together",
+    "dependency_versions": {
+      "python": "3.12.6",
+      "scikit-learn": "1.6.0",
+      "numpy": "2.3.5",
+      "scipy": "1.16.3"
+    }
+  },
+  "human_review_required": true,
+  "limitations": [
+    "The dataset supplies neither intervention costs nor a calibrated risk measure.",
+    "Lower predicted Effort- is an illustrative planning proxy, not a probability of failure or measured risk.",
+    "Change cost counts differing normalized categorical predictor fields, not monetary or operational cost; all fields have equal weight.",
+    "Physical effort units are unspecified. Predicted reduction is not causal savings, calibrated risk reduction, or guaranteed budget compliance.",
+    "Observed historical combinations do not establish operational feasibility for this proposal.",
+    "Not all project characteristics are controllable process settings; a human must review controllability, feasibility, dependencies, and actual costs.",
+    "Small observational training sample, confounding, prediction error, unseen categories, and model-selection optimism limit this suggestion.",
+    "Search is exhaustive only within complete training predictor configurations, not all possible interventions; no global real-world cheapest change is established.",
+    "Predictor availability at proposal time is assumed. No uncertainty bounds or prospective intervention validation are supplied.",
+    "Training eligibility and grouped partition reuse the existing observed-target availability rule; held-out outcome values never rank candidates."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "demo": {
+    "illustrative": true,
+    "proposal_csv_data_row": 1,
+    "selection": "Predictors of earliest training data row; observed effort did not select proposal or rank repairs."
+  }
+}

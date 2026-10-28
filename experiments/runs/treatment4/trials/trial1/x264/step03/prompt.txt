@@ -1,0 +1,129 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: certify
+- Current requirement: Tell us whether a quality improvement is statistically credible.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1 and 2 behavior and tests while adding Step 3.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current step's output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Inspect the actual dataset schema.
+Performance- is minimized; its physical units are unspecified.
+No separate output-quality measure is available.
+Explicitly state this limitation and demonstrate certification of
+Performance- improvement instead of inventing a quality measure.
+
+Implement a reusable statistical comparison of two observed samples.
+Report sample sizes, observed difference, improvement direction,
+statistical evidence, and an understandable conclusion.
+
+Choose and document an appropriate statistical procedure,
+significance threshold, practical-effect criterion, and assumptions.
+Use a fixed, recorded seed for randomized procedures.
+Distinguish “no detected difference” from proof of equivalence.
+Do not imply that an association establishes a causal improvement.
+
+For the dataset demo, define the comparison groups using encoder
+settings rather than selecting groups by favorable objective values.
+State the group-selection rule before interpreting the result.
+Explain that comparisons across different configurations do not
+establish repeatability for an individual configuration.
+Do not treat model predictions as independent observed measurements.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 3 and preserved Steps 1 and 2 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- certification.json
+- run_instructions.txt
+
+Test improvement direction, identical samples, small or invalid
+samples, and reproducibility. Use independently checkable examples.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these consistent conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 3 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 2 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: actual unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Run all tests and demos, including preserved Steps 1 and 2 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 2 files, or other repository files.
+Write only inside the absolute Step 3 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

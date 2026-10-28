@@ -1,0 +1,143 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 8 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: fix
+- Current requirement: Suggest the smallest setting change that improves a slow configuration.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1–7 behavior and tests while adding Step 8.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step07/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step07/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reusable repair recommendation for a recorded configuration.
+
+Accept a baseline CSV data-row number as an argument.
+For the demo, use data row 1, with rows numbered from 1 after the header.
+
+Performance- is minimized; physical units are unspecified.
+Search recorded configurations for a strictly lower observed Performance-.
+Define change cost as the number of differing encoded setting columns.
+Choose the improving configuration with the smallest change cost.
+Break ties by lower Performance-, then earlier CSV data row.
+
+Report:
+- Baseline settings and observed objective.
+- Recommended recorded settings and observed objective.
+- Every changed column, including old and new values.
+- Change cost and observed objective reduction.
+- Search scope and deterministic tie rules.
+- An explicit no-improving-candidate result when appropriate.
+
+Reuse earlier loading, validation, summaries, or explanation machinery
+where appropriate. Explain what was reused and added.
+
+This is an offline search over recorded measurements.
+Full-data objective access is allowed for this step; do not present it
+as a budgeted or unseen-configuration result.
+Do not use another step's saved recommendation or results.
+
+State that encoded-column distance is a proxy for change size,
+not a measured operational cost. Redundant or one-hot columns may
+represent one underlying choice.
+Recommend only configurations actually present in the dataset.
+Do not claim that a lower historical outcome proves a causal,
+repeatable, or statistically certified improvement.
+Do not invent quality measurements or claim quality is preserved.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 8 and preserved Steps 1–7 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step08/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- repair.json
+- run_instructions.txt
+
+Test minimal change cost against an independent exhaustive calculation,
+tie rules, changed-column accuracy, strict improvement, no improvement,
+duplicate configurations, and invalid baseline row numbers.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 8 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 7 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–7 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 7 files, or other repository files.
+Write only inside the absolute Step 8 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

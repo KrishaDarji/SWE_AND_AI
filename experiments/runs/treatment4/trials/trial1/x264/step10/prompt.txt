@@ -1,0 +1,153 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: race
+- Current requirement: Compare our tuner against a baseline search strategy.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1–9 behavior and tests while adding Step 10.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reproducible comparison between:
+1. The existing Step 7 budgeted selector.
+2. Uniform random search without replacement.
+
+Use the same candidate pool and evaluation budget for both methods.
+For the recorded demo, use budget 20 and seeds 42 through 51.
+Accept budget and seeds as command-line arguments.
+These seed repeats are within Trial 1; they are not independent
+LLM implementation trials.
+
+For each method and seed:
+- Start from fresh state with a separate counted objective oracle.
+- Count every evaluation, including initialization.
+- Reveal objectives only through counted evaluations.
+- Return the best observed candidate.
+- Record evaluation order, best-so-far history, and elapsed time.
+
+Reuse the existing selector without tuning it against race results.
+Do not use previous saved outputs, recommendations, full-data target
+summaries, or audit results to guide either search method.
+
+Performance- is minimized; physical units are unspecified.
+No separate quality constraint can be verified.
+
+Freeze both selections before a separate full-data audit.
+The audit may calculate absolute gaps from the dataset minimum.
+Never feed audit information back into search.
+
+Report per-seed results and descriptive summaries:
+- Selected Performance-.
+- Evaluation count.
+- Gap from the dataset minimum.
+- Search runtime, with its measurement scope stated.
+- Paired observed wins, ties, and losses using a documented tie rule.
+
+Do not claim statistical superiority from raw differences or win counts.
+The project's required same comparison procedure is not supplied
+among the allowed inputs. Mark that analysis pending rather than
+inventing a substitute or claiming it has been completed.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 10 and preserved Steps 1–9 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step10/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- race.json
+- run_instructions.txt
+
+race.json must include methods, budgets, seeds, per-seed histories,
+selected candidates, separate audit results, descriptive summaries,
+statistical-analysis status, and limitations.
+
+Test equal-budget enforcement, fresh state between runs,
+reproducibility, baseline sampling without replacement,
+best-observed selection, ties, and invalid inputs.
+Verify objective-access restrictions and audit separation.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 10 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 9 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–9 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 9 files, or other repository files.
+Write only inside the absolute Step 10 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

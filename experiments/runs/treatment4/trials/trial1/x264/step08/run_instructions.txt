@@ -1,0 +1,24 @@
+Run with the existing python3 environment containing scikit-learn 1.6.0. No installation is required.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step08'
+
+# Entire suite: preserved Steps 1-7 tests plus Step 8 tests.
+X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest discover -s tests -v
+
+# Step 8 demonstration; replace 1 with any valid 1-based data-row number.
+python3 -B source/fix.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --baseline-row 1 --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step08'
+
+# Reproduce all seven preserved CLI demos, Step 8 demo, tests, captured outputs,
+# wall-clock timings, provenance/preservation checks and metrics.csv.
+python3 -B run_experiment.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Each module in source/ also accepts DATASET --output-dir OUTPUT_DIRECTORY.
+Use directories inside this Step 8 directory for generated outputs.
+The runner stores preserved demo outputs under regression_demos/<module>/.
+All seven previous source files and seven test files were copied byte-for-byte.
+The runner measures Step 8 subprocess wall time separately from tests and old demos.
+metrics.csv counts only source/*.py as application LOC, including docstrings;
+new LOC counts nonblank, non-comment-only new-side insert/replace lines against Step 7.
+The runner itself and tests are excluded from application LOC.
+Expected invalid-input cases within tests do not count as unexpected errors.
+A successful run has no repair attempts. Failures, if any, remain visible in captures.

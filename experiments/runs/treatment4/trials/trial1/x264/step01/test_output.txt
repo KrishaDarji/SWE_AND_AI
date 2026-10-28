@@ -1,0 +1,19 @@
+Command argv: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '-B', '-m', 'unittest', 'discover', '-s', '/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment4/trials/trial1/x264/step01/tests', '-v']
+Python: 3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]
+scikit-learn: 1.6.0
+test_actual_dataset_matches_independent_csv_calculations (test_remember.SummaryTests.test_actual_dataset_matches_independent_csv_calculations) ... ok
+test_cli_failure_is_actionable (test_remember.SummaryTests.test_cli_failure_is_actionable) ... ok
+test_cli_refuses_to_overwrite_dataset (test_remember.SummaryTests.test_cli_refuses_to_overwrite_dataset) ... error: Output must not overwrite the dataset
+ok
+test_cli_writes_valid_reports_and_preserves_input (test_remember.SummaryTests.test_cli_writes_valid_reports_and_preserves_input) ... ok
+test_objective_position_whitespace_and_duplicates (test_remember.SummaryTests.test_objective_position_whitespace_and_duplicates) ... ok
+test_rejects_invalid_csv (test_remember.SummaryTests.test_rejects_invalid_csv) ... ok
+test_single_row_and_invalid_top (test_remember.SummaryTests.test_single_row_and_invalid_top) ... ok
+test_statistics_rankings_and_distributions (test_remember.SummaryTests.test_statistics_rankings_and_distributions) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.103s
+
+OK
+Exit code: 0
+Elapsed seconds: 0.152184625

@@ -1,0 +1,99 @@
+{
+  "runs": [
+    {
+      "name": "tests",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "wall_seconds": 3.5327164999907836
+    },
+    {
+      "name": "step1_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/remember.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/regression_step01"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.051954250084236264
+    },
+    {
+      "name": "step2_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/guess.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/regression_step02"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.0583222080022097
+    },
+    {
+      "name": "step3_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/certify.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.7569392090663314
+    }
+  ],
+  "input_sha256_before": {
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/source/guess.py": "4956700ad2f5d57747989aca8e7319c81c666e6fcb58a93f173f1193c6b7913c",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/source/remember.py": "b35f184123e2da7ec456be269a2330b4d30b7d9f722c097c729c25f788472e08",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/tests/test_guess.py": "ad212e6a1bff1a02652e32412c171a5c855f2f6e01bdcad747c36a893d8440fc",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/tests/test_remember.py": "e1b459f4237d541bb94eb208433deef1f73750b9ee18ca8059e1c5540118813a"
+  },
+  "input_sha256_after": {
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/source/guess.py": "4956700ad2f5d57747989aca8e7319c81c666e6fcb58a93f173f1193c6b7913c",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/source/remember.py": "b35f184123e2da7ec456be269a2330b4d30b7d9f722c097c729c25f788472e08",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/tests/test_guess.py": "ad212e6a1bff1a02652e32412c171a5c855f2f6e01bdcad747c36a893d8440fc",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/tests/test_remember.py": "e1b459f4237d541bb94eb208433deef1f73750b9ee18ca8059e1c5540118813a"
+  },
+  "notes": {
+    "passed": 25,
+    "total": 25,
+    "test_seconds": 3.5327164999907836,
+    "step1_demo_seconds": 0.051954250084236264,
+    "step2_demo_seconds": 1.0583222080022097,
+    "all_inputs_unchanged": true,
+    "preserved_copies_identical": true,
+    "initial_failure": "python: command not found (exit 127); repaired by using python3; no dependency changes",
+    "expected_negative_test_exits_excluded": true,
+    "runner_repair": "First runner exited 1 because expected-error stderr split two unittest status lines; all 25 tests had passed. Count successful suite from return code and Ran summary. Initial metrics and execution record preserved.",
+    "loc_method": "Nonblank, non-comment-only lines; docstrings included. difflib insert/replace new-side application lines against allowed Step 2 source.",
+    "loc_by_file": {
+      "certify.py": {
+        "total_loc": 156,
+        "new_loc": 156
+      },
+      "guess.py": {
+        "total_loc": 109,
+        "new_loc": 0
+      },
+      "remember.py": {
+        "total_loc": 166,
+        "new_loc": 0
+      }
+    }
+  }
+}

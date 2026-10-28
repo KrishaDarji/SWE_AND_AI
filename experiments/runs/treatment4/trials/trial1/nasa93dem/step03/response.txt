@@ -1,0 +1,54 @@
+Treatment 4, Trial 1, NASA93, Step 3: certify
+
+Complete updated code is in source/; complete tests are in tests/. The two prior source files and two prior test files were copied byte-for-byte from the allowed Step 2 directories. No prior files or dataset were modified. Added source/certify.py and tests/test_certify.py. No shared implementations, other runs, or unrelated data were inspected.
+
+Result for the fixed groups
+Baseline tool=n: 83 observed efforts, mean 606.063855, median 215, sample SD 1177.939725, range 8.4–8211.
+Candidate tool=h: 10 observed efforts, mean 776.7, median 528.5, sample SD 720.516335, range 72–2460.
+No outcomes were missing; no rows were excluded by group. Candidate minus baseline mean = +170.636145 (28.15% higher observed mean). Effort is minimized; units are unspecified. These groups were fixed in the supplied request and were not selected by searching outcomes.
+
+Statistical procedure and rationale
+The estimand is the difference in population mean raw effort, useful for planning average resource needs. Welch's independent two-sample two-sided t procedure allows unequal variances and unequal sample sizes. Alpha is fixed at 0.05, with a corresponding 95% confidence interval. The two-sided procedure can detect either a reduction or an increase; the sign determines direction. Standard error = 261.976626; Welch degrees of freedom = 15.552581; t = 0.651341; p = 0.524335. Difference confidence interval = [-386.030808, 727.303097]. This interval is compatible with lower and higher candidate mean effort. No statistically detected difference; no proof of equivalence.
+
+Independent within-group percentile bootstrap sensitivity: 20,000 resamples, numpy default_rng seed 42, preserving sample sizes; 95% interval [-293.642982, 682.069608]. This is supplementary and does not drive a second significance decision. scikit-learn is retained for Step 2 prediction; NumPy and SciPy, its installed required dependencies, provide the statistical calculations. No model predictions are treated as observed effort.
+
+Practical criterion
+A reduction of at least 10% of the observed baseline mean (60.606386 units) is an illustrative planning threshold. Relative thresholds avoid inventing physical units, but 10% is not an externally validated economic requirement and should be replaced by a manager-approved threshold before a decision. The threshold is data-dependent and its sampling uncertainty is not propagated. An observed reduction can meet the threshold descriptively; stronger evidence requires the entire Welch difference interval below -60.606386. Neither condition holds here. Statistical significance alone would not establish practical relevance.
+
+Manager conclusion
+These historical observations do not establish that tool=h is less costly. Its observed mean effort is higher, but the uncertainty is wide and the test does not detect a population mean difference. Further evidence with appropriate project comparability is needed before claiming savings. Failure to detect a difference is not proof of equivalence.
+
+Assumptions and limitations
+Welch inference requires independent projects and approximately normal sampling distributions of the group means, with finite variances and representative sampling. The candidate group has only 10 projects; both groups show substantial dispersion and the baseline includes an extreme value. Mean-based inference and the bootstrap may be fragile under this skew and sample imbalance. The small_sample_warning field is an operational flag for n<10, not assurance of validity at n=10. Dependence among projects or centers is not modeled. Project size and other characteristics can confound raw effort differences: these were observational groups, not randomized process assignments. No causal adjustment or causal cost savings are claimed. Missing outcomes are excluded without imputation and can cause selection bias when present. No equivalence analysis is performed. This comparison does not complete the separate required same analysis, whose exact procedure was not supplied.
+
+Validation and artifacts
+24/24 tests passed: 16 preserved Steps 1–2 tests and 8 Step 3 tests. Step 3 tests cover hand-calculated Welch standard error, degrees of freedom, analytic df=2 p-value and tabulated interval; improvement and deterioration; identical and zero-variance samples; small or invalid samples; missing outcomes; seed reproducibility; statistical/practical separation; independent dataset arithmetic and CLI output. All three demos passed. There were no unexpected failed commands or repair attempts.
+
+Measured timings (subprocess wall time)
+tests: 3.157074375 seconds; exit 0.
+step1: 0.029883667 seconds; exit 0.
+step2: 1.011334500 seconds; exit 0.
+step3: 0.466688875 seconds; exit 0.
+
+Application LOC: 406 total, 122 added new-side lines; tests excluded. metrics.csv contains the required fields and notes with passed/total counts and separate regression timings. certification.json contains complete numerical summaries, evidence, practical decision and limitations. Full captured outputs are in test_output.txt and runtime_output.txt. Exact runnable commands are in run_instructions.txt and reproduced below.
+
+Run using the existing Python environment (scikit-learn 1.6.0); install nothing.
+Commands accept the dataset path explicitly. All output paths are inside Step 3.
+
+tests:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/tests' -v
+
+step1:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/summarize.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/regression_step01'
+
+step2:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/predict_effort.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/proposal.json' --evaluation '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/regression_step02.json'
+
+step3:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/certify.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/certification.json'
+
+Source: source/summarize.py (Step 1), source/predict_effort.py (Step 2), source/certify.py (Step 3).
+proposal.json is an illustrative tool=h proposal with other predictors missing, using preserved Step 2 missing-value behavior. It is not used in the statistical comparison.
+test_output.txt captures the full suite; runtime_output.txt captures all demos.
+metrics.csv reports Step 3 subprocess wall time only. measurements.json records every subprocess command and timing.
+total_loc counts nonblank, non-comment-only application Python lines including docstrings. new_loc counts insert/replace new-side application lines relative to allowed Step 2 source; unchanged files contribute zero.

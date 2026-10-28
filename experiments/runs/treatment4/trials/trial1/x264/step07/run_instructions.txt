@@ -1,0 +1,34 @@
+All commands use the existing python3 (Python 3.12.6, scikit-learn 1.6.0 in the recorded environment). Do not install packages.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step07'
+export PYTHONDONTWRITEBYTECODE=1
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Run the complete preserved and new tests:
+python3 -B -m unittest discover -s tests -v
+
+Run Step 7 with the recorded budget and seed (accepts any dataset path with the supported schema):
+python3 -B source/choose.py "$X264_DATASET" --output-dir . --budget 20 --seed 42
+
+Run preserved Steps 1–6 demos:
+python3 -B source/remember.py "$X264_DATASET" --output-dir regression_demos/remember
+python3 -B source/guess.py "$X264_DATASET" --output-dir regression_demos/guess
+python3 -B source/blame.py "$X264_DATASET" --output-dir regression_demos/blame
+python3 -B source/certify.py "$X264_DATASET" --output-dir regression_demos/certify
+python3 -B source/flow.py "$X264_DATASET" --output-dir regression_demos/flow
+python3 -B source/justify.py "$X264_DATASET" --output-dir regression_demos/justify
+
+Reproduce all recorded outputs and measured metrics in one command:
+python3 -B run_experiment.py "$X264_DATASET"
+
+The runner executes Step 7 before the tests and regression demos so their full-target reports cannot guide selection. All subprocess output and timings are retained in execution_log.json; Step 7 stdout and stderr are also in runtime_output.txt. Metrics runtime_seconds measures only the Step 7 demo subprocess, including loading, imports, selection, separate audit, serialization and printing. Test and regression subprocess timings are separate in metrics.csv notes. Re-running replaces recorded run artifacts.
+
+Reusable Python API (add this directory's source/ to sys.path):
+settings, candidates = choose.load_candidates(dataset_path)
+oracle = choose.CSVOracle(dataset_path, budget=20)
+result = choose.select(settings, candidates, oracle, budget=20, seed=42)
+# Optional, only after selection is frozen:
+frozen = json.dumps(result, sort_keys=True, allow_nan=False)
+audit = choose.post_selection_audit(dataset_path, frozen)
+
+select() also accepts a custom callable evaluate(data_row) returning a finite numeric objective. Candidates contain settings and CSV data-row identities only, and every callback call counts. A custom evaluator is responsible for implementing its measurements honestly. The CSV adapter enforces its own hard call cap. No separate quality capability exists.

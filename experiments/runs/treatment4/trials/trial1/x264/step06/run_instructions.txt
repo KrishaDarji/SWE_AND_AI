@@ -1,0 +1,33 @@
+Run with the installed Python containing scikit-learn 1.6.0. No installation or version changes are needed.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06'
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Check the environment:
+python3 -B -c 'import sklearn; print(sklearn.__version__)'
+
+Run the complete suite (41 preserved tests and 10 Step 6 tests):
+python3 -B -m unittest discover -s tests -v
+
+Run only Step 6:
+python3 -B source/justify.py "$X264_DATASET" --output-dir "$PWD"
+
+Run all tests and all six demos, capture logs, and recompute metrics:
+python3 -B run_experiment.py "$X264_DATASET"
+
+Individual preserved demos:
+python3 -B source/remember.py "$X264_DATASET" --output-dir "$PWD/regression_demos/step01"
+python3 -B source/guess.py "$X264_DATASET" --output-dir "$PWD/regression_demos/step02"
+python3 -B source/certify.py "$X264_DATASET" --output-dir "$PWD/regression_demos/step03"
+python3 -B source/blame.py "$X264_DATASET" --output-dir "$PWD/regression_demos/step04"
+python3 -B source/flow.py "$X264_DATASET" --output-dir "$PWD/regression_demos/step05"
+
+All output paths in these commands are inside Step 6. Test temporary files are also inside Step 6. -B and the runner's PYTHONDONTWRITEBYTECODE suppress bytecode writes.
+
+The initial run captured the full test subprocess once, then invoked the runner with --reuse-test-log to avoid repeating a passing suite. That switch reuses test_output.txt and execution_record.json and is not needed for a fresh reproduction.
+
+Step 6 reads its dataset path as a positional argument. The direct API justify(Measurements) returns evidence and render_text(report) renders it. No prediction model is fitted or used by Step 6; Step 2 retains its original scikit-learn behavior.
+
+metrics.csv runtime_seconds measures only the source/justify.py demo subprocess, including startup and report I/O. Test and regression-demo wall times are separate in execution_record.json and notes. total_loc counts nonblank, non-comment-only physical Python lines inside source/, including docstrings. new_loc counts insert/replace new-side application lines against the allowed Step 5 source, not net growth. Tests and the orchestration script are excluded.
+
+A preliminary instruction-file lookup returned exit 1 because no AGENTS.md matched. For transparency, the initial metrics count it as one unexpected command failure. Its command and output are retained in execution_record.json. All tests and demos passed on their first attempt; no repair attempts were needed. Expected negative-test diagnostics appear in test_output.txt and do not count as run errors. Fresh runner executions record their own test/demo errors and overwrite measured logs/metrics; the prose response.txt describes the initial run.

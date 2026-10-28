@@ -1,0 +1,111 @@
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -B -m unittest discover -s tests -v
+test_actual_scores_match_independent_fraction_calculation (test_blame.BlameTests.test_actual_scores_match_independent_fraction_calculation) ... ok
+test_cli_invalid_csv_and_overwrite (test_blame.BlameTests.test_cli_invalid_csv_and_overwrite) ... error: Output must not overwrite the dataset
+ok
+test_cli_outputs_preserves_dataset_and_is_repeatable (test_blame.BlameTests.test_cli_outputs_preserves_dataset_and_is_repeatable) ... ok
+test_exact_direction_score_and_constant (test_blame.BlameTests.test_exact_direction_score_and_constant) ... ok
+test_invalid_direct_inputs (test_blame.BlameTests.test_invalid_direct_inputs) ... ok
+test_multilevel_unequal_counts (test_blame.BlameTests.test_multilevel_unequal_counts) ... ok
+test_ties_redundancy_and_repeatability (test_blame.BlameTests.test_ties_redundancy_and_repeatability) ... ok
+test_zero_variance_single_row_and_equal_means (test_blame.BlameTests.test_zero_variance_single_row_and_equal_means) ... ok
+test_cli_prevents_overwrite_and_rejects_invalid_data (test_certify.CertificationTests.test_cli_prevents_overwrite_and_rejects_invalid_data) ... error: Output must not overwrite the dataset
+error: CSV line 2: nonfinite value
+ok
+test_dataset_cli_and_independent_means (test_certify.CertificationTests.test_dataset_cli_and_independent_means) ... ok
+test_exact_improvement_direction (test_certify.CertificationTests.test_exact_improvement_direction) ... ok
+test_group_rule_independent_of_objective (test_certify.CertificationTests.test_group_rule_independent_of_objective) ... ok
+test_identical_samples_are_not_equivalence (test_certify.CertificationTests.test_identical_samples_are_not_equivalence) ... ok
+test_invalid_samples_and_options (test_certify.CertificationTests.test_invalid_samples_and_options) ... ok
+test_monte_carlo_reproducibility_and_plus_one (test_certify.CertificationTests.test_monte_carlo_reproducibility_and_plus_one) ... ok
+test_practical_threshold_is_separate (test_certify.CertificationTests.test_practical_threshold_is_separate) ... ok
+test_small_sample_exact_resolution (test_certify.CertificationTests.test_small_sample_exact_resolution) ... ok
+test_unequal_sizes_ties_and_manual_count (test_certify.CertificationTests.test_unequal_sizes_ties_and_manual_count) ... ok
+test_actual_dataset_cli_reproducibility_and_preservation (test_choose.ChooseTests.test_actual_dataset_cli_reproducibility_and_preservation) ... ok
+test_budget_enforcement_and_best_observed (test_choose.ChooseTests.test_budget_enforcement_and_best_observed) ... ok
+test_cli_freezes_selection_before_audit_and_preserves_dataset (test_choose.ChooseTests.test_cli_freezes_selection_before_audit_and_preserves_dataset) ... ok
+test_cli_invalid_budget_and_overwrite (test_choose.ChooseTests.test_cli_invalid_budget_and_overwrite) ... error: budget must be a positive integer
+error: budget must be a positive integer
+error: budget must not exceed the nonempty candidate count
+error: Output must not overwrite the dataset
+ok
+test_exact_ties_keep_first_evaluated_and_full_candidate_pool (test_choose.ChooseTests.test_exact_ties_keep_first_evaluated_and_full_candidate_pool) ... ok
+test_invalid_budgets_and_seeds_make_zero_calls (test_choose.ChooseTests.test_invalid_budgets_and_seeds_make_zero_calls) ... ok
+test_invalid_candidate_schema_before_evaluation (test_choose.ChooseTests.test_invalid_candidate_schema_before_evaluation) ... ok
+test_oracle_charges_failed_parse_and_rejects_repeat (test_choose.ChooseTests.test_oracle_charges_failed_parse_and_rejects_repeat) ... ok
+test_reproducibility_and_seed_effect (test_choose.ChooseTests.test_reproducibility_and_seed_effect) ... ok
+test_selector_only_calls_objective_capability (test_choose.ChooseTests.test_selector_only_calls_objective_capability) ... ok
+test_separate_audit_does_not_modify_selection (test_choose.ChooseTests.test_separate_audit_does_not_modify_selection) ... ok
+test_surrogate_fits_only_counted_observations (test_choose.ChooseTests.test_surrogate_fits_only_counted_observations) ... ok
+test_unqueried_objectives_can_be_unparseable_without_affecting_selection (test_choose.ChooseTests.test_unqueried_objectives_can_be_unparseable_without_affecting_selection) ... ok
+test_cli_bad_baselines_missing_malformed_and_overwrite (test_fix.RepairTests.test_cli_bad_baselines_missing_malformed_and_overwrite) ... error: Output must not overwrite the dataset
+error: Output must not overwrite the dataset
+ok
+test_cli_reproducibility_provenance_and_input_preservation (test_fix.RepairTests.test_cli_reproducibility_provenance_and_input_preservation) ... ok
+test_dataset_independent_fraction_exhaustive_search (test_fix.RepairTests.test_dataset_independent_fraction_exhaustive_search) ... ok
+test_distance_before_objective_and_complete_changes (test_fix.RepairTests.test_distance_before_objective_and_complete_changes) ... ok
+test_duplicate_configurations_zero_cost_and_duplicate_rows (test_fix.RepairTests.test_duplicate_configurations_zero_cost_and_duplicate_rows) ... ok
+test_every_changed_column_in_original_order (test_fix.RepairTests.test_every_changed_column_in_original_order) ... ok
+test_invalid_baseline_rows (test_fix.RepairTests.test_invalid_baseline_rows) ... ok
+test_invalid_direct_data_and_reduction_overflow (test_fix.RepairTests.test_invalid_direct_data_and_reduction_overflow) ... ok
+test_no_improvement_singleton_ties_and_global_minimum (test_fix.RepairTests.test_no_improvement_singleton_ties_and_global_minimum) ... ok
+test_objective_then_row_ties (test_fix.RepairTests.test_objective_then_row_ties) ... ok
+test_randomized_independent_exhaustive_oracle (test_fix.RepairTests.test_randomized_independent_exhaustive_oracle) ... ok
+test_strict_improvement_and_no_tolerance (test_fix.RepairTests.test_strict_improvement_and_no_tolerance) ... ok
+test_actual_stream_prefixes_final_batch_and_cli (test_flow.FlowTests.test_actual_stream_prefixes_final_batch_and_cli) ... ok
+test_cli_rejects_overwrite_and_bad_input (test_flow.FlowTests.test_cli_rejects_overwrite_and_bad_input) ... error: Output must not overwrite the dataset
+error: Values must be finite real numbers
+ok
+test_empty_single_ties_and_new_best (test_flow.FlowTests.test_empty_single_ties_and_new_best) ... ok
+test_future_changes_cannot_change_earlier_outputs (test_flow.FlowTests.test_future_changes_cannot_change_earlier_outputs) ... ok
+test_independent_prefix_statistics (test_flow.FlowTests.test_independent_prefix_statistics) ... ok
+test_invalid_schema_values_and_atomic_rejection (test_flow.FlowTests.test_invalid_schema_values_and_atomic_rejection) ... ok
+test_lazy_csv_validation_and_objective_column_order (test_flow.FlowTests.test_lazy_csv_validation_and_objective_column_order) ... ok
+test_snapshots_and_input_are_detached (test_flow.FlowTests.test_snapshots_and_input_are_detached) ... ok
+test_actual_dataset_cli_prediction_and_input_preservation (test_guess.PredictionTests.test_actual_dataset_cli_prediction_and_input_preservation) ... ok
+test_cli_invalid_config_preserves_input (test_guess.PredictionTests.test_cli_invalid_config_preserves_input) ... ok
+test_evaluation_only_setting_value_is_rejected (test_guess.PredictionTests.test_evaluation_only_setting_value_is_rejected) ... ok
+test_evaluation_targets_do_not_affect_fit (test_guess.PredictionTests.test_evaluation_targets_do_not_affect_fit) ... ok
+test_prediction_schema_domain_and_column_order (test_guess.PredictionTests.test_prediction_schema_domain_and_column_order) ... ok
+test_repeatability_and_independent_mae_baseline (test_guess.PredictionTests.test_repeatability_and_independent_mae_baseline) ... ok
+test_repeated_configurations_are_grouped (test_guess.PredictionTests.test_repeated_configurations_are_grouped) ... ok
+test_actual_dataset_independent_evidence (test_justify.JustifyTests.test_actual_dataset_independent_evidence) ... ok
+test_cli_invalid_missing_and_overwrite_inputs (test_justify.JustifyTests.test_cli_invalid_missing_and_overwrite_inputs) ... error: Output must not overwrite the dataset
+error: Output must not overwrite the dataset
+ok
+test_cli_outputs_provenance_reproducibility_and_input_preservation (test_justify.JustifyTests.test_cli_outputs_provenance_reproducibility_and_input_preservation) ... ok
+test_group_association_does_not_explain_individual_minimum (test_justify.JustifyTests.test_group_association_does_not_explain_individual_minimum) ... ok
+test_invalid_direct_inputs (test_justify.JustifyTests.test_invalid_direct_inputs) ... ok
+test_near_ties_and_order_are_explicit (test_justify.JustifyTests.test_near_ties_and_order_are_explicit) ... ok
+test_preserved_diagnosis_and_summary_consistency (test_justify.JustifyTests.test_preserved_diagnosis_and_summary_consistency) ... ok
+test_same_configuration_outcomes_not_replication_claim (test_justify.JustifyTests.test_same_configuration_outcomes_not_replication_claim) ... ok
+test_selection_exact_ties_and_historical_reference (test_justify.JustifyTests.test_selection_exact_ties_and_historical_reference) ... ok
+test_single_constant_all_tied_zero_and_negative_references (test_justify.JustifyTests.test_single_constant_all_tied_zero_and_negative_references) ... ok
+test_actual_dataset_matches_independent_csv_calculations (test_remember.SummaryTests.test_actual_dataset_matches_independent_csv_calculations) ... ok
+test_cli_failure_is_actionable (test_remember.SummaryTests.test_cli_failure_is_actionable) ... ok
+test_cli_refuses_to_overwrite_dataset (test_remember.SummaryTests.test_cli_refuses_to_overwrite_dataset) ... error: Output must not overwrite the dataset
+ok
+test_cli_writes_valid_reports_and_preserves_input (test_remember.SummaryTests.test_cli_writes_valid_reports_and_preserves_input) ... ok
+test_objective_position_whitespace_and_duplicates (test_remember.SummaryTests.test_objective_position_whitespace_and_duplicates) ... ok
+test_rejects_invalid_csv (test_remember.SummaryTests.test_rejects_invalid_csv) ... ok
+test_single_row_and_invalid_top (test_remember.SummaryTests.test_single_row_and_invalid_top) ... ok
+test_statistics_rankings_and_distributions (test_remember.SummaryTests.test_statistics_rankings_and_distributions) ... ok
+test_cli_and_input_protection (test_spot.SpotTests.test_cli_and_input_protection) ... ok
+test_custom_multiplier_changes_threshold_not_scores (test_spot.SpotTests.test_custom_multiplier_changes_threshold_not_scores) ... ok
+test_dataset_audit_and_independent_threshold (test_spot.SpotTests.test_dataset_audit_and_independent_threshold) ... ok
+test_duplicate_configurations_excluded_and_group_weighted (test_spot.SpotTests.test_duplicate_configurations_excluded_and_group_weighted) ... ok
+test_evaluated_outcome_does_not_change_own_local_prediction (test_spot.SpotTests.test_evaluated_outcome_does_not_change_own_local_prediction) ... ok
+test_hand_calculated_scores_and_threshold (test_spot.SpotTests.test_hand_calculated_scores_and_threshold) ... ok
+test_invalid_and_small_inputs (test_spot.SpotTests.test_invalid_and_small_inputs) ... ok
+test_reproducibility_and_display_independence (test_spot.SpotTests.test_reproducibility_and_display_independence) ... ok
+test_setting_range_scaling_and_constants (test_spot.SpotTests.test_setting_range_scaling_and_constants) ... ok
+test_spike_high_and_low_and_floor (test_spot.SpotTests.test_spike_high_and_low_and_floor) ... ok
+test_threshold_equality_is_not_flagged (test_spot.SpotTests.test_threshold_equality_is_not_flagged) ... ok
+test_ties_competition_rank_and_stable_row_order (test_spot.SpotTests.test_ties_competition_rank_and_stable_row_order) ... ok
+test_unequal_replicate_counts_do_not_weight_neighbors (test_spot.SpotTests.test_unequal_replicate_counts_do_not_weight_neighbors) ... ok
+
+----------------------------------------------------------------------
+Ran 89 tests in 10.976s
+
+OK
+
+wall_seconds=12.443035167; exit=0

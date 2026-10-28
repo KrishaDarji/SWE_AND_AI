@@ -1,0 +1,21 @@
+Use the existing python3 environment (verified scikit-learn 1.6.0); install nothing.
+Working directory for these commands:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10'
+
+Complete tests (includes unchanged Steps 1–9 tests):
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Step 10 comparison, explicit dataset and seed arguments:
+PYTHONDONTWRITEBYTECODE=1 python3 source/race.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --seeds 42 43 44 45 46 47 48 49 50 51 --output race.json
+
+All tests and all preserved module demos plus Step 10, capturing output and wall times:
+PYTHONDONTWRITEBYTECODE=1 python3 run_validation.py
+The exact individual demo commands and measured subprocess wall times are also
+recorded in validation_runs.json and runtime_output.txt. Running this command again
+replaces those capture files. Retain the submitted captures to preserve this run.
+The Step 10 CLI defaults to seeds 42 through 51; --seeds accepts unique uint32 values.
+All outputs from the supplied commands remain in this step directory.
+
+Source: source/*.py (complete updated implementation).
+Tests: tests/*.py (complete preserved tests plus test_race.py).
+Reports: race.json, test_output.txt, runtime_output.txt, metrics.csv, response.txt.

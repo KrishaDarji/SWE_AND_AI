@@ -1,0 +1,20 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/choose.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--budget', '1000', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/choice.json']
+Return code: 0
+Wall seconds: 0.825814458
+Illustrative effort budget: 1000 (unspecified effort units).
+Among recorded rows with both observed Effort- and Kloc+, require Effort- <= budget; maximize Kloc+, then minimize Effort-, then choose the earliest one-based CSV data-row number.
+One-based CSV data-row number, excluding header; idX is metadata and need not be unique.
+Candidate counts: {"eligible_rows": 93, "excluded_missing_required_outcomes": 0, "feasible_candidates": 78, "missing_by_required_outcome": {"Effort-": 0, "Kloc+": 0}, "over_budget_candidates": 15, "total_rows": 93}
+Selected CSV data row: 60.
+Recorded characteristics: {"acap": "vh", "apex": "n", "cplx": "h", "data": "l", "docu": "n", "flex": "h", "ltex": "h", "pcap": "vh", "pcon": "n", "plex": "h", "pmat": "n", "prec": "h", "pvol": "l", "rely": "n", "resl": "h", "ruse": "n", "sced": "n", "site": "n", "stor": "n", "team": "vh", "time": "n", "tool": "n"}
+Observed outcomes: {"Defects-": 8547.0, "Effort-": 720.0, "Kloc+": 350.0}
+Metadata (not identity or predictor inputs): {"MonthsX": 35.7, "YearX": 1975.0, "centerX": "6", "idX": 60.0}
+Feasibility evidence: {"budget": 1000.0, "comparison": "Effort- <= budget", "observed_effort": 720.0, "remaining_effort_budget": 280.0, "satisfied": true}
+The supplied budget is illustrative in unspecified effort units, not a monetary budget or sponsor-approved threshold.
+Kloc+ is delivered code size, an illustrative value proxy, not demonstrated business value. More code is not necessarily better for a real client.
+Historical outcomes illustrate constrained selection; they do not prove a proposed project will satisfy the budget.
+Select one recorded project, not a portfolio or an unseen combination of categorical settings.
+No proposal-time prediction is performed. Delivered Kloc+, Effort-, Defects- and X metadata are never proposal-time predictor inputs.
+Rows missing either required selection outcome are excluded, never imputed. Missing defects do not exclude a candidate.
+This demonstration has no objective-evaluation budget and does not perform budgeted benchmark search.
+Feasibility uses an inclusive comparison of parsed finite numeric effort with the budget, with no tolerance or unit conversion.

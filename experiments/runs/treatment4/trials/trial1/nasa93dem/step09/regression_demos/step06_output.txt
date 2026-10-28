@@ -1,0 +1,125 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/justify.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--proposal', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/proposal.json', '--illustrative', '--output-dir', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/justify']
+Return code: 0
+Wall seconds: 1.238187125
+Illustrative demo proposal; not an actual approval request
+Proposal model estimate: Effort- = 524.336108; physical units unspecified.
+Model: RandomForestRegressor; settings: {"bootstrap": true, "ccp_alpha": 0.0, "criterion": "squared_error", "max_depth": null, "max_features": 1.0, "max_leaf_nodes": null, "max_samples": null, "min_impurity_decrease": 0.0, "min_samples_leaf": 2, "min_samples_split": 2, "min_weight_fraction_leaf": 0.0, "monotonic_cst": null, "n_estimators": 200, "n_jobs": 1, "oob_score": false, "random_state": 42, "verbose": 0, "warm_start": false}.
+Normalization, explicit missing level and one-hot encoding reuse the preserved estimator; all learned preprocessing uses training rows only.
+Proposal characteristics (missing includes omitted keys and normalized missing tokens):
+  prec: raw='h', normalized='h', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  flex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  resl: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  team: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pmat: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  rely: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  data: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  cplx: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  ruse: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  docu: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  time: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  stor: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pvol: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  acap: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pcap: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  pcon: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  apex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  plex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  ltex: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  tool: raw='n', normalized='n', status=seen, supplied key=True; training category count=61, mean effort=604.4393442622951.
+  site: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+  sced: raw=None, normalized=None, status=missing, supplied key=False; training category count=0, mean effort=None.
+Historical training context: n=68, mean=611.9529411764706, median=276.0, range=[8.4, 8211.0]; exact normalized configuration count=0.
+Nearest historical training examples (equal-weight nominal mismatch; comparability is not established):
+  Data row index=0, mismatched predictors=20, observed effort=117.6.
+  Data row index=1, mismatched predictors=20, observed effort=117.6.
+  Data row index=2, mismatched predictors=20, observed effort=31.2.
+  Data row index=3, mismatched predictors=20, observed effort=36.0.
+  Data row index=4, mismatched predictors=20, observed effort=25.2.
+Separate aggregate evaluation: held-out n=25; model MAE=531.211986; training-mean baseline MAE=674.031765; constant baseline prediction=611.952941.
+These MAEs describe one held-out partition, not this proposal error or an uncertainty interval.
+Global historical associations (training only; no causal effects or additive contributions to the proposal prediction):
+  time: eta squared=0.380858; eligible n=68.
+  rely: eta squared=0.352133; eligible n=68.
+  data: eta squared=0.236565; eligible n=68.
+  stor: eta squared=0.208024; eligible n=68.
+  plex: eta squared=0.193139; eligible n=68.
+  cplx: eta squared=0.158574; eligible n=68.
+  apex: eta squared=0.094778; eligible n=68.
+  pvol: eta squared=0.083268; eligible n=68.
+  acap: eta squared=0.075705; eligible n=68.
+  pcap: eta squared=0.067631; eligible n=68.
+  pmat: eta squared=0.046810; eligible n=68.
+  sced: eta squared=0.036288; eligible n=68.
+  ltex: eta squared=0.004727; eligible n=68.
+  tool: eta squared=0.000367; eligible n=68.
+Local model sensitivity: each query changes one field, holding other proposal inputs fixed. These are model responses, not feasible plans or causal effort savings; deltas must not be summed.
+  flex: None -> 'h': estimate=524.336108, delta=0.000000, training level support=68.
+  resl: None -> 'h': estimate=524.336108, delta=0.000000, training level support=68.
+  team: None -> 'vh': estimate=524.336108, delta=0.000000, training level support=68.
+  pmat: None -> 'h': estimate=532.935280, delta=8.599172, training level support=31.
+  pmat: None -> 'l': estimate=735.097724, delta=210.761616, training level support=13.
+  pmat: None -> 'n': estimate=441.124212, delta=-83.211895, training level support=24.
+  rely: None -> 'h': estimate=548.032584, delta=23.696476, training level support=38.
+  rely: None -> 'l': estimate=697.395734, delta=173.059626, training level support=2.
+  rely: None -> 'n': estimate=445.071943, delta=-79.264165, training level support=21.
+  rely: None -> 'vh': estimate=1151.675557, delta=627.339449, training level support=7.
+  data: None -> 'h': estimate=727.163286, delta=202.827179, training level support=14.
+  data: None -> 'l': estimate=387.363509, delta=-136.972599, training level support=27.
+  data: None -> 'n': estimate=478.325965, delta=-46.010143, training level support=25.
+  data: None -> 'vh': estimate=568.147001, delta=43.810893, training level support=2.
+  cplx: None -> 'h': estimate=529.620812, delta=5.284704, training level support=43.
+  cplx: None -> 'l': estimate=564.421024, delta=40.084917, training level support=3.
+  cplx: None -> 'n': estimate=558.905697, delta=34.569589, training level support=6.
+  cplx: None -> 'vh': estimate=520.688266, delta=-3.647842, training level support=16.
+  ruse: None -> 'n': estimate=524.336108, delta=0.000000, training level support=68.
+  docu: None -> 'n': estimate=524.336108, delta=0.000000, training level support=68.
+  time: None -> 'h': estimate=573.502418, delta=49.166311, training level support=10.
+  time: None -> 'n': estimate=467.007662, delta=-57.328445, training level support=41.
+  time: None -> 'vh': estimate=511.087974, delta=-13.248133, training level support=11.
+  time: None -> 'xh': estimate=1991.680712, delta=1467.344605, training level support=6.
+  stor: None -> 'h': estimate=707.341651, delta=183.005543, training level support=7.
+  stor: None -> 'n': estimate=514.001102, delta=-10.335006, training level support=41.
+  stor: None -> 'vh': estimate=501.457474, delta=-22.878633, training level support=9.
+  stor: None -> 'xh': estimate=548.727974, delta=24.391867, training level support=11.
+  pvol: None -> 'h': estimate=567.028308, delta=42.692200, training level support=7.
+  pvol: None -> 'l': estimate=522.079413, delta=-2.256694, training level support=44.
+  pvol: None -> 'n': estimate=512.741466, delta=-11.594642, training level support=17.
+  acap: None -> 'h': estimate=529.576404, delta=5.240296, training level support=36.
+  acap: None -> 'n': estimate=451.854713, delta=-72.481395, training level support=29.
+  acap: None -> 'vh': estimate=529.772311, delta=5.436203, training level support=3.
+  pcap: None -> 'h': estimate=507.534765, delta=-16.801343, training level support=25.
+  pcap: None -> 'n': estimate=510.913660, delta=-13.422448, training level support=35.
+  pcap: None -> 'vh': estimate=641.907679, delta=117.571571, training level support=8.
+  pcon: None -> 'n': estimate=524.336108, delta=0.000000, training level support=68.
+  apex: None -> 'h': estimate=545.174596, delta=20.838488, training level support=30.
+  apex: None -> 'l': estimate=524.336108, delta=0.000000, training level support=1.
+  apex: None -> 'n': estimate=502.261070, delta=-22.075038, training level support=29.
+  apex: None -> 'vh': estimate=525.131132, delta=0.795024, training level support=8.
+  plex: None -> 'h': estimate=530.170780, delta=5.834673, training level support=12.
+  plex: None -> 'l': estimate=531.735108, delta=7.399000, training level support=6.
+  plex: None -> 'n': estimate=537.446512, delta=13.110405, training level support=47.
+  plex: None -> 'vl': estimate=527.353108, delta=3.017000, training level support=3.
+  ltex: None -> 'h': estimate=516.659524, delta=-7.676583, training level support=49.
+  ltex: None -> 'l': estimate=524.156108, delta=-0.180000, training level support=6.
+  ltex: None -> 'n': estimate=537.325179, delta=12.989071, training level support=10.
+  ltex: None -> 'vl': estimate=533.172674, delta=8.836567, training level support=3.
+  tool: 'n' -> 'h': estimate=594.299334, delta=69.963226, training level support=7.
+  site: None -> 'n': estimate=524.336108, delta=0.000000, training level support=68.
+  sced: None -> 'l': estimate=528.954514, delta=4.618407, training level support=22.
+  sced: None -> 'n': estimate=530.435739, delta=6.099632, training level support=46.
+Limitations:
+Physical effort units are unspecified. MAE is aggregate held-out error, not an interval for this proposal; no confidence or prediction interval is supplied.
+Historical observational associations and local model sensitivity establish neither causal savings nor operational feasibility. Sensitivities are not additive contributions.
+Small, potentially related historical projects and one grouped split limit generalization; identical inputs are grouped, but broader project dependencies may remain.
+Missing inputs use the existing explicit missing level; unseen categories encode as zeros. Either can place the proposal outside well-supported training combinations.
+Equal-weight nominal similarity is descriptive and does not establish project comparability; marginal category support does not establish joint support.
+Delivered size, defects, identifiers and other metadata are excluded. Proposal-time availability of supplied predictors must be verified.
+Training-based global associations can be confounded by project size and correlated characteristics; small categories and extreme efforts can dominate.
+Random forest averages historical training outcomes and may miss novel or extreme effort. Missing-target rows are excluded without imputation.
+An effort estimate alone does not justify approving a proposal.
+Information needed before approval:
+Confirm scope, deliverables, project size, acceptance criteria and proposal-time predictor ratings with accountable owners.
+Specify effort units and conversion to cost, staffing capacity, schedule dependencies and a sponsor-approved budget.
+Review comparable projects, novelty, risks, alternatives, expected benefits and contingency requirements; validate on relevant recent projects.
+Obtain explicit sponsor acceptance of uncertainty and decision criteria before approval.
+Evidence supports review of an estimate, not automatic approval.

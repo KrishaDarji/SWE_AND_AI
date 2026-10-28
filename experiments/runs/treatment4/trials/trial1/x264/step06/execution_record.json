@@ -1,0 +1,134 @@
+{
+  "test_seconds": 4.998833624995314,
+  "test_exit_code": 0,
+  "unexpected_failures": 1,
+  "preflight_note": "Count includes one preliminary rg --files instruction-file lookup exiting 1 (no AGENTS.md matches); no source read or repair resulted. All test/demo executions succeeded.",
+  "preflight_output": {
+    "command": "pwd; rg --files -g AGENTS.md -g '!node_modules' -g '!venv' -g '!\\.git'",
+    "exit_code": 1,
+    "stdout": "/Users/vivek/D Drive/vs code/SWEAI_Project\n",
+    "stderr": ""
+  },
+  "demos": [
+    {
+      "step": 1,
+      "module": "remember",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/remember.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/regression_demos/step01"
+      ],
+      "wall_seconds": 0.05352908303029835,
+      "exit_code": 0
+    },
+    {
+      "step": 2,
+      "module": "guess",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/guess.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/regression_demos/step02"
+      ],
+      "wall_seconds": 1.0721452080179006,
+      "exit_code": 0
+    },
+    {
+      "step": 3,
+      "module": "certify",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/certify.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/regression_demos/step03"
+      ],
+      "wall_seconds": 0.7440310409292579,
+      "exit_code": 0
+    },
+    {
+      "step": 4,
+      "module": "blame",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/blame.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/regression_demos/step04"
+      ],
+      "wall_seconds": 0.09727920894511044,
+      "exit_code": 0
+    },
+    {
+      "step": 5,
+      "module": "flow",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/flow.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/regression_demos/step05"
+      ],
+      "wall_seconds": 0.07210770796518773,
+      "exit_code": 0
+    },
+    {
+      "step": 6,
+      "module": "justify",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06/source/justify.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+        "--output-dir",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step06"
+      ],
+      "wall_seconds": 0.11411858396604657,
+      "exit_code": 0
+    }
+  ],
+  "python_executable": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+  "sklearn_version": "1.6.0",
+  "dataset_sha256_before": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+  "dataset_sha256_after": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+  "preserved_source_identical": true,
+  "preserved_tests_identical": true,
+  "total_loc": 911,
+  "new_loc": 148,
+  "loc_detail": {
+    "blame.py": {
+      "total_loc": 179,
+      "new_loc": 0
+    },
+    "certify.py": {
+      "total_loc": 156,
+      "new_loc": 0
+    },
+    "flow.py": {
+      "total_loc": 153,
+      "new_loc": 0
+    },
+    "guess.py": {
+      "total_loc": 109,
+      "new_loc": 0
+    },
+    "justify.py": {
+      "total_loc": 148,
+      "new_loc": 148
+    },
+    "remember.py": {
+      "total_loc": 166,
+      "new_loc": 0
+    }
+  },
+  "passed_tests": 51,
+  "total_tests": 51
+}

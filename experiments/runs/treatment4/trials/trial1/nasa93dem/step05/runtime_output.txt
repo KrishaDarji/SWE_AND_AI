@@ -1,0 +1,314 @@
+Step 1 summary
+COMMAND: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/summarize.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output-dir', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step05/regression_summary']
+Wall time: 0.030170333 seconds
+Exit code: 0
+NASA93 historical projects and delivery outcomes
+Projects: 93; columns: 29
+Numeric columns: 6; categorical columns: 23
+Missing cells: 0
+Candidate predictors: prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced
+Metadata excluded from optimization and predictors: idX, centerX, YearX, MonthsX
+Objectives: Kloc+ maximize; Effort- minimize; Defects- minimize.
+Delivery outcomes (MonthsX is descriptive metadata):
+  Kloc+ [objective]: {"count": 93, "max": 980.0, "mean": 94.02204301075268, "median": 47.5, "min": 0.9, "q25": 15.4, "q75": 111.0, "std_sample": 133.5979471867733, "sum": 8744.05}
+  Effort- [objective]: {"count": 93, "max": 8211.0, "mean": 624.4118279569892, "median": 252.0, "min": 8.4, "q25": 70.0, "q75": 600.0, "std_sample": 1135.9280652026785, "sum": 58070.3}
+  Defects- [objective]: {"count": 93, "max": 50961.0, "mean": 3761.7634408602153, "median": 2007.0, "min": 28.0, "q25": 636.0, "q75": 4868.0, "std_sample": 6145.055586471355, "sum": 349844.0}
+  MonthsX [metadata]: {"count": 93, "max": 96.4, "mean": 24.176344086021505, "median": 21.4, "min": 4.9, "q25": 14.8, "q75": 31.5, "std_sample": 12.967219522364363, "sum": 2248.4}
+All project characteristics, missing counts, numeric summaries, and categorical counts:
+  idX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 93.0, "mean": 46.98924731182796, "median": 47.0, "min": 1.0, "q25": 24.0, "q75": 70.0, "std_sample": 26.997783573944794, "sum": 4370.0}, "type": "numeric", "unique_count": 92}
+  centerX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "type": "categorical", "unique_count": 5, "value_counts": {"1": 12, "2": 37, "3": 2, "5": 39, "6": 3}}
+  YearX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 1987.0, "mean": 1980.8279569892472, "median": 1980.0, "min": 1971.0, "q25": 1979.0, "q75": 1983.0, "std_sample": 3.3350042562842876, "sum": 184217.0}, "type": "numeric", "unique_count": 14}
+  prec: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  flex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  resl: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  team: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"vh": 93}}
+  pmat: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 43, "l": 20, "n": 30}}
+  rely: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 42, "l": 2, "n": 39, "vh": 10}}
+  data: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 17, "l": 37, "n": 31, "vh": 8}}
+  cplx: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 5, "value_counts": {"h": 58, "l": 3, "n": 10, "vh": 17, "xh": 5}}
+  ruse: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  docu: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  time: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 13, "n": 54, "vh": 18, "xh": 8}}
+  stor: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 10, "n": 49, "vh": 21, "xh": 13}}
+  pvol: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 9, "l": 65, "n": 19}}
+  acap: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 51, "n": 32, "vh": 10}}
+  pcap: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 39, "n": 44, "vh": 10}}
+  pcon: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  apex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 46, "l": 1, "n": 34, "vh": 12}}
+  plex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 22, "l": 14, "n": 53, "vl": 4}}
+  ltex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 69, "l": 6, "n": 14, "vl": 4}}
+  tool: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 2, "value_counts": {"h": 10, "n": 83}}
+  site: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  sced: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 2, "value_counts": {"l": 34, "n": 59}}
+  Kloc+: {"direction": "maximize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 980.0, "mean": 94.02204301075268, "median": 47.5, "min": 0.9, "q25": 15.4, "q75": 111.0, "std_sample": 133.5979471867733, "sum": 8744.05}, "type": "numeric", "unique_count": 79}
+  Effort-: {"direction": "minimize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 8211.0, "mean": 624.4118279569892, "median": 252.0, "min": 8.4, "q25": 70.0, "q75": 600.0, "std_sample": 1135.9280652026785, "sum": 58070.3}, "type": "numeric", "unique_count": 74}
+  Defects-: {"direction": "minimize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 50961.0, "mean": 3761.7634408602153, "median": 2007.0, "min": 28.0, "q25": 636.0, "q75": 4868.0, "std_sample": 6145.055586471355, "sum": 349844.0}, "type": "numeric", "unique_count": 92}
+  MonthsX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 96.4, "mean": 24.176344086021505, "median": 21.4, "min": 4.9, "q25": 14.8, "q75": 31.5, "std_sample": 12.967219522364363, "sum": 2248.4}, "type": "numeric", "unique_count": 82}
+Assumptions and limitations:
+  missing_tokens_after_stripping: ['', '?', 'N/A', 'NA', 'null']
+  standard_deviation: sample, denominator n-1; null when fewer than two observations
+  quartiles: linear interpolation at sorted index (n-1)*p
+  centerX: categorical center label; no ordering inferred
+  idX_and_YearX: numeric metadata; identifier statistics have no predictive interpretation
+  excluded_inputs: All X metadata and objective fields are excluded from candidate predictors
+  units: No units supplied or inferred; original field names retained
+  limitations: Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction
+
+Step 2 prediction
+COMMAND: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/predict_effort.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--proposal', 'proposal.json', '--evaluation', 'regression_prediction.json']
+Wall time: 0.915531583 seconds
+Exit code: 0
+{
+  "estimated Effort-": 524.3361077067672,
+  "units": "unspecified",
+  "training_samples": 68,
+  "evaluation_samples": 25,
+  "model_mae": 531.2119860706141,
+  "baseline_mae": 674.0317647058823,
+  "decision_note": "An effort estimate alone does not justify approving a proposal."
+}
+
+Step 3 flow
+COMMAND: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/flow.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', 'regression_flow.json']
+Wall time: 6.634990750 seconds
+Exit code: 0
+{
+  "arrival_rule": "Original CSV data row order; zero-based row_index excludes header. Simulated arrival sequence, not verified chronological order or actual proposal-time data.",
+  "units": "unspecified",
+  "warm_up_policy": {
+    "minimum_prior_observed_efforts": 2,
+    "rule": "No prediction until two prior observed outcomes are available; missing outcomes do not advance warm-up. No external history or future fitting."
+  },
+  "final_summary": {
+    "arrivals": 93,
+    "observed_outcomes": 93,
+    "missing_outcomes": 0,
+    "available_predictions": 91,
+    "warm_up_arrivals": 2,
+    "scored_arrivals": 91,
+    "history_size": 93,
+    "cumulative_absolute_error": 44607.76816042089,
+    "cumulative_mae": 490.1952545101197,
+    "prediction_error_summary": {
+      "count": 91,
+      "sum": 44607.76816042089,
+      "mean": 490.1952545101197,
+      "std_sample": 854.976902997125,
+      "min": 4.379529428904448,
+      "q25": 60.92473692754613,
+      "median": 240.55369227680535,
+      "q75": 529.1954349948716,
+      "max": 5805.764947059884
+    },
+    "observed_effort_summary": {
+      "count": 93,
+      "sum": 58070.3,
+      "mean": 624.4118279569892,
+      "std_sample": 1135.9280652026785,
+      "min": 8.4,
+      "q25": 70.0,
+      "median": 252.0,
+      "q75": 600.0,
+      "max": 8211.0
+    }
+  },
+  "limitations": [
+    "CSV order is a simulated arrival sequence, not verified chronological order or actual proposal-time data.",
+    "Predictor availability at proposal time is assumed, not demonstrated by this historical dataset.",
+    "Effort units are unspecified. No automatic project approval or uncertainty guarantees are provided.",
+    "Earlier identical normalized predictor configurations may inform later arrivals once their efforts are revealed.",
+    "Sequential cumulative MAE is distinct from Step 2 independent grouped holdout evaluation; duplicates are not held out here.",
+    "Every present outcome is assumed revealed immediately after its prediction; real reporting delays are not modeled.",
+    "Missing outcomes are counted but neither scored nor added to training history; delayed backfill is not supported.",
+    "Two observed efforts are a deterministic availability threshold, not evidence of model reliability.",
+    "Small observational sample, missingness, distribution changes, and novel categories can impair accuracy.",
+    "The seeded 200-tree forest and learned preprocessing are refitted on prior observed records for every available prediction.",
+    "Unseen categories encode as all zeros; missing predictors use the existing explicit empty-string level.",
+    "Kloc+, Defects-, Effort-, all X-suffixed metadata and unknown fields are excluded from proposal predictors."
+  ]
+}
+
+Step 4 comparison
+COMMAND: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/certify.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', 'regression_certify.json']
+Wall time: 0.383863500 seconds
+Exit code: 0
+{
+  "target": "Effort-",
+  "units": "unspecified",
+  "baseline": {
+    "count": 83,
+    "sum": 50303.3,
+    "mean": 606.0638554216868,
+    "std_sample": 1177.9397248004684,
+    "min": 8.4,
+    "q25": 60.0,
+    "median": 215.0,
+    "q75": 573.7,
+    "max": 8211.0,
+    "excluded_missing_outcomes": 0
+  },
+  "candidate": {
+    "count": 10,
+    "sum": 7767.0,
+    "mean": 776.7,
+    "std_sample": 720.5163349216233,
+    "min": 72.0,
+    "q25": 433.5,
+    "median": 528.5,
+    "q75": 1047.75,
+    "max": 2460.0,
+    "excluded_missing_outcomes": 0
+  },
+  "difference_candidate_minus_baseline": 170.6361445783133,
+  "relative_mean_reduction": -0.2815481290491877,
+  "observed_direction": "higher",
+  "statistical": {
+    "method": "Welch independent two-sample two-sided t test and 95% t confidence interval",
+    "null": "population mean candidate effort equals population mean baseline effort",
+    "alpha": 0.05,
+    "standard_error": 261.97662553325733,
+    "degrees_of_freedom": 15.552580855698572,
+    "t_statistic": 0.6513411043102829,
+    "p_value_two_sided": 0.5243346705603102,
+    "mean_difference_ci95": [
+      -386.0308077262547,
+      727.3030968828813
+    ],
+    "evidence": "no_detected_difference"
+  },
+  "practical": {
+    "fraction_of_baseline_mean": 0.1,
+    "absolute_reduction_threshold": 60.60638554216868,
+    "criterion": "candidate mean is at least the threshold below baseline mean; strict CI upper bound below negative threshold supports it",
+    "observed_threshold_met": false,
+    "supported_by_ci95": false,
+    "zero_baseline_note": "A zero baseline cannot support a positive relative reduction."
+  },
+  "bootstrap_sensitivity": {
+    "method": "independent within-group percentile bootstrap of mean difference",
+    "seed": 42,
+    "resamples": 20000,
+    "ci95": [
+      -293.64298192771093,
+      682.0696084337349
+    ]
+  },
+  "small_sample_warning": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "manager_conclusion": "A difference in population mean effort was not detected; this is not proof of equivalence. The interval does not establish the illustrative practical reduction. These observations do not establish that changing the process causes cost savings.",
+  "limitations": [
+    "Observational groups, not randomized process assignments: project size (Kloc+) and other characteristics may confound raw effort differences. No causal cost savings are established.",
+    "Effort- is minimized; physical units are unspecified. Only observed outcomes are used, never model predictions.",
+    "Welch inference assumes independent projects, representative sampling, finite variances, and approximately normal sampling distributions of means. Related projects, skew, extreme values, and small samples can undermine it.",
+    "Unequal group variances are allowed. Historical convenience samples do not establish generalizability to future proposals.",
+    "Missing outcomes are excluded without imputation; selection bias remains possible.",
+    "The practical threshold is an illustrative planning rule: 10% of the observed baseline mean, not a manager-approved economic requirement. It is data-dependent; uncertainty in this threshold is not propagated.",
+    "No detected difference is not proof of equivalence. No equivalence test or causal adjustment is performed.",
+    "This does not complete the separate required same analysis: its exact procedure was not supplied.",
+    "Bootstrap percentile intervals are a sensitivity description, not a second decision test; they can be unreliable with small or skewed samples."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "group_definitions": {
+    "baseline": "tool=n",
+    "candidate": "tool=h",
+    "selection": "Fixed before interpreting outcomes; all observed efforts in these groups",
+    "excluded_other_or_missing_tool_rows": 0
+  }
+}
+
+Step 5 blame
+COMMAND: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/blame.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', 'blame.json']
+Wall time: 0.935477458 seconds
+Exit code: 0
+Project factors accompanying higher observed effort (physical units unspecified).
+This is an exploratory description of raw effort, not a diagnosis of budget overrun or excessive effort.
+Ranking uses categorical eta squared: between-category variation divided by total variation.
+The score measures association strength; category means below supply direction. No category ordering is assumed.
+Rank 1: time, eta2=0.417943, eligible n=93.
+  'h': projects=13, observed n=13, mean=734.0769230769231, median=458.0; higher than eligible mean; small-category warning=False.
+  'n': projects=54, observed n=54, mean=334.3888888888889, median=156.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=18, observed n=18, mean=375.34444444444443, median=215.5; lower than eligible mean; small-category warning=False.
+  'xh': projects=8, observed n=8, mean=2964.2625, median=1848.5; higher than eligible mean; small-category warning=False.
+Rank 2: rely, eta2=0.342147, eligible n=93.
+  'h': projects=42, observed n=42, mean=483.54761904761904, median=326.4; lower than eligible mean; small-category warning=False.
+  'l': projects=2, observed n=2, mean=1296.0, median=1296.0; higher than eligible mean; small-category warning=True.
+  'n': projects=39, observed n=39, mean=269.1589743589744, median=170.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=2467.21, median=1709.2; higher than eligible mean; small-category warning=False.
+Rank 3: cplx, eta2=0.191680, eligible n=93.
+  'h': projects=58, observed n=58, mean=315.2448275862069, median=118.8; lower than eligible mean; small-category warning=False.
+  'l': projects=3, observed n=3, mean=844.3333333333334, median=973.0; higher than eligible mean; small-category warning=True.
+  'n': projects=10, observed n=10, mean=494.2, median=320.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=17, observed n=17, mean=1341.270588235294, median=648.0; higher than eligible mean; small-category warning=False.
+  'xh': projects=5, observed n=5, mean=1901.9, median=1924.5; higher than eligible mean; small-category warning=False.
+Rank 4: stor, eta2=0.163585, eligible n=93.
+  'h': projects=10, observed n=10, mean=887.7, median=580.5; higher than eligible mean; small-category warning=False.
+  'n': projects=49, observed n=49, mean=323.24897959183676, median=117.6; lower than eligible mean; small-category warning=False.
+  'vh': projects=21, observed n=21, mean=555.1904761904761, median=240.0; lower than eligible mean; small-category warning=False.
+  'xh': projects=13, observed n=13, mean=1668.8538461538462, median=648.0; higher than eligible mean; small-category warning=False.
+Rank 5: plex, eta2=0.152537, eligible n=93.
+  'h': projects=22, observed n=22, mean=1285.6863636363637, median=651.5; higher than eligible mean; small-category warning=False.
+  'l': projects=14, observed n=14, mean=346.85714285714283, median=203.5; lower than eligible mean; small-category warning=False.
+  'n': projects=53, observed n=53, mean=352.68301886792455, median=117.6; lower than eligible mean; small-category warning=False.
+  'vl': projects=4, observed n=4, mean=1559.25, median=623.5; higher than eligible mean; small-category warning=True.
+Rank 6: data, eta2=0.143988, eligible n=93.
+  'h': projects=17, observed n=17, mean=1522.1941176470589, median=1181.0; higher than eligible mean; small-category warning=False.
+  'l': projects=37, observed n=37, mean=370.1621621621622, median=72.0; lower than eligible mean; small-category warning=False.
+  'n': projects=31, observed n=31, mean=502.4516129032258, median=300.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=8, observed n=8, mean=365.125, median=181.0; lower than eligible mean; small-category warning=False.
+Rank 7: acap, eta2=0.060616, eligible n=93.
+  'h': projects=51, observed n=51, mean=876.1235294117647, median=420.0; higher than eligible mean; small-category warning=False.
+  'n': projects=32, observed n=32, mean=301.34375, median=75.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=374.5, median=215.5; lower than eligible mean; small-category warning=False.
+Rank 8: pvol, eta2=0.057823, eligible n=93.
+  'h': projects=9, observed n=9, mean=557.4444444444445, median=480.0; lower than eligible mean; small-category warning=False.
+  'l': projects=65, observed n=65, mean=477.53846153846155, median=240.0; lower than eligible mean; small-category warning=False.
+  'n': projects=19, observed n=19, mean=1158.5947368421052, median=252.0; higher than eligible mean; small-category warning=False.
+Rank 9: pcap, eta2=0.057441, eligible n=93.
+  'h': projects=39, observed n=39, mean=921.623076923077, median=400.0; higher than eligible mean; small-category warning=False.
+  'n': projects=44, observed n=44, mean=348.70454545454544, median=115.8; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=678.4, median=425.0; higher than eligible mean; small-category warning=False.
+Rank 10: sced, eta2=0.054554, eligible n=93.
+  'l': projects=34, observed n=34, mean=276.79411764705884, median=118.8; lower than eligible mean; small-category warning=False.
+  'n': projects=59, observed n=59, mean=824.7338983050847, median=400.0; higher than eligible mean; small-category warning=False.
+Rank 11: pmat, eta2=0.050721, eligible n=93.
+  'h': projects=43, observed n=43, mean=791.5837209302325, median=278.0; higher than eligible mean; small-category warning=False.
+  'l': projects=20, observed n=20, mean=817.66, median=501.7; higher than eligible mean; small-category warning=False.
+  'n': projects=30, observed n=30, mean=255.96666666666667, median=132.0; lower than eligible mean; small-category warning=False.
+Rank 12: apex, eta2=0.023126, eligible n=93.
+  'h': projects=46, observed n=46, mean=774.7021739130435, median=276.0; higher than eligible mean; small-category warning=False.
+  'l': projects=1, observed n=1, mean=648.0, median=648.0; higher than eligible mean; small-category warning=True.
+  'n': projects=34, observed n=34, mean=402.47058823529414, median=117.6; lower than eligible mean; small-category warning=False.
+  'vh': projects=12, observed n=12, mean=675.1666666666666, median=342.0; higher than eligible mean; small-category warning=False.
+Rank 13: ltex, eta2=0.004630, eligible n=93.
+  'h': projects=69, observed n=69, mean=662.0333333333333, median=252.0; higher than eligible mean; small-category warning=False.
+  'l': projects=6, observed n=6, mean=427.3333333333333, median=259.0; lower than eligible mean; small-category warning=False.
+  'n': projects=14, observed n=14, mean=587.2857142857143, median=162.0; lower than eligible mean; small-category warning=False.
+  'vl': projects=4, observed n=4, mean=401.0, median=395.0; lower than eligible mean; small-category warning=True.
+Rank 14: tool, eta2=0.002189, eligible n=93.
+  'h': projects=10, observed n=10, mean=776.7, median=528.5; higher than eligible mean; small-category warning=False.
+  'n': projects=83, observed n=83, mean=606.0638554216868, median=215.0; lower than eligible mean; small-category warning=False.
+Constant factors across nonmissing inputs: prec, flex, resl, team, ruse, docu, pcon, site
+prec: constant_on_observed_rows; no supported between-category strength ranking.
+flex: constant_on_observed_rows; no supported between-category strength ranking.
+resl: constant_on_observed_rows; no supported between-category strength ranking.
+team: constant_on_observed_rows; no supported between-category strength ranking.
+ruse: constant_on_observed_rows; no supported between-category strength ranking.
+docu: constant_on_observed_rows; no supported between-category strength ranking.
+pcon: constant_on_observed_rows; no supported between-category strength ranking.
+site: constant_on_observed_rows; no supported between-category strength ranking.
+Planning use: review these historical category groups alongside project scope, size and context; the ranking does not show savings from changing a factor.
+Exploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.
+Higher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.
+Kloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.
+Correlated factors can share the same association; univariate scores do not isolate independent contributions or interactions.
+Observational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.
+Small categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.
+Eta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.
+Missing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.
+Constant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.
+Physical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.
+All data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used.
+

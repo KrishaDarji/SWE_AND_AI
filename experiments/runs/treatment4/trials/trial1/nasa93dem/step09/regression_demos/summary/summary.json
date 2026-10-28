@@ -1,0 +1,447 @@
+{
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "project_count": 93,
+  "column_count": 29,
+  "numeric_column_count": 6,
+  "categorical_column_count": 23,
+  "candidate_predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "objectives": {
+    "Kloc+": "maximize",
+    "Effort-": "minimize",
+    "Defects-": "minimize"
+  },
+  "metadata": [
+    "idX",
+    "centerX",
+    "YearX",
+    "MonthsX"
+  ],
+  "total_missing_values": 0,
+  "delivery_outcomes": [
+    "Kloc+",
+    "Effort-",
+    "Defects-",
+    "MonthsX"
+  ],
+  "columns": {
+    "idX": {
+      "type": "numeric",
+      "role": "metadata",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 92,
+      "statistics": {
+        "count": 93,
+        "sum": 4370.0,
+        "mean": 46.98924731182796,
+        "std_sample": 26.997783573944794,
+        "min": 1.0,
+        "q25": 24.0,
+        "median": 47.0,
+        "q75": 70.0,
+        "max": 93.0
+      }
+    },
+    "centerX": {
+      "type": "categorical",
+      "role": "metadata",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 5,
+      "value_counts": {
+        "1": 12,
+        "2": 37,
+        "3": 2,
+        "5": 39,
+        "6": 3
+      }
+    },
+    "YearX": {
+      "type": "numeric",
+      "role": "metadata",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 14,
+      "statistics": {
+        "count": 93,
+        "sum": 184217.0,
+        "mean": 1980.8279569892472,
+        "std_sample": 3.3350042562842876,
+        "min": 1971.0,
+        "q25": 1979.0,
+        "median": 1980.0,
+        "q75": 1983.0,
+        "max": 1987.0
+      }
+    },
+    "prec": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "h": 93
+      }
+    },
+    "flex": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "h": 93
+      }
+    },
+    "resl": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "h": 93
+      }
+    },
+    "team": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "vh": 93
+      }
+    },
+    "pmat": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 3,
+      "value_counts": {
+        "h": 43,
+        "l": 20,
+        "n": 30
+      }
+    },
+    "rely": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 42,
+        "l": 2,
+        "n": 39,
+        "vh": 10
+      }
+    },
+    "data": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 17,
+        "l": 37,
+        "n": 31,
+        "vh": 8
+      }
+    },
+    "cplx": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 5,
+      "value_counts": {
+        "h": 58,
+        "l": 3,
+        "n": 10,
+        "vh": 17,
+        "xh": 5
+      }
+    },
+    "ruse": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "n": 93
+      }
+    },
+    "docu": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "n": 93
+      }
+    },
+    "time": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 13,
+        "n": 54,
+        "vh": 18,
+        "xh": 8
+      }
+    },
+    "stor": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 10,
+        "n": 49,
+        "vh": 21,
+        "xh": 13
+      }
+    },
+    "pvol": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 3,
+      "value_counts": {
+        "h": 9,
+        "l": 65,
+        "n": 19
+      }
+    },
+    "acap": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 3,
+      "value_counts": {
+        "h": 51,
+        "n": 32,
+        "vh": 10
+      }
+    },
+    "pcap": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 3,
+      "value_counts": {
+        "h": 39,
+        "n": 44,
+        "vh": 10
+      }
+    },
+    "pcon": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "n": 93
+      }
+    },
+    "apex": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 46,
+        "l": 1,
+        "n": 34,
+        "vh": 12
+      }
+    },
+    "plex": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 22,
+        "l": 14,
+        "n": 53,
+        "vl": 4
+      }
+    },
+    "ltex": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 4,
+      "value_counts": {
+        "h": 69,
+        "l": 6,
+        "n": 14,
+        "vl": 4
+      }
+    },
+    "tool": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 2,
+      "value_counts": {
+        "h": 10,
+        "n": 83
+      }
+    },
+    "site": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 1,
+      "value_counts": {
+        "n": 93
+      }
+    },
+    "sced": {
+      "type": "categorical",
+      "role": "candidate_predictor",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 2,
+      "value_counts": {
+        "l": 34,
+        "n": 59
+      }
+    },
+    "Kloc+": {
+      "type": "numeric",
+      "role": "objective",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 79,
+      "direction": "maximize",
+      "statistics": {
+        "count": 93,
+        "sum": 8744.05,
+        "mean": 94.02204301075268,
+        "std_sample": 133.5979471867733,
+        "min": 0.9,
+        "q25": 15.4,
+        "median": 47.5,
+        "q75": 111.0,
+        "max": 980.0
+      }
+    },
+    "Effort-": {
+      "type": "numeric",
+      "role": "objective",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 74,
+      "direction": "minimize",
+      "statistics": {
+        "count": 93,
+        "sum": 58070.3,
+        "mean": 624.4118279569892,
+        "std_sample": 1135.9280652026785,
+        "min": 8.4,
+        "q25": 70.0,
+        "median": 252.0,
+        "q75": 600.0,
+        "max": 8211.0
+      }
+    },
+    "Defects-": {
+      "type": "numeric",
+      "role": "objective",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 92,
+      "direction": "minimize",
+      "statistics": {
+        "count": 93,
+        "sum": 349844.0,
+        "mean": 3761.7634408602153,
+        "std_sample": 6145.055586471355,
+        "min": 28.0,
+        "q25": 636.0,
+        "median": 2007.0,
+        "q75": 4868.0,
+        "max": 50961.0
+      }
+    },
+    "MonthsX": {
+      "type": "numeric",
+      "role": "metadata",
+      "missing_count": 0,
+      "nonmissing_count": 93,
+      "unique_count": 82,
+      "statistics": {
+        "count": 93,
+        "sum": 2248.4,
+        "mean": 24.176344086021505,
+        "std_sample": 12.967219522364363,
+        "min": 4.9,
+        "q25": 14.8,
+        "median": 21.4,
+        "q75": 31.5,
+        "max": 96.4
+      }
+    }
+  },
+  "conventions": {
+    "missing_tokens_after_stripping": [
+      "",
+      "?",
+      "N/A",
+      "NA",
+      "null"
+    ],
+    "standard_deviation": "sample, denominator n-1; null when fewer than two observations",
+    "quartiles": "linear interpolation at sorted index (n-1)*p",
+    "centerX": "categorical center label; no ordering inferred",
+    "idX_and_YearX": "numeric metadata; identifier statistics have no predictive interpretation",
+    "excluded_inputs": "All X metadata and objective fields are excluded from candidate predictors",
+    "units": "No units supplied or inferred; original field names retained",
+    "limitations": "Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction"
+  }
+}

@@ -1,0 +1,32 @@
+Run from this absolute output directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step04'
+
+Use environment python3 with scikit-learn 1.6.0 (no installations required).
+Verify: python3 -c 'import sklearn; print(sklearn.__version__)'
+
+Entire preserved and extended test suite:
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Step 4 implementation (dataset path is an argument):
+PYTHONDONTWRITEBYTECODE=1 python3 source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output flow.json
+
+Preserved Step 1 demo:
+PYTHONDONTWRITEBYTECODE=1 python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir regression
+
+Preserved Step 2 demo (proposal.json contains only allowed predictors):
+PYTHONDONTWRITEBYTECODE=1 python3 source/predict_effort.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal proposal.json --evaluation regression/evaluation.json
+
+Preserved Step 3 demo:
+PYTHONDONTWRITEBYTECODE=1 python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression/certification.json
+
+Run all tests and demos with measured metrics and captured logs:
+PYTHONDONTWRITEBYTECODE=1 python3 run_experiment.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+The runner appends logs, updates JSON/demo reports and metrics.csv, and records separate test and regression-demo timings in metrics notes. Preserve a copy of metrics.csv inside step04 before rerunning if comparing runs. No files outside step04 are written.
+
+Reusable API (add source/ to sys.path):
+from flow import ProposalFlow, replay
+flow = ProposalFlow()
+pending = flow.receive({'prec': 'n'})  # no outcome argument accepted
+completed = flow.reveal(117.6)        # or None for a missing outcome
+report = flow.report()
+Call receive and reveal once each per arrival. receive validates predictor fields and stores the prediction before reveal accepts the outcome. Only completed arrivals appear in report. Snapshots are detached copies. replay consumes an iterable of parsed row mappings; it extracts only PREDICTORS, calls receive, and then reads the current Effort-.

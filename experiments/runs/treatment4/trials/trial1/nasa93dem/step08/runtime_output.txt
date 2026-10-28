@@ -1,0 +1,785 @@
+
+=== Experiment invocation ===
+
+step08_demo
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/fix.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --demo --example-proposal example_proposal.json --output repair.json
+wall_seconds=1.689404208; exit=0
+{
+  "status": "recommendation",
+  "target": "Effort-",
+  "units": "unspecified",
+  "original_proposal": {
+    "prec": "h",
+    "flex": "h",
+    "resl": "h",
+    "team": "vh",
+    "pmat": "h",
+    "rely": "h",
+    "data": "l",
+    "cplx": "h",
+    "ruse": "n",
+    "docu": "n",
+    "time": "n",
+    "stor": "n",
+    "pvol": "l",
+    "acap": "n",
+    "pcap": "n",
+    "pcon": "n",
+    "apex": "n",
+    "plex": "n",
+    "ltex": "h",
+    "tool": "n",
+    "site": "n",
+    "sced": "l"
+  },
+  "normalized_proposal": {
+    "prec": "h",
+    "flex": "h",
+    "resl": "h",
+    "team": "vh",
+    "pmat": "h",
+    "rely": "h",
+    "data": "l",
+    "cplx": "h",
+    "ruse": "n",
+    "docu": "n",
+    "time": "n",
+    "stor": "n",
+    "pvol": "l",
+    "acap": "n",
+    "pcap": "n",
+    "pcon": "n",
+    "apex": "n",
+    "plex": "n",
+    "ltex": "h",
+    "tool": "n",
+    "site": "n",
+    "sced": "l"
+  },
+  "original_predicted_effort": 89.41280277668291,
+  "recommended_candidate": {
+    "csv_data_row": 37,
+    "predictors": {
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "n",
+      "rely": "n",
+      "data": "n",
+      "cplx": "h",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "n",
+      "pvol": "n",
+      "acap": "n",
+      "pcap": "n",
+      "pcon": "n",
+      "apex": "n",
+      "plex": "n",
+      "ltex": "n",
+      "tool": "n",
+      "site": "n",
+      "sced": "n"
+    },
+    "predicted_effort": 87.37070268853954,
+    "change_cost": 6,
+    "changed_fields": [
+      {
+        "field": "pmat",
+        "old": "h",
+        "new": "n"
+      },
+      {
+        "field": "rely",
+        "old": "h",
+        "new": "n"
+      },
+      {
+        "field": "data",
+        "old": "l",
+        "new": "n"
+      },
+      {
+        "field": "pvol",
+        "old": "l",
+        "new": "n"
+      },
+      {
+        "field": "ltex",
+        "old": "h",
+        "new": "n"
+      },
+      {
+        "field": "sced",
+        "old": "l",
+        "new": "n"
+      }
+    ]
+  },
+  "changed_fields": [
+    {
+      "field": "pmat",
+      "old": "h",
+      "new": "n"
+    },
+    {
+      "field": "rely",
+      "old": "h",
+      "new": "n"
+    },
+    {
+      "field": "data",
+      "old": "l",
+      "new": "n"
+    },
+    {
+      "field": "pvol",
+      "old": "l",
+      "new": "n"
+    },
+    {
+      "field": "ltex",
+      "old": "h",
+      "new": "n"
+    },
+    {
+      "field": "sced",
+      "old": "l",
+      "new": "n"
+    }
+  ],
+  "change_cost": 6,
+  "predicted_reduction": 2.0421000881433713,
+  "no_improvement_reason": null,
+  "search": {
+    "scope": "Complete predictor configurations observed in training rows only; duplicates collapsed to earliest CSV data row.",
+    "training_rows": 68,
+    "excluded_incomplete_training_rows": 0,
+    "complete_training_rows": 68,
+    "duplicate_complete_rows": 27,
+    "unique_candidates_evaluated": 41,
+    "improving_candidates": 1,
+    "training_csv_data_rows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      16,
+      17,
+      18,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      58,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      71,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      83,
+      84,
+      85,
+      86,
+      87,
+      89,
+      90,
+      91,
+      92,
+      93
+    ],
+    "held_out_rows_excluded": 25,
+    "tie_rule": "Strictly lower predicted effort; minimize differing normalized fields, then predicted effort, then earliest one-based CSV data row. Exact comparisons, no tolerance.",
+    "change_cost_definition": "Number of differing normalized categorical predictor fields"
+  },
+  "model": {
+    "implementation": "Unchanged predict_effort.evaluate, fit_training, normalization and estimate",
+    "seed": 42,
+    "fit_scope": "training only; no full-data refit",
+    "partition": "Existing seed-42 grouped partition; identical normalized predictors stay together",
+    "dependency_versions": {
+      "python": "3.12.6",
+      "scikit-learn": "1.6.0",
+      "numpy": "2.3.5",
+      "scipy": "1.16.3"
+    }
+  },
+  "human_review_required": true,
+  "limitations": [
+    "The dataset supplies neither intervention costs nor a calibrated risk measure.",
+    "Lower predicted Effort- is an illustrative planning proxy, not a probability of failure or measured risk.",
+    "Change cost counts differing normalized categorical predictor fields, not monetary or operational cost; all fields have equal weight.",
+    "Physical effort units are unspecified. Predicted reduction is not causal savings, calibrated risk reduction, or guaranteed budget compliance.",
+    "Observed historical combinations do not establish operational feasibility for this proposal.",
+    "Not all project characteristics are controllable process settings; a human must review controllability, feasibility, dependencies, and actual costs.",
+    "Small observational training sample, confounding, prediction error, unseen categories, and model-selection optimism limit this suggestion.",
+    "Search is exhaustive only within complete training predictor configurations, not all possible interventions; no global real-world cheapest change is established.",
+    "Predictor availability at proposal time is assumed. No uncertainty bounds or prospective intervention validation are supplied.",
+    "Training eligibility and grouped partition reuse the existing observed-target availability rule; held-out outcome values never rank candidates."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "demo": {
+    "illustrative": true,
+    "proposal_csv_data_row": 1,
+    "selection": "Predictors of earliest training data row; observed effort did not select proposal or rank repairs."
+  }
+}
+
+step01_summarize
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/summary'
+wall_seconds=0.029696000; exit=0
+NASA93 historical projects and delivery outcomes
+Projects: 93; columns: 29
+Numeric columns: 6; categorical columns: 23
+Missing cells: 0
+Candidate predictors: prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced
+Metadata excluded from optimization and predictors: idX, centerX, YearX, MonthsX
+Objectives: Kloc+ maximize; Effort- minimize; Defects- minimize.
+Delivery outcomes (MonthsX is descriptive metadata):
+  Kloc+ [objective]: {"count": 93, "max": 980.0, "mean": 94.02204301075268, "median": 47.5, "min": 0.9, "q25": 15.4, "q75": 111.0, "std_sample": 133.5979471867733, "sum": 8744.05}
+  Effort- [objective]: {"count": 93, "max": 8211.0, "mean": 624.4118279569892, "median": 252.0, "min": 8.4, "q25": 70.0, "q75": 600.0, "std_sample": 1135.9280652026785, "sum": 58070.3}
+  Defects- [objective]: {"count": 93, "max": 50961.0, "mean": 3761.7634408602153, "median": 2007.0, "min": 28.0, "q25": 636.0, "q75": 4868.0, "std_sample": 6145.055586471355, "sum": 349844.0}
+  MonthsX [metadata]: {"count": 93, "max": 96.4, "mean": 24.176344086021505, "median": 21.4, "min": 4.9, "q25": 14.8, "q75": 31.5, "std_sample": 12.967219522364363, "sum": 2248.4}
+All project characteristics, missing counts, numeric summaries, and categorical counts:
+  idX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 93.0, "mean": 46.98924731182796, "median": 47.0, "min": 1.0, "q25": 24.0, "q75": 70.0, "std_sample": 26.997783573944794, "sum": 4370.0}, "type": "numeric", "unique_count": 92}
+  centerX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "type": "categorical", "unique_count": 5, "value_counts": {"1": 12, "2": 37, "3": 2, "5": 39, "6": 3}}
+  YearX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 1987.0, "mean": 1980.8279569892472, "median": 1980.0, "min": 1971.0, "q25": 1979.0, "q75": 1983.0, "std_sample": 3.3350042562842876, "sum": 184217.0}, "type": "numeric", "unique_count": 14}
+  prec: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  flex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  resl: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  team: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"vh": 93}}
+  pmat: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 43, "l": 20, "n": 30}}
+  rely: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 42, "l": 2, "n": 39, "vh": 10}}
+  data: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 17, "l": 37, "n": 31, "vh": 8}}
+  cplx: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 5, "value_counts": {"h": 58, "l": 3, "n": 10, "vh": 17, "xh": 5}}
+  ruse: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  docu: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  time: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 13, "n": 54, "vh": 18, "xh": 8}}
+  stor: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 10, "n": 49, "vh": 21, "xh": 13}}
+  pvol: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 9, "l": 65, "n": 19}}
+  acap: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 51, "n": 32, "vh": 10}}
+  pcap: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 39, "n": 44, "vh": 10}}
+  pcon: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  apex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 46, "l": 1, "n": 34, "vh": 12}}
+  plex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 22, "l": 14, "n": 53, "vl": 4}}
+  ltex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 69, "l": 6, "n": 14, "vl": 4}}
+  tool: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 2, "value_counts": {"h": 10, "n": 83}}
+  site: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  sced: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 2, "value_counts": {"l": 34, "n": 59}}
+  Kloc+: {"direction": "maximize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 980.0, "mean": 94.02204301075268, "median": 47.5, "min": 0.9, "q25": 15.4, "q75": 111.0, "std_sample": 133.5979471867733, "sum": 8744.05}, "type": "numeric", "unique_count": 79}
+  Effort-: {"direction": "minimize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 8211.0, "mean": 624.4118279569892, "median": 252.0, "min": 8.4, "q25": 70.0, "q75": 600.0, "std_sample": 1135.9280652026785, "sum": 58070.3}, "type": "numeric", "unique_count": 74}
+  Defects-: {"direction": "minimize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 50961.0, "mean": 3761.7634408602153, "median": 2007.0, "min": 28.0, "q25": 636.0, "q75": 4868.0, "std_sample": 6145.055586471355, "sum": 349844.0}, "type": "numeric", "unique_count": 92}
+  MonthsX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 96.4, "mean": 24.176344086021505, "median": 21.4, "min": 4.9, "q25": 14.8, "q75": 31.5, "std_sample": 12.967219522364363, "sum": 2248.4}, "type": "numeric", "unique_count": 82}
+Assumptions and limitations:
+  missing_tokens_after_stripping: ['', '?', 'N/A', 'NA', 'null']
+  standard_deviation: sample, denominator n-1; null when fewer than two observations
+  quartiles: linear interpolation at sorted index (n-1)*p
+  centerX: categorical center label; no ordering inferred
+  idX_and_YearX: numeric metadata; identifier statistics have no predictive interpretation
+  excluded_inputs: All X metadata and objective fields are excluded from candidate predictors
+  units: No units supplied or inferred; original field names retained
+  limitations: Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction
+
+step02_predict
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/predict_effort.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --evaluation '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/evaluation.json'
+wall_seconds=0.884956917; exit=0
+{
+  "estimated Effort-": 89.41280277668291,
+  "units": "unspecified",
+  "training_samples": 68,
+  "evaluation_samples": 25,
+  "model_mae": 531.2119860706141,
+  "baseline_mae": 674.0317647058823,
+  "decision_note": "An effort estimate alone does not justify approving a proposal."
+}
+
+step03_justify
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/justification' --illustrative
+wall_seconds=1.112373792; exit=0
+Illustrative demo proposal; not an actual approval request
+Proposal model estimate: Effort- = 89.412803; physical units unspecified.
+Model: RandomForestRegressor; settings: {"bootstrap": true, "ccp_alpha": 0.0, "criterion": "squared_error", "max_depth": null, "max_features": 1.0, "max_leaf_nodes": null, "max_samples": null, "min_impurity_decrease": 0.0, "min_samples_leaf": 2, "min_samples_split": 2, "min_weight_fraction_leaf": 0.0, "monotonic_cst": null, "n_estimators": 200, "n_jobs": 1, "oob_score": false, "random_state": 42, "verbose": 0, "warm_start": false}.
+Normalization, explicit missing level and one-hot encoding reuse the preserved estimator; all learned preprocessing uses training rows only.
+Proposal characteristics (missing includes omitted keys and normalized missing tokens):
+  prec: raw='h', normalized='h', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  flex: raw='h', normalized='h', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  resl: raw='h', normalized='h', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  team: raw='vh', normalized='vh', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  pmat: raw='h', normalized='h', status=seen, supplied key=True; training category count=31, mean effort=813.6322580645161.
+  rely: raw='h', normalized='h', status=seen, supplied key=True; training category count=38, mean effort=381.86842105263156.
+  data: raw='l', normalized='l', status=seen, supplied key=True; training category count=27, mean effort=163.2962962962963.
+  cplx: raw='h', normalized='h', status=seen, supplied key=True; training category count=43, mean effort=300.7953488372093.
+  ruse: raw='n', normalized='n', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  docu: raw='n', normalized='n', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  time: raw='n', normalized='n', status=seen, supplied key=True; training category count=41, mean effort=302.5365853658537.
+  stor: raw='n', normalized='n', status=seen, supplied key=True; training category count=41, mean effort=294.10243902439026.
+  pvol: raw='l', normalized='l', status=seen, supplied key=True; training category count=44, mean effort=392.04545454545456.
+  acap: raw='n', normalized='n', status=seen, supplied key=True; training category count=29, mean effort=244.41379310344828.
+  pcap: raw='n', normalized='n', status=seen, supplied key=True; training category count=35, mean effort=328.65714285714284.
+  pcon: raw='n', normalized='n', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  apex: raw='n', normalized='n', status=seen, supplied key=True; training category count=29, mean effort=254.06896551724137.
+  plex: raw='n', normalized='n', status=seen, supplied key=True; training category count=47, mean effort=340.79148936170213.
+  ltex: raw='h', normalized='h', status=seen, supplied key=True; training category count=49, mean effort=658.5877551020408.
+  tool: raw='n', normalized='n', status=seen, supplied key=True; training category count=61, mean effort=604.4393442622951.
+  site: raw='n', normalized='n', status=seen, supplied key=True; training category count=68, mean effort=611.9529411764706.
+  sced: raw='l', normalized='l', status=seen, supplied key=True; training category count=22, mean effort=293.0.
+Historical training context: n=68, mean=611.9529411764706, median=276.0, range=[8.4, 8211.0]; exact normalized configuration count=15.
+Nearest historical training examples (equal-weight nominal mismatch; comparability is not established):
+  Data row index=0, mismatched predictors=0, observed effort=117.6.
+  Data row index=1, mismatched predictors=0, observed effort=117.6.
+  Data row index=2, mismatched predictors=0, observed effort=31.2.
+  Data row index=3, mismatched predictors=0, observed effort=36.0.
+  Data row index=4, mismatched predictors=0, observed effort=25.2.
+Separate aggregate evaluation: held-out n=25; model MAE=531.211986; training-mean baseline MAE=674.031765; constant baseline prediction=611.952941.
+These MAEs describe one held-out partition, not this proposal error or an uncertainty interval.
+Global historical associations (training only; no causal effects or additive contributions to the proposal prediction):
+  time: eta squared=0.380858; eligible n=68.
+  rely: eta squared=0.352133; eligible n=68.
+  data: eta squared=0.236565; eligible n=68.
+  stor: eta squared=0.208024; eligible n=68.
+  plex: eta squared=0.193139; eligible n=68.
+  cplx: eta squared=0.158574; eligible n=68.
+  apex: eta squared=0.094778; eligible n=68.
+  pvol: eta squared=0.083268; eligible n=68.
+  acap: eta squared=0.075705; eligible n=68.
+  pcap: eta squared=0.067631; eligible n=68.
+  pmat: eta squared=0.046810; eligible n=68.
+  sced: eta squared=0.036288; eligible n=68.
+  ltex: eta squared=0.004727; eligible n=68.
+  tool: eta squared=0.000367; eligible n=68.
+Local model sensitivity: each query changes one field, holding other proposal inputs fixed. These are model responses, not feasible plans or causal effort savings; deltas must not be summed.
+  pmat: 'h' -> 'l': estimate=374.480061, delta=285.067259, training level support=13.
+  pmat: 'h' -> 'n': estimate=88.512686, delta=-0.900116, training level support=24.
+  rely: 'h' -> 'l': estimate=314.245133, delta=224.832330, training level support=2.
+  rely: 'h' -> 'n': estimate=98.995133, delta=9.582330, training level support=21.
+  rely: 'h' -> 'vh': estimate=874.671633, delta=785.258830, training level support=7.
+  data: 'l' -> 'h': estimate=551.036069, delta=461.623266, training level support=14.
+  data: 'l' -> 'n': estimate=237.005106, delta=147.592303, training level support=25.
+  data: 'l' -> 'vh': estimate=305.895912, delta=216.483109, training level support=2.
+  cplx: 'h' -> 'l': estimate=197.123028, delta=107.710225, training level support=3.
+  cplx: 'h' -> 'n': estimate=165.092575, delta=75.679772, training level support=6.
+  cplx: 'h' -> 'vh': estimate=152.933922, delta=63.521119, training level support=16.
+  time: 'n' -> 'h': estimate=222.409979, delta=132.997177, training level support=10.
+  time: 'n' -> 'vh': estimate=143.688202, delta=54.275399, training level support=11.
+  time: 'n' -> 'xh': estimate=1694.898385, delta=1605.485582, training level support=6.
+  stor: 'n' -> 'h': estimate=407.606463, delta=318.193660, training level support=7.
+  stor: 'n' -> 'vh': estimate=153.429946, delta=64.017143, training level support=9.
+  stor: 'n' -> 'xh': estimate=148.124898, delta=58.712095, training level support=11.
+  pvol: 'l' -> 'h': estimate=132.520760, delta=43.107957, training level support=7.
+  pvol: 'l' -> 'n': estimate=84.183158, delta=-5.229645, training level support=17.
+  acap: 'n' -> 'h': estimate=205.487046, delta=116.074243, training level support=36.
+  acap: 'n' -> 'vh': estimate=194.023975, delta=104.611172, training level support=3.
+  pcap: 'n' -> 'h': estimate=187.142122, delta=97.729319, training level support=25.
+  pcap: 'n' -> 'vh': estimate=253.650408, delta=164.237605, training level support=8.
+  apex: 'n' -> 'h': estimate=119.332558, delta=29.919755, training level support=30.
+  apex: 'n' -> 'l': estimate=102.728366, delta=13.315563, training level support=1.
+  apex: 'n' -> 'vh': estimate=112.539416, delta=23.126613, training level support=8.
+  plex: 'n' -> 'h': estimate=167.056722, delta=77.643919, training level support=12.
+  plex: 'n' -> 'l': estimate=139.861560, delta=50.448757, training level support=6.
+  plex: 'n' -> 'vl': estimate=135.461994, delta=46.049191, training level support=3.
+  ltex: 'h' -> 'l': estimate=101.426685, delta=12.013883, training level support=6.
+  ltex: 'h' -> 'n': estimate=100.894973, delta=11.482170, training level support=10.
+  ltex: 'h' -> 'vl': estimate=124.450081, delta=35.037279, training level support=3.
+  tool: 'n' -> 'h': estimate=164.322637, delta=74.909835, training level support=7.
+  sced: 'l' -> 'n': estimate=97.893102, delta=8.480299, training level support=46.
+Limitations:
+Physical effort units are unspecified. MAE is aggregate held-out error, not an interval for this proposal; no confidence or prediction interval is supplied.
+Historical observational associations and local model sensitivity establish neither causal savings nor operational feasibility. Sensitivities are not additive contributions.
+Small, potentially related historical projects and one grouped split limit generalization; identical inputs are grouped, but broader project dependencies may remain.
+Missing inputs use the existing explicit missing level; unseen categories encode as zeros. Either can place the proposal outside well-supported training combinations.
+Equal-weight nominal similarity is descriptive and does not establish project comparability; marginal category support does not establish joint support.
+Delivered size, defects, identifiers and other metadata are excluded. Proposal-time availability of supplied predictors must be verified.
+Training-based global associations can be confounded by project size and correlated characteristics; small categories and extreme efforts can dominate.
+Random forest averages historical training outcomes and may miss novel or extreme effort. Missing-target rows are excluded without imputation.
+An effort estimate alone does not justify approving a proposal.
+Information needed before approval:
+Confirm scope, deliverables, project size, acceptance criteria and proposal-time predictor ratings with accountable owners.
+Specify effort units and conversion to cost, staffing capacity, schedule dependencies and a sponsor-approved budget.
+Review comparable projects, novelty, risks, alternatives, expected benefits and contingency requirements; validate on relevant recent projects.
+Obtain explicit sponsor acceptance of uncertainty and decision criteria before approval.
+Evidence supports review of an estimate, not automatic approval.
+
+step04_blame
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/blame.json'
+wall_seconds=0.918518459; exit=0
+Project factors accompanying higher observed effort (physical units unspecified).
+This is an exploratory description of raw effort, not a diagnosis of budget overrun or excessive effort.
+Ranking uses categorical eta squared: between-category variation divided by total variation.
+The score measures association strength; category means below supply direction. No category ordering is assumed.
+Rank 1: time, eta2=0.417943, eligible n=93.
+  'h': projects=13, observed n=13, mean=734.0769230769231, median=458.0; higher than eligible mean; small-category warning=False.
+  'n': projects=54, observed n=54, mean=334.3888888888889, median=156.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=18, observed n=18, mean=375.34444444444443, median=215.5; lower than eligible mean; small-category warning=False.
+  'xh': projects=8, observed n=8, mean=2964.2625, median=1848.5; higher than eligible mean; small-category warning=False.
+Rank 2: rely, eta2=0.342147, eligible n=93.
+  'h': projects=42, observed n=42, mean=483.54761904761904, median=326.4; lower than eligible mean; small-category warning=False.
+  'l': projects=2, observed n=2, mean=1296.0, median=1296.0; higher than eligible mean; small-category warning=True.
+  'n': projects=39, observed n=39, mean=269.1589743589744, median=170.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=2467.21, median=1709.2; higher than eligible mean; small-category warning=False.
+Rank 3: cplx, eta2=0.191680, eligible n=93.
+  'h': projects=58, observed n=58, mean=315.2448275862069, median=118.8; lower than eligible mean; small-category warning=False.
+  'l': projects=3, observed n=3, mean=844.3333333333334, median=973.0; higher than eligible mean; small-category warning=True.
+  'n': projects=10, observed n=10, mean=494.2, median=320.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=17, observed n=17, mean=1341.270588235294, median=648.0; higher than eligible mean; small-category warning=False.
+  'xh': projects=5, observed n=5, mean=1901.9, median=1924.5; higher than eligible mean; small-category warning=False.
+Rank 4: stor, eta2=0.163585, eligible n=93.
+  'h': projects=10, observed n=10, mean=887.7, median=580.5; higher than eligible mean; small-category warning=False.
+  'n': projects=49, observed n=49, mean=323.24897959183676, median=117.6; lower than eligible mean; small-category warning=False.
+  'vh': projects=21, observed n=21, mean=555.1904761904761, median=240.0; lower than eligible mean; small-category warning=False.
+  'xh': projects=13, observed n=13, mean=1668.8538461538462, median=648.0; higher than eligible mean; small-category warning=False.
+Rank 5: plex, eta2=0.152537, eligible n=93.
+  'h': projects=22, observed n=22, mean=1285.6863636363637, median=651.5; higher than eligible mean; small-category warning=False.
+  'l': projects=14, observed n=14, mean=346.85714285714283, median=203.5; lower than eligible mean; small-category warning=False.
+  'n': projects=53, observed n=53, mean=352.68301886792455, median=117.6; lower than eligible mean; small-category warning=False.
+  'vl': projects=4, observed n=4, mean=1559.25, median=623.5; higher than eligible mean; small-category warning=True.
+Rank 6: data, eta2=0.143988, eligible n=93.
+  'h': projects=17, observed n=17, mean=1522.1941176470589, median=1181.0; higher than eligible mean; small-category warning=False.
+  'l': projects=37, observed n=37, mean=370.1621621621622, median=72.0; lower than eligible mean; small-category warning=False.
+  'n': projects=31, observed n=31, mean=502.4516129032258, median=300.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=8, observed n=8, mean=365.125, median=181.0; lower than eligible mean; small-category warning=False.
+Rank 7: acap, eta2=0.060616, eligible n=93.
+  'h': projects=51, observed n=51, mean=876.1235294117647, median=420.0; higher than eligible mean; small-category warning=False.
+  'n': projects=32, observed n=32, mean=301.34375, median=75.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=374.5, median=215.5; lower than eligible mean; small-category warning=False.
+Rank 8: pvol, eta2=0.057823, eligible n=93.
+  'h': projects=9, observed n=9, mean=557.4444444444445, median=480.0; lower than eligible mean; small-category warning=False.
+  'l': projects=65, observed n=65, mean=477.53846153846155, median=240.0; lower than eligible mean; small-category warning=False.
+  'n': projects=19, observed n=19, mean=1158.5947368421052, median=252.0; higher than eligible mean; small-category warning=False.
+Rank 9: pcap, eta2=0.057441, eligible n=93.
+  'h': projects=39, observed n=39, mean=921.623076923077, median=400.0; higher than eligible mean; small-category warning=False.
+  'n': projects=44, observed n=44, mean=348.70454545454544, median=115.8; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=678.4, median=425.0; higher than eligible mean; small-category warning=False.
+Rank 10: sced, eta2=0.054554, eligible n=93.
+  'l': projects=34, observed n=34, mean=276.79411764705884, median=118.8; lower than eligible mean; small-category warning=False.
+  'n': projects=59, observed n=59, mean=824.7338983050847, median=400.0; higher than eligible mean; small-category warning=False.
+Rank 11: pmat, eta2=0.050721, eligible n=93.
+  'h': projects=43, observed n=43, mean=791.5837209302325, median=278.0; higher than eligible mean; small-category warning=False.
+  'l': projects=20, observed n=20, mean=817.66, median=501.7; higher than eligible mean; small-category warning=False.
+  'n': projects=30, observed n=30, mean=255.96666666666667, median=132.0; lower than eligible mean; small-category warning=False.
+Rank 12: apex, eta2=0.023126, eligible n=93.
+  'h': projects=46, observed n=46, mean=774.7021739130435, median=276.0; higher than eligible mean; small-category warning=False.
+  'l': projects=1, observed n=1, mean=648.0, median=648.0; higher than eligible mean; small-category warning=True.
+  'n': projects=34, observed n=34, mean=402.47058823529414, median=117.6; lower than eligible mean; small-category warning=False.
+  'vh': projects=12, observed n=12, mean=675.1666666666666, median=342.0; higher than eligible mean; small-category warning=False.
+Rank 13: ltex, eta2=0.004630, eligible n=93.
+  'h': projects=69, observed n=69, mean=662.0333333333333, median=252.0; higher than eligible mean; small-category warning=False.
+  'l': projects=6, observed n=6, mean=427.3333333333333, median=259.0; lower than eligible mean; small-category warning=False.
+  'n': projects=14, observed n=14, mean=587.2857142857143, median=162.0; lower than eligible mean; small-category warning=False.
+  'vl': projects=4, observed n=4, mean=401.0, median=395.0; lower than eligible mean; small-category warning=True.
+Rank 14: tool, eta2=0.002189, eligible n=93.
+  'h': projects=10, observed n=10, mean=776.7, median=528.5; higher than eligible mean; small-category warning=False.
+  'n': projects=83, observed n=83, mean=606.0638554216868, median=215.0; lower than eligible mean; small-category warning=False.
+Constant factors across nonmissing inputs: prec, flex, resl, team, ruse, docu, pcon, site
+prec: constant_on_observed_rows; no supported between-category strength ranking.
+flex: constant_on_observed_rows; no supported between-category strength ranking.
+resl: constant_on_observed_rows; no supported between-category strength ranking.
+team: constant_on_observed_rows; no supported between-category strength ranking.
+ruse: constant_on_observed_rows; no supported between-category strength ranking.
+docu: constant_on_observed_rows; no supported between-category strength ranking.
+pcon: constant_on_observed_rows; no supported between-category strength ranking.
+site: constant_on_observed_rows; no supported between-category strength ranking.
+Planning use: review these historical category groups alongside project scope, size and context; the ranking does not show savings from changing a factor.
+Exploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.
+Higher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.
+Kloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.
+Correlated factors can share the same association; univariate scores do not isolate independent contributions or interactions.
+Observational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.
+Small categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.
+Eta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.
+Missing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.
+Constant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.
+Physical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.
+All data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used.
+
+step05_certify
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/certification.json'
+wall_seconds=0.374712125; exit=0
+{
+  "target": "Effort-",
+  "units": "unspecified",
+  "baseline": {
+    "count": 83,
+    "sum": 50303.3,
+    "mean": 606.0638554216868,
+    "std_sample": 1177.9397248004684,
+    "min": 8.4,
+    "q25": 60.0,
+    "median": 215.0,
+    "q75": 573.7,
+    "max": 8211.0,
+    "excluded_missing_outcomes": 0
+  },
+  "candidate": {
+    "count": 10,
+    "sum": 7767.0,
+    "mean": 776.7,
+    "std_sample": 720.5163349216233,
+    "min": 72.0,
+    "q25": 433.5,
+    "median": 528.5,
+    "q75": 1047.75,
+    "max": 2460.0,
+    "excluded_missing_outcomes": 0
+  },
+  "difference_candidate_minus_baseline": 170.6361445783133,
+  "relative_mean_reduction": -0.2815481290491877,
+  "observed_direction": "higher",
+  "statistical": {
+    "method": "Welch independent two-sample two-sided t test and 95% t confidence interval",
+    "null": "population mean candidate effort equals population mean baseline effort",
+    "alpha": 0.05,
+    "standard_error": 261.97662553325733,
+    "degrees_of_freedom": 15.552580855698572,
+    "t_statistic": 0.6513411043102829,
+    "p_value_two_sided": 0.5243346705603102,
+    "mean_difference_ci95": [
+      -386.0308077262547,
+      727.3030968828813
+    ],
+    "evidence": "no_detected_difference"
+  },
+  "practical": {
+    "fraction_of_baseline_mean": 0.1,
+    "absolute_reduction_threshold": 60.60638554216868,
+    "criterion": "candidate mean is at least the threshold below baseline mean; strict CI upper bound below negative threshold supports it",
+    "observed_threshold_met": false,
+    "supported_by_ci95": false,
+    "zero_baseline_note": "A zero baseline cannot support a positive relative reduction."
+  },
+  "bootstrap_sensitivity": {
+    "method": "independent within-group percentile bootstrap of mean difference",
+    "seed": 42,
+    "resamples": 20000,
+    "ci95": [
+      -293.64298192771093,
+      682.0696084337349
+    ]
+  },
+  "small_sample_warning": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "manager_conclusion": "A difference in population mean effort was not detected; this is not proof of equivalence. The interval does not establish the illustrative practical reduction. These observations do not establish that changing the process causes cost savings.",
+  "limitations": [
+    "Observational groups, not randomized process assignments: project size (Kloc+) and other characteristics may confound raw effort differences. No causal cost savings are established.",
+    "Effort- is minimized; physical units are unspecified. Only observed outcomes are used, never model predictions.",
+    "Welch inference assumes independent projects, representative sampling, finite variances, and approximately normal sampling distributions of means. Related projects, skew, extreme values, and small samples can undermine it.",
+    "Unequal group variances are allowed. Historical convenience samples do not establish generalizability to future proposals.",
+    "Missing outcomes are excluded without imputation; selection bias remains possible.",
+    "The practical threshold is an illustrative planning rule: 10% of the observed baseline mean, not a manager-approved economic requirement. It is data-dependent; uncertainty in this threshold is not propagated.",
+    "No detected difference is not proof of equivalence. No equivalence test or causal adjustment is performed.",
+    "This does not complete the separate required same analysis: its exact procedure was not supplied.",
+    "Bootstrap percentile intervals are a sensitivity description, not a second decision test; they can be unreliable with small or skewed samples."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "group_definitions": {
+    "baseline": "tool=n",
+    "candidate": "tool=h",
+    "selection": "Fixed before interpreting outcomes; all observed efforts in these groups",
+    "excluded_other_or_missing_tool_rows": 0
+  }
+}
+
+step06_choose
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --budget 100 --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/selection.json'
+wall_seconds=0.811504375; exit=0
+Illustrative effort budget: 100 (unspecified effort units).
+Among recorded rows with both observed Effort- and Kloc+, require Effort- <= budget; maximize Kloc+, then minimize Effort-, then choose the earliest one-based CSV data-row number.
+One-based CSV data-row number, excluding header; idX is metadata and need not be unique.
+Candidate counts: {"eligible_rows": 93, "excluded_missing_required_outcomes": 0, "feasible_candidates": 31, "missing_by_required_outcome": {"Effort-": 0, "Kloc+": 0}, "over_budget_candidates": 62, "total_rows": 93}
+Selected CSV data row: 78.
+Recorded characteristics: {"acap": "h", "apex": "h", "cplx": "vh", "data": "n", "docu": "n", "flex": "h", "ltex": "h", "pcap": "h", "pcon": "n", "plex": "h", "pmat": "l", "prec": "h", "pvol": "l", "rely": "h", "resl": "h", "ruse": "n", "sced": "l", "site": "n", "stor": "vh", "team": "vh", "time": "n", "tool": "n"}
+Observed outcomes: {"Defects-": 7867.0, "Effort-": 97.0, "Kloc+": 165.0}
+Metadata (not identity or predictor inputs): {"MonthsX": 31.5, "YearX": 1979.0, "centerX": "5", "idX": 78.0}
+Feasibility evidence: {"budget": 100.0, "comparison": "Effort- <= budget", "observed_effort": 97.0, "remaining_effort_budget": 3.0, "satisfied": true}
+The supplied budget is illustrative in unspecified effort units, not a monetary budget or sponsor-approved threshold.
+Kloc+ is delivered code size, an illustrative value proxy, not demonstrated business value. More code is not necessarily better for a real client.
+Historical outcomes illustrate constrained selection; they do not prove a proposed project will satisfy the budget.
+Select one recorded project, not a portfolio or an unseen combination of categorical settings.
+No proposal-time prediction is performed. Delivered Kloc+, Effort-, Defects- and X metadata are never proposal-time predictor inputs.
+Rows missing either required selection outcome are excluded, never imputed. Missing defects do not exclude a candidate.
+This demonstration has no objective-evaluation budget and does not perform budgeted benchmark search.
+Feasibility uses an inclusive comparison of parsed finite numeric effort with the budget, with no tolerance or unit conversion.
+
+step07_flow
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/regression/flow.json'
+wall_seconds=6.611688417; exit=0
+{
+  "arrival_rule": "Original CSV data row order; zero-based row_index excludes header. Simulated arrival sequence, not verified chronological order or actual proposal-time data.",
+  "units": "unspecified",
+  "warm_up_policy": {
+    "minimum_prior_observed_efforts": 2,
+    "rule": "No prediction until two prior observed outcomes are available; missing outcomes do not advance warm-up. No external history or future fitting."
+  },
+  "final_summary": {
+    "arrivals": 93,
+    "observed_outcomes": 93,
+    "missing_outcomes": 0,
+    "available_predictions": 91,
+    "warm_up_arrivals": 2,
+    "scored_arrivals": 91,
+    "history_size": 93,
+    "cumulative_absolute_error": 44607.76816042089,
+    "cumulative_mae": 490.1952545101197,
+    "prediction_error_summary": {
+      "count": 91,
+      "sum": 44607.76816042089,
+      "mean": 490.1952545101197,
+      "std_sample": 854.976902997125,
+      "min": 4.379529428904448,
+      "q25": 60.92473692754613,
+      "median": 240.55369227680535,
+      "q75": 529.1954349948716,
+      "max": 5805.764947059884
+    },
+    "observed_effort_summary": {
+      "count": 93,
+      "sum": 58070.3,
+      "mean": 624.4118279569892,
+      "std_sample": 1135.9280652026785,
+      "min": 8.4,
+      "q25": 70.0,
+      "median": 252.0,
+      "q75": 600.0,
+      "max": 8211.0
+    }
+  },
+  "limitations": [
+    "CSV order is a simulated arrival sequence, not verified chronological order or actual proposal-time data.",
+    "Predictor availability at proposal time is assumed, not demonstrated by this historical dataset.",
+    "Effort units are unspecified. No automatic project approval or uncertainty guarantees are provided.",
+    "Earlier identical normalized predictor configurations may inform later arrivals once their efforts are revealed.",
+    "Sequential cumulative MAE is distinct from Step 2 independent grouped holdout evaluation; duplicates are not held out here.",
+    "Every present outcome is assumed revealed immediately after its prediction; real reporting delays are not modeled.",
+    "Missing outcomes are counted but neither scored nor added to training history; delayed backfill is not supported.",
+    "Two observed efforts are a deterministic availability threshold, not evidence of model reliability.",
+    "Small observational sample, missingness, distribution changes, and novel categories can impair accuracy.",
+    "The seeded 200-tree forest and learned preprocessing are refitted on prior observed records for every available prediction.",
+    "Unseen categories encode as all zeros; missing predictors use the existing explicit empty-string level.",
+    "Kloc+, Defects-, Effort-, all X-suffixed metadata and unknown fields are excluded from proposal predictors."
+  ]
+}
+
+test_suite
+$ /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m unittest discover -s tests -v
+wall_seconds=28.197280250; exit=0
+test_cli_valid_and_invalid (test_blame.DiagnosisTests.test_cli_valid_and_invalid) ... ok
+test_independent_arithmetic_direction_ties_and_constants (test_blame.DiagnosisTests.test_independent_arithmetic_direction_ties_and_constants) ... ok
+test_independent_dataset_decimal_ranking_and_summaries (test_blame.DiagnosisTests.test_independent_dataset_decimal_ranking_and_summaries) ... ok
+test_invalid_inputs (test_blame.DiagnosisTests.test_invalid_inputs) ... ok
+test_missing_values_pairwise_counts_and_normalization (test_blame.DiagnosisTests.test_missing_values_pairwise_counts_and_normalization) ... ok
+test_nominal_relabeling_preserves_strength_not_direction_of_names (test_blame.DiagnosisTests.test_nominal_relabeling_preserves_strength_not_direction_of_names) ... ok
+test_reproducible_detached_no_mutation_and_exclusions (test_blame.DiagnosisTests.test_reproducible_detached_no_mutation_and_exclusions) ... ok
+test_small_category_boundary (test_blame.DiagnosisTests.test_small_category_boundary) ... ok
+test_zero_variance_singleton_and_empty_categories (test_blame.DiagnosisTests.test_zero_variance_singleton_and_empty_categories) ... ok
+test_degenerate_and_zero_baseline (test_certify.ComparisonTests.test_degenerate_and_zero_baseline) ... ok
+test_hand_calculated_welch (test_certify.ComparisonTests.test_hand_calculated_welch) ... ok
+test_identical_samples (test_certify.ComparisonTests.test_identical_samples) ... ok
+test_improvement_and_reverse (test_certify.ComparisonTests.test_improvement_and_reverse) ... ok
+test_independent_dataset_and_cli (test_certify.ComparisonTests.test_independent_dataset_and_cli) ... ok
+test_missing_and_reproducibility (test_certify.ComparisonTests.test_missing_and_reproducibility) ... ok
+test_small_invalid_samples (test_certify.ComparisonTests.test_small_invalid_samples) ... ok
+test_statistical_vs_practical (test_certify.ComparisonTests.test_statistical_vs_practical) ... ok
+test_csv_missing_tokens_and_cli_contract (test_choose.SelectionTests.test_csv_missing_tokens_and_cli_contract) ... ok
+test_exact_boundary_no_tolerance_and_zero (test_choose.SelectionTests.test_exact_boundary_no_tolerance_and_zero) ... ok
+test_independent_exhaustive_actual_csv (test_choose.SelectionTests.test_independent_exhaustive_actual_csv) ... ok
+test_invalid_budgets_and_outcomes (test_choose.SelectionTests.test_invalid_budgets_and_outcomes) ... ok
+test_json_explanation_and_caveats (test_choose.SelectionTests.test_json_explanation_and_caveats) ... ok
+test_maximum_value_and_budget_feasibility (test_choose.SelectionTests.test_maximum_value_and_budget_feasibility) ... ok
+test_missing_outcomes_union_counts_and_original_row_identity (test_choose.SelectionTests.test_missing_outcomes_union_counts_and_original_row_identity) ... ok
+test_no_feasible_candidates_and_empty (test_choose.SelectionTests.test_no_feasible_candidates_and_empty) ... ok
+test_no_mutation_no_model_fit_and_no_invented_configuration (test_choose.SelectionTests.test_no_mutation_no_model_fit_and_no_invented_configuration) ... ok
+test_ties_lower_effort_then_earlier_data_row_duplicate_id (test_choose.SelectionTests.test_ties_lower_effort_then_earlier_data_row_duplicate_id) ... ok
+test_cli_proposal_demo_and_invalid_json (test_fix.RepairTests.test_cli_proposal_demo_and_invalid_json) ... ok
+test_complete_normalization_and_general_missing_api_preserved (test_fix.RepairTests.test_complete_normalization_and_general_missing_api_preserved) ... ok
+test_cost_first_then_prediction_then_csv_order_and_duplicates (test_fix.RepairTests.test_cost_first_then_prediction_then_csv_order_and_duplicates) ... ok
+test_demo_earliest_training_predictors_and_no_mutation (test_fix.RepairTests.test_demo_earliest_training_predictors_and_no_mutation) ... ok
+test_heldout_outcomes_do_not_change_entire_recommendation (test_fix.RepairTests.test_heldout_outcomes_do_not_change_entire_recommendation) ... ok
+test_independent_exhaustive_minimum_and_changes (test_fix.RepairTests.test_independent_exhaustive_minimum_and_changes) ... ok
+test_invalid_incomplete_rejected_before_fitting (test_fix.RepairTests.test_invalid_incomplete_rejected_before_fitting) ... ok
+test_only_complete_training_configurations_are_candidates (test_fix.RepairTests.test_only_complete_training_configurations_are_candidates) ... ok
+test_strict_comparison_no_improvement_and_empty_candidate_pool (test_fix.RepairTests.test_strict_comparison_no_improvement_and_empty_candidate_pool) ... ok
+test_current_target_cannot_change_its_prediction (test_flow.FlowTests.test_current_target_cannot_change_its_prediction) ... ok
+test_empty_all_missing_and_single_observation (test_flow.FlowTests.test_empty_all_missing_and_single_observation) ... ok
+test_fit_uses_only_previously_revealed_records (test_flow.FlowTests.test_fit_uses_only_previously_revealed_records) ... ok
+test_future_changes_cannot_change_earlier_assessments (test_flow.FlowTests.test_future_changes_cannot_change_earlier_assessments) ... ok
+test_independent_running_arithmetic_and_duplicate_history (test_flow.FlowTests.test_independent_running_arithmetic_and_duplicate_history) ... ok
+test_lifecycle_validation_and_detached_snapshots (test_flow.FlowTests.test_lifecycle_validation_and_detached_snapshots) ... ok
+test_missing_outcomes_and_warm_up (test_flow.FlowTests.test_missing_outcomes_and_warm_up) ... ok
+test_prediction_recorded_before_target_access (test_flow.FlowTests.test_prediction_recorded_before_target_access) ... ok
+test_reproducibility_and_excluded_fields (test_flow.FlowTests.test_reproducibility_and_excluded_fields) ... ok
+test_all_local_sensitivities_match_direct_model_queries (test_justify.JustificationTests.test_all_local_sensitivities_match_direct_model_queries) ... ok
+test_cli_and_json_contract (test_justify.JustificationTests.test_cli_and_json_contract) ... ok
+test_global_association_independent_training_only_arithmetic (test_justify.JustificationTests.test_global_association_independent_training_only_arithmetic) ... ok
+test_heldout_target_changes_leave_all_training_explanation_unchanged (test_justify.JustificationTests.test_heldout_target_changes_leave_all_training_explanation_unchanged) ... ok
+test_invalid_proposals_rejected_before_fitting (test_justify.JustificationTests.test_invalid_proposals_rejected_before_fitting) ... ok
+test_missing_unseen_normalization_and_no_mutation (test_justify.JustificationTests.test_missing_unseen_normalization_and_no_mutation) ... ok
+test_prediction_partition_and_reproducibility (test_justify.JustificationTests.test_prediction_partition_and_reproducibility) ... ok
+test_training_context_independent_arithmetic (test_justify.JustificationTests.test_training_context_independent_arithmetic) ... ok
+test_group_partition_and_reproducibility (test_predict_effort.PredictionTests.test_group_partition_and_reproducibility) ... ok
+test_heldout_targets_cannot_affect_fitting_or_predictions (test_predict_effort.PredictionTests.test_heldout_targets_cannot_affect_fitting_or_predictions) ... ok
+test_independent_mae_and_training_mean (test_predict_effort.PredictionTests.test_independent_mae_and_training_mean) ... ok
+test_insufficient_groups_invalid_targets (test_predict_effort.PredictionTests.test_insufficient_groups_invalid_targets) ... ok
+test_json_and_cli_reject_forbidden_fields (test_predict_effort.PredictionTests.test_json_and_cli_reject_forbidden_fields) ... ok
+test_missing_training_column_and_missing_target (test_predict_effort.PredictionTests.test_missing_training_column_and_missing_target) ... ok
+test_preprocessing_sees_training_only (test_predict_effort.PredictionTests.test_preprocessing_sees_training_only) ... ok
+test_proposal_validation (test_predict_effort.PredictionTests.test_proposal_validation) ... ok
+test_whitespace_missing_and_unseen (test_predict_effort.PredictionTests.test_whitespace_missing_and_unseen) ... ok
+test_independent_csv_calculations (test_summarize.ActualDatasetTests.test_independent_csv_calculations) ... ok
+test_categorical_whitespace_and_metadata (test_summarize.FixtureTests.test_categorical_whitespace_and_metadata) ... ok
+test_hand_calculated_numeric_summary (test_summarize.FixtureTests.test_hand_calculated_numeric_summary) ... ok
+test_invalid_numeric_and_nonfinite (test_summarize.FixtureTests.test_invalid_numeric_and_nonfinite) ... ok
+test_invalid_schema_rows_empty_and_missing_file (test_summarize.FixtureTests.test_invalid_schema_rows_empty_and_missing_file) ... ok
+test_malformed_csv (test_summarize.FixtureTests.test_malformed_csv) ... ok
+test_missing_values_and_small_samples (test_summarize.FixtureTests.test_missing_values_and_small_samples) ... ok
+
+----------------------------------------------------------------------
+Ran 69 tests in 27.275s
+
+OK
+
+Audit correction: runner reported zero failed subprocesses. Including the separate premature metrics-file inspection, this run has error_count=1. See inspection_failure.txt. No application or test repair was necessary.

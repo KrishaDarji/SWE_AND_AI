@@ -1,0 +1,18 @@
+{
+  "no_asm": 1.0,
+  "no_8x8dct": 0.0,
+  "no_cabac": 0.0,
+  "no_deblock": 0.0,
+  "no_fast_pskip": 0.0,
+  "no_mbtree": 0.0,
+  "no_mixed_refs": 0.0,
+  "no_weightb": 0.0,
+  "rc_lookahead": 1.0,
+  "rc_lookahead_20": 1.0,
+  "rc_lookahead_40": 0.0,
+  "rc_lookahead_60": 0.0,
+  "ref": 1.0,
+  "ref_1": 1.0,
+  "ref_5": 0.0,
+  "ref_9": 0.0
+}

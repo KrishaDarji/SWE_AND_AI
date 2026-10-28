@@ -1,0 +1,31 @@
+Treatment 4, Trial 1, Dataset 1, Step 6 — justify
+
+Complete implementation and tests
+- source/remember.py, guess.py, certify.py, blame.py, flow.py: byte-for-byte copies of the allowed Step 5 source, preserving Steps 1–5 behavior.
+- source/justify.py: new reusable justify(Measurements), render_text(report), and dataset-path CLI.
+- tests/: all five preserved test files copied byte for byte plus test_justify.py with 10 new tests.
+- run_experiment.py: reproducible orchestration, subprocess wall timing, integrity verification, and LOC/metrics calculation. Commands are in run_instructions.txt.
+
+Reuse and additions
+The new implementation reuses remember.load_measurements, remember.summarize (including the existing stable ranking and distribution summaries), and blame.diagnose (including validation, group counts/means, eta squared, and pairwise setting relationships). No previous source or test needed modification. Step 6 does not need model fitting or a significance test; scikit-learn 1.6.0 is retained for the unchanged Step 2 behavior.
+
+Selection and observed evidence
+The selected observation is CSV data row 71, Performance- 244.23, with all recorded settings in justification.json and justification.txt. The rule chooses the smallest recorded Performance-, resolving exact numeric ties by earliest CSV data row. This dataset has one best-value row among 1152 historical rows. The historical median reference is 452.7785, so the chosen observation is 208.5485 lower, or approximately 46.059718% of that positive median. The reference is a distribution statistic, not a control configuration. The selected observation has 0 strictly better rows, 1 equal row and 1151 strictly worse rows. Full quartiles and descriptive summaries are provided in both reports.
+
+Evidence and limits
+justification.json includes the selected row and tie set, historical distribution, reference arithmetic, matching-configuration outcomes, per-setting selected-value groups and all alternative groups, complete reused diagnosis, and input SHA-256 provenance. justification.txt explains these facts to a platform administrator. Every numerical claim is rendered from computed fields; the tests independently check selection and reference arithmetic with rational-number examples and actual CSV data. A specific test demonstrates that a selected best row can use a value with a worse marginal mean.
+
+All conclusions are retrospective. Encoded names/values are preserved without assuming flag meanings. Rows are equally weighted, including any duplicates. Units are unspecified. No quality, memory, resource-use, model-prediction, causal, significance, or unseen-optimum claims are made. Correlated marginal feature scores are not summed or used to explain an individual outcome. This dataset contains only one measurement of the chosen configuration; independent repeated controlled evaluation is needed for operational assurance. Exact floating-point comparisons define ties, and nonfinite inputs or derived statistics are rejected.
+
+Measured initial-run validation
+- Entire suite: 51/51 passed (41 preserved + 10 Step 6).
+- Test subprocess wall time: 4.998833625 seconds.
+- All six demo subprocesses exited 0; outputs and timings are in runtime_output.txt and execution_record.json.
+- Step 6 demo subprocess wall time: 0.114118584 seconds.
+- total_loc: 911; new_loc: 148. Both follow the requested physical application-line conventions; per-file details are in execution_record.json.
+- error_count: 1; includes one preliminary instruction-file lookup returning no matches (exit 1). Its command/output are retained. No implementation, test, or demo failed and no repair attempts were needed. Expected negative-test errors are preserved in test_output.txt and excluded from the error count.
+- Dataset SHA-256 before and after: 00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864.
+- All preserved source/test copies match the allowed Step 5 files exactly. No dataset or Step 5 files were modified; all created outputs are inside Step 6.
+
+Required artifacts
+prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, justification.json, justification.txt, run_instructions.txt are present. execution_record.json, run_experiment.py and regression_demos/ provide supplementary reproducibility evidence.

@@ -1,0 +1,89 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/certify.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/certification.json']
+Return code: 0
+Wall seconds: 0.381079875
+{
+  "target": "Effort-",
+  "units": "unspecified",
+  "baseline": {
+    "count": 83,
+    "sum": 50303.3,
+    "mean": 606.0638554216868,
+    "std_sample": 1177.9397248004684,
+    "min": 8.4,
+    "q25": 60.0,
+    "median": 215.0,
+    "q75": 573.7,
+    "max": 8211.0,
+    "excluded_missing_outcomes": 0
+  },
+  "candidate": {
+    "count": 10,
+    "sum": 7767.0,
+    "mean": 776.7,
+    "std_sample": 720.5163349216233,
+    "min": 72.0,
+    "q25": 433.5,
+    "median": 528.5,
+    "q75": 1047.75,
+    "max": 2460.0,
+    "excluded_missing_outcomes": 0
+  },
+  "difference_candidate_minus_baseline": 170.6361445783133,
+  "relative_mean_reduction": -0.2815481290491877,
+  "observed_direction": "higher",
+  "statistical": {
+    "method": "Welch independent two-sample two-sided t test and 95% t confidence interval",
+    "null": "population mean candidate effort equals population mean baseline effort",
+    "alpha": 0.05,
+    "standard_error": 261.97662553325733,
+    "degrees_of_freedom": 15.552580855698572,
+    "t_statistic": 0.6513411043102829,
+    "p_value_two_sided": 0.5243346705603102,
+    "mean_difference_ci95": [
+      -386.0308077262547,
+      727.3030968828813
+    ],
+    "evidence": "no_detected_difference"
+  },
+  "practical": {
+    "fraction_of_baseline_mean": 0.1,
+    "absolute_reduction_threshold": 60.60638554216868,
+    "criterion": "candidate mean is at least the threshold below baseline mean; strict CI upper bound below negative threshold supports it",
+    "observed_threshold_met": false,
+    "supported_by_ci95": false,
+    "zero_baseline_note": "A zero baseline cannot support a positive relative reduction."
+  },
+  "bootstrap_sensitivity": {
+    "method": "independent within-group percentile bootstrap of mean difference",
+    "seed": 42,
+    "resamples": 20000,
+    "ci95": [
+      -293.64298192771093,
+      682.0696084337349
+    ]
+  },
+  "small_sample_warning": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "manager_conclusion": "A difference in population mean effort was not detected; this is not proof of equivalence. The interval does not establish the illustrative practical reduction. These observations do not establish that changing the process causes cost savings.",
+  "limitations": [
+    "Observational groups, not randomized process assignments: project size (Kloc+) and other characteristics may confound raw effort differences. No causal cost savings are established.",
+    "Effort- is minimized; physical units are unspecified. Only observed outcomes are used, never model predictions.",
+    "Welch inference assumes independent projects, representative sampling, finite variances, and approximately normal sampling distributions of means. Related projects, skew, extreme values, and small samples can undermine it.",
+    "Unequal group variances are allowed. Historical convenience samples do not establish generalizability to future proposals.",
+    "Missing outcomes are excluded without imputation; selection bias remains possible.",
+    "The practical threshold is an illustrative planning rule: 10% of the observed baseline mean, not a manager-approved economic requirement. It is data-dependent; uncertainty in this threshold is not propagated.",
+    "No detected difference is not proof of equivalence. No equivalence test or causal adjustment is performed.",
+    "This does not complete the separate required same analysis: its exact procedure was not supplied.",
+    "Bootstrap percentile intervals are a sensitivity description, not a second decision test; they can be unreliable with small or skewed samples."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "group_definitions": {
+    "baseline": "tool=n",
+    "candidate": "tool=h",
+    "selection": "Fixed before interpreting outcomes; all observed efforts in these groups",
+    "excluded_other_or_missing_tool_rows": 0
+  }
+}

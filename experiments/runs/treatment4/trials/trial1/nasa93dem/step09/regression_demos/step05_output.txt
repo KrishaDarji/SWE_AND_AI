@@ -1,0 +1,91 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/blame.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/blame.json']
+Return code: 0
+Wall seconds: 0.948953334
+Project factors accompanying higher observed effort (physical units unspecified).
+This is an exploratory description of raw effort, not a diagnosis of budget overrun or excessive effort.
+Ranking uses categorical eta squared: between-category variation divided by total variation.
+The score measures association strength; category means below supply direction. No category ordering is assumed.
+Rank 1: time, eta2=0.417943, eligible n=93.
+  'h': projects=13, observed n=13, mean=734.0769230769231, median=458.0; higher than eligible mean; small-category warning=False.
+  'n': projects=54, observed n=54, mean=334.3888888888889, median=156.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=18, observed n=18, mean=375.34444444444443, median=215.5; lower than eligible mean; small-category warning=False.
+  'xh': projects=8, observed n=8, mean=2964.2625, median=1848.5; higher than eligible mean; small-category warning=False.
+Rank 2: rely, eta2=0.342147, eligible n=93.
+  'h': projects=42, observed n=42, mean=483.54761904761904, median=326.4; lower than eligible mean; small-category warning=False.
+  'l': projects=2, observed n=2, mean=1296.0, median=1296.0; higher than eligible mean; small-category warning=True.
+  'n': projects=39, observed n=39, mean=269.1589743589744, median=170.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=2467.21, median=1709.2; higher than eligible mean; small-category warning=False.
+Rank 3: cplx, eta2=0.191680, eligible n=93.
+  'h': projects=58, observed n=58, mean=315.2448275862069, median=118.8; lower than eligible mean; small-category warning=False.
+  'l': projects=3, observed n=3, mean=844.3333333333334, median=973.0; higher than eligible mean; small-category warning=True.
+  'n': projects=10, observed n=10, mean=494.2, median=320.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=17, observed n=17, mean=1341.270588235294, median=648.0; higher than eligible mean; small-category warning=False.
+  'xh': projects=5, observed n=5, mean=1901.9, median=1924.5; higher than eligible mean; small-category warning=False.
+Rank 4: stor, eta2=0.163585, eligible n=93.
+  'h': projects=10, observed n=10, mean=887.7, median=580.5; higher than eligible mean; small-category warning=False.
+  'n': projects=49, observed n=49, mean=323.24897959183676, median=117.6; lower than eligible mean; small-category warning=False.
+  'vh': projects=21, observed n=21, mean=555.1904761904761, median=240.0; lower than eligible mean; small-category warning=False.
+  'xh': projects=13, observed n=13, mean=1668.8538461538462, median=648.0; higher than eligible mean; small-category warning=False.
+Rank 5: plex, eta2=0.152537, eligible n=93.
+  'h': projects=22, observed n=22, mean=1285.6863636363637, median=651.5; higher than eligible mean; small-category warning=False.
+  'l': projects=14, observed n=14, mean=346.85714285714283, median=203.5; lower than eligible mean; small-category warning=False.
+  'n': projects=53, observed n=53, mean=352.68301886792455, median=117.6; lower than eligible mean; small-category warning=False.
+  'vl': projects=4, observed n=4, mean=1559.25, median=623.5; higher than eligible mean; small-category warning=True.
+Rank 6: data, eta2=0.143988, eligible n=93.
+  'h': projects=17, observed n=17, mean=1522.1941176470589, median=1181.0; higher than eligible mean; small-category warning=False.
+  'l': projects=37, observed n=37, mean=370.1621621621622, median=72.0; lower than eligible mean; small-category warning=False.
+  'n': projects=31, observed n=31, mean=502.4516129032258, median=300.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=8, observed n=8, mean=365.125, median=181.0; lower than eligible mean; small-category warning=False.
+Rank 7: acap, eta2=0.060616, eligible n=93.
+  'h': projects=51, observed n=51, mean=876.1235294117647, median=420.0; higher than eligible mean; small-category warning=False.
+  'n': projects=32, observed n=32, mean=301.34375, median=75.0; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=374.5, median=215.5; lower than eligible mean; small-category warning=False.
+Rank 8: pvol, eta2=0.057823, eligible n=93.
+  'h': projects=9, observed n=9, mean=557.4444444444445, median=480.0; lower than eligible mean; small-category warning=False.
+  'l': projects=65, observed n=65, mean=477.53846153846155, median=240.0; lower than eligible mean; small-category warning=False.
+  'n': projects=19, observed n=19, mean=1158.5947368421052, median=252.0; higher than eligible mean; small-category warning=False.
+Rank 9: pcap, eta2=0.057441, eligible n=93.
+  'h': projects=39, observed n=39, mean=921.623076923077, median=400.0; higher than eligible mean; small-category warning=False.
+  'n': projects=44, observed n=44, mean=348.70454545454544, median=115.8; lower than eligible mean; small-category warning=False.
+  'vh': projects=10, observed n=10, mean=678.4, median=425.0; higher than eligible mean; small-category warning=False.
+Rank 10: sced, eta2=0.054554, eligible n=93.
+  'l': projects=34, observed n=34, mean=276.79411764705884, median=118.8; lower than eligible mean; small-category warning=False.
+  'n': projects=59, observed n=59, mean=824.7338983050847, median=400.0; higher than eligible mean; small-category warning=False.
+Rank 11: pmat, eta2=0.050721, eligible n=93.
+  'h': projects=43, observed n=43, mean=791.5837209302325, median=278.0; higher than eligible mean; small-category warning=False.
+  'l': projects=20, observed n=20, mean=817.66, median=501.7; higher than eligible mean; small-category warning=False.
+  'n': projects=30, observed n=30, mean=255.96666666666667, median=132.0; lower than eligible mean; small-category warning=False.
+Rank 12: apex, eta2=0.023126, eligible n=93.
+  'h': projects=46, observed n=46, mean=774.7021739130435, median=276.0; higher than eligible mean; small-category warning=False.
+  'l': projects=1, observed n=1, mean=648.0, median=648.0; higher than eligible mean; small-category warning=True.
+  'n': projects=34, observed n=34, mean=402.47058823529414, median=117.6; lower than eligible mean; small-category warning=False.
+  'vh': projects=12, observed n=12, mean=675.1666666666666, median=342.0; higher than eligible mean; small-category warning=False.
+Rank 13: ltex, eta2=0.004630, eligible n=93.
+  'h': projects=69, observed n=69, mean=662.0333333333333, median=252.0; higher than eligible mean; small-category warning=False.
+  'l': projects=6, observed n=6, mean=427.3333333333333, median=259.0; lower than eligible mean; small-category warning=False.
+  'n': projects=14, observed n=14, mean=587.2857142857143, median=162.0; lower than eligible mean; small-category warning=False.
+  'vl': projects=4, observed n=4, mean=401.0, median=395.0; lower than eligible mean; small-category warning=True.
+Rank 14: tool, eta2=0.002189, eligible n=93.
+  'h': projects=10, observed n=10, mean=776.7, median=528.5; higher than eligible mean; small-category warning=False.
+  'n': projects=83, observed n=83, mean=606.0638554216868, median=215.0; lower than eligible mean; small-category warning=False.
+Constant factors across nonmissing inputs: prec, flex, resl, team, ruse, docu, pcon, site
+prec: constant_on_observed_rows; no supported between-category strength ranking.
+flex: constant_on_observed_rows; no supported between-category strength ranking.
+resl: constant_on_observed_rows; no supported between-category strength ranking.
+team: constant_on_observed_rows; no supported between-category strength ranking.
+ruse: constant_on_observed_rows; no supported between-category strength ranking.
+docu: constant_on_observed_rows; no supported between-category strength ranking.
+pcon: constant_on_observed_rows; no supported between-category strength ranking.
+site: constant_on_observed_rows; no supported between-category strength ranking.
+Planning use: review these historical category groups alongside project scope, size and context; the ranking does not show savings from changing a factor.
+Exploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.
+Higher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.
+Kloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.
+Correlated factors can share the same association; univariate scores do not isolate independent contributions or interactions.
+Observational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.
+Small categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.
+Eta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.
+Missing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.
+Constant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.
+Physical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.
+All data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used.

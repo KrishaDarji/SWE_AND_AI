@@ -1,0 +1,155 @@
+You are running Treatment 4, Trial 1, Dataset 2, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Current skill: race
+- Current requirement: Compare our estimator against a simple historical-baseline estimator.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, NASA93 implementation.
+Preserve Steps 1–9 behavior and tests while adding Step 10.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/tests/
+
+Allowed references:
+- The specified NASA93 dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, Health, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Previous saved reports or recommendations outside this step.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reproducible comparison between:
+1. The existing effort estimator.
+2. A baseline predicting the training-set mean Effort-.
+
+Reuse the existing normalization, preprocessing, and model settings.
+Do not tune the estimator using race results.
+Preserve the original Step 2 evaluation behavior.
+
+For this comparison, use seeds 42 through 51.
+For each seed, hold out 25% of distinct normalized predictor groups.
+Keep identical predictor configurations together.
+Both methods must use exactly the same training and evaluation rows.
+Start with fresh fitted state for every repeat.
+
+Fit all learned preprocessing and the estimator on training rows only.
+Compute the baseline mean from those same training rows.
+Exclude missing targets without target imputation and report counts.
+Exclude Effort-, Defects-, Kloc+, and X metadata from predictor inputs.
+
+Report for every seed:
+- Split identities, group counts, and sample counts.
+- Held-out actual values and both methods' predictions.
+- Model MAE and baseline MAE.
+- Paired MAE difference.
+- Runtime for each method, with measurement scope defined.
+
+Summarize the per-seed metrics and observed wins, ties, and losses.
+Use a documented tie rule.
+These repeats overlap and remain within Trial 1; they are not
+independent LLM implementation trials.
+
+Do not claim statistical superiority from raw differences or win counts.
+The project's required same comparison procedure is not supplied
+among the allowed inputs. Mark that analysis pending rather than
+inventing a substitute or claiming it has been completed.
+
+Physical effort units are unspecified.
+Do not interpret MAE as an individual proposal's uncertainty interval
+or make automatic approval claims.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 10 and preserved Steps 1–9 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step10/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- race.json
+- run_instructions.txt
+
+race.json must include methods, model settings, dependency versions,
+seeds, split identities, held-out predictions, per-seed results,
+descriptive summaries, statistical-analysis status, and limitations.
+
+Test matching partitions, training-only preprocessing and baseline,
+group isolation, reproducibility, MAE calculations, ties, and invalid
+inputs. Verify that evaluation targets cannot affect fitted predictions.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 10; treatment: 4; trial: 1; domain: nasa93dem; skill: race.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 10 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to NASA93 Step 9 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path and seed list as arguments.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–9 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 9 files, or other repository files.
+Write only inside the absolute Step 10 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

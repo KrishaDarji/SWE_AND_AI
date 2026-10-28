@@ -1,0 +1,82 @@
+Treatment 4, Trial 1, Dataset 1, Step 8 — fix
+
+Implementation and reuse
+Complete updated application code is in source/: remember.py, guess.py,
+certify.py, blame.py, choose.py, flow.py, justify.py, and the new fix.py.
+The seven previous modules and their seven test files are byte-identical to
+allowed Step 7 inputs. They preserve Steps 1–7 behavior. New Step 8 tests are
+in tests/test_fix.py. No dataset or previous-step files were modified.
+
+fix.recommend_repair(data, baseline_row) reuses remember.Measurements and
+blame._validate; its CLI reuses remember.load_measurements. It scans every
+recorded row with strictly lower Performance- than the baseline observation,
+minimizing (number of differing setting columns, observed Performance-, CSV
+row number). It excludes the objective from distance, uses exact numeric
+comparisons, and returns every changed column in original column order.
+Rows are numbered from 1 after the CSV header. The dataset path and baseline
+row are CLI arguments. No scikit-learn estimator is appropriate for this
+exhaustive observed-row task; the existing scikit-learn prediction and search
+modules remain available and were tested with installed scikit-learn 1.6.0.
+Time complexity is O(recorded rows * setting columns).
+
+Observed Step 8 demo
+Baseline data row 1: Performance- 268.72.
+Recommended recorded data row 65: Performance- 254.587.
+Only changed column: no_8x8dct, old value 0, new value 1.
+Change cost: 1 encoded column.
+Observed objective reduction: 14.133 (unrounded floating-point result is
+14.133000000000038). Physical units are unspecified.
+The search covered all 1,152 recorded rows; 138 had strictly lower objective
+than the baseline. Full baseline and recommended settings, provenance, rules,
+and limitations are in repair.json and repair.txt. No saved earlier-step
+recommendation or result was used.
+
+Verification
+All 76 tests passed: 64 preserved tests and 12 new Step 8 tests. New tests cover
+an independent exhaustive Fraction-based CSV calculation, 400 randomized
+baseline searches, change-count priority, both tie rules, all changed columns,
+strict improvement and near ties, no improvement, singleton/all-tied data,
+duplicate rows/configurations including zero-change candidates, invalid
+baseline rows, invalid direct inputs, overflow, CLI validation, reproducibility,
+provenance, and dataset preservation.
+All seven preserved CLI demos and the Step 8 demo exited successfully.
+The dataset hash and byte-identical copied source/tests were checked.
+Expected negative-test errors appear in test_output.txt; these tests pass.
+No unexpected commands or execution attempts failed. No application repair
+attempts were required. A metrics reporting correction is documented in notes:
+seven successful negative tests printed their final 'ok' on standalone lines;
+the pass counter was corrected against the original successful test capture.
+
+Measured metrics
+Application total LOC: 1233; added LOC: 114.
+Step 8 demo subprocess wall time: 0.048668332980014384 seconds.
+metrics.csv records test_pass=1, error_count=0, 76/76 tests, and separate
+suite and individual regression-demo wall times. LOC excludes blank and
+comment-only lines, includes docstrings, and excludes tests, the reproduction
+runner, and dependencies. Added LOC uses insert/replace new-side application
+lines relative to Step 7, not net growth.
+
+Commands and artifacts
+See run_instructions.txt for exact executable commands for the suite, Step 8
+CLI, and full reproduction runner. run_experiment.py accepts the dataset path,
+runs the suite and every demo, captures outputs, checks preservation, and
+computes metrics. Runtime captures are in runtime_output.txt and test output
+is in test_output.txt. Previous behavior demo artifacts are inside
+regression_demos/. The submitted request is preserved verbatim in prompt.txt.
+
+Assumptions and limitations
+This is an offline full-data search over recorded observations, not budgeted
+search or an unseen-configuration evaluation. All non-objective columns are
+encoded settings, parsed as finite numeric floats by the existing loader.
+Encoded-column distance is a proxy for change size, not measured operational
+cost; redundant or one-hot columns may represent one underlying choice.
+Only complete recorded configurations are returned. Duplicate configurations
+are not averaged: a lower recorded observation for identical settings can win
+at zero change cost, without a setting repair. No-improvement results explicitly
+return status=no_improving_candidate, null recommendation/cost/reduction, and
+an empty change list. Equal objectives never qualify as improvement.
+A lower historical observation does not establish causal, repeatable, or
+statistically certified improvement. Selection can be optimistic and historical
+conditions may differ. No quality measurements are invented and quality
+preservation is not established. Exact float equality governs ties; numeric
+rounding can affect comparisons. Unsupported nonfinite reductions are rejected.

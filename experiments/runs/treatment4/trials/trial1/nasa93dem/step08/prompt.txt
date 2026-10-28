@@ -1,0 +1,157 @@
+You are running Treatment 4, Trial 1, Dataset 2, Step 8 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Current skill: fix
+- Current requirement: Recommend the cheapest process change that reduces estimated risk.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, NASA93 implementation.
+Preserve Steps 1–7 behavior and tests while adding Step 8.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step07/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step07/tests/
+
+Allowed references:
+- The specified NASA93 dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, Health, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Previous saved reports or recommendations outside this step.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reusable proposal-repair recommendation.
+
+The dataset supplies neither intervention costs nor a calibrated
+risk measure. Explicitly report these limitations.
+For this demonstration:
+- Use lower predicted Effort- as an illustrative planning proxy,
+  not as a probability of failure or measured risk.
+- Define change cost as the number of differing normalized
+  categorical predictor fields, not monetary or operational cost.
+- Search complete predictor configurations observed in training data.
+- Select the candidate with strictly lower predicted effort and
+  minimum change cost.
+- Break ties by lower predicted effort, then earlier CSV data row.
+- Return an explicit no-improving-candidate result when appropriate.
+
+Accept a proposal JSON containing allowed predictor fields only.
+Require complete, nonmissing predictors for this repair workflow
+so that missing-value completion is not counted as a process change.
+Do not change the existing general prediction API's missing-value support.
+
+Reuse the existing seed-42 grouped partition, training-only model,
+normalization, and estimation machinery.
+Create an illustrative demo proposal from the predictor fields of
+the earliest training data row. Do not use its observed target
+to select the proposal or guide candidate selection.
+
+Only training predictor configurations may supply repair candidates.
+Held-out outcomes must not guide fitting, selection, or tie-breaking.
+Do not use Kloc+, Defects-, Effort-, or X metadata as predictors.
+
+Report:
+- Original proposal and predicted effort.
+- Recommended candidate and predicted effort.
+- Every changed field with old and new values.
+- Change cost and predicted reduction.
+- Candidate scope, counts, and tie rules.
+- Reasons this is a model suggestion requiring human review.
+
+Observed historical combinations do not establish operational
+feasibility for this proposal. Not all project characteristics
+are controllable process settings.
+Do not claim causal savings, calibrated risk reduction, or guaranteed
+budget compliance. Physical effort units are unspecified.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 8 and preserved Steps 1–7 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- repair.json
+- example_proposal.json
+- run_instructions.txt
+
+Test minimal change cost against an independent exhaustive calculation,
+tie rules, changed-field accuracy, strict improvement, no improvement,
+duplicate configurations, and invalid or incomplete proposals.
+Verify that held-out target changes cannot affect the recommendation.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 8; treatment: 4; trial: 1; domain: nasa93dem; skill: fix.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 8 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to NASA93 Step 7 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–7 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 7 files, or other repository files.
+Write only inside the absolute Step 8 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

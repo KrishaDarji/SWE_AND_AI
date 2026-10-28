@@ -1,0 +1,40 @@
+Use the existing python3 environment (verified scikit-learn 1.6.0); install nothing.
+All commands below run from the Step 5 output directory. All generated files remain there.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step05'
+export NASA93_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+export PYTHONDONTWRITEBYTECODE=1
+export TMPDIR="$PWD/tests"
+
+Entire preserved and new test suite:
+python3 -m unittest discover -s tests -v
+
+Step 5 diagnosis (accepts the dataset path as a positional argument):
+python3 source/blame.py "$NASA93_DATASET" --output blame.json
+
+Preserved Step 1 summary:
+python3 source/summarize.py "$NASA93_DATASET" --output-dir regression_summary
+
+Preserved Step 2 independent grouped holdout evaluation and proposal estimate:
+python3 source/predict_effort.py "$NASA93_DATASET" --proposal proposal.json --evaluation regression_prediction.json
+
+Preserved Step 3 sequential arrival demonstration:
+python3 source/flow.py "$NASA93_DATASET" --output regression_flow.json
+
+Preserved Step 4 historical comparison:
+python3 source/certify.py "$NASA93_DATASET" --output regression_certify.json
+
+Capture all tests and demos with timings and regenerate metrics:
+python3 run_validation.py "$NASA93_DATASET"
+The capture harness appends to test_output.txt and runtime_output.txt, overwrites demo JSON and metrics, and compares only the allowed Step 4 source/tests for LOC and preservation checks. It includes the explicitly recorded command_attempts.json failure in error_count. Its demo exit codes, test count and test timing are in validation_details.json. It is an orchestration script, outside source/, excluded from application LOC by the requested convention.
+
+API reuse:
+Place source/ on PYTHONPATH and import blame.diagnose.
+diagnose(rows) accepts a nonempty iterable of parsed project dictionaries with nominal predictor strings or None and finite nonnegative numeric Effort- or None. It returns a JSON-compatible report, never mutates the supplied rows, ignores other fields, and rejects invalid supplied predictor values even when the outcome is missing. For CSV input, use summarize.read_projects(path), which preserves the prior strict 29-column NASA93 schema and missing-token parsing.
+
+Files:
+source/ contains all application modules, including unchanged summarize.py, predict_effort.py, flow.py, certify.py, plus blame.py.
+tests/ contains all unchanged previous tests and new test_blame.py.
+blame.json includes the documented method, ranked findings, all category counts and numeric summaries, unranked factors, constants, readable manager explanation and limitations.
+response.txt explains reuse, findings, assumptions, limitations and measured validation.
+prompt.txt preserves the supplied request verbatim.

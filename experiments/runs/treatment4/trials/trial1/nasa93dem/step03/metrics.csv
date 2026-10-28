@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,1,nasa93dem,certify,406,122,1,0.466688875,0,passed=24/24; test_seconds=3.157074375; regression_step1_seconds=0.029883667; regression_step2_seconds=1.011334500; seed=42; practical threshold=illustrative 10% baseline mean; no repairs or unexpected failures

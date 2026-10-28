@@ -1,0 +1,41 @@
+Treatment 4, Trial 1, NASA93, Step 6 — justify
+
+Complete updated application source is in source/:
+  summarize.py, predict_effort.py, flow.py, certify.py, blame.py
+  justify.py (new reusable explanation API and command line)
+Complete preserved and new tests are in tests/:
+  test_summarize.py, test_predict_effort.py, test_flow.py,
+  test_certify.py, test_blame.py, test_justify.py
+
+Reused and added
+The five Step 5 source files and five test files were copied byte-for-byte from the explicitly allowed directories. No original was changed. Step 6 calls the existing normalization, grouped partition, training-only preprocessing, random forest fit and estimation functions. It uses the fitted training model without full-data refitting. Step 5 diagnosis is reused only on training rows for global historical context.
+
+The new API accepts only the existing categorical predictors and records supplied keys, normalized missing values, unseen categories and per-category training support. Supporting evidence includes training effort summaries, nearest training examples with deterministic nominal mismatch distances, global training-only marginal associations, and direct one-field model sensitivity queries over observed training categories. No surrogate is trained or tuned, and no additional randomized procedure is used. Sensitivities hold all other inputs fixed and are explicitly neither additive prediction contributions nor feasible interventions or causal savings. Separate held-out evaluation retains actual observations and predictions for independent MAE calculation.
+
+The demo proposal is deliberately illustrative and partial. Its JSON has predictor keys only; the --illustrative flag supplies its label. justification.json contains all computed evidence and the readable explanation; justification.txt is rendered from that same mapping. Every numerical claim in the readable explanation is directly formatted from those structured fields. The global associations are not used as local prediction contributions.
+
+Measured results
+  Tests: 50/50 passed, including unchanged Steps 1–5 tests.
+  All six entry-point demos completed successfully.
+  Step 6 demo wall time: 1.194804667 seconds (subprocess only).
+  Test subprocess wall time: 14.985110917 seconds.
+  Source total LOC: 856; added application LOC: 155.
+  Unexpected failed commands/execution attempts: 0.
+  No failed attempts or repairs occurred. Expected invalid-input checks passed.
+  Training rows: 68; held-out rows: 25.
+  Illustrative proposal estimate: 465.960629805 Effort-.
+  Held-out model MAE: 531.211986071.
+  Held-out training-mean baseline MAE: 674.031764706.
+
+The model beats this baseline on the preserved split, but its aggregate absolute error is substantial relative to the illustrative proposal estimate. This does not supply an individual error bound or approval justification.
+
+Verification
+Step 6 tests check prediction consistency, unchanged partition and evaluation results, repeatability, independent category/nearest-example/MAE/eta-squared arithmetic, all local sensitivity predictions against direct model queries, missing and unseen categories, forbidden proposal fields, duplicate JSON keys, invalid JSON, no input mutation and CLI outputs. Changing every held-out target to a much larger finite value changes evaluation MAEs while leaving the proposal estimate and all training-based explanation evidence unchanged. After substituting the original evaluation block, the rendered explanation is identical as well.
+
+Run commands
+See run_instructions.txt for exact executable commands with the absolute dataset path. python3 run_all.py DATASET runs the full test suite and all preserved demos plus Step 6, measures subprocess runtimes, captures logs and computes LOC using insert/replace new-side lines rather than net growth. test_output.txt and runtime_output.txt preserve actual captured output. metrics.csv holds requested fields; verification.json records timings and byte-for-byte preservation checks. regression/ contains outputs generated afresh by this run, not reused saved reports.
+
+Assumptions and limitations
+Physical units are unspecified. Predictor availability at proposal time is assumed and must be verified. This is a small historical observational dataset; related projects, omitted size, missingness, extreme outcomes and novel combinations limit generalization. Nearest examples use equal-weight nominal mismatches, not a validated project-similarity measure. Marginal category support does not imply support for a joint proposal configuration. Global associations are confounded and noncausal. Local model sensitivities do not establish feasibility or effort savings. Missing targets remain excluded according to the preserved estimator; the held-out invariance check varies observed target values without changing row eligibility. No interval is invented from MAE. No automatic approval is recommended: scope, size, units, staffing, schedule, costs, benefits, risk, contingency and sponsor acceptance criteria remain necessary.
+
+All generated outputs reside inside this Step 6 directory. Dataset, previous source/tests and other repository files were not modified. No packages were installed or versions changed; the observed environment uses scikit-learn 1.6.0.

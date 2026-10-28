@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,1,nasa93dem,justify,856,155,1,1.194804667,0,"50/50 tests passed; test_seconds=14.985110917; regression_demo_seconds={""step1"": 0.030238832929171622, ""step2"": 0.9352992499480024, ""step3"": 6.628138000029139, ""step4"": 0.3772733339574188, ""step5"": 0.9129601250169799}; no unexpected failures or repairs; source/tests preserved byte-for-byte; runtime_seconds is Step 6 demo subprocess only."

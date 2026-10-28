@@ -1,0 +1,366 @@
+{
+  "target": "Effort-",
+  "predictor_fields": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "excluded_inputs": [
+    "Effort-",
+    "Defects-",
+    "Kloc+",
+    "all X-suffixed metadata",
+    "all unknown fields"
+  ],
+  "preprocessing": {
+    "normalization": "strip strings; Step 1 missing tokens and omitted/null become None",
+    "imputer": {
+      "add_indicator": false,
+      "copy": true,
+      "fill_value": "",
+      "keep_empty_features": true,
+      "missing_values": null,
+      "strategy": "constant"
+    },
+    "encoder": {
+      "categories": "auto",
+      "drop": null,
+      "dtype": "<class 'numpy.float64'>",
+      "feature_name_combiner": "concat",
+      "handle_unknown": "ignore",
+      "max_categories": null,
+      "min_frequency": null,
+      "sparse_output": false
+    },
+    "fit_scope": "training rows only; no ordinal mapping"
+  },
+  "model_settings": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 200,
+    "n_jobs": 1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "dependency_versions": {
+    "python": "3.12.6",
+    "scikit-learn": "1.6.0",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "split": {
+    "method": "GroupShuffleSplit; normalized predictor tuples define groups",
+    "seed": 42,
+    "test_group_fraction": 0.25,
+    "n_splits": 1,
+    "index_convention": "zero-based data row indices, excludes CSV header",
+    "total_samples": 93,
+    "eligible_samples": 93,
+    "excluded_missing_targets": 0,
+    "training_samples": 68,
+    "evaluation_samples": 25,
+    "total_groups": 55,
+    "training_groups": 41,
+    "evaluation_groups": 14,
+    "training_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      12,
+      15,
+      16,
+      17,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      57,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      70,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      82,
+      83,
+      84,
+      85,
+      86,
+      88,
+      89,
+      90,
+      91,
+      92
+    ],
+    "evaluation_indices": [
+      10,
+      13,
+      14,
+      18,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      41,
+      48,
+      56,
+      58,
+      59,
+      60,
+      61,
+      69,
+      71,
+      72,
+      73,
+      74,
+      81,
+      87
+    ]
+  },
+  "baseline": {
+    "strategy": "training-set mean",
+    "prediction": 611.9529411764706
+  },
+  "baseline_mae": 674.0317647058823,
+  "model_mae": 531.2119860706141,
+  "held_out_predictions": [
+    {
+      "row_index": 10,
+      "actual": 24.0,
+      "predicted": 171.1219837662337,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 13,
+      "actual": 215.0,
+      "predicted": 256.3492797619048,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 14,
+      "actual": 48.0,
+      "predicted": 171.1219837662337,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 18,
+      "actual": 48.0,
+      "predicted": 171.1219837662337,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 25,
+      "actual": 48.0,
+      "predicted": 213.22520238095242,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 26,
+      "actual": 70.0,
+      "predicted": 465.0713902666941,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 27,
+      "actual": 239.0,
+      "predicted": 465.0713902666941,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 28,
+      "actual": 82.0,
+      "predicted": 465.0713902666941,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 29,
+      "actual": 62.0,
+      "predicted": 465.0713902666941,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 30,
+      "actual": 170.0,
+      "predicted": 465.0713902666941,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 31,
+      "actual": 192.0,
+      "predicted": 465.0713902666941,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 41,
+      "actual": 2400.0,
+      "predicted": 199.33722989354123,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 48,
+      "actual": 107.0,
+      "predicted": 1497.0439898809525,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 56,
+      "actual": 278.0,
+      "predicted": 808.0751823099416,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 58,
+      "actual": 4560.0,
+      "predicted": 2810.382892261905,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 59,
+      "actual": 720.0,
+      "predicted": 333.25556038406046,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 60,
+      "actual": 458.0,
+      "predicted": 667.3188481684982,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 61,
+      "actual": 2460.0,
+      "predicted": 667.3188481684982,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 69,
+      "actual": 432.0,
+      "predicted": 375.0261612283142,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 71,
+      "actual": 300.0,
+      "predicted": 381.00992971750463,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 72,
+      "actual": 300.0,
+      "predicted": 381.00992971750463,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 73,
+      "actual": 240.0,
+      "predicted": 375.0261612283142,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 74,
+      "actual": 600.0,
+      "predicted": 375.0261612283142,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 81,
+      "actual": 480.0,
+      "predicted": 868.0269793417366,
+      "baseline_predicted": 611.9529411764706
+    },
+    {
+      "row_index": 87,
+      "actual": 1924.5,
+      "predicted": 3403.2667095238103,
+      "baseline_predicted": 611.9529411764706
+    }
+  ],
+  "limitations": [
+    "Effort- physical units are unspecified; none are inferred.",
+    "An effort estimate alone does not justify approving a proposal.",
+    "Small historical observational dataset; one grouped split is not a guarantee of future accuracy.",
+    "No uncertainty intervals, approval guarantees, causal claims, or held-out tuning.",
+    "No proposal-time size estimate is supplied; delivered Kloc+ is excluded.",
+    "Predictor availability at proposal time is assumed and must be checked operationally.",
+    "Unseen categories encode as all zeros; missing categories use an explicit empty-string level.",
+    "Rows missing Effort- are excluded, never target-imputed; reported MAE is row-weighted.",
+    "Group split prevents identical normalized inputs crossing partitions, but related projects may remain.",
+    "Random forest predictions average training outcomes and may miss extreme or novel efforts.",
+    "Evaluation model remains fitted only to training rows; no full-dataset refit is performed."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+}

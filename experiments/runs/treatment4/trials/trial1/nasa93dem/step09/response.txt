@@ -1,0 +1,27 @@
+Step 9 is complete. All outputs are contained in this directory.
+
+Complete source: source/ contains the eight unchanged Step 8 modules (summarize, predict_effort, choose, flow, blame, justify, fix, certify) and the new spot.py. Complete tests: tests/ contains the eight unchanged prior test modules and new test_spot.py. All sixteen inherited Python files were verified byte-identical to their allowed Step 8 originals. No original records were modified.
+
+Reused: strict NASA93 CSV schema parsing, missing-token handling, predictor normalization and numeric summaries. The existing estimator and all earlier workflows remain unchanged. A local example_proposal.json fixture was regenerated from the permitted dataset using the existing fix.illustrative_proposal function; no previous reports or fixtures outside allowed source/tests were read.
+
+Added: screen(rows, threshold=3.5), render_text(report, limit=10), and a dataset-path CLI in source/spot.py; independent synthetic arithmetic and edge-case tests; complete all-row anomaly JSON; validation runner and measured artifacts.
+
+Method: for Kloc+, Effort-, Defects-, transform observed values with log1p, compute each field's historical median and median absolute deviation, and divide each absolute deviation by max(1.4826*MAD, log(2)). A project's score is the maximum available field score. Higher scores are more unusual. Flag only score strictly greater than 3.5; equal scores are not flagged. The floor is a documented practical convention to avoid zero/near-zero scales, not a learned or calibrated threshold. This transparent robust method addresses skewed outcomes without arbitrary categorical ordering; no additional sklearn estimator is needed for this descriptive calculation. The preserved sklearn model continues to use seed 42.
+
+Outcome fields are retrospective screening inputs, not proposal-time inputs. Categorical candidate proposal fields appear only as descriptive characteristics with support counts; their availability at proposal time is assumed and must be checked. Identifiers, all X-suffixed metadata and unknown fields do not enter scores. No effort predictions or prediction residuals are used. Each historical record contributes to the descriptive reference; these are not unseen prediction errors.
+
+Missing outcomes are not imputed. Reference summaries omit missing values separately by field. Fewer than three observed values makes that field unscorable; a record with no usable observed outcomes receives a null score, no flag and an explicit unscored status. Invalid negative/nonfinite outcomes are rejected. No randomness is used by screening. Ties sort by one-based CSV data-row number, excluding the header; identifiers never establish row identity. All 93 ranked rows remain in anomalies.json regardless of display limit.
+
+Observed result: 0 of 93 projects cross the 3.5 threshold. The highest score belongs to CSV data row 58: 2.870506, flagged=false. Its Kloc+=0.9, Effort-=8.4 and Defects-=28 are all below historical raw medians 47.5, 252 and 2007. Defects contribute the maximum absolute score. The next records are row 6 (2.273591) and row 59 (2.190639); neither is flagged. This does not establish that all records are consistent, and no top-ranked row is automatically labeled anomalous.
+
+Suggested checks: confirm source entries, units and reporting definitions; compare scope, delivered size, complexity and reuse with comparable projects; check consistent lifecycle coverage across outcomes; ask owners about legitimate exceptional circumstances. High effort or defects can reflect scope and size rather than recording error or poor performance. No record should be changed based on this screen alone.
+
+Validation: 77/77 tests passed; all Steps 1–9 demo subprocesses returned zero. Step 9 subprocess wall time: 0.842010125 seconds. Test subprocess wall time: 29.473709125 seconds. Steps 1–8 demo subprocess wall time summed: 12.139126666 seconds. Source LOC: 1227; added application LOC: 134 (insert/replace new-side count, not net growth). Four unexpected failed execution/inspection attempts were retained and counted: two premature/missing output inspections, the initial test subprocess failure on the missing local fixture, and its enclosing validation command. The fixture was generated and the complete suite and demos rerun successfully. Initial failures are preserved in failed_attempt_01/ and described in inspection_failures.txt. Expected negative-test failures are excluded.
+
+Commands (from this Step 9 directory):
+python3 -m unittest discover -s tests -v
+python3 source/spot.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output anomalies.json --limit 10
+python3 run_validation.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+See run_instructions.txt for full reproduction details, regression command logs and metric conventions.
+
+Limitations: no verified anomaly labels and therefore no precision, recall or detection accuracy; heuristic uncalibrated threshold; marginal rather than conditional or joint screening; multiple outcome comparisons; full-history self-inclusion and possible masking; no size adjustment; sensitivity to units and the log1p scale floor; small samples and missingness. Flags, when present, are exploratory investigation priorities. Physical units are unspecified. This screen provides no causal explanation, performance judgment or approval recommendation.

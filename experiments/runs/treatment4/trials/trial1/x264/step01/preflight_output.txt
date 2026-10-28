@@ -1,0 +1,24 @@
+Preflight attempt 1
+Command: python -c '<standard-library CSV schema inspection>'
+Exit code: 127
+zsh:1: command not found: python
+Repair: use installed python3; no installation or dependency change.
+
+Preflight attempt 2
+Command: python3 -c '<CSV schema inspection of moot/optimize/config/X264_AllMeasurements.csv>'
+Exit code: 1
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'moot/optimize/config/X264_AllMeasurements.csv'
+Repair: filename-only search located SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv.
+Only that dataset was read; other experiment directories and implementations were not inspected.
+
+Successful preflight
+Python executable: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+Python version: 3.12.6
+scikit-learn version: 1.6.0
+Dataset rows: 1152; columns: 17; all rows have 17 fields.
+No implementation/test failures preceded the first test run.

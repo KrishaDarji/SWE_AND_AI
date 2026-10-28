@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,1,nasa93dem,guess,284,153,1,0.934521458,0,16/16 tests passed; test_seconds=2.857155084; step1_regression_demo_seconds=0.030701750; attempts=1; failures retained in logs; example proposal is illustrative; units unspecified

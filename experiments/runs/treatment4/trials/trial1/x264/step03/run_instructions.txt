@@ -1,0 +1,36 @@
+Run from the exact Step 3 directory (all output paths below stay within it):
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03'
+export PYTHONDONTWRITEBYTECODE=1
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Run all preserved and new tests:
+python3 -B -m unittest discover -s tests -v
+
+Run Step 1 descriptive demo:
+python3 -B source/remember.py "$X264_DATASET" --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/regression_step01'
+
+Run Step 2 predictive holdout demo:
+python3 -B source/guess.py "$X264_DATASET" --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/regression_step02'
+
+Run Step 3 certification demo:
+python3 -B source/certify.py "$X264_DATASET" --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03'
+
+Optional: --min-effect NONNEGATIVE_NUMBER and --resamples POSITIVE_INTEGER.
+These change the comparison criterion or Monte Carlo precision; defaults are 1.0 and 19999.
+The fixed seed is 42031. Alpha is 0.05. Direction is minimize for the dataset demo.
+
+Reproduce all runs and measured artifacts:
+python3 -B run_experiment.py
+This appends raw test/demo output; updates metrics.csv, execution_record.json and reports.
+error_count includes the two already documented historical failures; see failure_log.txt.
+Initial metrics and execution record are retained separately.
+
+Reuse the comparison API without using model predictions:
+PYTHONPATH=source python3 -B -c 'from certify import compare_samples; print(compare_samples([5,6,7,8], [1,2,3,4]))'
+The exact independently checkable two-sided p-value is 2/70, improvement 4.
+compare_samples also accepts direction="maximize", alpha, min_effect, seed and resamples.
+
+Environment verified: Python 3.12.6, scikit-learn 1.6.0, numpy 2.3.5, scipy 1.16.3.
+No installation or version changes. New statistical code uses numpy (a required scikit-learn dependency);
+preserved Step 2 uses scikit-learn for its grouped holdout, random forest and baseline.

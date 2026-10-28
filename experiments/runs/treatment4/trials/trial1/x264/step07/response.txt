@@ -1,0 +1,30 @@
+Treatment 4 / Trial 1 / Dataset 1 / Step 7 (choose)
+
+Complete implementation and tests
+- source/: complete updated implementation. The six Step 6 Python modules are preserved byte-for-byte; choose.py adds Step 7.
+- tests/: all six previous test modules preserved byte-for-byte, plus test_choose.py.
+- run_instructions.txt: exact test, implementation, regression-demo, and full reproduction commands.
+- run_experiment.py: standard-library runner for measured subprocess timings, output capture, input preservation checks, and LOC metrics.
+
+Measured result
+The recorded budget is 20 and seed is 42. Exactly 20 of the 1,152 candidate rows were evaluated, including all five initialization points. The best evaluated candidate is data row 127 (data rows are numbered from 1, excluding the header), with Performance- 249.41. Its full sixteen-setting configuration and ordered evaluation history, observed objectives, decision reasons and best-so-far records are in selection.json. The selector does not claim global optimality.
+
+Only after selection was frozen, the separate audit inspected all objectives. The dataset minimum is 244.23. The selected value's absolute gap is 5.18, or 2.120951562052167 percent of the minimum. These are audit facts and never feed back into selection. Floating-point representation of the absolute gap is 5.180000000000007.
+
+Selection strategy
+Use five seeded uniform initial points (or the entire budget when smaller). Refit a scikit-learn RandomForestRegressor with 64 trees and random_state=seed on evaluated observations only. Minimize mean tree prediction minus one population standard deviation across remaining candidates; every fifth evaluation after initialization is uniform exploration. Acquisition ties use the earliest CSV data row, and observed objective ties keep the first evaluated row. No hyperparameter tuning, previous recommendations, full-data rankings, target summaries or pretrained model guides this procedure. This fixed heuristic balances exploitation and exploration; it is not a calibrated uncertainty method.
+
+Reuse and information boundary
+The implementation reuses the preserved OBJECTIVE constant, Flow validation and incremental observed statistics/best tracking. It uses scikit-learn's forest directly rather than the earlier guess.evaluate routine, whose broad training/evaluation split would violate this budget. Existing summary, diagnosis, certification and justification routines remain separate regression tools. The candidate loader exposes every row's settings, skips objective cells without numeric parsing and returns no objectives. CSV framing reads raw cells; the selector receives settings-only Candidate records and a callable evaluate(data_row). CSVOracle retrieves only the requested target, charges accepted calls before reading, rejects repeated evaluations and enforces the budget independently. Unsuccessful target parses are charged and abort selection. The audit's eager target loader is invoked only after the complete selection is serialized and saved. Audit output carries a SHA-256 of that frozen pre-audit selection.
+
+Validation
+All 64 tests passed. Coverage includes preserved Steps 1–6 behavior, budget limits including initialization, reproducibility, exact ties, invalid budgets/seeds/schema, best evaluated selection, running-best history, observed-only surrogate fits, a callback that rejects all attribute inspection, poisoned unqueried targets, oracle accounting, and selection saved before audit. All six regression demos completed with exit code 0. The dataset SHA-256 was unchanged, and the preserved source and tests match Step 6 exactly. test_output.txt contains the complete suite output; runtime_output.txt contains the Step 7 demo output; execution_log.json contains all subprocess commands, output, exit codes and measured timings.
+
+Metrics
+total_loc=1119; new_loc=208; test_pass=1; tests=64/64; runtime_seconds=1.9167299589607865; error_count=0.
+runtime_seconds is the Step 7 demo subprocess wall time only (imports, loading, selection, separate audit, serialization and output). Test and regression-demo timings are recorded separately in metrics.csv notes and execution_log.json. LOC counts nonblank, non-comment-only Python source lines, including docstrings. New LOC counts inserted/replacement new-side application lines relative to Step 6, not net growth. No commands or execution attempts failed unexpectedly, and no execution repair was needed. Expected negative-test errors are retained in test_output.txt and excluded from error_count.
+
+Schema and assumptions
+The actual dataset has sixteen numeric settings: no_asm, no_8x8dct, no_cabac, no_deblock, no_fast_pskip, no_mbtree, no_mixed_refs, no_weightb, rc_lookahead, rc_lookahead_20, rc_lookahead_40, rc_lookahead_60, ref, ref_1, ref_5, ref_9. Performance- is the only objective and is minimized; its physical units are unspecified. There is no separate quality measurement, so the quality constraint cannot be verified. No quality values are invented and constraint satisfaction is not claimed.
+
+Only observed dataset configurations are considered; no new encoder combinations are synthesized. Rows are evaluation identities; repeated configurations, if present in another input, are separate candidate observations. Budgets must be positive integers at most row count; seeds must be integers in [0, 2**32). The oracle simulates measurements using fixed historical CSV outcomes, rather than performing live video encodes. No generalization, noise, causality, workload-transfer, quality or optimality guarantee is made. The dataset must remain unchanged during the run. Finite numeric settings and evaluated targets are required; extreme magnitudes can exceed supported arithmetic. Target validation for unqueried rows is intentionally deferred until audit. The boundary is an explicit trusted Python API, not isolation against malicious code introspection. A caller supplying a custom evaluator is responsible for its implementation. The existing Python 3.12.6 / scikit-learn 1.6.0 environment was used without installing packages or changing versions.

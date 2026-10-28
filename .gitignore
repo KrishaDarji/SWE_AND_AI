@@ -1,0 +1,30 @@
+# macOS metadata
+.DS_Store
+._*
+
+# Python bytecode and test/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Local Python environments and packaging outputs
+.venv/
+venv/
+env/
+build/
+dist/
+*.egg-info/
+
+# Local credentials and environment settings
+.env
+.env.*
+!.env.example
+!.env.template
+.aws/
+
+# Preserve experiment source, prompts, logs, metrics, and reports in Git.

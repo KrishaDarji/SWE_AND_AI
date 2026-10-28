@@ -1,0 +1,26 @@
+{
+  "passed_tests": 100,
+  "total_tests": 100,
+  "timings_seconds": {
+    "step10_demo": 7.062300708028488,
+    "regression_remember": 0.05236362502910197,
+    "regression_blame": 0.09895737504120916,
+    "regression_guess": 1.0733532910235226,
+    "regression_certify": 0.7704923329874873,
+    "regression_fix": 0.053674458991736174,
+    "regression_justify": 0.12025079200975597,
+    "regression_choose": 1.505692624952644,
+    "regression_flow": 0.07679862494114786,
+    "regression_spot": 1.0214193330612034,
+    "tests": 13.481111874920316
+  },
+  "dataset_sha256_before": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+  "dataset_sha256_after": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+  "dataset_unchanged": true,
+  "previous_source_copies_unchanged": true,
+  "previous_test_copies_unchanged": true,
+  "new_loc_rule": "Added nonblank non-comment-only new-side insert/replace lines versus Step 9; docstrings included.",
+  "runtime_scope": "runtime_seconds is Step 10 demo subprocess wall time only.",
+  "failures_and_repairs": "No unexpected execution failures or repair attempts.",
+  "statistical_analysis": "pending; required project comparison procedure absent"
+}

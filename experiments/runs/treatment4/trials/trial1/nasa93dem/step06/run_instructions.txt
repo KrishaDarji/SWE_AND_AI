@@ -1,0 +1,25 @@
+Use the existing Python environment with scikit-learn 1.6.0. No installation or version changes are required.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step06'
+
+Run the full suite (preserved Steps 1–5 and Step 6):
+NASA93_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Run the illustrative Step 6 explanation:
+PYTHONDONTWRITEBYTECODE=1 python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --output-dir . --illustrative
+
+Run every test and all six demos with timing and output capture:
+PYTHONDONTWRITEBYTECODE=1 python3 run_all.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+run_all.py records each subprocess wall time and appends test_output.txt and runtime_output.txt, preserving previous log entries. It refreshes metrics.csv and verification.json for the latest execution. The original recorded run had no unexpected command failures. If a later execution fails, retain those logs and document repairs before rerunning; update cumulative failure accounting if needed.
+
+Preserved entry points (dataset is always a positional argument):
+python3 source/summarize.py DATASET --output-dir regression
+python3 source/predict_effort.py DATASET --proposal example_proposal.json --evaluation regression/evaluation.json
+python3 source/flow.py DATASET --output regression/flow.json
+python3 source/certify.py DATASET --output regression/certification.json
+python3 source/blame.py DATASET --output regression/blame.json
+
+Use your own proposal JSON with --proposal PATH and omit --illustrative for a user-supplied proposal. Only the existing 22 categorical predictor keys are accepted, with string or null values. Omitted fields and the existing missing tokens are normalized as missing. Duplicate JSON keys, unknown keys, targets, delivery outcomes and metadata are rejected. The example JSON deliberately supplies a partial illustrative configuration; it does not encode a real project or approval request. Its label is supplied with --illustrative, rather than by adding a forbidden field to the JSON.
+
+Reusable Python API: add source/ to sys.path, then call justify.justify(rows, proposal, illustrative=False). Rows come from summarize.read_projects(dataset). The returned mapping contains both computed evidence and readable_explanation. No model is refitted on the full dataset.

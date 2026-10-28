@@ -1,0 +1,146 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 9 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: spot
+- Current requirement: Detect an anomalous benchmark result or possible measurement error.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1–8 behavior and tests while adding Step 9.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step08/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step08/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement reusable anomaly screening for recorded benchmark results.
+
+Inspect the actual dataset schema.
+Performance- is minimized; physical units are unspecified.
+An unusually high or low outcome is not automatically an error.
+
+Choose and document an appropriate anomaly-detection method.
+State exactly which settings and outcome fields it uses, any scaling,
+the score direction, and the threshold or flagging rule.
+Record all parameters and use seed 42 if randomness is involved.
+
+Report:
+- Ranked records with CSV data-row identities.
+- Anomaly scores and whether each record crosses the stated threshold.
+- The observed configuration and Performance-.
+- Supporting evidence explaining why each flagged result is unusual.
+- Suggested checks a client could perform to investigate it.
+
+Separate a display limit from the anomaly threshold:
+showing the top records must not automatically label them anomalies.
+Do not force a fixed number of anomalies without documenting that
+the rule is a screening quota rather than an estimated error rate.
+
+Reuse earlier machinery where appropriate.
+If using prediction residuals, obtain predictions without training
+on the evaluated record or duplicate configurations.
+Do not report training residuals as evidence of unseen prediction error.
+
+Treat results as exploratory screening, not confirmed measurement
+errors. The dataset has no verified anomaly labels, so do not invent
+precision, recall, or detection-accuracy measurements.
+Do not delete, repair, or modify the original dataset.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 9 and preserved Steps 1–8 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- anomalies.json
+- run_instructions.txt
+
+anomalies.json must include the method, parameters, input fields,
+score and threshold definitions, ranked findings, flagged count,
+supporting evidence, and limitations.
+
+Test the documented scoring and threshold rules, ties, constant data,
+small or invalid inputs, and reproducibility.
+Use controlled synthetic examples to check behavior without claiming
+they establish real-world detection accuracy.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 9 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 8 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–8 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 8 files, or other repository files.
+Write only inside the absolute Step 9 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

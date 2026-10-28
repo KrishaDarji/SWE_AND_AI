@@ -1,0 +1,19 @@
+s/3.12/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/example_proposal.json'
+
+----------------------------------------------------------------------
+Ran 69 tests in 22.246s
+
+FAILED (errors=1)
+
+step01: returncode=0, seconds=0.030283
+step02: returncode=0, seconds=0.906633
+step03: returncode=0, seconds=0.829192
+step04: returncode=0, seconds=6.613363
+step05: returncode=0, seconds=0.964802
+step06: returncode=0, seconds=1.239420
+step07: returncode=0, seconds=1.088149
+step08: returncode=0, seconds=0.377543
+step09: returncode=0, seconds=0.839656

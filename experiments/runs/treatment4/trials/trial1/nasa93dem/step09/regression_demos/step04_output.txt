@@ -1,0 +1,58 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/source/flow.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09/regression_demos/flow.json']
+Return code: 0
+Wall seconds: 6.669319083
+{
+  "arrival_rule": "Original CSV data row order; zero-based row_index excludes header. Simulated arrival sequence, not verified chronological order or actual proposal-time data.",
+  "units": "unspecified",
+  "warm_up_policy": {
+    "minimum_prior_observed_efforts": 2,
+    "rule": "No prediction until two prior observed outcomes are available; missing outcomes do not advance warm-up. No external history or future fitting."
+  },
+  "final_summary": {
+    "arrivals": 93,
+    "observed_outcomes": 93,
+    "missing_outcomes": 0,
+    "available_predictions": 91,
+    "warm_up_arrivals": 2,
+    "scored_arrivals": 91,
+    "history_size": 93,
+    "cumulative_absolute_error": 44607.76816042089,
+    "cumulative_mae": 490.1952545101197,
+    "prediction_error_summary": {
+      "count": 91,
+      "sum": 44607.76816042089,
+      "mean": 490.1952545101197,
+      "std_sample": 854.976902997125,
+      "min": 4.379529428904448,
+      "q25": 60.92473692754613,
+      "median": 240.55369227680535,
+      "q75": 529.1954349948716,
+      "max": 5805.764947059884
+    },
+    "observed_effort_summary": {
+      "count": 93,
+      "sum": 58070.3,
+      "mean": 624.4118279569892,
+      "std_sample": 1135.9280652026785,
+      "min": 8.4,
+      "q25": 70.0,
+      "median": 252.0,
+      "q75": 600.0,
+      "max": 8211.0
+    }
+  },
+  "limitations": [
+    "CSV order is a simulated arrival sequence, not verified chronological order or actual proposal-time data.",
+    "Predictor availability at proposal time is assumed, not demonstrated by this historical dataset.",
+    "Effort units are unspecified. No automatic project approval or uncertainty guarantees are provided.",
+    "Earlier identical normalized predictor configurations may inform later arrivals once their efforts are revealed.",
+    "Sequential cumulative MAE is distinct from Step 2 independent grouped holdout evaluation; duplicates are not held out here.",
+    "Every present outcome is assumed revealed immediately after its prediction; real reporting delays are not modeled.",
+    "Missing outcomes are counted but neither scored nor added to training history; delayed backfill is not supported.",
+    "Two observed efforts are a deterministic availability threshold, not evidence of model reliability.",
+    "Small observational sample, missingness, distribution changes, and novel categories can impair accuracy.",
+    "The seeded 200-tree forest and learned preprocessing are refitted on prior observed records for every available prediction.",
+    "Unseen categories encode as all zeros; missing predictors use the existing explicit empty-string level.",
+    "Kloc+, Defects-, Effort-, all X-suffixed metadata and unknown fields are excluded from proposal predictors."
+  ]
+}

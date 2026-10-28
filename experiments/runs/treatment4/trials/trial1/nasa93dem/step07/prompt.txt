@@ -1,0 +1,145 @@
+You are running Treatment 4, Trial 1, Dataset 2, Step 7 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Current skill: choose
+- Current requirement: Choose project settings that maximize delivered value under a fixed budget.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, NASA93 implementation.
+Preserve Steps 1–6 behavior and tests while adding Step 7.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step06/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step06/tests/
+
+Allowed references:
+- The specified NASA93 dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, Health, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Previous saved reports or recommendations outside this step.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement reusable constrained selection among recorded projects.
+
+For this retrospective demonstration:
+- Treat observed Effort- as the budget-consumption measure.
+- Treat delivered Kloc+ as an illustrative value proxy.
+- Select the recorded project with maximum Kloc+ among those
+  with observed Effort- less than or equal to the supplied budget.
+- Break ties by lower Effort-, then earlier CSV data-row number.
+- Return an explicit no-feasible-candidate result when appropriate.
+
+Accept the budget as a command-line argument.
+Use budget 100 in the recorded demo.
+State that 100 is illustrative in unspecified effort units,
+not a monetary budget or sponsor-approved threshold.
+
+Return the selected project's characteristics, observed outcomes,
+feasibility evidence, candidate counts, and selection rule.
+Do not invent unseen combinations of categorical settings.
+Use CSV data-row numbers for identity; do not assume idX is unique.
+
+Kloc+ is delivered code size, not demonstrated business value.
+Explain that more code is not necessarily better for a real client.
+This uses historical outcomes to illustrate constrained selection;
+it does not prove a proposed project will satisfy the budget.
+Do not use delivered Kloc+, Effort-, Defects-, or X metadata as
+proposal-time predictor inputs.
+
+Reuse earlier loading, validation, summaries, and explanation
+machinery where appropriate. Explain what was reused and added.
+There is no objective-evaluation budget for this retrospective demo;
+do not claim it performs budgeted benchmark search.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 7 and preserved Steps 1–6 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step07/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- selection.json
+- run_instructions.txt
+
+Test budget feasibility, exact budget boundaries, maximum-value
+selection, deterministic ties, missing outcomes, invalid budgets,
+and no feasible candidates.
+Verify the chosen result against an independent exhaustive calculation.
+Exclude rows missing required selection outcomes and report counts.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 7; treatment: 4; trial: 1; domain: nasa93dem; skill: choose.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 7 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to NASA93 Step 6 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–6 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 6 files, or other repository files.
+Write only inside the absolute Step 7 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

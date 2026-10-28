@@ -1,0 +1,40 @@
+Run with the environment's python3 (verified Python 3.12.6, scikit-learn 1.6.0).
+No installation or dependency changes are needed. All commands write under Step 8.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step08'
+
+Run the full experiment, including the Step 8 demo, all seven preserved CLI demos,
+and all tests; capture subprocess output, wall timings, and metrics:
+python3 run_experiment.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+Run tests independently (the demo first creates the shared example fixture):
+PYTHONDONTWRITEBYTECODE=1 python3 source/fix.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --demo --example-proposal example_proposal.json --output repair.json
+PYTHONDONTWRITEBYTECODE=1 NASA93_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' python3 -m unittest discover -s tests -v
+
+Recommend a repair for a complete proposal JSON:
+PYTHONDONTWRITEBYTECODE=1 python3 source/fix.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --output repair.json
+
+Python API (add source/ to sys.path):
+from summarize import read_projects
+from fix import recommend
+result = recommend(read_projects(dataset_path), complete_predictor_dictionary)
+
+General prediction, justification, and sequential APIs retain missing-value support.
+Only the new fix workflow requires complete, nonmissing predictors.
+
+Preserved regression demos (use the full runner to capture them automatically):
+python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir regression/summary
+python3 source/predict_effort.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --evaluation regression/evaluation.json
+python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --output-dir regression/justification --illustrative
+python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression/blame.json
+python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression/certification.json
+python3 source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --budget 100 --output regression/selection.json
+python3 source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression/flow.json
+
+The preserved choose demo budget is illustrative and unrelated to repair ranking.
+The runner creates regression/ before running these commands. For independent runs,
+create regression/ first with mkdir -p regression.
+runtime_seconds is only the Step 8 demo subprocess wall time, including interpreter startup.
+Other timings are recorded separately in metrics notes and execution_history.json.
+Repeated runner invocations append logs and history, preserving execution failures.
+inspection_failure.txt records one premature metrics-file inspection from this run.

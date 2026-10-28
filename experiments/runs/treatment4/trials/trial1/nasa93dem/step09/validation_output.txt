@@ -1,0 +1,19 @@
+finite (test_summarize.FixtureTests.test_invalid_numeric_and_nonfinite) ... ok
+test_invalid_schema_rows_empty_and_missing_file (test_summarize.FixtureTests.test_invalid_schema_rows_empty_and_missing_file) ... ok
+test_malformed_csv (test_summarize.FixtureTests.test_malformed_csv) ... ok
+test_missing_values_and_small_samples (test_summarize.FixtureTests.test_missing_values_and_small_samples) ... ok
+
+----------------------------------------------------------------------
+Ran 77 tests in 28.599s
+
+OK
+
+step01: returncode=0, seconds=0.031951
+step02: returncode=0, seconds=0.931140
+step03: returncode=0, seconds=0.825814
+step04: returncode=0, seconds=6.669319
+step05: returncode=0, seconds=0.948953
+step06: returncode=0, seconds=1.238187
+step07: returncode=0, seconds=1.112682
+step08: returncode=0, seconds=0.381080
+step09: returncode=0, seconds=0.842010

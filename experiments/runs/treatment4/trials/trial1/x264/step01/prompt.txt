@@ -1,0 +1,77 @@
+You are running Treatment 4, Trial 1, Dataset 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Dataset path: moot/optimize/config/X264_AllMeasurements.csv
+- Current skill: remember
+- Current requirement: Summarize the encoder settings and quality measures in our historical runs.
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+This is Step 1, so no previous generated implementation is available.
+Create a reusable implementation that later steps can extend.
+
+Allowed references:
+- The dataset specified above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or step directories.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Inspect the actual dataset schema.
+Performance- is the registered objective and is minimized.
+Do not invent quality measures or fields absent from the dataset.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. Commands to run the tests and implementation.
+4. A short explanation of the approach.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+experiments/runs/treatment4/trials/trial1/x264/step01/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Count application LOC as nonblank, non-comment-only Python lines
+inside source/. Exclude tests and installed libraries.
+For Step 1, new_loc equals total_loc.
+
+Accept the dataset path as an argument.
+Run the tests and implementation, capture outputs and runtime, and record
+actual measured metrics. Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset or write outside the current output directory.
+Do not copy code or context from other treatments, trials, steps,
+or previous chats.

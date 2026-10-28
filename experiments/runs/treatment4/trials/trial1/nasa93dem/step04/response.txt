@@ -1,0 +1,52 @@
+Treatment 4, Trial 1, NASA93, Step 4: sequential proposal assessment
+
+Completed outputs
+- source/summarize.py: complete unchanged Step 1 descriptive implementation.
+- source/predict_effort.py: complete unchanged Step 2 proposal normalization, training and independent grouped holdout evaluation.
+- source/certify.py: complete unchanged Step 3 observed effort comparison.
+- source/flow.py: added reusable ProposalFlow, sequential replay and dataset-argument CLI.
+- tests/: all three prior test modules copied unchanged, plus test_flow.py.
+- run_instructions.txt: exact commands and reusable API usage.
+- run_experiment.py: standard-library runner capturing tests, four demos, wall times and LOC metrics.
+- flow.json: full per-arrival predictions/outcomes/errors/history/warm-up and cumulative summaries.
+- regression/: preserved Steps 1–3 demonstration reports.
+- test_output.txt and runtime_output.txt: captured stdout/stderr, commands, return codes and actual timings.
+
+Reuse and additions
+Step 4 calls the existing normalize_proposal, fit_training and estimate functions. The same training-only imputer, one-hot encoder and seeded 200-tree random forest are refitted using only previously revealed observed records. The Step 3 source and tests were preserved byte-for-byte. The new workflow has separate receive(proposal) and reveal(effort) operations. receive accepts only allowed predictors, validates and normalizes them, fits only prior history when available, and records the prediction. reveal then accepts the current outcome, calculates its error when scoreable, and updates history and cumulative summaries. Returned snapshots cannot mutate internal state. Invalid reveal values leave the pending arrival available for correction.
+
+Warm-up and missing outcomes
+Start with empty history. A prediction is unavailable until at least two earlier observed efforts exist. Missing outcomes never enter history or error calculations and do not advance warm-up. A prediction may still be available for an arrival whose later revealed outcome is missing; it remains unscored. Warm-up observed efforts enter observed-effort summaries and training history but are never assigned invented errors. Cumulative MAE is null until the first scored arrival and thereafter sums absolute errors over scored arrivals only. No observed-effort mean/std/quantile is reported as a forecast.
+
+Arrival and leakage boundaries
+Replay follows original CSV order. This is a simulated arrival sequence, not verified chronological order or actual proposal-time data. The CSV reader validates all fields for compatibility with the preserved machinery, but model inputs contain only the 22 candidate predictor fields. No Kloc+, Defects-, Effort-, X-suffixed metadata or unknown fields enter predictors. Replay reads the current target only after receive returns. Earlier identical normalized predictor configurations may inform a later arrival once their targets are revealed. This is distinct from Step 2's independent grouped holdout, which keeps identical configurations in one partition. Step 4 does not call evaluate or use its held-out targets.
+
+Measured validation
+Entire Steps 1–4 suite: 33/33 tests passed in 5.127571375 seconds. Tests cover event ordering, actual prior-history fit inputs, warm-up, missing outcomes, arithmetic, reproducibility, unchanged earlier assessments when future predictors/outcomes change, unchanged current prediction when its target changes or becomes missing, predictor exclusions, lifecycle validation and detached snapshots. The preserved Step 1–3 tests cover prior schema, summaries, grouped holdout, preprocessing isolation, CLI and observed comparison behavior.
+Step 4 demo subprocess wall time: 6.649216666 seconds (startup, replay and output included).
+Step 1 regression demo: 0.032555166 seconds; exit 0.
+Step 2 regression demo: 0.910385375 seconds; exit 0.
+Step 3 regression demo: 0.375935875 seconds; exit 0.
+Source LOC: 546; added application LOC: 140 (insert/replace new-side nonblank, non-comment-only Python lines versus Step 3; docstrings included, tests and runner excluded).
+Unexpected failed commands/execution attempts: 0. No repair attempts were needed. Expected negative tests are excluded from that count.
+
+Actual NASA93 replay
+Arrivals: 93; observed outcomes: 93; missing outcomes: 0.
+Warm-up arrivals: 2; available predictions: 91; scored arrivals: 91.
+Final history size: 93; cumulative absolute error: 44607.76816042089; cumulative MAE: 490.1952545101197.
+Effort units are unspecified. The NASA93 file has no missing observed efforts; synthetic fixtures test missing-outcome handling.
+
+Assumptions and limitations
+- CSV order is a simulated arrival sequence, not verified chronological order or actual proposal-time data.
+- Predictor availability at proposal time is assumed, not demonstrated by this historical dataset.
+- Effort units are unspecified. No automatic project approval or uncertainty guarantees are provided.
+- Earlier identical normalized predictor configurations may inform later arrivals once their efforts are revealed.
+- Sequential cumulative MAE is distinct from Step 2 independent grouped holdout evaluation; duplicates are not held out here.
+- Every present outcome is assumed revealed immediately after its prediction; real reporting delays are not modeled.
+- Missing outcomes are counted but neither scored nor added to training history; delayed backfill is not supported.
+- Two observed efforts are a deterministic availability threshold, not evidence of model reliability.
+- Small observational sample, missingness, distribution changes, and novel categories can impair accuracy.
+- The seeded 200-tree forest and learned preprocessing are refitted on prior observed records for every available prediction.
+- Unseen categories encode as all zeros; missing predictors use the existing explicit empty-string level.
+- Kloc+, Defects-, Effort-, all X-suffixed metadata and unknown fields are excluded from proposal predictors.
+No automatic approvals are made. Seeded reproducibility is tested in the installed environment; byte-identical results across different dependency versions or platforms are not promised. The reusable API is in-memory and synchronous, without persistence, concurrent arrivals or delayed-outcome backfill. Full-history retraining and retained running snapshots suit this small dataset; large portfolios would need a separate scaling design.

@@ -1,0 +1,13 @@
+{
+  "tests_seconds": 23.671558708068915,
+  "step01_seconds": 0.03028341697063297,
+  "step02_seconds": 0.9066326250322163,
+  "step03_seconds": 0.8291923750657588,
+  "step04_seconds": 6.613362541073002,
+  "step05_seconds": 0.9648021659813821,
+  "step06_seconds": 1.2394202500581741,
+  "step07_seconds": 1.0881490000756457,
+  "step08_seconds": 0.37754316604696214,
+  "step09_seconds": 0.8396562500856817,
+  "regression_demo_seconds": 12.049385540303774
+}

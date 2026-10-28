@@ -1,0 +1,2438 @@
+{
+  "objective": "Performance-",
+  "direction": "minimize",
+  "units": null,
+  "evidence_type": "observed historical measurements only",
+  "model_predictions": null,
+  "recommendation": {
+    "data_row": 71,
+    "settings": {
+      "no_asm": 1.0,
+      "no_8x8dct": 1.0,
+      "no_cabac": 1.0,
+      "no_deblock": 1.0,
+      "no_fast_pskip": 0.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 0.0,
+      "no_weightb": 0.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 1.0,
+      "rc_lookahead_40": 0.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    },
+    "Performance-": 244.23
+  },
+  "selection": {
+    "rule": "Reuse Step 1 ascending Performance- ranking; exact numeric ties select the earliest CSV data row (1-based). No tolerance or setting preference.",
+    "tied_best_data_rows": [
+      71
+    ],
+    "tied_best_count": 1,
+    "same_configuration_data_rows": [
+      71
+    ],
+    "same_configuration_observed_values": [
+      244.23
+    ]
+  },
+  "historical_distribution": {
+    "statistics": {
+      "count": 1152,
+      "min": 244.23,
+      "q25": 294.361,
+      "median": 452.7785,
+      "q75": 580.73775,
+      "max": 821.963,
+      "mean": 461.7535963541667,
+      "population_stddev": 162.49115009089647
+    },
+    "strictly_better_count": 0,
+    "equal_count": 1,
+    "strictly_worse_count": 1151,
+    "strictly_worse_percent": 99.91319444444444,
+    "competition_rank": 1,
+    "empirical_cdf_at_recommendation": 0.0008680555555555555,
+    "cdf_definition": "Fraction of historical rows with Performance- <= recommended observation.",
+    "unique_configurations": 1152,
+    "duplicate_measurement_rows": 0,
+    "repeated_configuration_rows": 0
+  },
+  "historical_reference": {
+    "rule": "Median Performance- of every historical measurement row, including duplicates; average the two middle values for an even count. This is a distribution reference, not an encoder configuration.",
+    "Performance-": 452.7785,
+    "difference_recommended_minus_reference": -208.54850000000002,
+    "observed_reduction_reference_minus_recommended": 208.54850000000002,
+    "observed_reduction_percent_of_reference": 46.059717941554204,
+    "percent_rule": "100*(reference-recommended)/reference only for positive reference; otherwise null."
+  },
+  "setting_evidence": [
+    {
+      "setting": "ref_9",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 1,
+      "eta_squared": 0.6445017930440725,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 768,
+        "fraction": 0.6666666666666666,
+        "objective": {
+          "count": 768,
+          "min": 244.23,
+          "q25": 275.98350000000005,
+          "median": 336.248,
+          "q75": 451.46774999999997,
+          "max": 573.757,
+          "mean": 369.51200651041665,
+          "population_stddev": 100.7012571773959
+        },
+        "mean_minus_overall": -92.24158984375003,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 768,
+          "fraction": 0.6666666666666666,
+          "objective": {
+            "count": 768,
+            "min": 244.23,
+            "q25": 275.98350000000005,
+            "median": 336.248,
+            "q75": 451.46774999999997,
+            "max": 573.757,
+            "mean": 369.51200651041665,
+            "population_stddev": 100.7012571773959
+          },
+          "mean_minus_overall": -92.24158984375003,
+          "association": "lower"
+        },
+        {
+          "value": 1.0,
+          "count": 384,
+          "fraction": 0.3333333333333333,
+          "objective": {
+            "count": 384,
+            "min": 490.043,
+            "q25": 580.73925,
+            "median": 638.4515,
+            "q75": 713.43675,
+            "max": 821.963,
+            "mean": 646.2367760416666,
+            "population_stddev": 88.75567473663332
+          },
+          "mean_minus_overall": 184.48317968749996,
+          "association": "higher"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "ref_1",
+      "recommended_value": 1.0,
+      "diagnosis_rank": 2,
+      "eta_squared": 0.6434940424637342,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 384,
+        "fraction": 0.3333333333333333,
+        "objective": {
+          "count": 384,
+          "min": 244.23,
+          "q25": 262.59925,
+          "median": 275.98,
+          "q75": 292.569,
+          "max": 310.793,
+          "mean": 277.414703125,
+          "population_stddev": 18.86644994346199
+        },
+        "mean_minus_overall": -184.33889322916667,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 768,
+          "fraction": 0.6666666666666666,
+          "objective": {
+            "count": 768,
+            "min": 361.703,
+            "q25": 454.08925,
+            "median": 528.7665,
+            "q75": 635.6972499999999,
+            "max": 821.963,
+            "mean": 553.92304296875,
+            "population_stddev": 118.0739965121161
+          },
+          "mean_minus_overall": 92.16944661458331,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 384,
+          "fraction": 0.3333333333333333,
+          "objective": {
+            "count": 384,
+            "min": 244.23,
+            "q25": 262.59925,
+            "median": 275.98,
+            "q75": 292.569,
+            "max": 310.793,
+            "mean": 277.414703125,
+            "population_stddev": 18.86644994346199
+          },
+          "mean_minus_overall": -184.33889322916667,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_mixed_refs",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 3,
+      "eta_squared": 0.03769159718307721,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 294.4105,
+          "median": 500.5985,
+          "q75": 633.18425,
+          "max": 821.963,
+          "mean": 493.3001545138889,
+          "population_stddev": 181.7741662630888
+        },
+        "mean_minus_overall": 31.546558159722224,
+        "association": "higher"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 294.4105,
+            "median": 500.5985,
+            "q75": 633.18425,
+            "max": 821.963,
+            "mean": 493.3001545138889,
+            "population_stddev": 181.7741662630888
+          },
+          "mean_minus_overall": 31.546558159722224,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.277,
+            "q25": 294.361,
+            "median": 430.16999999999996,
+            "q75": 522.59475,
+            "max": 672.6,
+            "mean": 430.20703819444446,
+            "population_stddev": 133.32115185383734
+          },
+          "mean_minus_overall": -31.546558159722224,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_fast_pskip",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 4,
+      "eta_squared": 0.030786994902991933,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 293.24525,
+          "median": 427.50649999999996,
+          "q75": 530.28,
+          "max": 726.917,
+          "mean": 433.24253645833335,
+          "population_stddev": 139.66904358943026
+        },
+        "mean_minus_overall": -28.51105989583334,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 293.24525,
+            "median": 427.50649999999996,
+            "q75": 530.28,
+            "max": 726.917,
+            "mean": 433.24253645833335,
+            "population_stddev": 139.66904358943026
+          },
+          "mean_minus_overall": -28.51105989583334,
+          "association": "lower"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 249.363,
+            "q25": 297.6385,
+            "median": 483.5965,
+            "q75": 635.6972499999999,
+            "max": 821.963,
+            "mean": 490.26465625,
+            "population_stddev": 177.97062933464815
+          },
+          "mean_minus_overall": 28.511059895833284,
+          "association": "higher"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_mbtree",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 5,
+      "eta_squared": 0.024376905125970356,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 269.3405,
+          "median": 435.4735,
+          "q75": 533.85575,
+          "max": 745.597,
+          "mean": 436.3836822916667,
+          "population_stddev": 152.25392699106123
+        },
+        "mean_minus_overall": -25.369914062500015,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 269.3405,
+            "median": 435.4735,
+            "q75": 533.85575,
+            "max": 745.597,
+            "mean": 436.3836822916667,
+            "population_stddev": 152.25392699106123
+          },
+          "mean_minus_overall": -25.369914062500015,
+          "association": "lower"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 275.387,
+            "q25": 303.66499999999996,
+            "median": 484.17,
+            "q75": 596.64775,
+            "max": 821.963,
+            "mean": 487.12351041666665,
+            "population_stddev": 168.33961017077297
+          },
+          "mean_minus_overall": 25.36991406249996,
+          "association": "higher"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_8x8dct",
+      "recommended_value": 1.0,
+      "diagnosis_rank": 6,
+      "eta_squared": 0.004082208133125627,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 284.69174999999996,
+          "median": 445.185,
+          "q75": 566.306,
+          "max": 784.02,
+          "mean": 451.3716857638889,
+          "population_stddev": 160.05675460937917
+        },
+        "mean_minus_overall": -10.381910590277812,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 259.807,
+            "q25": 303.66499999999996,
+            "median": 463.125,
+            "q75": 586.05525,
+            "max": 821.963,
+            "mean": 472.13550694444444,
+            "population_stddev": 164.23463363319084
+          },
+          "mean_minus_overall": 10.381910590277755,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 284.69174999999996,
+            "median": 445.185,
+            "q75": 566.306,
+            "max": 784.02,
+            "mean": 451.3716857638889,
+            "population_stddev": 160.05675460937917
+          },
+          "mean_minus_overall": -10.381910590277812,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_cabac",
+      "recommended_value": 1.0,
+      "diagnosis_rank": 7,
+      "eta_squared": 0.0005837384643700195,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 291.4245,
+          "median": 451.02,
+          "q75": 577.16075,
+          "max": 809.97,
+          "mean": 457.82769965277777,
+          "population_stddev": 162.83098287398093
+        },
+        "mean_minus_overall": -3.925896701388922,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 254.013,
+            "q25": 301.59325,
+            "median": 456.297,
+            "q75": 581.86275,
+            "max": 821.963,
+            "mean": 465.67949305555555,
+            "population_stddev": 162.05552567622576
+          },
+          "mean_minus_overall": 3.925896701388865,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 291.4245,
+            "median": 451.02,
+            "q75": 577.16075,
+            "max": 809.97,
+            "mean": 457.82769965277777,
+            "population_stddev": 162.83098287398093
+          },
+          "mean_minus_overall": -3.925896701388922,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "rc_lookahead_20",
+      "recommended_value": 1.0,
+      "diagnosis_rank": 8,
+      "eta_squared": 1.2183343356475464e-05,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 384,
+        "fraction": 0.3333333333333333,
+        "objective": {
+          "count": 384,
+          "min": 244.23,
+          "q25": 294.35775,
+          "median": 451.45799999999997,
+          "q75": 580.58975,
+          "max": 821.963,
+          "mean": 460.9514973958333,
+          "population_stddev": 162.71513977228602
+        },
+        "mean_minus_overall": -0.8020989583333744,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 768,
+          "fraction": 0.6666666666666666,
+          "objective": {
+            "count": 768,
+            "min": 246.2,
+            "q25": 294.433,
+            "median": 452.7785,
+            "q75": 580.9345,
+            "max": 821.76,
+            "mean": 462.15464583333335,
+            "population_stddev": 162.3775535878708
+          },
+          "mean_minus_overall": 0.4010494791666588,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 384,
+          "fraction": 0.3333333333333333,
+          "objective": {
+            "count": 384,
+            "min": 244.23,
+            "q25": 294.35775,
+            "median": 451.45799999999997,
+            "q75": 580.58975,
+            "max": 821.963,
+            "mean": 460.9514973958333,
+            "population_stddev": 162.71513977228602
+          },
+          "mean_minus_overall": -0.8020989583333744,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "rc_lookahead_60",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 9,
+      "eta_squared": 7.884681107352773e-06,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 768,
+        "fraction": 0.6666666666666666,
+        "objective": {
+          "count": 768,
+          "min": 244.23,
+          "q25": 294.361,
+          "median": 452.34,
+          "q75": 580.73175,
+          "max": 821.963,
+          "mean": 461.43096484375,
+          "population_stddev": 162.58906354466401
+        },
+        "mean_minus_overall": -0.32263151041667015,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 768,
+          "fraction": 0.6666666666666666,
+          "objective": {
+            "count": 768,
+            "min": 244.23,
+            "q25": 294.361,
+            "median": 452.34,
+            "q75": 580.73175,
+            "max": 821.963,
+            "mean": 461.43096484375,
+            "population_stddev": 162.58906354466401
+          },
+          "mean_minus_overall": -0.32263151041667015,
+          "association": "lower"
+        },
+        {
+          "value": 1.0,
+          "count": 384,
+          "fraction": 0.3333333333333333,
+          "objective": {
+            "count": 384,
+            "min": 247.483,
+            "q25": 294.4255,
+            "median": 452.835,
+            "q75": 580.98425,
+            "max": 821.76,
+            "mean": 462.398859375,
+            "population_stddev": 162.29322184976198
+          },
+          "mean_minus_overall": 0.6452630208332835,
+          "association": "higher"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_deblock",
+      "recommended_value": 1.0,
+      "diagnosis_rank": 10,
+      "eta_squared": 8.691428974406844e-07,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 294.262,
+          "median": 452.39149999999995,
+          "q75": 580.7435,
+          "max": 821.963,
+          "mean": 461.9050833333333,
+          "population_stddev": 162.9171341942034
+        },
+        "mean_minus_overall": 0.15148697916663423,
+        "association": "higher"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.303,
+            "q25": 294.52075,
+            "median": 453.26,
+            "q75": 580.73775,
+            "max": 818.04,
+            "mean": 461.602109375,
+            "population_stddev": 162.06390469522412
+          },
+          "mean_minus_overall": -0.15148697916669107,
+          "association": "lower"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 294.262,
+            "median": 452.39149999999995,
+            "q75": 580.7435,
+            "max": 821.963,
+            "mean": 461.9050833333333,
+            "population_stddev": 162.9171341942034
+          },
+          "mean_minus_overall": 0.15148697916663423,
+          "association": "higher"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "rc_lookahead_40",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 11,
+      "eta_squared": 4.658024278248687e-07,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 768,
+        "fraction": 0.6666666666666666,
+        "objective": {
+          "count": 768,
+          "min": 244.23,
+          "q25": 294.35775,
+          "median": 452.825,
+          "q75": 580.73175,
+          "max": 821.963,
+          "mean": 461.67517838541664,
+          "population_stddev": 162.5059291192786
+        },
+        "mean_minus_overall": -0.07841796875004547,
+        "association": "lower"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 768,
+          "fraction": 0.6666666666666666,
+          "objective": {
+            "count": 768,
+            "min": 244.23,
+            "q25": 294.35775,
+            "median": 452.825,
+            "q75": 580.73175,
+            "max": 821.963,
+            "mean": 461.67517838541664,
+            "population_stddev": 162.5059291192786
+          },
+          "mean_minus_overall": -0.07841796875004547,
+          "association": "lower"
+        },
+        {
+          "value": 1.0,
+          "count": 384,
+          "fraction": 0.3333333333333333,
+          "objective": {
+            "count": 384,
+            "min": 246.2,
+            "q25": 294.43825000000004,
+            "median": 452.34,
+            "q75": 580.9345,
+            "max": 821.757,
+            "mean": 461.91043229166667,
+            "population_stddev": 162.46147444695862
+          },
+          "mean_minus_overall": 0.15683593749997726,
+          "association": "higher"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "ref_5",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 12,
+      "eta_squared": 3.9424094379868277e-07,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 768,
+        "fraction": 0.6666666666666666,
+        "objective": {
+          "count": 768,
+          "min": 244.23,
+          "q25": 275.98350000000005,
+          "median": 400.418,
+          "q75": 635.6972499999999,
+          "max": 821.963,
+          "mean": 461.82573958333336,
+          "population_stddev": 195.2541593240688
+        },
+        "mean_minus_overall": 0.07214322916667015,
+        "association": "higher"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 768,
+          "fraction": 0.6666666666666666,
+          "objective": {
+            "count": 768,
+            "min": 244.23,
+            "q25": 275.98350000000005,
+            "median": 400.418,
+            "q75": 635.6972499999999,
+            "max": 821.963,
+            "mean": 461.82573958333336,
+            "population_stddev": 195.2541593240688
+          },
+          "mean_minus_overall": 0.07214322916667015,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 384,
+          "fraction": 0.3333333333333333,
+          "objective": {
+            "count": 384,
+            "min": 361.703,
+            "q25": 426.69425,
+            "median": 452.7785,
+            "q75": 498.07925,
+            "max": 573.757,
+            "mean": 461.60930989583335,
+            "population_stddev": 54.42165817958824
+          },
+          "mean_minus_overall": -0.1442864583333403,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_weightb",
+      "recommended_value": 0.0,
+      "diagnosis_rank": 13,
+      "eta_squared": 2.940311709064498e-07,
+      "selected_value_group": {
+        "value": 0.0,
+        "count": 576,
+        "fraction": 0.5,
+        "objective": {
+          "count": 576,
+          "min": 244.23,
+          "q25": 294.361,
+          "median": 452.8985,
+          "q75": 580.7742499999999,
+          "max": 821.76,
+          "mean": 461.84170659722224,
+          "population_stddev": 162.53663345650415
+        },
+        "mean_minus_overall": 0.08811024305555293,
+        "association": "higher"
+      },
+      "all_value_groups": [
+        {
+          "value": 0.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.23,
+            "q25": 294.361,
+            "median": 452.8985,
+            "q75": 580.7742499999999,
+            "max": 821.76,
+            "mean": 461.84170659722224,
+            "population_stddev": 162.53663345650415
+          },
+          "mean_minus_overall": 0.08811024305555293,
+          "association": "higher"
+        },
+        {
+          "value": 1.0,
+          "count": 576,
+          "fraction": 0.5,
+          "objective": {
+            "count": 576,
+            "min": 244.28,
+            "q25": 294.40475000000004,
+            "median": 452.765,
+            "q75": 580.65275,
+            "max": 821.963,
+            "mean": 461.66548611111114,
+            "population_stddev": 162.44560619949263
+          },
+          "mean_minus_overall": -0.08811024305555293,
+          "association": "lower"
+        }
+      ],
+      "interpretation": "Marginal group association only; not an individual contribution."
+    },
+    {
+      "setting": "no_asm",
+      "recommended_value": 1.0,
+      "diagnosis_rank": null,
+      "eta_squared": null,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 1152,
+        "fraction": 1.0,
+        "objective": {
+          "count": 1152,
+          "min": 244.23,
+          "q25": 294.361,
+          "median": 452.7785,
+          "q75": 580.73775,
+          "max": 821.963,
+          "mean": 461.7535963541667,
+          "population_stddev": 162.49115009089647
+        },
+        "mean_minus_overall": 0.0,
+        "association": "equal"
+      },
+      "all_value_groups": [
+        {
+          "value": 1.0,
+          "count": 1152,
+          "fraction": 1.0,
+          "objective": {
+            "count": 1152,
+            "min": 244.23,
+            "q25": 294.361,
+            "median": 452.7785,
+            "q75": 580.73775,
+            "max": 821.963,
+            "mean": 461.7535963541667,
+            "population_stddev": 162.49115009089647
+          },
+          "mean_minus_overall": 0.0,
+          "association": "equal"
+        }
+      ],
+      "interpretation": "Constant setting; no between-value comparison."
+    },
+    {
+      "setting": "rc_lookahead",
+      "recommended_value": 1.0,
+      "diagnosis_rank": null,
+      "eta_squared": null,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 1152,
+        "fraction": 1.0,
+        "objective": {
+          "count": 1152,
+          "min": 244.23,
+          "q25": 294.361,
+          "median": 452.7785,
+          "q75": 580.73775,
+          "max": 821.963,
+          "mean": 461.7535963541667,
+          "population_stddev": 162.49115009089647
+        },
+        "mean_minus_overall": 0.0,
+        "association": "equal"
+      },
+      "all_value_groups": [
+        {
+          "value": 1.0,
+          "count": 1152,
+          "fraction": 1.0,
+          "objective": {
+            "count": 1152,
+            "min": 244.23,
+            "q25": 294.361,
+            "median": 452.7785,
+            "q75": 580.73775,
+            "max": 821.963,
+            "mean": 461.7535963541667,
+            "population_stddev": 162.49115009089647
+          },
+          "mean_minus_overall": 0.0,
+          "association": "equal"
+        }
+      ],
+      "interpretation": "Constant setting; no between-value comparison."
+    },
+    {
+      "setting": "ref",
+      "recommended_value": 1.0,
+      "diagnosis_rank": null,
+      "eta_squared": null,
+      "selected_value_group": {
+        "value": 1.0,
+        "count": 1152,
+        "fraction": 1.0,
+        "objective": {
+          "count": 1152,
+          "min": 244.23,
+          "q25": 294.361,
+          "median": 452.7785,
+          "q75": 580.73775,
+          "max": 821.963,
+          "mean": 461.7535963541667,
+          "population_stddev": 162.49115009089647
+        },
+        "mean_minus_overall": 0.0,
+        "association": "equal"
+      },
+      "all_value_groups": [
+        {
+          "value": 1.0,
+          "count": 1152,
+          "fraction": 1.0,
+          "objective": {
+            "count": 1152,
+            "min": 244.23,
+            "q25": 294.361,
+            "median": 452.7785,
+            "q75": 580.73775,
+            "max": 821.963,
+            "mean": 461.7535963541667,
+            "population_stddev": 162.49115009089647
+          },
+          "mean_minus_overall": 0.0,
+          "association": "equal"
+        }
+      ],
+      "interpretation": "Constant setting; no between-value comparison."
+    }
+  ],
+  "diagnosis": {
+    "objective": "Performance-",
+    "direction": "minimize",
+    "units": null,
+    "row_count": 1152,
+    "features": [
+      "no_asm",
+      "no_8x8dct",
+      "no_cabac",
+      "no_deblock",
+      "no_fast_pskip",
+      "no_mbtree",
+      "no_mixed_refs",
+      "no_weightb",
+      "rc_lookahead",
+      "rc_lookahead_20",
+      "rc_lookahead_40",
+      "rc_lookahead_60",
+      "ref",
+      "ref_1",
+      "ref_5",
+      "ref_9"
+    ],
+    "overall_objective": {
+      "count": 1152,
+      "min": 244.23,
+      "q25": 294.361,
+      "median": 452.7785,
+      "q75": 580.73775,
+      "max": 821.963,
+      "mean": 461.7535963541667,
+      "population_stddev": 162.49115009089647
+    },
+    "unique_configurations": 1152,
+    "duplicate_measurement_rows": 0,
+    "repeated_configuration_rows": 0,
+    "method": {
+      "name": "Marginal categorical eta squared",
+      "formula": "sum_v n_v*(mean_y_v-mean_y)^2 / sum_i (y_i-mean_y)^2",
+      "ranking": "Variable settings by descending eta squared; exact ties share competition rank; alphabetical display tie break.",
+      "zero_target_variance": "All variable settings receive score 0.",
+      "weighting": "Every observed row equally weighted; exact numeric values form categories.",
+      "direction": "Value-level mean minus overall mean and highest/lowest group means; independent of score.",
+      "seed": null,
+      "fitted_model": null,
+      "evaluation": "Not applicable: descriptive statistics only.",
+      "inference": "Exploratory; no significance tests, p-values or confidence intervals.",
+      "target_scale": 821.963,
+      "total_ss_scaled": 45.02019451550821,
+      "relationships": "All variable pairs: Pearson correlation and exact equivalence of observed value partitions; neither implies causality."
+    },
+    "ranked_findings": [
+      {
+        "setting": "ref_9",
+        "score": 0.6445017930440725,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 29.01559608843796,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 768,
+            "fraction": 0.6666666666666666,
+            "objective": {
+              "count": 768,
+              "min": 244.23,
+              "q25": 275.98350000000005,
+              "median": 336.248,
+              "q75": 451.46774999999997,
+              "max": 573.757,
+              "mean": 369.51200651041665,
+              "population_stddev": 100.7012571773959
+            },
+            "mean_minus_overall": -92.24158984375003,
+            "association": "lower"
+          },
+          {
+            "value": 1.0,
+            "count": 384,
+            "fraction": 0.3333333333333333,
+            "objective": {
+              "count": 384,
+              "min": 490.043,
+              "q25": 580.73925,
+              "median": 638.4515,
+              "q75": 713.43675,
+              "max": 821.963,
+              "mean": 646.2367760416666,
+              "population_stddev": 88.75567473663332
+            },
+            "mean_minus_overall": 184.48317968749996,
+            "association": "higher"
+          }
+        ],
+        "highest_mean_values": [
+          1.0
+        ],
+        "lowest_mean_values": [
+          0.0
+        ],
+        "mean_gap": 276.72476953125,
+        "explanation": "ref_9: eta squared 0.644502. Highest observed mean Performance- 646.237 at [1.0]; lowest 369.512 at [0.0]; mean gap 276.725 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 1
+      },
+      {
+        "setting": "ref_1",
+        "score": 0.6434940424637342,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 28.970226961288013,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 768,
+            "fraction": 0.6666666666666666,
+            "objective": {
+              "count": 768,
+              "min": 361.703,
+              "q25": 454.08925,
+              "median": 528.7665,
+              "q75": 635.6972499999999,
+              "max": 821.963,
+              "mean": 553.92304296875,
+              "population_stddev": 118.0739965121161
+            },
+            "mean_minus_overall": 92.16944661458331,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 384,
+            "fraction": 0.3333333333333333,
+            "objective": {
+              "count": 384,
+              "min": 244.23,
+              "q25": 262.59925,
+              "median": 275.98,
+              "q75": 292.569,
+              "max": 310.793,
+              "mean": 277.414703125,
+              "population_stddev": 18.86644994346199
+            },
+            "mean_minus_overall": -184.33889322916667,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 276.50833984375,
+        "explanation": "ref_1: eta squared 0.643494. Highest observed mean Performance- 553.923 at [0.0]; lowest 277.415 at [1.0]; mean gap 276.508 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 2
+      },
+      {
+        "setting": "no_mixed_refs",
+        "score": 0.03769159718307721,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 1.6968830367823176,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 294.4105,
+              "median": 500.5985,
+              "q75": 633.18425,
+              "max": 821.963,
+              "mean": 493.3001545138889,
+              "population_stddev": 181.7741662630888
+            },
+            "mean_minus_overall": 31.546558159722224,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.277,
+              "q25": 294.361,
+              "median": 430.16999999999996,
+              "q75": 522.59475,
+              "max": 672.6,
+              "mean": 430.20703819444446,
+              "population_stddev": 133.32115185383734
+            },
+            "mean_minus_overall": -31.546558159722224,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 63.09311631944445,
+        "explanation": "no_mixed_refs: eta squared 0.037692. Highest observed mean Performance- 493.3 at [0.0]; lowest 430.207 at [1.0]; mean gap 63.0931 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 3
+      },
+      {
+        "setting": "no_fast_pskip",
+        "score": 0.030786994902991933,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 1.3860364990806566,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 293.24525,
+              "median": 427.50649999999996,
+              "q75": 530.28,
+              "max": 726.917,
+              "mean": 433.24253645833335,
+              "population_stddev": 139.66904358943026
+            },
+            "mean_minus_overall": -28.51105989583334,
+            "association": "lower"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 249.363,
+              "q25": 297.6385,
+              "median": 483.5965,
+              "q75": 635.6972499999999,
+              "max": 821.963,
+              "mean": 490.26465625,
+              "population_stddev": 177.97062933464815
+            },
+            "mean_minus_overall": 28.511059895833284,
+            "association": "higher"
+          }
+        ],
+        "highest_mean_values": [
+          1.0
+        ],
+        "lowest_mean_values": [
+          0.0
+        ],
+        "mean_gap": 57.022119791666626,
+        "explanation": "no_fast_pskip: eta squared 0.030787. Highest observed mean Performance- 490.265 at [1.0]; lowest 433.243 at [0.0]; mean gap 57.0221 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 4
+      },
+      {
+        "setting": "no_mbtree",
+        "score": 0.024376905125970356,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 1.0974530104572746,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 269.3405,
+              "median": 435.4735,
+              "q75": 533.85575,
+              "max": 745.597,
+              "mean": 436.3836822916667,
+              "population_stddev": 152.25392699106123
+            },
+            "mean_minus_overall": -25.369914062500015,
+            "association": "lower"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 275.387,
+              "q25": 303.66499999999996,
+              "median": 484.17,
+              "q75": 596.64775,
+              "max": 821.963,
+              "mean": 487.12351041666665,
+              "population_stddev": 168.33961017077297
+            },
+            "mean_minus_overall": 25.36991406249996,
+            "association": "higher"
+          }
+        ],
+        "highest_mean_values": [
+          1.0
+        ],
+        "lowest_mean_values": [
+          0.0
+        ],
+        "mean_gap": 50.739828124999974,
+        "explanation": "no_mbtree: eta squared 0.024377. Highest observed mean Performance- 487.124 at [1.0]; lowest 436.384 at [0.0]; mean gap 50.7398 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 5
+      },
+      {
+        "setting": "no_8x8dct",
+        "score": 0.004082208133125627,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 0.18378180420610535,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 259.807,
+              "q25": 303.66499999999996,
+              "median": 463.125,
+              "q75": 586.05525,
+              "max": 821.963,
+              "mean": 472.13550694444444,
+              "population_stddev": 164.23463363319084
+            },
+            "mean_minus_overall": 10.381910590277755,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 284.69174999999996,
+              "median": 445.185,
+              "q75": 566.306,
+              "max": 784.02,
+              "mean": 451.3716857638889,
+              "population_stddev": 160.05675460937917
+            },
+            "mean_minus_overall": -10.381910590277812,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 20.763821180555567,
+        "explanation": "no_8x8dct: eta squared 0.004082. Highest observed mean Performance- 472.136 at [0.0]; lowest 451.372 at [1.0]; mean gap 20.7638 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 6
+      },
+      {
+        "setting": "no_cabac",
+        "score": 0.0005837384643700195,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 0.026280019212122335,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 254.013,
+              "q25": 301.59325,
+              "median": 456.297,
+              "q75": 581.86275,
+              "max": 821.963,
+              "mean": 465.67949305555555,
+              "population_stddev": 162.05552567622576
+            },
+            "mean_minus_overall": 3.925896701388865,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 291.4245,
+              "median": 451.02,
+              "q75": 577.16075,
+              "max": 809.97,
+              "mean": 457.82769965277777,
+              "population_stddev": 162.83098287398093
+            },
+            "mean_minus_overall": -3.925896701388922,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 7.851793402777787,
+        "explanation": "no_cabac: eta squared 0.000584. Highest observed mean Performance- 465.679 at [0.0]; lowest 457.828 at [1.0]; mean gap 7.85179 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 7
+      },
+      {
+        "setting": "rc_lookahead_20",
+        "score": 1.2183343356475464e-05,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 0.0005484964877577501,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 768,
+            "fraction": 0.6666666666666666,
+            "objective": {
+              "count": 768,
+              "min": 246.2,
+              "q25": 294.433,
+              "median": 452.7785,
+              "q75": 580.9345,
+              "max": 821.76,
+              "mean": 462.15464583333335,
+              "population_stddev": 162.3775535878708
+            },
+            "mean_minus_overall": 0.4010494791666588,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 384,
+            "fraction": 0.3333333333333333,
+            "objective": {
+              "count": 384,
+              "min": 244.23,
+              "q25": 294.35775,
+              "median": 451.45799999999997,
+              "q75": 580.58975,
+              "max": 821.963,
+              "mean": 460.9514973958333,
+              "population_stddev": 162.71513977228602
+            },
+            "mean_minus_overall": -0.8020989583333744,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 1.2031484375000332,
+        "explanation": "rc_lookahead_20: eta squared 0.000012. Highest observed mean Performance- 462.155 at [0.0]; lowest 460.951 at [1.0]; mean gap 1.20315 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 8
+      },
+      {
+        "setting": "rc_lookahead_60",
+        "score": 7.884681107352773e-06,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 0.00035496987714577453,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 768,
+            "fraction": 0.6666666666666666,
+            "objective": {
+              "count": 768,
+              "min": 244.23,
+              "q25": 294.361,
+              "median": 452.34,
+              "q75": 580.73175,
+              "max": 821.963,
+              "mean": 461.43096484375,
+              "population_stddev": 162.58906354466401
+            },
+            "mean_minus_overall": -0.32263151041667015,
+            "association": "lower"
+          },
+          {
+            "value": 1.0,
+            "count": 384,
+            "fraction": 0.3333333333333333,
+            "objective": {
+              "count": 384,
+              "min": 247.483,
+              "q25": 294.4255,
+              "median": 452.835,
+              "q75": 580.98425,
+              "max": 821.76,
+              "mean": 462.398859375,
+              "population_stddev": 162.29322184976198
+            },
+            "mean_minus_overall": 0.6452630208332835,
+            "association": "higher"
+          }
+        ],
+        "highest_mean_values": [
+          1.0
+        ],
+        "lowest_mean_values": [
+          0.0
+        ],
+        "mean_gap": 0.9678945312499536,
+        "explanation": "rc_lookahead_60: eta squared 0.000008. Highest observed mean Performance- 462.399 at [1.0]; lowest 461.431 at [0.0]; mean gap 0.967895 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 9
+      },
+      {
+        "setting": "no_deblock",
+        "score": 8.691428974406844e-07,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 3.912898230455201e-05,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.303,
+              "q25": 294.52075,
+              "median": 453.26,
+              "q75": 580.73775,
+              "max": 818.04,
+              "mean": 461.602109375,
+              "population_stddev": 162.06390469522412
+            },
+            "mean_minus_overall": -0.15148697916669107,
+            "association": "lower"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 294.262,
+              "median": 452.39149999999995,
+              "q75": 580.7435,
+              "max": 821.963,
+              "mean": 461.9050833333333,
+              "population_stddev": 162.9171341942034
+            },
+            "mean_minus_overall": 0.15148697916663423,
+            "association": "higher"
+          }
+        ],
+        "highest_mean_values": [
+          1.0
+        ],
+        "lowest_mean_values": [
+          0.0
+        ],
+        "mean_gap": 0.3029739583333253,
+        "explanation": "no_deblock: eta squared 0.000001. Highest observed mean Performance- 461.905 at [1.0]; lowest 461.602 at [0.0]; mean gap 0.302974 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 10
+      },
+      {
+        "setting": "rc_lookahead_40",
+        "score": 4.658024278248687e-07,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 2.0970515906471563e-05,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 768,
+            "fraction": 0.6666666666666666,
+            "objective": {
+              "count": 768,
+              "min": 244.23,
+              "q25": 294.35775,
+              "median": 452.825,
+              "q75": 580.73175,
+              "max": 821.963,
+              "mean": 461.67517838541664,
+              "population_stddev": 162.5059291192786
+            },
+            "mean_minus_overall": -0.07841796875004547,
+            "association": "lower"
+          },
+          {
+            "value": 1.0,
+            "count": 384,
+            "fraction": 0.3333333333333333,
+            "objective": {
+              "count": 384,
+              "min": 246.2,
+              "q25": 294.43825000000004,
+              "median": 452.34,
+              "q75": 580.9345,
+              "max": 821.757,
+              "mean": 461.91043229166667,
+              "population_stddev": 162.46147444695862
+            },
+            "mean_minus_overall": 0.15683593749997726,
+            "association": "higher"
+          }
+        ],
+        "highest_mean_values": [
+          1.0
+        ],
+        "lowest_mean_values": [
+          0.0
+        ],
+        "mean_gap": 0.23525390625002274,
+        "explanation": "rc_lookahead_40: eta squared 0.000000. Highest observed mean Performance- 461.91 at [1.0]; lowest 461.675 at [0.0]; mean gap 0.235254 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 11
+      },
+      {
+        "setting": "ref_5",
+        "score": 3.9424094379868277e-07,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 1.7748803975794237e-05,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 768,
+            "fraction": 0.6666666666666666,
+            "objective": {
+              "count": 768,
+              "min": 244.23,
+              "q25": 275.98350000000005,
+              "median": 400.418,
+              "q75": 635.6972499999999,
+              "max": 821.963,
+              "mean": 461.82573958333336,
+              "population_stddev": 195.2541593240688
+            },
+            "mean_minus_overall": 0.07214322916667015,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 384,
+            "fraction": 0.3333333333333333,
+            "objective": {
+              "count": 384,
+              "min": 361.703,
+              "q25": 426.69425,
+              "median": 452.7785,
+              "q75": 498.07925,
+              "max": 573.757,
+              "mean": 461.60930989583335,
+              "population_stddev": 54.42165817958824
+            },
+            "mean_minus_overall": -0.1442864583333403,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 0.21642968750001046,
+        "explanation": "ref_5: eta squared 0.000000. Highest observed mean Performance- 461.826 at [0.0]; lowest 461.609 at [1.0]; mean gap 0.21643 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 12
+      },
+      {
+        "setting": "no_weightb",
+        "score": 2.940311709064498e-07,
+        "score_name": "eta_squared",
+        "between_ss_scaled": 1.3237340507831008e-05,
+        "values": [
+          {
+            "value": 0.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.23,
+              "q25": 294.361,
+              "median": 452.8985,
+              "q75": 580.7742499999999,
+              "max": 821.76,
+              "mean": 461.84170659722224,
+              "population_stddev": 162.53663345650415
+            },
+            "mean_minus_overall": 0.08811024305555293,
+            "association": "higher"
+          },
+          {
+            "value": 1.0,
+            "count": 576,
+            "fraction": 0.5,
+            "objective": {
+              "count": 576,
+              "min": 244.28,
+              "q25": 294.40475000000004,
+              "median": 452.765,
+              "q75": 580.65275,
+              "max": 821.963,
+              "mean": 461.66548611111114,
+              "population_stddev": 162.44560619949263
+            },
+            "mean_minus_overall": -0.08811024305555293,
+            "association": "lower"
+          }
+        ],
+        "highest_mean_values": [
+          0.0
+        ],
+        "lowest_mean_values": [
+          1.0
+        ],
+        "mean_gap": 0.17622048611110586,
+        "explanation": "no_weightb: eta squared 0.000000. Highest observed mean Performance- 461.842 at [0.0]; lowest 461.665 at [1.0]; mean gap 0.17622 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.",
+        "rank": 13
+      }
+    ],
+    "constant_settings": [
+      {
+        "setting": "no_asm",
+        "values": [
+          {
+            "value": 1.0,
+            "count": 1152,
+            "fraction": 1.0,
+            "objective": {
+              "count": 1152,
+              "min": 244.23,
+              "q25": 294.361,
+              "median": 452.7785,
+              "q75": 580.73775,
+              "max": 821.963,
+              "mean": 461.7535963541667,
+              "population_stddev": 162.49115009089647
+            },
+            "mean_minus_overall": 0.0,
+            "association": "equal"
+          }
+        ],
+        "rank": null,
+        "score": null,
+        "explanation": "Constant in observed rows; uninformative for comparisons."
+      },
+      {
+        "setting": "rc_lookahead",
+        "values": [
+          {
+            "value": 1.0,
+            "count": 1152,
+            "fraction": 1.0,
+            "objective": {
+              "count": 1152,
+              "min": 244.23,
+              "q25": 294.361,
+              "median": 452.7785,
+              "q75": 580.73775,
+              "max": 821.963,
+              "mean": 461.7535963541667,
+              "population_stddev": 162.49115009089647
+            },
+            "mean_minus_overall": 0.0,
+            "association": "equal"
+          }
+        ],
+        "rank": null,
+        "score": null,
+        "explanation": "Constant in observed rows; uninformative for comparisons."
+      },
+      {
+        "setting": "ref",
+        "values": [
+          {
+            "value": 1.0,
+            "count": 1152,
+            "fraction": 1.0,
+            "objective": {
+              "count": 1152,
+              "min": 244.23,
+              "q25": 294.361,
+              "median": 452.7785,
+              "q75": 580.73775,
+              "max": 821.963,
+              "mean": 461.7535963541667,
+              "population_stddev": 162.49115009089647
+            },
+            "mean_minus_overall": 0.0,
+            "association": "equal"
+          }
+        ],
+        "rank": null,
+        "score": null,
+        "explanation": "Constant in observed rows; uninformative for comparisons."
+      }
+    ],
+    "setting_relationships": [
+      {
+        "settings": [
+          "ref_9",
+          "ref_1"
+        ],
+        "pearson_r": -0.5,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_mixed_refs"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_fast_pskip"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_mbtree"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_8x8dct"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_cabac"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "ref_5"
+        ],
+        "pearson_r": -0.5,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_9",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_mixed_refs"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_fast_pskip"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_mbtree"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_8x8dct"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_cabac"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "ref_5"
+        ],
+        "pearson_r": -0.5,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_1",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "no_fast_pskip"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "no_mbtree"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "no_8x8dct"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "no_cabac"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mixed_refs",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "no_mbtree"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "no_8x8dct"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "no_cabac"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_fast_pskip",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "no_8x8dct"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "no_cabac"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_mbtree",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "no_cabac"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_8x8dct",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_cabac",
+          "rc_lookahead_20"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_cabac",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_cabac",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_cabac",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_cabac",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_cabac",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_20",
+          "rc_lookahead_60"
+        ],
+        "pearson_r": -0.5,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_20",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_20",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": -0.5,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_20",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_20",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_60",
+          "no_deblock"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_60",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": -0.5,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_60",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_60",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_deblock",
+          "rc_lookahead_40"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_deblock",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "no_deblock",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_40",
+          "ref_5"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "rc_lookahead_40",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      },
+      {
+        "settings": [
+          "ref_5",
+          "no_weightb"
+        ],
+        "pearson_r": 0.0,
+        "equivalent_observed_partitions": false
+      }
+    ],
+    "client_explanation": "Larger Performance- means worse measured encoding performance. The ranking prioritizes settings whose observed value groups separate overall mean outcomes most strongly. Use group means and counts to identify the values accompanying slower encodes. Correlated encoded choices can share credit; validate changes with controlled measurements.",
+    "limitations": [
+      "Exploratory observational associations, not proven causal effects or significance tests; no p-values or multiplicity-adjusted claims.",
+      "Each setting is assessed marginally. Other settings, interactions, sampling imbalance and unrecorded workload or hardware can confound the ranking.",
+      "Correlated or redundant encodings can share the same association; their scores must not be added or interpreted as independent contributions.",
+      "Different indicators for one encoded choice can be mutually exclusive; changing one alone may be invalid. Names do not establish encoder semantics.",
+      "Eta squared measures separation of observed value-group means, not direction, fitted-model feature importance, or a guaranteed improvement.",
+      "All exact observed numeric values are treated as categories. Many levels and singleton groups can inflate eta squared; no out-of-sample guarantee is made.",
+      "Every row has equal weight, including duplicates. Counts are not independent replicate counts or uncertainty estimates.",
+      "Constants cannot support comparisons; zero score does not exclude interactions or distribution differences beyond the mean.",
+      "Performance- is minimized; physical units and output quality are unspecified. Larger means indicate worse measured outcomes, not a known number of seconds.",
+      "No model is fitted by this diagnosis, so model evaluation and random seed are not applicable. Step 2 prediction remains a separate holdout-evaluated tool.",
+      "Scores use floating-point arithmetic; exact score ties share competition rank and are displayed alphabetically. Near ties have no stability guarantee."
+    ]
+  },
+  "limitations": [
+    "This is a retrospective recommendation among recorded rows, not an optimum over unseen configurations.",
+    "Selecting the minimum from the same history creates selection optimism; a single best observation supplies no statistical certainty or repeatability guarantee.",
+    "Historical rows may differ in workload, hardware, other settings, or unrecorded conditions. Rows are equally weighted, including duplicates; counts do not establish independent replication.",
+    "Setting-level group means and eta squared are marginal associations, not explanations of this individual outcome or causal effects. Correlated scores are never added.",
+    "Encoded setting names and values are preserved without inferring flag semantics or validity of unobserved combinations.",
+    "Performance- is minimized; physical units are unspecified. No output-quality, memory, or resource-use measurements are inferred.",
+    "No model predictions, p-values, confidence intervals, or significance claims are used in this justification. The historical median is not a randomized control.",
+    "Validate the candidate under the administrator's workload with repeated controlled measurements and required quality/resource checks before operational adoption.",
+    "Exact floating-point equality defines ties; near ties and rounding can affect ordering. Unsupported nonfinite computed statistics are rejected."
+  ],
+  "provenance": {
+    "dataset": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+    "sha256": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+    "data_row_convention": "1-based CSV data rows, excluding header",
+    "reuse": [
+      "remember.load_measurements",
+      "remember.summarize",
+      "blame.diagnose"
+    ]
+  }
+}

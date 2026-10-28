@@ -1,0 +1,103 @@
+{
+  "status": "improving_candidate_found",
+  "objective": "Performance-",
+  "direction": "minimize",
+  "units": null,
+  "baseline": {
+    "data_row": 1,
+    "settings": {
+      "no_asm": 1.0,
+      "no_8x8dct": 0.0,
+      "no_cabac": 0.0,
+      "no_deblock": 0.0,
+      "no_fast_pskip": 0.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 0.0,
+      "no_weightb": 0.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 1.0,
+      "rc_lookahead_40": 0.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    },
+    "Performance-": 268.72
+  },
+  "recommendation": {
+    "data_row": 65,
+    "settings": {
+      "no_asm": 1.0,
+      "no_8x8dct": 1.0,
+      "no_cabac": 0.0,
+      "no_deblock": 0.0,
+      "no_fast_pskip": 0.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 0.0,
+      "no_weightb": 0.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 1.0,
+      "rc_lookahead_40": 0.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    },
+    "Performance-": 254.587
+  },
+  "changed_columns": [
+    {
+      "column": "no_8x8dct",
+      "old": 0.0,
+      "new": 1.0
+    }
+  ],
+  "change_cost": 1,
+  "observed_objective_reduction": 14.133000000000038,
+  "search": {
+    "scope": "Every recorded CSV data row, including duplicates; full-data objective access.",
+    "recorded_row_count": 1152,
+    "improving_row_count": 138,
+    "setting_columns": [
+      "no_asm",
+      "no_8x8dct",
+      "no_cabac",
+      "no_deblock",
+      "no_fast_pskip",
+      "no_mbtree",
+      "no_mixed_refs",
+      "no_weightb",
+      "rc_lookahead",
+      "rc_lookahead_20",
+      "rc_lookahead_40",
+      "rc_lookahead_60",
+      "ref",
+      "ref_1",
+      "ref_5",
+      "ref_9"
+    ],
+    "rule": "Among strictly lower observed Performance- rows, minimize differing encoded setting columns, then Performance-, then 1-based CSV data row. Exact numeric comparisons; no tolerance.",
+    "distance": "Count of differing encoded setting columns; objective excluded."
+  },
+  "limitations": [
+    "Offline exhaustive search over all recorded measurements with full-data objective access; not budgeted search or evaluation on unseen configurations.",
+    "Encoded-column distance is a proxy for change size, not a measured operational cost. Redundant or one-hot columns may represent one underlying choice.",
+    "Only recorded configurations are recommended; setting semantics and validity of unseen combinations are not inferred.",
+    "A lower historical outcome does not prove causal, repeatable, or statistically certified improvement. Selection on the same history can be optimistic.",
+    "Duplicate configurations remain separate observations; a lower observation for identical settings has change cost zero and does not imply that any setting repair occurred.",
+    "Performance- is minimized; physical units are unspecified. No quality measurements are available and quality preservation is not established.",
+    "CSV numeric fields are parsed as finite floats by the reused loader; exact float comparisons define changes and ties. Near ties have no stability guarantee."
+  ],
+  "provenance": {
+    "dataset": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+    "sha256": "00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864",
+    "data_row_convention": "1-based CSV data rows, excluding header",
+    "reuse": [
+      "remember.load_measurements",
+      "remember.Measurements",
+      "blame._validate"
+    ]
+  }
+}

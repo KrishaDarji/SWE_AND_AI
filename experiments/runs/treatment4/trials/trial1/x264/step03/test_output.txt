@@ -1,0 +1,76 @@
+{"name": "tests", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-v"], "returncode": 0, "wall_seconds": 4.030044500017539}
+STDOUT:
+
+STDERR:
+test_cli_prevents_overwrite_and_rejects_invalid_data (test_certify.CertificationTests.test_cli_prevents_overwrite_and_rejects_invalid_data) ... error: Output must not overwrite the dataset
+error: CSV line 2: nonfinite value
+ok
+test_dataset_cli_and_independent_means (test_certify.CertificationTests.test_dataset_cli_and_independent_means) ... ok
+test_exact_improvement_direction (test_certify.CertificationTests.test_exact_improvement_direction) ... ok
+test_group_rule_independent_of_objective (test_certify.CertificationTests.test_group_rule_independent_of_objective) ... ok
+test_identical_samples_are_not_equivalence (test_certify.CertificationTests.test_identical_samples_are_not_equivalence) ... ok
+test_invalid_samples_and_options (test_certify.CertificationTests.test_invalid_samples_and_options) ... ok
+test_monte_carlo_reproducibility_and_plus_one (test_certify.CertificationTests.test_monte_carlo_reproducibility_and_plus_one) ... ok
+test_practical_threshold_is_separate (test_certify.CertificationTests.test_practical_threshold_is_separate) ... ok
+test_small_sample_exact_resolution (test_certify.CertificationTests.test_small_sample_exact_resolution) ... ok
+test_unequal_sizes_ties_and_manual_count (test_certify.CertificationTests.test_unequal_sizes_ties_and_manual_count) ... ok
+test_actual_dataset_cli_prediction_and_input_preservation (test_guess.PredictionTests.test_actual_dataset_cli_prediction_and_input_preservation) ... ok
+test_cli_invalid_config_preserves_input (test_guess.PredictionTests.test_cli_invalid_config_preserves_input) ... ok
+test_evaluation_only_setting_value_is_rejected (test_guess.PredictionTests.test_evaluation_only_setting_value_is_rejected) ... ok
+test_evaluation_targets_do_not_affect_fit (test_guess.PredictionTests.test_evaluation_targets_do_not_affect_fit) ... ok
+test_prediction_schema_domain_and_column_order (test_guess.PredictionTests.test_prediction_schema_domain_and_column_order) ... ok
+test_repeatability_and_independent_mae_baseline (test_guess.PredictionTests.test_repeatability_and_independent_mae_baseline) ... ok
+test_repeated_configurations_are_grouped (test_guess.PredictionTests.test_repeated_configurations_are_grouped) ... ok
+test_actual_dataset_matches_independent_csv_calculations (test_remember.SummaryTests.test_actual_dataset_matches_independent_csv_calculations) ... ok
+test_cli_failure_is_actionable (test_remember.SummaryTests.test_cli_failure_is_actionable) ... ok
+test_cli_refuses_to_overwrite_dataset (test_remember.SummaryTests.test_cli_refuses_to_overwrite_dataset) ... error: Output must not overwrite the dataset
+ok
+test_cli_writes_valid_reports_and_preserves_input (test_remember.SummaryTests.test_cli_writes_valid_reports_and_preserves_input) ... ok
+test_objective_position_whitespace_and_duplicates (test_remember.SummaryTests.test_objective_position_whitespace_and_duplicates) ... ok
+test_rejects_invalid_csv (test_remember.SummaryTests.test_rejects_invalid_csv) ... ok
+test_single_row_and_invalid_top (test_remember.SummaryTests.test_single_row_and_invalid_top) ... ok
+test_statistics_rankings_and_distributions (test_remember.SummaryTests.test_statistics_rankings_and_distributions) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 2.297s
+
+OK
+
+{"name": "tests", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "-B", "-m", "unittest", "discover", "-s", "tests", "-v"], "returncode": 0, "wall_seconds": 3.5327164999907836}
+STDOUT:
+
+STDERR:
+test_cli_prevents_overwrite_and_rejects_invalid_data (test_certify.CertificationTests.test_cli_prevents_overwrite_and_rejects_invalid_data) ... error: Output must not overwrite the dataset
+error: CSV line 2: nonfinite value
+ok
+test_dataset_cli_and_independent_means (test_certify.CertificationTests.test_dataset_cli_and_independent_means) ... ok
+test_exact_improvement_direction (test_certify.CertificationTests.test_exact_improvement_direction) ... ok
+test_group_rule_independent_of_objective (test_certify.CertificationTests.test_group_rule_independent_of_objective) ... ok
+test_identical_samples_are_not_equivalence (test_certify.CertificationTests.test_identical_samples_are_not_equivalence) ... ok
+test_invalid_samples_and_options (test_certify.CertificationTests.test_invalid_samples_and_options) ... ok
+test_monte_carlo_reproducibility_and_plus_one (test_certify.CertificationTests.test_monte_carlo_reproducibility_and_plus_one) ... ok
+test_practical_threshold_is_separate (test_certify.CertificationTests.test_practical_threshold_is_separate) ... ok
+test_small_sample_exact_resolution (test_certify.CertificationTests.test_small_sample_exact_resolution) ... ok
+test_unequal_sizes_ties_and_manual_count (test_certify.CertificationTests.test_unequal_sizes_ties_and_manual_count) ... ok
+test_actual_dataset_cli_prediction_and_input_preservation (test_guess.PredictionTests.test_actual_dataset_cli_prediction_and_input_preservation) ... ok
+test_cli_invalid_config_preserves_input (test_guess.PredictionTests.test_cli_invalid_config_preserves_input) ... ok
+test_evaluation_only_setting_value_is_rejected (test_guess.PredictionTests.test_evaluation_only_setting_value_is_rejected) ... ok
+test_evaluation_targets_do_not_affect_fit (test_guess.PredictionTests.test_evaluation_targets_do_not_affect_fit) ... ok
+test_prediction_schema_domain_and_column_order (test_guess.PredictionTests.test_prediction_schema_domain_and_column_order) ... ok
+test_repeatability_and_independent_mae_baseline (test_guess.PredictionTests.test_repeatability_and_independent_mae_baseline) ... ok
+test_repeated_configurations_are_grouped (test_guess.PredictionTests.test_repeated_configurations_are_grouped) ... ok
+test_actual_dataset_matches_independent_csv_calculations (test_remember.SummaryTests.test_actual_dataset_matches_independent_csv_calculations) ... ok
+test_cli_failure_is_actionable (test_remember.SummaryTests.test_cli_failure_is_actionable) ... ok
+test_cli_refuses_to_overwrite_dataset (test_remember.SummaryTests.test_cli_refuses_to_overwrite_dataset) ... error: Output must not overwrite the dataset
+ok
+test_cli_writes_valid_reports_and_preserves_input (test_remember.SummaryTests.test_cli_writes_valid_reports_and_preserves_input) ... ok
+test_objective_position_whitespace_and_duplicates (test_remember.SummaryTests.test_objective_position_whitespace_and_duplicates) ... ok
+test_rejects_invalid_csv (test_remember.SummaryTests.test_rejects_invalid_csv) ... ok
+test_single_row_and_invalid_top (test_remember.SummaryTests.test_single_row_and_invalid_top) ... ok
+test_statistics_rankings_and_distributions (test_remember.SummaryTests.test_statistics_rankings_and_distributions) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 2.380s
+
+OK
+

@@ -1,0 +1,74 @@
+Treatment 4, Trial 1, NASA93, Step 10: race
+
+Complete source is in source/; complete tests are in tests/. All nine previous
+source modules and all nine previous test modules were copied byte for byte from
+the allowed Step 9 source/tests. Step 2 evaluate() and its fixed grouped split are
+unchanged. Added source/race.py and tests/test_race.py. The supplied dataset and
+all Step 9 files were left unchanged. Only this Step 10 output directory was written.
+
+Added ten paired GroupShuffleSplit holdouts, seeds 42 through 51, reserving 25%
+(rounded up) of distinct normalized eligible predictor groups. Both methods use
+exactly the same rows. The existing training-only imputation, nominal one-hot
+encoding, and 200-tree random forest are reused without tuning. The forest seed
+stays 42, min_samples_leaf=2, n_jobs=1; repeat seeds control partitions only.
+Each repeat creates fresh fitted state. The baseline is computed independently
+from exactly the same training efforts and predicts their mean on held-out rows.
+Effort-, Defects-, Kloc+, X metadata, and unknown fields never enter predictors.
+Missing targets are excluded before splitting without imputation; observed dataset
+has 93 eligible rows, 55 distinct normalized groups, and zero missing targets.
+Each repeat holds out 14 groups; evaluation row counts can vary.
+
+race.json contains group identities, zero-based data row indices, group/sample
+counts, actuals, both predictions, individual MAEs, model-minus-baseline MAE,
+method runtimes and their scope, settings, versions, summaries and limitations.
+Ties use absolute MAE difference <= 1e-12, with no relative tolerance.
+Observed wins/ties/losses: 8/0/2. Equal-weight mean per-seed model MAE:
+546.454423414021; baseline MAE:
+643.899426339956; mean paired difference:
+-97.445002925936.
+
+Verification: 83/83 tests passed after repairing a missing illustrative proposal
+fixture required by unchanged test_justify.py. The fixture was generated from the
+earliest seed-42 training row in the allowed dataset. All nine preserved module
+demos and the Step 10 demo completed successfully. Tests cover matching partitions,
+group isolation, normalization, missing-target exclusion, training-only fitting and
+baseline, fresh state, reproducibility, independently calculated MAE, ties, invalid
+inputs and CLI arguments, and held-out target leakage. Existing tests additionally
+check fitted preprocessing and forest state under held-out target changes.
+
+Measured Step 10 subprocess wall time: 1.536482333 seconds.
+Final full-suite subprocess wall time: 34.367852625 seconds.
+Preserved nine-demo total subprocess wall time: 12.922926001 seconds.
+Application total LOC: 1380; added insert/replace new-side LOC: 153.
+LOC excludes blank and comment-only source Python lines, includes docstrings,
+and excludes tests and the root validation helper.
+
+Two unexpected failed attempts are retained and counted: initial suite class setup
+failed because example_proposal.json had not been generated; a stray shell token
+returned exit 127 after successfully writing run_instructions.txt. See
+failure_log.txt and test_output_initial.txt for failures and repairs. Final successful
+captures are test_output.txt, runtime_output.txt and validation_runs.json.
+
+Run commands and all output locations are documented in run_instructions.txt.
+For convenience, from this directory:
+  PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+  PYTHONDONTWRITEBYTECODE=1 python3 source/race.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --seeds 42 43 44 45 46 47 48 49 50 51 --output race.json
+  PYTHONDONTWRITEBYTECODE=1 python3 run_validation.py
+
+Assumptions and limitations: physical effort units are unspecified. Predictor
+availability at proposal time is assumed. Identical normalized configurations stay
+together, but related projects can still cross partitions. Missingness, small
+historical observational samples, skew and extremes can affect results. Timing is
+machine dependent and excludes imports, IO, split construction and scoring for
+per-method measurements; demo subprocess wall time includes them. The reused
+model fitting helper also computes an unused mean inside the model timer; this
+is documented rather than changing existing behavior. Per-seed predictions and
+partitions are reproducible in the verified scikit-learn 1.6.0 environment; wall
+times are not expected to match across reruns.
+
+The repeated partitions overlap within Trial 1 and are not independent LLM
+implementation trials. Raw differences and win counts do not establish statistical
+superiority. Project-required same comparison analysis is PENDING because its
+procedure was not supplied among the allowed inputs; no substitute inference was
+performed. No MAE is an individual proposal uncertainty interval. No automatic
+approval, causal improvement or guaranteed future accuracy is claimed.

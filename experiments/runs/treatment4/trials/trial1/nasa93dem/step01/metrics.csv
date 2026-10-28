@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,1,nasa93dem,remember,131,131,1,0.035607167,0,passed/total=7/7; test_wall_seconds=0.062089666; scikit-learn=1.6.0; python=3.12.6; descriptive standard-library workflow; unexpected failures=0; repairs=none; no prior implementation reused

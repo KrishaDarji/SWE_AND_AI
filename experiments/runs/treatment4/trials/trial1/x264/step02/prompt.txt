@@ -1,0 +1,104 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: guess
+- Current requirement: Predict encoding time before running a new configuration.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Step 1 behavior and tests while adding Step 2.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step01/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step01/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths before writing files.
+If an input is missing, report it rather than searching other directories.
+
+Inspect the actual dataset schema.
+Predict Performance- from encoder settings only.
+Performance- is minimized; its physical units are unspecified.
+Do not invent units or additional objective fields.
+
+Evaluate predictions on held-out data using a fixed, recorded random seed.
+Do not train on evaluation targets or include Performance- as an input.
+Fit any learned preprocessing only on the training data.
+Report MAE and compare against a training-mean baseline.
+State the evaluation split, model settings, and limitations.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 2 and preserved Step 1 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Count application LOC as nonblank, non-comment-only Python lines
+inside source/. Exclude tests and installed libraries.
+Measure new_loc as added application lines relative to Step 1,
+using the same counting convention. Do not use net LOC growth.
+Record the model MAE, baseline MAE, and evaluation settings in notes
+or a separate machine-readable evaluation file.
+
+Accept the dataset path as an argument.
+Run all tests and demos, including the preserved Step 1 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 1 files, or other repository files.
+Write only inside the absolute Step 2 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

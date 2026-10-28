@@ -1,0 +1,132 @@
+Implemented Treatment 4, Trial 1, X264 Step 9 (spot).
+
+All outputs are in:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09/
+
+Complete updated application source is in source/. The eight preserved modules
+remember.py, guess.py, choose.py, blame.py, fix.py, justify.py, flow.py and
+certify.py are byte-identical to the allowed Step 8 source. The eight preserved
+test files are likewise unchanged. Added source/spot.py and tests/test_spot.py.
+The reusable API is screen(data, neighbors=10, multiplier=3.0), and the CLI
+accepts a dataset path. run_validation.py runs and captures all tests and demos.
+
+Reused the validated CSV loader and Measurements representation from remember,
+and the strict direct-API validation from blame. Existing Step 1 summaries,
+Step 2 predictions, Step 3 selection, Step 4 associations, Step 5 repair advice,
+Step 6 justification, Step 7 incremental replay and Step 8 sample comparison
+remain available and have all been exercised. Their existing random seeds
+and behavior were preserved; Step 9 has no randomness and requires no seed.
+
+The actual dataset has 1152 rows and 1152 distinct
+configurations, 16 numeric encoder settings and one minimized outcome,
+Performance-, whose physical units are unspecified. All 16 settings are
+retained in each reported configuration. The distance fields, in CSV order,
+are no_8x8dct, no_cabac, no_deblock, no_fast_pskip, no_mbtree, no_mixed_refs,
+no_weightb, rc_lookahead_20, rc_lookahead_40, rc_lookahead_60, ref_1, ref_5,
+ref_9. no_asm, rc_lookahead and ref are constant and excluded from distance.
+Performance- never enters setting distance.
+
+Method: deterministic leave-configuration-out local median discrepancy. Each
+variable setting is range-normalized to [0,1] over distinct configurations.
+Distance is mean Manhattan distance over those fields. For each configuration,
+exclude every row of its exact setting tuple; take the 10 nearest distinct
+configurations, including all distance ties within absolute tolerance 1e-12.
+For smaller inputs, k is capped at distinct configurations minus one. At least
+three distinct configurations are required; smaller inputs raise ValueError.
+Each neighboring configuration contributes its median Performance- with equal
+weight. The local reference is the median of those configuration medians.
+This is an outcome reference from other configurations, not a training residual.
+There is no fitted prediction model.
+
+The score is abs(observed Performance- minus local reference), with larger
+scores indicating greater discrepancy in either direction. Internally targets
+are divided by max(1,max(abs(target))) for numerical protection; scores and
+references are restored to original unspecified units. Setting extrema and
+the internal divisor are saved in anomalies.json.
+
+Let m=median(all row scores), MAD=median(abs(score-m)), and R=max(outcomes)-
+min(outcomes). Flag strictly when score > m + 3*max(1.4826*MAD,0.01*R).
+Equality does not flag. Constant outcomes yield zero scores, threshold zero,
+and no flags when sufficient distinct configurations exist. The range floor
+handles zero MAD without selecting a fixed number of rows. This threshold
+is a descriptive screening heuristic, not an estimated error rate or p-value.
+It uses all residuals, so it is not independent predictive validation.
+
+The JSON ranks ALL 1152 records, highest score first; exact score ties
+share competition rank and display in ascending 1-based CSV data-row order
+(header excluded). Every record has its score, threshold, flag, full observed
+configuration and Performance-, local reference, signed discrepancy, neighbor
+row identities, excluded own-configuration identities, distances, neighbor
+outcome range and MAD, and explanation. Every flagged record has suggested
+client checks. --top defaults to 10 and limits text display only; it does not
+change the threshold, ranked JSON, or flagged count.
+
+Actual threshold: 33.8781904500.
+Threshold components: median score 6.489750;
+MAD 6.157750; range floor
+5.777330; robust scale
+9.12948015.
+Flagged count: 204 of 1152; this is NOT a measured error count.
+
+Highest-ranked CSV data row 871 has Performance-=821.963, local median
+729.0415 and absolute discrepancy 92.9215. Its neighborhood includes 32
+configurations because ties are retained; nearest distance is 1/13 and the
+10th-neighbor cutoff is 2/13. The neighbor median-outcome range is
+310.217 to 821.757 and its MAD is 57.4765. Thus even the top result has
+nearby outcomes almost as high; the flag does not establish a measurement
+error. In total, 202 of the 204 flagged results lie within their neighbor
+outcome ranges. This broad screening set can reflect real setting effects
+or poor local comparability; clients should inspect the evidence rather than
+interpret flags as corrupt rows.
+
+Suggested checks: trace original logs by data-row identity; verify parsing,
+units, encoder version, effective flags, input video and hardware; repeat
+flagged and nearby control configurations in randomized order with multiple
+independent runs; inspect system load, thermal throttling, caching, warm-up,
+timeouts and incomplete encodes; verify output validity and quality for
+unusually low measurements. The CSV was neither repaired nor modified.
+
+Measured validation: 89/89 tests passed; all nine demos exited 0.
+Step 9 demo subprocess wall time: 0.982552542 seconds.
+Complete test subprocess wall time: 12.383718084 seconds.
+Individual Step 1-8 demo times are recorded separately in metrics.csv notes
+and validation.json. Total application LOC=1432; added application
+LOC=199 (new-side insert/replace lines against Step 8, not net growth).
+Unexpected failed commands/executions=0. No packages were installed or changed.
+Dataset SHA256 remained 00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864.
+
+Tests cover independently calculated scores/threshold, strict equality,
+all-distance ties, score ties/ranking, constant outcomes and constant fields,
+small/invalid inputs, zero-MAD range fallback, synthetic high and low spikes,
+configuration exclusion including duplicates, equal weighting despite uneven
+replicates, invariance of a record's local reference to its own outcomes,
+reproducibility, setting rescaling, custom multiplier, display independence,
+CLI output, dataset overwrite protection, and actual dataset identities.
+Synthetic examples check algorithm behavior only; they do not establish real
+anomaly-detection accuracy. All 76 preserved tests also passed.
+
+Audit history is retained in validation_history/. The initial 86-test suite
+passed, then three tests and extra neighbor evidence were added. A subsequent
+passed-count recorder incorrectly counted 82 verbose 'ok' lines instead of
+all 89 passing tests because some test output interrupts that formatting.
+The recorder was corrected to use unittest's summary and revalidated: 89/89.
+No test/demo failed and no repair to application behavior was needed.
+
+Assumptions and limitations: equal range-normalized numeric setting weights
+may poorly reflect encoding semantics, especially with redundant indicators.
+Large setting interactions or sparse neighborhoods can flag valid results;
+clustered errors may escape detection. Configuration medians reduce duplicate
+weight in references, but row duplicates still weight threshold statistics.
+Historical configurations are not controlled replicates. No anomaly labels,
+precision/recall, confidence bounds, causal effects, calibrated error rates
+or independent predictive-accuracy claims are available. Floating-point
+resolution and quadratic distance storage limit extreme/large inputs.
+
+Commands for tests, Step 9 and all preserved demos are in run_instructions.txt.
+For a full reproducible rerun from this directory:
+python3 -B run_validation.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Required deliverables: prompt.txt, response.txt, source/, tests/,
+test_output.txt, runtime_output.txt, metrics.csv, anomalies.json and
+run_instructions.txt. Additional anomalies.txt, validation.json,
+run_validation.py, regression_demos/ and validation_history/ support audit.

@@ -1,0 +1,61 @@
+Treatment 4 / Trial 1 / Dataset X264 / Step 9 (spot)
+
+Requirements: existing python3 with scikit-learn 1.6.0 and its installed
+required dependencies. Do not install packages or change versions.
+
+Use these commands in zsh or another POSIX-compatible shell:
+
+STEP='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step09'
+DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+cd "$STEP"
+export PYTHONDONTWRITEBYTECODE=1
+export TMPDIR="$STEP/tmp"
+export X264_DATASET="$DATASET"
+python3 -c 'import sklearn; print(sklearn.__version__)'
+
+Complete validation and regeneration of captured outputs and metrics:
+python3 -B run_validation.py "$DATASET"
+
+Tests only (all preserved Steps 1-8 tests plus Step 9):
+python3 -B -m unittest discover -s tests -v
+
+Step 9 only (accepts the dataset path as a positional argument):
+python3 -B source/spot.py "$DATASET" --output-dir "$STEP" --top 10 --neighbors 10 --multiplier 3
+
+Preserved Steps 1-8 demos individually:
+python3 -B source/remember.py "$DATASET" --output-dir "$STEP/regression_demos/remember"
+python3 -B source/guess.py "$DATASET" --output-dir "$STEP/regression_demos/guess"
+python3 -B source/choose.py "$DATASET" --output-dir "$STEP/regression_demos/choose"
+python3 -B source/blame.py "$DATASET" --output-dir "$STEP/regression_demos/blame"
+python3 -B source/fix.py "$DATASET" --baseline-row 1 --output-dir "$STEP/regression_demos/fix"
+python3 -B source/justify.py "$DATASET" --output-dir "$STEP/regression_demos/justify"
+python3 -B source/flow.py "$DATASET" --output-dir "$STEP/regression_demos/flow"
+python3 -B source/certify.py "$DATASET" --output-dir "$STEP/regression_demos/certify"
+
+--top controls text display only. anomalies.json always contains every record
+and all flags. --neighbors and --multiplier change the screening method;
+they must be chosen as heuristics, not interpreted as calibrated error rates.
+The API is spot.screen(Measurements, neighbors=10, multiplier=3.0), with
+spot.render_text(report, top=10). All outputs describe historical screening.
+No confirmed error labels, causal conclusions or detection-accuracy claims.
+
+run_validation.py checks that copied source/tests remain byte-identical to
+the allowed Step 8 inputs and that the dataset's SHA256 remains unchanged.
+It captures each exact subprocess command, exit code, stdout, stderr and
+wall time. test_output.txt captures unittest output; runtime_output.txt
+captures all nine demos; regression_demos/ contains the old demo reports.
+validation.json and metrics.csv store measured values. runtime_seconds is
+only the spot.py subprocess wall time, including startup and JSON/text I/O.
+Test and individual regression-demo timings appear separately in notes.
+
+LOC counts nonblank, non-comment-only lines including docstrings in source/
+only. new_loc counts insert/replace new-side application lines against the
+allowed Step 8 source; unmodified files contribute zero new lines. Tests,
+run_validation.py, installed libraries and all reports are excluded.
+
+Validation history: validation_history/initial holds the first passing
+86-test run. validation_history/evidence_update holds the subsequent passing
+89-test run. Its passed-count metadata undercounted verbose output lines
+(82 rather than 89); the final runner uses unittest's summary count instead.
+No test or demo execution failed; this was a reporting correction. Neither
+historical output was deleted. No dependency or prior-step changes occurred.

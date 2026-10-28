@@ -1,0 +1,4 @@
+Unexpected failed attempts: 2
+1. Initial complete test suite: missing step10/example_proposal.json required by unchanged test_justify.py; 75 tests ran with one class setup error. Preserved in test_output_initial.txt. Repair: generated illustrative complete proposal from earliest seed-42 training row of the allowed dataset. No previous reports or out-of-scope fixture inspected. Re-run full suite.
+2. run_instructions.txt writing command: stray shell token PY after successful heredoc returned exit 127 (zsh: command not found: PY). Instructions file was fully written. Repair: removed stray token from subsequent commands; inspected written file.
+Expected negative tests are excluded from this count.

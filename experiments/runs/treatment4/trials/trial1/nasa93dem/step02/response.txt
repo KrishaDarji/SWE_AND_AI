@@ -1,0 +1,750 @@
+Treatment 4, Trial 1, NASA93, Step 2 completed.
+
+Reused unchanged: source/summarize.py and tests/test_summarize.py from the
+allowed Step 1 directories. This preserves parsing, schema declarations,
+whitespace/missing conventions, descriptive CLI behavior, and all seven tests.
+Added source/predict_effort.py and nine Step 2 tests. The new implementation
+uses the 22 existing candidate predictors, explicit missing-value handling,
+nominal one-hot encoding, and a fixed 200-tree random forest. It rejects
+proposal objectives, metadata, unknown keys, duplicate JSON keys, non-object
+JSON and non-string categorical values. Missing predictors may be omitted.
+
+A seed-42 GroupShuffleSplit reserves 14 of 55 unique normalized configurations
+for evaluation. Training has 68 rows / 41 groups; evaluation has 25 rows /
+14 groups. Identical input configurations never cross the partition. Missing
+targets would be excluded, and no target is imputed. There are none in this run.
+Preprocessing and forest fitting see only training rows. No model tuning or
+full-dataset refit was performed. All defaults are recorded in evaluation.json.
+
+Measured results:
+- 16/16 tests passed, including seven unchanged Step 1 tests.
+- Both Step 1 and Step 2 demos completed successfully.
+- Model MAE: 531.2119860706141.
+- Training-mean baseline MAE: 674.0317647058823.
+- Illustrative proposal estimated Effort-: 89.41280277668291.
+- Step 2 subprocess wall time: 0.934521458 seconds.
+- Test subprocess wall time: 2.857155084 seconds.
+- Step 1 regression-demo wall time: 0.030701750 seconds.
+- Application LOC: 284; added new-side application LOC relative to Step 1: 153.
+- Unexpected failed commands/execution attempts: 0. No failure repairs needed.
+
+Tests independently calculate baseline mean and both MAEs, verify category
+normalization/missing/unseen behavior, reproducibility and duplicate isolation,
+check fitting receives training rows only, and verify held-out target mutations
+cannot change preprocessing statistics, forest trees, baseline or predictions.
+Expected negative-input exceptions/CLI rejection are passing tests, not errors.
+
+Known assumptions and limitations:
+Physical units are unspecified. The 22 characteristics are assumed available
+at proposal time. Delivered Kloc+ is excluded. An effort estimate alone does
+not justify approving a proposal. This small historical dataset and one grouped
+split provide no uncertainty, causal, approval or future-accuracy guarantees.
+MAE is row-weighted; related projects with different inputs can still cross the
+split. Unknown levels encode as zeros; missing values use an empty-string level,
+which is itself unknown if absent from training. Forest averaging can miss
+extreme or novel effort. No dependency versions were installed or changed.
+Original dataset and Step 1 files were not modified.
+
+Commands and proposal contract:
+Run with the existing python3 (Python 3.12.6, scikit-learn 1.6.0).
+No package installations or dependency changes are needed.
+
+Set paths in zsh/bash:
+STEP='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step02'
+DATA='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+export PYTHONDONTWRITEBYTECODE=1
+export NASA93_DATASET="$DATA"
+export TMPDIR="$STEP/tests"
+
+Run all Step 1 and Step 2 tests:
+python3 -m unittest discover -s "$STEP/tests" -v
+
+Run preserved Step 1 behavior:
+python3 "$STEP/source/summarize.py" "$DATA" --output-dir "$STEP/step01_regression"
+
+Run Step 2 effort estimation and held-out evaluation:
+python3 "$STEP/source/predict_effort.py" "$DATA" --proposal "$STEP/example_proposal.json" --evaluation "$STEP/evaluation.json"
+
+example_proposal.json is an illustrative proposal with plausible categorical
+values, not an independently observed new project or a holdout accuracy claim.
+The demo fits only the deterministic training partition, evaluates the held-out
+partition, and estimates the example with that same training-only model.
+The only proposal JSON keys permitted are:
+prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced
+Values must be categorical strings or null. Omitted keys, null and Step 1
+missing tokens become missing. All target, metadata and unknown keys are
+rejected, including any X-suffixed key. Duplicate JSON keys are rejected.
+To predict another proposal, replace the --proposal argument with its JSON path.
+
+Re-run both demos and suite with measured subprocess wall times and LOC:
+python3 "$STEP/measure_run.py" "$DATA"
+This appends raw logs and execution_measurements.jsonl, and updates metrics.csv
+and evaluation.json. Unexpected failed subprocesses are retained and counted
+across runner invocations. Expected negative tests are not counted as failures.
+The runner is measurement tooling outside source/ and is excluded from app LOC.
+Only the Step 2 demo subprocess duration is used as runtime_seconds.
+
+GroupShuffleSplit holds out 25% of distinct normalized predictor tuples
+(rounded up), seed 42. This fraction applies to groups, not rows. No stratification,
+cross-validation, parameter search or held-out tuning is performed. All eligible
+rows of a tuple stay together. Missing Effort- rows are excluded before splitting.
+All preprocessing and RandomForestRegressor fitting use training rows only.
+One-hot encoding imposes no ordinal mapping; unseen levels are all zeros.
+Missing values receive an empty-string categorical level; if never seen in
+training, this level is handled as unknown at prediction time. Even all-missing
+training columns are retained. The forest uses 200 trees, min_samples_leaf=2,
+random_state=42, n_jobs=1; all remaining settings are installed sklearn defaults
+and are fully recorded in evaluation.json. Settings were chosen without outcomes.
+Training-mean baseline and row-weighted MAE use the same held-out rows.
+
+Units are unspecified. Proposal-time availability of the 22 fields is assumed.
+An effort estimate alone does not justify approving a proposal. One small,
+historical grouped split provides no future-accuracy or uncertainty guarantee.
+Related but nonidentical projects may cross partitions. Delivered Kloc+ and all
+other outcomes/metadata are excluded. No full-dataset refit is used for the demo.
+
+Complete updated application source and tests follow.
+
+===== source/predict_effort.py =====
+"""Training-only categorical effort estimation with a grouped held-out evaluation."""
+import argparse
+import csv
+import json
+import math
+import platform
+from pathlib import Path
+
+import numpy as np
+import scipy
+import sklearn
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+from summarize import MISSING, PREDICTORS, read_projects
+
+SEED = 42
+LIMITATIONS = [
+    'Effort- physical units are unspecified; none are inferred.',
+    'An effort estimate alone does not justify approving a proposal.',
+    'Small historical observational dataset; one grouped split is not a guarantee of future accuracy.',
+    'No uncertainty intervals, approval guarantees, causal claims, or held-out tuning.',
+    'No proposal-time size estimate is supplied; delivered Kloc+ is excluded.',
+    'Predictor availability at proposal time is assumed and must be checked operationally.',
+    'Unseen categories encode as all zeros; missing categories use an explicit empty-string level.',
+    'Rows missing Effort- are excluded, never target-imputed; reported MAE is row-weighted.',
+    'Group split prevents identical normalized inputs crossing partitions, but related projects may remain.',
+    'Random forest predictions average training outcomes and may miss extreme or novel efforts.',
+    'Evaluation model remains fitted only to training rows; no full-dataset refit is performed.',
+]
+
+
+def normalize_proposal(proposal):
+    """Allow known predictor keys only; omitted/null/missing-token values are missing."""
+    if not isinstance(proposal, dict):
+        raise ValueError('Proposal must be a JSON object')
+    extra = set(proposal) - set(PREDICTORS)
+    if extra:
+        raise ValueError('Forbidden or unknown proposal fields: ' + ', '.join(sorted(extra)))
+    values = []
+    for field in PREDICTORS:
+        value = proposal.get(field)
+        if value is not None and not isinstance(value, str):
+            raise ValueError(f'{field}: expected a categorical string or null')
+        value = value.strip() if value is not None else None
+        values.append(None if value is None or value in MISSING else value)
+    return values
+
+
+def feature_matrix(rows):
+    return np.array([normalize_proposal({p: row.get(p) for p in PREDICTORS}) for row in rows], dtype=object)
+
+
+def split_projects(rows):
+    """Hold out 25% (rounded up) of unique input groups, without inspecting outcomes."""
+    keys = [tuple(row) for row in feature_matrix(rows).tolist()]
+    group_numbers = {}
+    groups = [group_numbers.setdefault(key, len(group_numbers)) for key in keys]
+    if len(group_numbers) < 2:
+        raise ValueError('Need at least two distinct predictor configurations')
+    train, test = next(GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=SEED).split(
+        np.zeros((len(rows), 1)), groups=groups))
+    return train.tolist(), test.tolist(), groups
+
+
+def fit_training(rows):
+    """Only the provided training rows enter learned preprocessing and model fitting."""
+    if not rows:
+        raise ValueError('Training rows must not be empty')
+    targets = [row.get('Effort-') for row in rows]
+    if any(v is None or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in targets):
+        raise ValueError('Training efforts must be finite nonnegative numbers')
+    pipeline = Pipeline([
+        ('missing', SimpleImputer(missing_values=None, strategy='constant', fill_value='', keep_empty_features=True)),
+        ('categorical', OneHotEncoder(handle_unknown='ignore', sparse_output=False)),
+        ('forest', RandomForestRegressor(n_estimators=200, min_samples_leaf=2, random_state=SEED, n_jobs=1)),
+    ])
+    pipeline.fit(feature_matrix(rows), targets)
+    return pipeline, float(np.mean(targets))
+
+
+def estimate(model, proposal):
+    return float(model.predict(np.array([normalize_proposal(proposal)], dtype=object))[0])
+
+
+def evaluate(rows):
+    eligible = []
+    original_indices = []
+    for index, row in enumerate(rows):
+        value = row.get('Effort-')
+        if value is None:
+            continue
+        if not isinstance(value, (float, int)) or not math.isfinite(value) or value < 0:
+            raise ValueError('Effort- must be finite and nonnegative when present')
+        eligible.append(row)
+        original_indices.append(index)
+    train, test, groups = split_projects(eligible)
+    model, baseline = fit_training([eligible[i] for i in train])
+    predicted = model.predict(feature_matrix([eligible[i] for i in test]))
+    actual = [eligible[i]['Effort-'] for i in test]
+    report = {
+        'target': 'Effort-', 'predictor_fields': PREDICTORS,
+        'excluded_inputs': ['Effort-', 'Defects-', 'Kloc+', 'all X-suffixed metadata', 'all unknown fields'],
+        'preprocessing': {'normalization': 'strip strings; Step 1 missing tokens and omitted/null become None',
+                          'imputer': model.named_steps['missing'].get_params(),
+                          'encoder': model.named_steps['categorical'].get_params(),
+                          'fit_scope': 'training rows only; no ordinal mapping'},
+        'model_settings': model.named_steps['forest'].get_params(),
+        'dependency_versions': {'python': platform.python_version(), 'scikit-learn': sklearn.__version__,
+                                'numpy': np.__version__, 'scipy': scipy.__version__},
+        'split': {'method': 'GroupShuffleSplit; normalized predictor tuples define groups',
+                  'seed': SEED, 'test_group_fraction': 0.25, 'n_splits': 1,
+                  'index_convention': 'zero-based data row indices, excludes CSV header',
+                  'total_samples': len(rows), 'eligible_samples': len(eligible),
+                  'excluded_missing_targets': len(rows) - len(eligible),
+                  'training_samples': len(train), 'evaluation_samples': len(test),
+                  'total_groups': len(set(groups)),
+                  'training_groups': len({groups[i] for i in train}),
+                  'evaluation_groups': len({groups[i] for i in test}),
+                  'training_indices': [original_indices[i] for i in train],
+                  'evaluation_indices': [original_indices[i] for i in test]},
+        'baseline': {'strategy': 'training-set mean', 'prediction': baseline},
+        'baseline_mae': float(mean_absolute_error(actual, [baseline] * len(test))),
+        'model_mae': float(mean_absolute_error(actual, predicted)),
+        'held_out_predictions': [{'row_index': original_indices[i], 'actual': truth,
+                                  'predicted': float(pred), 'baseline_predicted': baseline}
+                                 for i, truth, pred in zip(test, actual, predicted)],
+        'limitations': LIMITATIONS,
+    }
+    # dtype is a Python class in sklearn's encoder params; record its explicit name.
+    report['preprocessing']['encoder']['dtype'] = str(report['preprocessing']['encoder']['dtype'])
+    return model, report
+
+
+def load_proposal(path):
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f'Duplicate JSON key: {key}')
+            result[key] = value
+        return result
+    with Path(path).open(encoding='utf-8') as stream:
+        proposal = json.load(stream, object_pairs_hook=unique_object)
+    normalize_proposal(proposal)
+    return proposal
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--proposal', required=True, type=Path, help='JSON object containing predictor fields only')
+    parser.add_argument('--evaluation', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        proposal = load_proposal(args.proposal)
+        model, report = evaluate(read_projects(args.dataset))
+        report['dataset_path'] = str(args.dataset.resolve())
+        prediction = estimate(model, proposal)
+        args.evaluation.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+        print(json.dumps({'estimated Effort-': prediction, 'units': 'unspecified',
+                          'training_samples': report['split']['training_samples'],
+                          'evaluation_samples': report['split']['evaluation_samples'],
+                          'model_mae': report['model_mae'], 'baseline_mae': report['baseline_mae'],
+                          'decision_note': 'An effort estimate alone does not justify approving a proposal.'}, indent=2))
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+
+
+if __name__ == '__main__':
+    main()
+
+===== source/summarize.py =====
+"""Reusable descriptive NASA93 summaries; no fitting or ordinal assumptions."""
+import argparse
+import csv
+import json
+import math
+from collections import Counter
+from pathlib import Path
+from statistics import mean, median, stdev
+
+PREDICTORS = 'prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced'.split()
+METADATA = ['idX', 'centerX', 'YearX', 'MonthsX']
+OBJECTIVES = {'Kloc+': 'maximize', 'Effort-': 'minimize', 'Defects-': 'minimize'}
+COLUMNS = ['idX', 'centerX', 'YearX'] + PREDICTORS + list(OBJECTIVES) + ['MonthsX']
+NUMERIC = {'idX', 'YearX', 'Kloc+', 'Effort-', 'Defects-', 'MonthsX'}
+MISSING = {'', '?', 'NA', 'N/A', 'null'}
+
+
+def read_projects(dataset):
+    """Validate the NASA93 schema and parse cells without altering the input."""
+    with Path(dataset).open(encoding='utf-8-sig', newline='') as stream:
+        reader = csv.reader(stream, strict=True)
+        header = next(reader, None)
+        if header is None or len(header) != len(set(header)) or set(header) != set(COLUMNS):
+            raise ValueError('Expected exactly the 29 unique NASA93 column names')
+        rows = []
+        for line, row in enumerate(reader, 2):
+            if len(row) != len(header):
+                raise ValueError(f'Row {line}: expected {len(header)} cells, found {len(row)}')
+            parsed = {}
+            for name, raw in zip(header, row):
+                value = raw.strip()
+                if value in MISSING:
+                    parsed[name] = None
+                elif name in NUMERIC:
+                    try:
+                        number = float(value)
+                    except ValueError as exc:
+                        raise ValueError(f'Row {line}, {name}: invalid numeric value {value!r}') from exc
+                    if not math.isfinite(number):
+                        raise ValueError(f'Row {line}, {name}: numeric value must be finite')
+                    parsed[name] = number
+                else:
+                    parsed[name] = value
+            rows.append(parsed)
+    if not rows:
+        raise ValueError('Dataset must contain at least one project')
+    return rows
+
+
+def quantile(values, probability):
+    """Linear interpolation at index (n - 1) * probability, for sorted values."""
+    index = (len(values) - 1) * probability
+    lower = math.floor(index)
+    upper = math.ceil(index)
+    return values[lower] + (values[upper] - values[lower]) * (index - lower)
+
+
+def numeric_summary(values):
+    values = sorted(values)
+    if not values:
+        return dict.fromkeys(['count', 'sum', 'mean', 'std_sample', 'min', 'q25', 'median', 'q75', 'max'], None) | {'count': 0}
+    return {
+        'count': len(values), 'sum': sum(values), 'mean': mean(values),
+        'std_sample': stdev(values) if len(values) > 1 else None,
+        'min': values[0], 'q25': quantile(values, 0.25), 'median': median(values),
+        'q75': quantile(values, 0.75), 'max': values[-1],
+    }
+
+
+def summarize(dataset):
+    rows = read_projects(dataset)
+    columns = {}
+    for name in COLUMNS:
+        values = [row[name] for row in rows if row[name] is not None]
+        role = 'metadata' if name.endswith('X') else 'objective' if name in OBJECTIVES else 'candidate_predictor'
+        item = {'type': 'numeric' if name in NUMERIC else 'categorical', 'role': role,
+                'missing_count': len(rows) - len(values), 'nonmissing_count': len(values),
+                'unique_count': len(set(values))}
+        if name in OBJECTIVES:
+            item['direction'] = OBJECTIVES[name]
+        if name in NUMERIC:
+            item['statistics'] = numeric_summary(values)
+        else:
+            item['value_counts'] = dict(sorted(Counter(values).items()))
+        columns[name] = item
+    return {
+        'dataset_path': str(Path(dataset).resolve()), 'project_count': len(rows),
+        'column_count': len(COLUMNS), 'numeric_column_count': len(NUMERIC),
+        'categorical_column_count': len(COLUMNS) - len(NUMERIC),
+        'candidate_predictors': PREDICTORS, 'objectives': OBJECTIVES, 'metadata': METADATA,
+        'total_missing_values': sum(c['missing_count'] for c in columns.values()),
+        'delivery_outcomes': ['Kloc+', 'Effort-', 'Defects-', 'MonthsX'],
+        'columns': columns,
+        'conventions': {
+            'missing_tokens_after_stripping': sorted(MISSING),
+            'standard_deviation': 'sample, denominator n-1; null when fewer than two observations',
+            'quartiles': 'linear interpolation at sorted index (n-1)*p',
+            'centerX': 'categorical center label; no ordering inferred',
+            'idX_and_YearX': 'numeric metadata; identifier statistics have no predictive interpretation',
+            'excluded_inputs': 'All X metadata and objective fields are excluded from candidate predictors',
+            'units': 'No units supplied or inferred; original field names retained',
+            'limitations': 'Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction',
+        },
+    }
+
+
+def render_text(report):
+    lines = [
+        'NASA93 historical projects and delivery outcomes',
+        f"Projects: {report['project_count']}; columns: {report['column_count']}",
+        f"Numeric columns: {report['numeric_column_count']}; categorical columns: {report['categorical_column_count']}",
+        f"Missing cells: {report['total_missing_values']}",
+        'Candidate predictors: ' + ', '.join(report['candidate_predictors']),
+        'Metadata excluded from optimization and predictors: ' + ', '.join(report['metadata']),
+        'Objectives: Kloc+ maximize; Effort- minimize; Defects- minimize.',
+        'Delivery outcomes (MonthsX is descriptive metadata):',
+    ]
+    for name in report['delivery_outcomes']:
+        item = report['columns'][name]
+        lines.append(f"  {name} [{item['role']}]: " + json.dumps(item['statistics'], sort_keys=True))
+    lines.append('All project characteristics, missing counts, numeric summaries, and categorical counts:')
+    for name, item in report['columns'].items():
+        lines.append(f"  {name}: " + json.dumps(item, sort_keys=True))
+    lines.append('Assumptions and limitations:')
+    lines.extend(f'  {key}: {value}' for key, value in report['conventions'].items())
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output-dir', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = summarize(args.dataset)
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    (args.output_dir / 'summary.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    readable = render_text(report)
+    (args.output_dir / 'summary.txt').write_text(readable, encoding='utf-8')
+    print(readable, end='')
+
+
+if __name__ == '__main__':
+    main()
+
+===== tests/test_predict_effort.py =====
+"""Step 2 validation, partition isolation, and independent evaluation checks."""
+import copy
+import json
+import math
+import os
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'source'))
+from predict_effort import (PREDICTORS, estimate, evaluate, feature_matrix, fit_training,
+                            load_proposal, normalize_proposal, split_projects)
+from summarize import read_projects
+
+DATASET = Path(os.environ.get('NASA93_DATASET', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'))
+
+
+def fixture():
+    return [dict.fromkeys(PREDICTORS, f'category_{i}') | {'Effort-': float(i * 10 + 1)} for i in range(12)]
+
+
+class PredictionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.rows = read_projects(DATASET)
+        cls.model, cls.report = evaluate(cls.rows)
+
+    def test_proposal_validation(self):
+        for field in ['Effort-', 'Defects-', 'Kloc+', 'idX', 'centerX', 'YearX', 'MonthsX', 'futureX', 'typo']:
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                normalize_proposal({field: 1})
+        for value in [[], None, 1, 'n', True]:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                normalize_proposal(value)
+        for value in [1, True, [], {}, float('nan')]:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                normalize_proposal({'prec': value})
+
+    def test_whitespace_missing_and_unseen(self):
+        proposal = dict.fromkeys(PREDICTORS, ' n\t')
+        self.assertEqual(normalize_proposal(proposal), ['n'] * len(PREDICTORS))
+        self.assertEqual(estimate(self.model, proposal), estimate(self.model, dict.fromkeys(PREDICTORS, 'n')))
+        for value in [None, '', ' ? ', 'NA', ' N/A ', 'null']:
+            self.assertEqual(normalize_proposal({'prec': value}), [None] * len(PREDICTORS))
+            self.assertTrue(math.isfinite(estimate(self.model, {'prec': value})))
+        novel = dict.fromkeys(PREDICTORS, 'never_seen_category')
+        self.assertTrue(math.isfinite(estimate(self.model, novel)))
+        encoded = self.model[:-1].transform(feature_matrix([novel]))
+        np.testing.assert_array_equal(encoded, np.zeros_like(encoded))
+
+    def test_missing_training_column_and_missing_target(self):
+        rows = fixture()
+        for row in rows:
+            row['prec'] = None
+        rows[0]['flex'] = ' ? '
+        model, report = evaluate(rows)
+        self.assertTrue(math.isfinite(estimate(model, {})))
+        self.assertIn('', model.named_steps['categorical'].categories_[0])
+        rows[0]['Effort-'] = None
+        _, report = evaluate(rows)
+        self.assertEqual(report['split']['excluded_missing_targets'], 1)
+        self.assertNotIn(0, report['split']['training_indices'] + report['split']['evaluation_indices'])
+
+    def test_group_partition_and_reproducibility(self):
+        train, test, groups = split_projects(self.rows)
+        self.assertFalse({groups[i] for i in train} & {groups[i] for i in test})
+        self.assertEqual(set(train) | set(test), set(range(len(self.rows))))
+        self.assertEqual(split_projects(self.rows), (train, test, groups))
+        model, report = evaluate(self.rows)
+        self.assertEqual(report, self.report)
+        self.assertEqual(estimate(model, {}), estimate(self.model, {}))
+        duplicate = copy.deepcopy(fixture())
+        duplicate.append(dict(duplicate[0], **{'Effort-': 999}))
+        duplicate[-1]['prec'] = ' category_0 '
+        train, test, groups = split_projects(duplicate)
+        self.assertEqual(groups[0], groups[-1])
+        self.assertEqual(0 in train, len(duplicate) - 1 in train)
+        self.assertEqual(0 in test, len(duplicate) - 1 in test)
+
+    def test_independent_mae_and_training_mean(self):
+        report = self.report
+        records = report['held_out_predictions']
+        baseline = sum(self.rows[i]['Effort-'] for i in report['split']['training_indices']) / report['split']['training_samples']
+        self.assertAlmostEqual(report['baseline']['prediction'], baseline)
+        for key, column in [('model_mae', 'predicted'), ('baseline_mae', 'baseline_predicted')]:
+            independent = sum(abs(r['actual'] - r[column]) for r in records) / len(records)
+            self.assertAlmostEqual(report[key], independent)
+        for record in records:
+            self.assertEqual(record['actual'], self.rows[record['row_index']]['Effort-'])
+        self.assertEqual(report['split']['evaluation_samples'], len(records))
+        self.assertEqual(report['split']['training_samples'] + len(records), len(self.rows))
+
+    def test_heldout_targets_cannot_affect_fitting_or_predictions(self):
+        changed = copy.deepcopy(self.rows)
+        for i in self.report['split']['evaluation_indices']:
+            changed[i]['Effort-'] = changed[i]['Effort-'] * 10000 + 999
+        model, report = evaluate(changed)
+        self.assertEqual(report['split'], self.report['split'])
+        self.assertEqual(report['baseline'], self.report['baseline'])
+        self.assertNotEqual(report['model_mae'], self.report['model_mae'])
+        self.assertEqual([r['predicted'] for r in report['held_out_predictions']],
+                         [r['predicted'] for r in self.report['held_out_predictions']])
+        for field in ['missing', 'categorical']:
+            left = model.named_steps[field]
+            right = self.model.named_steps[field]
+            if field == 'missing':
+                np.testing.assert_array_equal(left.statistics_, right.statistics_)
+            else:
+                for a, b in zip(left.categories_, right.categories_):
+                    np.testing.assert_array_equal(a, b)
+        for left, right in zip(model.named_steps['forest'].estimators_, self.model.named_steps['forest'].estimators_):
+            np.testing.assert_array_equal(left.tree_.value, right.tree_.value)
+            np.testing.assert_array_equal(left.tree_.threshold, right.tree_.threshold)
+        self.assertEqual(estimate(model, {}), estimate(self.model, {}))
+
+    def test_preprocessing_sees_training_only(self):
+        rows = fixture()
+        train, heldout, _ = split_projects(rows)
+        with patch('predict_effort.fit_training', wraps=fit_training) as spy:
+            model, _ = evaluate(rows)
+        self.assertEqual(spy.call_args.args[0], [rows[i] for i in train])
+        learned = set(model.named_steps['categorical'].categories_[0])
+        self.assertEqual(learned, {rows[i]['prec'] for i in train})
+        self.assertTrue(learned.isdisjoint({rows[i]['prec'] for i in heldout}))
+        changed = copy.deepcopy(rows)
+        for row in changed:
+            row.update({'Kloc+': 999999, 'Defects-': 88888, 'idX': 'changed', 'MonthsX': 888})
+        _, report = evaluate(changed)
+        self.assertEqual(report, evaluate(rows)[1])
+
+    def test_insufficient_groups_invalid_targets(self):
+        for rows in [[], [dict.fromkeys(PREDICTORS, 'n') | {'Effort-': 2}] * 4]:
+            with self.assertRaises(ValueError):
+                evaluate(rows)
+        for value in [-1, float('inf'), float('nan'), 'bad']:
+            rows = fixture()
+            rows[0]['Effort-'] = value
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                evaluate(rows)
+        with self.assertRaises(ValueError):
+            fit_training([])
+
+    def test_json_and_cli_reject_forbidden_fields(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / 'tests') as directory:
+            proposal = Path(directory) / 'proposal.json'
+            for text in ['{"prec":"n","prec":"h"}', '{bad', '[]', '{"Effort-":1}']:
+                proposal.write_text(text)
+                with self.subTest(text=text), self.assertRaises(ValueError):
+                    load_proposal(proposal)
+            proposal.write_text('{"Kloc+":10}')
+            result = subprocess.run([sys.executable, str(ROOT / 'source/predict_effort.py'), str(DATASET),
+                                     '--proposal', str(proposal), '--evaluation', str(Path(directory) / 'out.json')],
+                                    text=True, capture_output=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn('Forbidden or unknown', result.stderr)
+            self.assertFalse((Path(directory) / 'out.json').exists())
+            proposal.write_text('{"prec": " n "}')
+            self.assertEqual(load_proposal(proposal), {'prec': ' n '})
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+
+===== tests/test_summarize.py =====
+"""Independent fixtures and CSV arithmetic checks; uses only this dataset."""
+import csv
+import math
+import os
+import sys
+import tempfile
+import unittest
+from collections import Counter
+from decimal import Decimal
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'source'))
+from summarize import read_projects, render_text, summarize
+
+# Deliberately independent schema and numeric declarations.
+HEADER = 'idX centerX YearX prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced Kloc+ Effort- Defects- MonthsX'.split()
+NUMBERS = ['idX', 'YearX', 'Kloc+', 'Effort-', 'Defects-', 'MonthsX']
+DATASET = Path(os.environ.get('NASA93_DATASET', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'))
+
+
+class FixtureTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory(dir=ROOT / 'tests')
+        self.addCleanup(self.directory.cleanup)
+        self.path = Path(self.directory.name) / 'fixture.csv'
+
+    def write(self, rows, header=HEADER):
+        with self.path.open('w', newline='') as stream:
+            writer = csv.writer(stream)
+            writer.writerow(header)
+            writer.writerows(rows)
+
+    def row(self, number='1'):
+        return [number if name in NUMBERS else ' n ' for name in HEADER]
+
+    def test_hand_calculated_numeric_summary(self):
+        self.write([self.row(str(x)) for x in [1, 2, 3, 4]])
+        result = summarize(self.path)['columns']['Effort-']['statistics']
+        expected = {'count': 4, 'sum': 10, 'mean': 2.5, 'std_sample': math.sqrt(5 / 3),
+                    'min': 1, 'q25': 1.75, 'median': 2.5, 'q75': 3.25, 'max': 4}
+        for key, value in expected.items():
+            self.assertAlmostEqual(result[key], value)
+
+    def test_categorical_whitespace_and_metadata(self):
+        rows = [self.row() for _ in range(3)]
+        for row, value in zip(rows, [' h ', 'h', ' l\t']):
+            row[HEADER.index('prec')] = value
+        self.write(rows)
+        report = summarize(self.path)
+        self.assertEqual(report['columns']['prec']['value_counts'], {'h': 2, 'l': 1})
+        self.assertEqual(report['columns']['centerX']['value_counts'], {'n': 3})
+        self.assertTrue(all(not x.endswith('X') for x in report['candidate_predictors']))
+        self.assertEqual(report['objectives'], {'Kloc+': 'maximize', 'Effort-': 'minimize', 'Defects-': 'minimize'})
+        self.assertNotIn('Effort-', report['candidate_predictors'])
+        self.assertEqual(report['columns']['MonthsX']['role'], 'metadata')
+        self.assertIn('MonthsX is descriptive metadata', render_text(report))
+
+    def test_missing_values_and_small_samples(self):
+        rows = [self.row() for _ in range(5)]
+        for row, token in zip(rows, ['', '?', 'NA', 'N/A', 'null']):
+            row[HEADER.index('Effort-')] = token
+            row[HEADER.index('prec')] = ' ' + token + ' '
+        for row in rows[1:]:
+            row[HEADER.index('Kloc+')] = ''
+        self.write(rows)
+        result = summarize(self.path)
+        self.assertEqual(result['total_missing_values'], 14)
+        self.assertEqual(result['columns']['prec']['value_counts'], {})
+        self.assertEqual(result['columns']['Effort-']['missing_count'], 5)
+        stats = result['columns']['Effort-']['statistics']
+        self.assertEqual(stats['count'], 0)
+        self.assertTrue(all(value is None for key, value in stats.items() if key != 'count'))
+        self.assertIsNone(result['columns']['Kloc+']['statistics']['std_sample'])
+        self.assertEqual(result['columns']['Kloc+']['statistics']['mean'], 1)
+
+    def test_invalid_numeric_and_nonfinite(self):
+        for value in ['oops', 'NaN', 'inf', '-inf', '1e999']:
+            with self.subTest(value=value):
+                self.write([self.row(value)])
+                with self.assertRaises(ValueError):
+                    summarize(self.path)
+
+    def test_invalid_schema_rows_empty_and_missing_file(self):
+        for header, rows in [([], []), (HEADER, []), (HEADER[:-1], []),
+                             (HEADER[:-1] + ['idX'], []), (HEADER, [self.row()[:-1]]),
+                             (HEADER, [self.row() + ['extra']])]:
+            with self.subTest(header=header, rows=rows):
+                self.write(rows, header)
+                with self.assertRaises(ValueError):
+                    summarize(self.path)
+        self.path.write_text('')
+        with self.assertRaises(ValueError):
+            read_projects(self.path)
+        with self.assertRaises(FileNotFoundError):
+            read_projects(self.path.parent / 'missing.csv')
+
+    def test_malformed_csv(self):
+        self.path.write_text(','.join(HEADER) + '\n"unterminated')
+        with self.assertRaises(csv.Error):
+            summarize(self.path)
+
+
+class ActualDatasetTests(unittest.TestCase):
+    def test_independent_csv_calculations(self):
+        report = summarize(DATASET)
+        with DATASET.open(newline='') as stream:
+            reader = csv.DictReader(stream)
+            self.assertEqual(reader.fieldnames, HEADER)
+            rows = list(reader)
+        self.assertEqual(len(rows), 93)
+        self.assertEqual(report['project_count'], len(rows))
+        self.assertEqual(report['column_count'], 29)
+        self.assertEqual(report['numeric_column_count'], 6)
+        self.assertEqual(report['categorical_column_count'], 23)
+        self.assertEqual(len(report['candidate_predictors']), 22)
+        missing_total = 0
+        for name in HEADER:
+            raw = [row[name].strip() for row in rows]
+            present = [v for v in raw if v not in ('', '?', 'NA', 'N/A', 'null')]
+            item = report['columns'][name]
+            missing_total += len(raw) - len(present)
+            self.assertEqual(item['missing_count'], len(raw) - len(present))
+            self.assertEqual(item['nonmissing_count'], len(present))
+            self.assertEqual(item['unique_count'], len(set(present)))
+            if name not in NUMBERS:
+                self.assertEqual(item['value_counts'], dict(Counter(present)))
+                continue
+            values = sorted(Decimal(value) for value in present)
+            n = len(values)
+            avg = sum(values) / n
+            expected = {'count': n, 'sum': sum(values), 'mean': avg, 'min': values[0], 'max': values[-1],
+                        'std_sample': (sum((v - avg) ** 2 for v in values) / (n - 1)).sqrt()}
+            for label, numerator in [('q25', 1), ('median', 2), ('q75', 3)]:
+                index = Decimal(n - 1) * numerator / 4
+                low = int(index)
+                fraction = index - low
+                expected[label] = values[low] * (1 - fraction) + values[min(low + 1, n - 1)] * fraction
+            for key, value in expected.items():
+                with self.subTest(column=name, statistic=key):
+                    self.assertTrue(math.isclose(item['statistics'][key], float(value), rel_tol=1e-12, abs_tol=1e-12))
+        self.assertEqual(missing_total, 0)
+        self.assertEqual(report['total_missing_values'], missing_total)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

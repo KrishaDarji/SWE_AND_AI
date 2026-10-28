@@ -1,0 +1,76 @@
+
+=== Full suite invocation ===
+test_cli_valid_and_invalid (test_blame.DiagnosisTests.test_cli_valid_and_invalid) ... ok
+test_independent_arithmetic_direction_ties_and_constants (test_blame.DiagnosisTests.test_independent_arithmetic_direction_ties_and_constants) ... ok
+test_independent_dataset_decimal_ranking_and_summaries (test_blame.DiagnosisTests.test_independent_dataset_decimal_ranking_and_summaries) ... ok
+test_invalid_inputs (test_blame.DiagnosisTests.test_invalid_inputs) ... ok
+test_missing_values_pairwise_counts_and_normalization (test_blame.DiagnosisTests.test_missing_values_pairwise_counts_and_normalization) ... ok
+test_nominal_relabeling_preserves_strength_not_direction_of_names (test_blame.DiagnosisTests.test_nominal_relabeling_preserves_strength_not_direction_of_names) ... ok
+test_reproducible_detached_no_mutation_and_exclusions (test_blame.DiagnosisTests.test_reproducible_detached_no_mutation_and_exclusions) ... ok
+test_small_category_boundary (test_blame.DiagnosisTests.test_small_category_boundary) ... ok
+test_zero_variance_singleton_and_empty_categories (test_blame.DiagnosisTests.test_zero_variance_singleton_and_empty_categories) ... ok
+test_degenerate_and_zero_baseline (test_certify.ComparisonTests.test_degenerate_and_zero_baseline) ... ok
+test_hand_calculated_welch (test_certify.ComparisonTests.test_hand_calculated_welch) ... ok
+test_identical_samples (test_certify.ComparisonTests.test_identical_samples) ... ok
+test_improvement_and_reverse (test_certify.ComparisonTests.test_improvement_and_reverse) ... ok
+test_independent_dataset_and_cli (test_certify.ComparisonTests.test_independent_dataset_and_cli) ... ok
+test_missing_and_reproducibility (test_certify.ComparisonTests.test_missing_and_reproducibility) ... ok
+test_small_invalid_samples (test_certify.ComparisonTests.test_small_invalid_samples) ... ok
+test_statistical_vs_practical (test_certify.ComparisonTests.test_statistical_vs_practical) ... ok
+test_csv_missing_tokens_and_cli_contract (test_choose.SelectionTests.test_csv_missing_tokens_and_cli_contract) ... ok
+test_exact_boundary_no_tolerance_and_zero (test_choose.SelectionTests.test_exact_boundary_no_tolerance_and_zero) ... ok
+test_independent_exhaustive_actual_csv (test_choose.SelectionTests.test_independent_exhaustive_actual_csv) ... ok
+test_invalid_budgets_and_outcomes (test_choose.SelectionTests.test_invalid_budgets_and_outcomes) ... ok
+test_json_explanation_and_caveats (test_choose.SelectionTests.test_json_explanation_and_caveats) ... ok
+test_maximum_value_and_budget_feasibility (test_choose.SelectionTests.test_maximum_value_and_budget_feasibility) ... ok
+test_missing_outcomes_union_counts_and_original_row_identity (test_choose.SelectionTests.test_missing_outcomes_union_counts_and_original_row_identity) ... ok
+test_no_feasible_candidates_and_empty (test_choose.SelectionTests.test_no_feasible_candidates_and_empty) ... ok
+test_no_mutation_no_model_fit_and_no_invented_configuration (test_choose.SelectionTests.test_no_mutation_no_model_fit_and_no_invented_configuration) ... ok
+test_ties_lower_effort_then_earlier_data_row_duplicate_id (test_choose.SelectionTests.test_ties_lower_effort_then_earlier_data_row_duplicate_id) ... ok
+test_cli_proposal_demo_and_invalid_json (test_fix.RepairTests.test_cli_proposal_demo_and_invalid_json) ... ok
+test_complete_normalization_and_general_missing_api_preserved (test_fix.RepairTests.test_complete_normalization_and_general_missing_api_preserved) ... ok
+test_cost_first_then_prediction_then_csv_order_and_duplicates (test_fix.RepairTests.test_cost_first_then_prediction_then_csv_order_and_duplicates) ... ok
+test_demo_earliest_training_predictors_and_no_mutation (test_fix.RepairTests.test_demo_earliest_training_predictors_and_no_mutation) ... ok
+test_heldout_outcomes_do_not_change_entire_recommendation (test_fix.RepairTests.test_heldout_outcomes_do_not_change_entire_recommendation) ... ok
+test_independent_exhaustive_minimum_and_changes (test_fix.RepairTests.test_independent_exhaustive_minimum_and_changes) ... ok
+test_invalid_incomplete_rejected_before_fitting (test_fix.RepairTests.test_invalid_incomplete_rejected_before_fitting) ... ok
+test_only_complete_training_configurations_are_candidates (test_fix.RepairTests.test_only_complete_training_configurations_are_candidates) ... ok
+test_strict_comparison_no_improvement_and_empty_candidate_pool (test_fix.RepairTests.test_strict_comparison_no_improvement_and_empty_candidate_pool) ... ok
+test_current_target_cannot_change_its_prediction (test_flow.FlowTests.test_current_target_cannot_change_its_prediction) ... ok
+test_empty_all_missing_and_single_observation (test_flow.FlowTests.test_empty_all_missing_and_single_observation) ... ok
+test_fit_uses_only_previously_revealed_records (test_flow.FlowTests.test_fit_uses_only_previously_revealed_records) ... ok
+test_future_changes_cannot_change_earlier_assessments (test_flow.FlowTests.test_future_changes_cannot_change_earlier_assessments) ... ok
+test_independent_running_arithmetic_and_duplicate_history (test_flow.FlowTests.test_independent_running_arithmetic_and_duplicate_history) ... ok
+test_lifecycle_validation_and_detached_snapshots (test_flow.FlowTests.test_lifecycle_validation_and_detached_snapshots) ... ok
+test_missing_outcomes_and_warm_up (test_flow.FlowTests.test_missing_outcomes_and_warm_up) ... ok
+test_prediction_recorded_before_target_access (test_flow.FlowTests.test_prediction_recorded_before_target_access) ... ok
+test_reproducibility_and_excluded_fields (test_flow.FlowTests.test_reproducibility_and_excluded_fields) ... ok
+test_all_local_sensitivities_match_direct_model_queries (test_justify.JustificationTests.test_all_local_sensitivities_match_direct_model_queries) ... ok
+test_cli_and_json_contract (test_justify.JustificationTests.test_cli_and_json_contract) ... ok
+test_global_association_independent_training_only_arithmetic (test_justify.JustificationTests.test_global_association_independent_training_only_arithmetic) ... ok
+test_heldout_target_changes_leave_all_training_explanation_unchanged (test_justify.JustificationTests.test_heldout_target_changes_leave_all_training_explanation_unchanged) ... ok
+test_invalid_proposals_rejected_before_fitting (test_justify.JustificationTests.test_invalid_proposals_rejected_before_fitting) ... ok
+test_missing_unseen_normalization_and_no_mutation (test_justify.JustificationTests.test_missing_unseen_normalization_and_no_mutation) ... ok
+test_prediction_partition_and_reproducibility (test_justify.JustificationTests.test_prediction_partition_and_reproducibility) ... ok
+test_training_context_independent_arithmetic (test_justify.JustificationTests.test_training_context_independent_arithmetic) ... ok
+test_group_partition_and_reproducibility (test_predict_effort.PredictionTests.test_group_partition_and_reproducibility) ... ok
+test_heldout_targets_cannot_affect_fitting_or_predictions (test_predict_effort.PredictionTests.test_heldout_targets_cannot_affect_fitting_or_predictions) ... ok
+test_independent_mae_and_training_mean (test_predict_effort.PredictionTests.test_independent_mae_and_training_mean) ... ok
+test_insufficient_groups_invalid_targets (test_predict_effort.PredictionTests.test_insufficient_groups_invalid_targets) ... ok
+test_json_and_cli_reject_forbidden_fields (test_predict_effort.PredictionTests.test_json_and_cli_reject_forbidden_fields) ... ok
+test_missing_training_column_and_missing_target (test_predict_effort.PredictionTests.test_missing_training_column_and_missing_target) ... ok
+test_preprocessing_sees_training_only (test_predict_effort.PredictionTests.test_preprocessing_sees_training_only) ... ok
+test_proposal_validation (test_predict_effort.PredictionTests.test_proposal_validation) ... ok
+test_whitespace_missing_and_unseen (test_predict_effort.PredictionTests.test_whitespace_missing_and_unseen) ... ok
+test_independent_csv_calculations (test_summarize.ActualDatasetTests.test_independent_csv_calculations) ... ok
+test_categorical_whitespace_and_metadata (test_summarize.FixtureTests.test_categorical_whitespace_and_metadata) ... ok
+test_hand_calculated_numeric_summary (test_summarize.FixtureTests.test_hand_calculated_numeric_summary) ... ok
+test_invalid_numeric_and_nonfinite (test_summarize.FixtureTests.test_invalid_numeric_and_nonfinite) ... ok
+test_invalid_schema_rows_empty_and_missing_file (test_summarize.FixtureTests.test_invalid_schema_rows_empty_and_missing_file) ... ok
+test_malformed_csv (test_summarize.FixtureTests.test_malformed_csv) ... ok
+test_missing_values_and_small_samples (test_summarize.FixtureTests.test_missing_values_and_small_samples) ... ok
+
+----------------------------------------------------------------------
+Ran 69 tests in 27.275s
+
+OK

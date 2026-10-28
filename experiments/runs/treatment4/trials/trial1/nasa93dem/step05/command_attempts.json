@@ -1,0 +1,9 @@
+[
+  {
+    "command": "tail -8 test_output.txt; ls -l runtime_output.txt",
+    "exit_code": 1,
+    "output": "tail: test_output.txt: No such file or directory\nls: runtime_output.txt: No such file or directory\n",
+    "classification": "Unexpected premature log inspection while validation subprocess was still running",
+    "repair": "Wait for validation to finish before inspecting logs; no application code repair"
+  }
+]

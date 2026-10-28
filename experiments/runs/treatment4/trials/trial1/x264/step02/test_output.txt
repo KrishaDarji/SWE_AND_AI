@@ -1,0 +1,17 @@
+{
+  "name": "tests",
+  "command": [
+    "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step02/tests",
+    "-v"
+  ],
+  "returncode": 0,
+  "runtime_seconds": 3.7035860830219463,
+  "stdout": "",
+  "stderr": "test_actual_dataset_cli_prediction_and_input_preservation (test_guess.PredictionTests.test_actual_dataset_cli_prediction_and_input_preservation) ... ok\ntest_cli_invalid_config_preserves_input (test_guess.PredictionTests.test_cli_invalid_config_preserves_input) ... ok\ntest_evaluation_only_setting_value_is_rejected (test_guess.PredictionTests.test_evaluation_only_setting_value_is_rejected) ... ok\ntest_evaluation_targets_do_not_affect_fit (test_guess.PredictionTests.test_evaluation_targets_do_not_affect_fit) ... ok\ntest_prediction_schema_domain_and_column_order (test_guess.PredictionTests.test_prediction_schema_domain_and_column_order) ... ok\ntest_repeatability_and_independent_mae_baseline (test_guess.PredictionTests.test_repeatability_and_independent_mae_baseline) ... ok\ntest_repeated_configurations_are_grouped (test_guess.PredictionTests.test_repeated_configurations_are_grouped) ... ok\ntest_actual_dataset_matches_independent_csv_calculations (test_remember.SummaryTests.test_actual_dataset_matches_independent_csv_calculations) ... ok\ntest_cli_failure_is_actionable (test_remember.SummaryTests.test_cli_failure_is_actionable) ... ok\ntest_cli_refuses_to_overwrite_dataset (test_remember.SummaryTests.test_cli_refuses_to_overwrite_dataset) ... error: Output must not overwrite the dataset\nok\ntest_cli_writes_valid_reports_and_preserves_input (test_remember.SummaryTests.test_cli_writes_valid_reports_and_preserves_input) ... ok\ntest_objective_position_whitespace_and_duplicates (test_remember.SummaryTests.test_objective_position_whitespace_and_duplicates) ... ok\ntest_rejects_invalid_csv (test_remember.SummaryTests.test_rejects_invalid_csv) ... ok\ntest_single_row_and_invalid_top (test_remember.SummaryTests.test_single_row_and_invalid_top) ... ok\ntest_statistics_rankings_and_distributions (test_remember.SummaryTests.test_statistics_rankings_and_distributions) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 2.236s\n\nOK\n"
+}

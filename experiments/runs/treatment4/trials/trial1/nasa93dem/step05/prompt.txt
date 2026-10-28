@@ -1,0 +1,146 @@
+You are running Treatment 4, Trial 1, Dataset 2, Step 5 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project planning
+- Dataset: nasa93dem.csv
+- Current skill: blame
+- Current requirement: Explain which project factors are associated with excessive effort.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, NASA93 implementation.
+Preserve Steps 1–4 behavior and tests while adding Step 5.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step04/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step04/tests/
+
+Allowed references:
+- The specified NASA93 dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, Health, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reusable diagnosis of project factors associated
+with higher observed Effort-.
+
+Use the candidate predictor fields from the previous implementation.
+Exclude Effort-, Defects-, Kloc+, and X-suffixed metadata from the
+diagnostic feature ranking.
+Effort- is minimized; physical units are unspecified.
+Do not invent an ordinal mapping for categorical values.
+
+Report:
+- Ranked project factors and the documented ranking method.
+- Category-level sample counts and effort summaries.
+- Which observed categories accompany higher or lower effort.
+- Constant factors that cannot support between-category comparisons.
+- A readable explanation for the planning manager.
+
+Choose and document the diagnostic method.
+Distinguish association strength or feature importance from direction.
+Explain limitations from small category counts, correlated factors,
+project-size differences, and observational confounding.
+A high raw effort is not automatically excessive for a large project.
+Do not claim that changing a factor will cause effort savings.
+
+Reuse earlier loading, normalization, summaries, prediction, or
+comparison machinery where appropriate.
+Explain what was reused and added.
+
+If using a fitted model, separate evaluation from training and fit
+learned preprocessing on training data only. Use seed 42.
+Do not interpret poor predictive performance as reliable attribution.
+If performing multiple significance tests, account for multiplicity
+or explicitly label findings exploratory without certified-win claims.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 5 and preserved Steps 1–4 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step05/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- blame.json
+- run_instructions.txt
+
+blame.json must include the method, ranked findings, supporting
+counts and summaries, explanations, and limitations.
+
+Test association direction, constant factors, ties, missing values,
+small categories, and invalid inputs with independently checkable
+examples. Verify ranking calculations and reproducibility.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 5; treatment: 4; trial: 1; domain: nasa93dem; skill: blame.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 5 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to NASA93 Step 4 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–4 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 4 files, or other repository files.
+Write only inside the absolute Step 5 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

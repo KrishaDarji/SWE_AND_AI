@@ -1,0 +1,11 @@
+{
+  "method": "Raw CSV Decimal parsing and exhaustive pairwise dominance; no production selection imports.",
+  "passed": true,
+  "total_rows": 93,
+  "eligible_rows": 93,
+  "feasible_candidates": 31,
+  "excluded_rows": 0,
+  "winning_csv_data_row": 78,
+  "winning_effort_decimal": "97",
+  "winning_kloc_decimal": "165"
+}

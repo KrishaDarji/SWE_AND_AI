@@ -1,0 +1,43 @@
+Command argv: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '-B', '/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment4/trials/trial1/x264/step01/source/remember.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv', '--output-dir', '/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment4/trials/trial1/x264/step01']
+Python: 3.12.6 (v3.12.6:a4a2d2b0d85, Sep  6 2024, 16:08:03) [Clang 13.0.0 (clang-1300.0.29.30)]
+scikit-learn: 1.6.0
+Historical encoder runs: 1152
+Settings: 16
+Unique configurations: 1152
+Repeated configuration rows: 0
+Duplicate measurement rows: 0
+Objective: Performance- (minimize; units unspecified)
+Objective statistics: {"count": 1152, "max": 821.963, "mean": 461.7535963541667, "median": 452.7785, "min": 244.23, "population_stddev": 162.49115009089647, "q25": 294.361, "q75": 580.73775}
+No separate quality measures are present in this dataset.
+Setting distributions (value: count; mean Performance-):
+  no_asm [constant]: 1: 1152; mean=461.753596
+  no_8x8dct: 0: 576; mean=472.135507; 1: 576; mean=451.371686
+  no_cabac: 0: 576; mean=465.679493; 1: 576; mean=457.827700
+  no_deblock: 0: 576; mean=461.602109; 1: 576; mean=461.905083
+  no_fast_pskip: 0: 576; mean=433.242536; 1: 576; mean=490.264656
+  no_mbtree: 0: 576; mean=436.383682; 1: 576; mean=487.123510
+  no_mixed_refs: 0: 576; mean=493.300155; 1: 576; mean=430.207038
+  no_weightb: 0: 576; mean=461.841707; 1: 576; mean=461.665486
+  rc_lookahead [constant]: 1: 1152; mean=461.753596
+  rc_lookahead_20: 0: 768; mean=462.154646; 1: 384; mean=460.951497
+  rc_lookahead_40: 0: 768; mean=461.675178; 1: 384; mean=461.910432
+  rc_lookahead_60: 0: 768; mean=461.430965; 1: 384; mean=462.398859
+  ref [constant]: 1: 1152; mean=461.753596
+  ref_1: 0: 768; mean=553.923043; 1: 384; mean=277.414703
+  ref_5: 0: 768; mean=461.825740; 1: 384; mean=461.609310
+  ref_9: 0: 768; mean=369.512007; 1: 384; mean=646.236776
+Best objective: 244.23; tied runs: 1
+  {"Performance-": 244.23, "data_row": 71, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.277, "data_row": 103, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 1.0, "no_weightb": 0.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.28, "data_row": 122, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 1.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 1.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.303, "data_row": 75, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 0.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+  {"Performance-": 244.333, "data_row": 121, "settings": {"no_8x8dct": 1.0, "no_asm": 1.0, "no_cabac": 1.0, "no_deblock": 0.0, "no_fast_pskip": 0.0, "no_mbtree": 0.0, "no_mixed_refs": 1.0, "no_weightb": 1.0, "rc_lookahead": 1.0, "rc_lookahead_20": 1.0, "rc_lookahead_40": 0.0, "rc_lookahead_60": 0.0, "ref": 1.0, "ref_1": 1.0, "ref_5": 0.0, "ref_9": 0.0}}
+All non-objective columns are treated as recorded encoder settings.
+Names and encoded values are preserved; flag semantics are not inferred.
+Conditional objective statistics describe associations, not causal effects.
+Repeated rows remain in all statistics; no measurements are imputed.
+Top runs are ordered by ascending objective, then original CSV order.
+Exit code: 0
+Elapsed seconds: 0.051171500
+Dataset SHA256 before: 00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864
+Dataset unchanged: True

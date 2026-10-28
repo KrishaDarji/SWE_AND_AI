@@ -1,0 +1,24 @@
+Run from the Step 7 directory using python3 with scikit-learn 1.6.0. Do not install or change dependencies.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step07'
+
+Tests:
+python3 -B -m unittest discover -s tests -v
+
+Step 7 demonstration:
+python3 -B source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --budget 100 --output selection.json
+
+Full reproduction: tests, Steps 1–6 regression demos, Step 7 demo, independent verification, metrics:
+python3 -B record_run.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+The runner captures all subprocess output, measures wall time, records execution attempts, checks byte-for-byte preservation of the six previous source/test modules, and calculates LOC using the authorized Step 6 source. Repeated runs append output and execution history; metrics.csv and result artifacts describe the latest run, with cumulative unexpected failed attempts in error_count. Expected negative-test CLI exits are handled within passing tests. The initial missing-input block is an input-path correction, excluded from application error_count.
+
+Budget accepts finite nonnegative numbers (zero is valid); invalid budgets exit 2. Valid queries without feasible rows exit 0 with status no_feasible_candidate and selected_project null. Dataset argument uses the exact NASA93 schema and previous missing-token validation. API choose(rows, budget) accepts parsed rows in original CSV order; CSV data-row identity is one-based, excluding the header.
+
+Individual regression demo commands (create regression_demos/ first if absent):
+python3 -B source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir regression_demos
+python3 -B source/predict_effort.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --evaluation regression_demos/evaluation.json
+python3 -B source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression_demos/flow.json
+python3 -B source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression_demos/certification.json
+python3 -B source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output regression_demos/associations.json
+python3 -B source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal example_proposal.json --output-dir regression_demos --illustrative

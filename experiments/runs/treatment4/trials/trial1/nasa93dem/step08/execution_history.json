@@ -1,0 +1,22 @@
+[
+  {
+    "timings_seconds": {
+      "step08_demo": 1.6894042079802603,
+      "step01_summarize": 0.029695999925024807,
+      "step02_predict": 0.8849569170270115,
+      "step03_justify": 1.1123737919842824,
+      "step04_blame": 0.9185184589587152,
+      "step05_certify": 0.37471212504897267,
+      "step06_choose": 0.8115043749567121,
+      "step07_flow": 6.611688417033292,
+      "test_suite": 28.19728025002405
+    },
+    "unexpected_failed_commands": 0,
+    "tests_total": 69,
+    "tests_failed_or_errors": 0,
+    "test_returncode": 0,
+    "demo_returncode": 0,
+    "unexpected_failed_inspections": 1,
+    "inspection_failure_record": "inspection_failure.txt"
+  }
+]

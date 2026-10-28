@@ -1,0 +1,167 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/summarize.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output-dir', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/regression_step01']
+Wall seconds: 0.029883667
+Exit code: 0
+STDOUT:
+NASA93 historical projects and delivery outcomes
+Projects: 93; columns: 29
+Numeric columns: 6; categorical columns: 23
+Missing cells: 0
+Candidate predictors: prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced
+Metadata excluded from optimization and predictors: idX, centerX, YearX, MonthsX
+Objectives: Kloc+ maximize; Effort- minimize; Defects- minimize.
+Delivery outcomes (MonthsX is descriptive metadata):
+  Kloc+ [objective]: {"count": 93, "max": 980.0, "mean": 94.02204301075268, "median": 47.5, "min": 0.9, "q25": 15.4, "q75": 111.0, "std_sample": 133.5979471867733, "sum": 8744.05}
+  Effort- [objective]: {"count": 93, "max": 8211.0, "mean": 624.4118279569892, "median": 252.0, "min": 8.4, "q25": 70.0, "q75": 600.0, "std_sample": 1135.9280652026785, "sum": 58070.3}
+  Defects- [objective]: {"count": 93, "max": 50961.0, "mean": 3761.7634408602153, "median": 2007.0, "min": 28.0, "q25": 636.0, "q75": 4868.0, "std_sample": 6145.055586471355, "sum": 349844.0}
+  MonthsX [metadata]: {"count": 93, "max": 96.4, "mean": 24.176344086021505, "median": 21.4, "min": 4.9, "q25": 14.8, "q75": 31.5, "std_sample": 12.967219522364363, "sum": 2248.4}
+All project characteristics, missing counts, numeric summaries, and categorical counts:
+  idX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 93.0, "mean": 46.98924731182796, "median": 47.0, "min": 1.0, "q25": 24.0, "q75": 70.0, "std_sample": 26.997783573944794, "sum": 4370.0}, "type": "numeric", "unique_count": 92}
+  centerX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "type": "categorical", "unique_count": 5, "value_counts": {"1": 12, "2": 37, "3": 2, "5": 39, "6": 3}}
+  YearX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 1987.0, "mean": 1980.8279569892472, "median": 1980.0, "min": 1971.0, "q25": 1979.0, "q75": 1983.0, "std_sample": 3.3350042562842876, "sum": 184217.0}, "type": "numeric", "unique_count": 14}
+  prec: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  flex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  resl: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"h": 93}}
+  team: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"vh": 93}}
+  pmat: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 43, "l": 20, "n": 30}}
+  rely: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 42, "l": 2, "n": 39, "vh": 10}}
+  data: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 17, "l": 37, "n": 31, "vh": 8}}
+  cplx: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 5, "value_counts": {"h": 58, "l": 3, "n": 10, "vh": 17, "xh": 5}}
+  ruse: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  docu: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  time: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 13, "n": 54, "vh": 18, "xh": 8}}
+  stor: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 10, "n": 49, "vh": 21, "xh": 13}}
+  pvol: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 9, "l": 65, "n": 19}}
+  acap: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 51, "n": 32, "vh": 10}}
+  pcap: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 3, "value_counts": {"h": 39, "n": 44, "vh": 10}}
+  pcon: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  apex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 46, "l": 1, "n": 34, "vh": 12}}
+  plex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 22, "l": 14, "n": 53, "vl": 4}}
+  ltex: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 4, "value_counts": {"h": 69, "l": 6, "n": 14, "vl": 4}}
+  tool: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 2, "value_counts": {"h": 10, "n": 83}}
+  site: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 1, "value_counts": {"n": 93}}
+  sced: {"missing_count": 0, "nonmissing_count": 93, "role": "candidate_predictor", "type": "categorical", "unique_count": 2, "value_counts": {"l": 34, "n": 59}}
+  Kloc+: {"direction": "maximize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 980.0, "mean": 94.02204301075268, "median": 47.5, "min": 0.9, "q25": 15.4, "q75": 111.0, "std_sample": 133.5979471867733, "sum": 8744.05}, "type": "numeric", "unique_count": 79}
+  Effort-: {"direction": "minimize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 8211.0, "mean": 624.4118279569892, "median": 252.0, "min": 8.4, "q25": 70.0, "q75": 600.0, "std_sample": 1135.9280652026785, "sum": 58070.3}, "type": "numeric", "unique_count": 74}
+  Defects-: {"direction": "minimize", "missing_count": 0, "nonmissing_count": 93, "role": "objective", "statistics": {"count": 93, "max": 50961.0, "mean": 3761.7634408602153, "median": 2007.0, "min": 28.0, "q25": 636.0, "q75": 4868.0, "std_sample": 6145.055586471355, "sum": 349844.0}, "type": "numeric", "unique_count": 92}
+  MonthsX: {"missing_count": 0, "nonmissing_count": 93, "role": "metadata", "statistics": {"count": 93, "max": 96.4, "mean": 24.176344086021505, "median": 21.4, "min": 4.9, "q25": 14.8, "q75": 31.5, "std_sample": 12.967219522364363, "sum": 2248.4}, "type": "numeric", "unique_count": 82}
+Assumptions and limitations:
+  missing_tokens_after_stripping: ['', '?', 'N/A', 'NA', 'null']
+  standard_deviation: sample, denominator n-1; null when fewer than two observations
+  quartiles: linear interpolation at sorted index (n-1)*p
+  centerX: categorical center label; no ordering inferred
+  idX_and_YearX: numeric metadata; identifier statistics have no predictive interpretation
+  excluded_inputs: All X metadata and objective fields are excluded from candidate predictors
+  units: No units supplied or inferred; original field names retained
+  limitations: Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction
+
+STDERR:
+
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/predict_effort.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--proposal', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/proposal.json', '--evaluation', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/regression_step02.json']
+Wall seconds: 1.011334500
+Exit code: 0
+STDOUT:
+{
+  "estimated Effort-": 594.2993338972432,
+  "units": "unspecified",
+  "training_samples": 68,
+  "evaluation_samples": 25,
+  "model_mae": 531.2119860706141,
+  "baseline_mae": 674.0317647058823,
+  "decision_note": "An effort estimate alone does not justify approving a proposal."
+}
+
+STDERR:
+
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/certify.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/certification.json']
+Wall seconds: 0.466688875
+Exit code: 0
+STDOUT:
+{
+  "target": "Effort-",
+  "units": "unspecified",
+  "baseline": {
+    "count": 83,
+    "sum": 50303.3,
+    "mean": 606.0638554216868,
+    "std_sample": 1177.9397248004684,
+    "min": 8.4,
+    "q25": 60.0,
+    "median": 215.0,
+    "q75": 573.7,
+    "max": 8211.0,
+    "excluded_missing_outcomes": 0
+  },
+  "candidate": {
+    "count": 10,
+    "sum": 7767.0,
+    "mean": 776.7,
+    "std_sample": 720.5163349216233,
+    "min": 72.0,
+    "q25": 433.5,
+    "median": 528.5,
+    "q75": 1047.75,
+    "max": 2460.0,
+    "excluded_missing_outcomes": 0
+  },
+  "difference_candidate_minus_baseline": 170.6361445783133,
+  "relative_mean_reduction": -0.2815481290491877,
+  "observed_direction": "higher",
+  "statistical": {
+    "method": "Welch independent two-sample two-sided t test and 95% t confidence interval",
+    "null": "population mean candidate effort equals population mean baseline effort",
+    "alpha": 0.05,
+    "standard_error": 261.97662553325733,
+    "degrees_of_freedom": 15.552580855698572,
+    "t_statistic": 0.6513411043102829,
+    "p_value_two_sided": 0.5243346705603102,
+    "mean_difference_ci95": [
+      -386.0308077262547,
+      727.3030968828813
+    ],
+    "evidence": "no_detected_difference"
+  },
+  "practical": {
+    "fraction_of_baseline_mean": 0.1,
+    "absolute_reduction_threshold": 60.60638554216868,
+    "criterion": "candidate mean is at least the threshold below baseline mean; strict CI upper bound below negative threshold supports it",
+    "observed_threshold_met": false,
+    "supported_by_ci95": false,
+    "zero_baseline_note": "A zero baseline cannot support a positive relative reduction."
+  },
+  "bootstrap_sensitivity": {
+    "method": "independent within-group percentile bootstrap of mean difference",
+    "seed": 42,
+    "resamples": 20000,
+    "ci95": [
+      -293.64298192771093,
+      682.0696084337349
+    ]
+  },
+  "small_sample_warning": false,
+  "versions": {
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  },
+  "manager_conclusion": "A difference in population mean effort was not detected; this is not proof of equivalence. The interval does not establish the illustrative practical reduction. These observations do not establish that changing the process causes cost savings.",
+  "limitations": [
+    "Observational groups, not randomized process assignments: project size (Kloc+) and other characteristics may confound raw effort differences. No causal cost savings are established.",
+    "Effort- is minimized; physical units are unspecified. Only observed outcomes are used, never model predictions.",
+    "Welch inference assumes independent projects, representative sampling, finite variances, and approximately normal sampling distributions of means. Related projects, skew, extreme values, and small samples can undermine it.",
+    "Unequal group variances are allowed. Historical convenience samples do not establish generalizability to future proposals.",
+    "Missing outcomes are excluded without imputation; selection bias remains possible.",
+    "The practical threshold is an illustrative planning rule: 10% of the observed baseline mean, not a manager-approved economic requirement. It is data-dependent; uncertainty in this threshold is not propagated.",
+    "No detected difference is not proof of equivalence. No equivalence test or causal adjustment is performed.",
+    "This does not complete the separate required same analysis: its exact procedure was not supplied.",
+    "Bootstrap percentile intervals are a sensitivity description, not a second decision test; they can be unreliable with small or skewed samples."
+  ],
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv",
+  "group_definitions": {
+    "baseline": "tool=n",
+    "candidate": "tool=h",
+    "selection": "Fixed before interpreting outcomes; all observed efforts in these groups",
+    "excluded_other_or_missing_tool_rows": 0
+  }
+}
+
+STDERR:
+

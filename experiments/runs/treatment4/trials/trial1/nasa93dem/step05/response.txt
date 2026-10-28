@@ -1,0 +1,850 @@
+Completed Treatment 4, Trial 1, NASA93 Step 5 (blame).
+
+Complete updated application code is in source/. Complete preserved and new tests are in tests/. Run commands are in run_instructions.txt. No dataset, Step 4, shared implementation, unrelated run or other repository file was modified. Only the specified dataset and allowed Step 4 source/tests were inspected for implementation context. The active working directory and every allowed input were verified before reuse. Python3 reports scikit-learn 1.6.0; no dependency changes were made.
+
+Reuse and additions
+The four Step 4 application modules and their four test files were copied byte-for-byte; validation_details.json records these checks. summarize.read_projects supplies strict CSV schema validation and missing-token handling, summarize.numeric_summary supplies effort summaries and interpolated quartiles, and predict_effort.normalize_proposal supplies nominal predictor normalization. The earlier predictor allowlist is reused unchanged. Added source/blame.py provides reusable diagnose(rows), readable explanations and a CSV-path CLI. Added tests/test_blame.py supplies nine tests, including independent Decimal arithmetic against the raw CSV. run_validation.py captures test/demo results and measured LOC/timing; it is outside application source and excluded from LOC.
+
+Diagnostic method
+Rank each nonconstant candidate factor by categorical eta squared on raw observed Effort-: sum_g n_g*(mean_g-mean_all)^2 divided by sum_i(effort_i-mean_all)^2. This is descriptive between-category association strength, not fitted-model feature importance. There is no fitted model or learned preprocessing in Step 5; no predictive evaluation is used to justify attribution. Step 2 retains its training-only preprocessing and grouped holdout evaluation. No ordinal encoding is introduced. Seed 42 remains in the preserved prediction/comparison machinery; Step 5 itself is deterministic and uses no random draws.
+Exclude rows with missing outcome or missing factor only from that factor score; retain their counts and category summaries. A missing predictor is a distinct null entry in the report, excluded from ranking. Fewer than two observed categories or zero total effort variance yields null score and no rank. Single observed categories are reported as constant on observed rows; constants across all nonmissing inputs are listed separately. Zero association with varying effort is a valid score of zero. Rank by scores rounded to 12 decimals descending; ties share competition rank and alphabetical order. Scores are unsigned. Direction is the category mean compared to the feature-specific eligible mean with documented numerical tolerance. Means, medians, quartiles and sample sizes permit review of skew and small groups.
+
+Observed findings
+All 93 projects have observed effort; overall mean 624.411828, median 252.000000, physical units unspecified. Effort- is minimized.
+Rank 1: time, eta squared=0.417943259 (n=93).
+Rank 2: rely, eta squared=0.342147096 (n=93).
+Rank 3: cplx, eta squared=0.191680307 (n=93).
+Rank 4: stor, eta squared=0.163584831 (n=93).
+Rank 5: plex, eta squared=0.152537244 (n=93).
+Rank 6: data, eta squared=0.143988402 (n=93).
+Rank 7: acap, eta squared=0.060616261 (n=93).
+Rank 8: pvol, eta squared=0.057823010 (n=93).
+Rank 9: pcap, eta squared=0.057440803 (n=93).
+Rank 10: sced, eta squared=0.054553693 (n=93).
+Rank 11: pmat, eta squared=0.050721245 (n=93).
+Rank 12: apex, eta squared=0.023125558 (n=93).
+Rank 13: ltex, eta squared=0.004630159 (n=93).
+Rank 14: tool, eta squared=0.002189010 (n=93).
+
+Constant factors: prec, flex, resl, team, ruse, docu, pcon, site. These cannot support observed between-category comparisons.
+
+For the strongest factor, time=xh has n=8, mean effort 2964.2625, median 1848.5; time=n has n=54, mean 334.388889, median 156. The labels are treated as nominal. time=h also has a mean above the overall mean; time=vh has a mean below it. Category names do not establish monotonic effects. rely=vh accompanies higher effort (n=10, mean 2467.21), while rely=l also has a higher mean but only two projects, so it receives a small-category warning. All factors and categories, including lower/equal means, missing counts and unranked summaries, are provided in blame.json. These observations identify groups for further scope/context review; they do not identify avoidable waste or establish savings from changing a factor.
+
+Assumptions and limitations
+Exploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.
+Higher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.
+Kloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.
+Correlated factors can share the same association; univariate scores do not isolate independent contributions or interactions.
+Observational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.
+Small categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.
+Eta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.
+Missing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.
+Constant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.
+Physical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.
+All data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used.
+
+Measured validation
+All 42 tests passed (33 preserved tests plus 9 new tests); all five demo subprocesses exited 0. Tests verify independent hand calculations (eta squared 0.8 from between SS 16 and total SS 20), association direction, ties, constants, zero variance, missing inputs/outcomes, empty observed categories, singleton groups, warning thresholds, nominal relabeling, invalid inputs, exclusions, reproducibility, CLI behavior and independent NASA93 ranking/count/mean/median calculations.
+Step 5 demo subprocess wall time: 0.935477458 seconds. Test subprocess wall time: 8.597187791 seconds.
+Regression demo wall times: {"Step 1 summary": 0.030170333106070757, "Step 2 prediction": 0.9155315830139443, "Step 3 flow": 6.634990749997087, "Step 4 comparison": 0.3838634999701753}
+Application total_loc=701; new_loc=155. Nonblank, non-comment-only source Python lines include docstrings; new LOC counts insert/replace new-side application lines against Step 4 rather than net growth. Tests and validation harness are excluded.
+error_count=1: a premature attempt to read logs while validation was running failed because the log files had not yet been written. The exact command, failure output and wait-based resolution are preserved in command_attempts.json. No application repair was necessary. This auxiliary failure is included in metrics.csv; expected negative-test subprocess failures are excluded. test_output.txt and runtime_output.txt preserve actual execution output; no results were fabricated.
+
+Complete source listing (also available as runnable files in source/)
+
+source/blame.py
+```python
+"""Exploratory categorical associations with observed effort; no causal attribution."""
+import argparse
+import csv
+import json
+import math
+from collections import defaultdict
+from pathlib import Path
+
+from predict_effort import normalize_proposal
+from summarize import PREDICTORS, numeric_summary, read_projects
+
+LIMITATIONS = [
+    'Exploratory descriptive ranking, not significance testing, certified wins, or causal attribution. No p-values or confidence guarantees are supplied.',
+    'Higher raw effort is not automatically excessive for a large project. No budget, expected-effort threshold, or size-adjusted excess is defined.',
+    'Kloc+ is excluded from ranking and no size adjustment is performed. Project-size differences can explain category associations.',
+    'Correlated factors can share the same association; univariate scores do not isolate independent contributions or interactions.',
+    'Observational confounding, related projects, selection bias and historical context preclude claims that changing a factor causes effort savings.',
+    'Small categories (fewer than five observed efforts) are flagged; their summaries and scores may be unstable. Five is a descriptive warning threshold, not a reliability guarantee.',
+    'Eta squared is in-sample, sensitive to extreme efforts and biased upward with more categories, especially singletons; it is not predictive feature importance.',
+    'Missing effort is excluded, never imputed. Missing predictor categories are summarized separately and excluded from that factor score; feature-specific samples can differ and missingness may be informative.',
+    'Constant factors cannot support between-category comparisons. Zero effort variance or fewer than two observed categories makes association strength undefined.',
+    'Physical effort units are unspecified. Category labels remain nominal; no ordinal mapping or favorable direction is inferred from their names.',
+    'All data describe historical associations. No fitted prediction model, learned preprocessing, held-out attribution, or future-performance guarantee is used.',
+]
+METHOD = {
+    'name': 'Univariate categorical eta squared on raw observed Effort-',
+    'formula': 'eta2 = sum_g n_g * (mean_g - mean_all)^2 / sum_i (effort_i - mean_all)^2',
+    'interpretation': 'Fraction of within-sample raw effort variation between observed categories, ranging from 0 to 1; strength has no sign.',
+    'eligible_rows': 'For each factor: observed nonnegative finite effort and nonmissing normalized category only.',
+    'undefined': 'null score and no rank for fewer than two observed categories or zero total effort variance.',
+    'ordering': 'Descending eta2 rounded to 12 decimal places; equal rounded scores share competition rank, then factor name alphabetical. Undefined factors are separate.',
+    'direction': 'Category mean minus the feature-specific eligible mean; higher/lower/equal uses relative tolerance 1e-12 and absolute tolerance 1e-12. Medians and quartiles are also reported.',
+    'small_category_threshold': 5,
+    'inference': 'Exploratory only; no significance tests, multiplicity claims or certified wins.',
+    'fitting': 'No fitted model or learned preprocessing; no train/evaluation split is required for descriptive summaries.',
+    'seed': 42,
+    'seed_usage': 'No randomness in this method.',
+}
+
+
+def diagnose(rows):
+    """Accept parsed project mappings; ignore nonpredictors except the target."""
+    rows = list(rows)
+    if not rows:
+        raise ValueError('Need at least one project')
+    normalized = []
+    for index, row in enumerate(rows):
+        if not isinstance(row, dict):
+            raise ValueError(f'Row {index}: expected a project mapping')
+        values = normalize_proposal({p: row.get(p) for p in PREDICTORS})
+        effort = row.get('Effort-')
+        if effort is not None and (isinstance(effort, bool) or not isinstance(effort, (int, float))
+                                   or not math.isfinite(effort) or effort < 0):
+            raise ValueError(f'Row {index}: effort must be finite nonnegative numeric or None')
+        normalized.append((values, float(effort) if effort is not None else None))
+    observed = [e for _, e in normalized if e is not None]
+    factors = []
+    for position, field in enumerate(PREDICTORS):
+        groups = defaultdict(list)
+        counts = defaultdict(int)
+        for values, effort in normalized:
+            category = values[position]
+            counts[category] += 1
+            if effort is not None:
+                groups[category].append(effort)
+        labels = sorted(c for c in counts if c is not None)
+        eligible_labels = [c for c in labels if groups[c]]
+        eligible = [e for c in eligible_labels for e in groups[c]]
+        summary = numeric_summary(eligible)
+        center = summary['mean']
+        within = sum(sum((e - numeric_summary(groups[c])['mean']) ** 2 for e in groups[c])
+                     for c in eligible_labels)
+        total = sum((e - center) ** 2 for e in eligible) if eligible else 0.0
+        between = sum(len(groups[c]) * (numeric_summary(groups[c])['mean'] - center) ** 2
+                      for c in eligible_labels)
+        if not all(math.isfinite(x) for x in [within, total, between]):
+            raise ValueError('Effort magnitudes exceed supported summary arithmetic')
+        status = ('no_observed_categories' if not eligible_labels else
+                  'constant_on_observed_rows' if len(eligible_labels) == 1 else
+                  'zero_effort_variance' if total == 0 else 'rankable')
+        categories = []
+        for label in labels + ([None] if None in counts else []):
+            stats = numeric_summary(groups[label])
+            difference = stats['mean'] - center if label is not None and stats['count'] and center is not None else None
+            direction = ('unavailable' if difference is None else 'equal' if math.isclose(stats['mean'], center, rel_tol=1e-12, abs_tol=1e-12)
+                         else 'higher' if difference > 0 else 'lower')
+            categories.append({
+                'category': label, 'missing_predictor': label is None,
+                'project_count': counts[label], 'observed_effort_count': stats['count'],
+                'missing_effort_count': counts[label] - stats['count'], 'effort_summary': stats,
+                'included_in_score': label is not None and stats['count'] > 0,
+                'mean_minus_eligible_mean': difference, 'observed_mean_direction': direction,
+                'small_category': stats['count'] < METHOD['small_category_threshold'],
+            })
+        score = min(1.0, max(0.0, between / total)) if status == 'rankable' else None
+        factors.append({
+            'factor': field, 'status': status, 'eta_squared': score, 'rank': None,
+            'nonmissing_category_count_all_rows': len(labels),
+            'constant_all_rows': len(labels) == 1,
+            'observed_category_count': len(eligible_labels), 'eligible_effort_summary': summary,
+            'excluded_missing_predictor_count': counts.get(None, 0),
+            'missing_effort_count': len(rows) - len(observed),
+            'sums_of_squares': {'between': between, 'within': within, 'total': total},
+            'categories': categories,
+            'explanation': (f'{field}: association strength eta2={score:.6f}; direction is shown by each category mean relative to {center:.6g}.'
+                            if score is not None else f'{field}: {status}; no supported between-category strength ranking.'),
+        })
+    ranked = sorted((f for f in factors if f['eta_squared'] is not None),
+                    key=lambda f: (-round(f['eta_squared'], 12), f['factor']))
+    prior = None
+    rank = None
+    for index, item in enumerate(ranked, 1):
+        key = round(item['eta_squared'], 12)
+        if key != prior:
+            rank = index
+        item['rank'] = rank
+        prior = key
+    report = {
+        'target': 'Effort-', 'objective': 'minimize', 'units': 'unspecified',
+        'project_count': len(rows), 'observed_effort_summary': numeric_summary(observed),
+        'missing_effort_count': len(rows) - len(observed),
+        'predictor_fields': PREDICTORS, 'excluded_from_ranking': ['Effort-', 'Defects-', 'Kloc+', 'all X-suffixed metadata', 'unknown fields'],
+        'method': METHOD, 'ranked_findings': ranked,
+        'unranked_factors': [f for f in factors if f['eta_squared'] is None],
+        'constant_factors': [f['factor'] for f in factors if f['constant_all_rows']],
+        'limitations': LIMITATIONS,
+    }
+    report['manager_explanation'] = render_text(report)
+    return report
+
+
+def render_text(report):
+    lines = ['Project factors accompanying higher observed effort (physical units unspecified).',
+             'This is an exploratory description of raw effort, not a diagnosis of budget overrun or excessive effort.',
+             'Ranking uses categorical eta squared: between-category variation divided by total variation.',
+             'The score measures association strength; category means below supply direction. No category ordering is assumed.']
+    for factor in report['ranked_findings']:
+        lines.append(f"Rank {factor['rank']}: {factor['factor']}, eta2={factor['eta_squared']:.6f}, eligible n={factor['eligible_effort_summary']['count']}.")
+        for category in factor['categories']:
+            stats = category['effort_summary']
+            lines.append(f"  {category['category']!r}: projects={category['project_count']}, observed n={stats['count']}, mean={stats['mean']}, median={stats['median']}; {category['observed_mean_direction']} than eligible mean; small-category warning={category['small_category']}.")
+    lines.append('Constant factors across nonmissing inputs: ' + ', '.join(report['constant_factors']))
+    for factor in report['unranked_factors']:
+        lines.append(factor['explanation'])
+    lines.append('Planning use: review these historical category groups alongside project scope, size and context; the ranking does not show savings from changing a factor.')
+    lines.extend(report['limitations'])
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = diagnose(read_projects(args.dataset))
+        report['dataset_path'] = str(args.dataset.resolve())
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+        print(report['manager_explanation'], end='')
+    except (OSError, ValueError, OverflowError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+source/certify.py
+```python
+"""Compare observed independent historical effort groups; no causal certification."""
+import argparse
+import csv
+import json
+import math
+from pathlib import Path
+
+import numpy as np
+import scipy
+from scipy.stats import t
+
+from summarize import numeric_summary, read_projects
+
+SEED = 42
+ALPHA = 0.05
+BOOTSTRAPS = 20000
+LIMITATIONS = [
+    'Observational groups, not randomized process assignments: project size (Kloc+) and other characteristics may confound raw effort differences. No causal cost savings are established.',
+    'Effort- is minimized; physical units are unspecified. Only observed outcomes are used, never model predictions.',
+    'Welch inference assumes independent projects, representative sampling, finite variances, and approximately normal sampling distributions of means. Related projects, skew, extreme values, and small samples can undermine it.',
+    'Unequal group variances are allowed. Historical convenience samples do not establish generalizability to future proposals.',
+    'Missing outcomes are excluded without imputation; selection bias remains possible.',
+    'The practical threshold is an illustrative planning rule: 10% of the observed baseline mean, not a manager-approved economic requirement. It is data-dependent; uncertainty in this threshold is not propagated.',
+    'No detected difference is not proof of equivalence. No equivalence test or causal adjustment is performed.',
+    'This does not complete the separate required same analysis: its exact procedure was not supplied.',
+    'Bootstrap percentile intervals are a sensitivity description, not a second decision test; they can be unreliable with small or skewed samples.',
+]
+
+
+def clean_sample(values):
+    """None means missing; reject invalid observed efforts rather than silently drop."""
+    observed = []
+    missing = 0
+    for value in values:
+        if value is None:
+            missing += 1
+        elif isinstance(value, (bool, str)) or not isinstance(value, (int, float, np.number)):
+            raise ValueError('Observed effort must be a finite nonnegative number')
+        elif not math.isfinite(value) or value < 0:
+            raise ValueError('Observed effort must be a finite nonnegative number')
+        else:
+            observed.append(float(value))
+    if len(observed) < 2:
+        raise ValueError('Each group needs at least two observed efforts')
+    return np.array(observed), missing
+
+
+def compare_effort(baseline, candidate, practical_fraction=0.10):
+    """Welch two-sided mean comparison; negative candidate-minus-baseline is better."""
+    if isinstance(practical_fraction, bool) or not isinstance(practical_fraction, (int, float)) or not math.isfinite(practical_fraction) or not 0 < practical_fraction < 1:
+        raise ValueError('Practical fraction must be finite and strictly between zero and one')
+    a, missing_a = clean_sample(baseline)
+    b, missing_b = clean_sample(candidate)
+    avg_a, avg_b = float(a.mean()), float(b.mean())
+    difference = avg_b - avg_a
+    va, vb = float(a.var(ddof=1)) / len(a), float(b.var(ddof=1)) / len(b)
+    se = math.sqrt(va + vb)
+    threshold = practical_fraction * avg_a
+    if se > 0:
+        df = (va + vb) ** 2 / (va * va / (len(a) - 1) + vb * vb / (len(b) - 1))
+        statistic = difference / se
+        p_value = float(2 * t.sf(abs(statistic), df))
+        margin = float(t.ppf(1 - ALPHA / 2, df)) * se
+        interval = [difference - margin, difference + margin]
+        detected = p_value < ALPHA
+        evidence = ('candidate_lower' if difference < 0 else 'candidate_higher') if detected else 'no_detected_difference'
+        practical_supported = threshold > 0 and interval[1] < -threshold
+    else:
+        df = statistic = p_value = interval = None
+        evidence = 'inference_unavailable_zero_variance'
+        practical_supported = False
+    rng = np.random.default_rng(SEED)
+    # Independent within-group resampling, preserving each group's sample size.
+    boot_a = rng.choice(a, size=(BOOTSTRAPS, len(a)), replace=True).mean(axis=1)
+    boot_b = rng.choice(b, size=(BOOTSTRAPS, len(b)), replace=True).mean(axis=1)
+    bootstrap_ci = np.quantile(boot_b - boot_a, [0.025, 0.975]).tolist()
+    conclusion = {
+        'candidate_lower': 'Candidate projects have statistically lower observed mean effort under Welch assumptions.',
+        'candidate_higher': 'Candidate projects have statistically higher observed mean effort under Welch assumptions.',
+        'no_detected_difference': 'A difference in population mean effort was not detected; this is not proof of equivalence.',
+        'inference_unavailable_zero_variance': 'Both samples have zero variance; Welch inference is unavailable.',
+    }[evidence]
+    conclusion += (' The interval also supports the illustrative practical reduction.' if practical_supported else ' The interval does not establish the illustrative practical reduction.')
+    conclusion += ' These observations do not establish that changing the process causes cost savings.'
+    return {
+        'target': 'Effort-', 'units': 'unspecified',
+        'baseline': numeric_summary(a.tolist()) | {'excluded_missing_outcomes': missing_a},
+        'candidate': numeric_summary(b.tolist()) | {'excluded_missing_outcomes': missing_b},
+        'difference_candidate_minus_baseline': difference,
+        'relative_mean_reduction': (avg_a - avg_b) / avg_a if avg_a > 0 else None,
+        'observed_direction': 'lower' if difference < 0 else 'higher' if difference > 0 else 'equal',
+        'statistical': {'method': 'Welch independent two-sample two-sided t test and 95% t confidence interval',
+                        'null': 'population mean candidate effort equals population mean baseline effort',
+                        'alpha': ALPHA, 'standard_error': se, 'degrees_of_freedom': df,
+                        't_statistic': statistic, 'p_value_two_sided': p_value,
+                        'mean_difference_ci95': interval, 'evidence': evidence},
+        'practical': {'fraction_of_baseline_mean': practical_fraction, 'absolute_reduction_threshold': threshold,
+                      'criterion': 'candidate mean is at least the threshold below baseline mean; strict CI upper bound below negative threshold supports it',
+                      'observed_threshold_met': threshold > 0 and difference <= -threshold,
+                      'supported_by_ci95': practical_supported,
+                      'zero_baseline_note': 'A zero baseline cannot support a positive relative reduction.'},
+        'bootstrap_sensitivity': {'method': 'independent within-group percentile bootstrap of mean difference',
+                                  'seed': SEED, 'resamples': BOOTSTRAPS, 'ci95': bootstrap_ci},
+        'small_sample_warning': len(a) < 10 or len(b) < 10,
+        'versions': {'numpy': np.__version__, 'scipy': scipy.__version__},
+        'manager_conclusion': conclusion, 'limitations': LIMITATIONS,
+    }
+
+
+def certify(dataset):
+    rows = read_projects(dataset)
+    report = compare_effort([r['Effort-'] for r in rows if r['tool'] == 'n'],
+                            [r['Effort-'] for r in rows if r['tool'] == 'h'])
+    report['dataset_path'] = str(Path(dataset).resolve())
+    report['group_definitions'] = {'baseline': 'tool=n', 'candidate': 'tool=h',
+                                   'selection': 'Fixed before interpreting outcomes; all observed efforts in these groups',
+                                   'excluded_other_or_missing_tool_rows': sum(r['tool'] not in ('n', 'h') for r in rows)}
+    return report
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = certify(args.dataset)
+        text = json.dumps(report, indent=2, allow_nan=False) + '\n'
+        args.output.write_text(text, encoding='utf-8')
+        print(text, end='')
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+source/flow.py
+```python
+"""Sequential effort assessment: predict, then reveal, then update history."""
+import argparse
+import copy
+import csv
+import json
+import math
+from pathlib import Path
+
+import sklearn
+
+from predict_effort import estimate, fit_training, normalize_proposal
+from summarize import PREDICTORS, numeric_summary, read_projects
+
+MIN_HISTORY = 2
+LIMITATIONS = [
+    'CSV order is a simulated arrival sequence, not verified chronological order or actual proposal-time data.',
+    'Predictor availability at proposal time is assumed, not demonstrated by this historical dataset.',
+    'Effort units are unspecified. No automatic project approval or uncertainty guarantees are provided.',
+    'Earlier identical normalized predictor configurations may inform later arrivals once their efforts are revealed.',
+    'Sequential cumulative MAE is distinct from Step 2 independent grouped holdout evaluation; duplicates are not held out here.',
+    'Every present outcome is assumed revealed immediately after its prediction; real reporting delays are not modeled.',
+    'Missing outcomes are counted but neither scored nor added to training history; delayed backfill is not supported.',
+    'Two observed efforts are a deterministic availability threshold, not evidence of model reliability.',
+    'Small observational sample, missingness, distribution changes, and novel categories can impair accuracy.',
+    'The seeded 200-tree forest and learned preprocessing are refitted on prior observed records for every available prediction.',
+    'Unseen categories encode as all zeros; missing predictors use the existing explicit empty-string level.',
+    'Kloc+, Defects-, Effort-, all X-suffixed metadata and unknown fields are excluded from proposal predictors.',
+]
+
+
+class ProposalFlow:
+    """One pending arrival at a time; only reveal() accepts an observed effort."""
+
+    def __init__(self):
+        self._history = []
+        self._assessments = []
+        self._pending = None
+        self._errors = []
+        self._observed = []
+
+    def receive(self, proposal):
+        """Record prediction using strictly prior revealed history, before any outcome."""
+        if self._pending is not None:
+            raise ValueError('Reveal the pending arrival before receiving another')
+        values = normalize_proposal(proposal)
+        normalized = dict(zip(PREDICTORS, values))
+        history_size = len(self._history)
+        prediction = None
+        if history_size >= MIN_HISTORY:
+            model, _ = fit_training(self._history)
+            prediction = estimate(model, normalized)
+        self._pending = {
+            'row_index': len(self._assessments),
+            'predictors': normalized,
+            'history_size_before': history_size,
+            'warm_up': history_size < MIN_HISTORY,
+            'prediction_status': 'unavailable_insufficient_history' if prediction is None else 'available',
+            'predicted_effort': prediction,
+        }
+        return copy.deepcopy(self._pending)
+
+    def reveal(self, observed_effort):
+        """Attach current outcome after recorded prediction; missing means no update."""
+        if self._pending is None:
+            raise ValueError('Receive an arrival before revealing its outcome')
+        if observed_effort is not None and (
+            isinstance(observed_effort, bool) or not isinstance(observed_effort, (int, float))
+            or not math.isfinite(observed_effort) or observed_effort < 0
+        ):
+            raise ValueError('Observed effort must be finite, nonnegative, or None')
+        item = self._pending
+        prediction = item['predicted_effort']
+        error = None
+        if observed_effort is not None:
+            observed_effort = float(observed_effort)
+            if prediction is not None:
+                error = abs(prediction - observed_effort)
+                self._errors.append(error)
+            self._observed.append(observed_effort)
+            self._history.append(dict(item['predictors'], **{'Effort-': observed_effort}))
+        item.update({
+            'observed_effort': observed_effort,
+            'outcome_status': 'missing' if observed_effort is None else 'observed',
+            'absolute_error': error,
+            'history_size_after': len(self._history),
+            'scored_arrivals': len(self._errors),
+            'cumulative_absolute_error': sum(self._errors),
+            'cumulative_mae': sum(self._errors) / len(self._errors) if self._errors else None,
+            'running_error_summary': numeric_summary(self._errors),
+            'running_observed_effort_summary': numeric_summary(self._observed),
+        })
+        self._assessments.append(item)
+        self._pending = None
+        return copy.deepcopy(item)
+
+    def report(self):
+        """Return a detached report of completed arrivals; reject unfinished arrivals."""
+        if self._pending is not None:
+            raise ValueError('Pending prediction has no revealed outcome yet')
+        count = len(self._assessments)
+        return copy.deepcopy({
+            'target': 'Effort-', 'units': 'unspecified', 'predictor_fields': PREDICTORS,
+            'arrival_rule': 'Original CSV data row order; zero-based row_index excludes header. Simulated arrival sequence, not verified chronological order or actual proposal-time data.',
+            'warm_up_policy': {'minimum_prior_observed_efforts': MIN_HISTORY,
+                               'rule': 'No prediction until two prior observed outcomes are available; missing outcomes do not advance warm-up. No external history or future fitting.'},
+            'event_order': ['receive allowed predictors', 'fit prior observed history and record prediction',
+                            'reveal current effort', 'update history and running summaries'],
+            'identical_configurations': 'Allowed from prior revealed history; unlike the separate Step 2 grouped holdout.',
+            'model': {'implementation': 'predict_effort.fit_training and estimate, unchanged from Step 3',
+                      'random_state': 42, 'n_estimators': 200, 'min_samples_leaf': 2,
+                      'n_jobs': 1, 'scikit_learn_version': sklearn.__version__},
+            'assessments': self._assessments,
+            'final_summary': {
+                'arrivals': count, 'observed_outcomes': len(self._observed),
+                'missing_outcomes': count - len(self._observed),
+                'available_predictions': sum(r['predicted_effort'] is not None for r in self._assessments),
+                'warm_up_arrivals': sum(r['warm_up'] for r in self._assessments),
+                'scored_arrivals': len(self._errors), 'history_size': len(self._history),
+                'cumulative_absolute_error': sum(self._errors),
+                'cumulative_mae': sum(self._errors) / len(self._errors) if self._errors else None,
+                'prediction_error_summary': numeric_summary(self._errors),
+                'observed_effort_summary': numeric_summary(self._observed),
+            },
+            'limitations': LIMITATIONS,
+        })
+
+
+def replay(rows):
+    """Consume rows sequentially without accessing each target until receive returns."""
+    flow = ProposalFlow()
+    for row in rows:
+        flow.receive({field: row.get(field) for field in PREDICTORS})
+        flow.reveal(row.get('Effort-'))
+    return flow.report()
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = replay(read_projects(args.dataset))
+        report['dataset_path'] = str(args.dataset.resolve())
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+        print(json.dumps({'arrival_rule': report['arrival_rule'], 'units': report['units'],
+                          'warm_up_policy': report['warm_up_policy'],
+                          'final_summary': report['final_summary'],
+                          'limitations': report['limitations']}, indent=2, allow_nan=False))
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+source/predict_effort.py
+```python
+"""Training-only categorical effort estimation with a grouped held-out evaluation."""
+import argparse
+import csv
+import json
+import math
+import platform
+from pathlib import Path
+
+import numpy as np
+import scipy
+import sklearn
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+from summarize import MISSING, PREDICTORS, read_projects
+
+SEED = 42
+LIMITATIONS = [
+    'Effort- physical units are unspecified; none are inferred.',
+    'An effort estimate alone does not justify approving a proposal.',
+    'Small historical observational dataset; one grouped split is not a guarantee of future accuracy.',
+    'No uncertainty intervals, approval guarantees, causal claims, or held-out tuning.',
+    'No proposal-time size estimate is supplied; delivered Kloc+ is excluded.',
+    'Predictor availability at proposal time is assumed and must be checked operationally.',
+    'Unseen categories encode as all zeros; missing categories use an explicit empty-string level.',
+    'Rows missing Effort- are excluded, never target-imputed; reported MAE is row-weighted.',
+    'Group split prevents identical normalized inputs crossing partitions, but related projects may remain.',
+    'Random forest predictions average training outcomes and may miss extreme or novel efforts.',
+    'Evaluation model remains fitted only to training rows; no full-dataset refit is performed.',
+]
+
+
+def normalize_proposal(proposal):
+    """Allow known predictor keys only; omitted/null/missing-token values are missing."""
+    if not isinstance(proposal, dict):
+        raise ValueError('Proposal must be a JSON object')
+    extra = set(proposal) - set(PREDICTORS)
+    if extra:
+        raise ValueError('Forbidden or unknown proposal fields: ' + ', '.join(sorted(extra)))
+    values = []
+    for field in PREDICTORS:
+        value = proposal.get(field)
+        if value is not None and not isinstance(value, str):
+            raise ValueError(f'{field}: expected a categorical string or null')
+        value = value.strip() if value is not None else None
+        values.append(None if value is None or value in MISSING else value)
+    return values
+
+
+def feature_matrix(rows):
+    return np.array([normalize_proposal({p: row.get(p) for p in PREDICTORS}) for row in rows], dtype=object)
+
+
+def split_projects(rows):
+    """Hold out 25% (rounded up) of unique input groups, without inspecting outcomes."""
+    keys = [tuple(row) for row in feature_matrix(rows).tolist()]
+    group_numbers = {}
+    groups = [group_numbers.setdefault(key, len(group_numbers)) for key in keys]
+    if len(group_numbers) < 2:
+        raise ValueError('Need at least two distinct predictor configurations')
+    train, test = next(GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=SEED).split(
+        np.zeros((len(rows), 1)), groups=groups))
+    return train.tolist(), test.tolist(), groups
+
+
+def fit_training(rows):
+    """Only the provided training rows enter learned preprocessing and model fitting."""
+    if not rows:
+        raise ValueError('Training rows must not be empty')
+    targets = [row.get('Effort-') for row in rows]
+    if any(v is None or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in targets):
+        raise ValueError('Training efforts must be finite nonnegative numbers')
+    pipeline = Pipeline([
+        ('missing', SimpleImputer(missing_values=None, strategy='constant', fill_value='', keep_empty_features=True)),
+        ('categorical', OneHotEncoder(handle_unknown='ignore', sparse_output=False)),
+        ('forest', RandomForestRegressor(n_estimators=200, min_samples_leaf=2, random_state=SEED, n_jobs=1)),
+    ])
+    pipeline.fit(feature_matrix(rows), targets)
+    return pipeline, float(np.mean(targets))
+
+
+def estimate(model, proposal):
+    return float(model.predict(np.array([normalize_proposal(proposal)], dtype=object))[0])
+
+
+def evaluate(rows):
+    eligible = []
+    original_indices = []
+    for index, row in enumerate(rows):
+        value = row.get('Effort-')
+        if value is None:
+            continue
+        if not isinstance(value, (float, int)) or not math.isfinite(value) or value < 0:
+            raise ValueError('Effort- must be finite and nonnegative when present')
+        eligible.append(row)
+        original_indices.append(index)
+    train, test, groups = split_projects(eligible)
+    model, baseline = fit_training([eligible[i] for i in train])
+    predicted = model.predict(feature_matrix([eligible[i] for i in test]))
+    actual = [eligible[i]['Effort-'] for i in test]
+    report = {
+        'target': 'Effort-', 'predictor_fields': PREDICTORS,
+        'excluded_inputs': ['Effort-', 'Defects-', 'Kloc+', 'all X-suffixed metadata', 'all unknown fields'],
+        'preprocessing': {'normalization': 'strip strings; Step 1 missing tokens and omitted/null become None',
+                          'imputer': model.named_steps['missing'].get_params(),
+                          'encoder': model.named_steps['categorical'].get_params(),
+                          'fit_scope': 'training rows only; no ordinal mapping'},
+        'model_settings': model.named_steps['forest'].get_params(),
+        'dependency_versions': {'python': platform.python_version(), 'scikit-learn': sklearn.__version__,
+                                'numpy': np.__version__, 'scipy': scipy.__version__},
+        'split': {'method': 'GroupShuffleSplit; normalized predictor tuples define groups',
+                  'seed': SEED, 'test_group_fraction': 0.25, 'n_splits': 1,
+                  'index_convention': 'zero-based data row indices, excludes CSV header',
+                  'total_samples': len(rows), 'eligible_samples': len(eligible),
+                  'excluded_missing_targets': len(rows) - len(eligible),
+                  'training_samples': len(train), 'evaluation_samples': len(test),
+                  'total_groups': len(set(groups)),
+                  'training_groups': len({groups[i] for i in train}),
+                  'evaluation_groups': len({groups[i] for i in test}),
+                  'training_indices': [original_indices[i] for i in train],
+                  'evaluation_indices': [original_indices[i] for i in test]},
+        'baseline': {'strategy': 'training-set mean', 'prediction': baseline},
+        'baseline_mae': float(mean_absolute_error(actual, [baseline] * len(test))),
+        'model_mae': float(mean_absolute_error(actual, predicted)),
+        'held_out_predictions': [{'row_index': original_indices[i], 'actual': truth,
+                                  'predicted': float(pred), 'baseline_predicted': baseline}
+                                 for i, truth, pred in zip(test, actual, predicted)],
+        'limitations': LIMITATIONS,
+    }
+    # dtype is a Python class in sklearn's encoder params; record its explicit name.
+    report['preprocessing']['encoder']['dtype'] = str(report['preprocessing']['encoder']['dtype'])
+    return model, report
+
+
+def load_proposal(path):
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError(f'Duplicate JSON key: {key}')
+            result[key] = value
+        return result
+    with Path(path).open(encoding='utf-8') as stream:
+        proposal = json.load(stream, object_pairs_hook=unique_object)
+    normalize_proposal(proposal)
+    return proposal
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--proposal', required=True, type=Path, help='JSON object containing predictor fields only')
+    parser.add_argument('--evaluation', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        proposal = load_proposal(args.proposal)
+        model, report = evaluate(read_projects(args.dataset))
+        report['dataset_path'] = str(args.dataset.resolve())
+        prediction = estimate(model, proposal)
+        args.evaluation.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+        print(json.dumps({'estimated Effort-': prediction, 'units': 'unspecified',
+                          'training_samples': report['split']['training_samples'],
+                          'evaluation_samples': report['split']['evaluation_samples'],
+                          'model_mae': report['model_mae'], 'baseline_mae': report['baseline_mae'],
+                          'decision_note': 'An effort estimate alone does not justify approving a proposal.'}, indent=2))
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+source/summarize.py
+```python
+"""Reusable descriptive NASA93 summaries; no fitting or ordinal assumptions."""
+import argparse
+import csv
+import json
+import math
+from collections import Counter
+from pathlib import Path
+from statistics import mean, median, stdev
+
+PREDICTORS = 'prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced'.split()
+METADATA = ['idX', 'centerX', 'YearX', 'MonthsX']
+OBJECTIVES = {'Kloc+': 'maximize', 'Effort-': 'minimize', 'Defects-': 'minimize'}
+COLUMNS = ['idX', 'centerX', 'YearX'] + PREDICTORS + list(OBJECTIVES) + ['MonthsX']
+NUMERIC = {'idX', 'YearX', 'Kloc+', 'Effort-', 'Defects-', 'MonthsX'}
+MISSING = {'', '?', 'NA', 'N/A', 'null'}
+
+
+def read_projects(dataset):
+    """Validate the NASA93 schema and parse cells without altering the input."""
+    with Path(dataset).open(encoding='utf-8-sig', newline='') as stream:
+        reader = csv.reader(stream, strict=True)
+        header = next(reader, None)
+        if header is None or len(header) != len(set(header)) or set(header) != set(COLUMNS):
+            raise ValueError('Expected exactly the 29 unique NASA93 column names')
+        rows = []
+        for line, row in enumerate(reader, 2):
+            if len(row) != len(header):
+                raise ValueError(f'Row {line}: expected {len(header)} cells, found {len(row)}')
+            parsed = {}
+            for name, raw in zip(header, row):
+                value = raw.strip()
+                if value in MISSING:
+                    parsed[name] = None
+                elif name in NUMERIC:
+                    try:
+                        number = float(value)
+                    except ValueError as exc:
+                        raise ValueError(f'Row {line}, {name}: invalid numeric value {value!r}') from exc
+                    if not math.isfinite(number):
+                        raise ValueError(f'Row {line}, {name}: numeric value must be finite')
+                    parsed[name] = number
+                else:
+                    parsed[name] = value
+            rows.append(parsed)
+    if not rows:
+        raise ValueError('Dataset must contain at least one project')
+    return rows
+
+
+def quantile(values, probability):
+    """Linear interpolation at index (n - 1) * probability, for sorted values."""
+    index = (len(values) - 1) * probability
+    lower = math.floor(index)
+    upper = math.ceil(index)
+    return values[lower] + (values[upper] - values[lower]) * (index - lower)
+
+
+def numeric_summary(values):
+    values = sorted(values)
+    if not values:
+        return dict.fromkeys(['count', 'sum', 'mean', 'std_sample', 'min', 'q25', 'median', 'q75', 'max'], None) | {'count': 0}
+    return {
+        'count': len(values), 'sum': sum(values), 'mean': mean(values),
+        'std_sample': stdev(values) if len(values) > 1 else None,
+        'min': values[0], 'q25': quantile(values, 0.25), 'median': median(values),
+        'q75': quantile(values, 0.75), 'max': values[-1],
+    }
+
+
+def summarize(dataset):
+    rows = read_projects(dataset)
+    columns = {}
+    for name in COLUMNS:
+        values = [row[name] for row in rows if row[name] is not None]
+        role = 'metadata' if name.endswith('X') else 'objective' if name in OBJECTIVES else 'candidate_predictor'
+        item = {'type': 'numeric' if name in NUMERIC else 'categorical', 'role': role,
+                'missing_count': len(rows) - len(values), 'nonmissing_count': len(values),
+                'unique_count': len(set(values))}
+        if name in OBJECTIVES:
+            item['direction'] = OBJECTIVES[name]
+        if name in NUMERIC:
+            item['statistics'] = numeric_summary(values)
+        else:
+            item['value_counts'] = dict(sorted(Counter(values).items()))
+        columns[name] = item
+    return {
+        'dataset_path': str(Path(dataset).resolve()), 'project_count': len(rows),
+        'column_count': len(COLUMNS), 'numeric_column_count': len(NUMERIC),
+        'categorical_column_count': len(COLUMNS) - len(NUMERIC),
+        'candidate_predictors': PREDICTORS, 'objectives': OBJECTIVES, 'metadata': METADATA,
+        'total_missing_values': sum(c['missing_count'] for c in columns.values()),
+        'delivery_outcomes': ['Kloc+', 'Effort-', 'Defects-', 'MonthsX'],
+        'columns': columns,
+        'conventions': {
+            'missing_tokens_after_stripping': sorted(MISSING),
+            'standard_deviation': 'sample, denominator n-1; null when fewer than two observations',
+            'quartiles': 'linear interpolation at sorted index (n-1)*p',
+            'centerX': 'categorical center label; no ordering inferred',
+            'idX_and_YearX': 'numeric metadata; identifier statistics have no predictive interpretation',
+            'excluded_inputs': 'All X metadata and objective fields are excluded from candidate predictors',
+            'units': 'No units supplied or inferred; original field names retained',
+            'limitations': 'Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction',
+        },
+    }
+
+
+def render_text(report):
+    lines = [
+        'NASA93 historical projects and delivery outcomes',
+        f"Projects: {report['project_count']}; columns: {report['column_count']}",
+        f"Numeric columns: {report['numeric_column_count']}; categorical columns: {report['categorical_column_count']}",
+        f"Missing cells: {report['total_missing_values']}",
+        'Candidate predictors: ' + ', '.join(report['candidate_predictors']),
+        'Metadata excluded from optimization and predictors: ' + ', '.join(report['metadata']),
+        'Objectives: Kloc+ maximize; Effort- minimize; Defects- minimize.',
+        'Delivery outcomes (MonthsX is descriptive metadata):',
+    ]
+    for name in report['delivery_outcomes']:
+        item = report['columns'][name]
+        lines.append(f"  {name} [{item['role']}]: " + json.dumps(item['statistics'], sort_keys=True))
+    lines.append('All project characteristics, missing counts, numeric summaries, and categorical counts:')
+    for name, item in report['columns'].items():
+        lines.append(f"  {name}: " + json.dumps(item, sort_keys=True))
+    lines.append('Assumptions and limitations:')
+    lines.extend(f'  {key}: {value}' for key, value in report['conventions'].items())
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output-dir', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = summarize(args.dataset)
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    (args.output_dir / 'summary.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    readable = render_text(report)
+    (args.output_dir / 'summary.txt').write_text(readable, encoding='utf-8')
+    print(readable, end='')
+
+
+if __name__ == '__main__':
+    main()
+```

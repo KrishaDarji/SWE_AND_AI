@@ -1,0 +1,20 @@
+Run using the existing Python environment (scikit-learn 1.6.0); install nothing.
+Commands accept the dataset path explicitly. All output paths are inside Step 3.
+
+tests:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/tests' -v
+
+step1:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/summarize.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/regression_step01'
+
+step2:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/predict_effort.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --proposal '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/proposal.json' --evaluation '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/regression_step02.json'
+
+step3:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/source/certify.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step03/certification.json'
+
+Source: source/summarize.py (Step 1), source/predict_effort.py (Step 2), source/certify.py (Step 3).
+proposal.json is an illustrative tool=h proposal with other predictors missing, using preserved Step 2 missing-value behavior. It is not used in the statistical comparison.
+test_output.txt captures the full suite; runtime_output.txt captures all demos.
+metrics.csv reports Step 3 subprocess wall time only. measurements.json records every subprocess command and timing.
+total_loc counts nonblank, non-comment-only application Python lines including docstrings. new_loc counts insert/replace new-side application lines relative to allowed Step 2 source; unchanged files contribute zero.

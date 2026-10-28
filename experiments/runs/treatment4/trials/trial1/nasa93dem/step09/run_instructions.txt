@@ -1,0 +1,21 @@
+Run from the Step 9 directory using the installed python3 (scikit-learn 1.6.0). No installation is required.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step09'
+DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+# Complete suite (includes preserved Steps 1–8 and Step 9).
+python3 -m unittest discover -s tests -v
+
+# Step 9: all rows saved to JSON; display only ten.
+python3 source/spot.py "$DATASET" --output anomalies.json --limit 10
+
+# Reproduce complete suite, all nine demos, logs, timings and metrics.
+python3 run_validation.py "$DATASET" > validation_output.txt 2>&1
+
+Individual regression commands and actual stdout/stderr are in regression_demos/step01_output.txt through step08_output.txt. The validation runner creates illustrative proposals locally; these are not actual approval requests. All generated artifacts remain under Step 9. NASA93_DATASET can override the test dataset path.
+
+Source layout: summarize.py, predict_effort.py, choose.py, flow.py, blame.py, justify.py, fix.py, certify.py are unchanged Step 8 source. spot.py adds reusable screen(rows, threshold), render_text(report, limit), and a dataset-path CLI. Tests preserve the eight prior modules and add test_spot.py.
+
+Metrics count nonblank, non-comment-only lines in source/*.py, including docstrings. New LOC uses insert/replace new-side lines versus the allowed Step 8 source with SequenceMatcher(autojunk=False). Tests and root-level orchestration are excluded. Runtime is Step 9 subprocess wall time only; other timings are separate in timings.json and metrics notes. error_count includes two failed inspections, the failed first suite subprocess and its enclosing validation attempt, retained in inspection_failures.txt and failed_attempt_01/. Expected negative tests do not count. The runner retains this historical baseline of four failures for the experimental run.
+
+The root example_proposal.json is generated afresh from NASA93 with unchanged fix.illustrative_proposal by run_validation.py before tests. It satisfies the preserved justification tests without reading a prior report or fixture outside the allowed inputs.

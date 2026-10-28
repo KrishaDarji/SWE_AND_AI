@@ -1,0 +1,136 @@
+You are running Treatment 4, Trial 1, Dataset 1, Step 4 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: flow
+- Current requirement: Evaluate configurations as benchmark results arrive one at a time.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, X264 implementation.
+Preserve Steps 1–3 behavior and tests while adding Step 4.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step03/tests/
+
+Allowed references:
+- The specified dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- Other treatments, trials, domains, or unrelated steps.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement a reusable interface that consumes one observed configuration
+and its benchmark result at a time.
+
+After each arrival, update:
+- Number of observations seen.
+- Running Performance- mean and variability.
+- Best observed configuration and objective so far.
+
+Performance- is minimized; physical units are unspecified.
+Do not invent additional objective fields.
+
+Replay the CSV in its original row order as a simulated arrival stream.
+State that CSV order is not evidence of real chronological order.
+Each update must depend only on observations received so far.
+Do not recompute every update by rescanning the complete dataset.
+
+Reuse earlier machinery where appropriate without forcing reuse.
+Prediction before an arrival is optional; if included, fit only on
+previous observations and reveal the new target after prediction.
+
+Do not add stopping or statistical-significance claims based on
+repeated unadjusted tests.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 4 and preserved Steps 1–3 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step04/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- flow.json
+- run_instructions.txt
+
+flow.json must contain the arrival-order rule, per-arrival history,
+final summary, and limitations.
+
+Test incremental calculations against independently computed values,
+best-so-far behavior, ties, invalid inputs, and a single observation.
+Verify that changing future records cannot change earlier outputs.
+Verify the final streamed summary against the batch calculation.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- domain: x264
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total test counts separately in notes.
+- runtime_seconds: Step 4 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: added application lines relative to Step 3 using
+  insert/replace new-side lines; do not use net LOC growth.
+- error_count: actual unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+  Record this run's failures, not earlier steps' failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Steps 1–3 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 3 files, or other repository files.
+Write only inside the absolute Step 4 output directory above.
+Do not copy code or context from other treatments, trials,
+unrelated steps, or previous chats.

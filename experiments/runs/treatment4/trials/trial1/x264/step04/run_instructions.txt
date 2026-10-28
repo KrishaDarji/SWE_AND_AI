@@ -1,0 +1,31 @@
+Use the existing python3 environment with scikit-learn 1.6.0. No installation is needed.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step04'
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+export PYTHONDONTWRITEBYTECODE=1
+
+Run the entire suite (preserved Steps 1–3 plus Step 4):
+python3 -B -m unittest discover -s tests -v
+
+Run the Step 4 replay, accepting an explicit dataset argument:
+python3 -B source/flow.py "$X264_DATASET" --output-dir .
+
+Run preserved demos:
+python3 -B source/remember.py "$X264_DATASET" --output-dir regression_demos/remember
+python3 -B source/guess.py "$X264_DATASET" --output-dir regression_demos/guess
+python3 -B source/certify.py "$X264_DATASET" --output-dir regression_demos/certify
+
+Reproduce tests, all four demos, logs, and measured metrics together:
+python3 -B run_experiment.py "$X264_DATASET"
+The runner appends logs and execution_records.json to preserve any failures or repair attempts.
+metrics.csv reports the latest run timings, with cumulative unexpected failed subprocess count.
+
+Reusable API (put source/ on Python's import path):
+from flow import Flow
+tracker = Flow(('no_asm', 'no_8x8dct'))
+first = tracker.update({'no_asm': 1, 'no_8x8dct': 0}, 268.720)
+second = tracker.update({'no_asm': 1, 'no_8x8dct': 1}, 250.0)
+summary = tracker.snapshot()
+Use every configuration setting in the real schema. Results are observed scalar Performance- values.
+Flow does not load the dataset, store the full history, or call earlier statistical tests.
+replay_csv(path) yields one arrival at a time; report(path) retains history for flow.json.

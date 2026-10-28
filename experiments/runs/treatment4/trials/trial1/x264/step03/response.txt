@@ -1,0 +1,104 @@
+Treatment 4 / Trial 1 / Dataset 1 / Step 3: certify
+
+Delivered complete source: source/remember.py, source/guess.py, source/certify.py.
+Delivered tests: tests/test_remember.py, tests/test_guess.py, tests/test_certify.py.
+Commands and API example: run_instructions.txt. Automated measurement runner: run_experiment.py.
+
+Question and limitation
+No separate output-quality measure exists in the actual dataset. Performance- is minimized,
+and physical units are unspecified. Therefore a quality improvement cannot be certified.
+The demonstration evaluates a Performance- improvement association only.
+
+Observed schema
+1152 rows; 16 numeric binary encoder settings, followed by Performance-:
+no_asm, no_8x8dct, no_cabac, no_deblock, no_fast_pskip, no_mbtree,
+no_mixed_refs, no_weightb, rc_lookahead, rc_lookahead_20, rc_lookahead_40,
+rc_lookahead_60, ref, ref_1, ref_5, ref_9, Performance-.
+no_asm, rc_lookahead and ref are constant 1. All 1152 configurations are unique;
+there are no repeated-configuration observations. Input paths were verified first.
+
+Group-selection rule (specified before interpreting the results)
+Baseline: every observed row with no_8x8dct=0.
+Candidate: every observed row with no_8x8dct=1.
+No objective ranking, favorable-value filtering, predictions or group search is used.
+Encoded flag semantics beyond the recorded values are not inferred.
+
+Procedure
+Two-sided permutation test of absolute difference in sample means, alpha=0.05.
+Exact enumeration is used if C(n+m,n)<=50000. Otherwise 19999 random label
+permutations are generated with numpy default_rng seed 42031. Monte Carlo
+p=(extreme+1)/(19999+1), avoiding a zero reported p-value. Ties are counted
+as extreme, with a numerical tolerance of 1e-12 on the scaled statistic.
+This distribution-free test is appropriate under independent observations and
+exchangeable labels under the null of identical distributions, rather than relying
+on a normality model. It is not a heteroskedasticity-robust test of equal means alone.
+Historical configuration data do not establish these inferential assumptions;
+the certification flag is explicitly conditional on them.
+
+Practical criterion: observed improvement must be positive and at least 1.0
+objective unit. This is a declared illustrative threshold, not a domain-validated
+benefit. Users may supply a different threshold. The combined certification flag
+requires p<=0.05 and this observed-effect criterion. It does not certify that a
+population effect exceeds 1.0: no effect confidence bound is calculated.
+
+Result
+Baseline n=576, mean=472.135506944445.
+Candidate n=576, mean=451.371685763889.
+Candidate minus baseline=-20.763821180556.
+Observed improvement in the minimizing direction=20.763821180556
+(4.398% of baseline mean; descriptive only).
+Extreme permutations=599/19999; corrected two-sided p=0.030000.
+Approximate Monte Carlo standard error=0.001206.
+Statistically detected improvement with an observed effect meeting the practical threshold, conditional on exchangeability assumptions.
+
+Interpretation and assumptions
+The comparison is an association among different encoder configurations.
+Other settings may differ between groups. No random assignment or causal effect
+is established. Configurations are not demonstrated independent draws from a
+population, and hidden dependence or unequal distributions can invalidate the
+permutation interpretation. This comparison does not establish repeatability of
+an individual configuration, especially since none has repeated measurements.
+No model predictions enter certification as independent observed measurements.
+One specified comparison was run; there was no multiple-comparison search.
+A nonsignificant result means no detected difference, not proof of equivalence.
+Small samples are allowed down to two per group but can have little power and
+coarse exact p-values. Inputs must be finite real observations; floating-point
+arithmetic imposes numeric-range and precision limits. No resampling procedure
+can repair a lack of measurement independence or demonstrate output quality here.
+
+Reuse and additions
+remember.py, guess.py and both previous test modules are byte-identical copies
+of the allowed Step 2 implementation/tests. Descriptive summaries, grouped
+holdout, prediction input checks, training-only fitting and the scikit-learn
+baseline/model are preserved. certify.py adds a reusable two-sample API, validation,
+exact/seeded statistical evidence, practical threshold, clear conclusions and
+an argument-driven dataset CLI producing certification.json.
+Ten new tests cover exact p=2/70, reversal and maximize direction, identical
+samples, small samples, unequal group sizes and ties (manual p=4/10), practical
+gating, invalid data/options, Monte Carlo reproducibility and plus-one correction,
+objective-independent group selection, real-data means, CLI output and overwrite protection.
+
+Validation and measured metrics
+All 25/25 tests passed (15 preserved, 10 new). All three dataset demos exited 0.
+Final test subprocess wall time: 3.532716500 seconds.
+Step 1 regression demo wall time: 0.051954250 seconds.
+Step 2 regression demo wall time: 1.058322208 seconds.
+Step 3 demo subprocess wall time: 0.7569392090663314 seconds.
+Total application LOC=431; added application LOC=156.
+LOC counts nonblank, non-comment-only Python source lines, including docstrings;
+new LOC counts insert/replace new-side lines against allowed Step 2 (no net growth).
+Unexpected execution failures=2: missing python command, then a measurement-parser
+failure despite a passing suite. Both were repaired; raw outputs, initial metrics,
+initial execution record and failure_log.txt preserve the failures and repairs.
+Expected negative-test errors are excluded. No application test failed.
+SHA-256 verification confirms the dataset and all allowed Step 2 files were
+unchanged. All writes were confined to this Step 3 directory.
+
+Artifacts
+prompt.txt records the experiment request; response.txt contains this explanation.
+source/ and tests/ contain all application code and tests.
+test_output.txt and runtime_output.txt retain raw outputs from both runs.
+metrics.csv contains the final measured row. certification.json is the final
+machine-readable statistical report. regression_step01/ and regression_step02/
+contain preserved demo reports. execution_record.json contains timings and input
+hashes; initial_* artifacts retain the original recording attempt.

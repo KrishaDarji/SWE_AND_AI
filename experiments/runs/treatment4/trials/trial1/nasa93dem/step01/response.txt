@@ -1,0 +1,328 @@
+Completed Treatment 4, Trial 1, Dataset 2, Step 1 (remember).
+
+The fresh implementation uses csv, statistics, and explicit NASA93 field roles. It strips cell whitespace, recognizes the documented missing tokens, rejects invalid numeric values and malformed schemas, and summarizes observed values. Numeric summaries include count, sum, mean, sample standard deviation, minimum, quartiles, median, and maximum. Categorical summaries contain literal labels and counts. There is no ordinal encoding or fitted estimator: scikit-learn is unnecessary for descriptive arithmetic; its installed version was verified as 1.6.0 without changing dependencies.
+
+The 93 projects have 29 columns: six numeric and 23 categorical. The 22 categorical candidate predictors are separate from three numeric objectives and four metadata fields. centerX is a categorical label despite numeric-looking values; idX and YearX are numeric metadata. All X fields are excluded from candidate inputs and optimization. There are zero missing cells. All per-column details are in summary.json and summary.txt.
+
+Limitations: the schema is NASA93-specific and requires the exact 29 unique names, allowing reordered columns. Missing tokens are case-sensitive: empty string, ?, NA, N/A, null after stripping. Other categorical strings are retained without inventing a vocabulary. Numeric NaN and infinity are rejected. Numeric summaries use available observations; all-missing statistics are null except count=0, and sample deviation is null for fewer than two values. Quartiles use linear interpolation at (n-1)*p. Float arithmetic can introduce rounding. Identifiers are summarized as metadata only. No units, deadlines, planned-versus-actual comparisons, success labels, causal conclusions, or ordinal mappings are available or inferred. MonthsX is descriptive delivery metadata. Objective directions follow the given markers and do not imply that a larger project is inherently better. No optimization or prediction is performed.
+
+Validation: six fixture tests cover numeric arithmetic, categorical whitespace, missing tokens, small samples, roles, malformed CSV, invalid schema, missing files, invalid numbers and nonfinite numbers. One actual-data test independently reads the CSV and checks every categorical count, every numeric statistic using Decimal arithmetic, missing counts, dimensions and role counts. Only the current NASA93 suite was run. All 7/7 tests passed. No unexpected command failures or repair attempts occurred. Test and demo subprocess wall times are recorded separately; the demo timing includes interpreter startup and report writing.
+
+| Outcome | Role | Mean | Median | Min | Max |
+|---|---|---:|---:|---:|---:|
+| Kloc+ | maximize | 94.022043 | 47.5 | 0.9 | 980 |
+| Effort- | minimize | 624.411828 | 252 | 8.4 | 8211 |
+| Defects- | minimize | 3761.763441 | 2007 | 28 | 50961 |
+| MonthsX | metadata | 24.176344 | 21.4 | 4.9 | 96.4 |
+
+Measured metrics: total_loc=131; new_loc=131; test_pass=1; passed/total=7/7; runtime_seconds=0.035607167; error_count=0.
+Metrics notes: passed/total=7/7; test_wall_seconds=0.062089666; scikit-learn=1.6.0; python=3.12.6; descriptive standard-library workflow; unexpected failures=0; repairs=none; no prior implementation reused
+
+Commands:
+```sh
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01'
+PYTHONDONTWRITEBYTECODE=1 python3 -c 'import sklearn; assert sklearn.__version__ == "1.6.0"; print(sklearn.__version__)'
+PYTHONDONTWRITEBYTECODE=1 NASA93_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' python3 -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01'
+```
+
+Complete source: source/summarize.py
+```python
+"""Reusable descriptive NASA93 summaries; no fitting or ordinal assumptions."""
+import argparse
+import csv
+import json
+import math
+from collections import Counter
+from pathlib import Path
+from statistics import mean, median, stdev
+
+PREDICTORS = 'prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced'.split()
+METADATA = ['idX', 'centerX', 'YearX', 'MonthsX']
+OBJECTIVES = {'Kloc+': 'maximize', 'Effort-': 'minimize', 'Defects-': 'minimize'}
+COLUMNS = ['idX', 'centerX', 'YearX'] + PREDICTORS + list(OBJECTIVES) + ['MonthsX']
+NUMERIC = {'idX', 'YearX', 'Kloc+', 'Effort-', 'Defects-', 'MonthsX'}
+MISSING = {'', '?', 'NA', 'N/A', 'null'}
+
+
+def read_projects(dataset):
+    """Validate the NASA93 schema and parse cells without altering the input."""
+    with Path(dataset).open(encoding='utf-8-sig', newline='') as stream:
+        reader = csv.reader(stream, strict=True)
+        header = next(reader, None)
+        if header is None or len(header) != len(set(header)) or set(header) != set(COLUMNS):
+            raise ValueError('Expected exactly the 29 unique NASA93 column names')
+        rows = []
+        for line, row in enumerate(reader, 2):
+            if len(row) != len(header):
+                raise ValueError(f'Row {line}: expected {len(header)} cells, found {len(row)}')
+            parsed = {}
+            for name, raw in zip(header, row):
+                value = raw.strip()
+                if value in MISSING:
+                    parsed[name] = None
+                elif name in NUMERIC:
+                    try:
+                        number = float(value)
+                    except ValueError as exc:
+                        raise ValueError(f'Row {line}, {name}: invalid numeric value {value!r}') from exc
+                    if not math.isfinite(number):
+                        raise ValueError(f'Row {line}, {name}: numeric value must be finite')
+                    parsed[name] = number
+                else:
+                    parsed[name] = value
+            rows.append(parsed)
+    if not rows:
+        raise ValueError('Dataset must contain at least one project')
+    return rows
+
+
+def quantile(values, probability):
+    """Linear interpolation at index (n - 1) * probability, for sorted values."""
+    index = (len(values) - 1) * probability
+    lower = math.floor(index)
+    upper = math.ceil(index)
+    return values[lower] + (values[upper] - values[lower]) * (index - lower)
+
+
+def numeric_summary(values):
+    values = sorted(values)
+    if not values:
+        return dict.fromkeys(['count', 'sum', 'mean', 'std_sample', 'min', 'q25', 'median', 'q75', 'max'], None) | {'count': 0}
+    return {
+        'count': len(values), 'sum': sum(values), 'mean': mean(values),
+        'std_sample': stdev(values) if len(values) > 1 else None,
+        'min': values[0], 'q25': quantile(values, 0.25), 'median': median(values),
+        'q75': quantile(values, 0.75), 'max': values[-1],
+    }
+
+
+def summarize(dataset):
+    rows = read_projects(dataset)
+    columns = {}
+    for name in COLUMNS:
+        values = [row[name] for row in rows if row[name] is not None]
+        role = 'metadata' if name.endswith('X') else 'objective' if name in OBJECTIVES else 'candidate_predictor'
+        item = {'type': 'numeric' if name in NUMERIC else 'categorical', 'role': role,
+                'missing_count': len(rows) - len(values), 'nonmissing_count': len(values),
+                'unique_count': len(set(values))}
+        if name in OBJECTIVES:
+            item['direction'] = OBJECTIVES[name]
+        if name in NUMERIC:
+            item['statistics'] = numeric_summary(values)
+        else:
+            item['value_counts'] = dict(sorted(Counter(values).items()))
+        columns[name] = item
+    return {
+        'dataset_path': str(Path(dataset).resolve()), 'project_count': len(rows),
+        'column_count': len(COLUMNS), 'numeric_column_count': len(NUMERIC),
+        'categorical_column_count': len(COLUMNS) - len(NUMERIC),
+        'candidate_predictors': PREDICTORS, 'objectives': OBJECTIVES, 'metadata': METADATA,
+        'total_missing_values': sum(c['missing_count'] for c in columns.values()),
+        'delivery_outcomes': ['Kloc+', 'Effort-', 'Defects-', 'MonthsX'],
+        'columns': columns,
+        'conventions': {
+            'missing_tokens_after_stripping': sorted(MISSING),
+            'standard_deviation': 'sample, denominator n-1; null when fewer than two observations',
+            'quartiles': 'linear interpolation at sorted index (n-1)*p',
+            'centerX': 'categorical center label; no ordering inferred',
+            'idX_and_YearX': 'numeric metadata; identifier statistics have no predictive interpretation',
+            'excluded_inputs': 'All X metadata and objective fields are excluded from candidate predictors',
+            'units': 'No units supplied or inferred; original field names retained',
+            'limitations': 'Descriptive observations only; no baseline, deadline, success label, causal claim, or prediction',
+        },
+    }
+
+
+def render_text(report):
+    lines = [
+        'NASA93 historical projects and delivery outcomes',
+        f"Projects: {report['project_count']}; columns: {report['column_count']}",
+        f"Numeric columns: {report['numeric_column_count']}; categorical columns: {report['categorical_column_count']}",
+        f"Missing cells: {report['total_missing_values']}",
+        'Candidate predictors: ' + ', '.join(report['candidate_predictors']),
+        'Metadata excluded from optimization and predictors: ' + ', '.join(report['metadata']),
+        'Objectives: Kloc+ maximize; Effort- minimize; Defects- minimize.',
+        'Delivery outcomes (MonthsX is descriptive metadata):',
+    ]
+    for name in report['delivery_outcomes']:
+        item = report['columns'][name]
+        lines.append(f"  {name} [{item['role']}]: " + json.dumps(item['statistics'], sort_keys=True))
+    lines.append('All project characteristics, missing counts, numeric summaries, and categorical counts:')
+    for name, item in report['columns'].items():
+        lines.append(f"  {name}: " + json.dumps(item, sort_keys=True))
+    lines.append('Assumptions and limitations:')
+    lines.extend(f'  {key}: {value}' for key, value in report['conventions'].items())
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output-dir', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = summarize(args.dataset)
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Input error: {exc}\n')
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    (args.output_dir / 'summary.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    readable = render_text(report)
+    (args.output_dir / 'summary.txt').write_text(readable, encoding='utf-8')
+    print(readable, end='')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+Complete tests: tests/test_summarize.py
+```python
+"""Independent fixtures and CSV arithmetic checks; uses only this dataset."""
+import csv
+import math
+import os
+import sys
+import tempfile
+import unittest
+from collections import Counter
+from decimal import Decimal
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'source'))
+from summarize import read_projects, render_text, summarize
+
+# Deliberately independent schema and numeric declarations.
+HEADER = 'idX centerX YearX prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced Kloc+ Effort- Defects- MonthsX'.split()
+NUMBERS = ['idX', 'YearX', 'Kloc+', 'Effort-', 'Defects-', 'MonthsX']
+DATASET = Path(os.environ.get('NASA93_DATASET', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'))
+
+
+class FixtureTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory(dir=ROOT / 'tests')
+        self.addCleanup(self.directory.cleanup)
+        self.path = Path(self.directory.name) / 'fixture.csv'
+
+    def write(self, rows, header=HEADER):
+        with self.path.open('w', newline='') as stream:
+            writer = csv.writer(stream)
+            writer.writerow(header)
+            writer.writerows(rows)
+
+    def row(self, number='1'):
+        return [number if name in NUMBERS else ' n ' for name in HEADER]
+
+    def test_hand_calculated_numeric_summary(self):
+        self.write([self.row(str(x)) for x in [1, 2, 3, 4]])
+        result = summarize(self.path)['columns']['Effort-']['statistics']
+        expected = {'count': 4, 'sum': 10, 'mean': 2.5, 'std_sample': math.sqrt(5 / 3),
+                    'min': 1, 'q25': 1.75, 'median': 2.5, 'q75': 3.25, 'max': 4}
+        for key, value in expected.items():
+            self.assertAlmostEqual(result[key], value)
+
+    def test_categorical_whitespace_and_metadata(self):
+        rows = [self.row() for _ in range(3)]
+        for row, value in zip(rows, [' h ', 'h', ' l\t']):
+            row[HEADER.index('prec')] = value
+        self.write(rows)
+        report = summarize(self.path)
+        self.assertEqual(report['columns']['prec']['value_counts'], {'h': 2, 'l': 1})
+        self.assertEqual(report['columns']['centerX']['value_counts'], {'n': 3})
+        self.assertTrue(all(not x.endswith('X') for x in report['candidate_predictors']))
+        self.assertEqual(report['objectives'], {'Kloc+': 'maximize', 'Effort-': 'minimize', 'Defects-': 'minimize'})
+        self.assertNotIn('Effort-', report['candidate_predictors'])
+        self.assertEqual(report['columns']['MonthsX']['role'], 'metadata')
+        self.assertIn('MonthsX is descriptive metadata', render_text(report))
+
+    def test_missing_values_and_small_samples(self):
+        rows = [self.row() for _ in range(5)]
+        for row, token in zip(rows, ['', '?', 'NA', 'N/A', 'null']):
+            row[HEADER.index('Effort-')] = token
+            row[HEADER.index('prec')] = ' ' + token + ' '
+        for row in rows[1:]:
+            row[HEADER.index('Kloc+')] = ''
+        self.write(rows)
+        result = summarize(self.path)
+        self.assertEqual(result['total_missing_values'], 14)
+        self.assertEqual(result['columns']['prec']['value_counts'], {})
+        self.assertEqual(result['columns']['Effort-']['missing_count'], 5)
+        stats = result['columns']['Effort-']['statistics']
+        self.assertEqual(stats['count'], 0)
+        self.assertTrue(all(value is None for key, value in stats.items() if key != 'count'))
+        self.assertIsNone(result['columns']['Kloc+']['statistics']['std_sample'])
+        self.assertEqual(result['columns']['Kloc+']['statistics']['mean'], 1)
+
+    def test_invalid_numeric_and_nonfinite(self):
+        for value in ['oops', 'NaN', 'inf', '-inf', '1e999']:
+            with self.subTest(value=value):
+                self.write([self.row(value)])
+                with self.assertRaises(ValueError):
+                    summarize(self.path)
+
+    def test_invalid_schema_rows_empty_and_missing_file(self):
+        for header, rows in [([], []), (HEADER, []), (HEADER[:-1], []),
+                             (HEADER[:-1] + ['idX'], []), (HEADER, [self.row()[:-1]]),
+                             (HEADER, [self.row() + ['extra']])]:
+            with self.subTest(header=header, rows=rows):
+                self.write(rows, header)
+                with self.assertRaises(ValueError):
+                    summarize(self.path)
+        self.path.write_text('')
+        with self.assertRaises(ValueError):
+            read_projects(self.path)
+        with self.assertRaises(FileNotFoundError):
+            read_projects(self.path.parent / 'missing.csv')
+
+    def test_malformed_csv(self):
+        self.path.write_text(','.join(HEADER) + '\n"unterminated')
+        with self.assertRaises(csv.Error):
+            summarize(self.path)
+
+
+class ActualDatasetTests(unittest.TestCase):
+    def test_independent_csv_calculations(self):
+        report = summarize(DATASET)
+        with DATASET.open(newline='') as stream:
+            reader = csv.DictReader(stream)
+            self.assertEqual(reader.fieldnames, HEADER)
+            rows = list(reader)
+        self.assertEqual(len(rows), 93)
+        self.assertEqual(report['project_count'], len(rows))
+        self.assertEqual(report['column_count'], 29)
+        self.assertEqual(report['numeric_column_count'], 6)
+        self.assertEqual(report['categorical_column_count'], 23)
+        self.assertEqual(len(report['candidate_predictors']), 22)
+        missing_total = 0
+        for name in HEADER:
+            raw = [row[name].strip() for row in rows]
+            present = [v for v in raw if v not in ('', '?', 'NA', 'N/A', 'null')]
+            item = report['columns'][name]
+            missing_total += len(raw) - len(present)
+            self.assertEqual(item['missing_count'], len(raw) - len(present))
+            self.assertEqual(item['nonmissing_count'], len(present))
+            self.assertEqual(item['unique_count'], len(set(present)))
+            if name not in NUMBERS:
+                self.assertEqual(item['value_counts'], dict(Counter(present)))
+                continue
+            values = sorted(Decimal(value) for value in present)
+            n = len(values)
+            avg = sum(values) / n
+            expected = {'count': n, 'sum': sum(values), 'mean': avg, 'min': values[0], 'max': values[-1],
+                        'std_sample': (sum((v - avg) ** 2 for v in values) / (n - 1)).sqrt()}
+            for label, numerator in [('q25', 1), ('median', 2), ('q75', 3)]:
+                index = Decimal(n - 1) * numerator / 4
+                low = int(index)
+                fraction = index - low
+                expected[label] = values[low] * (1 - fraction) + values[min(low + 1, n - 1)] * fraction
+            for key, value in expected.items():
+                with self.subTest(column=name, statistic=key):
+                    self.assertTrue(math.isclose(item['statistics'][key], float(value), rel_tol=1e-12, abs_tol=1e-12))
+        self.assertEqual(missing_total, 0)
+        self.assertEqual(report['total_missing_values'], missing_total)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+```

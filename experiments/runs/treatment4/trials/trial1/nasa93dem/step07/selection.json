@@ -1,0 +1,660 @@
+{
+  "status": "selected",
+  "budget": 100.0,
+  "budget_units": "unspecified effort units",
+  "selection_rule": "Among recorded rows with both observed Effort- and Kloc+, require Effort- <= budget; maximize Kloc+, then minimize Effort-, then choose the earliest one-based CSV data-row number.",
+  "identity_convention": "One-based CSV data-row number, excluding header; idX is metadata and need not be unique.",
+  "counts": {
+    "total_rows": 93,
+    "eligible_rows": 93,
+    "excluded_missing_required_outcomes": 0,
+    "missing_by_required_outcome": {
+      "Effort-": 0,
+      "Kloc+": 0
+    },
+    "feasible_candidates": 31,
+    "over_budget_candidates": 62
+  },
+  "selected_project": {
+    "csv_data_row": 78,
+    "characteristics": {
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "l",
+      "rely": "h",
+      "data": "n",
+      "cplx": "vh",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "vh",
+      "pvol": "l",
+      "acap": "h",
+      "pcap": "h",
+      "pcon": "n",
+      "apex": "h",
+      "plex": "h",
+      "ltex": "h",
+      "tool": "n",
+      "site": "n",
+      "sced": "l"
+    },
+    "observed_outcomes": {
+      "Kloc+": 165.0,
+      "Effort-": 97.0,
+      "Defects-": 7867.0
+    },
+    "metadata": {
+      "idX": 78.0,
+      "centerX": "5",
+      "YearX": 1979.0,
+      "MonthsX": 31.5
+    },
+    "feasibility": {
+      "observed_effort": 97.0,
+      "budget": 100.0,
+      "comparison": "Effort- <= budget",
+      "satisfied": true,
+      "remaining_effort_budget": 3.0
+    }
+  },
+  "candidate_evidence": [
+    {
+      "csv_data_row": 1,
+      "Effort-": 117.6,
+      "Kloc+": 25.9,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 2,
+      "Effort-": 117.6,
+      "Kloc+": 24.6,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 3,
+      "Effort-": 31.2,
+      "Kloc+": 7.7,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 4,
+      "Effort-": 36.0,
+      "Kloc+": 8.2,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 5,
+      "Effort-": 25.2,
+      "Kloc+": 9.7,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 6,
+      "Effort-": 8.4,
+      "Kloc+": 2.2,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 7,
+      "Effort-": 10.8,
+      "Kloc+": 3.5,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 8,
+      "Effort-": 352.8,
+      "Kloc+": 66.6,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 9,
+      "Effort-": 72.0,
+      "Kloc+": 7.5,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 10,
+      "Effort-": 72.0,
+      "Kloc+": 20.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 11,
+      "Effort-": 24.0,
+      "Kloc+": 6.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 12,
+      "Effort-": 360.0,
+      "Kloc+": 100.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 13,
+      "Effort-": 36.0,
+      "Kloc+": 11.3,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 14,
+      "Effort-": 215.0,
+      "Kloc+": 100.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 15,
+      "Effort-": 48.0,
+      "Kloc+": 20.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 16,
+      "Effort-": 360.0,
+      "Kloc+": 100.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 17,
+      "Effort-": 324.0,
+      "Kloc+": 150.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 18,
+      "Effort-": 60.0,
+      "Kloc+": 31.5,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 19,
+      "Effort-": 48.0,
+      "Kloc+": 15.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 20,
+      "Effort-": 60.0,
+      "Kloc+": 32.5,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 21,
+      "Effort-": 60.0,
+      "Kloc+": 19.7,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 22,
+      "Effort-": 300.0,
+      "Kloc+": 66.6,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 23,
+      "Effort-": 120.0,
+      "Kloc+": 29.5,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 24,
+      "Effort-": 90.0,
+      "Kloc+": 15.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 25,
+      "Effort-": 210.0,
+      "Kloc+": 38.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 26,
+      "Effort-": 48.0,
+      "Kloc+": 10.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 27,
+      "Effort-": 70.0,
+      "Kloc+": 15.4,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 28,
+      "Effort-": 239.0,
+      "Kloc+": 48.5,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 29,
+      "Effort-": 82.0,
+      "Kloc+": 16.3,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 30,
+      "Effort-": 62.0,
+      "Kloc+": 12.8,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 31,
+      "Effort-": 170.0,
+      "Kloc+": 32.6,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 32,
+      "Effort-": 192.0,
+      "Kloc+": 35.5,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 33,
+      "Effort-": 18.0,
+      "Kloc+": 5.5,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 34,
+      "Effort-": 50.0,
+      "Kloc+": 10.4,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 35,
+      "Effort-": 60.0,
+      "Kloc+": 14.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 36,
+      "Effort-": 42.0,
+      "Kloc+": 6.5,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 37,
+      "Effort-": 60.0,
+      "Kloc+": 13.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 38,
+      "Effort-": 444.0,
+      "Kloc+": 90.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 39,
+      "Effort-": 42.0,
+      "Kloc+": 8.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 40,
+      "Effort-": 114.0,
+      "Kloc+": 16.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 41,
+      "Effort-": 1248.0,
+      "Kloc+": 177.9,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 42,
+      "Effort-": 2400.0,
+      "Kloc+": 302.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 43,
+      "Effort-": 1368.0,
+      "Kloc+": 282.1,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 44,
+      "Effort-": 973.0,
+      "Kloc+": 284.7,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 45,
+      "Effort-": 400.0,
+      "Kloc+": 79.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 46,
+      "Effort-": 2400.0,
+      "Kloc+": 423.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 47,
+      "Effort-": 420.0,
+      "Kloc+": 190.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 48,
+      "Effort-": 252.0,
+      "Kloc+": 47.5,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 49,
+      "Effort-": 107.0,
+      "Kloc+": 21.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 50,
+      "Effort-": 571.4,
+      "Kloc+": 78.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 51,
+      "Effort-": 98.8,
+      "Kloc+": 11.4,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 52,
+      "Effort-": 155.0,
+      "Kloc+": 19.3,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 53,
+      "Effort-": 750.0,
+      "Kloc+": 101.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 54,
+      "Effort-": 2120.0,
+      "Kloc+": 219.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 55,
+      "Effort-": 370.0,
+      "Kloc+": 50.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 56,
+      "Effort-": 1181.0,
+      "Kloc+": 227.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 57,
+      "Effort-": 278.0,
+      "Kloc+": 70.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 58,
+      "Effort-": 8.4,
+      "Kloc+": 0.9,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 59,
+      "Effort-": 4560.0,
+      "Kloc+": 980.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 60,
+      "Effort-": 720.0,
+      "Kloc+": 350.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 61,
+      "Effort-": 458.0,
+      "Kloc+": 70.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 62,
+      "Effort-": 2460.0,
+      "Kloc+": 271.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 63,
+      "Effort-": 162.0,
+      "Kloc+": 90.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 64,
+      "Effort-": 150.0,
+      "Kloc+": 40.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 65,
+      "Effort-": 636.0,
+      "Kloc+": 137.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 66,
+      "Effort-": 882.0,
+      "Kloc+": 150.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 67,
+      "Effort-": 444.0,
+      "Kloc+": 339.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 68,
+      "Effort-": 192.0,
+      "Kloc+": 240.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 69,
+      "Effort-": 576.0,
+      "Kloc+": 144.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 70,
+      "Effort-": 432.0,
+      "Kloc+": 151.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 71,
+      "Effort-": 72.0,
+      "Kloc+": 34.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 72,
+      "Effort-": 300.0,
+      "Kloc+": 98.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 73,
+      "Effort-": 300.0,
+      "Kloc+": 85.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 74,
+      "Effort-": 240.0,
+      "Kloc+": 20.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 75,
+      "Effort-": 600.0,
+      "Kloc+": 111.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 76,
+      "Effort-": 756.0,
+      "Kloc+": 162.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 77,
+      "Effort-": 1200.0,
+      "Kloc+": 352.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 78,
+      "Effort-": 97.0,
+      "Kloc+": 165.0,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 79,
+      "Effort-": 409.0,
+      "Kloc+": 60.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 80,
+      "Effort-": 703.0,
+      "Kloc+": 100.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 81,
+      "Effort-": 1350.0,
+      "Kloc+": 32.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 82,
+      "Effort-": 480.0,
+      "Kloc+": 53.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 83,
+      "Effort-": 599.0,
+      "Kloc+": 41.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 84,
+      "Effort-": 430.0,
+      "Kloc+": 24.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 85,
+      "Effort-": 4178.2,
+      "Kloc+": 165.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 86,
+      "Effort-": 1772.5,
+      "Kloc+": 65.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 87,
+      "Effort-": 1645.9,
+      "Kloc+": 70.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 88,
+      "Effort-": 1924.5,
+      "Kloc+": 50.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 89,
+      "Effort-": 648.0,
+      "Kloc+": 7.25,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 90,
+      "Effort-": 8211.0,
+      "Kloc+": 233.0,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 91,
+      "Effort-": 480.0,
+      "Kloc+": 16.3,
+      "feasible": false
+    },
+    {
+      "csv_data_row": 92,
+      "Effort-": 12.0,
+      "Kloc+": 6.2,
+      "feasible": true
+    },
+    {
+      "csv_data_row": 93,
+      "Effort-": 38.0,
+      "Kloc+": 3.0,
+      "feasible": true
+    }
+  ],
+  "excluded_rows": [],
+  "feasible_outcome_summaries": {
+    "Effort-": {
+      "count": 31,
+      "sum": 1541.8,
+      "mean": 49.73548387096774,
+      "std_sample": 25.491509022771965,
+      "min": 8.4,
+      "q25": 33.6,
+      "median": 48.0,
+      "q75": 66.0,
+      "max": 98.8
+    },
+    "Kloc+": {
+      "count": 31,
+      "sum": 542.2,
+      "mean": 17.490322580645163,
+      "std_sample": 28.633632379176177,
+      "min": 0.9,
+      "q25": 7.0,
+      "median": 11.3,
+      "q75": 15.850000000000001,
+      "max": 165.0
+    }
+  },
+  "limitations": [
+    "The supplied budget is illustrative in unspecified effort units, not a monetary budget or sponsor-approved threshold.",
+    "Kloc+ is delivered code size, an illustrative value proxy, not demonstrated business value. More code is not necessarily better for a real client.",
+    "Historical outcomes illustrate constrained selection; they do not prove a proposed project will satisfy the budget.",
+    "Select one recorded project, not a portfolio or an unseen combination of categorical settings.",
+    "No proposal-time prediction is performed. Delivered Kloc+, Effort-, Defects- and X metadata are never proposal-time predictor inputs.",
+    "Rows missing either required selection outcome are excluded, never imputed. Missing defects do not exclude a candidate.",
+    "This demonstration has no objective-evaluation budget and does not perform budgeted benchmark search.",
+    "Feasibility uses an inclusive comparison of parsed finite numeric effort with the budget, with no tolerance or unit conversion."
+  ],
+  "readable_explanation": "Illustrative effort budget: 100 (unspecified effort units).\nAmong recorded rows with both observed Effort- and Kloc+, require Effort- <= budget; maximize Kloc+, then minimize Effort-, then choose the earliest one-based CSV data-row number.\nOne-based CSV data-row number, excluding header; idX is metadata and need not be unique.\nCandidate counts: {\"eligible_rows\": 93, \"excluded_missing_required_outcomes\": 0, \"feasible_candidates\": 31, \"missing_by_required_outcome\": {\"Effort-\": 0, \"Kloc+\": 0}, \"over_budget_candidates\": 62, \"total_rows\": 93}\nSelected CSV data row: 78.\nRecorded characteristics: {\"acap\": \"h\", \"apex\": \"h\", \"cplx\": \"vh\", \"data\": \"n\", \"docu\": \"n\", \"flex\": \"h\", \"ltex\": \"h\", \"pcap\": \"h\", \"pcon\": \"n\", \"plex\": \"h\", \"pmat\": \"l\", \"prec\": \"h\", \"pvol\": \"l\", \"rely\": \"h\", \"resl\": \"h\", \"ruse\": \"n\", \"sced\": \"l\", \"site\": \"n\", \"stor\": \"vh\", \"team\": \"vh\", \"time\": \"n\", \"tool\": \"n\"}\nObserved outcomes: {\"Defects-\": 7867.0, \"Effort-\": 97.0, \"Kloc+\": 165.0}\nMetadata (not identity or predictor inputs): {\"MonthsX\": 31.5, \"YearX\": 1979.0, \"centerX\": \"5\", \"idX\": 78.0}\nFeasibility evidence: {\"budget\": 100.0, \"comparison\": \"Effort- <= budget\", \"observed_effort\": 97.0, \"remaining_effort_budget\": 3.0, \"satisfied\": true}\nThe supplied budget is illustrative in unspecified effort units, not a monetary budget or sponsor-approved threshold.\nKloc+ is delivered code size, an illustrative value proxy, not demonstrated business value. More code is not necessarily better for a real client.\nHistorical outcomes illustrate constrained selection; they do not prove a proposed project will satisfy the budget.\nSelect one recorded project, not a portfolio or an unseen combination of categorical settings.\nNo proposal-time prediction is performed. Delivered Kloc+, Effort-, Defects- and X metadata are never proposal-time predictor inputs.\nRows missing either required selection outcome are excluded, never imputed. Missing defects do not exclude a candidate.\nThis demonstration has no objective-evaluation budget and does not perform budgeted benchmark search.\nFeasibility uses an inclusive comparison of parsed finite numeric effort with the budget, with no tolerance or unit conversion.\n",
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+}

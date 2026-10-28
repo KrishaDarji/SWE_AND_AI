@@ -1,0 +1,58 @@
+Treatment 4 / Trial 1 / Dataset 1 / Step 10 — race
+
+Implemented and executed an equal-budget descriptive comparison of the existing Step 7 selector and uniform random search without replacement. Complete updated application code is in source/; complete preserved and new tests are in tests/. All outputs are inside this Step 10 directory.
+
+Reuse and additions
+All nine source modules and all nine test modules from the allowed Step 9 source/tests were copied without modification. The runner calls choose.select unchanged, using its original initialization, forest, exploration, budget and tie rules. It does not retune the selector. Added source/race.py provides the baseline, whole-experiment input validation, separate fresh counted CSVOracle instances, timing, all-run freezing, separate post-selection audits, paired descriptive summaries, CLI and reports. Added tests/test_race.py contains 11 tests, alongside the preserved 89 tests. Added run_experiment.py records commands, results, timings, preservation checks and metrics.
+
+Information boundary and audit
+Both searches receive the same settings-only candidate pool. Objectives are exposed only through counted calls; all initialization evaluations count. Candidate identity is original data-row number. Each method/seed receives a fresh oracle and independent model/RNG/incumbent state. Both methods return the first evaluated strict minimum. Every run has a complete evaluation order and best-so-far history. All methods and seeds finish before frozen_selections.json is written; only then does the separate full-target audit run. Audit results are separate from frozen runs, with per-selection SHA-256 fingerprints, and are never passed back to search. Hidden-objective poisoning, callable-only access and audit-order tests exercise this boundary.
+
+Recorded demo
+Budget 20 per method per seed; seeds 42–51; 1,152 candidates and 16 settings. Each of 20 method/seed runs evaluated exactly 20 distinct rows: 400 total counted search evaluations. Separate audit reads are not search evaluations. The audited dataset minimum is 244.23. No full-data summaries or prior saved outputs were used to choose searches.
+
+Seed | Selector Performance- | Random Performance- | Selector gap | Random gap
+42 | 249.410 | 251.637 | 5.180 | 7.407
+43 | 244.390 | 260.617 | 0.160 | 16.387
+44 | 244.230 | 257.973 | 0.000 | 13.743
+45 | 244.303 | 251.573 | 0.073 | 7.343
+46 | 244.230 | 251.530 | 0.000 | 7.300
+47 | 244.277 | 268.017 | 0.047 | 23.787
+48 | 244.390 | 252.827 | 0.160 | 8.597
+49 | 244.230 | 249.730 | 0.000 | 5.500
+50 | 246.400 | 262.643 | 2.170 | 18.413
+51 | 244.230 | 264.330 | 0.000 | 20.100
+
+Descriptive summaries across the ten seeds
+Method | Mean selected Performance- | Median selected Performance- | Mean absolute gap | Mean search seconds
+step7_selector | 245.0090 | 244.2900 | 0.7790 | 0.533361
+uniform_random | 257.0877 | 255.4000 | 12.8577 | 0.008540
+
+Observed paired outcomes for selector: 10 wins, 0 ties, 0 losses. A tie means exact numeric equality of selected Performance-, with no tolerance. Per-seed runtimes and counts appear in per_seed.csv; full distributions (min, quartiles, median, max, mean, population standard deviation) appear in race.json. These descriptive differences do not establish statistical superiority.
+
+Statistical analysis: PENDING. The project's required same comparison procedure was not supplied among the allowed inputs. No substitute test was invented or performed; the preserved certify.py module is retained for regression behavior, not used to certify the race.
+
+Validation and actual measured metrics
+All 100/100 tests passed. All nine Steps 1–9 regression demos exited successfully. Dataset SHA-256 remained 00cbcb0ad778f57dc3dab95b4b1697691e09050c2d18643faf885e46ae173864. Preserved source/test copies match Step 9 byte for byte. No unexpected failed commands or repair attempts occurred. Expected negative tests are included in test_output.txt and excluded from error_count.
+
+total_loc=1620; new_loc=188; test_pass=1; runtime_seconds=7.062300708028488; error_count=0. LOC counts nonblank, non-comment-only application Python lines in source/, includes docstrings, and excludes tests/libraries/bookkeeping. New LOC counts insert/replace new-side application lines relative to Step 9, not net growth.
+Step 10 demo subprocess wall time: 7.062300708 seconds. Test subprocess wall time: 13.481111875 seconds. Regression demo times are listed separately in metrics.csv notes, execution_summary.json and runtime_output.txt.
+
+Search timing scope: perf_counter wall seconds around selector invocation only, including initialization, oracle CSV reads, model fitting, acquisition and history; excludes imports, shared settings-only loading, oracle construction, serialization, reporting and full-data audit. Methods run serially, selector then random for each seed; timings are environment dependent.
+
+Assumptions and limitations
+- Performance- is minimized; physical units are unspecified.
+- No separate quality measurement exists in this dataset. The quality constraint cannot be verified; no quality values or satisfaction claim are supplied.
+- Seeds repeat searches within Trial 1; they are not independent LLM implementation trials.
+- Candidate identity is the original CSV data row; duplicate settings remain separate rows.
+- This offline oracle replays measured outcomes; it does not execute a video encoder.
+- Observed differences and win counts do not establish statistical superiority.
+- The required same comparison procedure is absent from allowed inputs; analysis is pending.
+- The API objective boundary is not a hostile-code Python sandbox.
+- Runtime includes CSV replay overhead and fixed method order; it is not encoder runtime.
+- The dataset is assumed stable during a run; before/after hashes were verified for this recorded run.
+- Randomness is deterministic in the installed Python/scikit-learn environment; timing and hashes containing timing values vary.
+- Equal seeds label paired descriptive repeats on this one fixed dataset; no independence or generalization inference is made.
+
+Commands and complete artifacts
+See run_instructions.txt for exact test, Step 10 demo, full reproduction and all nine preserved demo commands. Required prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv and race.json are present. Additional frozen_selections.json, per_seed.csv, execution_summary.json, run_experiment.py and regression_demos/ make this run reviewable and reproducible.

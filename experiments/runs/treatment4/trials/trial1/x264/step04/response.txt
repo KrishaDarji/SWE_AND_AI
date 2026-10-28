@@ -1,0 +1,86 @@
+Treatment 4, Trial 1, Dataset 1, Step 4 completed.
+
+Complete updated code is saved in source/:
+- remember.py: unchanged Step 1 descriptive summaries and CLI.
+- guess.py: unchanged Step 2 scikit-learn holdout evaluation, prediction, and CLI.
+- certify.py: unchanged Step 3 prespecified permutation comparison and CLI.
+- flow.py: new reusable Flow(settings).update(configuration, result) interface,
+  detached snapshots, lazy CSV replay, report generation, and CLI.
+
+Complete tests are saved in tests/:
+- test_remember.py, test_guess.py, and test_certify.py are byte-identical copies
+  of the allowed Step 3 tests (25 preserved tests).
+- test_flow.py adds 8 tests covering independent prefix calculations, every
+  real-data prefix, final batch agreement, best-so-far configurations, exact
+  ties, duplicates, empty state, a single observation, invalid schemas/results,
+  atomic range rejection, detached inputs/snapshots, CLI behavior, lazy parsing,
+  and unchanged earlier outputs when future values or configurations change.
+  An invalid future record is also withheld until its own arrival.
+
+Reuse and additions:
+The prior source modules and tests were copied without changes. Flow reuses the
+registered OBJECTIVE constant and the Step 1 population-variability convention.
+Its CSV header rules match Step 1, but its reader is lazy rather than invoking
+the eager batch loader. Welford updates maintain count, running mean and M2;
+population variance is M2/n, and standard deviation is its square root.
+A strict running minimum retains the first observed configuration on exact ties
+and counts tied observations. Each arrival uses O(d) work and accumulator space
+for d settings, independent of the number of past arrivals. The audit report
+retains O(n*d) history. No update rescans the dataset or history.
+scikit-learn remains appropriate for the preserved prediction module; basic
+online arithmetic needs only the standard library.
+
+Commands:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/x264/step04'
+export X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+export PYTHONDONTWRITEBYTECODE=1
+python3 -B -m unittest discover -s tests -v
+python3 -B source/flow.py "$X264_DATASET" --output-dir .
+python3 -B source/remember.py "$X264_DATASET" --output-dir regression_demos/remember
+python3 -B source/guess.py "$X264_DATASET" --output-dir regression_demos/guess
+python3 -B source/certify.py "$X264_DATASET" --output-dir regression_demos/certify
+
+To reproduce the entire measured run and logs:
+python3 -B run_experiment.py "$X264_DATASET"
+See run_instructions.txt for API usage and logging details.
+
+Actual measured results (Python 3.12.6; scikit-learn 1.6.0):
+- Entire suite: 33/33 passed; test_pass=1.
+- Test subprocess wall time: 3.701369667 seconds.
+- Step 4 demo subprocess wall time: 0.072459084 seconds.
+- Regression demo wall times: remember=0.051910292 seconds;
+  guess=1.022419666 seconds; certify=0.753780042 seconds.
+- Source total_loc=584; new_loc=153 (insert/replace new-side application lines
+  relative to Step 3, excluding blank and comment-only lines, including docstrings).
+- Unexpected failed commands/attempts: 0. No repair attempts were needed.
+  Error messages in the test log belong to expected negative tests.
+- Dataset checksum unchanged; preserved source and tests byte-identical.
+- Observations: 1152.
+- Final running mean Performance-: 461.7535963541664.
+- Final population variance: 26403.373857862323.
+- Final population standard deviation: 162.49115009089672.
+- Best observed Performance-: 244.23, arrival 71, one tied observation.
+  The complete best configuration is recorded in flow.json.
+
+Artifacts:
+flow.json contains the arrival-order rule, every received configuration and
+observed Performance-, each prefix summary, final summary, and limitations.
+metrics.csv contains measured metrics with separate suite and regression timings.
+test_output.txt and runtime_output.txt preserve subprocess outputs and timings.
+execution_records.json records all test/demo commands, return codes, and wall times.
+Regression reports are saved under regression_demos/.
+
+Assumptions and limitations:
+CSV data rows are replayed in original file order. CSV order is not evidence of
+real chronological order. Each update uses only the configuration and result
+received so far. Performance- is minimized; physical units are unspecified.
+All finite numeric configuration settings are accepted without inferring encoder
+flag semantics or valid combinations. Repeated rows count separately. These
+statistics summarize received measurements across configurations; they do not
+estimate repeatability for a fixed configuration or establish independence,
+causality, or encoder output quality. A single observation has zero descriptive
+population variability. Exact objective ties retain the earliest arrival.
+Floating-point rounding applies; numeric-range overflow rejects an update without
+changing state. No optional prediction was added. Step 4 makes no stopping or
+statistical-significance claim and never calls the preserved Step 3 test after
+arrivals. The retained Step 3 demo remains a separate regression check.

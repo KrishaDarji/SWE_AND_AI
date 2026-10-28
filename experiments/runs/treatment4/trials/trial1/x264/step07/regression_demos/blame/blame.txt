@@ -1,0 +1,53 @@
+Larger Performance- means worse measured encoding performance. The ranking prioritizes settings whose observed value groups separate overall mean outcomes most strongly. Use group means and counts to identify the values accompanying slower encodes. Correlated encoded choices can share credit; validate changes with controlled measurements.
+Rows: 1152; Performance- units unspecified.
+Rank 1: ref_9: eta squared 0.644502. Highest observed mean Performance- 646.237 at [1.0]; lowest 369.512 at [0.0]; mean gap 276.725 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=369.512; vs overall=-92.2416 (lower)
+  value=1; n=384; mean=646.237; vs overall=+184.483 (higher)
+Rank 2: ref_1: eta squared 0.643494. Highest observed mean Performance- 553.923 at [0.0]; lowest 277.415 at [1.0]; mean gap 276.508 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=553.923; vs overall=+92.1694 (higher)
+  value=1; n=384; mean=277.415; vs overall=-184.339 (lower)
+Rank 3: no_mixed_refs: eta squared 0.037692. Highest observed mean Performance- 493.3 at [0.0]; lowest 430.207 at [1.0]; mean gap 63.0931 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=493.3; vs overall=+31.5466 (higher)
+  value=1; n=576; mean=430.207; vs overall=-31.5466 (lower)
+Rank 4: no_fast_pskip: eta squared 0.030787. Highest observed mean Performance- 490.265 at [1.0]; lowest 433.243 at [0.0]; mean gap 57.0221 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=433.243; vs overall=-28.5111 (lower)
+  value=1; n=576; mean=490.265; vs overall=+28.5111 (higher)
+Rank 5: no_mbtree: eta squared 0.024377. Highest observed mean Performance- 487.124 at [1.0]; lowest 436.384 at [0.0]; mean gap 50.7398 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=436.384; vs overall=-25.3699 (lower)
+  value=1; n=576; mean=487.124; vs overall=+25.3699 (higher)
+Rank 6: no_8x8dct: eta squared 0.004082. Highest observed mean Performance- 472.136 at [0.0]; lowest 451.372 at [1.0]; mean gap 20.7638 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=472.136; vs overall=+10.3819 (higher)
+  value=1; n=576; mean=451.372; vs overall=-10.3819 (lower)
+Rank 7: no_cabac: eta squared 0.000584. Highest observed mean Performance- 465.679 at [0.0]; lowest 457.828 at [1.0]; mean gap 7.85179 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=465.679; vs overall=+3.9259 (higher)
+  value=1; n=576; mean=457.828; vs overall=-3.9259 (lower)
+Rank 8: rc_lookahead_20: eta squared 0.000012. Highest observed mean Performance- 462.155 at [0.0]; lowest 460.951 at [1.0]; mean gap 1.20315 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=462.155; vs overall=+0.401049 (higher)
+  value=1; n=384; mean=460.951; vs overall=-0.802099 (lower)
+Rank 9: rc_lookahead_60: eta squared 0.000008. Highest observed mean Performance- 462.399 at [1.0]; lowest 461.431 at [0.0]; mean gap 0.967895 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=461.431; vs overall=-0.322632 (lower)
+  value=1; n=384; mean=462.399; vs overall=+0.645263 (higher)
+Rank 10: no_deblock: eta squared 0.000001. Highest observed mean Performance- 461.905 at [1.0]; lowest 461.602 at [0.0]; mean gap 0.302974 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=461.602; vs overall=-0.151487 (lower)
+  value=1; n=576; mean=461.905; vs overall=+0.151487 (higher)
+Rank 11: rc_lookahead_40: eta squared 0.000000. Highest observed mean Performance- 461.91 at [1.0]; lowest 461.675 at [0.0]; mean gap 0.235254 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=461.675; vs overall=-0.078418 (lower)
+  value=1; n=384; mean=461.91; vs overall=+0.156836 (higher)
+Rank 12: ref_5: eta squared 0.000000. Highest observed mean Performance- 461.826 at [0.0]; lowest 461.609 at [1.0]; mean gap 0.21643 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=768; mean=461.826; vs overall=+0.0721432 (higher)
+  value=1; n=384; mean=461.609; vs overall=-0.144286 (lower)
+Rank 13: no_weightb: eta squared 0.000000. Highest observed mean Performance- 461.842 at [0.0]; lowest 461.665 at [1.0]; mean gap 0.17622 (units unspecified). See value-level counts and summaries; these are associations, not causal effects.
+  value=0; n=576; mean=461.842; vs overall=+0.0881102 (higher)
+  value=1; n=576; mean=461.665; vs overall=-0.0881102 (lower)
+Constant settings: no_asm, rc_lookahead, ref
+Exploratory observational associations, not proven causal effects or significance tests; no p-values or multiplicity-adjusted claims.
+Each setting is assessed marginally. Other settings, interactions, sampling imbalance and unrecorded workload or hardware can confound the ranking.
+Correlated or redundant encodings can share the same association; their scores must not be added or interpreted as independent contributions.
+Different indicators for one encoded choice can be mutually exclusive; changing one alone may be invalid. Names do not establish encoder semantics.
+Eta squared measures separation of observed value-group means, not direction, fitted-model feature importance, or a guaranteed improvement.
+All exact observed numeric values are treated as categories. Many levels and singleton groups can inflate eta squared; no out-of-sample guarantee is made.
+Every row has equal weight, including duplicates. Counts are not independent replicate counts or uncertainty estimates.
+Constants cannot support comparisons; zero score does not exclude interactions or distribution differences beyond the mean.
+Performance- is minimized; physical units and output quality are unspecified. Larger means indicate worse measured outcomes, not a known number of seconds.
+No model is fitted by this diagnosis, so model evaluation and random seed are not applicable. Step 2 prediction remains a separate holdout-evaluated tool.
+Scores use floating-point arithmetic; exact score ties share competition rank and are displayed alphabetically. Near ties have no stability guarantee.

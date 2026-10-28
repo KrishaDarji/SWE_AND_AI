@@ -1,0 +1,109 @@
+Treatment 4 / Trial 1 / X264 / Step 5: blame
+
+Completed implementation
+The complete updated source is in source/remember.py, source/guess.py,
+source/flow.py, source/certify.py and source/blame.py. All Step 4 Python source
+and tests were copied byte-for-byte and verified unchanged. The new reusable
+API is blame.diagnose(Measurements); the new CLI takes a dataset path and
+--output-dir. Full commands and API examples are in run_instructions.txt.
+
+Reuse and additions
+Reused Step 1's validated CSV loader, registered objective, Measurements data
+container, per-value counts and descriptive summaries. Preserved Step 2's
+scikit-learn predictor, Step 3's online statistics and Step 4's comparison tool
+and their tests. Added marginal association ranking, value-level direction,
+constant-setting detection, pairwise correlation and equivalent-partition
+checks, client explanations, JSON/text outputs and eight Step 5 tests.
+Step 5 is descriptive and does not need a fitted estimator; standard-library
+statistics directly implement the documented quantity. scikit-learn remains
+in the preserved prediction implementation; no dependencies were installed or
+changed. Actual versions: Python 3.12.6,
+scikit-learn 1.6.0.
+
+Actual schema
+The dataset has 1152 rows, 16 settings and one registered objective,
+Performance-. All setting values observed are binary. The three constant
+settings are no_asm=1, rc_lookahead=1 and ref=1. Performance- is minimized;
+physical units are unspecified. All settings exclude the objective.
+
+Method
+For each nonconstant setting, group all rows by exact observed value, then
+rank by categorical eta squared:
+  sum_v n_v * (mean_y_v - mean_y)^2 / sum_i (y_i - mean_y)^2.
+The score is the observed fraction of total squared target variation between
+that setting's group means. It lies in [0,1]. Target scaling is recorded in
+blame.json and leaves the ratio unchanged. Zero target variance gives score 0.
+Constants have no rank and a null score. Exact score ties share competition
+rank (1,1,3); tied display order is alphabetical. No tolerance is applied.
+Direction is reported separately using group means, differences from the overall
+mean, highest/lowest mean values, and sample counts. All mean extrema are
+retained on ties. The JSON includes count, fraction, min, quartiles, median,
+max, mean and population standard deviation for each value.
+
+No model is fitted for Step 5. No seed, training partition, holdout evaluation,
+p-value or significance claim is applicable. Rankings are exploratory
+observational descriptions. This is not fitted-model feature importance;
+importance or separation scores alone do not give direction. Every variable
+pair has a recorded Pearson correlation and an exact check for equivalence
+of observed value partitions (including complementary or relabeled values).
+
+Measured findings
+1. ref_9: eta squared=0.644501793; value 0: n=768, mean=369.512007; value 1: n=384, mean=646.236776.
+2. ref_1: eta squared=0.643494042; value 0: n=768, mean=553.923043; value 1: n=384, mean=277.414703.
+3. no_mixed_refs: eta squared=0.037691597; value 0: n=576, mean=493.300155; value 1: n=576, mean=430.207038.
+4. no_fast_pskip: eta squared=0.030786995; value 0: n=576, mean=433.242536; value 1: n=576, mean=490.264656.
+5. no_mbtree: eta squared=0.024376905; value 0: n=576, mean=436.383682; value 1: n=576, mean=487.123510.
+
+The ref_9=1 group accompanies worse measured outcomes and ref_1=1 accompanies
+better outcomes. These are different indicators of correlated recorded choices:
+ref_9, ref_1 and ref_5 pairs each have Pearson r=-0.5. The three rc_lookahead
+indicator pairs also have r=-0.5. The top two scores therefore do not represent
+independent, additive contributions. No controlled setting intervention is
+established. Names and flag meanings were not inferred from external sources.
+
+Verification and measured metrics
+All 41/41 tests passed. Eight new tests cover independent hand-calculated
+scores and directions, multi-level unequal counts, constants, zero variance,
+equal means, exact ties, redundant encodings, invalid direct/CSV inputs,
+input preservation, CLI behavior and deterministic repeatability. Every actual
+dataset score and the ordering were independently verified with Fraction-based
+arithmetic, separate from the implementation's scaled floating-point formula.
+The remaining tests preserve all Steps 1–4 behavior. All five demos passed.
+No unexpected failed commands occurred and no failure repairs were necessary.
+
+Step 5 subprocess wall time: 0.095114959 seconds.
+Test subprocess wall time: 4.675721208 seconds.
+Regression demo subprocess wall times: {"certify": 0.7514199999859557, "flow": 0.07215995795559138, "guess": 1.0221740829292685, "remember": 0.05175470910035074}.
+Application LOC: 763; added application LOC: 179.
+LOC counts include nonblank, non-comment-only Python lines under source/,
+including docstrings; tests, installed libraries and run_validation.py are
+excluded. New LOC counts insert/replace new-side lines relative to Step 4,
+not net growth. test_pass=1; error_count=0.
+
+The preserved Step 2 holdout model MAE is 0.238405909091, compared with
+training-mean baseline MAE 135.972375918327; 921 training rows and 231
+holdout rows, grouped by configuration, seed 42. The predictor uses the
+training-only fit and its evaluation is separate from Step 5's associations.
+The preserved Step 4 demo uses seed 42031 and its default 19,999 resamples.
+All measured reports, commands, outputs and wall times are saved. The input
+CSV hash and byte-for-byte preservation checks are in runtime_output.txt.
+
+Assumptions and limitations
+- Associations are observational, marginal, exploratory and not causal.
+  Confounding, interactions, dependence and sampling choices remain possible.
+- Correlated/redundant encoded choices can share credit or constrain valid
+  combinations. Scores must not be added; pair correlations do not resolve
+  confounding, and zero Pearson correlation does not imply independence.
+- Exact observed numeric values are categories. High-cardinality settings and
+  singleton groups can inflate the score. Binary dataset findings do not
+  guarantee generalization to new workloads, hardware or unseen settings.
+- Every row is weighted equally; duplicates remain. Counts are not independent
+  replicate counts, uncertainty estimates or evidence of repeatability.
+- Constants are uninformative for comparison, not proven to have no effect.
+  A zero mean-separation score does not rule out interactions or variance shifts.
+- No multiple significance testing is performed. No confidence intervals or
+  significance guarantees are provided. Small or near-tied scores can be unstable.
+- Units and separate output quality are unavailable. No seconds, quality
+  preservation or practical improvement threshold is inferred.
+- Finite numeric inputs are required. Floating-point arithmetic has range and
+  rounding limits; encoder flag/combination validity is not established.

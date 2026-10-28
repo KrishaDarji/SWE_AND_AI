@@ -1,0 +1,10 @@
+Run with the verified Python 3 environment containing scikit-learn 1.6.0. No installations are needed.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01'
+PYTHONDONTWRITEBYTECODE=1 python3 -c 'import sklearn; assert sklearn.__version__ == "1.6.0"; print(sklearn.__version__)'
+PYTHONDONTWRITEBYTECODE=1 NASA93_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' python3 -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/nasa93dem/step01'
+
+The CLI accepts the dataset path as its positional argument. The Python API exposes read_projects(), summarize(), numeric_summary(), and render_text().
+Tests create and clean temporary fixtures under this step tests/ directory. PYTHONDONTWRITEBYTECODE prevents bytecode writes.
+The saved timing and metrics describe the recorded execution; these commands rerun validation and regenerate the summaries.
