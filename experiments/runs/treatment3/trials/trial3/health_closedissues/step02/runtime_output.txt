@@ -1,0 +1,10 @@
+Command: /usr/bin/time -p python3 experiments/runs/treatment3/trials/trial3/health_closedissues/step02/source/guess_skill.py --dataset moot/optimize/hpo/Health-ClosedIssues0000.csv
+rows=10000 train=8000 test=2000
+MAE=0.013068 RMSE=0.035944 R2=0.971301
+MRE-: MAE=0.013743 RMSE=0.021831 R2=0.988040
+ACC+: MAE=0.009351 RMSE=0.018725 R2=0.969001
+PRED40+: MAE=0.016109 RMSE=0.055214 R2=0.956862
+real 0.82
+user 2.34
+sys 2.14
+Exit status: 0

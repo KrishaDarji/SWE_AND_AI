@@ -1,0 +1,4 @@
+rows=1152 features=16 repeats=20 budget=32
+treatment3_selector: mean_regret_percent=1.253 stdev=2.257 mean_best=247.290 mean_runtime_seconds=4.3831
+random_baseline: mean_regret_percent=2.392 stdev=2.622 mean_best=250.072 mean_runtime_seconds=0.0001
+winner=treatment3_selector

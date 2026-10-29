@@ -1,0 +1,10 @@
+test_invalid_incomplete_and_tie_are_deterministic (test_flow.FlowTests.test_invalid_incomplete_and_tie_are_deterministic) ... ok
+test_real_dataset_is_reproducible_and_selects_min_effort (test_flow.FlowTests.test_real_dataset_is_reproducible_and_selects_min_effort) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+real 0.03
+user 0.02
+sys 0.00

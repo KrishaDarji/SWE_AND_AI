@@ -1,0 +1,9 @@
+NASA93DEM sponsor-facing effort justification
+
+Recommendation: plan for 274.0 person-months of effort for the representative proposal, with an indicative 90% prediction band of 0.0–944.2 person-months. The wide band is a material planning risk, not a guarantee.
+
+Evidence: 93 historical projects have median effort 252.0 person-months and range 8.4–8211.0. The proposal uses dataset medians for numeric inputs and modes for categorical inputs; its median size is 47.5 KLOC. A random-forest model produced holdout MAE 179.4, RMSE 341.2, and R² 0.07 on 19 projects. Five-fold out-of-fold MAE was 271.7, with a 90th-percentile absolute error of 670.2.
+
+Risks and assumptions: the proposal is synthetic rather than a reviewed work breakdown; estimates depend on size, capability, complexity, reliability, reuse, tools, and schedule inputs. NASA93DEM may not represent this sponsor’s team, technology, constraints, or current environment. Use contingency, independently check the estimate with a work breakdown, and re-estimate at requirements and architecture milestones.
+
+The median baseline is more transparent but ignores project-specific attributes; the model detects historical patterns but is less explainable. These are observational associations, not causal evidence: the dataset cannot establish that changing one attribute will cause effort to change.

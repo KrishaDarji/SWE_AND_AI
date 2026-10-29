@@ -1,0 +1,21 @@
+NASA93DEM blame analysis result
+
+The target is Effort-. Excessive effort is defined as Effort- at or above the sample median, 252.000, producing 47 excessive projects out of 93.
+
+Method: balanced logistic regression, with numeric factors median-imputed and standardized and categorical factors one-hot encoded. Evaluation used shuffled stratified 5-fold cross-validation.
+
+Measured performance: ROC-AUC 0.919; accuracy 0.839; balanced accuracy 0.839.
+
+Most influential associated factors, ranked by maximum absolute fitted coefficient across their encoded levels:
+1. MonthsX (2.150)
+2. apex (0.989)
+3. Kloc+ (0.718)
+4. pcap (0.696)
+5. centerX (0.629)
+6. rely (0.619)
+7. cplx (0.557)
+8. stor (0.552)
+9. plex (0.521)
+10. pmat (0.500)
+
+These are associations with the high-effort label after adjustment in this model, not causes. MonthsX and Kloc+ are especially important to interpret cautiously because they are project-size/schedule-related variables and may be downstream or closely correlated with effort. Other possible confounding includes year, site/organization, process maturity, and correlated COCOMO-style ratings. The median threshold is sample-relative, the sample is small (n=93), coefficients can be unstable under sparse categories and collinearity, and the cross-validation estimate is exploratory rather than a causal or deployment guarantee. Runtime emitted numerical overflow warnings during some folds because of extreme input scales; the process still completed and tests passed.

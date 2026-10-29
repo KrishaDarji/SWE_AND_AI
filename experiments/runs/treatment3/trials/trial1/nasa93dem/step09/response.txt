@@ -1,0 +1,12 @@
+Implementation complete.
+
+Result: project idX 56 (CSV row 57) was ranked as the most unusual record, with Isolation Forest decision score -0.08512831928747266 and label -1.
+
+Approach: read CSV with csv.DictReader; exclude identifiers and outcome fields; one-hot encode categorical project descriptors; median-impute and standardize numeric descriptors; fit a seeded IsolationForest and rank records by ascending decision score.
+
+Tests: 2 tests passed.
+
+Run command:
+NASA_DATASET=/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv PYTHONPATH=. python3 source/spot.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Assumptions and limitations: rarity in the supplied feature space is treated as inconsistency; this is not proof of a data error. Isolation Forest is sensitive to encoding, contamination, and random seed. Outcome columns are excluded to avoid merely flagging large projects.

@@ -1,0 +1,44 @@
+Health-ClosedIssues0000 remember-skill analysis
+Input: moot/optimize/hpo/Health-ClosedIssues0000.csv
+Validated rows: 10000
+
+Quality metric summaries (MRE- lower is better; ACC+ and PRED40+ higher is better):
+MRE-: min=0.000000, p25=0.572386, median=0.809131, mean=0.709094, p75=0.825184, max=1.000000, stdev=0.201396
+ACC+: min=0.000000, p25=0.432554, median=0.439923, mean=0.495939, p75=0.571291, max=1.000000, stdev=0.107152
+PRED40+: min=0.000000, p25=0.000000, median=0.000000, mean=0.146843, p75=0.142857, max=1.000000, stdev=0.266400
+
+Configuration summaries:
+N_estimators: {'min': 10.0, 'p25': 60.0, 'median': 110.0, 'mean': 106.061, 'p75': 160.0, 'max': 200.0, 'stdev': 57.132658725717526}
+criterion: {'unique': ['absolute_error', 'poisson', 'squared_error'], 'counts': {'absolute_error': 3302, 'poisson': 3335, 'squared_error': 3363}}
+Min_sample_leaves: {'min': 1.0, 'p25': 5.0, 'median': 11.0, 'mean': 10.4796, 'p75': 15.0, 'max': 20.0, 'stdev': 5.779232110962427}
+Min_impurity_decrease: {'min': 0.0, 'p25': 2.5, 'median': 5.0, 'mean': 4.996175, 'p75': 7.5, 'max': 10.0, 'stdev': 2.947214401201186}
+Max_depth: {'min': 1.0, 'p25': 6.0, 'median': 11.0, 'mean': 10.523, 'p75': 16.0, 'max': 20.0, 'stdev': 5.754492368423285}
+
+Numeric Pearson relationships (configuration vs quality):
+N_estimators vs MRE-: -0.006366
+N_estimators vs ACC+: 0.013413
+N_estimators vs PRED40+: 0.005988
+Min_sample_leaves vs MRE-: 0.803428
+Min_sample_leaves vs ACC+: -0.798935
+Min_sample_leaves vs PRED40+: -0.727001
+Min_impurity_decrease vs MRE-: 0.067631
+Min_impurity_decrease vs ACC+: -0.056638
+Min_impurity_decrease vs PRED40+: -0.085661
+Max_depth vs MRE-: 0.007735
+Max_depth vs ACC+: -0.011077
+Max_depth vs PRED40+: -0.000223
+
+Criterion-group quality means:
+absolute_error: {'rows': 3302, 'quality_means': {'MRE-': 0.7508694690284082, 'ACC+': 0.47779311364779153, 'PRED40+': 0.12667647313316605}}
+poisson: {'rows': 3335, 'quality_means': {'MRE-': 0.7034025255399244, 'ACC+': 0.5009102625891313, 'PRED40+': 0.13317626900835294}}
+squared_error: {'rows': 3363, 'quality_means': {'MRE-': 0.6737202958486018, 'ACC+': 0.5088244263981059, 'PRED40+': 0.1801962533452275}}
+
+Assumptions and limitations:
+- The first three columns are treated as historical quality targets and the remaining columns as configurations.
+- A trailing '-' means lower-is-better for MRE; '+' means higher-is-better for ACC and PRED40.
+- Pearson association is descriptive, not causal, and does not adjust for interactions or confounding.
+- This is an observational historical HPO table: no train/test split, uncertainty intervals, or causal claims are made.
+- Validation checks schema, nonempty finite values, and integral positive count/depth settings; it cannot detect provenance or semantic errors.
+real 0.14
+user 0.13
+sys 0.00

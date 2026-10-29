@@ -1,0 +1,21 @@
+validated_rows=93
+method=IsolationForest(n_estimators=400, contamination=auto, random_state=20261029)
+suspicious_rank=1 total=93 idX=59 anomaly_score=0.641647
+record=idX=59,centerX=6,YearX=1974,prec=h,flex=h,resl=h,team=vh,pmat=l,rely=vh,data=l,cplx=xh,ruse=n,docu=n,time=xh,stor=vh,pvol=l,acap=h,pcap=h,pcon=n,apex=vh,plex=vl,ltex=h,tool=n,site=n,sced=n,Kloc+=980,Effort-=4560,Defects-=50961,MonthsX=96.4
+unusual_features=
+  plex: value=vl reference=frequency=0.043 deviation_strength=23.250
+  Defects-: value=50961.0 reference=2007.0 deviation_strength=21.289
+  cplx: value=xh reference=frequency=0.054 deviation_strength=18.600
+  Kloc+: value=980.0 reference=47.5 deviation_strength=16.773
+  Effort-: value=4560.0 reference=252.0 deviation_strength=14.385
+  time: value=xh reference=frequency=0.086 deviation_strength=11.625
+  rely: value=vh reference=frequency=0.108 deviation_strength=9.300
+  apex: value=vh reference=frequency=0.129 deviation_strength=7.750
+interpretation=Flag is a historical inconsistency, not proof of an error or bad project outcome.
+data_quality_checks=inspect transcription, units, and outcome definitions; rare categorical levels may be valid.
+legitimate_exception=an unusual mission, team, technology, or delivery context could explain the profile.
+limitations=small observational dataset; correlated features, hidden project context, and one flagged rank create uncertainty; no causal claim.
+runtime_seconds=0.150865
+real 0.77
+user 2.10
+sys 0.59

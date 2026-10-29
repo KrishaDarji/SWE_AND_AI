@@ -1,0 +1,7 @@
+test_load_and_roles (test_remember_health_closedissues.RememberTests) ... ok
+test_summary_has_relationships (test_remember_health_closedissues.RememberTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.310s
+
+OK

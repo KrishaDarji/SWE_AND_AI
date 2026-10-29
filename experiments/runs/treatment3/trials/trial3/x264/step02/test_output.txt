@@ -1,0 +1,8 @@
+test_fit_and_prediction_has_uncertainty (test_guess_skill.GuessSkillTests) ... ok
+test_loads_and_identifies_target (test_guess_skill.GuessSkillTests) ... ok
+test_rejects_non_numeric_data (test_guess_skill.GuessSkillTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.025s
+
+OK

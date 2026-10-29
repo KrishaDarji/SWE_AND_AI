@@ -1,0 +1,8 @@
+test_evaluation_has_finite_metrics (test_health_closedissues_guess.GuessTests) ... ok
+test_load_and_schema (test_health_closedissues_guess.GuessTests) ... ok
+test_validation_rejects_missing_column (test_health_closedissues_guess.GuessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.083s
+
+OK

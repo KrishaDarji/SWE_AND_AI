@@ -1,0 +1,13 @@
+NASA93DEM Treatment 3 race
+rows=93 features=27 evaluation_folds=15
+protocol=3 repeats of shuffled 5-fold CV; seed=3103; all preprocessing fit on training folds
+method,MAE,RMSE,median_APE_percent
+Treatment 3,277.8594,597.0170,29.2707
+historical baseline,538.2939,1080.0124,82.7020
+winner_by_mean_MAE=Treatment 3
+baseline=median effort of the training fold; Treatment 3=one-hot categorical/numeric features plus random forest
+conditions=results apply to random train/test splits resembling this small historical sample; baseline can be preferable when data are sparse or feature relationships do not generalize
+uncertainty=fold averages vary across splits; no confidence intervals are claimed, and repeated CV folds are not independent observations
+limitations=93 projects, observational data, possible time/process and selection effects, no external validation, and effort is right-skewed
+bias_sources=project-era changes, measurement conventions, omitted staffing/process variables, and tuning choices can favor either method
+runtime_seconds=1.971120

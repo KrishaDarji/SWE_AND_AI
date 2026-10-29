@@ -1,0 +1,9 @@
+Treatment 3 race evaluation completed for x264.
+
+Protocol: The CSV was validated as 1,152 unique rows with 16 binary configuration features and numeric Performance- targets. A fixed seed (314159) and a 70/30 train/held-out split were used. The selector fit a 120-tree RandomForestRegressor on the training partition, ranked held-out configurations by predicted performance, and raced the best 24. The baseline randomly shuffled the same held-out pool with the same budget of 24. Lower Performance- is better.
+
+Measured result: the selector achieved best performance 246.237, regret 0.000 relative to the held-out oracle, and oracle hit 1. The baseline achieved 254.013, regret 7.776, and oracle hit 0. Both used 24 evaluations. Under this fixed split, seed, and budget, the Treatment 3 selector performed better by regret and best observed performance.
+
+Conditions: The advantage is demonstrated for this x264 table, split, seed, model, and 24-candidate budget. It should not be generalized to other seeds, budgets, distributions, or encoding workloads without repeated evaluation.
+
+Uncertainty and limitations: This is one fixed split and one random baseline draw, so no confidence interval or statistical significance claim is made. The exhaustive dataset makes an oracle comparison possible, but it does not measure real encoding wall-clock cost, model-training overhead, or measurement noise. Random-forest predictions can be sensitive to sparse combinations and the chosen hyperparameters. The baseline is intentionally simple and may be weaker than an optimized search method. Possible bias includes favorable split structure, duplicate-free but potentially correlated configurations, target drift, and selection bias from judging on a single held-out partition. Repeated seeded splits, multiple baseline replicates, confidence intervals, and real execution-cost measurements would strengthen the conclusion.

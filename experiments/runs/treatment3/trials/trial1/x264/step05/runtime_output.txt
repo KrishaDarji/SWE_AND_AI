@@ -1,0 +1,21 @@
+rows=1152 features=16 CV_MAE=0.4254
+Slow-encode blame (positive enabled_minus_disabled means slower when enabled):
+ref_9: delta=276.7248 permutation=76.7397
+no_fast_pskip: delta=57.0221 permutation=28.5363
+no_mbtree: delta=50.7398 permutation=25.3321
+rc_lookahead_60: delta=0.9679 permutation=0.0773
+no_deblock: delta=0.3030 permutation=0.4544
+rc_lookahead_40: delta=0.2353 permutation=0.0350
+no_weightb: delta=-0.1762 permutation=0.0182
+ref_5: delta=-0.2164 permutation=12.6309
+rc_lookahead_20: delta=-1.2031 permutation=0.3967
+no_cabac: delta=-7.8518 permutation=3.8109
+no_8x8dct: delta=-20.7638 permutation=10.2211
+no_mixed_refs: delta=-63.0931 permutation=31.5911
+ref_1: delta=-276.5083 permutation=74.6485
+no_asm: delta=n/a permutation=0.0000
+rc_lookahead: delta=n/a permutation=0.0000
+ref: delta=n/a permutation=0.0000
+real 12.74
+user 15.03
+sys 2.14

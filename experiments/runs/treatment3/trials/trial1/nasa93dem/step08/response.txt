@@ -1,0 +1,19 @@
+Complete source code: source/recommender.py
+Tests: tests/test_recommender.py
+
+Run command:
+python3 source/recommender.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Approach:
+Read the 93 projects, use the process-driver columns as categorical features, one-hot encode them, and fit a seeded RandomForestRegressor to Defects-. For every observed rating, simulate the next more favorable ordinal rating across all projects. Select the one-step candidate with positive predicted risk reduction, minimizing cost first and breaking ties by larger reduction. The measured recommendation is rely: l -> n, with estimated risk reduction of 414.6781 defects-equivalent units.
+
+Known assumptions and limitations:
+- Defects- is used as the risk proxy.
+- Ratings are treated as ordered categories and adjacent movement has unit cost.
+- The direction/order of COCOMO-style ratings is encoded in the source and is an approximation for mixed-scale process attributes.
+- Predictions are in-sample model estimates; this small dataset does not establish causal impact.
+- No change is recommended if all simulated changes fail to reduce predicted risk.
+
+Measured execution:
+- Tests: 3 passed, 0 failed.
+- Implementation runtime: 1.11 seconds real time.

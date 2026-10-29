@@ -1,0 +1,5 @@
+Implemented an independent NASA93DEM effort-estimation skill.
+
+Effort- is the target. idX is excluded as an identifier; Defects- and MonthsX are excluded as downstream or post-project outcomes. Remaining planning fields, including Kloc+, are predictors. The model is a scikit-learn pipeline with median imputation, one-hot encoding, and RandomForestRegressor. The fixed 80/20 random holdout is a reproducible baseline, not a confidence interval; the small dataset makes results split-sensitive. Predictions are point estimates requiring expert review. Kloc+ may leak if it was derived using completed-project information. Random splitting may also be optimistic under time, team, or organization shift.
+
+Run: python source/nasa93dem_guess.py moot/optimize/process/nasa93dem.csv

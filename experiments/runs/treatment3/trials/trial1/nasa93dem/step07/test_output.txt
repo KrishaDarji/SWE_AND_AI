@@ -1,0 +1,8 @@
+test_empty_dataset_rejected (test_choose_project.ChooseProjectTests) ... ok
+test_loader_strips_categories_and_parses_targets (test_choose_project.ChooseProjectTests) ... ok
+test_real_dataset_returns_feasible_choice (test_choose_project.ChooseProjectTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.694s
+
+OK

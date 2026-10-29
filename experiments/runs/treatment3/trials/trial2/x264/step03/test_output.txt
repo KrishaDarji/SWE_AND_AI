@@ -1,0 +1,8 @@
+test_csv_reader (test_certify_x264.CertifyTests) ... ok
+test_decile_and_direction (test_certify_x264.CertifyTests) ... ok
+test_reproducible_intervals_and_pvalue (test_certify_x264.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.013s
+
+OK

@@ -1,0 +1,11 @@
+Implemented and executed an independent anomaly scan for Health-ClosedIssues0000.csv.
+
+Validation: 10,000 data rows loaded; the exact expected eight-column header was checked; all numeric values were finite; the three metrics were checked to be in [0, 1]; positive-count/depth hyperparameters were checked.
+
+Method: for each metric and numeric configuration field, compute a median and MAD-based robust deviation (MAD multiplied by 1.4826). Sum the deviations across fields and rank rows by that score. The method is deterministic, scale-aware through robust standardization, and uses seed 20261029 as recorded metadata (no random sampling is used).
+
+Most suspicious result: CSV row 10000 (data row 9999), with anomaly rank 1.000000. Configuration: N_estimators=200, criterion=squared_error, Min_sample_leaves=7, Min_impurity_decrease=0.25, Max_depth=10. Metrics: MRE-=0.6991163476, ACC+=0.4947132329, PRED40+=0.1428571429. Metric robust deviations were MRE-=2.1330, ACC+=0.9807, and PRED40+=infinity because PRED40+ has MAD zero and the row is nonzero while the median is 0. The infinite component is a structural signal of a highly zero-inflated metric, not proof of an error.
+
+Interpretation: this row is unusual mainly because PRED40+ is one of only eight observed values and is nonzero against a zero median; its MRE- is also above the median. That could be legitimate exceptional performance if PRED40+ is a sparse success-rate metric, or a data-quality/measurement issue if the row has a denominator mismatch, leakage, duplicated evaluation, or inconsistent metric orientation. ACC+ is not itself extreme. The detector cannot establish causality or correctness.
+
+Uncertainty and limitations: no ground-truth labels, repeated-run variance, fold identities, timestamps, sample counts, or metric definitions are present. Hyperparameter boundary effects, ties, rounding, class imbalance, correlated metrics, and the zero MAD for PRED40+ can inflate suspicion. The result should be audited by recomputing the row from raw predictions, checking duplicate configurations, and comparing repeated cross-validation runs. A single robust outlier score is a triage signal, not a model-selection claim.

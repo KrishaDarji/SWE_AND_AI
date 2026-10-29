@@ -1,0 +1,17 @@
+x264 Step 08 minimal measured fix
+dataset=moot/optimize/config/X264_AllMeasurements.csv
+rows=1152 settings=16
+baseline_selection=slowest observed configuration (higher Performance- is slower)
+baseline_performance=821.963
+baseline_configuration=no_asm=1,no_8x8dct=0,no_cabac=0,no_deblock=1,no_fast_pskip=1,no_mbtree=1,no_mixed_refs=0,no_weightb=1,rc_lookahead=1,rc_lookahead_20=1,rc_lookahead_40=0,rc_lookahead_60=0,ref=1,ref_1=0,ref_5=0,ref_9=1
+changed_setting=no_mixed_refs: 0 -> 1
+revised_performance=671.400
+gain=150.563 (18.32% lower)
+revised_configuration=no_asm=1,no_8x8dct=0,no_cabac=0,no_deblock=1,no_fast_pskip=1,no_mbtree=1,no_mixed_refs=1,no_weightb=1,rc_lookahead=1,rc_lookahead_20=1,rc_lookahead_40=0,rc_lookahead_60=0,ref=1,ref_1=0,ref_5=0,ref_9=1
+assumptions=Performance- is a runtime-like cost to minimize; one-bit neighbors are valid when observed in the dataset
+uncertainty=single measurements have no replication/error bars; ties are resolved deterministically
+limitations=search is limited to observed one-setting neighbors and does not test interactions or unseen configurations
+causation=the comparison is an observed association, not proof that changing the setting alone causes the gain
+real 0.02
+user 0.01
+sys 0.00

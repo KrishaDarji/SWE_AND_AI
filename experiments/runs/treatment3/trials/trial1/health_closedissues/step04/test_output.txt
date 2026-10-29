@@ -1,0 +1,8 @@
+test_real_dataset_limit (test_stream_evaluator.StreamEvaluatorTests) ... ok
+test_tradeoff_keeps_pareto_front (test_stream_evaluator.StreamEvaluatorTests) ... ok
+test_updates_one_result_at_a_time (test_stream_evaluator.StreamEvaluatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

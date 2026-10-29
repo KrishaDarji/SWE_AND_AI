@@ -1,0 +1,19 @@
+Administrator-facing justification
+
+Recommendation: deploy the observed maximum configuration for a throughput-sensitive x264 workload, but require a representative-clip quality gate before production. The setting is:
+
+no_asm=1, no_8x8dct=0, no_cabac=0, no_deblock=1, no_fast_pskip=1, no_mbtree=1, no_mixed_refs=0, no_weightb=1, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=0, ref_5=0, ref_9=1.
+
+Measured evidence: among 1,152 validated unique configurations, this row had Performance-=821.963, versus a dataset mean of 461.754 (78.01% higher). The ten highest rows averaged 820.121, with a range of 817.353–821.963, so the recommendation is at the top of a narrow high-performing cluster rather than an isolated near-tie. A five-fold Ridge model using the varying binary controls had mean R²=0.9554 (SD 0.0044); its prediction at the recommendation was 744.411, with a residual-bootstrap 95% interval of 742.453–746.293. A bootstrap 95% interval for the overall mean was 452.781–470.993.
+
+Trade-offs and alternatives: the dataset contains performance only. It has no bitrate, objective quality, subjective visual quality, latency variance, energy, or compatibility measure. Therefore, faster measured performance may come with quality or compression penalties that cannot be quantified here. If quality or stability testing rejects the maximum, choose a member of the top-10 cluster and compare it on representative clips; specifically validate the CABAC, deblock, mbtree, reference, and lookahead choices.
+
+Risks and limitations: the measurements may be workload-, platform-, and version-specific; the response definition and units are not supplied; the observed maximum can overfit this finite benchmark; and the model is descriptive. The bootstrap quantifies sampling uncertainty under resampling assumptions, not deployment uncertainty. The factorial table provides controlled historical contrasts, but this analysis does not by itself establish causal effects in production, and it provides no causal evidence about quality. Run an A/B or randomized repeated encode evaluation with quality and resource metrics before broad rollout.
+
+Run command:
+python3 experiments/runs/treatment3/trials/trial2/x264/step06/source/justify_x264.py moot/optimize/config/X264_AllMeasurements.csv
+
+Tests:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/x264/step06/tests -v
+
+The captured outputs are in test_output.txt and runtime_output.txt.

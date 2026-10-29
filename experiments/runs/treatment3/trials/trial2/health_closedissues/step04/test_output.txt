@@ -1,0 +1,10 @@
+test_empty_is_deterministic (test_flow_evaluator.FlowTests) ... ok
+test_invalid_and_incomplete_are_counted (test_flow_evaluator.FlowTests) ... ok
+test_sequential_best_and_running_mean (test_flow_evaluator.FlowTests) ... ok
+test_tie_uses_stable_configuration_order (test_flow_evaluator.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+test_status=0 run_status=0

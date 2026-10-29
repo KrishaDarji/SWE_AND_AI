@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,3,2,NASA93DEM,race,146,146,true,0.450381,0,"930 repeated-holdout predictions; RACE MAE=395.485661 RMSE=872.549620 R2=0.403550; historical baseline MAE=541.125806 RMSE=1189.653848 R2=-0.108753; RACE better on aggregate MAE and RMSE"

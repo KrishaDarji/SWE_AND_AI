@@ -1,0 +1,8 @@
+test_bad_value_is_rejected (test_spot_anomaly.SpotTests) ... ok
+test_detector_returns_structured_result (test_spot_anomaly.SpotTests) ... ok
+test_real_dataset_is_numeric_and_has_expected_shape (test_spot_anomaly.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.945s
+
+OK

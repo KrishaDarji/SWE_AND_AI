@@ -1,0 +1,22 @@
+Implemented the choose skill independently for NASA93DEM.
+
+Run command:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/nasa93dem/step07/tests -v
+python3 experiments/runs/treatment3/trials/trial2/nasa93dem/step07/source/choose_nasa93dem.py --dataset moot/optimize/process/nasa93dem.csv --budget 100
+
+Design:
+- Dataset validation checks required columns, consistent row schemas, non-empty input, and non-negative numeric Effort-/Kloc+ values.
+- Fixed budget: 100 person-months.
+- Value objective: maximize Kloc+ as a transparent delivered-functionality proxy.
+- Feasibility: Effort- <= budget.
+- Candidate configurations: the 93 historical NASA93DEM project rows.
+- Tie-breakers: lower effort, then lexicographically smaller id.
+- No-feasible handling: selected is null and the report states that no configuration is selected.
+
+Measured result:
+- 93 rows evaluated; 31 feasible.
+- Selected configuration 78: estimated effort 97.0 person-months and value 165.0 KLOC.
+- Reported implementation runtime: 0.002931 seconds.
+- Tests: 3 passed, 0 failed.
+
+Trade-offs and limitations are emitted by the runtime report. KLOC is not customer value, quality, revenue, or schedule certainty. Effort is uncertain and observational, and NASA93DEM may differ from the current team, technology, scope, and risk profile; survivor and measurement bias are possible.

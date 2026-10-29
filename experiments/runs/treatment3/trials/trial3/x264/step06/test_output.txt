@@ -1,0 +1,11 @@
+test_load_and_validate (test_justify_x264.JustifyTests) ... ok
+test_recommendation_is_observed_and_maximal (test_justify_x264.JustifyTests) ... ok
+test_report_mentions_limits_and_uncertainty (test_justify_x264.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.024s
+
+OK
+real 2.51
+user 5.82
+sys 0.63

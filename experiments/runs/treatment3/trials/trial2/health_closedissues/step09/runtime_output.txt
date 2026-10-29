@@ -1,0 +1,11 @@
+Health-ClosedIssues anomaly report
+rows=10000 validation=passed seed=20261029
+suspicious_csv_row=7557 (zero_based_data_index=7555) robust_anomaly_score=23.592023
+configuration=MRE-=0.029749631811487497, ACC+=1, PRED40+=1, N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=3, Max_depth=10
+evidence:
+- MRE-=0.029749631811487497 is unusually low (robust MAD z=7.66)
+- ACC+=1 is unusually high (robust MAD z=12.54)
+- PRED40+=1 is unusually high (robust MAD z=inf)
+assessment: possible data-quality or metric-boundary issue; verify the evaluation trace and raw predictions before accepting the exceptional result.
+uncertainty: robust-MAD ranking is unsupervised; anomaly ranking is relative to this file and does not establish that the result is wrong.
+limitations/confounders: PRED40+ is discrete, repeated configurations may be correlated, no folds/predictions/timestamps are present, and metric definitions or train/test leakage cannot be checked from this CSV.

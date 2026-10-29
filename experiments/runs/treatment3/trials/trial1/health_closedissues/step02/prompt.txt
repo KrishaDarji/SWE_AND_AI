@@ -1,0 +1,49 @@
+You are running Treatment 3, Trial 1, Dataset 3, Step 2 of a controlled experiment.
+
+Treatment 3 requirements:
+- Writer: LLM
+- Background: Python with scikit-learn
+- Reuse instructed: No
+- Domain: machine-learning model configuration
+- Dataset: Health-ClosedIssues0000.csv
+- Dataset path: moot/optimize/hpo/Health-ClosedIssues0000.csv
+- Current skill: guess
+
+Implement the following independently:
+Predict model error and accuracy before a full evaluation.
+
+Use Python, scikit-learn, and the Python standard library only. Do not reuse
+code, architecture, tests, generated output, or reasoning from Treatment 1,
+Treatment 2, another treatment, another trial, another dataset, another step,
+or a previous conversation. Build a self-contained implementation for this
+step. Use a reproducible train/test protocol, appropriate metrics, and leakage checks.
+
+The implementation must load and validate the dataset, handle malformed or
+missing values explicitly, use a reproducible random seed where randomness is
+needed, and report assumptions, limitations, uncertainty, and possible bias.
+
+Return:
+1. Complete source code.
+2. Tests covering normal behavior and important edge cases.
+3. One command to run the implementation.
+4. A concise explanation of the approach.
+5. Actual measured outputs and limitations.
+
+Save every artifact only inside this exact directory:
+experiments/runs/treatment3/trials/trial1/health_closedissues/step02/
+
+Do not save files directly in the parent health_closedissues/ directory or in any other
+treatment, trial, dataset, or step. The step directory must contain exactly
+these required artifacts:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Run the tests and implementation, capture their actual output, and record
+actual measured results. Do not fabricate metrics. Record these CSV columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,
+runtime_seconds,error_count,notes

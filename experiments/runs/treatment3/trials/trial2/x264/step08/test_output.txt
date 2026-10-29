@@ -1,0 +1,8 @@
+test_finds_one_setting_improvement (test_x264_fix.X264FixTests) ... ok
+test_loads_and_validates_dataset (test_x264_fix.X264FixTests) ... ok
+test_no_improvement_case (test_x264_fix.X264FixTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+OK

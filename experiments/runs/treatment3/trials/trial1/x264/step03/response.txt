@@ -1,0 +1,1 @@
+The implementation is in source/certify.py. It reads the CSV, defines the candidate as the lowest-target decile, computes the improvement relative to the remaining measurements, estimates a 95% bootstrap confidence interval, and performs a one-sided permutation test. Tests and measured execution output are captured in test_output.txt and runtime_output.txt.

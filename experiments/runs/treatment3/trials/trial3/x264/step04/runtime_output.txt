@@ -1,0 +1,10 @@
+rows_seen=1152
+valid_rows=1152
+invalid_rows=0
+improvements=8
+best_row=72
+best_performance=244.23
+best_configuration=(1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0)
+real 0.03
+user 0.02
+sys 0.00

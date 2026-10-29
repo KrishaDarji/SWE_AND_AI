@@ -1,0 +1,9 @@
+test_loads_target_and_rows (test_justify_estimate.JustificationTests) ... ok
+test_model_predicts_finite_value (test_justify_estimate.JustificationTests) ... ok
+test_report_contains_decision_evidence (test_justify_estimate.JustificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.697s
+
+OK
+TEST_STATUS=0

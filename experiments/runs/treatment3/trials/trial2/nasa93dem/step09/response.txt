@@ -1,0 +1,15 @@
+Implemented an independent spot skill for NASA93DEM.
+
+Command:
+python3 -m unittest discover -s tests -v
+python3 source/spot_skill.py ../../../../../../../moot/optimize/process/nasa93dem.csv
+
+Method: validate the 93-row CSV, one-hot encode categorical planning variables, robust-scale numeric variables, and fit a deterministic IsolationForest with 400 trees and random_state 20261029. The highest anomaly score is reported. Explanations use robust median/MAD deviation for numeric fields and inverse frequency for categorical levels.
+
+Most suspicious record: idX=59. It has anomaly_score=0.641647. The strongest unusual signals are plex=vl (4.3% frequency), Defects-=50961 versus median 2007, cplx=xh (5.4% frequency), Kloc+=980 versus median 47.5, Effort-=4560 versus median 252, time=xh (8.6% frequency), rely=vh, and apex=vh.
+
+Interpretation: the combination of extreme size, effort, defects, schedule, and rare/high-demand process attributes is historically unusual. Possible data-quality issues include transcription errors, unit mismatch, or an outcome-definition mismatch. It may also be legitimate: an exceptional mission, unusually complex system, or high-assurance project could produce this profile. The method cannot decide between these explanations.
+
+Uncertainty and limitations: this is a small observational dataset; features are correlated; repeated project identifiers are retained because they occur in the source; hidden context and selection effects are unobserved; one top-ranked record is emphasized; and anomaly detection does not establish causality or correctness. Review the original project documentation and units before treating the record as erroneous.
+
+Measured artifacts are captured in test_output.txt and runtime_output.txt. Source/test code totals 90 lines. The runtime command completed successfully with wall time 0.77 seconds; test output reports 3 tests passing.

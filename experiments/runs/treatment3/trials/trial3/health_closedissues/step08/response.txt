@@ -1,0 +1,13 @@
+Step 08 completed independently for Health-ClosedIssues0000.csv.
+
+Validation: 10,000 valid rows; 0 rejected rows. The table contains measured outcomes (MRE-, ACC+, PRED40+) paired with five model settings. This evaluator treats lower MRE- as lower error and higher ACC+/PRED40+ as better prediction quality.
+
+Baseline: the valid row nearest the numeric medians, with the modal criterion used as the deterministic tie preference. Baseline configuration: N_estimators=110, criterion=squared_error, Min_sample_leaves=11, Min_impurity_decrease=4.0, Max_depth=12. Baseline MRE-=0.8110456554, ACC+=0.4389618712, PRED40+=0.0.
+
+Candidate generation: rows differing from the baseline in exactly one valid configuration parameter. Two candidates were available. The best measurable improvement changes criterion from squared_error to poisson, keeping all other settings unchanged. Revised MRE-=0.8076583211; error gain=0.0033873343. ACC+=0.4405639218 (delta +0.0016020506), and PRED40+=0.0 (unchanged). The revised row is dataset line 9221.
+
+Assumptions and uncertainty: this is an observational configuration/result table, so each row is treated as a measured candidate and not as a fresh retraining experiment. The median-nearest baseline is a reproducible proxy, not a guaranteed production default. A single row per configuration may be noisy; no confidence intervals, repeated seeds, held-out validation, or statistical significance test are available. The result is therefore a recommendation for follow-up validation, not a guarantee.
+
+Association is not causation: the lower observed MRE- is associated with the poisson setting in this table. It does not prove that changing criterion caused the improvement, because configuration assignment, sampling noise, unobserved data/model factors, and the baseline-selection rule may explain part or all of the difference.
+
+Tests: 2 passed, 0 failed. No no-improvement branch was triggered on this dataset; the implementation reports recommendation=null when no candidate has positive error gain.

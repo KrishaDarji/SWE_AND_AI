@@ -1,0 +1,8 @@
+test_bootstrap_detects_clear_gap (test_certify.CertifyTests) ... ok
+test_bootstrap_is_reproducible (test_certify.CertifyTests) ... ok
+test_load_and_choose_levels (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.010s
+
+OK

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+05,3,3,health_closedissues,blame,125,125,1,0.93,0,"10,000 rows; MRE- high-error cutoff is empirical 75th percentile; 2,507 positives due to ties; holdout AUC 0.995152; sklearn runtime emitted numerical RuntimeWarnings but completed successfully"

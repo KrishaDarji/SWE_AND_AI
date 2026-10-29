@@ -1,0 +1,5 @@
+dataset=moot/optimize/config/X264_AllMeasurements.csv rows=1152 features=16 test_rows=231
+MAE=0.404856 RMSE=0.615518 R2=0.999986
+real 0.74
+user 1.31
+sys 1.74

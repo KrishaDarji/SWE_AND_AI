@@ -1,0 +1,7 @@
+Implemented an independent x264 encoding-time guess skill.
+
+The CSV is validated with csv.DictReader. All columns except Performance- are treated as configuration features. A deterministic RandomForestRegressor is trained for prediction, with a fixed 80/20 holdout for MAE, RMSE, and R2. The API is X264GuessModel; the CLI evaluates by default or accepts feature values with --predict.
+
+Assumptions: rows are independent measurements, Performance- is encoding time, and the feature columns are available before encoding. Random train/test splitting can be optimistic when repeated configurations or near-duplicates occur. Feature/target naming or preprocessing changes could invalidate the model. The model does not provide calibrated uncertainty; tree spread or conformal methods would be needed for prediction intervals. Dataset duplicates, experiment-order effects, and any features derived from completed encoding could cause leakage. Metrics are holdout estimates, not guarantees for unseen hardware, codecs, or workloads.
+
+Run: python3 experiments/runs/treatment3/trials/trial2/x264/step02/source/x264_guess.py --dataset moot/optimize/config/X264_AllMeasurements.csv

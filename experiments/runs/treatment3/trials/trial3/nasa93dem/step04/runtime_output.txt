@@ -1,0 +1,8 @@
+rows_seen=93
+valid_rows=93
+invalid_rows=0
+incomplete_rows=0
+improvements=4
+best_row=7
+best_idX=6
+best_effort=8.4

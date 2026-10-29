@@ -1,0 +1,9 @@
+test_evaluation_is_reproducible_shape (test_race_skill.RaceSkillTests.test_evaluation_is_reproducible_shape) ... ok
+test_real_dataset_validates (test_race_skill.RaceSkillTests.test_real_dataset_validates) ... ok
+test_utility_prefers_better_metrics (test_race_skill.RaceSkillTests.test_utility_prefers_better_metrics) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.588s
+
+OK
+TEST_EXIT=0

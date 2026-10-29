@@ -1,0 +1,20 @@
+Complete source: source/effort_estimator.py
+Tests: tests/test_effort_estimator.py
+
+Run command:
+python3 -m unittest discover -s step02/tests -v
+
+Implementation command:
+python3 step02/source/effort_estimator.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv '<proposal JSON>'
+
+Approach:
+Read NASA93 with the standard-library csv module, remove identifiers and unavailable outcome columns, preserve numeric features, and encode categorical features with scikit-learn DictVectorizer. Fit a deterministic RandomForestRegressor and estimate Effort- in person-months. The scoring helper uses a deterministic 80/20 holdout.
+
+Measured result:
+All 4 tests passed. The timed implementation run returned 133.61 person-months and took 0.66 seconds of real time (the complete captured output is in runtime_output.txt).
+
+Assumptions and limitations:
+- Effort- is treated as person-months and Kloc+ is available before approval.
+- Defects-, MonthsX, and idX are excluded to avoid using outcomes or identifiers.
+- This is a small historical dataset, so estimates can be unstable for proposals unlike the training data.
+- The model gives a point estimate only; it does not provide uncertainty or an approval threshold.

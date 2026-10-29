@@ -1,0 +1,11 @@
+test_api (test_nasa93dem_guess.Tests.test_api) ... ok
+test_cli (test_nasa93dem_guess.Tests.test_cli) ... ok
+test_load (test_nasa93dem_guess.Tests.test_load) ... ok
+test_metrics_reproducible (test_nasa93dem_guess.Tests.test_metrics_reproducible) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.918s
+
+OK
+
+TEST_EXIT=0

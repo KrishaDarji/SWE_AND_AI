@@ -1,0 +1,24 @@
+1. Complete source code
+
+Source: source/summarize_projects.py
+Tests: tests/test_summarize_projects.py
+
+2. Tests
+
+All 3 tests passed. The test run is captured in test_output.txt.
+
+3. Command
+
+python source/summarize_projects.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+4. Approach
+
+The program reads the CSV with the standard library, validates required fields, summarizes project size, effort, defects, and calendar duration with descriptive statistics, and groups medians by year. It converts ordinal cost-driver values to numeric ranks and uses scikit-learn StandardScaler plus LinearRegression to report descriptive standardized associations with delivery months. Human-readable output is emitted by default; --json emits structured output.
+
+5. Assumptions and limitations
+
+- Kloc+, Effort-, Defects-, and MonthsX are treated as the delivery outcome fields.
+- Ordinal labels are mapped from vl/l/n/h/vh/xh to 1/2/3/4/5/6; this is an analytic encoding, not a claim of equal real-world intervals.
+- The regression is descriptive and does not establish causality or forecast performance.
+- The dataset is treated as complete because the inspected CSV has 93 rows and no blank fields.
+- No train/test split is used because the requested output is historical summarization rather than model deployment.

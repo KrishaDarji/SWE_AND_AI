@@ -1,0 +1,14 @@
+Implemented an independent x264 choose solution.
+
+Command:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/x264/step07/tests -v
+python3 experiments/runs/treatment3/trials/trial2/x264/step07/source/choose_x264.py moot/optimize/config/X264_AllMeasurements.csv
+
+The loader validates the header, non-empty rows, binary settings, numeric performance, and required quality columns. The quality constraint is a documented policy: no disabling of CABAC, deblocking, MB-tree, mixed references, weighted prediction, or 9-reference mode (`0` for each `no_*`/`ref_9` quality feature). Among the 24 feasible rows, the objective minimizes the measured `Performance-` value.
+
+Selected configuration:
+no_asm=1, no_8x8dct=1, no_cabac=0, no_deblock=0, no_fast_pskip=0, no_mbtree=0, no_mixed_refs=0, no_weightb=0, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=1, ref_5=0, ref_9=0
+Quality value: 6/6 policy checks satisfied.
+Performance value: 254.587 (lower is better).
+
+If no row satisfies the policy, `choose` raises a clear `LookupError` and the tests cover that path. The dataset has no independent visual-quality metric, so the quality result is policy compliance, not measured perceptual quality. The policy is conservative and may exclude faster configurations; the selected result is empirical for this dataset and does not establish causal effects or generalization to other workloads.

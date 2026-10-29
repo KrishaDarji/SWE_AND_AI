@@ -1,0 +1,11 @@
+rows=10000 train_rows=8000 test_rows=2000
+frontier_rows=2
+selection_weights=ACC+:0.40,PRED40+:0.35,MRE-:0.25
+frontier_bounds=MRE-:0.000000000..0.029749632,ACC+:0.790131368..1.000000000,PRED40+:0.857142857..1.000000000
+selected=N_estimators:10.0,criterion:squared_error,Min_sample_leaves:1.0,Min_impurity_decrease:3.0,Max_depth:10.0
+metrics=MRE-:0.029749632,ACC+:1.000000000,PRED40+:1.000000000
+balanced_score=0.750000000
+runtime_seconds=0.041729
+real 0.47
+user 2.04
+sys 0.80

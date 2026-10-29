@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+06,3,3,x264,justify,124,124,3/3,1.53,0,"1152 rows validated; unittest; observed-max recommendation; bootstrap interval; pytest unavailable so standard-library unittest used"

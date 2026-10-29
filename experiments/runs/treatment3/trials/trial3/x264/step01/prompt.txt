@@ -1,0 +1,49 @@
+You are running Treatment 3, Trial 3, Dataset 1, Step 1 of a controlled experiment.
+
+Treatment 3 requirements:
+- Writer: LLM
+- Background: Python with scikit-learn
+- Reuse instructed: No
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Dataset path: moot/optimize/config/X264_AllMeasurements.csv
+- Current skill: remember
+
+Implement the following independently:
+Summarize encoder settings and quality measures in historical X264 runs.
+
+Use Python, scikit-learn, and the Python standard library only. Do not reuse
+code, architecture, tests, generated output, or reasoning from Treatment 1,
+Treatment 2, another treatment, another trial, another dataset, another step,
+or a previous conversation. Build a self-contained implementation for this
+step. Produce descriptive summaries and relationships; do not claim causality.
+
+The implementation must load and validate the dataset, handle malformed or
+missing values explicitly, use a reproducible random seed where randomness is
+needed, and report assumptions, limitations, uncertainty, and possible bias.
+
+Return:
+1. Complete source code.
+2. Tests covering normal behavior and important edge cases.
+3. One command to run the implementation.
+4. A concise explanation of the approach.
+5. Actual measured outputs and limitations.
+
+Save every artifact only inside this exact directory:
+experiments/runs/treatment3/trials/trial3/x264/step01/
+
+Do not save files directly in the parent x264/ directory or in any other
+treatment, trial, dataset, or step. The step directory must contain exactly
+these required artifacts:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+
+Run the tests and implementation, capture their actual output, and record
+actual measured results. Do not fabricate metrics. Record these CSV columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,
+runtime_seconds,error_count,notes

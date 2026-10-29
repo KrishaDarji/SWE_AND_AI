@@ -1,0 +1,7 @@
+test_loads_real_dataset_and_selects (test_choose.ChooseTests) ... ok
+test_rejects_invalid_rows (test_choose.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.038s
+
+OK

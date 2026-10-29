@@ -1,0 +1,9 @@
+Implemented and verified an independent anomaly detector for Health-ClosedIssues0000.csv.
+
+Method: validate the exact schema, numeric finiteness and metric bounds; calculate robust median/MAD z-scores for metrics and hyperparameters; rank each row by capped aggregate deviation plus a small categorical-rarity term. The method is deterministic (seed recorded for reproducibility metadata; no stochastic fitting is needed).
+
+The most suspicious result is CSV row 7557 (data index 7555): MRE-=0.029749631811487497, ACC+=1, PRED40+=1, N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=3, Max_depth=10. MRE- has robust MAD z=7.66, ACC+ z=12.54, and PRED40+ is at a rare boundary value of 1. This may be a genuine exceptional result, but exact-boundary metrics also make metric leakage, an evaluation bug, or a small/easy test set plausible.
+
+Uncertainty and limitations: the ranking is relative to this CSV and is not proof of incorrectness; PRED40+ is discrete; repeated configurations may be correlated; and the file contains no folds, raw predictions, timestamps, or metric definitions, so leakage and reproducibility cannot be checked. Verify the evaluation trace and rerun the configuration independently.
+
+Command: python3 experiments/runs/treatment3/trials/trial2/health_closedissues/step09/source/anomaly_detector.py moot/optimize/hpo/Health-ClosedIssues0000.csv

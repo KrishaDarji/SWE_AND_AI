@@ -1,0 +1,13 @@
+Treatment 3 / Trial 1 / Dataset 2 — certify
+
+Complete source code: step03/source/certify.py
+Tests: step03/tests/test_certify.py
+
+Approach: compare the two most frequent levels of the selected process column (default: tool) on Effort-. Encode mixed features with scikit-learn, compute out-of-fold Ridge predictions, and use a seeded 5000-draw bootstrap percentile interval for the mean cost difference. Certification requires the 95% interval to exclude zero.
+
+Run command:
+python3 step03/source/certify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Assumptions and limitations: tool is the default process variable because the CSV does not declare named process definitions; association is not causal; bootstrap groups are independent; the model RMSE is diagnostic, not the certification criterion; sklearn emitted numerical warnings during the diagnostic model fit, while the command completed successfully.
+
+The complete source is preserved verbatim in source/certify.py.

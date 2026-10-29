@@ -1,0 +1,11 @@
+Health-ClosedIssues configuration justification
+Recommendation: evaluate the observed configuration below as the platform default candidate.
+Configuration: N_estimators=10.0, Min_sample_leaves=1.0, Min_impurity_decrease=3.0, Max_depth=10.0, criterion=squared_error
+Observed outcomes: MRE-=0.029750, ACC+=1.000000, PRED40+=1.000000; utility=2.970250.
+Model-predicted outcomes for this candidate: MRE-=0.149315, ACC+=0.666900, PRED40+=0.886697.
+Holdout model evidence (random forest, 80/20, seed 41): MRE- MAE=0.014137 R2=0.9882; ACC+ MAE=0.010032 R2=0.9567; PRED40+ MAE=0.017858 R2=0.9583.
+Across five independent 80/20 holdouts, MAE mean (sd) was MRE- 0.014184 (0.000398); ACC+ 0.009858 (0.000418); PRED40+ 0.016733 (0.001025).
+Trade-off: minimizing MRE- alone can select a configuration with weaker accuracy or PRED40; the equal-weight utility keeps all three objectives visible. Prediction errors are in the native metric units, and R2 can be negative when the outcome is difficult to predict.
+Alternatives: compare a lower-compute model, a criterion-specific selector, and Pareto-front candidates before production. Risks include random search coverage, distribution shift, metric noise, and the arbitrary equal weights; validate on a fresh, time-separated evaluation set.
+Association versus causality: these are historical associations among recorded configurations and outcomes. They do not establish that changing a hyperparameter causes improvement; randomized or controlled validation is required for causal claims.
+Assumptions and limitation: rows are independent enough for random holdouts, metrics are comparable, and the best observed row is deployable. This is decision support, not a guarantee; retain a contingency and monitor all three outcomes.

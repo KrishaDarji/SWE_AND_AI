@@ -1,0 +1,8 @@
+test_missing_value_is_rejected (test_remember_analysis.RememberAnalysisTests) ... ok
+test_real_dataset_validates_and_summarizes (test_remember_analysis.RememberAnalysisTests) ... ok
+test_schema_error_is_rejected (test_remember_analysis.RememberAnalysisTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.118s
+
+OK

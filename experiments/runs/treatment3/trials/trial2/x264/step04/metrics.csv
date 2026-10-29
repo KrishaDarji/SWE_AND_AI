@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+04,3,2,x264,flow,165,165,1,0.003638042,0,"Sequential CSV evaluation; lower Performance- is better; 1,152 valid observations; deterministic first-arrival tie handling; state digest recorded."

@@ -1,0 +1,1 @@
+{"baseline": {"best_performance": 254.013, "evaluations": 24, "oracle_hit": 0, "regret": 7.7760000000000105}, "dataset_rows": 1152, "evaluation_budget": 24, "feature_count": 16, "runtime_seconds": 0.999141708, "seed": 314159, "selector": {"best_performance": 246.237, "evaluations": 24, "oracle_hit": 1, "regret": 0.0}, "test_rows": 346, "winner_by_regret": "selector"}

@@ -1,0 +1,8 @@
+test_real_dataset_validates_and_is_reproducible (test_anomaly_detector.DetectorTests) ... ok
+test_rejects_bad_schema (test_anomaly_detector.DetectorTests) ... ok
+test_report_contains_assessment (test_anomaly_detector.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.251s
+
+OK

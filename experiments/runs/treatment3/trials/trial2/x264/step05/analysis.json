@@ -1,0 +1,191 @@
+{
+  "dataset": "../../../../../../../moot/optimize/config/X264_AllMeasurements.csv",
+  "rows": 1152,
+  "settings": 16,
+  "target": "Performance-",
+  "target_mean": 461.7535963541667,
+  "target_min": 244.23,
+  "target_max": 821.963,
+  "slow_definition": "Performance- >= 75th percentile",
+  "slow_cutoff": 580.73775,
+  "slow_rows": 288,
+  "cv_r2_mean": 0.9999679917224625,
+  "ranking": [
+    {
+      "setting": "ref_9",
+      "spearman_like": 0.8028086901896817,
+      "mean_performance_on": 646.2367760416666,
+      "mean_performance_off": 369.5120065104167,
+      "mean_difference_on_minus_off": 276.72476953124993,
+      "slow_rate_on": 0.75,
+      "slow_rate_off": 0.0,
+      "permutation_importance_mean": 0.5395630392235975,
+      "permutation_importance_std": 0.014823222066588357
+    },
+    {
+      "setting": "ref_1",
+      "spearman_like": -0.8021808040982621,
+      "mean_performance_on": 277.414703125,
+      "mean_performance_off": 553.92304296875,
+      "mean_difference_on_minus_off": -276.50833984375,
+      "slow_rate_on": 0.0,
+      "slow_rate_off": 0.375,
+      "permutation_importance_mean": 0.5151292009464531,
+      "permutation_importance_std": 0.018966626387808917
+    },
+    {
+      "setting": "no_mixed_refs",
+      "spearman_like": -0.1941432388291625,
+      "mean_performance_on": 430.20703819444446,
+      "mean_performance_off": 493.3001545138889,
+      "mean_difference_on_minus_off": -63.09311631944445,
+      "slow_rate_on": 0.1701388888888889,
+      "slow_rate_off": 0.3298611111111111,
+      "permutation_importance_mean": 0.12232935737552024,
+      "permutation_importance_std": 0.004837751005123281
+    },
+    {
+      "setting": "no_fast_pskip",
+      "spearman_like": 0.17546223212700773,
+      "mean_performance_on": 490.2646562500001,
+      "mean_performance_off": 433.2425364583333,
+      "mean_difference_on_minus_off": 57.022119791666796,
+      "slow_rate_on": 0.3333333333333333,
+      "slow_rate_off": 0.16666666666666666,
+      "permutation_importance_mean": 0.09783233050144373,
+      "permutation_importance_std": 0.002888643242110694
+    },
+    {
+      "setting": "no_mbtree",
+      "spearman_like": 0.15613105112683515,
+      "mean_performance_on": 487.12351041666665,
+      "mean_performance_off": 436.3836822916667,
+      "mean_difference_on_minus_off": 50.739828124999974,
+      "slow_rate_on": 0.2534722222222222,
+      "slow_rate_off": 0.2465277777777778,
+      "permutation_importance_mean": 0.058688436893989795,
+      "permutation_importance_std": 0.002280961487958439
+    },
+    {
+      "setting": "ref_5",
+      "spearman_like": -0.0006278860914198275,
+      "mean_performance_on": 461.6093098958333,
+      "mean_performance_off": 461.82573958333336,
+      "mean_difference_on_minus_off": -0.2164296875000673,
+      "slow_rate_on": 0.0,
+      "slow_rate_off": 0.375,
+      "permutation_importance_mean": 0.02389883880097694,
+      "permutation_importance_std": 0.000814521905179426
+    },
+    {
+      "setting": "no_8x8dct",
+      "spearman_like": -0.06389216018515594,
+      "mean_performance_on": 451.37168576388893,
+      "mean_performance_off": 472.1355069444445,
+      "mean_difference_on_minus_off": -20.763821180555567,
+      "slow_rate_on": 0.2465277777777778,
+      "slow_rate_off": 0.2534722222222222,
+      "permutation_importance_mean": 0.008769253150492212,
+      "permutation_importance_std": 0.0003802491112363258
+    },
+    {
+      "setting": "no_cabac",
+      "spearman_like": -0.024160680130534903,
+      "mean_performance_on": 457.82769965277777,
+      "mean_performance_off": 465.6794930555556,
+      "mean_difference_on_minus_off": -7.851793402777844,
+      "slow_rate_on": 0.2465277777777778,
+      "slow_rate_off": 0.2534722222222222,
+      "permutation_importance_mean": 0.0012691794893162078,
+      "permutation_importance_std": 5.0724890190288864e-05
+    },
+    {
+      "setting": "rc_lookahead_20",
+      "spearman_like": -0.0034904646333224973,
+      "mean_performance_on": 460.9514973958333,
+      "mean_performance_off": 462.1546458333333,
+      "mean_difference_on_minus_off": -1.2031484374999764,
+      "slow_rate_on": 0.24479166666666666,
+      "slow_rate_off": 0.2526041666666667,
+      "permutation_importance_mean": 3.2038458175248644e-05,
+      "permutation_importance_std": 1.6790014601440584e-06
+    },
+    {
+      "setting": "no_deblock",
+      "spearman_like": 0.0009322783368935977,
+      "mean_performance_on": 461.9050833333333,
+      "mean_performance_off": 461.6021093749999,
+      "mean_difference_on_minus_off": 0.302973958333439,
+      "slow_rate_on": 0.25,
+      "slow_rate_off": 0.25,
+      "permutation_importance_mean": 2.9396315988361454e-05,
+      "permutation_importance_std": 1.5610683970635057e-06
+    },
+    {
+      "setting": "rc_lookahead_60",
+      "spearman_like": 0.0028079674334567342,
+      "mean_performance_on": 462.39885937500003,
+      "mean_performance_off": 461.43096484374996,
+      "mean_difference_on_minus_off": 0.9678945312500673,
+      "slow_rate_on": 0.2526041666666667,
+      "slow_rate_off": 0.24869791666666666,
+      "permutation_importance_mean": 3.149410153113763e-06,
+      "permutation_importance_std": 1.9651227903342547e-07
+    },
+    {
+      "setting": "rc_lookahead_40",
+      "spearman_like": 0.0006824971998657381,
+      "mean_performance_on": 461.91043229166667,
+      "mean_performance_off": 461.6751783854167,
+      "mean_difference_on_minus_off": 0.2352539062499659,
+      "slow_rate_on": 0.2526041666666667,
+      "slow_rate_off": 0.24869791666666666,
+      "permutation_importance_mean": 8.237013781386971e-07,
+      "permutation_importance_std": 6.671309517187313e-08
+    },
+    {
+      "setting": "no_weightb",
+      "spearman_like": -0.0005422464116123681,
+      "mean_performance_on": 461.66548611111114,
+      "mean_performance_off": 461.8417065972222,
+      "mean_difference_on_minus_off": -0.176220486111049,
+      "slow_rate_on": 0.2482638888888889,
+      "slow_rate_off": 0.2517361111111111,
+      "permutation_importance_mean": 1.2490307418899782e-07,
+      "permutation_importance_std": 1.958269022323414e-08
+    },
+    {
+      "setting": "no_asm",
+      "spearman_like": 0.0,
+      "mean_performance_on": 461.7535963541667,
+      "mean_performance_off": null,
+      "mean_difference_on_minus_off": null,
+      "slow_rate_on": 0.25,
+      "slow_rate_off": null,
+      "permutation_importance_mean": 0.0,
+      "permutation_importance_std": 0.0
+    },
+    {
+      "setting": "rc_lookahead",
+      "spearman_like": 0.0,
+      "mean_performance_on": 461.7535963541667,
+      "mean_performance_off": null,
+      "mean_difference_on_minus_off": null,
+      "slow_rate_on": 0.25,
+      "slow_rate_off": null,
+      "permutation_importance_mean": 0.0,
+      "permutation_importance_std": 0.0
+    },
+    {
+      "setting": "ref",
+      "spearman_like": 0.0,
+      "mean_performance_on": 461.7535963541667,
+      "mean_performance_off": null,
+      "mean_difference_on_minus_off": null,
+      "slow_rate_on": 0.25,
+      "slow_rate_off": null,
+      "permutation_importance_mean": 0.0,
+      "permutation_importance_std": 0.0
+    }
+  ]
+}

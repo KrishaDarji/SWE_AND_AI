@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+08,3,2,x264,fix,123,123,1,0.03,0,"3 tests passed; 1152 rows validated; best one-setting change no_mixed_refs 0->1; result 821.963->671.400; gain 150.563 (18.32% lower); runtime from /usr/bin/time real output"

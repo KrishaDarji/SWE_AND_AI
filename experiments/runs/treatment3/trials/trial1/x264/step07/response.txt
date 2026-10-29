@@ -1,0 +1,7 @@
+Complete source: source/selector.py
+Tests: tests/test_selector.py
+Run command: python source/selector.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Approach: load and validate the CSV, enforce a documented quality constraint by requiring all quality-sensitive no_* switches to remain zero, select the feasible row with the lowest measured Performance-, and fit a scikit-learn Ridge model with a held-out score as a ranking sanity check.
+
+Assumptions and limitations: the dataset has no quality metric or threshold, so quality is represented by preserving the listed quality-sensitive features. Performance- is treated as a cost to minimize. This is an empirical selector over the supplied measurements, not a guarantee for unseen encodes.

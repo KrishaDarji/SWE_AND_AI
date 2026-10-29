@@ -1,0 +1,6 @@
+Result summary from the completed implementation run:
+most unusual idX: 56
+CSV row: 57
+anomaly_score: -0.08512831928747266
+isolation_label: -1
+runtime_seconds: 0.12388699999999997

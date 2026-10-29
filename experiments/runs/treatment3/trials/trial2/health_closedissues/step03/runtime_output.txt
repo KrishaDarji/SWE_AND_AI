@@ -1,0 +1,19 @@
+CERTIFY: Health-ClosedIssues
+runtime_seconds=22.589103
+family_feature=criterion
+family_A=squared_error (n=3363)
+family_B=poisson (n=3335)
+primary_metric=direction-aware mean of standardized MRE-, ACC+, PRED40+
+primary_means=0.140374 vs 0.007786
+effect_A_minus_B=0.132588
+bootstrap_95pct_CI=[0.085006, 0.180186]
+one_sided_permutation_p=0.000100
+statistically_credible=yes
+target_means_directional_difference:
+  MRE-: A=0.673720, B=0.703403, A_better_minus_B=0.029682
+  ACC+: A=0.508824, B=0.500910, A_better_minus_B=0.007914
+  PRED40+: A=0.180196, B=0.133176, A_better_minus_B=0.047020
+interpretation=The observed family difference is statistically credible only if the CI excludes zero and p<0.05; this result is an association within sampled configurations, not proof that criterion causes the difference.
+practical_significance=The standardized composite effect is the estimated average quality separation in standard-deviation units; assess target-specific differences and deployment tolerance before treating it as practically important.
+assumptions=Rows are treated as exchangeable within families for permutation; bootstrap observations approximate uncertainty; the three targets are equally weighted after direction-aware standardization.
+limitations=Observational hyperparameter records may be imbalanced, repeated or dependent; family choice is data-derived; permutation and bootstrap Monte Carlo error remains; no causal adjustment or external validation is performed.

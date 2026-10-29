@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,2,nasa93dem,certify,149,149,1,1.09,0,"3 unittest tests passed; 20,000-permutation one-sided test; 10,000-bootstrap CI; seed 20261029"

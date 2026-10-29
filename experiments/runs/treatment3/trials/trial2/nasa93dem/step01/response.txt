@@ -1,0 +1,18 @@
+Implemented an independent NASA93DEM remember analysis.
+
+Run command:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/nasa93dem/step01/tests -v
+/usr/bin/time -p python3 experiments/runs/treatment3/trials/trial2/nasa93dem/step01/source/remember_nasa93dem.py moot/optimize/process/nasa93dem.csv
+
+Measured results:
+- Dataset: 93 rows, 29 columns.
+- 24 project-feature columns: 2 numeric and 22 categorical; idX is treated as an identifier.
+- Outcomes: Kloc+, Effort-, Defects-, MonthsX.
+- Outcome means: Kloc+ 94.022, Effort- 624.412, Defects- 3761.763, MonthsX 24.176.
+- One-hot linear-regression in-sample R²: Kloc+ 0.8071, Effort- 0.6077, Defects- 0.8320, MonthsX 0.8117.
+- Tests: 3 passed.
+- Runtime: 0.51 seconds, measured with /usr/bin/time -p.
+
+The analyzer validates headers, duplicate columns, row width, blanks, finite numeric values, and expected outcome columns. It reports distributions, numeric Pearson relationships, categorical grouped means, and a descriptive one-hot regression. It assumes rows are historical projects and categorical levels are nominal. Correlations and in-sample R² are not causal or out-of-sample claims. The data are small and observational, and the captured run includes scikit-learn numerical warnings caused by the high-dimensional one-hot design; this reinforces treating the model scores as descriptive only.
+
+Captured output is in test_output.txt and runtime_output.txt. Metrics are in metrics.csv.

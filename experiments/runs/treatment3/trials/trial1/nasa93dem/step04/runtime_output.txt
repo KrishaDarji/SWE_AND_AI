@@ -1,0 +1,4 @@
+{"decision": "accept", "name": "navigation upgrade", "predicted_defects": 764.65, "predicted_effort": 98.45, "predicted_months": 15.33, "risk_score": 0.532}
+real 0.58
+user 0.51
+sys 0.07

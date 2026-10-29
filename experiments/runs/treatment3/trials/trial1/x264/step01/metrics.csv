@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+01,3,1,video encoding,remember,106,106,true,0.51,0,"3 tests passed; scikit-learn 1.6.1; measured on 1152-row dataset; initial missing-dependency run excluded from final error count"

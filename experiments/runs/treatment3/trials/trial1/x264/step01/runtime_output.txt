@@ -1,0 +1,28 @@
+Historical runs: 1152
+Quality measure: Performance- (min=244.230, mean=461.754, max=821.963)
+Encoder settings:
+  no_asm: min=1, max=1, unique=1
+  no_8x8dct: min=0, max=1, unique=2
+  no_cabac: min=0, max=1, unique=2
+  no_deblock: min=0, max=1, unique=2
+  no_fast_pskip: min=0, max=1, unique=2
+  no_mbtree: min=0, max=1, unique=2
+  no_mixed_refs: min=0, max=1, unique=2
+  no_weightb: min=0, max=1, unique=2
+  rc_lookahead: min=1, max=1, unique=1
+  rc_lookahead_20: min=0, max=1, unique=2
+  rc_lookahead_40: min=0, max=1, unique=2
+  rc_lookahead_60: min=0, max=1, unique=2
+  ref: min=1, max=1, unique=1
+  ref_1: min=0, max=1, unique=2
+  ref_5: min=0, max=1, unique=2
+  ref_9: min=0, max=1, unique=2
+Largest standardized linear associations:
+  ref_9: +86.9662
+  ref_1: -86.8982
+  no_mixed_refs: -31.5466
+  no_fast_pskip: +28.5111
+  no_mbtree: +25.3699
+real 0.51
+user 1.41
+sys 1.47

@@ -1,0 +1,21 @@
+dataset_rows=10000
+baseline_index=0
+one_change_improvements=0
+selected_changes=3
+baseline=MRE-=0.3148748159057436,ACC+=0.7276513937840435,PRED40+=0.5714285714285714,N_estimators=40,criterion=squared_error,Min_sample_leaves=3,Min_impurity_decrease=2.75,Max_depth=10
+revised=MRE-=0.029749631811487497,ACC+=1,PRED40+=1,N_estimators=10,criterion=squared_error,Min_sample_leaves=1,Min_impurity_decrease=3,Max_depth=10
+mre_improvement=0.285125184094
+acc_change=0.272348606216
+pred40_change=0.428571428571
+dataset_rows=10000
+baseline_index=0
+one_change_improvements=0
+selected_changes=3
+baseline=MRE-=0.3148748159057436,ACC+=0.7276513937840435,PRED40+=0.5714285714285714,N_estimators=40,criterion=squared_error,Min_sample_leaves=3,Min_impurity_decrease=2.75,Max_depth=10
+revised=MRE-=0.029749631811487497,ACC+=1,PRED40+=1,N_estimators=10,criterion=squared_error,Min_sample_leaves=1,Min_impurity_decrease=3,Max_depth=10
+mre_improvement=0.285125184094
+acc_change=0.272348606216
+pred40_change=0.428571428571
+real 0.03
+user 0.03
+sys 0.00

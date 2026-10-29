@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,2,x264,certify,119,119,1,8.72,0,"3 tests passed; n=1152; Cohen d=1.5563790799; mean improvement=229.3452622112; bootstrap 95% CI=[219.8185866588,238.9293551465]; one-sided permutation p=0.0000999900; 10000 iterations; independent implementation"

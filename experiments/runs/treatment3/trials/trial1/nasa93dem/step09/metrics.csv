@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+step09,3,1,software project planning,spot,109,109,1,0.12388699999999997,0,"Independent implementation; Isolation Forest flagged idX 56 (row 57)"

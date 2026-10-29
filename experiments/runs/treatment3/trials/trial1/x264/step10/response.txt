@@ -1,0 +1,10 @@
+Implemented an independent model-guided racing search. It fits a RandomForestRegressor on a deterministic training split, ranks held-out configurations by predicted lower performance, and evaluates a fixed budget of top candidates. The comparison baseline evaluates the same budget in deterministic random order. Lower X264 Performance is treated as better. Tests and measured execution outputs are included alongside metrics.csv.
+
+Run command:
+python3 source/race_search.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --output runtime_output.txt
+
+Assumptions and limitations:
+- The final column is a minimization objective and all preceding columns are binary configuration features.
+- A random held-out split approximates unseen configurations; it is not a temporal or workload split.
+- The race is an offline simulation because the supplied CSV contains one measurement per configuration; real noisy repeated measurements are not available.
+- The model-guided strategy uses training measurements and does not use held-out target values until scoring.

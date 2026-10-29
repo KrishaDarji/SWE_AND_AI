@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,3,x264,certify,137,137,true,0.05,0,"3 tests passed; 1152 rows; 10000 bootstrap and 10000 permutation resamples; deterministic seed 20261029; credible=true"

@@ -1,0 +1,11 @@
+test_dataset_shape_and_types (test_selector.SelectorTests.test_dataset_shape_and_types) ... ok
+test_empty_dataset_rejected (test_selector.SelectorTests.test_empty_dataset_rejected) ... ok
+test_quality_constraint_is_applied (test_selector.SelectorTests.test_quality_constraint_is_applied) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.019s
+
+OK
+real 0.91
+user 0.45
+sys 0.10

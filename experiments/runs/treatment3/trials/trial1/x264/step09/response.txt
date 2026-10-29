@@ -1,0 +1,6 @@
+1. Complete source code: `source/spot_anomaly.py`.
+2. Tests: `tests/test_spot_anomaly.py`; the recorded run passed all 3 tests.
+3. Run command:
+   `python3 source/spot_anomaly.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv`
+4. Approach: Isolation Forest identifies configuration-space outliers. An out-of-fold Random Forest predicts performance without training on each row's own target; a robust median/MAD residual score identifies unusually poor prediction outcomes. A row is reported if either signal flags it. The full run flagged 64 of 1,152 rows.
+5. Assumptions and limitations: `Performance-` is the measured target and all other columns are numeric configuration features. A flagged row is a candidate for review, not proof of a measurement error. The 2% Isolation Forest contamination and residual threshold of 6 robust scales are heuristic. Repeated configurations, system load, and temporal effects are not modeled.

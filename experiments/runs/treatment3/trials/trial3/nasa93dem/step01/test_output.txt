@@ -1,0 +1,8 @@
+test_load_schema_and_row_count (test_remember_nasa93dem.AnalysisTests) ... ok
+test_outcomes_are_numeric (test_remember_nasa93dem.AnalysisTests) ... ok
+test_rating_order_is_monotonic (test_remember_nasa93dem.AnalysisTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

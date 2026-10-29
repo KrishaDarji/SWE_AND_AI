@@ -1,0 +1,18 @@
+Blame analysis — NASA93DEM, Treatment 3 / Trial 3 / Dataset 2
+
+The implementation validates 93 complete rows, identifies `Effort-` as the numeric effort target, and excludes `idX` as an identifier. “Excessive effort” is defined prospectively for this analysis as Effort- strictly above the sample 75th percentile: >600.000, producing 23 high-effort projects.
+
+Method: categorical project factors are one-hot encoded and analyzed with class-balanced logistic regression. Five-fold stratified cross-validation estimates ROC AUC 0.789 +/- 0.032 and accuracy 0.719. Factor influence is ranked by grouped permutation importance on a stratified 30% holdout, with 40 repeats; bootstrap intervals summarize resampling uncertainty.
+
+Most influential observed associations:
+
+1. `centerX`: permutation AUC delta 0.08724, bootstrap 95% interval [0.00565, 0.18109].
+2. `time`: 0.03197, interval [-0.05460, 0.12338].
+3. `data`: 0.02908, interval [-0.04159, 0.09855].
+4. `YearX`: 0.02891, interval [-0.00682, 0.08706].
+5. `acap`: 0.02211, interval [-0.05574, 0.07830].
+6. `pmat`: 0.01803, interval [-0.03804, 0.09566].
+
+These results say that project center, time constraints, data requirements, calendar year, analyst capability, and process maturity contain predictive information about membership in the high-effort group in this dataset. They do not establish that changing any factor would cause effort to change. `MonthsX`, `Kloc+`, and `Defects-` are included as observed predictors, but may be downstream or close proxies of project scale/outcome, so they should not be interpreted as actionable causes.
+
+Assumptions and limitations: rows are treated as independent; the 75th-percentile cutoff is sample-dependent; the dataset is small (93 projects), historical, and observational; categorical levels may be sparse; the holdout ranking is noisy; and the model is not a calibrated causal model. Center, year, project size, complexity, staffing capability, process maturity, technology constraints, and other omitted factors may be correlated. Selection effects, measurement differences, temporal drift, multicollinearity, and possible leakage from outcome-related fields can confound the associations. Confirmatory work should preregister a cutoff, use larger contemporary projects, inspect category counts, exclude downstream variables for planning use, and validate rankings out of sample.

@@ -1,0 +1,22 @@
+NASA93DEM certification completed.
+
+Validation and identification
+- Loaded 93 rows and 29 columns from moot/optimize/process/nasa93dem.csv.
+- Target: Effort- (numeric).
+- Process-group feature: centerX (five nonempty groups). site was not used because it is constant in this dataset.
+- The comparison uses the two largest groups, centerX=2 (n=37) and centerX=5 (n=39), selected deterministically by descending size then label.
+
+Comparison
+- Lower observed mean effort: centerX=2, mean 222.918919.
+- Higher observed mean effort: centerX=5, mean 1011.135897.
+- Effect size: high-minus-low mean difference = 788.216979 effort units; pooled-SD standardized effect = 0.734549.
+- 95% percentile bootstrap confidence interval for the mean difference: [386.223434, 1318.785570].
+- One-sided permutation test (10,000 label permutations, seed 303; alternative high-minus-low >= observed): p=0.000100.
+
+Conclusion
+The observed difference is statistically credible under this prespecified comparison: the interval is wholly above zero and the permutation p-value is below 0.05. It is also practically material in the dataset: the higher group’s mean is about 4.5 times the lower group’s mean, though effort units are not a universal business-impact scale.
+
+Assumptions and uncertainty
+The rows are treated as exchangeable under the null within the two selected groups; effort is numeric and independently recorded; the group labels and target are correctly parsed; and the bootstrap is used as an approximate sampling interval. The analysis is sensitive to the chosen grouping feature, the two-group selection rule, outliers, unequal group sizes, and the limited sample. It does not adjust for project size, year, or other covariates, and the bootstrap/permutation results quantify sampling uncertainty only.
+
+This is an observational association. It does not prove that centerX causes lower or higher effort; unmeasured confounding and selection effects remain possible.

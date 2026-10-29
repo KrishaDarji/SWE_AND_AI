@@ -1,0 +1,8 @@
+NASA93DEM effort justification
+Sponsor recommendation: plan for 288.3 person-months; a data-based 80% range is 0.0–1317.1.
+Proposal: {'centerX': 2.0, 'YearX': 1980.0, 'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'h', 'rely': 'h', 'data': 'l', 'cplx': 'h', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'n', 'pvol': 'l', 'acap': 'h', 'pcap': 'n', 'pcon': 'n', 'apex': 'h', 'plex': 'n', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'n', 'Kloc+': 47.5, 'Defects-': '2077', 'MonthsX': '13.6'}
+
+Historical evidence: 93 completed projects; effort median 252.0, range 8.4–8211.0 person-months. The proposal uses median numeric inputs and modal categorical inputs unless supplied.
+Model evidence: random forest on a fixed 80/20 holdout (seed 42) had MAE 201.5, RMSE 378.5, R² -0.14. The interval is an empirical 90th-percentile out-of-fold absolute-error band, not a guarantee.
+Risks/assumptions: the estimate assumes the proposal is comparable to this historical sample, inputs are accurate, and scope and productivity conditions remain stable. Small sample size, project heterogeneity, categorical encoding, and possible outliers can widen error. Validate scope, staffing, dependencies, and contingency with the team.
+Causality and alternatives: associations in this observational dataset do not show that any factor causes effort. Consider an interpretable linear/regularized baseline, expert three-point estimate, and scenario analysis; update with actuals.

@@ -1,0 +1,7 @@
+test_report_is_reproducible_and_contains_required_statistics (test_certify_health_closedissues.CertifyTests.test_report_is_reproducible_and_contains_required_statistics) ... ok
+test_validation_and_expected_shape (test_certify_health_closedissues.CertifyTests.test_validation_and_expected_shape) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 14.411s
+
+OK

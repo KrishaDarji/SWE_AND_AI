@@ -1,0 +1,15 @@
+Implemented the independent x264 remember-skill analysis.
+
+Source and tests:
+- source/analyze_x264.py: complete standard-library/scikit-learn implementation.
+- tests/test_analyze_x264.py: 3 unittest cases covering real-data loading/column identification, summary content, and ragged-row rejection.
+
+Run command (from this directory):
+python3 -m unittest discover -s tests -v
+python3 source/analyze_x264.py ../../../../../../moot/optimize/config/X264_AllMeasurements.csv
+
+The implementation validates file existence, nonempty unique headers, row widths, finite numeric cells, and one performance column identified by its name. It identifies the 16 other columns as settings, reports performance distribution and per-setting value/group summaries, ranks marginal Pearson correlations, and reports standardized Ridge coefficients plus shuffled 5-fold cross-validated R². Ridge is used because the encoded settings are collinear.
+
+Measured dataset results: 1,152 rows and 17 columns; performance min 244.230, mean 461.754, median 452.779, max 821.963, stdev 162.562; training R² 0.9562; 5-fold CV R² mean 0.9551 (stdev 0.0024). Runtime wall time was 0.49 seconds. Tests passed: 3/3.
+
+Limitations and data-quality notes are printed in runtime_output.txt: the CSV does not document units or whether larger performance is better; associations are not causal; interactions, duplicate configurations, measurement noise, and undocumented protocol are possible risks. The captured runtime also preserves scikit-learn numerical warnings encountered with this collinear historical design.

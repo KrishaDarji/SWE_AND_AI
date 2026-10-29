@@ -1,0 +1,11 @@
+test_dataset_is_sequentially_consumed (test_flow_skill.FlowTests) ... ok
+test_invalid_row_is_skipped_deterministically (test_flow_skill.FlowTests) ... ok
+test_running_best_keeps_earliest_exact_tie (test_flow_skill.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.138s
+
+OK
+real 0.73
+user 0.62
+sys 2.15

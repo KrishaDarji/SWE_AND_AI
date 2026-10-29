@@ -1,0 +1,8 @@
+Command: python experiments/runs/treatment3/trials/trial3/x264/step05/source/blame_x264.py moot/optimize/config/X264_AllMeasurements.csv
+Exit status: 0
+Measured wall time: 9.9 seconds
+Rows: 1152; settings: 16; target: Performance-
+Performance range: 244.23 to 821.963; median: 452.7785
+Slow rows (Performance- <= median): 576
+5-fold CV R2 mean: 0.9999827970346102; std: 4.405844052049919e-06
+Top permutation-importance settings: ref_9 (0.538893318607493), ref_1 (0.5114104506880768), no_mixed_refs (0.12298406315329347), no_fast_pskip (0.09678186892007225), no_mbtree (0.05883781458355154)

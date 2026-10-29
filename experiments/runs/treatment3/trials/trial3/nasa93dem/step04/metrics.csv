@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+04,3,3,nasa93dem,flow,150,150,true,0.02,0,"93 rows processed sequentially; valid=93; invalid=0; incomplete=0; best_idX=6; best_effort=8.4; 2 tests passed"

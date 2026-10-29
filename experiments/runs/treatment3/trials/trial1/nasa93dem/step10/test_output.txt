@@ -1,0 +1,8 @@
+test_comparison_contains_both_estimators (test_estimator.EstimatorTests.test_comparison_contains_both_estimators) ... ok
+test_dataset_parses_numeric_and_categorical_columns (test_estimator.EstimatorTests.test_dataset_parses_numeric_and_categorical_columns) ... ok
+test_model_predicts_finite_values (test_estimator.EstimatorTests.test_model_predicts_finite_values) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.194s
+
+OK

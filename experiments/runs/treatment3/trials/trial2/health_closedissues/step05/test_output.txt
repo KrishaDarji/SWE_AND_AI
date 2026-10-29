@@ -1,0 +1,11 @@
+test_analysis_is_ranked_and_balanced (test_blame.BlameTests) ... ok
+test_bad_value_rejected (test_blame.BlameTests) ... ok
+test_load_and_validate (test_blame.BlameTests) ... ok
+test_quantile (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.882s
+
+OK
+
+exit_status=0

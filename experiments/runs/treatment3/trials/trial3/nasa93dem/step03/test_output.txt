@@ -1,0 +1,7 @@
+test_dataset_and_result_contract (test_certify_nasa93dem.CertifyTests.test_dataset_and_result_contract) ... ok
+test_validation_rejects_missing_columns (test_certify_nasa93dem.CertifyTests.test_validation_rejects_missing_columns) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.138s
+
+OK

@@ -1,0 +1,10 @@
+Complete source code is in source/blame.py and tests are in tests/test_blame.py.
+
+Run command:
+python3 -m unittest discover -s tests -v && python3 source/blame.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Approach: parse the CSV using the standard library, fit a scikit-learn RandomForestRegressor, estimate cross-validated mean absolute error, compute permutation importance, and compare mean Performance- when each binary setting is enabled versus disabled. Positive enabled-minus-disabled values identify settings associated with slower encodes.
+
+Measured result: ref_9 (+276.7248), no_fast_pskip (+57.0221), and no_mbtree (+50.7398) are the strongest positive slow-encode associations by enabled/disabled mean. rc_lookahead_60 (+0.9679) and no_deblock (+0.3030) are much smaller. Cross-validated MAE was 0.4254 on 1152 rows and 16 features.
+
+Assumptions and limitations: Performance- is treated as an encoding-time/slowdown measure; binary columns are treated as settings; association is not causation; correlated settings and experimental confounding can distort marginal deltas and permutation importance; settings never enabled have no enabled/disabled comparison.

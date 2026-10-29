@@ -1,0 +1,8 @@
+test_load_and_validate (test_justify.JustifyTests) ... ok
+test_model_metrics_and_report (test_justify.JustifyTests) ... ok
+test_representative_proposal_has_all_predictors (test_justify.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.545s
+
+OK

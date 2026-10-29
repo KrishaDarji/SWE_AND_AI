@@ -1,0 +1,12 @@
+X264 JUSTIFICATION
+rows=1152 features=16 response=Performance-
+recommended_configuration=no_asm=1,no_8x8dct=0,no_cabac=0,no_deblock=1,no_fast_pskip=1,no_mbtree=1,no_mixed_refs=0,no_weightb=1,rc_lookahead=1,rc_lookahead_20=1,rc_lookahead_40=0,rc_lookahead_60=0,ref=1,ref_1=0,ref_5=0,ref_9=1
+observed_performance=821.963; dataset_mean=461.754; gain_vs_mean_pct=78.01
+top10_mean=820.121; top10_min=817.353; top10_max=821.963
+bootstrap_95ci_dataset_mean=452.781,470.993
+model_prediction_at_recommendation=744.411; residual_bootstrap_95ci=742.453,746.293
+five_fold_r2_mean=0.9554; five_fold_r2_sd=0.0044
+decision=Recommend the observed maximum for throughput-sensitive deployment, subject to a quality gate.
+tradeoff=The file measures performance only; it does not measure bitrate, visual quality, latency variance, power, or compatibility.
+alternatives=Choose a top-10 configuration if quality/robustness testing rejects the maximum; validate CABAC, deblock, mbtree, and reference/lookahead settings on representative clips.
+causal_boundary=These are historical associations in this dataset. The factorial design supports controlled contrasts, but this analysis alone does not establish real-world causal effects or quality effects.

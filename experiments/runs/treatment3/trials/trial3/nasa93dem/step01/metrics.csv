@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+01,3,3,nasa93dem,remember,160,160,1,0.53,0,"93 rows validated; 29 columns; 25 features and 4 outcomes; 3 tests passed; runtime from /usr/bin/time; sklearn emitted numerical RuntimeWarnings during in-sample one-hot regression but process completed successfully"

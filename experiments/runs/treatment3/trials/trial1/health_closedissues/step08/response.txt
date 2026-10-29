@@ -1,0 +1,19 @@
+Implemented independently for Health-ClosedIssues0000.csv.
+
+Method: validate all 10,000 rows, use the first validated record as the baseline, and measure configuration distance as the number of changed hyperparameter fields. A candidate is eligible only when MRE- decreases and ACC+/PRED40+ do not decrease. No one-change candidate qualifies. The smallest qualifying change is three fields:
+
+- N_estimators: 40 -> 10
+- Min_sample_leaves: 3 -> 1
+- Min_impurity_decrease: 2.75 -> 3
+
+Baseline: MRE-=0.3148748159057436, ACC+=0.7276513937840435, PRED40+=0.5714285714285714.
+Revised: MRE-=0.029749631811487497, ACC+=1.0, PRED40+=1.0.
+
+Measured improvements: MRE decrease 0.285125184094; ACC increase 0.272348606216; PRED40 increase 0.428571428571.
+
+Tests: 3 passed. Runtime was measured with /usr/bin/time and is recorded in runtime_output.txt and metrics.csv.
+
+Uncertainty and limitations: the CSV is an observed hyperparameter-result table, not raw examples with labels, so this compares recorded configurations rather than retraining a model. The first row is used as the baseline by an explicit, reproducible convention; another baseline could produce a different recommendation. Results may be optimistic because selection is performed on the same table used for comparison. No causal claim or generalization estimate is made.
+
+Run command:
+python experiments/runs/treatment3/trials/trial1/health_closedissues/step08/source/experiment.py

@@ -1,0 +1,28 @@
+Treatment 3, Trial 2, Dataset 3 — Health-ClosedIssues
+
+Implementation
+--------------
+`source/race_skill.py` validates the CSV schema and numeric metrics, one-hot encodes the categorical criterion, and trains a deterministic ExtraTrees multi-output regressor (random_state=3, n_jobs=1). It ranks the 4,000 evaluation rows by predicted utility and selects the highest-ranked row. Utility is the equal-weight mean of normalized ACC+ and PRED40+ minus normalized MRE-. Normalization bounds come only from the first 6,000 rows.
+
+Baseline and protocol
+---------------------
+Rows are evaluated in file order. Rows 0–5,999 are historical training data; rows 6,000–9,999 are the holdout window. The historical baseline selects the highest observed utility in the first window. Both methods are scored with the same training-derived utility scale. The protocol is reproducible through fixed model randomness, fixed split, and single-thread execution.
+
+Measured result
+---------------
+Treatment 3 selector: utility 0.592052, MRE 0.168925, ACC 0.885293, PRED40 1.000000.
+Historical baseline: utility 0.609064, MRE 0.167158, ACC 0.931112, PRED40 1.000000.
+
+The historical baseline performs better here by 0.017012 utility points. It wins under this ordered holdout and equal-weight utility because its selected historical configuration has better ACC and slightly lower MRE; PRED40 is tied. The selector could be preferable when the candidate distribution shifts, historical coverage is poor, or the decision must generalize to configurations not already represented by a strong historical winner, but those conditions were not separately tested here.
+
+Uncertainty, assumptions, and limitations
+------------------------------------------
+This is one ordered split, not a confidence interval or significance test. The file order is assumed to represent time/order; if it is arbitrary, the historical interpretation is invalid. The selector ranks observed holdout configurations using only their configuration fields, while the baseline is restricted to a previously observed winner. The composite utility weights the three metrics equally after min–max scaling, which is a judgment call. Results can change with another split, utility weighting, candidate set, model seed, or metric noise. The baseline's historical observed result is used as its performance estimate, so it is not a fresh retrial and may be optimistic. No causal claim is made.
+
+Command
+-------
+From this step10 directory:
+python -m unittest discover -s tests -v
+python source/race_skill.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+The captured commands and outputs are in `test_output.txt` and `runtime_output.txt`. The test suite ran 3 tests successfully; the runtime exited successfully.

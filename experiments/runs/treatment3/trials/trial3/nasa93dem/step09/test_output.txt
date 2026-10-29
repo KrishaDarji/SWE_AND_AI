@@ -1,0 +1,7 @@
+test_detection_is_reproducible_and_returns_records (test_spot.SpotTests) ... ok
+test_load_shape_and_required_columns (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.320s
+
+OK

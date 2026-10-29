@@ -1,0 +1,15 @@
+The dataset was validated successfully: 1,152 rows, 16 settings, and numeric target `Performance-`. I interpret higher `Performance-` as faster encoding, so slow encodes are the 576 rows at or below the dataset median, 452.7785.
+
+Method: Spearman rank association plus a 300-tree RandomForestRegressor. Feature influence is ranked by 30-repeat permutation importance; the model was evaluated with shuffled 5-fold cross-validated R².
+
+Most influential settings associated with slow encodes:
+
+1. `ref_9`: permutation importance 0.5389 (std 0.0164), rho +0.7877; when on, 0% of rows were slow.
+2. `ref_1`: permutation importance 0.5114 (std 0.0182), rho -0.8165; when on, 100% of rows were slow.
+3. `no_mixed_refs`: importance 0.1230 (std 0.0047), rho -0.1726.
+4. `no_fast_pskip`: importance 0.0968 (std 0.0035), rho +0.1666.
+5. `no_mbtree`: importance 0.0588 (std 0.0022), rho +0.1981.
+
+The remaining settings had near-zero permutation importance in this fitted model. The model’s mean 5-fold R² was 0.9999828 (std 0.0000044), but this is predictive fit, not proof of causal mechanism.
+
+Interpretation and caveats: these are associations in the supplied measurements, not causal effects. The strong `ref_1`/`ref_9` pattern may reflect mutually exclusive one-hot choices, interactions, or experimental design structure. Other possible confounders include content, workload, hardware, encoder build, thread count, and measurement noise; they were not supplied as adjustment variables. The median slow threshold is dataset-relative. Permutation importance depends on the model, sample, and correlated predictors; its repeat standard deviation is reported as uncertainty, not a confidence interval. A randomized or blocked experiment varying one setting at a time (while holding workload and environment fixed) is needed for causal claims.

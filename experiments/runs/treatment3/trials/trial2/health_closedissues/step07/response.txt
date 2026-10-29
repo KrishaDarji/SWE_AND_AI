@@ -1,0 +1,5 @@
+Implemented an independent configuration chooser. Each valid CSV row is a candidate. The score is a weighted, min-max normalized utility: ACC+ maximize (0.40), PRED40+ maximize (0.35), and MRE- minimize (0.25). Missing, non-finite, out-of-range, unsupported, or infeasible rows are skipped. Ties favor ACC+ then PRED40+.
+
+Assumptions and limitations: the CSV contains precomputed benchmark results, so this step does not retrain models or establish causal generalization. Min-max normalization is dataset-dependent and sensitive to outliers; weights encode a judgment that accuracy is slightly more important than prediction quality and error. Results may inherit sampling, measurement, and selection bias from the source benchmark. A Pareto review, held-out validation, or sensitivity analysis over weights would reduce uncertainty.
+
+See source/choose.py, tests/test_choose.py, test_output.txt, runtime_output.txt, and metrics.csv.

@@ -1,0 +1,7 @@
+test_analysis_has_ranked_factors_and_high_group (test_blame_nasa93dem.BlameTests) ... ok
+test_validation_and_target (test_blame_nasa93dem.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 19.042s
+
+OK

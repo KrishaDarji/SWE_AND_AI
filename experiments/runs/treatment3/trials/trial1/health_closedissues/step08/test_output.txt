@@ -1,0 +1,11 @@
+test_distance (test_experiment.ExperimentTests.test_distance) ... ok
+test_selected_result_preserves_quality (test_experiment.ExperimentTests.test_selected_result_preserves_quality) ... ok
+test_validation_and_size (test_experiment.ExperimentTests.test_validation_and_size) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.037s
+
+OK
+real 0.07
+user 0.06
+sys 0.01

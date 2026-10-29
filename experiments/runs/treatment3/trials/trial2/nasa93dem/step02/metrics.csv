@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+02,3,2,nasa93dem,guess,102,102,1,0.64,0,"93 rows; 25 features; 19-row fixed holdout; MAE=206.3806971038707; RMSE=387.3514281607558; R2=-0.1925431265504911; total_loc=source+tests; new_loc=all implementation/test LOC"

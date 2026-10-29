@@ -1,0 +1,100 @@
+{
+  "classification": "legitimate_exception_or_needs_review",
+  "configuration": {
+    "no_8x8dct": 0,
+    "no_asm": 1,
+    "no_cabac": 0,
+    "no_deblock": 1,
+    "no_fast_pskip": 1,
+    "no_mbtree": 1,
+    "no_mixed_refs": 0,
+    "no_weightb": 1,
+    "rc_lookahead": 1,
+    "rc_lookahead_20": 1,
+    "rc_lookahead_40": 0,
+    "rc_lookahead_60": 0,
+    "ref": 1,
+    "ref_1": 0,
+    "ref_5": 0,
+    "ref_9": 1
+  },
+  "dataset": "/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv",
+  "explanation": "The record is unusual but does not meet both conservative error indicators; treat it as an exceptional configuration pending replication.",
+  "features": 16,
+  "mad": 153.0885,
+  "median_performance": 452.7785,
+  "most_anomalous": {
+    "isolation_flag": 1,
+    "isolation_score": 0.098264407273004,
+    "line": 872,
+    "performance": 821.963,
+    "robust_z": 1.6265854965721593
+  },
+  "rows": 1152,
+  "seed": 303,
+  "suspicious_records": [
+    {
+      "isolation_score": 0.098264407273004,
+      "line": 872,
+      "performance": 821.963,
+      "robust_z": 1.6265854965721593
+    },
+    {
+      "isolation_score": 0.09871370486365849,
+      "line": 939,
+      "performance": 821.76,
+      "robust_z": 1.6256911013421211
+    },
+    {
+      "isolation_score": 0.09850698757353604,
+      "line": 867,
+      "performance": 821.52,
+      "robust_z": 1.6246336882622725
+    },
+    {
+      "isolation_score": 0.09547546935313067,
+      "line": 1110,
+      "performance": 821.527,
+      "robust_z": 1.6246645294771018
+    },
+    {
+      "isolation_score": 0.09543040833209016,
+      "line": 941,
+      "performance": 821.51,
+      "robust_z": 1.6245896293839455
+    },
+    {
+      "isolation_score": 0.09328454343261516,
+      "line": 1111,
+      "performance": 821.757,
+      "robust_z": 1.6256778836786228
+    },
+    {
+      "isolation_score": 0.09913990152558405,
+      "line": 1074,
+      "performance": 818.04,
+      "robust_z": 1.6093011986044696
+    },
+    {
+      "isolation_score": 0.09826462389688151,
+      "line": 915,
+      "performance": 817.99,
+      "robust_z": 1.6090809042128347
+    },
+    {
+      "isolation_score": 0.09822250264441779,
+      "line": 787,
+      "performance": 817.793,
+      "robust_z": 1.6082129443097923
+    },
+    {
+      "isolation_score": 0.09855843150318788,
+      "line": 795,
+      "performance": 817.34,
+      "robust_z": 1.6062170771215785
+    }
+  ]
+}
+real 0.67
+user 0.59
+sys 0.07

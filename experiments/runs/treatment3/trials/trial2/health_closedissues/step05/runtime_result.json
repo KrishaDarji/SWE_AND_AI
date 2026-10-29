@@ -1,0 +1,119 @@
+{
+  "assumptions_limitations": [
+    "Rows are treated as independent observations.",
+    "The 75th percentile is a relative, analysis-defined threshold, not a domain failure limit.",
+    "Permutation importance measures predictive association on this split; it is not causal attribution.",
+    "Correlated or discretely sampled hyperparameters can share or mask importance; seed and split add uncertainty.",
+    "Observed associations may reflect experimental design, interactions, or unmeasured confounding."
+  ],
+  "dataset": "Health-ClosedIssues0000.csv",
+  "heldout_accuracy": 0.9856,
+  "high_error_definition": "MRE- >= empirical 75th percentile",
+  "high_error_rate": 0.2507,
+  "model": "ExtraTreesClassifier (250 trees; one-hot criterion)",
+  "permutation_importance": {
+    "ACC+": {
+      "mean_accuracy_drop": 0.18452000000000007,
+      "std_accuracy_drop": 0.006160649316427629
+    },
+    "Max_depth": {
+      "mean_accuracy_drop": 0.000680000000000025,
+      "std_accuracy_drop": 0.0011034491379307199
+    },
+    "Min_impurity_decrease": {
+      "mean_accuracy_drop": 0.0005600000000000382,
+      "std_accuracy_drop": 0.001202663710269842
+    },
+    "Min_sample_leaves": {
+      "mean_accuracy_drop": 0.017400000000000047,
+      "std_accuracy_drop": 0.0026366645596283263
+    },
+    "N_estimators": {
+      "mean_accuracy_drop": 0.004200000000000026,
+      "std_accuracy_drop": 0.0009338094023942971
+    },
+    "PRED40+": {
+      "mean_accuracy_drop": 0.05912000000000003,
+      "std_accuracy_drop": 0.004015171229225475
+    },
+    "criterion": {
+      "mean_accuracy_drop": 0.11396000000000002,
+      "std_accuracy_drop": 0.004405269571774234
+    }
+  },
+  "ranked_hyperparameters": [
+    "ACC+",
+    "criterion",
+    "PRED40+",
+    "Min_sample_leaves",
+    "N_estimators",
+    "Max_depth",
+    "Min_impurity_decrease"
+  ],
+  "rows": 10000,
+  "target": "MRE-",
+  "threshold": 0.8251840942562592,
+  "univariate_associations": {
+    "ACC+": {
+      "high_error_rate_by_quartile": [
+        0.9889546351084813,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "spearman_with_MRE": -0.9952674519485613
+    },
+    "Max_depth": {
+      "high_error_rate_by_quartile": [
+        0.24004017408771341,
+        0.25725806451612904,
+        0.250788643533123,
+        0.2583875813720581
+      ],
+      "spearman_with_MRE": 0.015316476705363548
+    },
+    "Min_impurity_decrease": {
+      "high_error_rate_by_quartile": [
+        0.2502789140944589,
+        0.2433428922572716,
+        0.24948197264815583,
+        0.25966625966625967
+      ],
+      "spearman_with_MRE": 0.03275775205722886
+    },
+    "Min_sample_leaves": {
+      "high_error_rate_by_quartile": [
+        0.0,
+        0.2412859560067682,
+        0.3954746679783571,
+        0.39775010044194453
+      ],
+      "spearman_with_MRE": 0.7475306274967778
+    },
+    "N_estimators": {
+      "high_error_rate_by_quartile": [
+        0.29787973583594024,
+        0.2364066193853428,
+        0.23733437256430243,
+        0.21842496285289748
+      ],
+      "spearman_with_MRE": -0.004162961271016853
+    },
+    "PRED40+": {
+      "high_error_rate_by_quartile": [
+        0.3842145593869732,
+        null,
+        0.0,
+        0.0
+      ],
+      "spearman_with_MRE": -0.8467941359749299
+    },
+    "criterion": {
+      "high_error_rate_by_value": {
+        "absolute_error": 0.6326468806783767,
+        "poisson": 0.06206896551724138,
+        "squared_error": 0.06274159976211716
+      }
+    }
+  }
+}

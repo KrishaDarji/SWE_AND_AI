@@ -1,0 +1,22 @@
+x264 configuration recommendation — Treatment 3 / Trial 3 / Dataset 1
+
+Recommendation: use the measured configuration listed below (the observed maximum).
+Enabled indicators: no_asm, no_deblock, no_fast_pskip, no_mbtree, no_weightb, rc_lookahead, rc_lookahead_20, ref, ref_9
+
+Evidence:
+- Validated 1152 unique rows; observed Performance- range 244.230 to 821.963 (larger is treated as better).
+- Recommended measured Performance-: 821.963.
+- No all-zero reference row was present; no baseline uplift is claimed.
+- Bootstrap 95% interval for the dataset-wide mean Performance-: 451.623 to 471.384 (mean 461.754; resampling uncertainty only).
+- Largest absolute descriptive linear coefficients: ref_9=+184.483; ref_1=-184.339; no_mixed_refs=-63.093; no_fast_pskip=+57.022.
+
+Trade-offs and alternatives:
+- Enabling CABAC, deblocking, mb-tree, weighted prediction, references, and lookahead can improve compression efficiency/visual quality, but may increase CPU time, latency, or memory; the CSV measures none of those costs or quality metrics.
+- A lower-cost alternative should be selected from a separately measured CPU/latency/quality Pareto set; this dataset alone cannot rank such an alternative.
+
+Caveats for the administrator:
+- This is a historical association in one benchmark. The full-factorial rows support comparison within this dataset, but do not establish that any switch caused the difference in production.
+- Assumes higher Performance- is desirable, the benchmark is representative, and configuration validity transfers to the target encoder/build.
+- Validate the recommendation with repeated production-like encodes, CPU time, memory, bitrate/file size, and an objective or subjective quality measure before rollout; use a canary if cost or quality risk is material.
+
+Timing: real 1.53s; user 4.26s; sys 0.25s.

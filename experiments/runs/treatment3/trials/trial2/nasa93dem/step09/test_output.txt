@@ -1,0 +1,8 @@
+test_explanation_present (test_spot_skill.SpotTests) ... ok
+test_reproducible_result (test_spot_skill.SpotTests) ... ok
+test_schema_and_count (test_spot_skill.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.535s
+
+OK

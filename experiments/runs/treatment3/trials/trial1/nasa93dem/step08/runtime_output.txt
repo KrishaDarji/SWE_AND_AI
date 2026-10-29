@@ -1,0 +1,17 @@
+{
+  "baseline_estimated_risk": 3752.4543324346337,
+  "candidate_count": 54,
+  "recommendation": {
+    "cost": 1,
+    "estimated_risk": 3337.7762306204745,
+    "feature": "rely",
+    "from": "l",
+    "risk_reduction": 414.67810181415916,
+    "to": "n"
+  },
+  "rows": 93,
+  "status": "change_recommended"
+}
+real 1.11
+user 3.36
+sys 0.07

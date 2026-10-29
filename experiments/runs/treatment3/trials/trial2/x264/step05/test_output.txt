@@ -1,0 +1,8 @@
+test_analysis_has_complete_ranking_and_slow_group (test_analysis.AnalysisTests) ... ok
+test_load_validates_shape_and_binary_settings (test_analysis.AnalysisTests) ... ok
+test_rejects_non_binary_setting (test_analysis.AnalysisTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 6.592s
+
+OK

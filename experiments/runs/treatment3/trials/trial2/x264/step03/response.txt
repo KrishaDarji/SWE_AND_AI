@@ -1,0 +1,18 @@
+Certification result
+
+The dataset contains a statistically credible quality improvement. Lower Performance- is better. The lowest-performing decile (115 measurements) has mean 255.3030 versus 484.6483 for the remaining 1,037 measurements.
+
+- Effect size: mean improvement = 229.3453 Performance- units; Cohen's d = 1.5564.
+- 95% percentile bootstrap CI for the mean improvement: [219.8186, 238.9294] units.
+- One-sided permutation-test p-value: 0.00009999 (10,000 permutations, add-one correction).
+- Conclusion: statistically credible at alpha = 0.05; the CI is wholly positive and the permutation p-value is below 0.05.
+
+Assumptions and limitations: the measurements are treated as independent and exchangeable under the permutation null; the decile is defined as the lowest 10% after sorting, with floor(n/10) = 115; bootstrap resampling approximates sampling uncertainty; fixed seeds make results reproducible. This is observational evidence within this dataset, not causal evidence, and repeated configurations, measurement noise, or dependence could make uncertainty estimates optimistic. The analysis does not establish generalization to other workloads or encoders.
+
+Practical significance: the lowest decile is about 229.35 Performance- units lower than the remainder, a large standardized separation (d = 1.56). Whether this is operationally important depends on the application's acceptable latency/quality threshold and the cost of selecting configurations in that decile.
+
+Run command:
+python3 experiments/runs/treatment3/trials/trial2/x264/step03/source/certify_x264.py moot/optimize/config/X264_AllMeasurements.csv
+
+Tests:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/x264/step03/tests -v

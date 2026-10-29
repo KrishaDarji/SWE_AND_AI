@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+06,3,1,video encoding,justify,133,133,1,5.12,0,"2 unittest tests passed; implementation selected observed minimum Performance- 244.230 from 1152 rows"

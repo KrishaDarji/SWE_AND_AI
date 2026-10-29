@@ -1,0 +1,11 @@
+Implementation notes
+
+The first three columns are treated as model-quality targets: MRE- (error), ACC+ (accuracy), and PRED40+ (prediction score). The remaining five columns are configuration features. The model is ExtraTreesRegressor in a scikit-learn pipeline, with median imputation for numeric inputs and one-hot encoding for criterion. A fixed random seed makes the held-out 20% split reproducible.
+
+The reported metrics are per-target MAE, RMSE, R², and the share of predictions within absolute error 0.10. Lower MRE- error is desirable; for all targets, the metrics describe prediction quality, not the quality of a selected configuration.
+
+Assumptions and uncertainty: rows are independent samples of configurations; the CSV header defines target/feature semantics; numeric fields are continuous or ordinal as represented. The single split is a noisy estimate, especially if the dataset is small, so repeated cross-validation would give a more stable uncertainty interval. The model does not extrapolate reliably beyond observed configuration ranges.
+
+Possible leakage: if rows were generated from repeated evaluations of the same underlying trial, random splitting can put near-duplicates in both partitions and overstate generalization. Any feature derived from the measured target, evaluation timestamp, or post-run metadata would also leak; this implementation uses only the five named configuration columns. A grouped or time-based split should be used when those dependencies exist.
+
+Run: python3 source/health_closedissues_guess.py moot/optimize/hpo/Health-ClosedIssues0000.csv

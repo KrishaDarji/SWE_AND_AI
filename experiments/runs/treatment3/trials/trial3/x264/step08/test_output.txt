@@ -1,0 +1,8 @@
+test_no_improvement_is_supported (test_fix_x264.FixTests) ... ok
+test_real_dataset_has_one_setting_improvement (test_fix_x264.FixTests) ... ok
+test_validation_rejects_non_binary_setting (test_fix_x264.FixTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.004s
+
+OK

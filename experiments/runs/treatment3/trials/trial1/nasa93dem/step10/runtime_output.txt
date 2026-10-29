@@ -1,0 +1,17 @@
+{
+  "historical_baseline": {
+    "mae": 257.94166666666666,
+    "prediction_rule": "median training-set Effort-",
+    "rmse": 346.8033520599246
+  },
+  "model": {
+    "mae": 183.43092083333332,
+    "rmse": 354.80821173146524
+  },
+  "rows": 93,
+  "test_rows": 24,
+  "train_rows": 69
+}
+real 0.64
+user 0.56
+sys 0.07

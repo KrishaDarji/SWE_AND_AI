@@ -1,0 +1,5 @@
+Implemented an independent NASA93DEM choose skill.
+
+Method: each observed dataset row is a candidate project configuration. The fixed effort budget is 500 Effort- units. A candidate is feasible when Effort- <= 500. Delivered value is Kloc+ / (1 + Defects- / Kloc+), so larger delivered software is rewarded while defect burden reduces value. Ties prefer lower effort, then lower id. If no row is feasible, the result is explicitly None.
+
+The implementation validates the file, required columns, numeric/non-negative fields, enumerates feasible rows, and reports the selected id, effort, value, KLOC, defects, and months. The value is an outcome-based proxy, not a monetary value. Uncertainty comes from treating historical outcomes as estimates of future projects; the sample is observational, configurations may be confounded by era/team/process, and the 500-unit budget and defect penalty are judgmental. The candidate set is limited to observed rows, so an unseen configuration could be better. Defects and KLOC may have measurement and scale biases.

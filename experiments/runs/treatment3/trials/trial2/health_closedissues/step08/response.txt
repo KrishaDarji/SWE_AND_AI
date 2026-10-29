@@ -1,0 +1,9 @@
+The implementation treats the CSV as an evaluated hyperparameter-results table. It selects the row with the most available one-parameter comparisons (deterministic tie-breaks), then considers only observed configurations differing in exactly one parameter. Error is MRE- (lower is better); ACC+ and PRED40+ are reported as prediction-quality changes.
+
+Assumption: the first three metric columns are already measured outcomes, so this task compares recorded evaluations rather than retraining a model. The best observed minimal change is criterion: absolute_error -> squared_error. Baseline MRE is 0.346244477172; revised MRE is 0.266126656848; error reduction is 0.080117820324. ACC changes by +0.018263377333 and PRED40+ is unchanged.
+
+This is an association in the recorded experiment, not proof that changing criterion caused the improvement: configurations may differ in unobserved factors, the dataset may contain noise or selection effects, and no repeated runs or statistical uncertainty estimates are available. The result is limited to this CSV and its observed configuration neighborhood; it does not establish generalization to new data. If no candidate existed, the program would report that no measured one-parameter improvement was found.
+
+Run:
+python3 source/solution.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+python3 -m unittest discover -s tests -v

@@ -1,0 +1,15 @@
+Implemented the independent sequential flow skill in source/flow_skill.py.
+
+Run command:
+python3 experiments/runs/treatment3/trials/trial2/nasa93dem/step04/source/flow_skill.py moot/optimize/process/nasa93dem.csv
+
+Tests:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/nasa93dem/step04/tests -v
+
+The evaluator reads the CSV through DictReader and processes one row at a time. It validates the required identifier and three planning outcomes (effort, defects, months), rejects missing, nonnumeric, nonfinite, or negative values, and keeps a reproducible running state. The score is a weighted cost with equal weights after fixed planning scales: effort/1000 + defects/10000 + months/100. Lower scores win; proposal ID breaks exact score ties lexicographically.
+
+Observed result: 93 records seen, 93 valid, 0 errors, and proposal 58 selected with score 0.060200000000000004. The captured test output reports 3 tests passing. The captured runtime output reports real 0.02 seconds.
+
+Assumptions and limitations: the three selected outcomes are minimized and treated as equally important after fixed scales; the scales are planning conventions rather than learned values. The flow does not infer missing values, use batch statistics, or claim causal/project success validity. Proposal IDs are compared as strings for deterministic tie handling.
+
+Complete source code is in source/flow_skill.py; tests are in tests/test_flow_skill.py. Actual captures are in test_output.txt and runtime_output.txt, with measured fields in metrics.csv.

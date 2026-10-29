@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,1,video encoding,certify,92,92,1,4.184139,0,"1152 rows; lower Performance- treated as better; candidate lowest decile; bootstrap 95% CI and one-sided permutation test; p=0.000100; credible=True"

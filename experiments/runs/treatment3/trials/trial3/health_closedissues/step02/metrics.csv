@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+02,3,3,health_closedissues,guess,175,175,1,0.82,0,"2 unittest tests passed; CLI exit 0; 10000 rows validated; held-out 2000-row metrics captured; measured /usr/bin/time real seconds"

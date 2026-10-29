@@ -1,0 +1,8 @@
+test_dataset_has_sequential_valid_records (test_flow_skill.FlowSkillTests) ... ok
+test_invalid_and_tie_are_deterministic (test_flow_skill.FlowSkillTests) ... ok
+test_negative_and_nonfinite_are_rejected (test_flow_skill.FlowSkillTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

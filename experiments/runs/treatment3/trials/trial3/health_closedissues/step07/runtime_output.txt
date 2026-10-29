@@ -1,0 +1,8 @@
+valid_rows=10000 rejected_rows=0
+selected_configuration=N_estimators=10,criterion=squared_error,Min_sample_leaves=1,Min_impurity_decrease=3.0,Max_depth=10
+MRE-=0.029749632 ACC+=1.000000000 PRED40+=1.000000000
+accuracy_score=1.000000000 prediction_quality_score=0.985125184 composite_score=0.992562592
+runner_up_composite_score=0.927416265
+real 0.06
+user 0.05
+sys 0.00

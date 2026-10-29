@@ -1,0 +1,15 @@
+Treatment 3 (RACE) was implemented independently in source/race_estimator.py and compared with a historical median-effort baseline.
+
+Run command:
+python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/nasa93dem/step10/tests -v
+python3 experiments/runs/treatment3/trials/trial2/nasa93dem/step10/source/race_estimator.py moot/optimize/process/nasa93dem.csv
+
+Protocol: validate all 93 rows, then use 5-fold repeated 10 times with random_state=20261029. Each training fold fits preprocessing and RACE; each test fold is predicted without target leakage. RACE uses standardized numeric predictors, one-hot categorical predictors, and inverse-distance weighted k-nearest historical projects (k=7). The baseline predicts the training-fold median effort.
+
+Measured results over 930 predictions:
+- RACE: MAE 395.485661, RMSE 872.549620, R2 0.403550.
+- Historical baseline: MAE 541.125806, RMSE 1189.653848, R2 -0.108753.
+
+RACE performed better on aggregate MAE and RMSE and had positive pooled R2. It is expected to help most when a test project resembles several historical projects in the available ratings and numeric attributes. The median baseline can be preferable when the project is outside the historical feature distribution, when nearest-neighbor distances are large, or when local analogies are noisy; this run did not separately stratify those conditions.
+
+Uncertainty and limitations: repeated cross-validation reduces dependence on one split but is not an independent validation set; the pooled metrics do not provide confidence intervals. NASA93DEM is small, historical, and potentially non-representative. IDs, defects, and months were excluded to avoid identifiers and post-effort leakage, while all other supplied fields were treated as available predictors. The estimator assumes similarity in encoded feature space corresponds to similarity in effort, and inverse-distance weighting can be unstable for sparse regions. Results may be biased by repeated observations, historical project selection, missing or subjective ratings, metric choice, and the fixed k and random seed. The captured test run emitted a non-failing scikit-learn/joblib CPU-count warning.

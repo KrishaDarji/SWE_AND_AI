@@ -1,0 +1,4 @@
+Implemented a fresh NASA93 software-effort estimator. It parses mixed numeric/ordinal fields, one-hot encodes categorical values, trains a reproducible random-forest regressor, and compares it with a historical baseline that predicts the training-set median Effort-. Tests and execution results are recorded alongside the source.
+
+Run command:
+python source/estimator.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv

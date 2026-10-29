@@ -1,0 +1,7 @@
+test_report_and_metrics (test_justify.JustifyTests.test_report_and_metrics) ... ok
+test_validation_and_count (test_justify.JustifyTests.test_validation_and_count) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.898s
+
+OK

@@ -1,0 +1,162 @@
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+NASA93DEM remember analysis
+dataset=moot/optimize/process/nasa93dem.csv
+rows=93 columns=29
+project_features=centerX,YearX,prec,flex,resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+outcomes=Kloc+,Effort-,Defects-,MonthsX
+identifier_columns=idX
+feature_types=numeric:2 categorical:22
+outcome_summary Kloc+ min=0.900 max=980.000 mean=94.022 median=47.500 stdev=133.598
+outcome_summary Effort- min=8.400 max=8211.000 mean=624.412 median=252.000 stdev=1135.928
+outcome_summary Defects- min=28.000 max=50961.000 mean=3761.763 median=2007.000 stdev=6145.056
+outcome_summary MonthsX min=4.900 max=96.400 mean=24.176 median=21.400 stdev=12.967
+numeric_feature centerX min=1.000 max=6.000 mean=3.280 unique=5
+numeric_feature YearX min=1971.000 max=1987.000 mean=1980.828 unique=14
+categorical_feature prec levels=h
+categorical_feature flex levels=h
+categorical_feature resl levels=h
+categorical_feature team levels=vh
+categorical_feature pmat levels=h,l,n
+categorical_feature rely levels=h,l,n,vh
+categorical_feature data levels=h,l,n,vh
+categorical_feature cplx levels=h,l,n,vh,xh
+categorical_feature ruse levels=n
+categorical_feature docu levels=n
+categorical_feature time levels=h,n,vh,xh
+categorical_feature stor levels=h,n,vh,xh
+categorical_feature pvol levels=h,l,n
+categorical_feature acap levels=h,n,vh
+categorical_feature pcap levels=h,n,vh
+categorical_feature pcon levels=n
+categorical_feature apex levels=h,l,n,vh
+categorical_feature plex levels=h,l,n,vl
+categorical_feature ltex levels=h,l,n,vl
+categorical_feature tool levels=h,n
+categorical_feature site levels=n
+categorical_feature sced levels=l,n
+relationship pearson feature=centerX outcome=Kloc+ r=0.5053
+relationship pearson feature=centerX outcome=Effort- r=0.4210
+relationship pearson feature=centerX outcome=Defects- r=0.4480
+relationship pearson feature=centerX outcome=MonthsX r=0.5834
+relationship pearson feature=YearX outcome=Kloc+ r=-0.4715
+relationship pearson feature=YearX outcome=Effort- r=-0.3547
+relationship pearson feature=YearX outcome=Defects- r=-0.4144
+relationship pearson feature=YearX outcome=MonthsX r=-0.5005
+relationship grouped_mean feature=prec outcome=Kloc+ h=94.022
+relationship grouped_mean feature=prec outcome=Effort- h=624.412
+relationship grouped_mean feature=prec outcome=Defects- h=3761.763
+relationship grouped_mean feature=prec outcome=MonthsX h=24.176
+relationship grouped_mean feature=flex outcome=Kloc+ h=94.022
+relationship grouped_mean feature=flex outcome=Effort- h=624.412
+relationship grouped_mean feature=flex outcome=Defects- h=3761.763
+relationship grouped_mean feature=flex outcome=MonthsX h=24.176
+relationship grouped_mean feature=resl outcome=Kloc+ h=94.022
+relationship grouped_mean feature=resl outcome=Effort- h=624.412
+relationship grouped_mean feature=resl outcome=Defects- h=3761.763
+relationship grouped_mean feature=resl outcome=MonthsX h=24.176
+relationship grouped_mean feature=team outcome=Kloc+ vh=94.022
+relationship grouped_mean feature=team outcome=Effort- vh=624.412
+relationship grouped_mean feature=team outcome=Defects- vh=3761.763
+relationship grouped_mean feature=team outcome=MonthsX vh=24.176
+relationship grouped_mean feature=pmat outcome=Kloc+ h=77.600;l=161.597;n=72.510
+relationship grouped_mean feature=pmat outcome=Effort- h=791.584;l=817.660;n=255.967
+relationship grouped_mean feature=pmat outcome=Defects- h=2701.023;l=7909.600;n=2516.933
+relationship grouped_mean feature=pmat outcome=MonthsX h=22.816;l=30.115;n=22.167
+relationship grouped_mean feature=rely outcome=Kloc+ h=75.814;l=331.500;n=70.246;vh=215.725
+relationship grouped_mean feature=rely outcome=Effort- h=483.548;l=1296.000;n=269.159;vh=2467.210
+relationship grouped_mean feature=rely outcome=Defects- h=3011.357;l=14380.000;n=2694.103;vh=8953.700
+relationship grouped_mean feature=rely outcome=MonthsX h=22.255;l=39.500;n=20.954;vh=41.750
+relationship grouped_mean feature=data outcome=Kloc+ h=144.553;l=78.623;n=97.500;vh=44.388
+relationship grouped_mean feature=data outcome=Effort- h=1522.194;l=370.162;n=502.452;vh=365.125
+relationship grouped_mean feature=data outcome=Defects- h=5711.471;l=3120.784;n=3830.355;vh=2317.375
+relationship grouped_mean feature=data outcome=MonthsX h=33.276;l=19.630;n=25.423;vh=21.038
+relationship grouped_mean feature=cplx outcome=Kloc+ h=67.336;l=268.933;n=112.900;vh=88.868;xh=278.400
+relationship grouped_mean feature=cplx outcome=Effort- h=315.245;l=844.333;n=494.200;vh=1341.271;xh=1901.900
+relationship grouped_mean feature=cplx outcome=Defects- h=2523.345;l=9550.333;n=4229.000;vh=3924.471;xh=13166.600
+relationship grouped_mean feature=cplx outcome=MonthsX h=20.481;l=37.500;n=23.310;vh=28.947;xh=44.560
+relationship grouped_mean feature=ruse outcome=Kloc+ n=94.022
+relationship grouped_mean feature=ruse outcome=Effort- n=624.412
+relationship grouped_mean feature=ruse outcome=Defects- n=3761.763
+relationship grouped_mean feature=ruse outcome=MonthsX n=24.176
+relationship grouped_mean feature=docu outcome=Kloc+ n=94.022
+relationship grouped_mean feature=docu outcome=Effort- n=624.412
+relationship grouped_mean feature=docu outcome=Defects- n=3761.763
+relationship grouped_mean feature=docu outcome=MonthsX n=24.176
+relationship grouped_mean feature=time outcome=Kloc+ h=119.154;n=88.280;vh=45.858;xh=200.312
+relationship grouped_mean feature=time outcome=Effort- h=734.077;n=334.389;vh=375.344;xh=2964.262
+relationship grouped_mean feature=time outcome=Defects- h=4415.154;n=3329.815;vh=2006.889;xh=9564.125
+relationship grouped_mean feature=time outcome=MonthsX h=30.246;n=21.100;vh=20.428;xh=43.513
+relationship grouped_mean feature=stor outcome=Kloc+ h=111.740;n=81.241;vh=129.314;xh=71.558
+relationship grouped_mean feature=stor outcome=Effort- h=887.700;n=323.249;vh=555.190;xh=1668.854
+relationship grouped_mean feature=stor outcome=Defects- h=4740.500;n=2796.776;vh=6121.000;xh=2835.077
+relationship grouped_mean feature=stor outcome=MonthsX h=30.110;n=20.661;vh=25.871;xh=30.123
+relationship grouped_mean feature=pvol outcome=Kloc+ h=98.067;l=98.678;n=76.179
+relationship grouped_mean feature=pvol outcome=Effort- h=557.444;l=477.538;n=1158.595
+relationship grouped_mean feature=pvol outcome=Defects- h=4287.444;l=3957.062;n=2844.632
+relationship grouped_mean feature=pvol outcome=MonthsX h=28.000;l=23.105;n=26.032
+relationship grouped_mean feature=acap outcome=Kloc+ h=131.783;n=38.125;vh=80.310
+relationship grouped_mean feature=acap outcome=Effort- h=876.124;n=301.344;vh=374.500
+relationship grouped_mean feature=acap outcome=Defects- h=5407.412;n=1521.781;vh=2536.900
+relationship grouped_mean feature=acap outcome=MonthsX h=29.022;n=17.322;vh=21.400
+relationship grouped_mean feature=pcap outcome=Kloc+ h=126.528;n=50.328;vh=159.500
+relationship grouped_mean feature=pcap outcome=Effort- h=921.623;n=348.705;vh=678.400
+relationship grouped_mean feature=pcap outcome=Defects- h=5360.769;n=2014.818;vh=5212.200
+relationship grouped_mean feature=pcap outcome=MonthsX h=28.815;n=19.282;vh=27.620
+relationship grouped_mean feature=pcon outcome=Kloc+ n=94.022
+relationship grouped_mean feature=pcon outcome=Effort- n=624.412
+relationship grouped_mean feature=pcon outcome=Defects- n=3761.763
+relationship grouped_mean feature=pcon outcome=MonthsX n=24.176
+relationship grouped_mean feature=apex outcome=Kloc+ h=105.752;l=7.250;n=61.409;vh=148.692
+relationship grouped_mean feature=apex outcome=Effort- h=774.702;l=648.000;n=402.471;vh=675.167
+relationship grouped_mean feature=apex outcome=Defects- h=4359.022;l=406.000;n=2177.765;vh=6239.917
+relationship grouped_mean feature=apex outcome=MonthsX h=27.052;l=15.600;n=19.476;vh=27.183
+relationship grouped_mean feature=plex outcome=Kloc+ h=132.273;l=54.036;n=75.949;vl=263.062
+relationship grouped_mean feature=plex outcome=Effort- h=1285.686;l=346.857;n=352.683;vl=1559.250
+relationship grouped_mean feature=plex outcome=Defects- h=5288.000;l=2458.643;n=2739.491;vl=13473.500
+relationship grouped_mean feature=plex outcome=MonthsX h=31.305;l=21.207;n=20.917;vl=38.550
+relationship grouped_mean feature=ltex outcome=Kloc+ h=102.430;l=12.675;n=95.379;vl=66.250
+relationship grouped_mean feature=ltex outcome=Effort- h=662.033;l=427.333;n=587.286;vl=401.000
+relationship grouped_mean feature=ltex outcome=Defects- h=4080.638;l=967.833;n=3583.571;vl=3075.750
+relationship grouped_mean feature=ltex outcome=MonthsX h=24.770;l=18.483;n=23.436;vl=25.075
+relationship grouped_mean feature=tool outcome=Kloc+ h=104.085;n=92.810
+relationship grouped_mean feature=tool outcome=Effort- h=776.700;n=606.064
+relationship grouped_mean feature=tool outcome=Defects- h=3538.500;n=3788.663
+relationship grouped_mean feature=tool outcome=MonthsX h=26.140;n=23.940
+relationship grouped_mean feature=site outcome=Kloc+ n=94.022
+relationship grouped_mean feature=site outcome=Effort- n=624.412
+relationship grouped_mean feature=site outcome=Defects- n=3761.763
+relationship grouped_mean feature=site outcome=MonthsX n=24.176
+relationship grouped_mean feature=sced outcome=Kloc+ l=66.265;n=110.018
+relationship grouped_mean feature=sced outcome=Effort- l=276.794;n=824.734
+relationship grouped_mean feature=sced outcome=Defects- l=2816.676;n=4306.390
+relationship grouped_mean feature=sced outcome=MonthsX l=18.688;n=27.339
+one_hot_linear_regression train_r2 Kloc+=0.8071,Effort-=0.6077,Defects-=0.8320,MonthsX=0.8117
+assumptions=each row is a historical project; categorical levels are nominal; numeric fields are measured as supplied; outcome suffixes indicate direction only
+limitations=observational data and in-sample regression do not establish causation or validate future delivery; small sample and possible confounding limit subgroup comparisons
+data_quality=validated nonblank finite numeric cells; categorical cells retained verbatim after trimming; no missing values detected; source metadata semantics should be confirmed
+real 0.51
+user 1.67
+sys 1.08

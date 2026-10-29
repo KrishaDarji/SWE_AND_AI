@@ -1,0 +1,10 @@
+rows=10000
+validation_errors=0
+flagged_records=101
+most_anomalous_row=7293
+anomaly_score=0.686312
+status=possible legitimate exceptional performance
+record={'MRE-': '0.16200294550810015', 'ACC+': '0.800704902', 'PRED40+': '1', 'N_estimators': '200', 'criterion': 'absolute_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '1', 'Max_depth': '3'}
+why=isolated joint metric/configuration profile
+uncertainty=IsolationForest is unsupervised; contamination=0.01 and random_state=42 are assumptions.
+limitations=Anomaly is not proof of error; no ground-truth outcomes or repeated trials are available.

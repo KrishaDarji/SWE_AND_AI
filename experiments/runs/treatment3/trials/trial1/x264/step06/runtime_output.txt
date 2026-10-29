@@ -1,0 +1,12 @@
+Recommended configuration for the platform administrator
+======================================================
+Dataset: /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv (1152 measured configurations)
+Recommendation: use the measured configuration with no_asm, no_8x8dct, no_cabac, no_deblock, rc_lookahead, rc_lookahead_20, ref, ref_1.
+Observed Performance-: 244.230
+Model-estimated Performance-: 244.272
+Dataset minimum: 244.230; dataset mean: 461.754
+Evidence: this observation is better than or equal to 100.0% of rows; holdout MAE=0.305, R2=1.000.
+Operational note: validate this setting on representative workloads before broad rollout.
+real 5.12
+user 5.40
+sys 1.98

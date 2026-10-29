@@ -1,0 +1,5 @@
+rows=10000 candidates=3
+baseline: MRE=0.346244477172 ACC=0.663248958667 PRED40=0.571428571429 config={'N_estimators': '110', 'criterion': 'absolute_error', 'Min_sample_leaves': '2', 'Min_impurity_decrease': '2', 'Max_depth': '2'}
+revised:  MRE=0.266126656848 ACC=0.681512336000 PRED40=0.571428571429 changed=criterion
+gain: error_reduction=0.080117820324 acc_change=+0.018263377333 pred40_change=+0.000000000000
+recommendation: change criterion from absolute_error to squared_error

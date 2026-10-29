@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+07,3,2,x264,choose,105,105,true,0.03,0,"1152 rows validated; 24 feasible; selected Performance- 254.587; lower is better; quality is a six-feature policy proxy because dataset has no quality column"

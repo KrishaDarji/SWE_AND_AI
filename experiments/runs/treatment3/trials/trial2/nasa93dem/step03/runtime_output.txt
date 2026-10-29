@@ -1,0 +1,19 @@
+NASA93DEM certify analysis
+Dataset rows: 93
+Target: Effort-; process-group feature: centerX
+Comparison: centerX=2 (A) vs centerX=5 (B); positive difference means A has lower mean Effort-
+Group sizes: A n=37, B n=39
+Mean Effort-: A=222.918919, B=1011.135897
+Observed mean difference (B-A): 788.216979
+Effect size (pooled standardized mean difference): 0.744178
+95% bootstrap CI for (B-A): [378.370295, 1307.664364]
+One-sided permutation p-value (A lower; 20000 permutations, seed=20261029): 0.000050
+Statistically credible at alpha=0.05: YES
+Interpretation: A lower mean is supported by this resampling analysis.
+Practical significance: the effect size and CI quantify magnitude in Effort- units; statistical significance alone does not establish a practically important difference.
+Assumptions/uncertainty: rows are treated as independent; the groups are fixed before testing; bootstrap and permutation results are Monte Carlo estimates; skew, outliers, confounding, and small groups may affect the result.
+Limitation: centerX is observational. This association is not proof that changing process center causes Effort- to change; no causal adjustment or experiment is provided.
+
+real 1.09
+user 1.01
+sys 0.06

@@ -1,0 +1,5 @@
+dataset_rows=93 evaluation_predictions=930 seed=20261029
+race mae=395.485661 rmse=872.549620 r2=0.403550
+historical_baseline mae=541.125806 rmse=1189.653848 r2=-0.108753
+better_by_mae=race
+runtime_seconds=0.450381

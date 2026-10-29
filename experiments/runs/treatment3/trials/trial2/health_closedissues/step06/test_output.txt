@@ -1,0 +1,9 @@
+test_load_and_validate (test_justify.JustifyTests) ... ok
+test_recommendation_is_observed_and_reproducible (test_justify.JustifyTests) ... ok
+test_rejects_bad_outcome (test_justify.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.654s
+
+OK
+test_status=0

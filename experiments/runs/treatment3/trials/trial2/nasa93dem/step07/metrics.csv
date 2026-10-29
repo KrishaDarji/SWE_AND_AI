@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+07,3,2,nasa93dem,choose,137,137,1,0.002931,0,"3 unittest cases passed; 93 rows evaluated; 31 feasible; selected id 78 at 97.0 person-months and 165.0 KLOC; LOC measured with wc -l across source and tests; runtime measured by implementation's perf_counter"

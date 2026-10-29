@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,3,2,health_closedissues,race,150,150,3,1.16,0,"3 tests passed; runtime exit 0; selector utility 0.592052 vs historical baseline 0.609064; baseline higher by 0.017012 on 6000/4000 ordered split"

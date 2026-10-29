@@ -1,0 +1,9 @@
+validated_rows=10000
+suspicious_csv_row=10000 anomaly_score=1.000000
+configuration={'N_estimators': 200.0, 'criterion': 'squared_error', 'Min_sample_leaves': 7.0, 'Min_impurity_decrease': 0.25, 'Max_depth': 10.0}
+metrics={'MRE-': 0.6991163475699558, 'ACC+': 0.49471323293816083, 'PRED40+': 0.14285714285714285}
+metric_mad_scores={'MRE-': 2.133, 'ACC+': 0.9807, 'PRED40+': inf}
+method=robust median/MAD ensemble rank; seed=20261029
+real 2.36
+user 2.34
+sys 0.01

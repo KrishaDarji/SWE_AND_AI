@@ -1,0 +1,26 @@
+Implemented an independent x264 anomaly screen in `source/anomaly_detector.py`.
+
+Method
+- Validates CSV structure, required `Performance-`, numeric finite values, and missing values.
+- Computes a median/MAD robust score for performance.
+- Fits a fixed-seed (`20261029`) scikit-learn Isolation Forest to standardized configuration fields plus performance.
+- Ranks records by 70% capped robust deviation and 30% normalized isolation score.
+- Flags records at >=3.5 robust deviations or combined score >=0.45.
+
+Measured result
+- 1,152 records and 16 configuration fields validated.
+- 7 records flagged.
+- Most anomalous: CSV record 939 (zero-based data index 937), `Performance- = 821.76`.
+- Median performance: 452.7785; MAD: 153.0885; robust score: 1.625691.
+- Combined score: 0.489664; isolation score: 0.098232.
+- Interpretation: higher-than-typical, possibly legitimate exceptional performance. It is not a strong measurement-error signal because it is not a low-performance outlier and is only 1.63 robust deviations from the center. Re-run the configuration if operational confidence is required.
+
+The implementation cannot prove error versus legitimate performance without repeated runs. Assumptions are that rows are independent, higher `Performance-` is better, and configuration columns are numeric switches/parameters. Limitations include no run variance, timestamps, hardware telemetry, or input/cache information; Isolation Forest can flag rare but valid configurations. Confounders include machine load, thermal throttling, compiler/runtime variation, and input/cache effects.
+
+Tests
+`python3 -m unittest discover -s experiments/runs/treatment3/trials/trial2/x264/step09/tests -v`
+
+Runtime command
+`python3 experiments/runs/treatment3/trials/trial2/x264/step09/source/anomaly_detector.py moot/optimize/config/X264_AllMeasurements.csv`
+
+Captured outputs are in `test_output.txt` and `runtime_output.txt`.

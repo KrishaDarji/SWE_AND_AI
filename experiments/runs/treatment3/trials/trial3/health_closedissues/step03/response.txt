@@ -1,0 +1,11 @@
+Implemented and ran the independent certify skill for Health-ClosedIssues0000.csv.
+
+Dataset validation found 10,000 rows, quality targets MRE- (lower is better), ACC+ (higher is better), and PRED40+ (higher is better), plus the configuration-family feature criterion. The primary reproducible contrast was pre-specified as poisson minus absolute_error. Each target was min–max normalized within the dataset, MRE- was direction-reversed, and the three resulting quality components were averaged.
+
+Observed groups: absolute_error n=3,302, mean score=0.284533; poisson n=3,335, mean score=0.310228; squared_error n=3,363, mean score=0.338433.
+
+Poisson minus absolute_error effect: 0.025695 quality-score points. Bootstrap 95% CI: [0.016859, 0.034302]. One-sided permutation-test p-value: 0.000100, using seed 20261029 and 10,000 permutations. At alpha=0.05, the observed difference is statistically credible for this contrast.
+
+Practical significance: the estimated advantage is positive but modest on a bounded 0–1 composite scale; its practical value depends on the application’s tolerance for MRE, ACC, and PRED40 tradeoffs. The target-level means were MRE- 0.750869 vs 0.703403, ACC+ 0.477793 vs 0.500910, and PRED40+ 0.126676 vs 0.133176 for absolute_error vs poisson, respectively.
+
+Assumptions and limitations: permutation validity requires exchangeability under the null; rows may not be independent; min–max scaling is sample-dependent; several targets and three families are present; and unmeasured hyperparameter interactions or selection effects may confound the association. Therefore this result supports a dataset-specific statistical difference, not proof that criterion causes better model quality.

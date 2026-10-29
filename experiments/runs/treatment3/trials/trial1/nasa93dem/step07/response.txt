@@ -1,0 +1,14 @@
+Complete source code: source/choose_project.py
+Tests: tests/test_choose_project.py
+
+Run command:
+python3 step07/source/choose_project.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Approach:
+Load and clean the categorical project settings, one-hot encode them with sklearn DictVectorizer, and fit deterministic random-forest regressors for Kloc+, Effort-, Defects-, and MonthsX. Use the dataset median Effort- as the fixed budget. Score observed settings by predicted Kloc+ divided by defect and schedule risk, retain only settings whose predicted effort is within budget, and select the highest score.
+
+Measured result:
+All 3 tests passed. Runtime was 2.34 seconds. The selected observed setting is project 63; predicted effort is 182.4847 against a 252.0 budget, with delivered value 10.7346576.
+
+Assumptions and limitations:
+The prompt does not specify a numeric budget, so the median observed Effort- is used. Delivered value is defined as predicted Kloc+ penalized by predicted defects and months. Optimization is limited to observed configurations, so it does not discover unseen combinations. Random-forest estimates are trained and evaluated on the same small dataset; they are decision support, not causal or production estimates.

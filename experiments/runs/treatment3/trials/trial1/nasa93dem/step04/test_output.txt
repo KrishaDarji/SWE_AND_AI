@@ -1,0 +1,11 @@
+test_assessment_has_stable_contract (test_project_flow.FlowTests.test_assessment_has_stable_contract) ... ok
+test_fit_discovers_features_and_targets (test_project_flow.FlowTests.test_fit_discovers_features_and_targets) ... ok
+test_unknown_categories_and_missing_fields_are_supported (test_project_flow.FlowTests.test_unknown_categories_and_missing_fields_are_supported) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.109s
+
+OK
+real 2.65
+user 0.67
+sys 0.14

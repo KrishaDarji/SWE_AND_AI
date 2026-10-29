@@ -1,0 +1,8 @@
+test_candidates_are_one_step_and_recommendation_is_cheap (test_fix_skill.FixSkillTests) ... ok
+test_load_and_validate (test_fix_skill.FixSkillTests) ... ok
+test_uncertainty_is_measured (test_fix_skill.FixSkillTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.978s
+
+OK

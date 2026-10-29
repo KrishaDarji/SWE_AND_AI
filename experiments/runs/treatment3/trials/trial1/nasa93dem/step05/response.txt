@@ -1,0 +1,7 @@
+Approach: Read nasa93dem.csv with the standard csv module; define excessive effort as Effort- above its median (252.0); exclude outcome-like fields (Defects-, MonthsX) and the identifier; one-hot encode categorical project factors and standardize numeric factors; fit logistic regression; estimate each original factor's association with excessive effort using repeated permutation importance and report stratified cross-validated accuracy.
+
+Measured result: 93 projects were analyzed, with 47 above the median effort cutoff. Cross-validated accuracy was 0.8169590643. The strongest positive predictive associations were Kloc+ (0.19247), apex (0.05968), plex (0.03710), centerX (0.03548), and pcap (see runtime_output.txt for the complete ranking). These are associations, not causal effects.
+
+Known assumptions and limitations: the median is an arbitrary binary threshold; the small observational dataset can produce unstable rankings; one-hot categories are treated as nominal; permutation importance reflects predictive signal and can be diluted by correlated factors; Defects- and MonthsX are excluded to avoid leakage from other outcomes; the model does not establish causation.
+
+Run command: python3 step05/source/blame.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv

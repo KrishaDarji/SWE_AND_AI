@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,1,machine-learning model configuration,certify,115,115,true,3.242949,0,"Equal-weight min-max composite; 2000 bootstrap resamples; seed 20261029"

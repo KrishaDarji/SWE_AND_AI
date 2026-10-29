@@ -1,0 +1,3 @@
+Implemented an independent x264 chooser in source/choose.py with CSV schema/value validation, an explicit quality constraint requiring no disabling of the six quality-affecting tools, deterministic minimization of Performance-, and a no-feasible result path.
+
+Assumptions and trade-offs: the CSV has no separate quality metric, so quality is represented by preserving the quality-affecting tools encoded by the no_* flags. Lower Performance- is treated as better. This is a hard feasibility filter, not a predictive model; it cannot estimate quality outside the observed configurations. Ties are resolved deterministically by the configuration columns. The result is sensitive to the dataset's measurement noise and to the chosen proxy constraint.

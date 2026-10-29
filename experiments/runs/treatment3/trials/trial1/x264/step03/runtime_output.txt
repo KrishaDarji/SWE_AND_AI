@@ -1,0 +1,13 @@
+target: Performance-
+measurements: 1152 candidate: 116 reference: 1036
+improvement (reference mean - candidate mean): 229.484036
+95% bootstrap CI: [219.718148, 239.134840]
+one-sided permutation p-value: 0.000100
+statistically credible: True
+runtime_seconds: 4.184139
+real 4.61
+user 4.76
+sys 2.11
+
+TEST_EXIT=0
+RUN_EXIT=0

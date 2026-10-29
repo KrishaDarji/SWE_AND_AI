@@ -1,0 +1,14 @@
+n=1152
+worst_n=116
+remaining_n=1036
+worst_mean=753.3960948275862
+remaining_mean=429.0986447876448
+effect_difference=324.29745003994145
+effect_size_cohens_d=2.4939201139873473
+bootstrap_ci_low=313.5251272583543
+bootstrap_ci_high=335.2423047879777
+permutation_p_one_sided=9.999000099990002e-05
+credible=True
+seed=20261029
+bootstrap_reps=10000
+permutation_reps=10000

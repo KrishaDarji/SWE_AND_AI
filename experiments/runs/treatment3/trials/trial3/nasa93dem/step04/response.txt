@@ -1,0 +1,7 @@
+Implemented an independent sequential flow for NASA93DEM.
+
+Assumptions: Effort- is the planning objective and is minimized. Each complete row is evaluated as it arrives; idX, then arrival order, deterministically resolves equal Effort-. Blank, nonnumeric, non-finite, short, and overlong records are invalid. The final selected proposal is retained as its original row.
+
+The measured run processed all 93 records, accepted all 93, rejected none, and selected idX 6 at row 7 with Effort- 8.4. The running state is reproducible because parsing, ordering, comparison, and tie-breaking are deterministic.
+
+Uncertainty and limitations: this is a retrospective ranking of observed projects, not a causal or predictive model. It optimizes one metric and does not balance cost, defects, schedule, or feasibility. A stream ending before a valid observation has no selected proposal; schema errors stop execution because the dataset contract cannot be established.

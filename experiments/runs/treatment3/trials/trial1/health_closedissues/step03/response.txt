@@ -1,0 +1,18 @@
+Implementation complete.
+
+Complete source code: source/certify.py
+Tests: tests/test_certify.py
+Run command:
+python -m unittest discover -s step03/tests -v && python step03/source/certify.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Approach:
+The certifier treats each `criterion` value as a configuration family. It computes an equal-weight composite score from globally min-max-normalized MRE (reversed because lower is better), ACC, and PRED40. It compares every pair of families using 2,000 seeded bootstrap resamples. A family is called reliably better only when the 95% bootstrap confidence interval for the mean-score difference excludes zero.
+
+Measured result:
+`squared_error` is reliably better than `absolute_error` and `poisson`; its mean composite score is 0.338433 versus 0.284533 and 0.310228. All 2 tests passed. Runtime was 3.242949 seconds.
+
+Assumptions and limitations:
+- The three metrics are commensurably combined after min-max normalization, with equal weights.
+- Rows are treated as independent observations within each family.
+- Bootstrap uncertainty reflects sampled configuration variation, not repeated train/test splits or external generalization.
+- The result certifies this dataset and scoring definition; it does not prove universal superiority on new data.

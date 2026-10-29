@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,3,health_closedissues,certify,144,144,true,7.24,0,"unittest: 2 passed; implementation: success; 10000 rows; primary contrast poisson minus absolute_error; seed 20261029; 10000 permutations; 5000 bootstrap resamples"

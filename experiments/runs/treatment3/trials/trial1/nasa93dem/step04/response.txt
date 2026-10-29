@@ -1,0 +1,9 @@
+Implemented an arrival-time proposal flow. It trains a scikit-learn random-forest multi-output regressor on NASA93 historical projects, imputes missing values, one-hot encodes categorical attributes, predicts effort/defects/months, computes a bounded risk score, and emits accept/defer/review decisions when an effort budget is supplied. Tests and measured command outputs are recorded alongside the source.
+
+Run command:
+python -m unittest discover -s tests -v
+
+CLI example:
+printf '%s\n' '{"name":"new project","Kloc+":20,"rely":"h"}' | python source/project_flow.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --effort-budget 100
+
+Assumptions and limitations: proposals use NASA93 attribute names; missing fields are allowed; unknown categories are ignored; the historical sample is small and observational; random-forest predictions are estimates, not calibrated forecasts; risk is a transparent heuristic and should be reviewed by portfolio owners.

@@ -1,0 +1,12 @@
+Sponsor estimate justification
+================================
+Dataset: nasa93dem.csv (93 historical projects)
+Estimate: 11.7 months; planning range: 7.6-15.8 months.
+Evidence: five-fold cross-validation mean absolute error was 2.8 months (fold spread 1.3); the model used size, effort, and categorical project factors.
+Independent check: the final historical row was 12.0 months; its model estimate was 11.7.
+Recommendation: fund to the upper end of the range and revisit the forecast at each milestone.
+Risk: this is observational historical data, so novel technology, staffing changes, and scope growth can move the result.
+real 1.13
+user 2.25
+sys 1.23
+RUN_STATUS=0

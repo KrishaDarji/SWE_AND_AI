@@ -1,0 +1,8 @@
+test_analysis_is_reproducible_and_has_required_statistics (test_certify_nasa93dem.CertifyTests.test_analysis_is_reproducible_and_has_required_statistics) ... ok
+test_load_and_schema (test_certify_nasa93dem.CertifyTests.test_load_and_schema) ... ok
+test_report_mentions_noncausal_limitation (test_certify_nasa93dem.CertifyTests.test_report_mentions_noncausal_limitation) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.977s
+
+OK

@@ -1,0 +1,9 @@
+Implemented an isolated x264 fix evaluator in source/x264_fix.py.
+
+Run command:
+  python3 -m unittest discover -s tests -v
+  python3 source/x264_fix.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+The dataset validated as 1,152 rows and 16 binary settings. The slow baseline is the maximum measured Performance- value, 821.963. Among seven measured one-setting improvements, the best is changing no_mixed_refs from 0 to 1. Its revised result is 671.400, an absolute gain of 150.563, or 18.32% lower.
+
+Assumptions and limitations: this treats larger Performance- as slower and lower as better because the file does not define the metric. It searches only measured rows at Hamming distance one, and chooses the lowest measured revised value. The result is observational: association between this setting and the measured result is not proof that changing the setting causes the improvement. Dataset coverage, measurement noise, confounding settings, and the metric's meaning are unresolved; a controlled rerun is needed to establish causation. If no improving one-setting candidate exists, the program reports recommendation=none.

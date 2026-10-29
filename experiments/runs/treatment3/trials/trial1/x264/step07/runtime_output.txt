@@ -1,0 +1,32 @@
+{
+  "feasible_count": 9,
+  "measured_performance": 268.72,
+  "model_check": {
+    "predicted_best_measured_performance": 268.72,
+    "test_r2": 0.9504614680865178
+  },
+  "quality_constraint": "all quality-sensitive no_* switches equal 0",
+  "runtime_seconds": 0.00696933304425329,
+  "selected_configuration": {
+    "no_8x8dct": 0,
+    "no_asm": 1,
+    "no_cabac": 0,
+    "no_deblock": 0,
+    "no_fast_pskip": 0,
+    "no_mbtree": 0,
+    "no_mixed_refs": 0,
+    "no_weightb": 0,
+    "rc_lookahead": 1,
+    "rc_lookahead_20": 1,
+    "rc_lookahead_40": 0,
+    "rc_lookahead_60": 0,
+    "ref": 1,
+    "ref_1": 1,
+    "ref_5": 0,
+    "ref_9": 0
+  },
+  "total_count": 1152
+}
+real 0.47
+user 0.41
+sys 0.06

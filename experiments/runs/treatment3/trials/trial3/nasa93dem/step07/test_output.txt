@@ -1,0 +1,11 @@
+test_load_and_validate_real_dataset (test_choose.ChooseTests) ... ok
+test_no_feasible_configuration (test_choose.ChooseTests) ... ok
+test_selects_best_feasible_value (test_choose.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+real 0.04
+user 0.03
+sys 0.00

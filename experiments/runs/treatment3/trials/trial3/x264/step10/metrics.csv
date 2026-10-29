@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,3,3,x264,race,117,117,1,0.999141708,0,"3 tests passed; 1152 rows and 16 binary features validated; fixed seed 314159; 70/30 split; budget 24; selector best 246.237/regret 0.000/oracle hit 1; baseline best 254.013/regret 7.776/oracle hit 0"

@@ -1,0 +1,8 @@
+test_invalid_and_infeasible_rows_are_skipped (test_choose.ChooseTests) ... ok
+test_load_dataset_and_select (test_choose.ChooseTests) ... ok
+test_no_feasible_rows_fails (test_choose.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.047s
+
+OK

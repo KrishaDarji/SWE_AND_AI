@@ -1,0 +1,74 @@
+{
+  "assumptions": [
+    "rows are independent benchmark runs",
+    "larger Performance- is better",
+    "configuration columns are numeric switches/parameters"
+  ],
+  "confounders": [
+    "machine load, thermal throttling, compiler/runtime variation, and input/cache effects"
+  ],
+  "dataset": "../../../../../../../moot/optimize/config/X264_AllMeasurements.csv",
+  "features": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9"
+  ],
+  "flagged_count": 7,
+  "flagged_record_numbers": [
+    939,
+    1110,
+    941,
+    944,
+    787,
+    867,
+    872
+  ],
+  "interpretation": "higher-than-typical (possibly legitimate exceptional performance)",
+  "limitations": [
+    "no repeated-run variance or timestamps are available",
+    "Isolation Forest can flag rare valid configurations",
+    "thresholds are screening heuristics, not proof of error"
+  ],
+  "mad": 153.0885,
+  "median_performance": 452.7785,
+  "records": 1152,
+  "robust_scale": 226.9690101,
+  "top_combined_score": 0.48966396182324745,
+  "top_configuration": {
+    "Performance-": "821.760 ",
+    "no_8x8dct": "0",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "1",
+    "no_fast_pskip": "1",
+    "no_mbtree": "1",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "0",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "1",
+    "ref": "1",
+    "ref_1": "0",
+    "ref_5": "0",
+    "ref_9": "1"
+  },
+  "top_index_zero_based": 937,
+  "top_isolation_score": 0.09823239233234271,
+  "top_performance": 821.76,
+  "top_record_number": 939,
+  "top_robust_score": 1.6256911013421211
+}

@@ -1,0 +1,7 @@
+events=10
+running={'observations': 10000, 'invalid_records': 0, 'mean_utility': -0.06631260599411358, 'best_utility': 1.9702503681885126, 'best_ordinal': 7556}
+selected_configuration=(10, 'squared_error', 1, 3.0, 10)
+selected_objectives=(0.029749631811487497, 1.0, 1.0)
+real 0.63
+user 0.96
+sys 1.57

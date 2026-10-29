@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,3,nasa93dem,certify,96,96,true,0.19,0,"Validated 93 rows; centerX groups 2 (n=37) and 5 (n=39); difference=788.216979; standardized_effect=0.734549; bootstrap_95ci=[386.223434,1318.785570]; one-sided_permutation_p=0.000100; seed=303; 2 tests passed"

@@ -1,0 +1,8 @@
+test_dataset_validates_and_is_reproducible (test_anomaly_detector.DetectorTests) ... ok
+test_missing_target_rejected (test_anomaly_detector.DetectorTests) ... ok
+test_result_has_anomaly_and_configuration (test_anomaly_detector.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.379s
+
+OK

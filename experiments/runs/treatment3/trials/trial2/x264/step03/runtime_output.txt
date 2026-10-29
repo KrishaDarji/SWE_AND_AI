@@ -1,0 +1,14 @@
+n=1152
+lowest_decile_n=115
+remaining_n=1037
+low_mean=255.3030434783
+remaining_mean=484.6483056895
+effect_difference=229.3452622112
+cohens_d=1.5563790799
+bootstrap_ci_low=219.8185866588
+bootstrap_ci_high=238.9293551465
+permutation_pvalue=0.0000999900
+conclusion=statistically credible quality improvement
+real 8.72
+user 8.67
+sys 0.03

@@ -1,0 +1,25 @@
+NASA93DEM sponsor-facing effort justification
+
+Recommendation: plan for 274.0 person-months of effort.
+Indicative 90% prediction band: 0.0 to 944.2 person-months.
+This band reflects historical out-of-fold absolute errors; it is not a guarantee.
+
+Historical evidence:
+- 93 NASA93DEM projects; observed effort median 252.0, range 8.4–8211.0 person-months.
+- Representative proposal uses numeric medians and categorical modes from the dataset (KLOC median 47.5).
+
+Model evidence:
+- Random forest holdout: MAE 179.4, RMSE 341.2, R² 0.07 (n=19).
+- Five-fold out-of-fold MAE: 271.7; 90th-percentile absolute error: 670.2.
+
+Risks and assumptions:
+- The proposal is synthetic and representative, not a fully reviewed project plan.
+- Estimates are sensitive to size, capability, complexity, reliability, reuse, tools, and schedule attributes; missing or optimistic inputs can bias the result.
+- NASA93DEM projects may not match the sponsor's team, technology, constraints, or current prices; contingency and staged re-estimation are prudent.
+
+Alternatives and limitations:
+- A median baseline is transparent but ignores project-specific attributes; the model adds pattern detection but is less explainable.
+- This is observational historical association, not causal evidence: the data cannot establish that changing one attribute will cause effort to change.
+- Validate with an independently elicited size/work-breakdown estimate and update after requirements and architecture milestones.
+Runtime summary:
+{"estimate_person_months": 274.017, "metrics": {"mae": 179.36181879762543, "n": 93, "oof_mae": 271.67560400874515, "oof_q90_abs_error": 670.180534523809, "r2": 0.07449658477067533, "rmse": 341.2377954754246, "test_n": 19}, "prediction_interval": [0.0, 944.197], "rows": 93, "runtime_seconds": 0.5538}

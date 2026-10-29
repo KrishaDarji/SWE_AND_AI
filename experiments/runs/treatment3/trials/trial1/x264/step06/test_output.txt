@@ -1,0 +1,10 @@
+test_load_and_recommend_real_dataset (test_justify_config.JustificationTests) ... ok
+test_rejects_missing_target (test_justify_config.JustificationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 4.349s
+
+OK
+real 5.17
+user 5.66
+sys 1.19

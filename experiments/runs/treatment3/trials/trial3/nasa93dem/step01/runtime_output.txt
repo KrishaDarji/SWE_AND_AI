@@ -1,0 +1,95 @@
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+NASA93DEM historical project summary
+dataset=/Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+rows=93 columns=29
+project_features (25): idX, centerX, YearX, prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced
+outcomes (4): Kloc+, Effort-, Defects-, MonthsX
+validation_errors=0
+
+Outcome distributions
+Kloc+: n=93, missing_or_invalid=0, mean=94.02, median=47.50, sd=133.60, min=0.90, max=980.00
+Effort-: n=93, missing_or_invalid=0, mean=624.41, median=252.00, sd=1135.93, min=8.40, max=8211.00
+Defects-: n=93, missing_or_invalid=0, mean=3761.76, median=2007.00, sd=6145.06, min=28.00, max=50961.00
+MonthsX: n=93, missing_or_invalid=0, mean=24.18, median=21.40, sd=12.97, min=4.90, max=96.40
+
+Categorical feature levels
+idX: levels=92, top=[('29', 2), ('1', 1), ('2', 1), ('3', 1)]
+centerX: levels=5, top=[('5', 39), ('2', 37), ('1', 12), ('6', 3)]
+YearX: levels=14, top=[('1979', 19), ('1982', 13), ('1980', 11), ('1977', 10)]
+prec: levels=1, top=[('h', 93)]
+flex: levels=1, top=[('h', 93)]
+resl: levels=1, top=[('h', 93)]
+team: levels=1, top=[('vh', 93)]
+pmat: levels=3, top=[('h', 43), ('n', 30), ('l', 20)]
+rely: levels=4, top=[('h', 42), ('n', 39), ('vh', 10), ('l', 2)]
+data: levels=4, top=[('l', 37), ('n', 31), ('h', 17), ('vh', 8)]
+cplx: levels=5, top=[('h', 58), ('vh', 17), ('n', 10), ('xh', 5)]
+ruse: levels=1, top=[('n', 93)]
+docu: levels=1, top=[('n', 93)]
+time: levels=4, top=[('n', 54), ('vh', 18), ('h', 13), ('xh', 8)]
+stor: levels=4, top=[('n', 49), ('vh', 21), ('xh', 13), ('h', 10)]
+pvol: levels=3, top=[('l', 65), ('n', 19), ('h', 9)]
+acap: levels=3, top=[('h', 51), ('n', 32), ('vh', 10)]
+pcap: levels=3, top=[('n', 44), ('h', 39), ('vh', 10)]
+pcon: levels=1, top=[('n', 93)]
+apex: levels=4, top=[('h', 46), ('n', 34), ('vh', 12), ('l', 1)]
+plex: levels=4, top=[('n', 53), ('h', 22), ('l', 14), ('vl', 4)]
+ltex: levels=4, top=[('h', 69), ('n', 14), ('l', 6), ('vl', 4)]
+tool: levels=2, top=[('n', 83), ('h', 10)]
+site: levels=1, top=[('n', 93)]
+sced: levels=2, top=[('n', 59), ('l', 34)]
+
+Outcome relationships
+pmat: Kloc+:r=-0.21, Effort-:r=+0.04, Defects-:r=-0.29, MonthsX:r=-0.19
+rely: Kloc+:r=+0.14, Effort-:r=+0.40, Defects-:r=+0.13, MonthsX:r=+0.29
+data: Kloc+:r=+0.05, Effort-:r=+0.20, Defects-:r=+0.06, MonthsX:r=+0.24
+cplx: Kloc+:r=+0.05, Effort-:r=+0.30, Defects-:r=+0.13, MonthsX:r=+0.23
+time: Kloc+:r=+0.09, Effort-:r=+0.45, Defects-:r=+0.14, MonthsX:r=+0.33
+stor: Kloc+:r=+0.06, Effort-:r=+0.34, Defects-:r=+0.11, MonthsX:r=+0.26
+pvol: Kloc+:r=-0.03, Effort-:r=+0.13, Defects-:r=-0.02, MonthsX:r=+0.13
+acap: Kloc+:r=+0.21, Effort-:r=+0.12, Defects-:r=+0.17, MonthsX:r=+0.25
+pcap: Kloc+:r=+0.31, Effort-:r=+0.18, Defects-:r=+0.24, MonthsX:r=+0.31
+apex: Kloc+:r=+0.23, Effort-:r=+0.11, Defects-:r=+0.23, MonthsX:r=+0.26
+plex: Kloc+:r=+0.01, Effort-:r=+0.14, Defects-:r=-0.06, MonthsX:r=+0.09
+ltex: Kloc+:r=+0.13, Effort-:r=+0.07, Defects-:r=+0.10, MonthsX:r=+0.07
+tool: Kloc+:r=+0.03, Effort-:r=+0.05, Defects-:r=-0.01, MonthsX:r=+0.05
+sced: Kloc+:r=+0.16, Effort-:r=+0.23, Defects-:r=+0.12, MonthsX:r=+0.32
+
+Simple predictive check
+Kloc+: in_sample_R2=1.000, predictors=168
+Effort-: in_sample_R2=1.000, predictors=168
+Defects-: in_sample_R2=1.000, predictors=168
+MonthsX: in_sample_R2=1.000, predictors=168
+
+Assumptions and limitations
+- Columns ending in + or - and MonthsX are treated as delivery/effort outcomes; all others are project features.
+- Rating codes vl/l/n/h/vh/xh are mapped to increasing ordinal values for correlations; this is an approximation.
+- Correlations are unadjusted associations, not causal effects; the in-sample regression check is descriptive, not validation.
+- The file has no explicit delivery-date or on-time-success field, so MonthsX is used as duration and Effort-/Defects- as outcomes.
+- Potential quality issues include compact categorical codes, historical measurement conventions, and possible skew/outliers in numeric outcomes.
+real 0.53
+user 0.65
+sys 2.51

@@ -1,0 +1,7 @@
+test_certification_finds_clear_winner (test_certify.CertificationTests.test_certification_finds_clear_winner) ... ok
+test_score_prefers_lower_error_and_higher_positive_metrics (test_certify.CertificationTests.test_score_prefers_lower_error_and_higher_positive_metrics) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

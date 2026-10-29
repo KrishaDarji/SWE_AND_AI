@@ -1,0 +1,15 @@
+{
+  "dataset_rows": 93,
+  "feasible_count": 66,
+  "selected": {
+    "defects": 8477.0,
+    "effort": 444.0,
+    "id": 67,
+    "kloc": 339.0,
+    "months": 45.9,
+    "value": 13.035503629764065
+  }
+}
+real 0.02
+user 0.01
+sys 0.00

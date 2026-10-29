@@ -1,0 +1,63 @@
+# Complete source code
+
+See `source/fix_recommender.py` in this directory. It loads the x264 CSV, trains a RandomForestRegressor, and ranks all Hamming-distance-one setting flips.
+
+# Tests
+
+See `tests/test_fix_recommender.py`.
+
+# Run
+
+`python3 source/fix_recommender.py`
+
+# Approach
+
+The slowest observed row is the default input. Each possible single binary setting flip is scored by a scikit-learn random-forest model, and the lowest predicted performance value is returned. A JSON configuration can be supplied with `--config`.
+
+# Assumptions and limitations
+
+Performance- is treated as a lower-is-better runtime metric; all settings are binary; the CSV has the final column as the target; model predictions are estimates and are not a substitute for running the encoder.
+
+# Measured test output
+
+test_load_and_one_change (test_fix_recommender.RecommenderTests) ... ok
+test_unknown_setting_rejected (test_fix_recommender.RecommenderTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.072s
+
+OK
+
+# Measured implementation output
+
+{
+  "configuration": {
+    "no_8x8dct": 0,
+    "no_asm": 1,
+    "no_cabac": 0,
+    "no_deblock": 1,
+    "no_fast_pskip": 1,
+    "no_mbtree": 1,
+    "no_mixed_refs": 0,
+    "no_weightb": 1,
+    "rc_lookahead": 1,
+    "rc_lookahead_20": 1,
+    "rc_lookahead_40": 0,
+    "rc_lookahead_60": 0,
+    "ref": 1,
+    "ref_1": 1,
+    "ref_5": 0,
+    "ref_9": 1
+  },
+  "current_performance": 821.8234916666677,
+  "dataset": "X264_AllMeasurements.csv",
+  "feature_count": 16,
+  "from": 0,
+  "measured_source_row": 870,
+  "predicted_improvement": 268.59005833333447,
+  "predicted_performance": 553.2334333333332,
+  "runtime_seconds": 0.14771820799999996,
+  "setting_changed": "ref_1",
+  "source": "slowest_dataset_row",
+  "to": 1
+}

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+06,3,3,Health-ClosedIssues model configuration,justify,130,130,1,17.54,0,"2 unit tests passed; 80/20 holdout seed 41 MAE MRE- 0.014137 ACC+ 0.010032 PRED40+ 0.017858; five-holdout MAE SD MRE- 0.000398 ACC+ 0.000418 PRED40+ 0.001025"

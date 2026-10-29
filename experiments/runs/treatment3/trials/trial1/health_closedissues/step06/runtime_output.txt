@@ -1,0 +1,75 @@
+{
+  "dataset": "moot/optimize/hpo/Health-ClosedIssues0000.csv",
+  "evaluations": {
+    "extra_trees": {
+      "mae": 0.013952375705021822,
+      "per_target_mae": [
+        0.01447136574388712,
+        0.009639826049297185,
+        0.01774593532188113
+      ],
+      "r2": 0.9700336479827228,
+      "rmse": 0.0350918435571398,
+      "utility_mae": 0.012553377822865463,
+      "utility_r2": 0.9807017466846388,
+      "utility_rmse": 0.026007726192382005
+    },
+    "mean_baseline": {
+      "mae": 0.14997970441962424,
+      "per_target_mae": [
+        0.16776583210529547,
+        0.08916301329643096,
+        0.19301026785714287
+      ],
+      "r2": -2.328150027105143e-05,
+      "rmse": 0.2022128618801443,
+      "utility_mae": 0.14962113815204153,
+      "utility_r2": -4.020143956173783e-06,
+      "utility_rmse": 0.18721655775387963
+    },
+    "random_forest": {
+      "mae": 0.013884727483546766,
+      "per_target_mae": [
+        0.014576700204129045,
+        0.009865892869825567,
+        0.01721158937668571
+      ],
+      "r2": 0.969753796052315,
+      "rmse": 0.035162360457856076,
+      "utility_mae": 0.01254281891829267,
+      "utility_r2": 0.980701745327603,
+      "utility_rmse": 0.02600772710680189
+    }
+  },
+  "features": [
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "rows": 10000,
+  "runtime_seconds": 3.806748625,
+  "selected_configuration": {
+    "ACC+": "1",
+    "MRE-": "0.029749631811487497",
+    "Max_depth": "10",
+    "Min_impurity_decrease": "3",
+    "Min_sample_leaves": "1",
+    "N_estimators": "10",
+    "PRED40+": "1",
+    "criterion": "squared_error",
+    "observed_utility": 0.9900834560628375
+  },
+  "selected_model": "random_forest",
+  "split": {
+    "seed": 31415,
+    "test": 2000,
+    "train": 8000
+  },
+  "targets": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ]
+}

@@ -1,0 +1,24 @@
+Complete source code: source/justify_estimate.py
+Tests: tests/test_justify_estimate.py
+
+Run command:
+python3 source/justify_estimate.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Approach:
+Load the 93 historical projects, treat Kloc+ and Effort- as numeric fields and
+the remaining planning attributes as categorical fields, vectorize them with
+scikit-learn DictVectorizer, and fit a seeded RandomForestRegressor. Five-fold
+cross-validation estimates absolute error. The final report uses the fitted
+estimate plus mean error and fold-to-fold error spread to form a planning range,
+then states the evidence, recommendation, and risks for a skeptical sponsor.
+
+Known assumptions and limitations:
+- MonthsX is the duration target and idX is excluded as an identifier.
+- The final historical row is used only as a simple independent check in the
+  report; it is not a new project forecast.
+- The range is a pragmatic error-based planning interval, not a calibrated
+  statistical confidence or prediction interval.
+- The dataset is small and historical; scope growth, staffing, technology,
+  changing processes, and distribution shift may make the estimate unreliable.
+- The implementation expects the supplied CSV schema and numeric Kloc+/Effort-
+  values.

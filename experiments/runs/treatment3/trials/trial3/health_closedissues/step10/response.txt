@@ -1,0 +1,26 @@
+Treatment 3 is implemented in source/race.py and tested by tests/test_race.py.
+
+Dataset and validation
+- Input: moot/optimize/hpo/Health-ClosedIssues0000.csv.
+- Validation accepted 10,000 rows with the expected eight-column header, finite numeric values, targets in [0,1], and positive configuration values.
+
+Evaluation protocol
+- Five expanding chronological folds. Each fold trains only on preceding rows and selects from the immediately following block; the final fold consumes the remainder.
+- Seed 20261029; ExtraTreesRegressor uses 80 trees, min_samples_leaf=4, n_jobs=1, and the fold-specific seed.
+- The selector predicts MRE-, ACC+, and PRED40+ from the five configuration fields and selects the candidate maximizing utility=(1-MRE-+ACC++PRED40+)/3.
+- The historical baseline estimates each exact configuration's mean historical utility; unseen configurations receive the historical overall mean.
+
+Measured comparison
+Treatment 3 mean: MRE-=0.168513, ACC+=0.866581, PRED40+=1.000000, utility=0.899356.
+Historical baseline mean: MRE-=0.507482, ACC+=0.570010, PRED40+=0.342857, utility=0.468462.
+Treatment 3 wins all five folds and is better on the aggregate utility and every reported aggregate component. The baseline is relatively strongest in fold 5 (utility 0.817091 versus 0.911998), so its historical estimates can be competitive when the recent configuration-to-quality relationship changes or the test block contains a previously successful configuration.
+
+Uncertainty and limitations
+- Five chronological folds provide only five paired decisions per method; no confidence interval or broad generalization claim is justified.
+- The equal-weight utility is an experimental assumption and may not reflect clinical or operational priorities. MRE- is treated as an error where lower is better; ACC+ and PRED40+ are treated as higher-is-better.
+- Rows are assumed to be time/order meaningful. If row order is arbitrary, chronological validation may be inappropriate.
+- The dataset appears to contain repeated configuration observations; exact-configuration historical estimates can be unstable for sparse groups.
+- ExtraTrees predictions and the chosen hyperparameters are themselves modeling choices. Randomness is controlled, but this is not a nested model-selection study.
+- Selection among observed test candidates measures ranking quality on this benchmark, not deployment performance on a new workload. Distribution shift, omitted workload/context variables, duplicate rows, and metric construction can bias results.
+
+Tests and runtime output are captured in test_output.txt and runtime_output.txt; metrics.csv contains the measured run record.

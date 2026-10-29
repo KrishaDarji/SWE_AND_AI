@@ -1,0 +1,37 @@
+Recommendation
+
+Recommend the following Health-ClosedIssues configuration:
+
+  N_estimators=10
+  criterion=squared_error
+  Min_sample_leaves=1
+  Min_impurity_decrease=3
+  Max_depth=10
+
+Its observed training-split utility was 0.99008, with MRE-=0.02975, ACC+=1.0, and PRED40+=1.0. Utility is defined as (1 - MRE- + ACC+ + PRED40+) / 3, so higher is better and all three reported outcomes remain visible.
+
+Evidence
+
+The CSV has 10,000 rows, five configuration fields, and three bounded outcome fields. A deterministic 80/20 split (seed 31415) was used. The random-forest surrogate used 180 trees, min_samples_leaf=2, max_features=0.8, and one-hot encoding for criterion. On the 2,000-row held-out set it produced:
+
+  utility MAE  = 0.01254
+  utility RMSE = 0.02601
+  utility R2   = 0.98070
+  all-target MAE = 0.01388
+  all-target R2  = 0.96975
+
+Per-target MAE was 0.01458 for MRE-, 0.00987 for ACC+, and 0.01721 for PRED40+. These are measured outputs from runtime_output.txt, not assumed values.
+
+Why this is preferable
+
+ExtraTrees was a close alternative: utility MAE 0.01255, utility RMSE 0.02601, and utility R2 0.98070. The selected random forest was marginally better on MAE and tied on utility R2/RMSE, while remaining a conventional, interpretable ensemble for this mixed numeric/categorical search space. The mean baseline was substantially weaker: utility MAE 0.14962 and utility R2 approximately 0.0. Thus the recommendation has strong predictive support and is preferable to a no-signal baseline; its advantage over ExtraTrees is small, so the choice should not be treated as decisive on model family alone.
+
+Uncertainty and limitations
+
+The recommendation is the best observed row in the training partition, not a claim that the configuration will dominate every future workload. The held-out evaluation is one random split rather than repeated cross-validation, and the dataset may reflect a fixed workload or benchmark generation process. The outcomes are bounded and PRED40+ has only eight distinct values, which can make small score differences unstable. The utility weights all three components equally and normalizes MRE by reversal; a platform team with different operational costs should re-rank configurations with its actual weights. Finally, the surrogate predicts benchmark outcomes from hyperparameters; it does not establish causal performance, production latency, memory use, or robustness to distribution shift. Validate this configuration on an independent workload before deployment.
+
+Run command
+
+  python3 experiments/runs/treatment3/trials/trial1/health_closedissues/step06/source/justify.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Tests: 2 passed, 0 failed. The complete measured JSON is in runtime_output.txt.

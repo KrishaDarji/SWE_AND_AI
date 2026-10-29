@@ -1,0 +1,11 @@
+Implemented an independent x264 historical-dataset remember analysis.
+
+Measured result: 1,152 rows and 17 columns were validated. The dataset contains 16 configuration columns and one performance column (`Performance-`). Performance ranges from 244.230000 to 821.963000, with mean 461.753596, median 452.778500, and standard deviation 162.561722.
+
+The strongest univariate relationships are `ref_9` (Pearson 0.802809), `ref_1` (-0.802181), and `no_mixed_refs` (-0.194143). The in-sample linear model has R² 0.956200; three constant settings were excluded from model fitting but retained in summaries. These associations are descriptive, not causal.
+
+Run from this directory with:
+python3 -m unittest discover -s tests -v
+python3 source/remember_x264.py ../../../../../../moot/optimize/config/X264_AllMeasurements.csv
+
+All required artifacts are in this directory. The source documents assumptions, limitations, validation behavior, and data-quality checks.

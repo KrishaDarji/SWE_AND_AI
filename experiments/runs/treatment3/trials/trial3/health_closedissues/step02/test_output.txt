@@ -1,0 +1,7 @@
+test_loads_expected_schema_and_row_count (test_guess_skill.GuessSkillTests) ... ok
+test_training_reports_finite_holdout_metrics (test_guess_skill.GuessSkillTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.273s
+
+OK

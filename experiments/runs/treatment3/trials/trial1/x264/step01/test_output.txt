@@ -1,0 +1,8 @@
+test_constant_setting_is_reported (test_summarizer.SummarizerTests) ... ok
+test_real_dataset_shape_and_measure (test_summarizer.SummarizerTests) ... ok
+test_summary_rejects_empty_file (test_summarizer.SummarizerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.015s
+
+OK

@@ -1,0 +1,27 @@
+Certification result
+
+The dataset contains a statistically credible quality improvement under the specified comparison. Lower Performance- is better. I operationalized “lowest-performing decile” as the worst 10%: the 116 highest Performance- values out of 1,152 measurements. The remaining group contains 1,036 measurements.
+
+1. Effect size
+
+The worst-decile mean is 753.3961 and the remaining mean is 429.0986, so the mean excess Performance- is 324.2975 units. This is an adverse gap for the worst decile, equivalently a 324.2975-unit quality improvement when moving from the worst-decile level to the remaining-group level. Cohen’s d (pooled standard deviation) is 2.4939, a large standardized effect.
+
+2. Bootstrap confidence interval
+
+A deterministic, independent bootstrap with 10,000 within-group resamples and seed 20261029 gives a 95% percentile confidence interval for the mean gap of [313.5251, 335.2423] Performance- units.
+
+3. One-sided permutation-test p-value
+
+A deterministic randomization test with 10,000 label permutations tests the directional alternative that the worst-decile mean is higher than the remaining mean. With the +1 correction, p = 0.00009999 (1/10,001; no sampled permutation was at least as extreme as observed).
+
+4. Statistical credibility
+
+Yes. The confidence interval is entirely above zero and the one-sided p-value is below 0.05. This supports a statistically credible directional difference under the stated resampling assumptions.
+
+5. Practical significance, assumptions, uncertainty, and limitations
+
+The estimated 324.3-unit gap is large relative to the pooled within-dataset standard deviation, so it is practically material if Performance- units are decision-relevant on their observed scale. This analysis is descriptive/certification evidence for this dataset; it does not establish that a controllable treatment caused the difference.
+
+Assumptions: rows are exchangeable within the two compared groups for bootstrap resampling; the permutation null is exchangeability of group labels; measurements are numeric and the 90/10 split is determined from the observed outcome; the highest values correctly represent the lowest-performing outcomes; and the observations are sufficiently independent for these resampling procedures.
+
+Uncertainty and limitations: the decile is outcome-selected, so the comparison is subject to selection/regression-to-the-tail effects and is not an unbiased estimate of an intervention effect. Dependence, repeated configurations, hidden covariates, heteroscedasticity, ties, external validity, and the arbitrary 10% cutoff may affect inference. The p-value is Monte Carlo resolution-limited by 10,000 permutations and is not a substitute for a preregistered confirmatory model. The results use the exact dataset values and deterministic seed recorded above.

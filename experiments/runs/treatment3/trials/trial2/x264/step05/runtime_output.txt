@@ -1,0 +1,15 @@
+Loaded 1152 rows, 16 settings; target=Performance-
+Slow cutoff (75th percentile): 580.737750; slow rows=288
+5-fold random-forest CV R2: 0.999968
+Top settings by permutation importance (mean +/- std):
+  ref_9: 0.539563 +/- 0.014823; mean diff=276.724770; slow-rate diff=0.750000
+  ref_1: 0.515129 +/- 0.018967; mean diff=-276.508340; slow-rate diff=-0.375000
+  no_mixed_refs: 0.122329 +/- 0.004838; mean diff=-63.093116; slow-rate diff=-0.159722
+  no_fast_pskip: 0.097832 +/- 0.002889; mean diff=57.022120; slow-rate diff=0.166667
+  no_mbtree: 0.058688 +/- 0.002281; mean diff=50.739828; slow-rate diff=0.006944
+  ref_5: 0.023899 +/- 0.000815; mean diff=-0.216430; slow-rate diff=-0.375000
+  no_8x8dct: 0.008769 +/- 0.000380; mean diff=-20.763821; slow-rate diff=-0.006944
+  no_cabac: 0.001269 +/- 0.000051; mean diff=-7.851793; slow-rate diff=-0.006944
+  rc_lookahead_20: 0.000032 +/- 0.000002; mean diff=-1.203148; slow-rate diff=-0.007813
+  no_deblock: 0.000029 +/- 0.000002; mean diff=0.302974; slow-rate diff=0.000000
+Runtime seconds: 6.547306

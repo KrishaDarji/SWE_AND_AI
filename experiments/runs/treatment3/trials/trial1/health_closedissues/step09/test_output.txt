@@ -1,0 +1,8 @@
+test_missing_column_is_rejected (test_experiment.ExperimentTests.test_missing_column_is_rejected) ... ok
+test_out_of_range_metric_is_reported (test_experiment.ExperimentTests.test_out_of_range_metric_is_reported) ... ok
+test_real_dataset_validates_and_analyzes (test_experiment.ExperimentTests.test_real_dataset_validates_and_analyzes) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.158s
+
+OK

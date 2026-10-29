@@ -1,0 +1,12 @@
+Complete source code: source/flow.py
+
+Tests: tests/test_flow.py
+
+Run command:
+python3 source/flow.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --output /tmp/x264_step04_stream.jsonl
+
+Approach: The CSV is read in order. For every configuration, the evaluator predicts before observing that row's benchmark result, then updates an incremental StandardScaler and SGDRegressor with the observed result. It also tracks the lowest measured performance and its configuration. Each evaluation is emitted as JSON Lines when an output path is supplied.
+
+Assumptions and limitations: Lower Performance- is treated as better. The input contains binary/integer configuration columns and a Performance- column. The first row has no prediction because no observations exist. SGDRegressor is an online approximation and is not expected to replace a full offline model; results depend on row order and the fixed random seed.
+
+Measured result: 1,152 rows processed; best actual performance 244.23. Two unit tests passed.

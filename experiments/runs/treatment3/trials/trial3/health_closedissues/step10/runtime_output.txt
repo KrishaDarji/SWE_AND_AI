@@ -1,0 +1,16 @@
+validated_rows=10000
+protocol=5 expanding chronological folds; seed=20261029; utility=(1-MRE-+ACC++PRED40+)/3
+fold=1 method=treatment3_selector MRE-=0.157585 ACC+=0.801346 PRED40+=1.000000 utility=0.881254
+fold=1 method=historical_baseline MRE-=0.818262 ACC+=0.435758 PRED40+=0.000000 utility=0.205832
+fold=2 method=treatment3_selector MRE-=0.173343 ACC+=0.897789 PRED40+=1.000000 utility=0.908149
+fold=2 method=historical_baseline MRE-=0.254786 ACC+=0.661006 PRED40+=0.714286 utility=0.706835
+fold=3 method=treatment3_selector MRE-=0.183800 ACC+=0.853573 PRED40+=1.000000 utility=0.889924
+fold=3 method=historical_baseline MRE-=0.548601 ACC+=0.588273 PRED40+=0.142857 utility=0.394176
+fold=4 method=treatment3_selector MRE-=0.168925 ACC+=0.885293 PRED40+=1.000000 utility=0.905456
+fold=4 method=historical_baseline MRE-=0.792489 ACC+=0.447613 PRED40+=0.000000 utility=0.218375
+fold=5 method=treatment3_selector MRE-=0.158910 ACC+=0.894905 PRED40+=1.000000 utility=0.911998
+fold=5 method=historical_baseline MRE-=0.123270 ACC+=0.717398 PRED40+=0.857143 utility=0.817091
+summary=treatment3_selector MRE-=0.168513 ACC+=0.866581 PRED40+=1.000000 utility=0.899356
+summary=historical_baseline MRE-=0.507482 ACC+=0.570010 PRED40+=0.342857 utility=0.468462
+winner=treatment3_selector
+runtime_seconds=1.119231

@@ -1,0 +1,12 @@
+Implemented an independent x264 Step 08 fix workflow.
+
+Result: change `no_mixed_refs` from 0 to 1.
+
+- Baseline: 821.963 (`Performance-`), the slowest observed configuration.
+- Revised: 671.400 (`Performance-`).
+- Gain: 150.563 lower, or 18.32% lower.
+- Scope: valid observed one-setting neighbor; all 16 settings were binary and the CSV contained 1,152 unique rows.
+
+The script validates the schema, binary settings, numeric metric, uniqueness, and non-empty input. It also supports and tests the no-improvement case.
+
+Assumptions and limitations: `Performance-` is interpreted as a runtime-like cost to minimize. The search is limited to observed one-setting changes, so it does not establish that the setting causes the improvement, test interactions, or generalize to unseen configurations. Each row is treated as a single measurement, so uncertainty and measurement noise are not quantified; the result should be replicated before deployment.

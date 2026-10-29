@@ -1,0 +1,29 @@
+Implemented an independent x264 blame analysis.
+
+Dataset and target
+- Loaded `moot/optimize/config/X264_AllMeasurements.csv`.
+- Validated 1,152 rows, 16 binary encoder settings, finite numeric values, and target `Performance-`.
+- Larger `Performance-` is interpreted as slower encoding. “Slow” is defined as the target at or above its 75th percentile: 580.737750 (288 rows).
+
+Method
+- Computed setting-on versus setting-off target means and slow-encode rates.
+- Fit a 300-tree `RandomForestRegressor` and measured permutation importance with 20 repeats.
+- Used shuffled 5-fold cross-validation; mean R² was 0.999968.
+
+Measured associations with slower encodes, ranked by permutation importance:
+
+1. `ref_9`: importance 0.539563; on-minus-off mean `Performance-` +276.724770; slow-rate difference +0.750000.
+2. `ref_1`: importance 0.515129; on-minus-off mean -276.508340; slow-rate difference -0.375000.
+3. `no_mixed_refs`: importance 0.122329; on-minus-off mean -63.093116; slow-rate difference -0.159722.
+4. `no_fast_pskip`: importance 0.097832; on-minus-off mean +57.022120; slow-rate difference +0.166667.
+5. `no_mbtree`: importance 0.058688; on-minus-off mean +50.739828; slow-rate difference +0.006944.
+
+Interpretation: `ref_9` is the clearest association with slow encodes in this dataset, while `no_fast_pskip` is also associated with slower outcomes. `ref_1` and `no_mixed_refs` are associated with faster outcomes when enabled. The exact settings are correlated/design-linked in this controlled dataset, so marginal on/off comparisons and model importance can share signal.
+
+Association is not causation. This analysis is observational over the supplied measurements; it does not establish that changing a setting causes the observed change. Potential confounders include linked reference-count configurations, interaction effects among flags, input/workload characteristics not represented as columns, measurement noise, and the experimental design’s coverage of combinations. Permutation importance is model- and sample-dependent, and correlated predictors can split or mask importance. The high R² is in-sample model fit context plus cross-validation on repeated design combinations; it is not causal evidence.
+
+Run commands from this directory:
+`python3 -m unittest discover -s tests -v`
+`python3 source/analyze_x264.py ../../../../../../../moot/optimize/config/X264_AllMeasurements.csv --json analysis.json`
+
+All requested artifacts are in this directory. `test_output.txt` and `runtime_output.txt` contain captured outputs; `metrics.csv` contains measured run metadata.

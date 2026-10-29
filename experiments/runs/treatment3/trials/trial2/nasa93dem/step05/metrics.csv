@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+05,3,2,nasa93dem,blame,149,149,2/2,0.59,0,"Measured runtime; tests passed. 5-fold ROC-AUC=0.919, accuracy=0.839, balanced_accuracy=0.839. Runtime emitted sklearn numerical overflow warnings but exited successfully."

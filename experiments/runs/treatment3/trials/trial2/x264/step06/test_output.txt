@@ -1,0 +1,8 @@
+test_bootstrap_is_reproducible_and_ordered (test_justify_x264.JustifyTests) ... ok
+test_dataset_validates_and_is_binary (test_justify_x264.JustifyTests) ... ok
+test_invalid_nonbinary_rejected (test_justify_x264.JustifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.013s
+
+OK

@@ -1,0 +1,9 @@
+Implemented and executed the independent certify analysis.
+
+Result: squared_error (n=3,363) was better than poisson (n=3,335) on the direction-aware standardized composite of MRE-, ACC+, and PRED40+.
+
+Measured primary effect (A-B): 0.132588 standard deviations. Deterministic bootstrap 95% CI: [0.085006, 0.180186]. One-sided permutation p-value: 0.000100. The observed difference is statistically credible under the stated exchangeability and bootstrap assumptions.
+
+Target directional differences (A better minus B): MRE- 0.029682, ACC+ 0.007914, PRED40+ 0.047020. Practical importance is not established by p-value alone; target tolerances and external validation are needed. The result is an association in sampled configurations, not proof of causation.
+
+Tests: 2 passed. Runtime: 24.905837 seconds. Error count: 0. See runtime_output.txt and test_output.txt for captured output.

@@ -1,0 +1,13 @@
+Implemented an independent scikit-learn multi-output regression predictor.
+
+Approach: read the five configuration columns, impute numeric/categorical values, one-hot encode `criterion`, and fit a deterministic RandomForestRegressor to predict `MRE-`, `ACC+`, and `PRED40+`. A fixed 25% holdout reports MAE, RMSE, and R² as the pre-full-evaluation estimate.
+
+Tests: 3 standard-library unittest tests passed.
+
+Run command:
+python3 source/guess_model.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Measured holdout results:
+- MRE-: MAE 0.014396, RMSE 0.022379, R² 0.987315
+- ACC+: MAE 0.010060, RMSE 0.024127, R² 0.949013
+- PRED40+: MAE 0.016209, RMSE 0.052790, R² 0.959542

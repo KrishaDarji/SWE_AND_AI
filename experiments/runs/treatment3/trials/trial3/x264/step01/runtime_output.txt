@@ -1,0 +1,102 @@
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+  return X @ coef_ + self.intercept_
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+  return X @ coef_ + self.intercept_
+x264 historical dataset summary
+dataset: ../../../../../../moot/optimize/config/X264_AllMeasurements.csv
+rows: 1152; columns: 17
+configuration columns (16): no_asm, no_8x8dct, no_cabac, no_deblock, no_fast_pskip, no_mbtree, no_mixed_refs, no_weightb, rc_lookahead, rc_lookahead_20, rc_lookahead_40, rc_lookahead_60, ref, ref_1, ref_5, ref_9
+performance column: Performance-
+performance: min=244.230, mean=461.754, median=452.779, max=821.963, stdev=162.562
+setting summaries (unique values; mean performance when enabled/value is present):
+  no_asm: values=1; 1->461.754 (n=1152)
+  no_8x8dct: values=0,1; 0->472.136 (n=576); 1->451.372 (n=576)
+  no_cabac: values=0,1; 0->465.679 (n=576); 1->457.828 (n=576)
+  no_deblock: values=0,1; 0->461.602 (n=576); 1->461.905 (n=576)
+  no_fast_pskip: values=0,1; 0->433.243 (n=576); 1->490.265 (n=576)
+  no_mbtree: values=0,1; 0->436.384 (n=576); 1->487.124 (n=576)
+  no_mixed_refs: values=0,1; 0->493.300 (n=576); 1->430.207 (n=576)
+  no_weightb: values=0,1; 0->461.842 (n=576); 1->461.665 (n=576)
+  rc_lookahead: values=1; 1->461.754 (n=1152)
+  rc_lookahead_20: values=0,1; 0->462.155 (n=768); 1->460.951 (n=384)
+  rc_lookahead_40: values=0,1; 0->461.675 (n=768); 1->461.910 (n=384)
+  rc_lookahead_60: values=0,1; 0->461.431 (n=768); 1->462.399 (n=384)
+  ref: values=1; 1->461.754 (n=1152)
+  ref_1: values=0,1; 0->553.923 (n=768); 1->277.415 (n=384)
+  ref_5: values=0,1; 0->461.826 (n=768); 1->461.609 (n=384)
+  ref_9: values=0,1; 0->369.512 (n=768); 1->646.237 (n=384)
+strongest marginal Pearson relationships (absolute r descending):
+  ref_9: r=+0.8028
+  ref_1: r=-0.8022
+  no_mixed_refs: r=-0.1941
+  no_fast_pskip: r=+0.1755
+  no_mbtree: r=+0.1561
+  no_8x8dct: r=-0.0639
+  no_cabac: r=-0.0242
+  rc_lookahead_20: r=-0.0035
+  rc_lookahead_60: r=+0.0028
+  no_deblock: r=+0.0009
+  rc_lookahead_40: r=+0.0007
+  ref_5: r=-0.0006
+  no_weightb: r=-0.0005
+  no_asm: r=+0.0000
+  rc_lookahead: r=+0.0000
+  ref: r=+0.0000
+standardized multivariate linear coefficients (directional association, not causation):
+  ref_9: beta=+86.9159
+  ref_1: beta=-86.8479
+  no_mixed_refs: beta=-31.5192
+  no_fast_pskip: beta=+28.4863
+  no_mbtree: beta=+25.3479
+  no_8x8dct: beta=-10.3729
+  no_cabac: beta=-3.9225
+  rc_lookahead_20: beta=-0.3779
+  rc_lookahead_60: beta=+0.3040
+  no_deblock: beta=+0.1514
+  no_weightb: beta=-0.0880
+  rc_lookahead_40: beta=+0.0739
+  ref_5: beta=-0.0680
+  no_asm: beta=+0.0000
+  rc_lookahead: beta=+0.0000
+  ref: beta=+0.0000
+training R2=0.9562; 5-fold shuffled CV R2 mean=0.9551, stdev=0.0024
+assumptions and limitations:
+  Numeric columns are treated as measured settings; equal numeric values are grouped exactly.
+  Performance is assumed to be a larger-is-better metric because its name is Performance-; the CSV does not state units.
+  Correlation and linear coefficients describe association in this historical sample and do not establish causal effects or interactions.
+  Possible data-quality risks include undocumented units, duplicate configurations, measurement noise, and the absence of an explicit experiment protocol.
+real 0.49
+user 2.23
+sys 0.54

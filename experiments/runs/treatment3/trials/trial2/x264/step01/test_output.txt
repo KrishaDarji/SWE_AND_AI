@@ -1,0 +1,11 @@
+test_analysis_contains_measured_sections (test_remember_x264.RememberX264Tests) ... /Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: divide by zero encountered in matmul
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: overflow encountered in matmul
+/Users/RadhaKrishna/Library/Python/3.9/lib/python/site-packages/sklearn/linear_model/_base.py:279: RuntimeWarning: invalid value encountered in matmul
+ok
+test_real_dataset_loads_and_columns_are_identified (test_remember_x264.RememberX264Tests) ... ok
+test_validation_rejects_blank_values (test_remember_x264.RememberX264Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.025s
+
+OK

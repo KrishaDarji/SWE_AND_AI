@@ -1,0 +1,26 @@
+Implemented and executed an independent x264 anomaly screen.
+
+Method
+- Loaded `moot/optimize/config/X264_AllMeasurements.csv` with the standard library.
+- Validated the header, row widths, numeric values, finite performance values, and binary configuration flags.
+- Computed absolute robust z-scores using median and MAD for the performance column.
+- Fit scikit-learn IsolationForest with 300 trees, `contamination="auto"`, and random seed 303 over all 16 configuration flags plus performance.
+- Ranked records by robust outcome deviation plus isolation score. The procedure is deterministic for this dataset and seed.
+
+Measured result
+- 1,152 records and 16 binary configuration features were validated.
+- The highest-ranked record is CSV line 872 (data record 871): Performance 821.963, robust z-score 1.6266, isolation score 0.0982644, and an IsolationForest outlier flag.
+- Its configuration is no_asm=1, no_8x8dct=0, no_cabac=0, no_deblock=1, no_fast_pskip=1, no_mbtree=1, no_mixed_refs=0, no_weightb=1, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=0, ref_5=0, ref_9=1.
+- The next suspicious records are also high-performance records (for example lines 939 and 867 at 821.760 and 821.520), suggesting a cluster of exceptional configurations rather than one isolated corrupted value.
+
+Interpretation
+This is best classified as `legitimate_exception_or_needs_review`, not a confirmed measurement error. The record is isolated in the joint configuration/performance space, but its robust performance deviation is below the conservative 3.5 threshold used for possible error. A true measurement error remains possible because no repeated-run or ground-truth measurement is available. Re-running line 872's configuration, preferably with randomized order and multiple replicates, is the appropriate check.
+
+Assumptions and limitations
+- Higher `Performance-` is treated as the unusual direction only through magnitude; the detector does not assume whether higher performance is better.
+- IsolationForest is a screening tool, not a causal model or proof of bad data. Binary flags are treated as equally informative, and feature interactions are not interpreted causally.
+- MAD can be insensitive to multimodal benchmark populations; the repeated high-value cluster may represent a real setting effect.
+- Possible confounders include workload/input content, encoder build and compiler, CPU frequency or contention, cache/warm-up state, operating-system scheduling, thermal throttling, and hidden runtime parameters.
+- No timestamps, replicate identifiers, host metadata, or expected performance model are present, so measurement error cannot be separated conclusively from a valid exceptional configuration.
+
+Tests: 2 passed, including reproducibility and invalid-feature rejection. Runtime and test outputs are captured in `runtime_output.txt` and `test_output.txt`.

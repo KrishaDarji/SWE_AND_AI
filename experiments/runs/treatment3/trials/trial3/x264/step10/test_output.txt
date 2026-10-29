@@ -1,0 +1,8 @@
+test_dataset_validation (test_x264_race.RaceTests) ... ok
+test_end_to_end_protocol (test_x264_race.RaceTests) ... ok
+test_selection_is_reproducible_and_budgeted (test_x264_race.RaceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 3.044s
+
+OK

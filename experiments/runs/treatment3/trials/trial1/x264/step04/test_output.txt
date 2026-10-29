@@ -1,0 +1,7 @@
+test_first_prediction_is_unknown_then_model_predicts (test_flow.FlowTests) ... ok
+test_streaming_run_tracks_minimum (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+OK

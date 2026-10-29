@@ -1,0 +1,7 @@
+test_reads_dataset (test_spot.SpotTests) ... ok
+test_returns_a_ranked_project (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.155s
+
+OK

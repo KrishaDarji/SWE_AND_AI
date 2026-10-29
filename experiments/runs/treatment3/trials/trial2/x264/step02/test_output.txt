@@ -1,0 +1,9 @@
+test_loads_and_validates_shape (test_x264_guess.X264GuessTests) ... ok
+test_metrics_are_finite (test_x264_guess.X264GuessTests) ... ok
+test_predict_supports_mapping (test_x264_guess.X264GuessTests) ... ok
+test_rejects_missing_target (test_x264_guess.X264GuessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.402s
+
+OK

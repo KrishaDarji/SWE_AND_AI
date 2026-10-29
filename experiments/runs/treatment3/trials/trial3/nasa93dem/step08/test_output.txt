@@ -1,0 +1,7 @@
+test_dataset_validates_and_has_expected_size (test_fix_skill.FixSkillTests.test_dataset_validates_and_has_expected_size) ... ok
+test_recommendation_is_minimal_and_measurable (test_fix_skill.FixSkillTests.test_recommendation_is_minimal_and_measurable) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.260s
+
+OK

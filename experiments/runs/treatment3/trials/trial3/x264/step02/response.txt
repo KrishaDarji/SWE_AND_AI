@@ -1,0 +1,12 @@
+Implemented an independent x264 encoding-time guess skill.
+
+Source/API: source/guess_skill.py provides load_dataset, X264TimeGuesser.fit, X264TimeGuesser.predict, and evaluate. The model is ExtraTreesRegressor with 300 trees, min_samples_leaf=2, and a fixed seed. Zero-variance configuration columns are validated and excluded from fitting. Prediction uncertainty is the standard deviation across tree predictions.
+
+CLI command:
+python3 source/guess_skill.py --csv /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --evaluate
+
+Validation found 1,152 rows, 16 configuration features, and target Performance-. The held-out split used 921 training rows and 231 test rows. Measured metrics: MAE=0.3416825108, RMSE=0.5682606221, R2=0.9999877043, MAPE=0.0703553661%.
+
+Tests: 3 tests passed. Runtime capture reports real=0.86 seconds for the evaluation command on this environment. See test_output.txt and runtime_output.txt.
+
+Assumptions: Performance- is encoding time; all feature values are numeric; a random held-out split is representative; lower prediction error is better. The dataset contains repeated/related configurations and deterministic-looking measurements, so random splitting may be optimistic. Potential leakage includes duplicate or near-duplicate configurations across train and test, feature columns that encode option levels or experiment structure, and any preprocessing performed using the full dataset. No target-derived feature or test-target value is used by this implementation. A grouped split by configuration family or a prospective time-ordered evaluation would be a stronger leakage check. ExtraTrees uncertainty is ensemble spread, not a calibrated prediction interval. The model is limited to the observed feature space and does not model changes in hardware, encoder version, input video, or measurement noise.

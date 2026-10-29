@@ -1,0 +1,11 @@
+test_detects_clear_worst_decile (test_certify_x264.CertifyTests.test_detects_clear_worst_decile) ... ok
+test_no_difference_is_not_credible (test_certify_x264.CertifyTests.test_no_difference_is_not_credible) ... ok
+test_real_dataset_has_expected_size (test_certify_x264.CertifyTests.test_real_dataset_has_expected_size) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.009s
+
+OK
+real 0.05
+user 0.03
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,3,2,x264,race,100,100,1,86.4,0,"20 deterministic seeds; budget 32; selector mean regret 1.253%; baseline 2.392%; lower is better"

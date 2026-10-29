@@ -1,0 +1,4 @@
+rows=10000 decisions=90 warmup=1000 block=100
+learned_selector selected_mean_acc=0.766243 mae=0.046540 rmse=0.063956
+historical_baseline selected_mean_acc=0.498284 mae=0.093526 rmse=0.111381
+winner_by_selected_mean_acc=learned_selector runtime_seconds=38.286079

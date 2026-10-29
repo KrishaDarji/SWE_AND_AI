@@ -1,0 +1,8 @@
+test_invalid_records_and_tie_break (test_flow.FlowTests) ... ok
+test_real_dataset_is_sequential_and_reproducible (test_flow.FlowTests) ... ok
+test_schema_validation (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+OK

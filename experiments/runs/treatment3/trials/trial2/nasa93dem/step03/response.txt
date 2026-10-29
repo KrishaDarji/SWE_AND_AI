@@ -1,0 +1,21 @@
+Implemented an independent NASA93DEM certify analysis.
+
+Run command:
+  python -m unittest discover -s tests -p 'test_*.py' -v
+  python source/certify_nasa93dem.py
+
+Result:
+- Target: Effort-
+- Process-group feature: centerX
+- Comparison: centerX=2 (n=37) versus centerX=5 (n=39)
+- Mean Effort-: 222.918919 versus 1011.135897
+- Difference (group 5 minus group 2): 788.216979 Effort- units
+- Pooled standardized effect size: 0.744178
+- 95% bootstrap CI: [378.370295, 1307.664364]
+- One-sided permutation p-value: 0.000050, using 20,000 permutations and seed 20261029
+- Statistical credibility at alpha=0.05: YES
+
+Conclusion: the observed data support lower mean Effort- for centerX=2 than for centerX=5 under the stated comparison. The effect may be practically meaningful because the interval is entirely positive and the estimated difference is large in Effort- units, but practical importance depends on domain cost thresholds. Independence, fixed groups, skew/outliers, confounding, and Monte Carlo uncertainty limit interpretation. centerX is observational; this association does not prove that changing process center causes Effort- to change.
+
+Complete implementation: source/certify_nasa93dem.py
+Tests: tests/test_certify_nasa93dem.py

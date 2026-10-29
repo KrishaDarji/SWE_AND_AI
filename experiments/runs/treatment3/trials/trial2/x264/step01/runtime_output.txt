@@ -1,0 +1,30 @@
+x264 remember analysis
+dataset=../../../../../../moot/optimize/config/X264_AllMeasurements.csv
+rows=1152 columns=17
+configuration_columns=no_asm,no_8x8dct,no_cabac,no_deblock,no_fast_pskip,no_mbtree,no_mixed_refs,no_weightb,rc_lookahead,rc_lookahead_20,rc_lookahead_40,rc_lookahead_60,ref,ref_1,ref_5,ref_9
+performance_columns=Performance-
+performance_summary=min=244.230000 max=821.963000 mean=461.753596 median=452.778500 stdev=162.561722
+setting_summary no_asm min=1.000000 max=1.000000 mean=1.000000 on=1152 off=0 pearson=0.000000
+setting_summary no_8x8dct min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=-0.063892
+setting_summary no_cabac min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=-0.024161
+setting_summary no_deblock min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=0.000932
+setting_summary no_fast_pskip min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=0.175462
+setting_summary no_mbtree min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=0.156131
+setting_summary no_mixed_refs min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=-0.194143
+setting_summary no_weightb min=0.000000 max=1.000000 mean=0.500000 on=576 off=576 pearson=-0.000542
+setting_summary rc_lookahead min=1.000000 max=1.000000 mean=1.000000 on=1152 off=0 pearson=0.000000
+setting_summary rc_lookahead_20 min=0.000000 max=1.000000 mean=0.333333 on=384 off=768 pearson=-0.003490
+setting_summary rc_lookahead_40 min=0.000000 max=1.000000 mean=0.333333 on=384 off=768 pearson=0.000682
+setting_summary rc_lookahead_60 min=0.000000 max=1.000000 mean=0.333333 on=384 off=768 pearson=0.002808
+setting_summary ref min=1.000000 max=1.000000 mean=1.000000 on=1152 off=0 pearson=0.000000
+setting_summary ref_1 min=0.000000 max=1.000000 mean=0.333333 on=384 off=768 pearson=-0.802181
+setting_summary ref_5 min=0.000000 max=1.000000 mean=0.333333 on=384 off=768 pearson=-0.000628
+setting_summary ref_9 min=0.000000 max=1.000000 mean=0.333333 on=384 off=768 pearson=0.802809
+linear_regression train_r2=0.956200 intercept=453.663611 modeled_settings=13 omitted_constant_settings=3
+coefficient_ranking=ref_9:184.483180,ref_1:-184.338893,no_mixed_refs:-63.093116,no_fast_pskip:57.022120,no_mbtree:50.739828,no_8x8dct:-20.763821,no_cabac:-7.851793,rc_lookahead_20:-0.802099,rc_lookahead_60:0.645263,no_deblock:0.302974,no_weightb:-0.176220,rc_lookahead_40:0.156836,ref_5:-0.144286
+assumptions=rows are independent measurements; numeric settings are treated as quantitative indicators; higher performance is better
+limitations=correlations and in-sample regression do not establish causation or out-of-sample predictive accuracy
+data_quality=all values parsed as finite numbers; no missing values detected; binary_issues=none
+real 0.53
+user 2.60
+sys 0.24

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+05,3,3,nasa93dem,blame,126,126,true,19.307,0,"93 rows validated; 23 high-effort rows above 75th percentile; CV ROC AUC 0.789 +/- 0.032; 2 tests passed; implementation runtime measured from completed run"

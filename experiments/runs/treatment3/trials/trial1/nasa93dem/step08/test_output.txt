@@ -1,0 +1,8 @@
+test_dataset_is_read_and_has_expected_size (test_recommender.RecommenderTests) ... ok
+test_missing_target_fails (test_recommender.RecommenderTests) ... ok
+test_recommendation_is_structured_and_cheap (test_recommender.RecommenderTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.555s
+
+OK

@@ -1,0 +1,1 @@
+{"baseline_estimated_defects": 1415.148, "candidates_evaluated": 44, "cross_validated_mae": 2794.286, "dataset": "../../../../../../../moot/optimize/process/nasa93dem.csv", "recommended_change": {"attribute": "acap", "cost": 1, "from": "h", "reduction": 466.61838703562296, "risk": 948.5293074860866, "to": "n"}, "rows": 93, "runtime_seconds": 0.9847}

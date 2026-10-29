@@ -1,0 +1,10 @@
+CERTIFICATION REPORT
+equal mean of min-max normalized MRE (reversed), ACC, and PRED40
+absolute_error: n=3302 mean_score=0.284533
+poisson: n=3335 mean_score=0.310228
+squared_error: n=3363 mean_score=0.338433
+absolute_error vs poisson: winner=poisson CI=[-0.034768, -0.017119] reliably_better=True
+absolute_error vs squared_error: winner=squared_error CI=[-0.062668, -0.044710] reliably_better=True
+poisson vs squared_error: winner=squared_error CI=[-0.037621, -0.019467] reliably_better=True
+recommended_family=squared_error
+runtime_seconds=3.242949

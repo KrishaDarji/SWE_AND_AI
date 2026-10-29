@@ -1,0 +1,8 @@
+test_model_runs_and_reports_all_targets (test_guess_model.GuessModelTests) ... ok
+test_read_data_schema_and_numeric_targets (test_guess_model.GuessModelTests) ... ok
+test_unknown_category_is_supported (test_guess_model.GuessModelTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.180s
+
+OK

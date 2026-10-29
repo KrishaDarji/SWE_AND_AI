@@ -1,0 +1,29 @@
+{
+  "assumptions": [
+    "Effort- is a usable planning estimate in person-months.",
+    "Kloc+ is a reasonable proxy for delivered functionality/value.",
+    "Historical configurations are candidates and are comparable enough for this screening choice."
+  ],
+  "budget_person_months": 100.0,
+  "constraint": "estimated effort (person-months) <= fixed budget",
+  "dataset": "moot/optimize/process/nasa93dem.csv",
+  "feasible_count": 31,
+  "objective": "maximize delivered value measured as KLOC",
+  "rows": 93,
+  "runtime_seconds": 0.002931,
+  "selected": {
+    "effort": 97.0,
+    "id": "78",
+    "value": 165.0
+  },
+  "trade_offs": [
+    "The winner maximizes KLOC among feasible historical configurations.",
+    "A larger project can deliver more KLOC but consumes more effort and leaves less contingency.",
+    "No feasible configuration is selected when every effort estimate exceeds the budget."
+  ],
+  "uncertainty_limitations_bias": [
+    "KLOC is not customer value, quality, revenue, or schedule certainty.",
+    "Effort estimates are uncertain and observational; they do not prove causal effects of settings.",
+    "NASA93DEM may not represent the current team, technology, scope, or risk profile; survivor and measurement bias may exist."
+  ]
+}

@@ -1,0 +1,15 @@
+Implemented an independent Treatment 3 race for Health-ClosedIssues0000.csv.
+
+Method: a deterministic scikit-learn RandomForestRegressor selector with one-hot encoding for criterion and numeric configuration features. At each 100-row future block, it trains only on prior rows and selects the candidate with the highest predicted ACC+. The historical baseline selects the candidate with the best exact-configuration mean ACC observed before the block, falling back to the prior global mean.
+
+Evaluation: row order is treated as stream order because the dataset has no timestamp/task column. The first 1,000 rows are warmup; the remaining 9,000 rows form 90 non-overlapping 100-row future blocks. The reported selected metrics use the actually selected row from each block. Random forest seed is 17 and n_jobs=1.
+
+Measured result: learned selector wins on selected mean ACC, 0.766243 versus 0.498284. Its prediction MAE/RMSE are also lower: 0.046540/0.063956 versus 0.093526/0.111381. It performs better under this fixed stream/block protocol, especially when configuration features generalize to unseen future rows. The baseline may be preferable when configuration effects are highly nonstationary or repeated exact configurations dominate.
+
+Tests: 3/3 passed. Runtime: 38.286079 seconds. No runtime errors. Source and tests contain 97 total LOC.
+
+Uncertainty and limitations: one dataset and one row-order protocol do not establish general superiority. There are only 90 selection decisions, so the result is sensitive to block size, warmup, and ordering. The file may be a shuffled or synthetic benchmark rather than a real temporal stream; treating row order as time is an assumption. ACC+ is used as the objective while other columns are not modeled as targets. Random-forest extrapolation, duplicate configurations, selection among only the next block's candidates, and possible generation/ordering bias can all affect results. A stronger study would repeat blocked evaluations across independently justified orderings and report confidence intervals or paired bootstrap intervals.
+
+Run command:
+python -m unittest discover -s tests -v
+python source/race_selector.py

@@ -1,0 +1,10 @@
+validated_rows=93 process_groups=5 target=Effort- feature=centerX
+lower_effort_group=2 n=37 mean=222.918919
+higher_effort_group=5 n=39 mean=1011.135897
+mean_difference_high_minus_low=788.216979 standardized_effect=0.734549
+bootstrap_95ci=[386.223434, 1318.785570] permutations=10000 seed=303
+one_sided_permutation_p=0.000100 statistically_credible=True
+interpretation=association only; this observational comparison does not prove causation
+timing_real_seconds=0.19
+timing_user_seconds=0.17
+timing_sys_seconds=0.01

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+06,3,2,nasa93dem,justify,194,194,1,0.5538,0,"93 rows validated; 3/3 tests passed; runtime output captured; random-forest holdout MAE=179.3618 RMSE=341.2378 R2=0.0745; OOF MAE=271.6756; prediction band=0.0-944.197 person-months"

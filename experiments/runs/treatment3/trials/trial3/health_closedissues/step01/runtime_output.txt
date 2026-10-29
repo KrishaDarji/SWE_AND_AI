@@ -1,0 +1,5 @@
+real 0.25
+user 0.23
+sys 0.00
+test_status=0
+run_status=0

@@ -1,0 +1,15 @@
+Implemented Treatment 3 independently for `moot/optimize/process/nasa93dem.csv`.
+
+The loader validates non-empty input, required `Kloc+` and `Effort-` columns, consistent CSV columns, and numeric target/size values. The protocol is deterministic repeated 5-fold cross-validation: 3 repeats, seed 3103, 15 evaluation folds. Preprocessing is fit inside each training fold: numeric imputation and one-hot encoding for categorical attributes. The Treatment 3 estimator is a 300-tree random forest with `min_samples_leaf=2`. The historical baseline predicts the training-fold median effort.
+
+Measured results, averaged over the 15 folds:
+
+method,MAE,RMSE,median_APE_percent
+Treatment 3,277.8594,597.0170,29.2707
+historical baseline,538.2939,1080.0124,82.7020
+
+Treatment 3 performs better under this random-split protocol on all three reported metrics. It is most useful when the held-out projects resemble the historical sample and their size/process attributes carry predictive signal. The median baseline remains a defensible choice when the sample is too sparse for stable feature relationships, when future projects come from a different process or era, or when avoiding model complexity is more important than average accuracy.
+
+Uncertainty is material: the dataset contains only 93 projects, effort is right-skewed, repeated folds are not independent, and no confidence intervals or external validation are claimed. Potential bias comes from project-era effects, selection and survivorship, measurement conventions, omitted staffing/process variables, and the chosen model/tuning settings. This is predictive evidence, not causal evidence that any project attribute changes effort.
+
+Tests: 2 tests passed. Runtime execution completed successfully; measured estimator runtime is recorded in `runtime_output.txt` and `metrics.csv`.

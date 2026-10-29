@@ -1,0 +1,18 @@
+Implemented an independent sequential flow evaluator in source/flow.py.
+
+Assumptions:
+- Each CSV row is one arriving benchmark result; file order is arrival order.
+- Lower Performance- is better.
+- Configuration values must be binary integers; malformed, incomplete, non-finite, or non-binary rows are invalid and skipped.
+- Equal performance is resolved by lexicographically smaller configuration, making the result deterministic.
+- Dataset schema requires unique non-empty configuration columns and Performance- as the final column.
+
+Measured result:
+- 1,152 rows seen; 1,152 valid; 0 invalid.
+- 8 running-best improvements.
+- Final performance: 244.23.
+- Final configuration (header order): (1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0).
+- Final best arrived at CSV row 72 (including the header).
+- Tests: 3 passed.
+
+Uncertainty and limitations: this is an order-sensitive online evaluator, so a different arrival order can produce a different improvement history (though the final result over the same complete valid set is governed by the deterministic tie rule). It does not model noise, confidence intervals, early stopping, or missing-result imputation. scikit-learn was not needed because the task is deterministic selection rather than prediction.

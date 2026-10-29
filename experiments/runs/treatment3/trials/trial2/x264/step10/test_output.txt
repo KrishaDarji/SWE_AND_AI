@@ -1,0 +1,8 @@
+test_baseline_budget (test_race_x264.RaceTests.test_baseline_budget) ... ok
+test_load_and_validate (test_race_x264.RaceTests.test_load_and_validate) ... ok
+test_reproducible_and_budgeted (test_race_x264.RaceTests.test_reproducible_and_budgeted) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 12.719s
+
+OK

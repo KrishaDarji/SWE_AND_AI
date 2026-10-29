@@ -1,0 +1,8 @@
+test_load_and_select_real_dataset (test_choose_x264.ChooseTests) ... ok
+test_no_feasible_configuration (test_choose_x264.ChooseTests) ... ok
+test_validation_rejects_missing_quality_column (test_choose_x264.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+OK

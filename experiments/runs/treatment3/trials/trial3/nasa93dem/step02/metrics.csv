@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+02,3,3,nasa93dem,guess,128,128,3,0.71,0,"93 rows; 25 proposal features; held-out MAE=473.2256826315792; RMSE=1299.0489688158339; R2=0.4981667106966079; excludes idX, Defects-, MonthsX"

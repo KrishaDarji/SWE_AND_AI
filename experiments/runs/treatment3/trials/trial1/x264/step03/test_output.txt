@@ -1,0 +1,8 @@
+test_clear_improvement_is_credible (test_certify.CertifyTests) ... ok
+test_percentile (test_certify.CertifyTests) ... ok
+test_rejects_small_input (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK

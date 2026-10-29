@@ -1,0 +1,492 @@
+{
+  "rows": 10000,
+  "target": "MRE-",
+  "overall_mean_error": 0.70909397643463,
+  "high_error_cutoff": 0.8251840942562592,
+  "high_error_definition": "MRE- at or above the inclusive 75th percentile",
+  "model": {
+    "test_mae": 0.003313243176691349,
+    "test_r2": 0.9962672197954892
+  },
+  "permutation_importance": [
+    {
+      "feature": "ACC+",
+      "mean": 0.11422296145034266,
+      "std": 0.0018318691951281706
+    },
+    {
+      "feature": "PRED40+",
+      "mean": 0.04271936561075908,
+      "std": 0.0006364443608168394
+    },
+    {
+      "feature": "Min_sample_leaves",
+      "mean": 0.02678344363733358,
+      "std": 0.0005360136920189398
+    },
+    {
+      "feature": "criterion",
+      "mean": 0.0029182500664521544,
+      "std": 0.00013967605268928562
+    },
+    {
+      "feature": "Min_impurity_decrease",
+      "mean": 0.0020143995058780188,
+      "std": 0.00012612150077820724
+    },
+    {
+      "feature": "N_estimators",
+      "mean": 7.353594007164326e-05,
+      "std": 3.609954730476889e-05
+    },
+    {
+      "feature": "Max_depth",
+      "mean": 3.844603611034207e-05,
+      "std": 2.372171570452967e-05
+    }
+  ],
+  "high_error_groups": {
+    "ACC+": [
+      {
+        "value": "0.36334508170458185",
+        "count": 1,
+        "mean_error": 1.0,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.29090602356537
+      },
+      {
+        "value": "0.37327779557834023",
+        "count": 1,
+        "mean_error": 0.9717231222385861,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.26262914580395613
+      },
+      {
+        "value": "0.37487984620313997",
+        "count": 1,
+        "mean_error": 0.96730486,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.25821088356537003
+      },
+      {
+        "value": "0.37712271707785966",
+        "count": 1,
+        "mean_error": 0.9615611192930779,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.25246714285844785
+      },
+      {
+        "value": "0.3796859980775392",
+        "count": 1,
+        "mean_error": 0.9544918998527245,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.24539792341809452
+      },
+      {
+        "value": "0.38000640820249915",
+        "count": 1,
+        "mean_error": 0.9537555228276877,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.2446615463930577
+      },
+      {
+        "value": "0.3803268183274591",
+        "count": 1,
+        "mean_error": 0.9527245949926361,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.24363061855800605
+      },
+      {
+        "value": "0.38128804870233896",
+        "count": 2,
+        "mean_error": 0.9502945506487481,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.2412005742141181
+      },
+      {
+        "value": "0.38192886895225886",
+        "count": 2,
+        "mean_error": 0.9486745213549337,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.23958054492030367
+      },
+      {
+        "value": "0.3828900993271387",
+        "count": 1,
+        "mean_error": 0.9462444771723122,
+        "high_error_rate": 1.0,
+        "difference_from_overall": 0.23715050073768218
+      }
+    ],
+    "PRED40+": [
+      {
+        "value": "0",
+        "count": 6525,
+        "mean_error": 0.8364770143134902,
+        "high_error_rate": 0.3842145593869732,
+        "difference_from_overall": 0.12738303787886018
+      },
+      {
+        "value": "0.14285714285714285",
+        "count": 1495,
+        "mean_error": 0.6207926273669935,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.08830134906763654
+      },
+      {
+        "value": "0.2857142857142857",
+        "count": 273,
+        "mean_error": 0.5022749464535758,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.20681902998105417
+      },
+      {
+        "value": "0.42857142857142855",
+        "count": 77,
+        "mean_error": 0.4728535087668649,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.23624046766776513
+      },
+      {
+        "value": "0.5714285714285714",
+        "count": 1068,
+        "mean_error": 0.38266452648303706,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.32642944995159295
+      },
+      {
+        "value": "0.7142857142857143",
+        "count": 9,
+        "mean_error": 0.2973654066437571,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.4117285697908729
+      },
+      {
+        "value": "0.8571428571428571",
+        "count": 181,
+        "mean_error": 0.22651364127885498,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.48258033515577503
+      },
+      {
+        "value": "1",
+        "count": 372,
+        "mean_error": 0.2122325684545584,
+        "high_error_rate": 0.0,
+        "difference_from_overall": -0.4968614079800716
+      }
+    ],
+    "N_estimators": [
+      {
+        "value": "190",
+        "count": 501,
+        "mean_error": 0.7261039041229117,
+        "high_error_rate": 0.25149700598802394,
+        "difference_from_overall": 0.01700992768828169
+      },
+      {
+        "value": "40",
+        "count": 480,
+        "mean_error": 0.722091310741369,
+        "high_error_rate": 0.28541666666666665,
+        "difference_from_overall": 0.012997334306738995
+      },
+      {
+        "value": "70",
+        "count": 497,
+        "mean_error": 0.7196187433821751,
+        "high_error_rate": 0.2454728370221328,
+        "difference_from_overall": 0.010524766947545117
+      },
+      {
+        "value": "20",
+        "count": 443,
+        "mean_error": 0.7182195965981343,
+        "high_error_rate": 0.33860045146726864,
+        "difference_from_overall": 0.009125620163504267
+      },
+      {
+        "value": "80",
+        "count": 511,
+        "mean_error": 0.7174050131274177,
+        "high_error_rate": 0.23874755381604695,
+        "difference_from_overall": 0.008311036692787654
+      },
+      {
+        "value": "130",
+        "count": 549,
+        "mean_error": 0.7153153008164824,
+        "high_error_rate": 0.24043715846994534,
+        "difference_from_overall": 0.006221324381852411
+      },
+      {
+        "value": "100",
+        "count": 473,
+        "mean_error": 0.712294538354121,
+        "high_error_rate": 0.25158562367864695,
+        "difference_from_overall": 0.0032005619194910295
+      },
+      {
+        "value": "160",
+        "count": 503,
+        "mean_error": 0.711045655370036,
+        "high_error_rate": 0.2504970178926441,
+        "difference_from_overall": 0.0019516789354059316
+      },
+      {
+        "value": "200",
+        "count": 481,
+        "mean_error": 0.7106592488088542,
+        "high_error_rate": 0.18711018711018712,
+        "difference_from_overall": 0.0015652723742242136
+      },
+      {
+        "value": "180",
+        "count": 517,
+        "mean_error": 0.7103209578278501,
+        "high_error_rate": 0.22823984526112184,
+        "difference_from_overall": 0.0012269813932200835
+      }
+    ],
+    "criterion": [
+      {
+        "value": "absolute_error",
+        "count": 3302,
+        "mean_error": 0.7508694690284082,
+        "high_error_rate": 0.6326468806783767,
+        "difference_from_overall": 0.04177549259377822
+      },
+      {
+        "value": "poisson",
+        "count": 3335,
+        "mean_error": 0.7034025255399243,
+        "high_error_rate": 0.06206896551724138,
+        "difference_from_overall": -0.005691450894705685
+      },
+      {
+        "value": "squared_error",
+        "count": 3363,
+        "mean_error": 0.6737202958486018,
+        "high_error_rate": 0.06274159976211716,
+        "difference_from_overall": -0.03537368058602819
+      }
+    ],
+    "Min_sample_leaves": [
+      {
+        "value": "16",
+        "count": 499,
+        "mean_error": 0.8402758388644948,
+        "high_error_rate": 0.42685370741482964,
+        "difference_from_overall": 0.13118186242986474
+      },
+      {
+        "value": "15",
+        "count": 465,
+        "mean_error": 0.8400082347547975,
+        "high_error_rate": 0.4150537634408602,
+        "difference_from_overall": 0.13091425832016745
+      },
+      {
+        "value": "12",
+        "count": 510,
+        "mean_error": 0.8397805307676773,
+        "high_error_rate": 0.4137254901960784,
+        "difference_from_overall": 0.13068655433304732
+      },
+      {
+        "value": "20",
+        "count": 519,
+        "mean_error": 0.8396006254207393,
+        "high_error_rate": 0.4007707129094412,
+        "difference_from_overall": 0.1305066489861093
+      },
+      {
+        "value": "11",
+        "count": 487,
+        "mean_error": 0.8390068133750592,
+        "high_error_rate": 0.38809034907597534,
+        "difference_from_overall": 0.1299128369404292
+      },
+      {
+        "value": "17",
+        "count": 482,
+        "mean_error": 0.8384822688974725,
+        "high_error_rate": 0.4087136929460581,
+        "difference_from_overall": 0.12938829246284245
+      },
+      {
+        "value": "10",
+        "count": 474,
+        "mean_error": 0.8379628766574417,
+        "high_error_rate": 0.39029535864978904,
+        "difference_from_overall": 0.12886890022281172
+      },
+      {
+        "value": "18",
+        "count": 511,
+        "mean_error": 0.8379010805009149,
+        "high_error_rate": 0.38747553816046965,
+        "difference_from_overall": 0.12880710406628493
+      },
+      {
+        "value": "14",
+        "count": 516,
+        "mean_error": 0.8378443561484427,
+        "high_error_rate": 0.3875968992248062,
+        "difference_from_overall": 0.12875037971381265
+      },
+      {
+        "value": "13",
+        "count": 542,
+        "mean_error": 0.8369865060874685,
+        "high_error_rate": 0.36900369003690037,
+        "difference_from_overall": 0.12789252965283848
+      }
+    ],
+    "Min_impurity_decrease": [
+      {
+        "value": "9.75",
+        "count": 246,
+        "mean_error": 0.7449094196308954,
+        "high_error_rate": 0.2845528455284553,
+        "difference_from_overall": 0.035815443196265395
+      },
+      {
+        "value": "9.25",
+        "count": 217,
+        "mean_error": 0.738987939698954,
+        "high_error_rate": 0.2304147465437788,
+        "difference_from_overall": 0.02989396326432403
+      },
+      {
+        "value": "10",
+        "count": 253,
+        "mean_error": 0.7381745999332138,
+        "high_error_rate": 0.21739130434782608,
+        "difference_from_overall": 0.029080623498583758
+      },
+      {
+        "value": "8",
+        "count": 239,
+        "mean_error": 0.7344347150967272,
+        "high_error_rate": 0.28870292887029286,
+        "difference_from_overall": 0.025340738662097184
+      },
+      {
+        "value": "8.5",
+        "count": 270,
+        "mean_error": 0.7320013091151147,
+        "high_error_rate": 0.2740740740740741,
+        "difference_from_overall": 0.022907332680484727
+      },
+      {
+        "value": "8.75",
+        "count": 240,
+        "mean_error": 0.7316071428561548,
+        "high_error_rate": 0.2791666666666667,
+        "difference_from_overall": 0.02251316642152479
+      },
+      {
+        "value": "7.75",
+        "count": 278,
+        "mean_error": 0.7294036935294445,
+        "high_error_rate": 0.2302158273381295,
+        "difference_from_overall": 0.02030971709481444
+      },
+      {
+        "value": "7.5",
+        "count": 232,
+        "mean_error": 0.7247422680434462,
+        "high_error_rate": 0.28879310344827586,
+        "difference_from_overall": 0.0156482916088162
+      },
+      {
+        "value": "6.25",
+        "count": 265,
+        "mean_error": 0.7231161252660404,
+        "high_error_rate": 0.2679245283018868,
+        "difference_from_overall": 0.014022148831410397
+      },
+      {
+        "value": "8.25",
+        "count": 256,
+        "mean_error": 0.7221983155269007,
+        "high_error_rate": 0.26171875,
+        "difference_from_overall": 0.013104339092270711
+      }
+    ],
+    "Max_depth": [
+      {
+        "value": "16",
+        "count": 512,
+        "mean_error": 0.7282849318778016,
+        "high_error_rate": 0.287109375,
+        "difference_from_overall": 0.01919095544317162
+      },
+      {
+        "value": "18",
+        "count": 504,
+        "mean_error": 0.7278072913038928,
+        "high_error_rate": 0.26785714285714285,
+        "difference_from_overall": 0.018713314869262754
+      },
+      {
+        "value": "10",
+        "count": 489,
+        "mean_error": 0.7194445699336055,
+        "high_error_rate": 0.25357873210633947,
+        "difference_from_overall": 0.010350593498975491
+      },
+      {
+        "value": "1",
+        "count": 495,
+        "mean_error": 0.7159881584628136,
+        "high_error_rate": 0.2404040404040404,
+        "difference_from_overall": 0.006894182028183593
+      },
+      {
+        "value": "5",
+        "count": 526,
+        "mean_error": 0.7152567239881648,
+        "high_error_rate": 0.24714828897338403,
+        "difference_from_overall": 0.006162747553534742
+      },
+      {
+        "value": "13",
+        "count": 520,
+        "mean_error": 0.7151520901706695,
+        "high_error_rate": 0.2423076923076923,
+        "difference_from_overall": 0.006058113736039483
+      },
+      {
+        "value": "15",
+        "count": 535,
+        "mean_error": 0.7145414504572749,
+        "high_error_rate": 0.23738317757009345,
+        "difference_from_overall": 0.005447474022644894
+      },
+      {
+        "value": "8",
+        "count": 491,
+        "mean_error": 0.7134473542936479,
+        "high_error_rate": 0.26476578411405294,
+        "difference_from_overall": 0.004353377859017904
+      },
+      {
+        "value": "20",
+        "count": 461,
+        "mean_error": 0.7106127743074765,
+        "high_error_rate": 0.2559652928416486,
+        "difference_from_overall": 0.001518797872846478
+      },
+      {
+        "value": "9",
+        "count": 517,
+        "mean_error": 0.7099694339488951,
+        "high_error_rate": 0.2765957446808511,
+        "difference_from_overall": 0.0008754575142650989
+      }
+    ]
+  },
+  "interpretation": "Higher mean_error and high_error_rate indicate association with high error; association is not causal."
+}

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+06,3,1,software project planning,justify,107,107,1,1.13,0,"3 tests passed; estimate 11.7 months; planning range 7.6-15.8 months; no reuse instructed"

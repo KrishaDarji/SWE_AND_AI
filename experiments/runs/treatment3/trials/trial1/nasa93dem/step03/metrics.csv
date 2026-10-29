@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+03,3,1,software project planning,certify,106,106,1,0.74,0,"Default comparison: tool levels; 3 tests passed; runtime includes diagnostic sklearn warnings; command exit 0."

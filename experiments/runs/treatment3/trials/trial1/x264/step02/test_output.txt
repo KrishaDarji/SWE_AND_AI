@@ -1,0 +1,11 @@
+test_evaluation_is_deterministic (test_predict_encoding_time.PredictorTests) ... ok
+test_loads_expected_shape (test_predict_encoding_time.PredictorTests) ... ok
+test_prediction_and_validation (test_predict_encoding_time.PredictorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.375s
+
+OK
+real 0.92
+user 1.96
+sys 1.19

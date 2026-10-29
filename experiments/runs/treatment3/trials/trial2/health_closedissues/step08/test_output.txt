@@ -1,0 +1,8 @@
+test_candidates_change_exactly_one_parameter (test_solution.SolutionTests) ... ok
+test_load_and_validate (test_solution.SolutionTests) ... ok
+test_recommendation_is_measurable_improvement (test_solution.SolutionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.219s
+
+OK

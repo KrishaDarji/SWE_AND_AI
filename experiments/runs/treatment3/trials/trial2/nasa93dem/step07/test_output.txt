@@ -1,0 +1,8 @@
+test_missing_and_bad_data_rejected (test_choose_nasa93dem.ChooseTests) ... ok
+test_no_feasible_configuration (test_choose_nasa93dem.ChooseTests) ... ok
+test_real_dataset_validates_and_selects_feasible_maximum (test_choose_nasa93dem.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

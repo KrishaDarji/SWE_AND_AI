@@ -1,0 +1,31 @@
+Implemented an independent NASA93DEM fix skill for Treatment 3 / Trial 2 / Dataset 2.
+
+Command:
+python3 source/fix_skill.py ../../../../../../../moot/optimize/process/nasa93dem.csv
+
+Tests:
+python3 -m unittest discover -s tests -v
+
+Measured result from runtime_output.txt:
+- Validated 93 rows.
+- Risk proxy: estimated Defects-.
+- Baseline: modal categorical process configuration and mean numeric feature values.
+- Baseline estimated risk: 1415.148 defects.
+- 44 valid candidates evaluated.
+- Recommendation: change acap from h to n.
+- Change cost: 1 ordinal process step; exactly one categorical attribute changes.
+- Revised estimated risk: 948.529 defects.
+- Estimated risk reduction: 466.618 defects (33.0% of baseline).
+- Cross-validated MAE: 2794.286 defects.
+- Runtime: 0.9847 seconds.
+
+The candidate space is deliberately minimal: only observed categorical levels adjacent to the baseline level in the declared ordinal scale [vl, l, n, h, vh, xh] are considered. If no candidate has a strictly positive predicted reduction, the implementation reports no beneficial change (chosen=null) instead of forcing a recommendation.
+
+Assumptions and limitations:
+- Defects- is used as the risk proxy; project risk could instead include effort, schedule, or a business-specific loss function.
+- Cost is a relative ordinal change cost, not a monetary implementation estimate.
+- The random forest is a predictive association model. Its recommendation is not evidence that changing acap causes fewer defects; confounding, selection effects, historical practice, and model extrapolation remain possible.
+- The baseline is synthetic (modes/means), so it may not correspond to a real project. The large cross-validated MAE shows substantial uncertainty, and the estimate should be validated with domain review or a controlled intervention before adoption.
+- The dataset is small, historical, and observational; this analysis does not establish causal effects or guarantee the estimated reduction.
+
+Captured outputs are in test_output.txt and runtime_output.txt. Measured metrics are in metrics.csv.

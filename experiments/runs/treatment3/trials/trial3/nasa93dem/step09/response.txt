@@ -1,0 +1,25 @@
+Step 09 result: the most suspicious record is project ID 59 (CSV row 60).
+
+Method
+-------
+The CSV was loaded with Python's csv module and validated for 93 rows, required columns, finite numeric values, and numeric outcomes. The detector uses all non-ID fields. Numeric fields are standardized with sklearn StandardScaler; categorical fields are deterministically ordinal-encoded using sorted observed values. A sklearn IsolationForest with 400 trees, contamination=0.10, n_jobs=1, and random_state=20261029 produces the ranking. Higher negative score_samples values (reported as positive anomaly_score) are more suspicious. The detector and explanation logic are in source/spot.py.
+
+Finding
+-------
+Project 59 has anomaly_score 0.695679, the highest score. Its strongest robust deviations are:
+
+- Defects- = 50,961 versus median 2,007 (robust deviation score 21.289).
+- Kloc+ = 980 versus median 47.5 (score 16.772).
+- Effort- = 4,560 versus median 252 (score 14.385).
+- MonthsX = 96.4 versus median 21.4 (score 6.485).
+- centerX = 6 and YearX = 1974 are also relatively unusual.
+
+The next-ranked IDs were 56, 84, 83, and 81, but none approached ID 59's simultaneous scale in the outcome fields. The full ranked output is in analysis.json and runtime_output.txt.
+
+Interpretation
+--------------
+This is a screening signal, not proof of corruption. The unusually large values could be a data-quality issue such as a unit/decimal error, duplicated aggregation, or inconsistent project boundary. They could also describe a legitimate large or unusually complex historical project. The internally coherent increase across size, effort, defects, and duration supports the legitimate-exception possibility, while the extreme defects-to-size magnitude warrants manual source verification. No record was automatically deleted or corrected.
+
+Uncertainty and limitations
+---------------------------
+The sample is small (93 projects), historical, and likely heterogeneous by era, center, process, and project type. Ordinal encoding imposes artificial distances on categorical levels; Isolation Forest rankings can change with contamination, feature inclusion, and preprocessing. Outcomes are included, so the method spots unusual project records rather than only unusual planning inputs. Correlated size/effort/defect fields can amplify one underlying scale difference. The robust explanations are marginal, not causal, and use global medians rather than peer groups. The 10% contamination setting is a review-list size, not an estimated error rate. Recommended next step: check project 59's original units, project scope, and provenance, then compare within matched center/year/project-class cohorts.

@@ -1,0 +1,8 @@
+Source: source/summarizer.py
+Tests: tests/test_summarizer.py
+Run command:
+  python3 source/summarizer.py /Users/RadhaKrishna/Desktop/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Approach: parse the CSV with the standard library, report per-setting ranges and cardinality, report min/mean/max for Performance-, and fit a standardized scikit-learn linear regression to rank setting associations.
+
+Assumptions and limitations: Performance- is treated as the sole quality measure because it is the only non-setting column. Binary settings are represented numerically as 0/1. Coefficients describe linear association in this historical dataset, not causation; correlated settings and constant columns can make coefficient interpretation unstable. No files outside this step01 directory are modified.

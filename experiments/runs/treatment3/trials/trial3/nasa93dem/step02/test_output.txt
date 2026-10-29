@@ -1,0 +1,8 @@
+test_loads_target_and_excludes_leakage (test_guess_skill.GuessTests) ... ok
+test_missing_file_rejected (test_guess_skill.GuessTests) ... ok
+test_prediction_has_uncertainty (test_guess_skill.GuessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.013s
+
+OK

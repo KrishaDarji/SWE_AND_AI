@@ -1,0 +1,28 @@
+Health-ClosedIssues historical remember summary
+rows=10000 columns=8
+roles: metrics=MRE-, ACC+, PRED40+; configs=N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth; targets=MRE-, ACC+, PRED40+
+metric MRE-: direction=lower min=0 median=0.809131 mean=0.709094 max=1 stdev=0.201396
+metric ACC+: direction=higher min=0 median=0.439923 mean=0.495939 max=1 stdev=0.107152
+metric PRED40+: direction=higher min=0 median=0 mean=0.146843 max=1 stdev=0.2664
+config N_estimators numeric: min=10 median=110 mean=106.061 max=200 unique=20
+config criterion categorical: unique=3 levels={'squared_error': 3363, 'absolute_error': 3302, 'poisson': 3335}
+config Min_sample_leaves numeric: min=1 median=11 mean=10.4796 max=20 unique=20
+config Min_impurity_decrease numeric: min=0 median=5 mean=4.99618 max=10 unique=41
+config Max_depth numeric: min=1 median=11 mean=10.523 max=20 unique=20
+relationship N_estimators~MRE-: pearson=-0.006366 spearman=-0.004163
+relationship N_estimators~ACC+: pearson=0.013413 spearman=0.008792
+relationship N_estimators~PRED40+: pearson=0.005988 spearman=0.005624
+relationship criterion~MRE-: group_medians={'absolute_error': 0.8774668630338732, 'poisson': 0.806480118, 'squared_error': 0.8050073637702503}
+relationship criterion~ACC+: group_medians={'absolute_error': 0.4101249599487344, 'poisson': 0.44088433194488946, 'squared_error': 0.4415251521948093}
+relationship criterion~PRED40+: group_medians={'absolute_error': 0.0, 'poisson': 0.0, 'squared_error': 0.0}
+relationship Min_sample_leaves~MRE-: pearson=0.803428 spearman=0.747531
+relationship Min_sample_leaves~ACC+: pearson=-0.798935 spearman=-0.743942
+relationship Min_sample_leaves~PRED40+: pearson=-0.727001 spearman=-0.837319
+relationship Min_impurity_decrease~MRE-: pearson=0.067631 spearman=0.032758
+relationship Min_impurity_decrease~ACC+: pearson=-0.056638 spearman=-0.029487
+relationship Min_impurity_decrease~PRED40+: pearson=-0.085661 spearman=-0.034028
+relationship Max_depth~MRE-: pearson=0.007735 spearman=0.015316
+relationship Max_depth~ACC+: pearson=-0.011077 spearman=-0.016142
+relationship Max_depth~PRED40+: pearson=-0.000223 spearman=-0.011164
+assumptions: signed column suffixes define metric direction; all other columns are configurations; all three metrics are retained as targets.
+limitations: associations are observational, not causal; duplicate or correlated trials may exist; no train/test generalization is claimed; categorical group sizes and missingness should be reviewed.

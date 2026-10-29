@@ -1,0 +1,12 @@
+Health-ClosedIssues certification
+rows=10000 targets=MRE-,ACC+,PRED40+ family=criterion
+quality_score=mean(min-max normalized targets; MRE reversed; ACC/PRED positive)
+families=absolute_error: n=3302, mean=0.284533; poisson: n=3335, mean=0.310228; squared_error: n=3363, mean=0.338433
+contrast=poisson minus absolute_error: effect=0.025695 bootstrap_95ci=[0.016859, 0.034302] permutation_p_one_sided=0.000100
+statistically_credible_at_alpha_0.05=yes
+target_means=MRE-: absolute_error=0.750869, poisson=0.703403; ACC+: absolute_error=0.477793, poisson=0.500910; PRED40+: absolute_error=0.126676, poisson=0.133176
+interpretation=The observed association supports a quality difference only under this dataset and contrast; it does not prove criterion causes it.
+limitations=Rows may not be independent; min-max scaling is sample-dependent; multiple targets/families and unmeasured configuration interactions can affect results; permutation exchangeability is an assumption.
+real 7.24
+user 7.20
+sys 0.03

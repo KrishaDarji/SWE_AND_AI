@@ -1,0 +1,12 @@
+test_cli_returns_json (test_effort_estimator.EffortEstimatorTests) ... ok
+test_fit_scores_and_predicts_positive_effort (test_effort_estimator.EffortEstimatorTests) ... ok
+test_full_data_estimate_is_finite (test_effort_estimator.EffortEstimatorTests) ... ok
+test_reads_numeric_and_categorical_features (test_effort_estimator.EffortEstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.935s
+
+OK
+real 1.69
+user 2.80
+sys 3.20

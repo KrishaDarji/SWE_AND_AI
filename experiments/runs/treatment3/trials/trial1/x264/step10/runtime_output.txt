@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "best": 251.53,
+    "evaluated": 48,
+    "strategy": "random_search"
+  },
+  "budget": 48,
+  "dataset_rows": 1152,
+  "feature_count": 16,
+  "improvement": 5.257000000000005,
+  "race": {
+    "best": 246.273,
+    "evaluated": 48,
+    "strategy": "model_guided_race"
+  },
+  "runtime_seconds": 0.06007062499999993,
+  "seed": 17,
+  "test_rows": 288,
+  "train_rows": 864
+}

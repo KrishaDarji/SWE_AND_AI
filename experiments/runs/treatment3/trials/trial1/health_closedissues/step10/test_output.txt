@@ -1,0 +1,8 @@
+test_evaluate_small_valid_stream (test_race_selector.RaceTests.test_evaluate_small_valid_stream) ... ok
+test_load_real_dataset (test_race_selector.RaceTests.test_load_real_dataset) ... ok
+test_rejects_bad_acc (test_race_selector.RaceTests.test_rejects_bad_acc) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.157s
+
+OK

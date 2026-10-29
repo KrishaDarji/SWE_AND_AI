@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+01,3,2,nasa93dem,remember,128,128,1,0.51,0,"3 tests passed; 93 rows; 29 columns; runtime measured with /usr/bin/time -p; captured sklearn numerical warnings noted in response"
