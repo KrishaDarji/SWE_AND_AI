@@ -1,0 +1,3 @@
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step09"
+python3 -m pytest -q
+python3 source/spot.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"

@@ -1,0 +1,19 @@
+{
+  "label": "Illustrative configuration; not an optimized recommendation",
+  "predictions": {
+    "MRE-": 0.48966730474347314,
+    "ACC+": 0.6318255384631154
+  },
+  "heldout_mae": {
+    "MRE-": {
+      "model": 0.013879674043302374,
+      "training_mean_baseline": 0.16459861627286873
+    },
+    "ACC+": {
+      "model": 0.00915287155651082,
+      "training_mean_baseline": 0.08820967314102454
+    }
+  }
+}
+
+Measured demo subprocess wall time: 2.390457916 seconds

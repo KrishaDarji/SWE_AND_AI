@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,2,software project estimation,remember,82,82,1,0.77,0,"4 synthetic-fixture tests passed; timing is /usr/bin/time -p real elapsed time for demonstration subprocess; no missing values in NASA93 input; X-suffix columns excluded from future modeling; outcome directions preserved; no repairs required."

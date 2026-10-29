@@ -1,0 +1,13 @@
+Correct NASA93 Trial 2 Step 6's metrics schema only.
+
+Use exactly this header:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Insert justify as the skill value between domain and total_loc.
+Preserve all other metric values.
+
+Save this correction verbatim as correction_prompt.txt and mention the
+schema correction in response.txt. Preserve source, tests, and execution logs.
+No rerun is needed.
+
+Write only inside the existing NASA93 trial2/step06 directory.

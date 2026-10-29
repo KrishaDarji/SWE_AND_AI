@@ -1,0 +1,107 @@
+{
+  "status": "recommended",
+  "baseline": {
+    "row_id": 1,
+    "csv_line": 2,
+    "configuration": {
+      "N_estimators": 40.0,
+      "criterion": "squared_error",
+      "Min_sample_leaves": 3.0,
+      "Min_impurity_decrease": 2.75,
+      "Max_depth": 10.0
+    },
+    "observed_objectives": {
+      "MRE-": 0.3148748159057436,
+      "ACC+": 0.7276513937840435,
+      "PRED40+": 0.5714285714285714
+    }
+  },
+  "recommendation": {
+    "row_id": 1945,
+    "csv_line": 1946,
+    "configuration": {
+      "N_estimators": 10.0,
+      "criterion": "squared_error",
+      "Min_sample_leaves": 3.0,
+      "Min_impurity_decrease": 5.0,
+      "Max_depth": 10.0
+    },
+    "observed_objectives": {
+      "MRE-": 0.2673048600883652,
+      "ACC+": 0.6619673181672541,
+      "PRED40+": 0.5714285714285714
+    }
+  },
+  "changed_fields": [
+    {
+      "field": "N_estimators",
+      "old": 40.0,
+      "new": 10.0
+    },
+    {
+      "field": "Min_impurity_decrease",
+      "old": 2.75,
+      "new": 5.0
+    }
+  ],
+  "change_cost": 2,
+  "observed_MRE_reduction": 0.04756995581737844,
+  "secondary_differences": {
+    "ACC+": {
+      "baseline": 0.7276513937840435,
+      "recommended": 0.6619673181672541,
+      "selected_minus_reference": -0.06568407561678946,
+      "improvement_in_objective_direction": -0.06568407561678946,
+      "observed_relation": "worse"
+    },
+    "PRED40+": {
+      "baseline": 0.5714285714285714,
+      "recommended": 0.5714285714285714,
+      "selected_minus_reference": 0.0,
+      "improvement_in_objective_direction": 0.0,
+      "observed_relation": "equal"
+    }
+  },
+  "setting_change_identified": true,
+  "setting_change_statement": "Recorded candidate changes the listed settings.",
+  "selection_rule": "Among complete settings with observed MRE- strictly below baseline, minimize differing normalized configuration fields, then lower MRE-, then earlier one-based CSV data-row number. Exact normalized equality; secondary objectives do not break ties.",
+  "search_scope": "All CSV data rows, including the baseline and duplicate settings; no estimator cap. Candidates require all five settings and observed MRE- only.",
+  "counts": {
+    "recorded_rows": 10000,
+    "complete_settings_and_mre": 10000,
+    "excluded": 0,
+    "missing_settings": 0,
+    "missing_mre": 0,
+    "strictly_improving": 736,
+    "complete_not_improving": 9264
+  },
+  "count_convention": "recorded_rows = excluded + complete_settings_and_mre; complete_settings_and_mre = strictly_improving + complete_not_improving. Missing-reason counts overlap.",
+  "excluded_records": [],
+  "tie_evidence": {
+    "minimum_change_cost": 2,
+    "minimum_cost_count": 6,
+    "lowest_MRE_at_minimum_cost": 0.2673048600883652,
+    "final_tied_row_ids": [
+      1945
+    ]
+  },
+  "objective_directions": {
+    "MRE-": "minimize",
+    "ACC+": "maximize",
+    "PRED40+": "maximize"
+  },
+  "limitations": [
+    "Offline search over recorded outcomes, not prediction of an unseen intervention or independent validation.",
+    "Observed MRE reduction is not causal, repeatable, or statistically certified improvement. Selection over recorded outcomes can be optimistic.",
+    "Change cost counts differing normalized fields as a proxy for change size, not measured intervention cost. Each numeric field counts once regardless of magnitude; criterion has no invented ordering.",
+    "Duplicate settings remain separate observations. A lower outcome at identical settings identifies no setting change and does not establish repeatability.",
+    "Missing settings or MRE exclude candidates; missing secondary outcomes remain null without imputation. Missingness may be selective.",
+    "No estimator cap, compute cost, metric formula, operational cost model, or deployment guarantee is inferred. Recorded finite settings are not validated as estimator constructor parameters.",
+    "CSV data-row numbers denote record positions, not chronology. Comparisons use finite normalized floats and exact equality; recorded precision can affect ties."
+  ],
+  "reuse": "Steps 1\u20137 modules and tests retained unchanged. Reuses CSV schema/loading, finite-float and categorical normalization, record rendering, and direction-aware objective differences. Adds baseline validation, minimal-field-change search and exclusion/tie audit.",
+  "environment": {
+    "scikit_learn_version": "1.6.0"
+  },
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+}

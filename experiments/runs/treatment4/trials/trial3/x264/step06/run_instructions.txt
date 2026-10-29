@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+
+Run tests:
+python3 -m unittest discover -s 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step06/tests' -v
+
+Run the justification demonstration:
+/usr/bin/time -p python3 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step06/source/summarize_x264.py' 'SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --justify

@@ -1,0 +1,28 @@
+{
+  "groups": {
+    "n": {
+      "n": 83,
+      "mean": 606.0638554216868
+    },
+    "h": {
+      "n": 10,
+      "mean": 776.7
+    }
+  },
+  "difference_mean_a_minus_mean_b": -170.6361445783133,
+  "confidence_level": 0.95,
+  "confidence_interval": [
+    -727.3030968828813,
+    386.0308077262547
+  ],
+  "welch_df": 15.552580855698572,
+  "welch_t": -0.6513411043102829,
+  "two_sided_p_value": 0.5243346705603102,
+  "practical_threshold": 60.60638554216868,
+  "point_estimate_exceeds_threshold": true,
+  "entire_interval_exceeds_threshold": false,
+  "interpretation": "Effort- is observed effort, not verified monetary cost; this observational comparison does not establish a causal process effect."
+}
+real 1.48
+user 0.77
+sys 0.21

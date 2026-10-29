@@ -1,0 +1,15 @@
+Implemented and corrected Step 4 in `experiments/runs/treatment4/trials/trial3/x264/step04`.
+
+Source preserves all Step 3 interfaces and adds `IncrementalBenchmark`, `benchmark_flow`, and `benchmark_csv`. It processes records through an iterator, uses incremental mean/sample variance updates, tracks the first minimum by record ID, deep-copies configurations and snapshots, and ignores missing/non-finite outcomes. Empty input yields no snapshots; a first observation has no sample variance; ties retain the first best record. CSV order is a demonstration sequence, not a verified timeline. No convergence, sufficient evidence, or automatic stopping rule is claimed.
+
+Tests include the Step 3 regression suite plus incremental prefix/batch checks, empty input, one observation, ties, missing/non-finite outcomes, configuration retention, defensive copying, CSV integration, and lazy input consumption. The complete suite passes: 16 tests. The demonstration succeeds in 0.81 seconds real elapsed time using `/usr/bin/time -p`.
+
+The corrected flow demonstration consumes `benchmark_csv()` and reports 1152 snapshots. Its final snapshot has count 1152, mean 461.7535963541664, sample variance 26426.313365992526, best value 244.23, identifier 70, and the full encoder configuration. The flow subprocess took 1.40 seconds real elapsed time. The previous batch summarizer output is preserved as `runtime_output_summarizer.txt`.
+
+Run from `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI`:
+
+`/usr/local/bin/python3 -m unittest discover -s "experiments/runs/treatment4/trials/trial3/x264/step04/tests" -v`
+
+`/usr/bin/time -p /usr/local/bin/python3 "experiments/runs/treatment4/trials/trial3/x264/step04/run_flow_demo.py" "moot/optimize/config/X264_AllMeasurements.csv"`
+
+Known limitations: invalid outcomes are skipped, configuration values are retained as supplied, and the accumulator describes observed benchmark results only; it does not infer units, quality, causality, convergence, or stopping criteria.

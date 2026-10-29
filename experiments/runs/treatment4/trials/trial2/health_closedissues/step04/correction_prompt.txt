@@ -1,0 +1,24 @@
+Correct Health Trial 2 Step 4 under the original restrictions.
+
+running_summaries_csv currently passes flat CSV rows, but running_summaries
+reads record["configuration"]. Consequently all best configurations are null.
+
+- Map each CSV row into the expected record structure.
+- Include all five configuration fields, the three outcomes, and a clearly
+  defined record identifier.
+- Preserve first-observed tie-breaking and incremental statistics.
+- Copy stored configuration dictionaries so later input mutation cannot
+  change earlier snapshots.
+- Add a CSV integration test verifying the exact best configuration for
+  each outcome, plus a snapshot-mutation test.
+- Correct response.txt's test breakdown: the previous suite had 11 inherited
+  tests and 3 flow tests, not 9 and 5.
+
+Preserve existing logs and capture the corrected tests and demonstration
+directly into new attempt-labeled files.
+Update metrics using actual source counts, diff against Step 3, measured
+subprocess time, and all Step 4 failures.
+
+Keep prompt.txt unchanged. Save this correction as correction_prompt.txt.
+Save your exact final response in response.txt.
+Write only inside the existing Health trial2/step04 directory.

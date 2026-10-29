@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step03/run_demo.py", line 5, in <module>
+    import summarize_x264
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step03/source/summarize_x264.py", line 7, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+real 0.04
+user 0.03
+sys 0.00

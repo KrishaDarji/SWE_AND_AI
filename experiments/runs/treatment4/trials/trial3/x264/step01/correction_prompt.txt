@@ -1,0 +1,15 @@
+Correct Trial 3 X264 Step 1's failure documentation only.
+
+metrics.csv reports error_count=2 and says both failed commands are preserved,
+but the existing attempt files contain successful outputs.
+
+Recover the exact two failed-command outputs from this chat into separate
+attempt-labeled files. If unavailable, document which failures occurred,
+the evidence supporting the count, and that their exact logs are missing.
+
+Update metrics notes and response.txt accurately.
+Preserve source, tests, prompt, successful logs, and measured runtime.
+Save this correction as correction_prompt.txt.
+No rerun is needed.
+
+Write only inside the existing Trial 3 X264 step01 directory.

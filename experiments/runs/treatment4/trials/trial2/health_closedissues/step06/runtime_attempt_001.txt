@@ -1,0 +1,47 @@
+{
+  "association_note": "Associations, if added from prior analysis, are descriptive and not additive local contributions or causal effects. Correlated settings can share explanatory information.",
+  "dataset_medians": {
+    "ACC+": 0.43992310157000963,
+    "MRE-": 0.8091310751104565,
+    "PRED40+": 0.0
+  },
+  "demonstration_policy": "lowest observed MRE-, ties by higher ACC+, then higher PRED40+, then earliest CSV record",
+  "eligible_mre_count": 10000,
+  "evidence_type": "retrospective observed-data evidence",
+  "limitation": "This is observed-data evidence and does not guarantee future performance or establish statistical superiority; no model estimates are used.",
+  "median_valid_counts": {
+    "ACC+": 10000,
+    "MRE-": 10000,
+    "PRED40+": 10000
+  },
+  "missing_nonfinite": {
+    "ACC+": 0,
+    "MRE-": 0,
+    "PRED40+": 0
+  },
+  "row_count": 10000,
+  "selected": {
+    "configuration": {
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    },
+    "record_id": 32
+  },
+  "selected_minus_median": {
+    "ACC+": 0.3502082665812239,
+    "MRE-": -0.8091310751104565,
+    "PRED40+": 0.8571428571428571
+  },
+  "tradeoff_note": "Best MRE- does not necessarily mean best ACC+ or PRED40+; all three measured outcomes are reported independently."
+}
+real 0.04
+user 0.03
+sys 0.00

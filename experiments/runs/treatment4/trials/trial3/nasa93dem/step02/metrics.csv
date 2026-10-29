@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,3,software project estimation,guess,150,70,1,0.74,13,"7 tests; Step 1 source/tests copied; normalized all-descriptor configuration grouping; categorical imputation and one-hot unknown handling; GroupShuffleSplit seed 42; /usr/bin/time -p real; 13 repaired failures counted across attempts 01-03 and 05; one split is not deployment evidence"

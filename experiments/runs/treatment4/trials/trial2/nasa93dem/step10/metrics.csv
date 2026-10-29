@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,4,2,software project estimation,race,531,39,1,1.58,1,"35 tests passed; reused Step 9 source/tests; /usr/bin/time -p real for implementation only; one repaired command failure because python was unavailable; paired repeated GroupShuffleSplit projects overlap; final same procedure pending."

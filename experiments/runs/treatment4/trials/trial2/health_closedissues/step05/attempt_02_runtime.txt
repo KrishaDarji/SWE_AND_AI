@@ -1,0 +1,90 @@
+{
+  "adjusted_partial_r2": {
+    "Max_depth": 7.614871102568351e-06,
+    "Min_impurity_decrease": 0.010558675306385143,
+    "Min_sample_leaves": 0.6667007910955165,
+    "N_estimators": 2.3496791957741343e-05,
+    "criterion": 0.07690051317764712
+  },
+  "direction": "lower is better",
+  "excluded_outcomes": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "finite_mre_count": 10000,
+  "interpretation": "Scores are associations, not causal responsibility. Correlated settings can share explanatory information; marginal and adjusted scores can therefore differ. Missing/non-finite numeric values are omitted from that marginal score; categorical missing values form a category. Ties are ordered by setting name. Groups with fewer than two distinct values receive no numeric correlation score.",
+  "marginal": {
+    "Max_depth": {
+      "evidence": {
+        "count": 10000,
+        "missing_or_nonfinite": 0,
+        "setting_max": 20.0,
+        "setting_min": 1.0
+      },
+      "method": "absolute Spearman rho",
+      "score": 0.015316476705363548
+    },
+    "Min_impurity_decrease": {
+      "evidence": {
+        "count": 10000,
+        "missing_or_nonfinite": 0,
+        "setting_max": 10.0,
+        "setting_min": 0.0
+      },
+      "method": "absolute Spearman rho",
+      "score": 0.03275775205722887
+    },
+    "Min_sample_leaves": {
+      "evidence": {
+        "count": 10000,
+        "missing_or_nonfinite": 0,
+        "setting_max": 20.0,
+        "setting_min": 1.0
+      },
+      "method": "absolute Spearman rho",
+      "score": 0.7475306274967778
+    },
+    "N_estimators": {
+      "evidence": {
+        "count": 10000,
+        "missing_or_nonfinite": 0,
+        "setting_max": 200.0,
+        "setting_min": 10.0
+      },
+      "method": "absolute Spearman rho",
+      "score": 0.004162961271016852
+    },
+    "criterion": {
+      "evidence": {
+        "count": 10000,
+        "group_counts": {
+          "absolute_error": 3302,
+          "poisson": 3335,
+          "squared_error": 3363
+        }
+      },
+      "method": "eta-squared",
+      "score": 0.024851322742382987
+    }
+  },
+  "numeric_grouping": "none; numeric settings remain continuous",
+  "outcome": "MRE-",
+  "outcome_summary": {
+    "max": 1.0,
+    "mean": 0.70909397643463,
+    "median": 0.8091310751104565,
+    "min": 0.0
+  },
+  "ranking": [
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "criterion",
+    "Max_depth",
+    "N_estimators"
+  ],
+  "row_count": 10000
+}
+real 0.79
+user 0.69
+sys 0.09

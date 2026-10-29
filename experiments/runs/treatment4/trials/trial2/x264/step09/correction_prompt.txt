@@ -1,0 +1,18 @@
+Correct Step 9 under the original access and output restrictions.
+
+- Track the actual nearest comparison groups used for each expected value.
+- Report that count as comparable_configuration_groups.
+- Apply min_comparisons to that actual count.
+- For inputs with no other configuration group, report that no independent
+  reference is available and do not flag the record.
+- Add tests where many groups exist but only one nearest group is used,
+  and where multiple equally near groups satisfy min_comparisons.
+- Preserve earlier interfaces and regression tests.
+
+Preserve existing logs and append directly captured correction results.
+Run the corrected tests and demonstration, then update measured metrics.
+Calculate new_loc against Step 8, including all Step 9 changes.
+
+Keep the original prompt.txt unchanged. Save this correction separately
+as correction_prompt.txt, and update response.txt to your exact final response.
+Write only inside the existing step09 directory.

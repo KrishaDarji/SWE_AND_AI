@@ -1,0 +1,133 @@
+You are running Treatment 4, Trial 3, Dataset 1, Step 7 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: choose
+- Current requirement: Select a configuration that minimizes encoding time under a budget.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/config/X264_AllMeasurements.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/x264/step06/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/x264/step06/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/x264/step07/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 6 implementation where appropriate.
+Copy accumulated source and tests into Step 7, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 X264 Step 6 source and tests.
+- Files created in the current Step 7 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other trials, datasets, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Implement budget-limited configuration selection.
+- Interpret budget as the number of distinct benchmark evaluations,
+  not money or execution time.
+- Use demonstration budget 20 and random seed 42.
+- Candidate settings may be visible before evaluation.
+- Hide Performance- values behind a counted evaluation interface.
+- Give the selection routine only candidate settings and an evaluation callback;
+  do not pass the full outcome array to it.
+- Use outcomes only for configurations already evaluated.
+- Reuse useful earlier modeling components, fitting only on evaluated data.
+- Do not call earlier full-dataset functions that expose unevaluated outcomes.
+- Prevent repeated evaluation of identical configurations.
+- Recommend the lowest measured Performance- among evaluated configurations.
+- Define deterministic tie-breaking and record evaluation order, observations,
+  budget usage, recommended identifier, and full configuration.
+- Freeze the recommendation before any full-dataset audit.
+- A separate retrospective audit may report the observed minimum and gap;
+  it must not influence selection.
+- Handle invalid budgets, empty candidates, duplicate configurations,
+  and budgets exceeding available candidates explicitly.
+- Treat lower Performance- as better; do not invent units or quality measures.
+- Explain the strategy and limitations.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test budget enforcement, reproducibility, duplicate prevention,
+recommendation membership in evaluated candidates, and hidden-outcome isolation.
+Test invalid/zero budgets, empty input, and budgets exceeding candidate count.
+Use a guarded evaluation callback to verify outcomes are accessed only by calls.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify all artifacts and cross-check numerical claims.
+- Specify the working directory and valid quoted paths in run instructions.
+
+Run tests and the budget-selection demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 7
+- treatment: 4
+- trial: 3
+- domain: video encoding
+- skill: choose
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with Trial 3 Step 6,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the selection
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure metrics agree with source differences and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 X264 Step 7 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

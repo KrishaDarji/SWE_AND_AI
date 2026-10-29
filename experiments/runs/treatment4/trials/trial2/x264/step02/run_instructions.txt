@@ -1,0 +1,6 @@
+Run from this directory:
+
+python3 -m unittest discover -s tests -v
+python3 source/summarize_runs.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --evaluate
+
+For a supplied configuration, pass a complete JSON object with all 16 setting names using --configuration.

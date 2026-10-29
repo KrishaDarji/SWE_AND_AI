@@ -1,0 +1,48 @@
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.009s
+
+OK
+TEST_STATUS=0
+REPAIR TEST ATTEMPT 1 (corrected suite)
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... FAIL
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+======================================================================
+FAIL: test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step03/tests/test_summarize_runs.py", line 61, in test_certification_uses_predeclared_no_asm_groups
+    self.assertFalse(result["confidence_interval_entirely_beyond_threshold"])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.009s
+
+FAILED (failures=1)
+REPAIR_TEST_STATUS=1
+REPAIR TEST ATTEMPT 2 (final corrected suite)
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.007s
+
+OK
+REPAIR_TEST_STATUS=0

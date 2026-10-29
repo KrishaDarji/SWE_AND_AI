@@ -1,0 +1,67 @@
+You are running Treatment 4, Trial 2, Dataset 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Dataset path: moot/optimize/config/X264_AllMeasurements.csv
+- Current skill: remember
+- Current requirement: Summarize the encoder settings and quality measures in our historical runs.
+
+Use Python with scikit-learn.
+
+This is Step 1, so implement the skill independently from scratch.
+Do not reuse code, tests, prompts, outputs, or context from:
+- Trial 1
+- Other trials
+- Other datasets
+- Other treatments
+- Previous conversations
+- Root-level project source or generated code
+You may inspect only the specified dataset and standard Python/scikit-learn documentation.
+
+Working directory:
+experiments/runs/treatment4/trials/trial2/x264/step01/
+
+Create all required directories and files there:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation.
+5. Assumptions and limitations.
+Run the tests and implementation. Capture the actual outputs and runtime.
+
+Record metrics.csv with exactly these columns:
+
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+For Step 1:
+- total_loc is the nonblank, noncomment LOC of the implementation source.
+- new_loc should equal total_loc.
+- test_pass must reflect the actual test result.
+- runtime_seconds must be measured.
+- error_count must reflect actual unexpected errors.
+- Include the model and reasoning setting in notes.
+Do not write files outside:
+experiments/runs/treatment4/trials/trial2/x264/step01/

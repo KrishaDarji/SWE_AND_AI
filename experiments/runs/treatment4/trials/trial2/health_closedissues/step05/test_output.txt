@@ -1,0 +1,4 @@
+Final test attempt: attempt_07_test_suite.txt
+Earlier preserved attempts: attempt_01_test_suite.txt through attempt_06_test_suite.txt.
+The final suite output is preserved verbatim in attempt_07_test_suite.txt; it reports 19 tests and OK.
+Correction test attempt: attempt_09_test_suite.txt; it reports 22 tests and OK.

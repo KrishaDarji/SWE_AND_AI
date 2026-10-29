@@ -1,0 +1,1 @@
+Final test output is preserved verbatim in [attempt_06_test_suite.txt](attempt_06_test_suite.txt). Earlier preserved attempts: attempt_01_test_suite.txt, attempt_02_test_suite.txt, attempt_03_test_suite.txt, attempt_04_test_suite.txt.

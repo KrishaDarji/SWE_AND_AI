@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,3,video encoding,guess,162,88,1,1.02,5,"8 tests; Step 1 source/tests copied and summary interface preserved; settings normalized to None, most-frequent imputation fitted on training rows, explicit all-missing marker, grouped split; /usr/bin/time -p demonstration; exact outputs for the four earlier failures were unavailable, disclosed in failure_evidence.txt; one additional wrong-working-directory command failure is preserved by the session evidence"

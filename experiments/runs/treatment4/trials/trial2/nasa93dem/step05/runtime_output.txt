@@ -1,0 +1,1527 @@
+[attempt 2: repaired final demonstration stdout]
+[attempt 2: repaired final demonstration stdout]
+{
+  "outcome": "Effort-",
+  "observation_count": 93,
+  "overall_mean_effort": 624.4118279569893,
+  "overall_median_effort": 252.0,
+  "predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "ranking": [
+    {
+      "descriptor": "time",
+      "score_eta_squared": 0.4179432592506268,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 13,
+          "mean_effort": 734.0769230769231,
+          "median_effort": 458.0,
+          "min_effort": 90.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "n",
+          "n": 54,
+          "mean_effort": 334.3888888888889,
+          "median_effort": 156.0,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 18,
+          "mean_effort": 375.34444444444443,
+          "median_effort": 215.5,
+          "min_effort": 12.0,
+          "max_effort": 1248.0
+        },
+        {
+          "level": "xh",
+          "n": 8,
+          "mean_effort": 2964.2625,
+          "median_effort": 1848.5,
+          "min_effort": 72.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "xh",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 1,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "rely",
+      "score_eta_squared": 0.34214709628686046,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 42,
+          "mean_effort": 483.54761904761904,
+          "median_effort": 326.4,
+          "min_effort": 8.4,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "l",
+          "n": 2,
+          "mean_effort": 1296.0,
+          "median_effort": 1296.0,
+          "min_effort": 192.0,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "n",
+          "n": 39,
+          "mean_effort": 269.1589743589744,
+          "median_effort": 170.0,
+          "min_effort": 24.0,
+          "max_effort": 1368.0
+        },
+        {
+          "level": "vh",
+          "n": 10,
+          "mean_effort": 2467.21,
+          "median_effort": 1709.2,
+          "min_effort": 107.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "vh",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 2,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "cplx",
+      "score_eta_squared": 0.19168030678001796,
+      "group_count": 5,
+      "groups": [
+        {
+          "level": "h",
+          "n": 58,
+          "mean_effort": 315.2448275862069,
+          "median_effort": 118.8,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "l",
+          "n": 3,
+          "mean_effort": 844.3333333333334,
+          "median_effort": 973.0,
+          "min_effort": 192.0,
+          "max_effort": 1368.0
+        },
+        {
+          "level": "n",
+          "n": 10,
+          "mean_effort": 494.2,
+          "median_effort": 320.0,
+          "min_effort": 48.0,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 17,
+          "mean_effort": 1341.270588235294,
+          "median_effort": 648.0,
+          "min_effort": 12.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "xh",
+          "n": 5,
+          "mean_effort": 1901.9,
+          "median_effort": 1924.5,
+          "min_effort": 107.0,
+          "max_effort": 4560.0
+        }
+      ],
+      "highest_mean_level": "xh",
+      "lowest_mean_level": "h",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 3,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "stor",
+      "score_eta_squared": 0.163584830645342,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 10,
+          "mean_effort": 887.7,
+          "median_effort": 580.5,
+          "min_effort": 107.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "n",
+          "n": 49,
+          "mean_effort": 323.2489795918367,
+          "median_effort": 117.6,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 21,
+          "mean_effort": 555.1904761904761,
+          "median_effort": 240.0,
+          "min_effort": 12.0,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "xh",
+          "n": 13,
+          "mean_effort": 1668.853846153846,
+          "median_effort": 648.0,
+          "min_effort": 60.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "xh",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 4,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "plex",
+      "score_eta_squared": 0.1525372443970592,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 22,
+          "mean_effort": 1285.6863636363637,
+          "median_effort": 651.5,
+          "min_effort": 72.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 14,
+          "mean_effort": 346.85714285714283,
+          "median_effort": 203.5,
+          "min_effort": 12.0,
+          "max_effort": 1350.0
+        },
+        {
+          "level": "n",
+          "n": 53,
+          "mean_effort": 352.68301886792455,
+          "median_effort": 117.6,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vl",
+          "n": 4,
+          "mean_effort": 1559.25,
+          "median_effort": 623.5,
+          "min_effort": 430.0,
+          "max_effort": 4560.0
+        }
+      ],
+      "highest_mean_level": "vl",
+      "lowest_mean_level": "l",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 5,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "data",
+      "score_eta_squared": 0.14398840212923386,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 17,
+          "mean_effort": 1522.1941176470589,
+          "median_effort": 1181.0,
+          "min_effort": 98.8,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 37,
+          "mean_effort": 370.1621621621622,
+          "median_effort": 72.0,
+          "min_effort": 8.4,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "n",
+          "n": 31,
+          "mean_effort": 502.4516129032258,
+          "median_effort": 300.0,
+          "min_effort": 12.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "vh",
+          "n": 8,
+          "mean_effort": 365.125,
+          "median_effort": 181.0,
+          "min_effort": 62.0,
+          "max_effort": 1350.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "vh",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 6,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "acap",
+      "score_eta_squared": 0.06061626094121256,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 51,
+          "mean_effort": 876.1235294117647,
+          "median_effort": 420.0,
+          "min_effort": 24.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "n",
+          "n": 32,
+          "mean_effort": 301.34375,
+          "median_effort": 75.0,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 10,
+          "mean_effort": 374.5,
+          "median_effort": 215.5,
+          "min_effort": 62.0,
+          "max_effort": 1181.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 7,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pvol",
+      "score_eta_squared": 0.057823009747575795,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 9,
+          "mean_effort": 557.4444444444445,
+          "median_effort": 480.0,
+          "min_effort": 12.0,
+          "max_effort": 1368.0
+        },
+        {
+          "level": "l",
+          "n": 65,
+          "mean_effort": 477.5384615384616,
+          "median_effort": 240.0,
+          "min_effort": 8.4,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "n",
+          "n": 19,
+          "mean_effort": 1158.5947368421052,
+          "median_effort": 252.0,
+          "min_effort": 42.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "l",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 8,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pcap",
+      "score_eta_squared": 0.05744080323725276,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 39,
+          "mean_effort": 921.623076923077,
+          "median_effort": 400.0,
+          "min_effort": 24.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "n",
+          "n": 44,
+          "mean_effort": 348.70454545454544,
+          "median_effort": 115.8,
+          "min_effort": 8.4,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "vh",
+          "n": 10,
+          "mean_effort": 678.4,
+          "median_effort": 425.0,
+          "min_effort": 72.0,
+          "max_effort": 2400.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 9,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "sced",
+      "score_eta_squared": 0.05455369312943366,
+      "group_count": 2,
+      "groups": [
+        {
+          "level": "l",
+          "n": 34,
+          "mean_effort": 276.79411764705884,
+          "median_effort": 118.8,
+          "min_effort": 8.4,
+          "max_effort": 1248.0
+        },
+        {
+          "level": "n",
+          "n": 59,
+          "mean_effort": 824.7338983050848,
+          "median_effort": 400.0,
+          "min_effort": 12.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "l",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 10,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pmat",
+      "score_eta_squared": 0.050721244838131965,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 43,
+          "mean_effort": 791.5837209302327,
+          "median_effort": 278.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 20,
+          "mean_effort": 817.6600000000001,
+          "median_effort": 501.7,
+          "min_effort": 72.0,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "n",
+          "n": 30,
+          "mean_effort": 255.96666666666667,
+          "median_effort": 132.0,
+          "min_effort": 12.0,
+          "max_effort": 1350.0
+        }
+      ],
+      "highest_mean_level": "l",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 11,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "apex",
+      "score_eta_squared": 0.023125557900776195,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 46,
+          "mean_effort": 774.7021739130436,
+          "median_effort": 276.0,
+          "min_effort": 48.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 1,
+          "mean_effort": 648.0,
+          "median_effort": 648.0,
+          "min_effort": 648.0,
+          "max_effort": 648.0
+        },
+        {
+          "level": "n",
+          "n": 34,
+          "mean_effort": 402.47058823529414,
+          "median_effort": 117.6,
+          "min_effort": 8.4,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "vh",
+          "n": 12,
+          "mean_effort": 675.1666666666666,
+          "median_effort": 342.0,
+          "min_effort": 24.0,
+          "max_effort": 4560.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 12,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "ltex",
+      "score_eta_squared": 0.0046301588059940646,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 69,
+          "mean_effort": 662.0333333333334,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 6,
+          "mean_effort": 427.3333333333333,
+          "median_effort": 259.0,
+          "min_effort": 12.0,
+          "max_effort": 1350.0
+        },
+        {
+          "level": "n",
+          "n": 14,
+          "mean_effort": 587.2857142857143,
+          "median_effort": 162.0,
+          "min_effort": 42.0,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vl",
+          "n": 4,
+          "mean_effort": 401.0,
+          "median_effort": 395.0,
+          "min_effort": 215.0,
+          "max_effort": 599.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "vl",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 13,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "tool",
+      "score_eta_squared": 0.0021890098555123858,
+      "group_count": 2,
+      "groups": [
+        {
+          "level": "h",
+          "n": 10,
+          "mean_effort": 776.7,
+          "median_effort": 528.5,
+          "min_effort": 72.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "n",
+          "n": 83,
+          "mean_effort": 606.0638554216868,
+          "median_effort": 215.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 14,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "docu",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 15,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "flex",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "h",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "h",
+      "direction": "no directional contrast",
+      "rank": 16,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pcon",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 17,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "prec",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "h",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "h",
+      "direction": "no directional contrast",
+      "rank": 18,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "resl",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "h",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "h",
+      "direction": "no directional contrast",
+      "rank": 19,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "ruse",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 20,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "site",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 21,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "team",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "vh",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "vh",
+      "lowest_mean_level": "vh",
+      "direction": "no directional contrast",
+      "rank": 22,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    }
+  ],
+  "interpretation": "Higher effort alone does not establish inefficiency; project scope differs. Correlated descriptors can share explanatory information. Associations are not causal effects or guaranteed process changes.",
+  "limitations": [
+    "Delivered size Kloc+ and all X-suffix metadata are excluded, so this is not size-adjusted productivity.",
+    "Small groups and missingness can make marginal scores unstable.",
+    "Constant descriptors have score zero and are deterministically ordered by name."
+  ]
+}
+[attempt 2: /usr/bin/time -p stderr]
+real 0.80
+user 0.69
+sys 0.10
+[attempt 3: repaired test and final demonstration stdout]
+{
+  "outcome": "Effort-",
+  "observation_count": 93,
+  "overall_mean_effort": 624.4118279569893,
+  "overall_median_effort": 252.0,
+  "predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "ranking": [
+    {
+      "descriptor": "time",
+      "score_eta_squared": 0.4179432592506268,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 13,
+          "mean_effort": 734.0769230769231,
+          "median_effort": 458.0,
+          "min_effort": 90.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "n",
+          "n": 54,
+          "mean_effort": 334.3888888888889,
+          "median_effort": 156.0,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 18,
+          "mean_effort": 375.34444444444443,
+          "median_effort": 215.5,
+          "min_effort": 12.0,
+          "max_effort": 1248.0
+        },
+        {
+          "level": "xh",
+          "n": 8,
+          "mean_effort": 2964.2625,
+          "median_effort": 1848.5,
+          "min_effort": 72.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "xh",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 1,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "rely",
+      "score_eta_squared": 0.34214709628686046,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 42,
+          "mean_effort": 483.54761904761904,
+          "median_effort": 326.4,
+          "min_effort": 8.4,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "l",
+          "n": 2,
+          "mean_effort": 1296.0,
+          "median_effort": 1296.0,
+          "min_effort": 192.0,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "n",
+          "n": 39,
+          "mean_effort": 269.1589743589744,
+          "median_effort": 170.0,
+          "min_effort": 24.0,
+          "max_effort": 1368.0
+        },
+        {
+          "level": "vh",
+          "n": 10,
+          "mean_effort": 2467.21,
+          "median_effort": 1709.2,
+          "min_effort": 107.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "vh",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 2,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "cplx",
+      "score_eta_squared": 0.19168030678001796,
+      "group_count": 5,
+      "groups": [
+        {
+          "level": "h",
+          "n": 58,
+          "mean_effort": 315.2448275862069,
+          "median_effort": 118.8,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "l",
+          "n": 3,
+          "mean_effort": 844.3333333333334,
+          "median_effort": 973.0,
+          "min_effort": 192.0,
+          "max_effort": 1368.0
+        },
+        {
+          "level": "n",
+          "n": 10,
+          "mean_effort": 494.2,
+          "median_effort": 320.0,
+          "min_effort": 48.0,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 17,
+          "mean_effort": 1341.270588235294,
+          "median_effort": 648.0,
+          "min_effort": 12.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "xh",
+          "n": 5,
+          "mean_effort": 1901.9,
+          "median_effort": 1924.5,
+          "min_effort": 107.0,
+          "max_effort": 4560.0
+        }
+      ],
+      "highest_mean_level": "xh",
+      "lowest_mean_level": "h",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 3,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "stor",
+      "score_eta_squared": 0.163584830645342,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 10,
+          "mean_effort": 887.7,
+          "median_effort": 580.5,
+          "min_effort": 107.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "n",
+          "n": 49,
+          "mean_effort": 323.2489795918367,
+          "median_effort": 117.6,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 21,
+          "mean_effort": 555.1904761904761,
+          "median_effort": 240.0,
+          "min_effort": 12.0,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "xh",
+          "n": 13,
+          "mean_effort": 1668.853846153846,
+          "median_effort": 648.0,
+          "min_effort": 60.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "xh",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 4,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "plex",
+      "score_eta_squared": 0.1525372443970592,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 22,
+          "mean_effort": 1285.6863636363637,
+          "median_effort": 651.5,
+          "min_effort": 72.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 14,
+          "mean_effort": 346.85714285714283,
+          "median_effort": 203.5,
+          "min_effort": 12.0,
+          "max_effort": 1350.0
+        },
+        {
+          "level": "n",
+          "n": 53,
+          "mean_effort": 352.68301886792455,
+          "median_effort": 117.6,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vl",
+          "n": 4,
+          "mean_effort": 1559.25,
+          "median_effort": 623.5,
+          "min_effort": 430.0,
+          "max_effort": 4560.0
+        }
+      ],
+      "highest_mean_level": "vl",
+      "lowest_mean_level": "l",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 5,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "data",
+      "score_eta_squared": 0.14398840212923386,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 17,
+          "mean_effort": 1522.1941176470589,
+          "median_effort": 1181.0,
+          "min_effort": 98.8,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 37,
+          "mean_effort": 370.1621621621622,
+          "median_effort": 72.0,
+          "min_effort": 8.4,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "n",
+          "n": 31,
+          "mean_effort": 502.4516129032258,
+          "median_effort": 300.0,
+          "min_effort": 12.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "vh",
+          "n": 8,
+          "mean_effort": 365.125,
+          "median_effort": 181.0,
+          "min_effort": 62.0,
+          "max_effort": 1350.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "vh",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 6,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "acap",
+      "score_eta_squared": 0.06061626094121256,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 51,
+          "mean_effort": 876.1235294117647,
+          "median_effort": 420.0,
+          "min_effort": 24.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "n",
+          "n": 32,
+          "mean_effort": 301.34375,
+          "median_effort": 75.0,
+          "min_effort": 8.4,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vh",
+          "n": 10,
+          "mean_effort": 374.5,
+          "median_effort": 215.5,
+          "min_effort": 62.0,
+          "max_effort": 1181.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 7,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pvol",
+      "score_eta_squared": 0.057823009747575795,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 9,
+          "mean_effort": 557.4444444444445,
+          "median_effort": 480.0,
+          "min_effort": 12.0,
+          "max_effort": 1368.0
+        },
+        {
+          "level": "l",
+          "n": 65,
+          "mean_effort": 477.5384615384616,
+          "median_effort": 240.0,
+          "min_effort": 8.4,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "n",
+          "n": 19,
+          "mean_effort": 1158.5947368421052,
+          "median_effort": 252.0,
+          "min_effort": 42.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "l",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 8,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pcap",
+      "score_eta_squared": 0.05744080323725276,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 39,
+          "mean_effort": 921.623076923077,
+          "median_effort": 400.0,
+          "min_effort": 24.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "n",
+          "n": 44,
+          "mean_effort": 348.70454545454544,
+          "median_effort": 115.8,
+          "min_effort": 8.4,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "vh",
+          "n": 10,
+          "mean_effort": 678.4,
+          "median_effort": 425.0,
+          "min_effort": 72.0,
+          "max_effort": 2400.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 9,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "sced",
+      "score_eta_squared": 0.05455369312943366,
+      "group_count": 2,
+      "groups": [
+        {
+          "level": "l",
+          "n": 34,
+          "mean_effort": 276.79411764705884,
+          "median_effort": 118.8,
+          "min_effort": 8.4,
+          "max_effort": 1248.0
+        },
+        {
+          "level": "n",
+          "n": 59,
+          "mean_effort": 824.7338983050848,
+          "median_effort": 400.0,
+          "min_effort": 12.0,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "l",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 10,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pmat",
+      "score_eta_squared": 0.050721244838131965,
+      "group_count": 3,
+      "groups": [
+        {
+          "level": "h",
+          "n": 43,
+          "mean_effort": 791.5837209302327,
+          "median_effort": 278.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 20,
+          "mean_effort": 817.6600000000001,
+          "median_effort": 501.7,
+          "min_effort": 72.0,
+          "max_effort": 4560.0
+        },
+        {
+          "level": "n",
+          "n": 30,
+          "mean_effort": 255.96666666666667,
+          "median_effort": 132.0,
+          "min_effort": 12.0,
+          "max_effort": 1350.0
+        }
+      ],
+      "highest_mean_level": "l",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 11,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "apex",
+      "score_eta_squared": 0.023125557900776195,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 46,
+          "mean_effort": 774.7021739130436,
+          "median_effort": 276.0,
+          "min_effort": 48.0,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 1,
+          "mean_effort": 648.0,
+          "median_effort": 648.0,
+          "min_effort": 648.0,
+          "max_effort": 648.0
+        },
+        {
+          "level": "n",
+          "n": 34,
+          "mean_effort": 402.47058823529414,
+          "median_effort": 117.6,
+          "min_effort": 8.4,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "vh",
+          "n": 12,
+          "mean_effort": 675.1666666666666,
+          "median_effort": 342.0,
+          "min_effort": 24.0,
+          "max_effort": 4560.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 12,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "ltex",
+      "score_eta_squared": 0.0046301588059940646,
+      "group_count": 4,
+      "groups": [
+        {
+          "level": "h",
+          "n": 69,
+          "mean_effort": 662.0333333333334,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        },
+        {
+          "level": "l",
+          "n": 6,
+          "mean_effort": 427.3333333333333,
+          "median_effort": 259.0,
+          "min_effort": 12.0,
+          "max_effort": 1350.0
+        },
+        {
+          "level": "n",
+          "n": 14,
+          "mean_effort": 587.2857142857143,
+          "median_effort": 162.0,
+          "min_effort": 42.0,
+          "max_effort": 2400.0
+        },
+        {
+          "level": "vl",
+          "n": 4,
+          "mean_effort": 401.0,
+          "median_effort": 395.0,
+          "min_effort": 215.0,
+          "max_effort": 599.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "vl",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 13,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "tool",
+      "score_eta_squared": 0.0021890098555123858,
+      "group_count": 2,
+      "groups": [
+        {
+          "level": "h",
+          "n": 10,
+          "mean_effort": 776.7,
+          "median_effort": 528.5,
+          "min_effort": 72.0,
+          "max_effort": 2460.0
+        },
+        {
+          "level": "n",
+          "n": 83,
+          "mean_effort": 606.0638554216868,
+          "median_effort": 215.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "n",
+      "direction": "higher Effort- at highest-mean level",
+      "rank": 14,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "docu",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 15,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "flex",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "h",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "h",
+      "direction": "no directional contrast",
+      "rank": 16,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "pcon",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 17,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "prec",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "h",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "h",
+      "direction": "no directional contrast",
+      "rank": 18,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "resl",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "h",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "h",
+      "lowest_mean_level": "h",
+      "direction": "no directional contrast",
+      "rank": 19,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "ruse",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 20,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "site",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "n",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "n",
+      "lowest_mean_level": "n",
+      "direction": "no directional contrast",
+      "rank": 21,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    },
+    {
+      "descriptor": "team",
+      "score_eta_squared": 0.0,
+      "group_count": 1,
+      "groups": [
+        {
+          "level": "vh",
+          "n": 93,
+          "mean_effort": 624.4118279569893,
+          "median_effort": 252.0,
+          "min_effort": 8.4,
+          "max_effort": 8211.0
+        }
+      ],
+      "highest_mean_level": "vh",
+      "lowest_mean_level": "vh",
+      "direction": "no directional contrast",
+      "rank": 22,
+      "method_note": "Marginal categorical eta-squared; no adjustment for other descriptors."
+    }
+  ],
+  "interpretation": "Higher effort alone does not establish inefficiency; project scope differs. Correlated descriptors can share explanatory information. Associations are not causal effects or guaranteed process changes.",
+  "limitations": [
+    "Delivered size Kloc+ and all X-suffix metadata are excluded, so this is not size-adjusted productivity.",
+    "Small groups and missingness can make marginal scores unstable.",
+    "Constant descriptors have score zero and are deterministically ordered by name."
+  ]
+}
+[attempt 3: /usr/bin/time -p stderr]
+real 0.81
+user 0.69
+sys 0.10

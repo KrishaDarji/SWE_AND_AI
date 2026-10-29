@@ -1,0 +1,11 @@
+Implemented Step 10 race comparison in `source/nasa93_summary.py`.
+
+The existing Step 9 preprocessing, 22-descriptor selection, RandomForest configuration, and skill interfaces were preserved. The new `race_compare` function uses fresh pipelines and GroupShuffleSplit seeds 42–51, compares each model against that split's training-mean baseline, reports held-out predictions/observations and both MAEs, and summarizes paired differences with a predefined 1e-12 tie tolerance. It discloses repeated-split overlap and marks the final “same” procedure as pending.
+
+Tests: 35 passed, including earlier-skill regression tests and new arithmetic, reproducibility, group-separation, baseline, fresh-fit, outcome-isolation, and tie-summary tests.
+
+Run from `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI` with:
+
+`cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step10" && python3 source/nasa93_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --race`
+
+Measured implementation runtime was 1.58 seconds real via `/usr/bin/time -p`, excluding tests. No claim of statistical superiority, deployment reliability, or effort units is made. The dataset is small, repeated splits overlap, and the project-specific final “same” procedure was unavailable.

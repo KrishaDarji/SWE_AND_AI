@@ -1,0 +1,5 @@
+{'predictor_names': ['N_estimators', 'criterion', 'Min_sample_leaves', 'Min_impurity_decrease', 'Max_depth'], 'train_count': 8000, 'test_count': 2000, 'estimator_settings': {'model': 'Ridge', 'alpha': 1.0, 'split': 'GroupShuffleSplit', 'test_size': 0.2, 'random_state': 42}, 'targets': {'MRE-': {'held_out_mae': 0.09641630963477062, 'training_mean_baseline_mae': 0.16738763880480406, 'training_mean': 0.7088927098663176, 'valid_test_count': 2000}, 'ACC+': {'held_out_mae': 0.052652367161534694, 'training_mean_baseline_mae': 0.08987054341675894, 'training_mean': 0.4959756888816687, 'valid_test_count': 2000}}}
+{'MRE-': 0.4443566487546201, 'ACC+': 0.6283862002462115}
+real 0.82
+user 0.71
+sys 0.10

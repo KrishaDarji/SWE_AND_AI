@@ -1,0 +1,68 @@
+..................FF..                                                   [100%]
+=================================== FAILURES ===================================
+____________________ test_justification_labels_and_proposal ____________________
+
+    def test_justification_labels_and_proposal():
+>       report = justify(str(DATA))
+                 ^^^^^^^^^^^^^^^^^^
+
+tests/test_nasa93_justify.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+    def justify(path: str) -> Dict[str, Any]:
+        data = read_csv(path)
+        result = evaluate(path)
+        selected = result["test_rows"][0]
+        names = result["predictor_names"]
+        proposal = {name: selected.get(name) for name in names}
+        estimate = predict_proposal(result["model"], proposal, names)
+        associations = rank_associations(result["train_rows"], data["columns"])
+>       selected_position = next(i for i, row in enumerate(data["rows"]) if row is selected)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+source/nasa93_justify.py:19: StopIteration
+____________ test_training_only_reference_and_outcome_independence _____________
+
+tmp_path = PosixPath('/private/var/folders/6s/nl7vyczd1cg4synhvvd8v8840000gn/T/pytest-of-vivek/pytest-0/test_training_only_reference_a0')
+
+    def test_training_only_reference_and_outcome_independence(tmp_path):
+        original = read_csv(str(DATA))
+        changed = copy.deepcopy(original)
+        heldout = evaluate(str(DATA))["test_rows"]
+        selected_id = heldout[0]["idX"]
+        for row in changed["rows"]:
+            if row.get("idX") == selected_id:
+                row["Effort-"] = 999999.0
+        out = tmp_path / "changed.csv"
+        with out.open("w") as handle:
+            handle.write(",".join(changed["columns"]) + "\n")
+            for row in changed["rows"]:
+                handle.write(",".join("" if row.get(c) is None else str(row.get(c)) for c in changed["columns"]) + "\n")
+>       a, b = justify(str(DATA)), justify(str(out))
+               ^^^^^^^^^^^^^^^^^^
+
+tests/test_nasa93_justify.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+    def justify(path: str) -> Dict[str, Any]:
+        data = read_csv(path)
+        result = evaluate(path)
+        selected = result["test_rows"][0]
+        names = result["predictor_names"]
+        proposal = {name: selected.get(name) for name in names}
+        estimate = predict_proposal(result["model"], proposal, names)
+        associations = rank_associations(result["train_rows"], data["columns"])
+>       selected_position = next(i for i, row in enumerate(data["rows"]) if row is selected)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+source/nasa93_justify.py:19: StopIteration
+=========================== short test summary info ============================
+FAILED tests/test_nasa93_justify.py::test_justification_labels_and_proposal
+FAILED tests/test_nasa93_justify.py::test_training_only_reference_and_outcome_independence
+2 failed, 20 passed in 0.86s

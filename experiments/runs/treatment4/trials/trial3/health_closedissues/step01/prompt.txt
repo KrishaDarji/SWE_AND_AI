@@ -1,0 +1,122 @@
+You are running Treatment 4, Trial 3, Dataset 3, Step 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: remember
+- Current requirement: Summarize model-quality metrics and configuration settings.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step01/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+This is Step 1 of a new dataset. Implement independently from scratch.
+Reuse becomes permitted only in later steps of this same dataset and trial.
+
+You may read only:
+- The specified dataset.
+- Files created in the current Step 1 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to code, tests, prompts, reports, or architecture from:
+- X264, NASA93, or any other dataset.
+- Trials 1 or 2, or any other trial.
+- Other treatments.
+- Root-level project implementations.
+- Git history, previous chats, or remembered solutions.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Summarize record count, columns, data types, and missing values.
+- Distinguish configuration settings from quality outcomes.
+- Configuration fields:
+  N_estimators, criterion, Min_sample_leaves,
+  Min_impurity_decrease, Max_depth.
+- Outcomes:
+  MRE-: minimize.
+  ACC+: maximize.
+  PRED40+: maximize.
+- Report numeric descriptive statistics and categorical frequencies.
+- Report distinct configuration count, repeated configurations, and duplicate rows.
+- Treat criterion as categorical.
+- Preserve original field names and optimization directions.
+- Define missing/non-finite handling and empty-input behavior explicitly.
+- Do not infer issue timelines or issue-closure events from the filename.
+- Do not invent metric formulas, units, valid ranges, or compute costs.
+- State parsing assumptions and limitations.
+- Keep the implementation reusable for later Health steps.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test numeric summaries, categorical frequencies, missing/non-finite values,
+configuration/outcome roles, duplicate counting, and empty inputs
+using synthetic fixtures.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify required artifacts and specify valid quoted run commands.
+
+Run tests and the summary demonstration. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 1
+- treatment: 4
+- trial: 3
+- domain: model configuration and quality
+- skill: remember
+- total_loc: implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners. Include docstrings.
+- new_loc: equal to total_loc because this dataset starts from scratch.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the summary
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+  Retain all failures from this step if corrections are later required.
+- notes: test count, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 Health Step 1 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

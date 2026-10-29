@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+07,4,2,software project estimation,choose,374,43,1,0.80,3,"25 tests; Step 6 source/tests reused; /usr/bin/time -p demonstration; observed Kloc+ proxy; one initial shell capture failure and two repaired invalid-path demonstration attempts; expected negative tests excluded"

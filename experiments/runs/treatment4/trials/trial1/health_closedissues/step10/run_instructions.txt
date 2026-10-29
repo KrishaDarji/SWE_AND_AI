@@ -1,0 +1,19 @@
+Use python3 with scikit-learn 1.6.0. No installation or dependency changes are needed.
+
+Working directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step10'
+
+Run all 99 tests (Steps 1–9 unchanged, plus Step 10):
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Run Step 10 demo (cap 100, seeds 42–51):
+PYTHONDONTWRITEBYTECODE=1 python3 source/race.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --max-estimators 100 --seeds 42 43 44 45 46 47 48 49 50 51 --output race.json
+
+Run full measurement, all tests and preserved Steps 1–9 CLI demos:
+python3 measure.py
+
+measure.py contains each full regression CLI command and writes stdout/stderr logs, wall times, preservation checks and metrics. It creates the explicit local configuration fixtures before testing. It writes only within this Step 10 directory. It measures Step 10 demo subprocess wall time separately from tests, internal method timings and all nine regression demos. A rerun overwrites current result files; preserved attempt1 files record the original setup failure. repair_measurement.py is the runner used for the recorded fixture repair and full-suite retest; it retains the original demo measurements.
+
+The current metrics include two unexpected root failures: the first missing-fixture test execution and an early progress-read command before its log existed. The measurement-wrapper exit propagated the test failure and is not counted twice. Expected negative tests and ordinary missing-directory/no-match checks are excluded. See runtime_output.txt and test_output_attempt1.txt.
+
+All application code is in source/. All tests are in tests/. The prior nine modules and nine test files are byte-identical to allowed Step 9 inputs (preservation.json). No prior reports or selections are consumed.

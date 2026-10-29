@@ -1,0 +1,12 @@
+Corrected Trial 3 NASA93 Step 8 prediction validation.
+
+- The inherited estimator is unchanged.
+- Candidate estimates must be finite and nonnegative.
+- Negative and non-finite candidate predictions are excluded and counted.
+- Invalid original predictions return `invalid-original-estimate`.
+- No valid feasible candidates return `no-feasible-repair`.
+- Predictions are never clipped or interpreted as savings.
+
+Verification: 39 tests passed. The corrected demonstration succeeded with budget 100 and measured `/usr/bin/time -p` real time of 0.78 seconds. Existing logs were preserved; corrected outputs are in `test_attempt_6.log` and `runtime_attempt_4.log`, with those contents copied to `test_output.txt` and `runtime_output.txt`.
+
+Updated metrics: total LOC 586, new LOC versus Step 7 93, test_pass 1, runtime 0.78 seconds.

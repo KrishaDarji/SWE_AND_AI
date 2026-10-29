@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,4,3,software project estimation,flow,280,63,1,0.98,5,"15 tests; reused all Step 3 source/tests; /usr/bin/time -p demonstration; warm-up=2; CSV order is demonstration sequence; invalid effort skipped; one shell-wrapper failure plus four unexpected import test errors repaired and preserved"

@@ -1,0 +1,2 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Run: PYTHONPATH="SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step06" python3 "SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step06/source/nasa93_summary.py" "SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --justify

@@ -1,0 +1,9 @@
+Implemented Step 4 flow processing in source/summarize_runs.py, preserving Step 3 summarize, predict, evaluate, and certify interfaces. IncrementalFlow uses Welford updates for count, mean, and sample variance, and retains the first configuration attaining the lower tied best value. Empty input returns no snapshots; the initial state has count 0, null mean/variance/best; one observation has null sample variance.
+
+Tests: 10 passed, including all Step 3 regression tests and independent batch-statistic, prefix-only, empty, one-observation, and tie tests. The real dataset produced 1152 prefix snapshots. Demonstration runtime was 0.72 seconds real time measured with /usr/bin/time -p, excluding tests.
+
+Command:
+python3 experiments/runs/treatment4/trials/trial2/x264/step04/source/summarize_runs.py moot/optimize/config/X264_AllMeasurements.csv --flow
+
+CSV order is only a demonstration sequence and is not a verified timeline. Results do not establish convergence, sufficient evidence, or an automatic stopping rule. Exact conversation export is unavailable.
+

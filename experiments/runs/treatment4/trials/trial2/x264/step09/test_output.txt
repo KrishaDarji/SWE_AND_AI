@@ -1,0 +1,237 @@
+ATTEMPT 1: full regression suite
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_budget_is_enforced_and_recommendation_is_evaluated (test_summarize_runs.SummarizeRunsTests.test_budget_is_enforced_and_recommendation_is_evaluated) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_invalid_and_zero_budgets_are_rejected (test_summarize_runs.SummarizeRunsTests.test_invalid_and_zero_budgets_are_rejected) ... ok
+test_justify_keeps_measured_estimate_and_association_categories_distinct (test_summarize_runs.SummarizeRunsTests.test_justify_keeps_measured_estimate_and_association_categories_distinct) ... ok
+test_justify_selects_lowest_observed_and_reports_reference_and_evidence (test_summarize_runs.SummarizeRunsTests.test_justify_selects_lowest_observed_and_reports_reference_and_evidence) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_outcome_isolation_and_budget_overrun (test_summarize_runs.SummarizeRunsTests.test_outcome_isolation_and_budget_overrun) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_repair_accepts_observed_baseline_and_reports_all_changes (test_summarize_runs.SummarizeRunsTests.test_repair_accepts_observed_baseline_and_reports_all_changes) ... ok
+test_repair_prioritizes_minimum_change_over_improvement (test_summarize_runs.SummarizeRunsTests.test_repair_prioritizes_minimum_change_over_improvement) ... ok
+test_repair_reports_no_improvement_and_rejects_invalid_baseline (test_summarize_runs.SummarizeRunsTests.test_repair_reports_no_improvement_and_rejects_invalid_baseline) ... ok
+test_repair_tie_breaks_by_performance_then_csv_order (test_summarize_runs.SummarizeRunsTests.test_repair_tie_breaks_by_performance_then_csv_order) ... ok
+test_reproducibility_and_no_duplicate_evaluations (test_summarize_runs.SummarizeRunsTests.test_reproducibility_and_no_duplicate_evaluations) ... ok
+test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers) ... /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+invalid literal for int() with base 10: ''
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+           ^^^^^^^^^^^^^
+FAIL
+test_spot_handles_constant_and_small_inputs (test_summarize_runs.SummarizeRunsTests.test_spot_handles_constant_and_small_inputs) ... ok
+test_spot_isolates_assessed_outcome_and_keeps_duplicates_together (test_summarize_runs.SummarizeRunsTests.test_spot_isolates_assessed_outcome_and_keeps_duplicates_together) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+======================================================================
+FAIL: test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/tests/test_summarize_runs.py", line 213, in test_spot_flags_synthetic_anomaly_and_reports_identifiers
+    self.assertTrue(result["assessed_records"][3]["flag"])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.130s
+
+FAILED (failures=1)
+ATTEMPT 2: full regression suite
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_budget_is_enforced_and_recommendation_is_evaluated (test_summarize_runs.SummarizeRunsTests.test_budget_is_enforced_and_recommendation_is_evaluated) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_invalid_and_zero_budgets_are_rejected (test_summarize_runs.SummarizeRunsTests.test_invalid_and_zero_budgets_are_rejected) ... ok
+test_justify_keeps_measured_estimate_and_association_categories_distinct (test_summarize_runs.SummarizeRunsTests.test_justify_keeps_measured_estimate_and_association_categories_distinct) ... ok
+test_justify_selects_lowest_observed_and_reports_reference_and_evidence (test_summarize_runs.SummarizeRunsTests.test_justify_selects_lowest_observed_and_reports_reference_and_evidence) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_outcome_isolation_and_budget_overrun (test_summarize_runs.SummarizeRunsTests.test_outcome_isolation_and_budget_overrun) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_repair_accepts_observed_baseline_and_reports_all_changes (test_summarize_runs.SummarizeRunsTests.test_repair_accepts_observed_baseline_and_reports_all_changes) ... ok
+test_repair_prioritizes_minimum_change_over_improvement (test_summarize_runs.SummarizeRunsTests.test_repair_prioritizes_minimum_change_over_improvement) ... ok
+test_repair_reports_no_improvement_and_rejects_invalid_baseline (test_summarize_runs.SummarizeRunsTests.test_repair_reports_no_improvement_and_rejects_invalid_baseline) ... ok
+test_repair_tie_breaks_by_performance_then_csv_order (test_summarize_runs.SummarizeRunsTests.test_repair_tie_breaks_by_performance_then_csv_order) ... ok
+test_reproducibility_and_no_duplicate_evaluations (test_summarize_runs.SummarizeRunsTests.test_reproducibility_and_no_duplicate_evaluations) ... ok
+test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers) ... /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+invalid literal for int() with base 10: ''
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+           ^^^^^^^^^^^^^
+FAIL
+test_spot_handles_constant_and_small_inputs (test_summarize_runs.SummarizeRunsTests.test_spot_handles_constant_and_small_inputs) ... ok
+test_spot_isolates_assessed_outcome_and_keeps_duplicates_together (test_summarize_runs.SummarizeRunsTests.test_spot_isolates_assessed_outcome_and_keeps_duplicates_together) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+======================================================================
+FAIL: test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/tests/test_summarize_runs.py", line 213, in test_spot_flags_synthetic_anomaly_and_reports_identifiers
+    self.assertTrue(result["assessed_records"][3]["flag"])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.058s
+
+FAILED (failures=1)
+ATTEMPT 2 EXIT_CODE: 1
+ATTEMPT 3: repaired full regression suite
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_budget_is_enforced_and_recommendation_is_evaluated (test_summarize_runs.SummarizeRunsTests.test_budget_is_enforced_and_recommendation_is_evaluated) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_invalid_and_zero_budgets_are_rejected (test_summarize_runs.SummarizeRunsTests.test_invalid_and_zero_budgets_are_rejected) ... ok
+test_justify_keeps_measured_estimate_and_association_categories_distinct (test_summarize_runs.SummarizeRunsTests.test_justify_keeps_measured_estimate_and_association_categories_distinct) ... ok
+test_justify_selects_lowest_observed_and_reports_reference_and_evidence (test_summarize_runs.SummarizeRunsTests.test_justify_selects_lowest_observed_and_reports_reference_and_evidence) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_outcome_isolation_and_budget_overrun (test_summarize_runs.SummarizeRunsTests.test_outcome_isolation_and_budget_overrun) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_repair_accepts_observed_baseline_and_reports_all_changes (test_summarize_runs.SummarizeRunsTests.test_repair_accepts_observed_baseline_and_reports_all_changes) ... ok
+test_repair_prioritizes_minimum_change_over_improvement (test_summarize_runs.SummarizeRunsTests.test_repair_prioritizes_minimum_change_over_improvement) ... ok
+test_repair_reports_no_improvement_and_rejects_invalid_baseline (test_summarize_runs.SummarizeRunsTests.test_repair_reports_no_improvement_and_rejects_invalid_baseline) ... ok
+test_repair_tie_breaks_by_performance_then_csv_order (test_summarize_runs.SummarizeRunsTests.test_repair_tie_breaks_by_performance_then_csv_order) ... ok
+test_reproducibility_and_no_duplicate_evaluations (test_summarize_runs.SummarizeRunsTests.test_reproducibility_and_no_duplicate_evaluations) ... ok
+test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers) ... /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+invalid literal for int() with base 10: ''
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+           ^^^^^^^^^^^^^
+ok
+test_spot_handles_constant_and_small_inputs (test_summarize_runs.SummarizeRunsTests.test_spot_handles_constant_and_small_inputs) ... ok
+test_spot_isolates_assessed_outcome_and_keeps_duplicates_together (test_summarize_runs.SummarizeRunsTests.test_spot_isolates_assessed_outcome_and_keeps_duplicates_together) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.070s
+
+OK
+ATTEMPT 3 EXIT_CODE: 0
+CORRECTION ATTEMPT 1: corrected full regression suite
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_budget_is_enforced_and_recommendation_is_evaluated (test_summarize_runs.SummarizeRunsTests.test_budget_is_enforced_and_recommendation_is_evaluated) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_invalid_and_zero_budgets_are_rejected (test_summarize_runs.SummarizeRunsTests.test_invalid_and_zero_budgets_are_rejected) ... ok
+test_justify_keeps_measured_estimate_and_association_categories_distinct (test_summarize_runs.SummarizeRunsTests.test_justify_keeps_measured_estimate_and_association_categories_distinct) ... ok
+test_justify_selects_lowest_observed_and_reports_reference_and_evidence (test_summarize_runs.SummarizeRunsTests.test_justify_selects_lowest_observed_and_reports_reference_and_evidence) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_outcome_isolation_and_budget_overrun (test_summarize_runs.SummarizeRunsTests.test_outcome_isolation_and_budget_overrun) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_repair_accepts_observed_baseline_and_reports_all_changes (test_summarize_runs.SummarizeRunsTests.test_repair_accepts_observed_baseline_and_reports_all_changes) ... ok
+test_repair_prioritizes_minimum_change_over_improvement (test_summarize_runs.SummarizeRunsTests.test_repair_prioritizes_minimum_change_over_improvement) ... ok
+test_repair_reports_no_improvement_and_rejects_invalid_baseline (test_summarize_runs.SummarizeRunsTests.test_repair_reports_no_improvement_and_rejects_invalid_baseline) ... ok
+test_repair_tie_breaks_by_performance_then_csv_order (test_summarize_runs.SummarizeRunsTests.test_repair_tie_breaks_by_performance_then_csv_order) ... ok
+test_reproducibility_and_no_duplicate_evaluations (test_summarize_runs.SummarizeRunsTests.test_reproducibility_and_no_duplicate_evaluations) ... ok
+test_spot_counts_equally_near_groups_for_minimum (test_summarize_runs.SummarizeRunsTests.test_spot_counts_equally_near_groups_for_minimum) ... /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+invalid literal for int() with base 10: ''
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+           ^^^^^^^^^^^^^
+ok
+test_spot_counts_only_actual_nearest_groups (test_summarize_runs.SummarizeRunsTests.test_spot_counts_only_actual_nearest_groups) ... ok
+test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers) ... ok
+test_spot_handles_constant_and_small_inputs (test_summarize_runs.SummarizeRunsTests.test_spot_handles_constant_and_small_inputs) ... ok
+test_spot_isolates_assessed_outcome_and_keeps_duplicates_together (test_summarize_runs.SummarizeRunsTests.test_spot_isolates_assessed_outcome_and_keeps_duplicates_together) ... FAIL
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+======================================================================
+FAIL: test_spot_isolates_assessed_outcome_and_keeps_duplicates_together (test_summarize_runs.SummarizeRunsTests.test_spot_isolates_assessed_outcome_and_keeps_duplicates_together)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/tests/test_summarize_runs.py", line 223, in test_spot_isolates_assessed_outcome_and_keeps_duplicates_together
+    self.assertEqual(records[0]["comparable_configuration_groups"], 3)
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.074s
+
+FAILED (failures=1)
+CORRECTION ATTEMPT 1 EXIT_CODE: 1
+CORRECTION ATTEMPT 2: repaired corrected full regression suite
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_budget_is_enforced_and_recommendation_is_evaluated (test_summarize_runs.SummarizeRunsTests.test_budget_is_enforced_and_recommendation_is_evaluated) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_invalid_and_zero_budgets_are_rejected (test_summarize_runs.SummarizeRunsTests.test_invalid_and_zero_budgets_are_rejected) ... ok
+test_justify_keeps_measured_estimate_and_association_categories_distinct (test_summarize_runs.SummarizeRunsTests.test_justify_keeps_measured_estimate_and_association_categories_distinct) ... ok
+test_justify_selects_lowest_observed_and_reports_reference_and_evidence (test_summarize_runs.SummarizeRunsTests.test_justify_selects_lowest_observed_and_reports_reference_and_evidence) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_outcome_isolation_and_budget_overrun (test_summarize_runs.SummarizeRunsTests.test_outcome_isolation_and_budget_overrun) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_repair_accepts_observed_baseline_and_reports_all_changes (test_summarize_runs.SummarizeRunsTests.test_repair_accepts_observed_baseline_and_reports_all_changes) ... ok
+test_repair_prioritizes_minimum_change_over_improvement (test_summarize_runs.SummarizeRunsTests.test_repair_prioritizes_minimum_change_over_improvement) ... ok
+test_repair_reports_no_improvement_and_rejects_invalid_baseline (test_summarize_runs.SummarizeRunsTests.test_repair_reports_no_improvement_and_rejects_invalid_baseline) ... ok
+test_repair_tie_breaks_by_performance_then_csv_order (test_summarize_runs.SummarizeRunsTests.test_repair_tie_breaks_by_performance_then_csv_order) ... ok
+test_reproducibility_and_no_duplicate_evaluations (test_summarize_runs.SummarizeRunsTests.test_reproducibility_and_no_duplicate_evaluations) ... ok
+test_spot_counts_equally_near_groups_for_minimum (test_summarize_runs.SummarizeRunsTests.test_spot_counts_equally_near_groups_for_minimum) ... /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py:131: UserWarning: Could not find the number of physical cores for the following reason:
+invalid literal for int() with base 10: ''
+Returning the number of logical cores instead. You can silence this warning by setting LOKY_MAX_CPU_COUNT to the number of cores you want to use.
+  warnings.warn(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+           ^^^^^^^^^^^^^
+ok
+test_spot_counts_only_actual_nearest_groups (test_summarize_runs.SummarizeRunsTests.test_spot_counts_only_actual_nearest_groups) ... ok
+test_spot_flags_synthetic_anomaly_and_reports_identifiers (test_summarize_runs.SummarizeRunsTests.test_spot_flags_synthetic_anomaly_and_reports_identifiers) ... ok
+test_spot_handles_constant_and_small_inputs (test_summarize_runs.SummarizeRunsTests.test_spot_handles_constant_and_small_inputs) ... ok
+test_spot_isolates_assessed_outcome_and_keeps_duplicates_together (test_summarize_runs.SummarizeRunsTests.test_spot_isolates_assessed_outcome_and_keeps_duplicates_together) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.059s
+
+OK
+CORRECTION ATTEMPT 2 EXIT_CODE: 0

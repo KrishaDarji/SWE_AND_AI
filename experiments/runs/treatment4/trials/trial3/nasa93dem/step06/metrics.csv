@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,3,software project estimation,justify,422,48,1,0.74,4,"22 tests passed; reused Step 5 source and grouped held-out pipeline; /usr/bin/time -p demonstration real=0.74; training-only references and associations; first attempt used /usr/bin/python3 missing dependencies, second attempt found 2 assertions fixed; invalid-target rows preserved before selected record."

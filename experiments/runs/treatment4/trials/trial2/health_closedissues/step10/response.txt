@@ -1,0 +1,13 @@
+Corrected Step 10 in `experiments/runs/treatment4/trials/trial2/health_closedissues/step10/`.
+
+The Step 9 selector remains unchanged. Baseline eligibility now reuses `choose._cap`, including rejection of positive infinity. Added synthetic tests independently verify a selector win, loss, and tie under the fixed convention.
+
+The difference is baseline MRE- minus selector MRE-: positive beyond tolerance is a selector win, negative beyond tolerance is a selector loss, and within tolerance is a tie. With tolerance 1e-12, the corrected historical comparison gives 10 wins, 0 ties, and 0 losses. Mean difference is 0.7697643593519882; median 0.824300441826215; range 0.3480117820324005 to 0.9294550810014727.
+
+The selector chose record 32 from 4,877 eligible records, with MRE- 0.0, ACC+ 0.7901313681512335, and PRED40+ 0.8571428571428571. Baseline record identifiers, configurations, all outcomes, and paired differences for seeds 42–51 are in `runtime_output.txt`.
+
+Interpretation remains limited: these are retrospective draws from one historical dataset, not independent validation samples or independent LLM trials. The selector inspects all feasible observed outcomes while the baseline samples one record; even a selector win is not evidence of superior budgeted search. ACC+ and PRED40+ are descriptive trade-offs. The estimator cap is a compute proxy, not measured cost. No statistical superiority or future-performance guarantee is claimed; the final project “same” procedure analysis is pending if unavailable.
+
+Tests: 42 passed. Corrected demonstration `/usr/bin/time -p real`: 0.07 seconds. Corrected logs are `test_output_attempt4.txt` and `runtime_output_attempt4.txt`, also copied to `test_output.txt` and `runtime_output.txt`; earlier logs remain preserved.
+
+Known assumptions and limitations: CSV row numbers are record identifiers; finite numeric settings/outcomes define eligibility as in Step 9; selector ties retain the earliest row; baseline samples uniformly from eligible historical records; ACC+ and PRED40+ are descriptive only; no measured compute cost or independent validation is available.

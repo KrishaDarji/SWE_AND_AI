@@ -1,0 +1,14 @@
+Implemented the reusable scikit-learn/NumPy CSV summarizer in `source/summarize.py`.
+
+Run command:
+
+```sh
+PY='/Library/Frameworks/Python.framework/Versions/3.12/bin/python3'
+"$PY" 'experiments/runs/treatment4/trials/trial3/health_closedissues/step01/source/summarize.py' 'moot/optimize/hpo/Health-ClosedIssues0000.csv'
+```
+
+The output is JSON containing record count, original columns, inferred data types, missing and non-finite counts, numeric descriptive statistics, categorical frequencies, configuration/outcome roles and directions, configuration repetition, and duplicate-row counts. `criterion` is categorical. Blank cells are missing; invalid or non-finite numeric values are excluded from numeric statistics. Empty inputs return zero counts and null numeric statistics. The parser assumes a UTF-8 comma-separated file with its first row as the header.
+
+Tests cover numeric summaries, categorical frequencies, missing/non-finite values, roles, duplicate counting, and empty input. All 4 tests passed. The Health dataset contains 10,000 records, 10,000 distinct configurations, no repeated configurations, and zero duplicate rows. The measured summary runtime was 0.66 seconds using `/usr/bin/time -p` real elapsed time.
+
+Known limitations: no metric formula, unit, valid range, or compute cost is inferred; the filename is not interpreted as an issue timeline or closure event. The first unavailable system-Python/pytest attempt and its repaired successful attempt are retained in the attempt-labeled logs. The recorded error count is 2: one failed test execution and one failed implementation execution from that first attempt.

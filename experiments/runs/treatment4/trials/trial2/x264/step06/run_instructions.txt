@@ -1,0 +1,9 @@
+Run from the repository root:
+
+python3 "experiments/runs/treatment4/trials/trial2/x264/step06/source/summarize_runs.py" "moot/optimize/config/X264_AllMeasurements.csv" --justify
+
+Run the complete regression suite:
+
+python3 -m unittest discover -s "experiments/runs/treatment4/trials/trial2/x264/step06/tests" -v
+
+The demonstration runtime is measured inside the implementation with time.perf_counter(); /usr/bin/time -p output is also captured in runtime_output.txt. The measurement excludes tests.

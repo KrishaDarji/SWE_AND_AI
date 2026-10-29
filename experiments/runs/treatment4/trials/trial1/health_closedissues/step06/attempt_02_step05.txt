@@ -1,0 +1,25 @@
+Command: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06/source/blame.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06/regression/diagnosis.json'
+Wall seconds: 1.100168208
+Exit code: 0
+
+STDOUT:
+Observed MRE- is minimized. Exploratory marginal associations only.
+Rank by grouped eta-squared (between-group / total sum of squares); strength is unsigned.
+Rank 1: Min_sample_leaves, eta-squared=0.80161228; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 11.0, 'upper': 15.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2033; mean=0.8385963; median=0.8185567; sparse=False.
+  Lowest observed mean: {'lower': 1.0, 'upper': 5.0, 'lower_inclusive': True, 'upper_inclusive': True}; n=2523; mean=0.40239073; median=0.41752577; sparse=False.
+Rank 2: criterion, eta-squared=0.024851323; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'value': 'absolute_error'}; n=3302; mean=0.75086947; median=0.87746686; sparse=False.
+  Lowest observed mean: {'value': 'squared_error'}; n=3363; mean=0.6737203; median=0.80500736; sparse=False.
+Rank 3: Min_impurity_decrease, eta-squared=0.0048475919; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 7.5, 'upper': 10.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2457; mean=0.73124732; median=0.80927835; sparse=False.
+  Lowest observed mean: {'lower': 0.0, 'upper': 2.5, 'lower_inclusive': True, 'upper_inclusive': True}; n=2689; mean=0.69592805; median=0.80913108; sparse=False.
+Rank 4: Max_depth, eta-squared=0.00019029495; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 11.0, 'upper': 16.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2536; mean=0.71315333; median=0.80913108; sparse=False.
+  Lowest observed mean: {'lower': 1.0, 'upper': 6.0, 'lower_inclusive': True, 'upper_inclusive': True}; n=2987; mean=0.70590107; median=0.80810015; sparse=False.
+Rank 5: N_estimators, eta-squared=0.00014386551; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 10.0, 'upper': 60.0, 'lower_inclusive': True, 'upper_inclusive': True}; n=2877; mean=0.71138054; median=0.80603829; sparse=False.
+  Lowest observed mean: {'lower': 110.0, 'upper': 160.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2566; mean=0.70514999; median=0.81008837; sparse=False.
+Use JSON group tables for all counts, missingness, quartile boundaries, MRE dispersion and pairwise overlap. Numeric directions need not be monotonic. Correlation, interactions, sparse groups and observational confounding limit attribution. Changing settings is not shown to reduce error.
+
+STDERR:

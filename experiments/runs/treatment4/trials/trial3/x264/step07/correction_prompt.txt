@@ -1,0 +1,16 @@
+Correct Trial 3 X264 Step 7's response only.
+
+The preserved runtime output shows:
+- Recommended Performance-: 252.63
+- Retrospective observed minimum: 244.23
+- Recommendation gap: 8.40
+
+response.txt currently reverses the recommendation and audit values.
+Correct those statements and cross-check against runtime_output.txt.
+
+Preserve source, tests, metrics, prompt, and execution logs.
+Save this correction as correction_prompt.txt.
+Save your exact final response in response.txt.
+No rerun is needed.
+
+Write only inside the existing Trial 3 X264 step07 directory.

@@ -1,0 +1,9 @@
+Implemented Step 10 race comparison and preserved the accumulated Step 9 interfaces.
+
+The retained choose_configuration selector is unchanged: it shuffles deduplicated unique candidates reproducibly and measures only through the callback. The baseline is uniform random search without replacement with equal candidate order, information, and budget. Each seed 42–51 uses fresh counted callbacks for both strategies. Recommendations are frozen before a retrospective audit.
+
+Results on X264_AllMeasurements.csv: 1,152 unique candidates; budget 20 per strategy; ten seeded repetitions; wins 0, ties 10, losses 0; mean, median, minimum, and maximum paired difference all 0.0. Difference is selector Performance- minus baseline Performance-, and lower is better. The strategies are equivalent, so identical results are valid. These are benchmark repeats, not independent LLM trials; no statistical superiority or final same procedure is claimed.
+
+The suite has 34 passing tests, including earlier-skill regression coverage, equal budgets, fresh callbacks, reproducibility, hidden-outcome isolation, duplicate prevention, paired arithmetic, and known comparison behavior. One repaired shell-wrapper attempt is recorded in the artifact history; the final test and runtime logs are test_output.txt and runtime_output.txt.
+
+Known limitations: the comparison uses observed CSV outcomes, random search can miss the global optimum, and no units or quality interpretation is inferred for Performance-.

@@ -1,0 +1,34 @@
+Use the verified environment's python3 (scikit-learn 1.6.0); do not install packages.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step04'
+export PYTHONDONTWRITEBYTECODE=1
+DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+# Entire preserved and new suite:
+python3 -B -m unittest discover -s tests -v
+
+# Step 4: accepts the dataset as a positional argument:
+python3 -B source/flow.py "$DATASET" --output flow.json
+
+# Preserved Steps 1-3:
+python3 -B source/summarize.py "$DATASET" --output-dir regression_step01
+python3 -B source/guess.py "$DATASET" --configuration example_configuration.json --evaluation regression_step02.json
+python3 -B source/certify.py "$DATASET" --output regression_step03.json
+
+# Measurement runner: tests, all demos, timing, LOC, and metrics.
+# Output logs append, preserving previous attempts. Metrics describe the latest measured run.
+python3 -B measure.py
+
+Reusable API (place source/ on sys.path or use PYTHONPATH=source):
+from flow import FlowEvaluator
+flow = FlowEvaluator()
+snapshot = flow.update({'N_estimators': 40, 'criterion': 'squared_error'},
+                       {'MRE-': 0.3, 'ACC+': 0.7})
+# PRED40+ is missing for this arrival. Omitted configuration fields normalize to None.
+# snapshot and flow.snapshot() are detached dictionaries.
+# Separate configuration and objective dictionaries are required.
+
+flow.json contains simulated arrival rules, per-arrival history, final summaries,
+objective directions, environment version and limitations. Outputs are descriptive.
+No streaming significance test, stopping guarantee, prediction, or composite score.
+The separate Step 3 regression demo retains its original fixed comparison behavior.

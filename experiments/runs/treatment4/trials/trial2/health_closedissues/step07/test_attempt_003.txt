@@ -1,0 +1,28 @@
+..........E.........../Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/inspect.py:3072: ResourceWarning: unclosed file <_io.FileIO name='/var/folders/6s/nl7vyczd1cg4synhvvd8v8840000gn/T/tmpwza6qna5.csv' mode='wb' closefd=True>
+  params = OrderedDict((param.name, param) for param in parameters)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.......
+======================================================================
+ERROR: test_cap_boundaries_and_best_feasible (test_choose.ChooseTests.test_cap_boundaries_and_best_feasible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step07/tests/test_choose.py", line 23, in test_cap_boundaries_and_best_feasible
+    result = choose(self.write([self.row(N_estimators=100, MRE_=1), self.row(N_estimators=101, **{"MRE-": 0})]), 100)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step07/tests/test_choose.py", line 16, in write
+    w = csv.DictWriter(f, fieldnames=FIELDS); w.writeheader(); w.writerows(rows); f.close(); return f.name
+                                                               ^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/csv.py", line 167, in writerows
+    return self.writer.writerows(map(self._dict_to_list, rowdicts))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/csv.py", line 159, in _dict_to_list
+    raise ValueError("dict contains fields not in fieldnames: "
+ValueError: dict contains fields not in fieldnames: 'MRE_'
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.369s
+
+FAILED (errors=1)
+real 1.82
+user 1.07
+sys 0.22

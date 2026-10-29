@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,3,model configuration and quality,guess,159,71,1,0.82,1,"9 tests; reused Step 1 summarize interface/source; /usr/bin/time -p; one repaired shell-wrapper failure; GroupShuffleSplit(0.2,42); Ridge alpha=1.0; outcomes excluded; invalid targets and insufficient data explicit"

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+02,4,2,model configuration and quality,guess,144,76,1,4.91,6,"7 tests; Step 1 summarizer copied unchanged; grouped 80/20 evaluation; /usr/bin/time -p demonstration; repairs preserved; exact failed shell and demo outputs recovered, failed-suite evidence is four named errors plus FAILED(errors=4), intermediate traceback text unavailable; 2 failed non-test commands; no rerun"

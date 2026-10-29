@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,4,3,video encoding,blame,298,48,1,0.83,3,"18 tests passed; Step 4 source/tests copied and preserved; marginal eta-squared ranking; /usr/bin/time -p real for blame subprocess; two repaired test-fixture assertion failures and one repaired verification-command failure retained in logs; 1152 valid rows and 16 settings"

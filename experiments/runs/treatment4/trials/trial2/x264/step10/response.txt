@@ -1,0 +1,9 @@
+Implemented Step 10 in the requested output directory.
+
+The Step 9 budget selector was inspected and reused unchanged. It uses seeded random sampling without replacement. The new baseline is uniform random search without replacement. Both use budget 20, seeds 42 through 51, equal candidate order, and fresh counted evaluators for every seed. Recommendations are frozen before the retrospective observed-minimum audit.
+
+Results: all 10 paired runs had identical evaluation orders and recommendations. Paired differences (retained minus baseline) were all 0.0, with mean and median 0.0; wins/ties/losses were 0/10/0 at tie tolerance 1e-12. Retrospective gaps were recorded per run in runtime_output.txt. These are benchmark repeats, not independent LLM trials. No statistical superiority claim is made, and the project's final “same” procedure remains pending if unavailable.
+
+Artifacts include complete accumulated source and regression tests, prompt.txt, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. The complete suite passed: 30 tests. Demonstration real time from /usr/bin/time -p was 0.75 seconds. total_loc is 525 and new_loc is 48. error_count is 0.
+
+Known limitations: only evaluated candidates can be recommended; random sampling may miss the global minimum; the retrospective gap uses the full observed dataset after recommendations are frozen; Performance- is lower-is-better and no units are inferred.

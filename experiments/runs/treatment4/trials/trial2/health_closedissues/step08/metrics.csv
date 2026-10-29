@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,4,2,model configuration and quality,fix,566,93,1,0.05,3,"33 tests passed; reused all Step 7 source and tests; timing is /usr/bin/time -p real for corrected demonstration subprocess; retrospective observed-data repair; baseline missing/non-finite ACC+ and PRED40+ comparisons return null and unknown explanations; 3 earlier failed command executions preserved in attempt logs; no measured implementation cost"

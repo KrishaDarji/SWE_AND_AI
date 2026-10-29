@@ -1,0 +1,3 @@
+From the repository root, run:
+python3 -m unittest discover -s 'experiments/runs/treatment4/trials/trial3/health_closedissues/step06/tests' -p 'test_*.py'
+/usr/bin/time -p python3 'experiments/runs/treatment4/trials/trial3/health_closedissues/step06/run_justification.py' 'moot/optimize/hpo/Health-ClosedIssues0000.csv'

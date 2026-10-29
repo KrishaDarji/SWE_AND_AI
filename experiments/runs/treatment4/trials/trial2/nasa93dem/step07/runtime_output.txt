@@ -1,0 +1,72 @@
+{
+  "budget": 100.0,
+  "feasible_count": 31,
+  "total_count": 93,
+  "selection_rule": "Among observed records with Effort- <= budget, maximize Kloc+; break ties by lower Effort-, then earliest CSV record.",
+  "value_proxy": "Kloc+ (delivered-size proxy; not business value or productivity)",
+  "observed_outcomes_note": "Selection uses observed historical outcomes, not predictions for an unseen proposal.",
+  "limitations": [
+    "Settings are not claimed to cause the observed outcomes.",
+    "Historical feasibility and performance are not guaranteed for future proposals.",
+    "X-suffix metadata and outcome columns are excluded from descriptor settings."
+  ],
+  "descriptor_columns": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "status": "selected",
+  "selected": {
+    "record_identifier": 78.0,
+    "csv_record_index": 77,
+    "descriptors": {
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "l",
+      "rely": "h",
+      "data": "n",
+      "cplx": "vh",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "vh",
+      "pvol": "l",
+      "acap": "h",
+      "pcap": "h",
+      "pcon": "n",
+      "apex": "h",
+      "plex": "h",
+      "ltex": "h",
+      "tool": "n",
+      "site": "n",
+      "sced": "l"
+    },
+    "observed_effort": 97.0,
+    "delivered_size": 165.0
+  }
+}
+real 0.80
+user 0.68
+sys 0.10
+EXIT_STATUS=0

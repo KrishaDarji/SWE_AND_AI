@@ -1,0 +1,13 @@
+Update Trial 3 X264 Step 9's response.txt to match the corrected saved results:
+- 31 passing tests.
+- Demonstration runtime: 1.75 seconds.
+- 1,152 valid records and zero flags.
+- Original CSV identifiers are preserved.
+- Below-threshold reasons and all-invalid outcome counts are corrected.
+
+Save your exact final response in response.txt.
+Preserve source, tests, metrics, prompt, and execution logs.
+Save this request as correction_prompt_02.txt.
+No rerun is needed.
+
+Write only inside the existing Trial 3 X264 step09 directory.

@@ -1,0 +1,9 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+
+Run tests:
+python3 "SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step09/tests/test_summarize_x264.py"
+
+Run the screening demonstration:
+python3 "SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step09/source/summarize_x264.py" "SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --spot --json "SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step09/spot.json"
+
+Valid quoted paths above are relative to the specified working directory; paths containing spaces are quoted.

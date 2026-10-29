@@ -1,0 +1,13 @@
+Corrected and verified Treatment 4, Trial 2, X264 Step 3.
+
+The implementation now uses Welch–Satterthwaite degrees of freedom for the 95% confidence interval, consistent with the Welch unequal-variance test.
+
+For the predeclared comparison no_8x8dct=0 (A) versus no_8x8dct=1 (B), each group has 576 configuration rows. Lower Performance- is better. The observed A-minus-B difference is 20.764. Welch p=0.0301 and the fixed-seed permutation p=0.0331, providing statistical evidence of a difference from zero. The 95% Welch interval is [2.000, 39.528].
+
+The point estimate exceeds the illustrative default practical threshold of 5.0, but the interval is not entirely beyond 5.0: it crosses the practical threshold. Therefore practical importance is uncertain; the result is not claimed as an established practically meaningful improvement. The interval does not cross zero, but failure to detect a difference would not establish equivalence.
+
+Added regression coverage for unequal variances, Welch–Satterthwaite degrees of freedom, and a point estimate exceeding the threshold while its interval crosses that threshold. All 7 tests pass, including earlier regression tests.
+
+The comparison is observational and does not establish causation. Rows represent different configurations, not repeated-run measurement noise. The threshold is user-configurable with --practical-threshold; the default is illustrative. The permutation procedure uses fixed seed 42.
+
+Artifacts: source/, tests/, prompt.txt (unchanged original prompt), correction_prompt.txt, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt are in the existing step03 directory. The original failed runtime log was overwritten before this correction and is unavailable from the current filesystem; it was not reconstructed. The repair and corrected test/runtime outputs are appended with attempt labels.

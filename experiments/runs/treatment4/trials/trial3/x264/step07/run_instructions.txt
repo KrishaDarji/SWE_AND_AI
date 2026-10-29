@@ -1,0 +1,10 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step07
+
+Run tests:
+python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step07/tests" -p 'test_*.py'
+
+Run the selection demonstration:
+/usr/bin/time -p python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step07/run_demo.py"
+
+The dataset path is /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv.

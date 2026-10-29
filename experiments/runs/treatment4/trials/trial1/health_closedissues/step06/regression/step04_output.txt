@@ -1,0 +1,73 @@
+Command: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06/source/flow.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06/regression/flow.json'
+Wall seconds: 1.749226541
+Exit code: 0
+
+STDOUT:
+CSV original data-record order simulates arrivals, not verified chronological order.
+{
+  "configurations_received": 10000,
+  "objectives": {
+    "MRE-": {
+      "observed_count": 10000,
+      "missing_count": 0,
+      "mean": 0.7090939764346323,
+      "best": {
+        "arrival_index": 32,
+        "value": 0.0,
+        "configuration": {
+          "N_estimators": 10.0,
+          "criterion": "squared_error",
+          "Min_sample_leaves": 1.0,
+          "Min_impurity_decrease": 6.75,
+          "Max_depth": 5.0
+        }
+      },
+      "best_tie_count": 1,
+      "direction": "minimize",
+      "variance_sample": 0.04056030922815959,
+      "std_sample": 0.2013959017163944
+    },
+    "ACC+": {
+      "observed_count": 10000,
+      "missing_count": 0,
+      "mean": 0.49593851329765815,
+      "best": {
+        "arrival_index": 7556,
+        "value": 1.0,
+        "configuration": {
+          "N_estimators": 10.0,
+          "criterion": "squared_error",
+          "Min_sample_leaves": 1.0,
+          "Min_impurity_decrease": 3.0,
+          "Max_depth": 10.0
+        }
+      },
+      "best_tie_count": 1,
+      "direction": "maximize",
+      "variance_sample": 0.011481619453413293,
+      "std_sample": 0.10715231893623811
+    },
+    "PRED40+": {
+      "observed_count": 10000,
+      "missing_count": 0,
+      "mean": 0.14684285714285772,
+      "best": {
+        "arrival_index": 14,
+        "value": 1.0,
+        "configuration": {
+          "N_estimators": 40.0,
+          "criterion": "squared_error",
+          "Min_sample_leaves": 1.0,
+          "Min_impurity_decrease": 0.25,
+          "Max_depth": 19.0
+        }
+      },
+      "best_tie_count": 372,
+      "direction": "maximize",
+      "variance_sample": 0.07096876197823895,
+      "std_sample": 0.2663996283372763
+    }
+  }
+}
+
+STDERR:

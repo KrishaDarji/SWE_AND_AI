@@ -1,0 +1,117 @@
+You are running Treatment 4, Trial 2, Dataset 2, Step 6 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: justify
+- Current requirement: Justify an estimate to a skeptical project sponsor.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step05/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step05/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step06/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 5 implementation where appropriate.
+Copy accumulated source and tests into Step 6, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed NASA93 Step 5 source and tests.
+- Files created in the current Step 6 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Produce structured evidence and a readable explanation for an Effort- estimate.
+- Reuse the existing grouped held-out split and prediction pipeline.
+- For the demonstration, explain the earliest CSV record in the held-out set.
+- Use only its 22 descriptors as proposal inputs. Exclude metadata and outcomes.
+- Generate the estimate using the training-only fitted pipeline.
+- Provide a clearly labeled training-history reference, such as mean or median.
+- Reuse the earlier association method on training rows only where helpful.
+- Do not let held-out outcomes influence predictions, references, or explanations.
+- An observed held-out outcome may be revealed afterward in a separate audit.
+- Distinguish model estimates, historical associations, and measured audit values.
+- Do not present global associations or feature importance as additive local
+  contributions, causal effects, or guarantees.
+- Discuss missing/unseen descriptors and correlated project factors.
+- Do not invent effort units, costs, confidence intervals, or deployment reliability.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test prediction/explanation consistency, excluded inputs, training-only
+references, and clear evidence labels.
+Verify changing held-out outcomes leaves the prediction and pre-audit
+explanation unchanged. Preserve earlier regression tests.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve failed attempts and final successful output with attempt labels.
+- Do not substitute summaries for execution logs or reconstruct missing output.
+- Verify the complete prompt and all required artifacts are saved correctly.
+- Ensure run instructions specify the working directory and valid quoted paths.
+
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: software project estimation
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 5,
+  excluding blank and comment-only lines. Count new-side diff lines;
+  do not use net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure counts and timing agree with source differences and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified NASA93 Step 6 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

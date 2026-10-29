@@ -1,0 +1,11 @@
+Implemented Step 6 in `experiments/runs/treatment4/trials/trial2/x264/step06`.
+
+The implementation preserves all Step 5 interfaces and adds `justify()`, exposed with `--justify`. It selects the lowest observed `Performance-`, breaking ties by earliest CSV record, reports the complete configuration and record identifier, compares it with the clearly named first-CSV-record historical reference, and separates measured results, in-sample model estimates, and association evidence.
+
+Demonstration result: CSV record 71 (CSV row 72), measured `Performance-` 244.23. Historical reference: first CSV record, record 1 (CSV row 2), measured `Performance-` 268.72. The recommendation is lower by 24.49; lower `Performance-` is better.
+
+The output explicitly states that associations do not establish the effect of changing a setting, correlated settings can share explanatory information, and this is retrospective evidence from this dataset—not a guarantee of future performance or statistical superiority.
+
+Tests: 14 passed, including Step 5 regression tests and synthetic tests for selection, tie-breaking, evidence categories, and limitations. The command is in `run_instructions.txt`. Demonstration timing uses `time.perf_counter()` and was 0.01571325003169477 seconds, excluding tests. `metrics.csv` records 294 implementation LOC, 39 added/replaced LOC, and one repaired shell-command failure.
+
+Known limitations: rows are observational configurations; the reference is the first CSV record; model estimates are in-sample; association analysis is descriptive; no deployment constraints, resource costs, units, or quality measures are inferred.

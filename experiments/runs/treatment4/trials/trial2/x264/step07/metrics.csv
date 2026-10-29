@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,4,2,video_encoding,choose,355,61,1,0.81,1,"18 tests; Step 6 source/tests copied and interfaces preserved; /usr/bin/time -p real elapsed demonstration subprocess; seeded unique sample budget=20 seed=42; retrospective audit isolated; one repaired test failure and one shell-wrapper failure recorded"

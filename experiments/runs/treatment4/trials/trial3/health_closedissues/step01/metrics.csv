@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,3,model configuration and quality,remember,88,88,1,0.66,2,"4 synthetic unittest cases; /usr/bin/time -p real for summary subprocess; blank cells missing and non-finite numeric values excluded; repaired unavailable pytest/system-Python attempt and retained logs"

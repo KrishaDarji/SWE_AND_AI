@@ -1,0 +1,10 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step02
+
+Run tests:
+python3 -m unittest discover -s tests -v
+
+Run the implementation:
+python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+The implementation accepts a dataset path for evaluation; use summarize(path) for the preserved Step 1 summary interface and predict(path, configurations) for supplied encoder configurations.

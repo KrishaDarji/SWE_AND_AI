@@ -1,0 +1,18 @@
+Correct Health Trial 2 Step 3's error count only.
+
+Verify the preserved attempt logs:
+- attempt_01_test_suite.txt: 3 errors
+- attempt_02_test_suite.txt: 3 errors
+- attempt_03_test_suite.txt: 1 failed assertion
+- attempt_04_test_suite.txt: 1 failed assertion
+- attempt_01_runtime.txt: 1 failed demonstration
+- failed_attempt_01_shell.txt: 1 separate shell-variable failure
+
+These total 10. Do not additionally count failed suite exit statuses.
+
+Update error_count and notes in metrics.csv, and accurately explain the
+correction in response.txt. Preserve source, tests, prompt, logs, and timing.
+Save this correction as correction_prompt.txt.
+No rerun is needed.
+
+Write only inside the existing Health trial2/step03 directory.

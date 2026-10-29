@@ -1,0 +1,23 @@
+group_a: tool=n
+group_b: tool=h
+n_a: 83
+n_b: 10
+mean_a: 606.0638554216868
+mean_b: 776.7
+difference_a_minus_b: -170.6361445783133
+variance_a: 1387541.9952630033
+variance_b: 519143.78888888884
+degrees_of_freedom: 15.552580855698572
+standard_error: 261.97662553325733
+confidence_interval_95: (-727.3030968828813, 386.0308077262547)
+welch_t: -0.6513411043102829
+p_value_two_sided: 0.5243346705603102
+threshold: 60.60638554216868
+statistically_different: False
+point_exceeds_threshold: True
+interval_above_threshold: False
+interval_below_negative_threshold: False
+practical_conclusion: uncertain
+real 0.63
+user 0.52
+sys 0.09

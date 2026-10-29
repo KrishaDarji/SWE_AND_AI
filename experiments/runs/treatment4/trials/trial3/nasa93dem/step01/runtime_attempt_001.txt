@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step01/source/nasa93_summary.py", line 96, in <module>
+    main()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step01/source/nasa93_summary.py", line 92, in main
+    print(format_summary(summarize(args.csv_path)), end="")
+                         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step01/source/nasa93_summary.py", line 44, in summarize
+    data = read_csv(path)
+           ^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step01/source/nasa93_summary.py", line 34, in read_csv
+    raise FileNotFoundError(path)
+FileNotFoundError: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/moot/optimize/process/nasa93dem.csv

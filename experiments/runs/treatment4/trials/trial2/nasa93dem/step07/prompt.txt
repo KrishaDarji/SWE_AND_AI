@@ -1,0 +1,116 @@
+You are running Treatment 4, Trial 2, Dataset 2, Step 7 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: choose
+- Current requirement: Choose project settings that maximize delivered value under a fixed budget.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step06/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step06/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step07/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 6 implementation where appropriate.
+Copy accumulated source and tests into Step 7, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed NASA93 Step 6 source and tests.
+- Files created in the current Step 7 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Perform retrospective selection among observed historical project records.
+- Use Kloc+ as an explicitly labeled delivered-size proxy for value.
+  Do not equate code size with business value or productivity.
+- Accept a user-supplied Effort- budget; use 100 for the demonstration.
+- Among records with Effort- <= budget, maximize Kloc+.
+- Break ties by lower Effort-, then earliest CSV record.
+- Report the budget, feasible/total counts, selected record identifier,
+  all 22 descriptors, observed effort, delivered size, and selection rule.
+- Keep X-suffix metadata separate from project settings.
+- Handle invalid budgets, missing outcomes, and no feasible records explicitly.
+- State that this uses observed outcomes, not predictions for an unseen proposal.
+- Do not claim these settings cause the outcomes or guarantee future feasibility.
+- Do not invent units, monetary costs, or business-value measures.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test budget boundaries, maximum-size selection, both tie-breakers,
+invalid budgets, missing outcomes, and no feasible records.
+Verify excluded metadata/outcomes are not presented as descriptor settings.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve failed attempts and final successful output with attempt labels.
+- Do not substitute summaries for execution logs or reconstruct missing output.
+- Verify the complete prompt and all required artifacts are saved correctly.
+- Ensure run instructions specify the working directory and valid quoted paths.
+
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: software project estimation
+- skill: choose
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 6,
+  excluding blank and comment-only lines. Count new-side diff lines;
+  do not use net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure counts and timing agree with source differences and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified NASA93 Step 7 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

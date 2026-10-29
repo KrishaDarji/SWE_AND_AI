@@ -1,0 +1,4 @@
+cd experiments/runs/treatment4/trials/trial2/x264/step01
+python3 -m unittest discover -s tests -v
+cd ../../../../../../..
+python3 experiments/runs/treatment4/trials/trial2/x264/step01/source/summarize_runs.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv

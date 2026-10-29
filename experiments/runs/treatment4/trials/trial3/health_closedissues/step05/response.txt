@@ -1,0 +1,12 @@
+Implemented Step 5 blame analysis and preserved all Step 4 interfaces and regression tests.
+
+Method: MRE- is the only explanatory outcome; ACC+ and PRED40+ are excluded. Numeric settings use squared Pearson correlation (r^2), and criterion uses eta-squared. Both are marginal proportions of observed MRE- variation, so the same score is used for ranking. Lower MRE- is better. Missing/non-finite values are excluded for numeric pairs and represented as a categorical missing level for criterion. Constants and insufficient samples receive a non-informative score; ties are deterministic by setting name. No causal claim is made, and correlated settings may share explanatory information.
+
+Measured dataset result (10,000 finite MRE- rows; mean 0.709094, min 0, max 1):
+1. Min_sample_leaves: r^2 0.645497
+2. criterion: eta^2 0.024851
+3. Min_impurity_decrease: r^2 0.004574
+4. Max_depth: r^2 0.000060
+5. N_estimators: r^2 0.000041
+
+Tests: 20 passed. Demonstration runtime: 0.08 seconds real, measured with /usr/bin/time -p. The complete accumulated source is in source/ and tests are in tests/. Run commands are in run_instructions.txt. Limitations: these are marginal associations, not adjusted effects, causal effects, guaranteed gains, metric formulas, units, valid ranges, or compute costs; numeric settings were not grouped, so no binning information was lost.

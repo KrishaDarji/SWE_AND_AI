@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,2,model configuration and quality,remember,68,68,1,0.71,4,"3 synthetic tests passed; /usr/bin/time -p real elapsed demonstration time; criterion categorical; empty strings missing; 2 failed assertions and 2 failed demonstration executions were repaired"

@@ -1,0 +1,39 @@
+ATTEMPT 1: unittest
+...............FF.....
+======================================================================
+FAIL: test_repair_accepts_observed_baseline_and_reports_all_changes (test_summarize_runs.SummarizeRunsTests.test_repair_accepts_observed_baseline_and_reports_all_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step08/tests/test_summarize_runs.py", line 203, in test_repair_accepts_observed_baseline_and_reports_all_changes
+    self.assertIn("proxy", result["change_count_proxy_note"])
+AssertionError: 'proxy' not found in 'Correlated or one-hot fields may represent fewer conceptual changes.'
+
+======================================================================
+FAIL: test_repair_prioritizes_minimum_change_over_improvement (test_summarize_runs.SummarizeRunsTests.test_repair_prioritizes_minimum_change_over_improvement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step08/tests/test_summarize_runs.py", line 182, in test_repair_prioritizes_minimum_change_over_improvement
+    self.assertEqual(result["repaired"]["record_id"], "csv_record_3")
+AssertionError: 'csv_record_4' != 'csv_record_3'
+- csv_record_4
+?            ^
++ csv_record_3
+?            ^
+
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.032s
+
+FAILED (failures=2)
+ATTEMPT 1 REPAIRED: unittest
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 0.016s
+
+OK
+FINAL TEST VERIFICATION
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 0.016s
+
+OK

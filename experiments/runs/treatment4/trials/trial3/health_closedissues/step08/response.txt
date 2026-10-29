@@ -1,0 +1,13 @@
+Implemented Step 8 retrospective observed-data repair in source/fix.py.
+
+The repair accepts an observed baseline record, defaults the demonstration to the first CSV row, filters for strictly lower measured MRE-, compares numeric settings numerically, and selects by change-count proxy, MRE-, ACC+, PRED40+, then earliest CSV row. It reports complete identifiers/configurations/outcomes, exact changes, MRE- improvement, secondary-outcome worsening or unknown comparisons, invalid input, empty input, ties, and no-improvement cases. Step 7 source and tests are preserved, with 29 tests passing.
+
+Run tests with:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step08" && pytest -q tests
+
+Run the demonstration with:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step08" && /usr/bin/time -p python3 source/fix.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Observed demonstration: baseline record 0 had MRE- 0.3148748159057436; candidate record 1944 had MRE- 0.2673048600883652, improving MRE- by 0.04756995581737844 with two changed fields. ACC+ worsened by 0.06568407561678946; PRED40+ difference was 0.0. Measured real time was 0.05 seconds.
+
+Assumptions and limitations: this is retrospective observed-data repair, not a causal or future-performance claim. Change count is only a proxy, not measured implementation cost. No metric formulas, units, ranges, or compute costs are inferred. Secondary comparisons are unknown when a baseline value is unavailable.

@@ -1,0 +1,9 @@
+Implemented Step 9 spot screening in `source/nasa93_summary.py`, preserving all Step 8 interfaces and tests.
+
+The new `spot_inconsistencies` function screens Kloc+, Effort-, and Defects- with a robust univariate rule: nonnegative outcomes are transformed with `log1p`; the reference is the median transformed value; the scale is `1.4826 * MAD`; and a record is flagged when the absolute modified score is at least 3.5. Negative values are explicitly flagged as invalid, while missing, non-finite, and non-numeric values are excluded from the reference calculation. Constant and zero-scale samples are handled deterministically. Reference statistics include the assessed record.
+
+The NASA93 demonstration completed with 0 flags. The complete suite passed: 31 tests. Demonstration timing from `/usr/bin/time -p`: real 0.80 seconds.
+
+Flags are investigation candidates, not confirmed errors. Large projects can legitimately have large effort or defect counts. This univariate screen does not establish inconsistency conditional on project scope, anomaly-detection accuracy, or prediction uncertainty.
+
+Known assumptions and limitations: `idX` is used as the identifier when present, otherwise the zero-based CSV row index is used; outcomes are interpreted as numeric nonnegative quantities; the assessed record is included in its field's reference statistics; the method is marginal and univariate; and no causal explanation, units, labels, costs, or prediction uncertainty is inferred.

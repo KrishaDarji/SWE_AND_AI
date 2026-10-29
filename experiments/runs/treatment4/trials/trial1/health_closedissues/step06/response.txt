@@ -1,0 +1,22 @@
+Step 6 completed: Treatment 4, Trial 1, Health closed issues, skill justify.
+
+Complete updated application code is in source/: summarize.py, guess.py, certify.py, flow.py, blame.py, and new justify.py. Complete preserved tests and new Step 6 tests are in tests/. All five previous application modules and all five previous test modules are byte-identical to the allowed Step 5 inputs; the dataset was only read.
+
+Reused: the Health schema loader, summaries, configuration normalization, outcome normalization, observed comparison summaries, and marginal diagnosis. Added: deterministic MRE-first complete-outcome selection, explicit exclusions and tie stages, objective-aware distribution ranks and differences, historical mean/median/best references, earliest complete record and individual objective champion comparisons, selected-setting diagnosis evidence, same-configuration evidence, a scoped Pareto check, structured and readable justification, and independent fixture/full-dataset tests. No model predictions or inferential claims are used to justify the selected observation. Preserved model/inference machinery still runs in regression demos.
+
+Recommendation: one-based CSV data row 32, CSV line 33.
+Hyperparameters: {"Max_depth": 5.0, "Min_impurity_decrease": 6.75, "Min_sample_leaves": 1.0, "N_estimators": 10.0, "criterion": "squared_error"}
+Recorded objectives: {"ACC+": 0.7901313681512335, "MRE-": 0.0, "PRED40+": 0.8571428571428571}
+Selection: minimum observed MRE-, ties by higher ACC+, higher PRED40+, then earlier data row. Eligible 10000/10000; excluded 0. This is an illustrative MRE-first preference rule, not a universally best multi-objective recommendation.
+
+Observed historical competition ranks (1 + strictly better observations): MRE- 1; ACC+ 101; PRED40+ 373. All three metrics use their own observed historical distribution. Numerical details and reference differences are in justification.json and justification.txt.
+
+Validation: 59/59 tests passed, including 14 new Step 6 tests and all 45 retained tests. All six separate CLI demos exited successfully. Final measured Step 6 demo subprocess wall time: 1.190509417 seconds. Total application LOC: 1002; added application LOC: 214. Test and regression-demo times are separately recorded in metrics.csv and measurement_details.json. Unexpected execution error count: 5; the initial missing-directory read, two premature output reads, missing-fixture suite failure and failed measurement wrapper are documented in setup_log.txt. First-attempt logs and measurements are preserved; fixture repair created example_configuration.json from the first allowed dataset record without changing the inherited test.
+
+Commands (run from this Step 6 directory):
+PYTHONDONTWRITEBYTECODE=1 python3 measure.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir .
+See run_instructions.txt for absolute paths, environment verification, reusable Python interfaces and each preserved CLI command.
+
+Assumptions and limitations: recorded metric directions are supplied, but metric formulas/units and deployment costs are unspecified. MRE-first priorities are illustrative. Available-outcome historical references include the selected record; historical mean/median vectors are not runnable configurations. Exact normalized float equality defines ties. Missing outcomes exclude selection, while missing settings remain explicit. Selecting an extreme creates optimism; a recorded zero does not prove perfect future performance. Marginal setting associations are confounded, not causal explanations or prediction contributions. Neither single observations nor repeated configuration rows establish statistical certainty. Confirm estimator parameter compatibility and evaluation provenance, agree on objective thresholds, and perform independent representative validation and operational measurements before deployment.

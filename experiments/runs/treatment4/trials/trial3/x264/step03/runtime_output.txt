@@ -1,0 +1,7 @@
+Final demonstration attempt: runtime_attempt02.stdout and runtime_attempt02.stderr.
+Exit: 0
+The captured demonstration output is the complete JSON in runtime_attempt02.stdout; timing is in runtime_attempt02.stderr (real 0.87).
+Earlier failed attempt is preserved in runtime_attempt01.stdout, runtime_attempt01.stderr, and runtime_attempt01.exit; it failed because /usr/bin/python3 lacked numpy.
+Corrected final demonstration attempt: runtime_attempt03.stdout and runtime_attempt03.stderr.
+Exit: 0
+Corrected timing: real 0.79 seconds.

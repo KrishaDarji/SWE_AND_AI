@@ -1,0 +1,7 @@
+Run from the repository root:
+
+PY='/Library/Frameworks/Python.framework/Versions/3.12/bin/python3'
+"$PY" -m unittest discover -s 'experiments/runs/treatment4/trials/trial3/health_closedissues/step01/tests' -p 'test_*.py'
+/usr/bin/time -p "$PY" 'experiments/runs/treatment4/trials/trial3/health_closedissues/step01/source/summarize.py' 'moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+The summary command prints JSON to stdout. The implementation creates no files.

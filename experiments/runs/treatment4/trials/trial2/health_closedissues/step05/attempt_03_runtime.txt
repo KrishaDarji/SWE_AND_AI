@@ -1,0 +1,158 @@
+{
+  "adjusted_partial_r2": {
+    "Max_depth": 7.614871101918691e-06,
+    "Min_impurity_decrease": 0.010558675306384718,
+    "Min_sample_leaves": 0.6667007910955163,
+    "N_estimators": 2.349679195752479e-05,
+    "criterion": 0.07690051317764691
+  },
+  "block_evidence": {
+    "Max_depth": {
+      "block_columns": 2,
+      "imputation": "median of finite values",
+      "missing_or_nonfinite": 0
+    },
+    "Min_impurity_decrease": {
+      "block_columns": 2,
+      "imputation": "median of finite values",
+      "missing_or_nonfinite": 0
+    },
+    "Min_sample_leaves": {
+      "block_columns": 2,
+      "imputation": "median of finite values",
+      "missing_or_nonfinite": 0
+    },
+    "N_estimators": {
+      "block_columns": 2,
+      "imputation": "median of finite values",
+      "missing_or_nonfinite": 0
+    },
+    "criterion": {
+      "block_columns": 3,
+      "levels": [
+        "absolute_error",
+        "poisson",
+        "squared_error"
+      ]
+    }
+  },
+  "direction": "lower is better",
+  "excluded_outcomes": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "finite_mre_count": 10000,
+  "interpretation": "Primary ranking uses one common adjusted partial-R2 score. Spearman and eta-squared are descriptive evidence only. Correlated settings can share explanatory information. Missing/non-finite numeric values are omitted from Spearman but retained through imputation and an owned missing indicator in adjusted scoring; all-missing numeric settings use 0.0 and an all-one indicator. Ties use setting-name order. Associations are not causal responsibility or guaranteed gains.",
+  "marginal_descriptive_evidence": {
+    "Max_depth": {
+      "evidence": {
+        "count": 10000,
+        "max": 20.0,
+        "min": 1.0,
+        "missing_or_nonfinite": 0
+      },
+      "magnitude": 0.015316476705363548,
+      "signed_spearman": 0.015316476705363548
+    },
+    "Min_impurity_decrease": {
+      "evidence": {
+        "count": 10000,
+        "max": 10.0,
+        "min": 0.0,
+        "missing_or_nonfinite": 0
+      },
+      "magnitude": 0.03275775205722887,
+      "signed_spearman": 0.03275775205722887
+    },
+    "Min_sample_leaves": {
+      "evidence": {
+        "count": 10000,
+        "max": 20.0,
+        "min": 1.0,
+        "missing_or_nonfinite": 0
+      },
+      "magnitude": 0.7475306274967778,
+      "signed_spearman": 0.7475306274967778
+    },
+    "N_estimators": {
+      "evidence": {
+        "count": 10000,
+        "max": 200.0,
+        "min": 10.0,
+        "missing_or_nonfinite": 0
+      },
+      "magnitude": 0.004162961271016852,
+      "signed_spearman": -0.004162961271016852
+    },
+    "criterion": {
+      "eta_squared": 0.024851322742382987,
+      "levels": {
+        "absolute_error": {
+          "count": 3302,
+          "max": 1.0,
+          "mean": 0.7508694690284082,
+          "median": 0.8774668630338732,
+          "min": 0.085272459
+        },
+        "poisson": {
+          "count": 3335,
+          "max": 0.8857142857142857,
+          "mean": 0.7034025255399244,
+          "median": 0.806480118,
+          "min": 0.057437408
+        },
+        "squared_error": {
+          "count": 3363,
+          "max": 0.8780559646539028,
+          "mean": 0.6737202958486018,
+          "median": 0.8050073637702503,
+          "min": 0.0
+        }
+      }
+    }
+  },
+  "numeric_grouping": "none; numeric settings remain continuous",
+  "outcome": "MRE-",
+  "outcome_summary": {
+    "max": 1.0,
+    "mean": 0.70909397643463,
+    "median": 0.8091310751104565,
+    "min": 0.0
+  },
+  "primary_score": "adjusted_partial_r2; complete transformed block removed",
+  "ranking": [
+    "Min_sample_leaves",
+    "criterion",
+    "Min_impurity_decrease",
+    "N_estimators",
+    "Max_depth"
+  ],
+  "row_count": 10000,
+  "transformed_blocks": {
+    "Max_depth": [
+      6,
+      7
+    ],
+    "Min_impurity_decrease": [
+      4,
+      5
+    ],
+    "Min_sample_leaves": [
+      2,
+      3
+    ],
+    "N_estimators": [
+      0,
+      1
+    ],
+    "criterion": [
+      8,
+      9,
+      10
+    ]
+  }
+}
+real 0.83
+user 0.67
+sys 0.11

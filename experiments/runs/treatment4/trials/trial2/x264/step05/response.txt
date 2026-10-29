@@ -1,0 +1,10 @@
+Implemented Step 5 blame analysis.
+
+Top marginal/adjusted associations on the dataset were no_mixed_refs, no_fast_pskip, no_mbtree, no_8x8dct, and no_cabac. The ranking uses one-hot LinearRegression adjusted delta R-squared, then marginal eta-squared, then setting name. It reports level counts and outcome summaries, handles constants and multi-value settings, and identifies complementary settings. Associations are descriptive, not causal; lower Performance- is better.
+
+12 tests passed, including Step 4 regressions and synthetic constant, multi-value, mutually-exclusive, and deterministic-ordering cases. Demonstration runtime was 0.74 seconds using /usr/bin/time -p real time.
+
+Run:
+python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step05/source/summarize_runs.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --blame
+
+Artifacts: [step05](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step05), [source](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step05/source/summarize_runs.py), [tests](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step05/tests/test_summarize_runs.py), [metrics](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step05/metrics.csv).

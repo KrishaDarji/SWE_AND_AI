@@ -1,0 +1,24 @@
+Implemented Step 7 retrospective configuration selection in `source/choose.py`.
+
+The demonstration uses cap `N_estimators <= 100`, with 4,877 feasible records out of 10,000. It selects CSV record 32:
+
+```text
+N_estimators=10
+criterion=squared_error
+Min_sample_leaves=1
+Min_impurity_decrease=6.75
+Max_depth=5
+MRE-=0.0
+ACC+=0.7901313681512335
+PRED40+=0.8571428571428571
+```
+
+Selection is retrospective over observed outcomes: lowest MRE-, then highest ACC+, highest PRED40+, and earliest CSV record. The N_estimators cap is only a compute proxy; other settings also affect compute, and runtime/memory/monetary cost was not measured. It does not predict unseen settings or guarantee future quality or feasibility.
+
+The complete accumulated suite passes: 29 tests. Run it with:
+
+```bash
+python3 -m unittest discover -s 'experiments/runs/treatment4/trials/trial2/health_closedissues/step07/tests' -p 'test_*.py'
+```
+
+Run the demonstration with the command in `run_instructions.txt`.

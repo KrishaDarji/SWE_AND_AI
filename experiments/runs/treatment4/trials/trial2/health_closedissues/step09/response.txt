@@ -1,0 +1,12 @@
+Implemented Step 9 `spot` screening and preserved all Step 8 source and regression tests.
+
+The new `spot.py` applies a robust signed score `(observed - median) / (1.4826 * MAD)` independently to MRE-, ACC+, and PRED40+. The assessed record is included in the reference statistics. A threshold of 3.5 flags absolute scores at least that threshold. When robust scale is zero, median values receive score 0 and non-median values receive JSON `null` with an explicit unbounded-score reason.
+
+Validation:
+- 37 tests passed.
+- Demonstration real time: 0.10 seconds via `/usr/bin/time -p`.
+- Real-data result: 3,475 unique flagged records; MRE- 1,496, ACC+ 2,124, PRED40+ 3,475.
+
+Flags are investigation candidates, not confirmed measurement errors. This marginal screen does not condition on configuration settings and may flag legitimate differences between configurations. No detection accuracy is claimed without verified anomaly labels. Missing/non-finite, empty, small, constant, and zero-scale inputs are handled explicitly, and JSON serialization rejects non-standard numeric values.
+
+Known limitations: the screen is univariate and marginal; the reference includes the assessed record; no metric formulas, units, valid ranges, or causal explanations are inferred; and the selected threshold is a screening policy rather than a validated anomaly boundary.

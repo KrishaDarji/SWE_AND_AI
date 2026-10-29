@@ -1,0 +1,15 @@
+Corrected Step 9 `spot` while preserving the Step 8 interfaces and regression tests.
+
+Artifacts:
+- Source: `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/source/summarize_runs.py`
+- Tests: `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/tests/test_summarize_runs.py`
+- Test log: `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/test_output.txt`
+- Demonstration log: `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/runtime_output.txt`
+- Metrics: `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/metrics.csv`
+
+The detector groups identical configurations, predicts each group from its actual nearest other standardized configuration groups, records those group IDs, and scores the absolute residual using robust MAD scaling. `comparable_configuration_groups` is the count of those actual nearest groups, and `min_comparisons` is applied to that count. With no other group, the expected value and score are unavailable, the reason states that no independent reference is available, and the record is not flagged. The threshold is defined before flags: score >= 3.5 with at least two nearest comparison groups. Lower `Performance-` remains better. On the real dataset, 24 of 1152 records were flagged as investigation candidates; this is not a confirmed-error result and no detection accuracy is claimed.
+
+Command:
+`/usr/bin/time -p python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step09/source/summarize_runs.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --spot`
+
+The corrected suite passed: 27 tests. Demonstration real time was 0.87 seconds. Known limitations are observational nearest-neighbor comparisons, no verified anomaly labels, and no flags when residual variability is zero.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,4,2,model configuration and quality,spot,633,67,1,0.10,4,"37 tests; reused and copied Step 8 source/tests; /usr/bin/time -p real for demonstration excluding tests; reference includes assessed record; repaired unavailable python alias, reserved shell variable, and initial command issues; flags are investigation candidates"

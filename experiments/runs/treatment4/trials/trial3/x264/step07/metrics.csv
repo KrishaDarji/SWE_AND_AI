@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,4,3,video encoding,choose,390,57,1,0.81,2,"23 tests; reused Step 6 source and regression suite; /usr/bin/time -p real; random_state=42 and demonstration budget=20; two repaired command failures preserved in attempt logs"

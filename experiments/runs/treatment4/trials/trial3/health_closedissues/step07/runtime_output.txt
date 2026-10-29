@@ -1,0 +1,27 @@
+{
+  "cap": 100.0,
+  "cap_definition": "N_estimators <= cap (compute proxy, not measured cost)",
+  "configuration": {
+    "Max_depth": "5",
+    "Min_impurity_decrease": "6.75",
+    "Min_sample_leaves": "1",
+    "N_estimators": "10",
+    "criterion": "squared_error"
+  },
+  "feasible_count": 4877,
+  "limitation": "Other settings also affect compute; this estimator cap is only a proxy.",
+  "measured_outcomes": {
+    "ACC+": 0.7901313681512335,
+    "MRE-": 0.0,
+    "PRED40+": 0.8571428571428571
+  },
+  "original_record_id": 31,
+  "selection_basis": "observed outcomes",
+  "selection_note": "Selection uses observed outcomes, not predictions for unseen settings.",
+  "status": "feasible record selected",
+  "total_count": 10000
+}
+real 0.05
+user 0.04
+sys 0.00
+command_exit=0

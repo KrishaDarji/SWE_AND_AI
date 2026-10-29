@@ -1,0 +1,93 @@
+You are running Treatment 4, Trial 2, Dataset 1, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: guess
+- Current requirement: Predict encoding time before running a new configuration.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/config/X264_AllMeasurements.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/x264/step01/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/x264/step01/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/x264/step02/
+
+Resolve <repository root> to the exact absolute path above.
+
+Use Python with scikit-learn.
+
+Extend and reuse the allowed Step 1 implementation where appropriate.
+Copy the accumulated source and tests into Step 2 and preserve Step 1 behavior.
+Do not modify Step 1 files.
+
+You may read only:
+- The specified dataset.
+- The allowed Step 1 source and tests.
+- Files created in the current Step 2 directory.
+- Standard Python and scikit-learn documentation.
+
+Do not refer to other trials, datasets, treatments, root-level project
+implementations, Git history, previous chats, or saved outputs from Step 1.
+If an authorized input is missing, report the exact path without searching elsewhere.
+
+Implementation:
+- Predict Performance- using encoder settings as predictors.
+- Treat it as the available encoding-performance target; do not invent units
+  or a separate quality measure.
+- Evaluate on a reproducible held-out split.
+- Keep identical configurations together to prevent train/test leakage.
+- Fit preprocessing and the model using training data only.
+- Report held-out MAE and compare against a training-mean baseline.
+- Support predictions for supplied configurations.
+- State assumptions and limitations.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for Step 1.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically. Save all outputs there:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Run the tests and implementation, capture actual outputs and runtime,
+and record measured metrics. Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with Step 1,
+  not net growth.
+- test_pass: 1 if the complete test suite succeeds, otherwise 0.
+- runtime_seconds: measured runtime of the current skill demonstration,
+  excluding test execution.
+- error_count: unexpected errors encountered during this step, including
+  failures later repaired; exclude expected negative-test cases.
+- notes: test count, measurement method, reuse, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+
+Write only inside the exact Step 2 output directory in the nested
+SWE_AND_AI repository. Do not save to the outer SWEAI_Project/experiments folder.

@@ -1,0 +1,3 @@
+Latest final runtime attempt: runtime_attempt_01.txt
+Command: /usr/bin/time -p python3 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step04/source/flow.py' 'SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Result: completed successfully; see runtime_attempt_01.txt for captured JSON and timing.

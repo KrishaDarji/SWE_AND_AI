@@ -1,0 +1,2 @@
+Latest final attempt: test_output_attempt3.txt
+See test_output_attempt3.txt for the complete captured unittest stdout/stderr.

@@ -1,0 +1,34 @@
+{
+  "group_count": 1152,
+  "held_out_mae": 0.23845404761900285,
+  "invalid_target_rows": 0,
+  "model_settings": {
+    "estimator": "RandomForestRegressor",
+    "group_split": "GroupShuffleSplit(test_size=0.2)",
+    "n_estimators": 200,
+    "preprocessing": "most_frequent imputation + one-hot encoding fitted on training rows",
+    "random_state": 42
+  },
+  "predictor_names": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9"
+  ],
+  "test_count": 231,
+  "train_count": 921,
+  "training_mean": 461.65096742671005,
+  "training_mean_baseline_mae": 135.97237591832706
+}

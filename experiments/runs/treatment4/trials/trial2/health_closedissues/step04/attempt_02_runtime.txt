@@ -1,0 +1,4 @@
+{"final": {"records_received": 10000, "summaries": {"ACC+": {"best_configuration": null, "best_record_id": 7555, "best_value": 1.0, "direction": "maximize", "mean": 0.49593851329765815, "outcome": "ACC+", "sample_variance": 0.011481619453413293, "valid_count": 10000}, "MRE-": {"best_configuration": null, "best_record_id": 31, "best_value": 0.0, "direction": "minimize", "mean": 0.7090939764346323, "outcome": "MRE-", "sample_variance": 0.04056030922815959, "valid_count": 10000}, "PRED40+": {"best_configuration": null, "best_record_id": 13, "best_value": 1.0, "direction": "maximize", "mean": 0.14684285714285772, "outcome": "PRED40+", "sample_variance": 0.07096876197823895, "valid_count": 10000}}}, "snapshots": 10000}
+real 0.04
+user 0.04
+sys 0.00

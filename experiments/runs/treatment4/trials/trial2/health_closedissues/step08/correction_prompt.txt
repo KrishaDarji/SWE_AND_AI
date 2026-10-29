@@ -1,0 +1,20 @@
+Correct Health Trial 2 Step 8's baseline missing-outcome handling.
+
+The baseline validation requires finite MRE- but allows missing ACC+ or
+PRED40+. Later trade-off subtraction and comparisons then fail on None.
+
+Keep such baselines supported:
+- Return null for an unavailable secondary-outcome difference.
+- Return null for its worsening status, explicitly meaning unknown.
+- Explain that the missing baseline outcome prevents that comparison.
+- Preserve repair selection using finite candidate outcomes.
+
+Add tests for each missing/non-finite baseline secondary outcome.
+Preserve earlier interfaces, regression tests, and existing logs.
+
+Capture corrected tests and demonstration directly into new attempt files.
+Update actual metrics, calculating new_loc against Step 7.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+
+Write only inside the existing Health trial2/step08 directory.

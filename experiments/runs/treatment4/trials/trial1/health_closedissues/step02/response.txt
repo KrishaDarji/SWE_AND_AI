@@ -1,0 +1,120 @@
+Treatment 4 / Trial 1 / Health / Step 2: guess
+
+Complete updated application code:
+- source/summarize.py: Step 1 descriptive command preserved; its parser is
+  extracted as load_rows() for reuse. All normalization and schema checks are
+  unchanged, including finite numeric values, blank values, and column order.
+- source/guess.py: predictor validation, group split, training-only pipelines,
+  separate target models, evaluation, and prediction CLI.
+
+Tests:
+- tests/test_summarize.py is copied unchanged from the allowed Step 1 tests.
+- tests/test_guess.py adds validation, normalization and group separation,
+  missing inputs and targets, unseen categories, all-missing columns,
+  reproducibility, independent model/baseline MAEs, actual dataset evaluation,
+  held-out target mutation checks, target independence, and objective exclusion.
+- All 16/16 tests passed on final attempt.
+
+Reuse and additions:
+Reused only the specified Health Step 1 source and tests. The Step 1 runner
+was read as allowed reference but was not copied into source/. measure.py is
+separate measurement tooling. The dataset, original Step 1 files, and other
+repository files were not modified. No unrelated implementation, git history,
+external references, or additional packages were used.
+
+Evaluation:
+10,000 records, 10,000 distinct normalized configuration groups; 8,000 training
+and 2,000 held-out groups/rows. Split uses GroupShuffleSplit, test_size=0.2,
+random_state=42, with first-seen group IDs from predictor tuples only. Identical
+normalized configurations stay together even when their objectives differ.
+The ceiling of 20% of distinct groups is held out. Row weights are equal;
+repeated configurations would retain all of their observations in one split.
+The actual data have no repeated configuration groups. IDs and all group
+configuration values are recorded in evaluation.json, along with sample sizes
+and every scored held-out prediction.
+
+Each target has its own fixed RandomForestRegressor: 120 trees, max_depth=12,
+min_samples_leaf=2, max_features=1.0, bootstrap=True, squared_error criterion,
+random_state=42, n_jobs=1. Settings were fixed without holdout tuning. This
+forest models configuration-to-metric behavior; the input N_estimators and
+criterion fields are configuration observations, not surrogate hyperparameters.
+Numeric medians and categorical mode/one-hot preprocessing are learned only
+from labeled training rows for the particular target. No objective enters X.
+
+Target              Model MAE             Training-mean baseline MAE
+MRE- (minimize)     0.013879674043        0.164598616273
+ACC+ (maximize)     0.009152871557        0.088209673141
+
+No combined target score is used. Baselines are computed from training labels
+separately for each target; MAEs use only the corresponding held-out labels.
+
+Illustrative configuration (not an optimized recommendation):
+{
+  "N_estimators": 100.0,
+  "criterion": "squared_error",
+  "Min_sample_leaves": 5.0,
+  "Min_impurity_decrease": 1.5,
+  "Max_depth": 10.0
+}
+Predicted MRE-: 0.489667304743
+Predicted ACC+: 0.631825538463
+
+Assumptions and limitations:
+- Targets are recorded CSV metrics; no metric formula, unit, cost, or causal meaning is inferred.
+- A single seed-42 group holdout estimates performance on unseen configurations from this dataset only.
+- No tuning uses held-out targets; model settings are fixed in advance.
+- Unseen categories encode as all zero; unseen numeric values may extrapolate poorly.
+- Missing numeric inputs use training medians (zero for entirely missing columns); missing criterion uses the training mode (zero category if entirely missing).
+- Missing target labels are excluded separately per target; neither targets nor PRED40+ enter predictors.
+- No theoretical metric ranges are assumed or imposed. Forest predictions are within the training target range; this does not guarantee validity on unseen configurations.
+- Predictions are point estimates with no uncertainty or accuracy guarantee; evaluation MAE is in each recorded target scale.
+- Numeric inputs follow Step 1 finite-float validation; no undocumented parameter-domain or integer restrictions are added.
+- Row IDs are one-based data-record positions, not persistent identifiers; header is CSV line 1.
+- Entirely missing categorical training columns use SimpleImputer's zero
+  fallback. No ordinal mapping is invented for observed criterion labels.
+- Missing held-out targets are omitted from scoring, independently per target;
+  the split records all rows. If either partition lacks labels for a target,
+  evaluation fails explicitly. At least two distinct groups are required.
+- Observed training ranges are recorded per target but are not assumed to be
+  theoretical metric bounds. Predictions are not clipped to a presumed range.
+- Seed reproducibility applies to the recorded data order and dependencies;
+  reordered input may receive a different deterministic group assignment.
+
+Measurements:
+Application total_loc=312, new_loc=183. These count nonblank,
+non-comment-only Python lines, including docstrings, excluding tests and
+measure.py. new_loc counts insert/replace new-side application lines against
+allowed Step 1 files via difflib.SequenceMatcher(autojunk=False), not net growth.
+The baseline is 131 application LOC plus 65 measurement-runner LOC; Step 1's
+source/run_experiment.py is excluded from the application comparison.
+Step 2 demo subprocess wall time: 2.390457916 seconds.
+passed/total=16/16; test_wall_seconds=8.034434792; regression_demo_wall_seconds=0.726938334; attempt=2; baseline=131 application LOC + 65 runner LOC; Step 1 runner excluded; new_loc=nonblank noncomment insert/replace new-side lines via difflib; measurement runner excluded; initial checks succeeded; expected negative tests excluded; see preserved attempt logs and response.txt for repair history
+Dependencies: {"python": "3.12.6", "scikit_learn": "1.6.0", "numpy": "2.3.5", "scipy": "1.16.3"}
+
+Failure and repair history:
+Attempt 1: 15/16 tests passed; both Step 2 and Step 1 demos succeeded. The
+missing-value test first selected a split, then changed individual training
+predictor values, accidentally creating new normalized configuration groups.
+Its assumed split no longer matched the split recomputed by fit_evaluate().
+This made a supposed held-out-only category enter the recomputed training set.
+Repair: construct missing predictors consistently for whole duplicate groups
+before selecting the split, then change only whole held-out groups without
+changing their equivalence classes. No application change was needed.
+Attempt 2: 16/16 passed; both demos succeeded. error_count=1 counts the unexpected
+failed test-suite execution once; expected negative tests are excluded. Both
+attempts' outputs and timings remain in attemptNN_* logs and execution_history.json.
+No other command failures occurred. Original Step 1 files were left untouched.
+
+Commands:
+See run_instructions.txt for exact runnable commands with quoted absolute paths,
+or run from this directory:
+python3 -m unittest discover -s tests -v
+python3 source/guess.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --configuration example_configuration.json --evaluation evaluation.json
+python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir step01_regression_demo
+python3 measure.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+Artifacts:
+prompt.txt; response.txt; source/; tests/; test_output.txt; runtime_output.txt;
+metrics.csv; evaluation.json; example_configuration.json; run_instructions.txt.
+Additional measurement history and Step 1 regression artifacts are also stored
+inside this Step 2 directory.

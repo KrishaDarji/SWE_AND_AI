@@ -1,0 +1,24 @@
+COMMAND: ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "source/guess.py", "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv", "--configuration", "demo_configuration.json", "--evaluation", "regression_guess.json"]
+WALL_SECONDS: 2.444400417
+EXIT_CODE: 0
+STDOUT:
+{
+  "label": "Illustrative configuration; not an optimized recommendation",
+  "predictions": {
+    "MRE-": 0.32268607100255475,
+    "ACC+": 0.6805237752098817
+  },
+  "heldout_mae": {
+    "MRE-": {
+      "model": 0.013879674043302374,
+      "training_mean_baseline": 0.16459861627286873
+    },
+    "ACC+": {
+      "model": 0.00915287155651082,
+      "training_mean_baseline": 0.08820967314102454
+    }
+  }
+}
+
+STDERR:
+

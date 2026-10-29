@@ -1,0 +1,135 @@
+You are running Treatment 4, Trial 3, Dataset 3, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: race
+- Current requirement: Compare our configuration selector against a historical baseline.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step09/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step09/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step10/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 9 implementation where appropriate.
+Copy accumulated source and tests into Step 10, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 Health Step 9 source and tests.
+- Files created in the current Step 10 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Reuse the existing Step 7 selector unchanged.
+- Compare its selected observed configuration against a baseline that uniformly
+  samples one eligible historical record for each seed.
+- Apply identical eligibility rules and N_estimators <= 100 to both.
+- Use independent baseline RNG instances with seeds 42 through 51.
+- Report each seed, original identifiers, configurations, all three measured
+  outcomes, and the paired MRE- difference.
+- Define difference as baseline MRE- minus selector MRE-:
+  positive beyond tolerance means selector win; negative means selector loss.
+- Fix tie tolerance before examining results.
+- Summarize paired differences and descriptive wins/ties/losses.
+- Report ACC+ and PRED40+ trade-offs descriptively.
+- Disclose the unequal search/information advantage: the selector inspects all
+  feasible outcomes, while the baseline samples one record.
+  A win does not establish superior budgeted search.
+- The selector is deterministic and may return the same record each run.
+  Do not change its strategy or invent variability to produce stronger results.
+- These are retrospective draws from one historical dataset, not independent
+  validation samples or independent LLM trials.
+- Do not claim statistical superiority or invent the project's final "same"
+  procedure. Mark that analysis pending if unavailable.
+- Treat the estimator cap as a compute proxy, not measured cost.
+- Do not invent metric formulas, ranges, units, or future-performance guarantees.
+- Handle invalid caps and no eligible records consistently with the selector.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test unchanged selector reuse, matching eligibility, cap compliance,
+seed reproducibility, independent RNG use, and paired arithmetic.
+Include independently known selector win, loss, and tie cases.
+Test invalid caps including infinity and no eligible records.
+Do not require selector wins for tests to pass.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify required artifacts and specify valid quoted run commands.
+
+Run tests and the selector-comparison demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 10
+- treatment: 4
+- trial: 3
+- domain: model configuration and quality
+- skill: race
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners. Include docstrings.
+- new_loc: added or replaced implementation lines compared with Health Step 9,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the comparison
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+  Retain all failures from this step if corrections are later required.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 Health Step 10 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

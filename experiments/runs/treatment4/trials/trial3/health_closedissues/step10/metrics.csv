@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,4,3,model configuration and quality,race,760,77,1,0.05,2,"34 tests passed; Step 9 source and tests copied unchanged; /usr/bin/time -p real for comparison subprocess; cap is compute proxy; retrospective single-dataset draws; selector has unequal information advantage; repaired /usr/bin/python3 pytest-environment failure and shell-wrapper failure retained"

@@ -1,0 +1,18 @@
+Corrected and verified Trial 3 X264 Step 3.
+
+Source and tests:
+- source/summarize_x264.py handles both difference directions.
+- tests/test_summarize_x264.py includes inherited regression coverage and synthetic tests for both improvements, zero-crossing intervals, and practical-threshold crossing.
+
+Interpretation rules: positive A-minus-B favors B; negative A-minus-B favors A. Point-estimate magnitude uses abs(difference) > threshold. Interval-supported practical importance requires the full interval above +threshold or below -threshold. Supplied thresholds are labeled supplied; an omitted threshold uses 5.0 and is labeled demonstration_default. Only that default is demonstrative.
+
+Command:
+/usr/bin/time -p /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step03/run_demo.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Result: A=no_8x8dct=0, B=no_8x8dct=1. Lower Performance- is better. Both groups have n=576. Means are A=472.1355069444445 and B=451.37168576388893, so A minus B=20.763821180555567. Welch's two-sided p=0.030125862173739682, df=1149.2372777191688, and 95% interval=[1.9996990185387773, 39.52794334257236].
+
+The demonstration default threshold is 5.0. The positive difference favors B in direction and its magnitude exceeds 5.0, but the interval does not lie entirely above +5.0; interval-supported practical importance is uncertain. Statistical evidence and practical importance are reported separately.
+
+Rows are different configurations rather than repeated-run measurements, so configuration variation cannot establish measurement noise or causal effects. Non-finite outcomes are excluded; missing columns, insufficient groups, zero variance, and invalid thresholds raise explicit errors.
+
+The corrected suite passed: 13 tests, comprising 8 inherited plus 5 new tests. The previous saved suite was 11 tests (8 inherited plus 3 new); that breakdown is corrected here. Corrected demonstration real time was 0.79 seconds. Existing logs remain preserved; corrected attempts are test_attempt03.* and runtime_attempt03.*.

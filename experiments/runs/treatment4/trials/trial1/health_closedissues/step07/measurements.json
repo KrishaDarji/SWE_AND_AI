@@ -1,0 +1,35 @@
+{
+  "timings_seconds": {
+    "tests": 29.205710500013083,
+    "step1": 0.7155470000579953,
+    "step2": 2.395785708911717,
+    "step3": 0.707774291979149,
+    "step4": 1.5849536249879748,
+    "step5": 1.012242874945514,
+    "step6": 1.1637506659608334,
+    "step7": 0.8932496659690514
+  },
+  "tests": {
+    "passed": 69,
+    "total": 69,
+    "skipped": 0
+  },
+  "total_loc": 1129,
+  "new_loc": 127,
+  "unchanged_previous_files": {
+    "source/blame.py": true,
+    "source/certify.py": true,
+    "source/flow.py": true,
+    "source/guess.py": true,
+    "source/justify.py": true,
+    "source/summarize.py": true,
+    "tests/test_blame.py": true,
+    "tests/test_justify.py": true,
+    "tests/test_flow.py": true,
+    "tests/test_summarize.py": true,
+    "tests/test_guess.py": true,
+    "tests/test_certify.py": true
+  },
+  "unexpected_errors_this_attempt": 0,
+  "cumulative_unexpected_errors": 0
+}

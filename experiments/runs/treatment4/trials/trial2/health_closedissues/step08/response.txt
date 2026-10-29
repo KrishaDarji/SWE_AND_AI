@@ -1,0 +1,13 @@
+Corrected Health Trial 2 Step 8 baseline missing-outcome handling.
+
+Missing or non-finite baseline ACC+ and PRED40+ values now produce null trade-off differences and null worsening statuses, with an explicit explanation that the comparison is unknown because the baseline outcome is unavailable. Candidate selection still requires finite candidate outcomes.
+
+Added four targeted tests covering missing and non-finite ACC+ and PRED40+, while preserving all prior interfaces, regression tests, and execution logs.
+
+Verification: 33 tests passed. The corrected demonstration completed successfully in 0.05 seconds real time. Updated metrics are total_loc=566 and new_loc=93, calculated against Step 7. Existing prompt.txt and prior attempt logs were preserved; the correction request is saved in correction_prompt.txt.
+
+Run from the Step 8 directory with:
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 source/fix.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" --baseline-record-id 1
+
+Known limitation: this remains retrospective observed-data repair and does not establish causality, guarantee future quality, or measure implementation cost.

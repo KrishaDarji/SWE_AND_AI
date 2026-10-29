@@ -1,0 +1,9 @@
+Implemented Step 3 certification in `source/certify.py`, reusing the Step 2 predictor and summarizer plus all prior tests.
+
+The fixed comparison is `criterion=squared_error` versus `criterion=absolute_error`, with MRE- primary and lower better. On the real dataset: reference n=3363, mean=0.6737203; candidate n=3302, mean=0.7508695; candidate-minus-reference difference=+0.0771492; 95% Welch CI [0.0671849, 0.0871135]; Welch df=6661.6898; two-sided p=3.53e-51. The observed result favors the reference, not the candidate. Practical importance is undetermined because no client threshold was supplied. ACC+ and PRED40+ are descriptive only.
+
+The complete suite passed: 11 tests. Demonstration real time was 0.36 seconds. Run with the commands in `run_instructions.txt`.
+
+Correction: `metrics.csv` now reports `error_count=10`. This counts the preserved log findings exactly as requested: 3 errors in attempt_01_test_suite.txt, 3 errors in attempt_02_test_suite.txt, 1 failed assertion in attempt_03_test_suite.txt, 1 failed assertion in attempt_04_test_suite.txt, 1 failed demonstration in attempt_01_runtime.txt, and 1 separate shell-variable failure in failed_attempt_01_shell.txt. Failed suite exit statuses were not counted separately. No rerun was performed.
+
+Limitations: rows represent different configurations rather than repeated measurements; other settings may confound criterion-family differences. The analysis does not establish equivalence, causal effects, repeated-run noise, or guaranteed gains. Missing/non-finite outcomes are excluded; each group needs at least two finite MRE- values; thresholds must be finite and nonnegative.

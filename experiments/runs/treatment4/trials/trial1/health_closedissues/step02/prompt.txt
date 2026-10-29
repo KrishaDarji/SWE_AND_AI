@@ -1,0 +1,161 @@
+You are running Treatment 4, Trial 1, Dataset 3, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: machine-learning model configuration
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: guess
+- Current requirement: Predict model error and accuracy before a full evaluation.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+Reuse and extend the previous Treatment 4, Trial 1, Health implementation.
+Preserve Step 1 behavior and tests while adding Step 2.
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01/tests/
+
+Allowed references:
+- The specified Health dataset.
+- The previous source and tests listed above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, NASA93, or other datasets' implementations or tests.
+- Other treatments, trials, or unrelated steps.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and allowed input paths first.
+If an input is missing, report it rather than searching elsewhere.
+Create the current output directory and source/ and tests/
+subdirectories if they do not exist.
+
+Implement predictions of MRE- and ACC+ from configuration settings.
+
+Allowed predictor fields:
+- N_estimators
+- criterion
+- Min_sample_leaves
+- Min_impurity_decrease
+- Max_depth
+
+Exclude all objective columns from predictor inputs:
+MRE-, ACC+, and PRED40+.
+Do not use one measured objective to predict another.
+
+Objective directions:
+- MRE-: minimize.
+- ACC+: maximize.
+
+Reuse and extend the existing schema handling and validation.
+Handle criterion categorically without inventing an ordinal mapping.
+Document handling of missing values and unseen categories.
+Fit learned preprocessing and models on training data only.
+
+Use a fixed seed of 42 and hold out 20% of distinct normalized
+configuration groups. Keep identical configurations together.
+Record row identities, group counts, and sample sizes.
+Do not tune models using held-out targets.
+
+Report MAE separately for MRE- and ACC+.
+For each target, compare against its training-set mean baseline.
+Record model settings, preprocessing, and dependency versions.
+Do not combine the targets into an unexplained aggregate score.
+
+Provide a command accepting a configuration JSON containing
+predictor fields only and returning predicted MRE- and ACC+.
+Create a clearly labeled illustrative configuration for the demo.
+Reject objective fields and unknown fields in configuration input.
+State limitations for unseen configurations and metric ranges.
+Do not invent metric formulas, compute costs, or uncertainty guarantees.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 2 and preserved Step 1 behavior.
+3. Commands to run the tests and implementation.
+4. A short explanation of what was reused and added.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- evaluation.json
+- example_configuration.json
+- run_instructions.txt
+
+evaluation.json must include target definitions, predictor fields,
+model settings, preprocessing, split identities, per-target model
+and baseline MAEs, held-out predictions, and limitations.
+
+Test input validation, missing values, unseen categories,
+reproducibility, and independent MAE calculations.
+Verify that held-out targets cannot affect fitting or predictions.
+Verify that objective fields cannot enter model inputs.
+Preserve Step 1 regression tests.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 2; treatment: 4; trial: 1;
+  domain: health_closedissues; skill: guess.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: Step 2 demo subprocess wall time only;
+  record test and regression-demo timings separately.
+- total_loc: nonblank, non-comment-only application Python lines;
+  include docstrings, exclude tests and measurement runners.
+- Put measurement runners outside source/.
+- new_loc: added application lines relative to Health Step 1 using
+  insert/replace new-side lines; do not use net LOC growth.
+- Exclude Step 1's source/run_experiment.py from the application
+  baseline: it is measurement tooling. Record the baseline as
+  131 application LOC plus 65 runner LOC; do not overwrite Step 1.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run all tests and demos, including preserved Step 1 behavior.
+Capture outputs and runtime, and record actual measured metrics.
+Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset, Step 1 files, or other repository files.
+Write only inside the absolute Step 2 output directory above.
+Do not copy code or context from other datasets, treatments, trials,
+unrelated steps, archived runs, or previous chats.

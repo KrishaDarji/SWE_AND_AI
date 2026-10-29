@@ -1,0 +1,13 @@
+Correct NASA93 Trial 2 Step 4's metrics only.
+
+Verify the source diff against Step 3:
+- total_loc: 220
+- new_loc: 53, counting added/replaced nonblank, noncomment lines.
+  Net growth is 52 because one previous line was replaced.
+
+Update metrics.csv and accurately mention the correction in response.txt.
+Save this correction as correction_prompt.txt.
+Preserve source, tests, prompt.txt, and execution logs.
+No rerun is needed.
+
+Write only inside the existing NASA93 trial2/step04 directory.

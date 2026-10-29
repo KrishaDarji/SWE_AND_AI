@@ -1,0 +1,1345 @@
+Treatment 4, Trial 1, Health-ClosedIssues0000, Step 7
+
+Implemented reusable constrained retrospective selection in source/choose.py.
+All six allowed prior application modules and six prior test files are preserved byte-for-byte; measurements.json records the comparisons. No dataset or Step 6 files were modified. No dependencies were installed or changed. The existing python3 environment has scikit-learn 1.6.0.
+
+Result under --max-estimators 100:
+10,000 candidate recorded rows; 10,000 complete; 5,123 excluded above cap; 4,877 feasible; zero incomplete rows.
+Selected one-based CSV data row 32 (CSV line 33):
+N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5.
+Observed MRE-=0.0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571.
+Cap evidence: recorded 10 <= 100. The minimum feasible MRE- occurs once, so no tie-break was needed for this dataset demo.
+
+Rule: require all five configuration fields and all three objectives, filter N_estimators <= cap inclusively, minimize MRE-, then maximize ACC+, then maximize PRED40+, then earlier one-based CSV data-row number. Exact normalized float equality defines ties. No objective aggregation is used. Each recorded row is a candidate, including repeated configurations. Excluded = incomplete + complete-above-cap; exclusion details may contain multiple reasons per row. No feasible candidate returns status no_feasible_candidate, selected_record null, and no cap evidence or trade-off comparison. This is CLI exit 0 because evaluation succeeded; malformed inputs or invalid caps exit 2.
+
+Trade-offs: the MRE-first winner sacrifices ACC+ and PRED40+ relative to their feasible historical champions. The best feasible ACC+ is 1.0 (earliest tied champion row 7556), a selected loss of 0.20986863184876647. The best feasible PRED40+ is 1.0 (earliest tied champion row 14), a selected loss of 0.1428571428571429. These champions need not be the same configuration. The unconstrained winner among complete recorded rows is also row 32, which already satisfies the cap. selection.json contains the full configurations and observed outcomes of these references.
+
+Reuse and additions:
+- Copied Steps 1–6 source and tests unchanged. Reused CSV validation/loading, schema and objective directions from summarize.py; normalize_records, selection_key and direction-aware difference from justify.py; normalization transitively uses the existing configuration/outcome validators.
+- Added choose.py with cap validation, complete-configuration eligibility, inclusive filtering, original row identity, deterministic selection, explicit no-feasible result, candidate/exclusion/feasible counts, per-row exclusion audit, cap evidence, tie evidence, feasible champions and the unconstrained complete-record reference. No surrogate fitting is needed for selection; scikit-learn remains used by preserved prediction behavior and records the environment version.
+- Added tests/test_choose.py: feasibility, inclusive boundary, all objective directions, secondary losses, every tie-break, original row IDs, every missing field, malformed values, invalid caps, fractional boundary, empty/no-feasible sets, detached results, CLI behavior and independent exhaustive sorting of the actual raw CSV at caps 1, 40, 100 and 1000.
+- Added measure_run.py outside source/ to run all tests and all seven demos, capture logs and measure LOC and timings. Prior tests reference a root example_configuration.json outside the allowed prior source/tests; that file was not read. A replacement fixture was generated from the specified CSV's first recorded configuration and saved here, allowing the preserved tests to run unchanged.
+
+Assumptions and limitations:
+The dataset contains no measured compute cost. A real compute-budget guarantee is unavailable. N_estimators <= 100 is an illustrative configuration constraint, not a measured compute budget; other settings and hardware also affect actual compute. The measured Step 7 subprocess duration is the selector's runtime, not the compute cost of any recorded configuration.
+This is full-data retrospective selection, not a budgeted search over hidden outcomes or an independent validation result. Selection optimism can overstate future performance. Optimality applies only to complete recorded feasible rows under the explicit lexicographic preference; unseen combinations are never generated. A recorded zero MRE- is not proof of perfect future performance. Freeze the candidate, confirm estimator/schema and metric meanings, and evaluate independently on representative data before relying on its performance.
+No metric formulas, units, parameter semantics, integer domains, operational guarantees or practical acceptance thresholds are inferred. Positive finite numeric caps, including fractional caps, are accepted as configuration thresholds; booleans are rejected. Missing settings/objectives exclude rows without imputation. Empty reusable input returns no_feasible_candidate; empty CSV input remains invalid under the preserved loader. Row order identifies records, not time. Repeated observations are not established independent replications; float equality and record precision affect ties.
+
+Measured validation:
+Entire suite: 69/69 passed; zero skipped. All preserved Steps 1–6 demos and Step 7 demo exited 0. No unexpected failures and no repair attempts.
+Step 7 subprocess wall time only: 0.893249666 seconds. Entire test subprocess: 29.205710500 seconds. Separate Steps 1–6 demo timings: {"step1": 0.7155470000579953, "step2": 2.395785708911717, "step3": 0.707774291979149, "step4": 1.5849536249879748, "step5": 1.012242874945514, "step6": 1.1637506659608334}.
+total_loc=1129; new_loc=127; test_pass=1; error_count=0. LOC excludes blank and comment-only application lines, includes docstrings, and excludes tests/runners. New LOC uses insert/replace new-side lines versus allowed Step 6, not net growth.
+
+Commands and execution conventions:
+
+Use the existing python3 environment with scikit-learn 1.6.0. Do not install packages.
+All commands below run from this output directory and write only here.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07'
+
+Run the entire suite (preserved Steps 1–6 plus Step 7):
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Run only the new Step 7 tests:
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_choose.py -v
+
+Run the Step 7 demo:
+PYTHONDONTWRITEBYTECODE=1 python3 source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --max-estimators 100 --output selection.json
+
+Run all tests and all seven demos, capture outputs, verify unchanged prior source/tests, and regenerate measurements:
+PYTHONDONTWRITEBYTECODE=1 python3 measure_run.py
+
+measure_run.py records exact per-demo commands, stdout, stderr, status and subprocess wall times in runtime_output.txt and test_output.txt. It archives existing measurement logs inside attempt_history/ before rerunning and retains cumulative unexpected failure counts in run_history.json. Step 7 runtime_seconds includes subprocess startup, imports, CSV loading, selection, JSON output and console output; it excludes tests and Steps 1–6 demos. Separate timings are in measurements.json and metrics.csv notes. Tests with intentionally invalid inputs are expected negative cases, not unexpected errors.
+
+Reusable API (put source/ on sys.path):
+from choose import choose, choose_rows
+report = choose(dataset_path, max_estimators=100)
+report = choose_rows(record_dictionaries, max_estimators=100)
+
+API caps must be positive finite numbers, excluding booleans; the CLI parses numeric arguments. Numeric fractional caps are allowed without assuming estimator semantics. The cap is inclusive. All five configuration fields and all three objectives must be observed to be feasible. Candidate count is input row count; excluded is incomplete plus complete-above-cap, with detailed reasons in selection.json. Repeated configurations count as separate rows. Omitted/blank/null fields are missing; malformed or nonfinite values are rejected. Empty reusable inputs return no_feasible_candidate; empty CSVs remain invalid under the preserved loader. No-feasible selection is a successful evaluation with selected_record null (CLI exit 0); invalid input exits 2.
+
+The example_configuration.json fixture was regenerated from the specified CSV's first recorded configuration. The allowed prior tests reference this root fixture, but the previous root fixture was outside the allowed input paths and was not read. All prior source and test Python files were copied byte-for-byte without modification.
+
+No compute cost is measured in this CSV. N_estimators <= 100 is an illustrative configuration constraint only. A real compute-budget guarantee is unavailable; other settings and hardware also affect actual compute. Full-data retrospective outcome selection incurs selection optimism and requires independent validation. The result is optimal only under the documented lexicographic rule among complete recorded feasible rows.
+
+Complete updated application source follows. The same runnable files are saved in source/. Complete tests are saved in tests/; their captured execution is test_output.txt. Demo output is runtime_output.txt, structured selection is selection.json, measurements are metrics.csv and measurements.json.
+
+--- source/blame.py ---
+```python
+"""Exploratory marginal associations with recorded MRE- (smaller is better)."""
+import argparse
+from bisect import bisect_left
+from itertools import combinations
+import json
+import math
+from pathlib import Path
+import statistics
+
+import sklearn
+
+from certify import observed_summary
+from guess import validate_configuration
+from summarize import CONFIGURATION, OBJECTIVES, duplicates, load_rows, quantile
+
+METHOD = {
+    'name': 'Marginal grouped eta-squared of observed MRE-',
+    'formula': 'SS_between = sum_g n_g*(mean_g-grand_mean)^2; SS_total = sum_i (y_i-grand_mean)^2; eta_squared = SS_between/SS_total.',
+    'ranking': 'Descending eta_squared, competition ranks (1,1,3); exact floating-score ties share rank, display ties in CONFIGURATION order. Unavailable scores are unranked.',
+    'direction': 'Eta-squared is unsigned association strength, not direction or conditional importance. Group means, medians and differences from the field-specific overall mean describe direction.',
+    'grouping': 'criterion uses exact string categories, never ordinal codes. Numeric fields with <=8 distinct nonmissing values use exact values; otherwise use quartile cuts at p=.25,.5,.75, linear interpolation (n-1)*p over ALL nonmissing predictor rows, independently of outcomes. Duplicate cuts removed; cuts equal to observed maximum removed. Intervals: first [minimum,cut], subsequent (previous_cut,cut], last (last_cut,maximum]. No extrapolation.',
+    'missing': 'No imputation. Ranking excludes missing predictor or MRE per field; report missing-predictor MRE separately. Boundaries include predictor rows with missing MRE. Report every nonempty predictor group, even if all outcomes missing.',
+    'sparse': 'Flag groups with fewer than 5 observed MRE values; retain them in exploratory scores, without treating the flag as a significance threshold.',
+    'degenerate': 'Constant/all-missing predictors, fewer than two labeled groups, and zero outcome variance have null score and no rank.',
+    'inference': 'Exploratory descriptive analysis of this finite dataset. No significance tests, certified wins, uncertainty intervals, fitting, tuning, or predictive validation.',
+    'seed': 42,
+    'randomness': 'No random operations; seed is documented for consistency, not used.',
+    'pairwise': 'Joint nonmissing predictor group counts and observed MRE summaries for all ten pairs expose overlap, imbalance and possible interactions. These are descriptive cells, not adjusted effects or formal interaction tests.'
+}
+LIMITATIONS = [
+    'Observational configuration selection and unrecorded factors confound associations; changing a setting is not shown to cause error reduction.',
+    'Marginal scores do not isolate a field from correlated settings. Joint tables expose co-occurrence but do not control confounding. Correlated fields can share or mask associations.',
+    'Interactions may reverse or cancel marginal directions. Joint tables are exploratory and can be sparse; no interaction model or conditional importance is estimated.',
+    'Eta-squared favors fine partitions and is sample-specific; category counts and numeric coarsening affect ranking. It is not out-of-sample importance, and differently missing subsets need not be comparable.',
+    'Sparse or singleton groups can exaggerate apparent strength. No p values, multiple-test claims, uncertainty guarantees, practical thresholds, or optimized recommendations are provided.',
+    'Repeated configurations count as rows and may overweight settings; independence, random sampling and measurement repeatability are not established.',
+    'Missing outcomes or predictors may be selective. Constants cannot support observed setting comparisons; constant outcomes cannot support strength estimates.',
+    'Quartile bins hide within-range trends; observed extreme mean groups do not establish monotonic numeric effects. Boundary choices use predictor values only.',
+    'MRE- is the recorded scale with unspecified formula and units. Neither ACC+ nor PRED40+ is a diagnostic predictor.',
+    'Finite float arithmetic is used; unrepresentable summary arithmetic is rejected. Rankings near ties may be sensitive to rounding.'
+]
+
+
+def normalize_rows(rows):
+    """Validate reusable record input without mutating it; ignore no unknown keys."""
+    if not isinstance(rows, (list, tuple)) or not rows:
+        raise ValueError('rows must be a nonempty list or tuple of record dictionaries')
+    clean = []
+    for row in rows:
+        if not isinstance(row, dict) or set(row) - (set(CONFIGURATION) | set(OBJECTIVES)):
+            raise ValueError('Record must contain only Health schema fields')
+        if 'MRE-' not in row:
+            raise ValueError('Each record requires MRE-; use None for missing')
+        config = validate_configuration({name: row.get(name) for name in CONFIGURATION})
+        target = validate_configuration({'N_estimators': row['MRE-']})['N_estimators']
+        clean.append({**config, 'MRE-': target})
+    return clean
+
+
+def partition(values, categorical=False):
+    """Return JSON definitions and group indices; missing predictor index is None."""
+    ordered = sorted(v for v in values if v is not None)
+    distinct = sorted(set(ordered))
+    if categorical or len(distinct) <= 8:
+        lookup = {v: i for i, v in enumerate(distinct)}
+        return {'kind': 'categories' if categorical else 'exact_values', 'cuts': [],
+                'groups': [{'value': v} for v in distinct]}, [lookup.get(v) for v in values]
+    cuts = sorted({quantile(ordered, p) for p in (.25, .5, .75)} - {ordered[-1]})
+    bounds = [ordered[0], *cuts, ordered[-1]]
+    definitions = [{'lower': a, 'upper': b, 'lower_inclusive': i == 0,
+                    'upper_inclusive': True} for i, (a, b) in enumerate(zip(bounds, bounds[1:]))]
+    return {'kind': 'quartile_ranges', 'cuts': cuts, 'groups': definitions}, [
+        None if v is None else bisect_left(cuts, v) for v in values]
+
+
+def summary(values):
+    return observed_summary(values, len(values))
+
+
+def diagnose(rows):
+    """Rank only five configuration fields; report observations, not interventions."""
+    rows = normalize_rows(rows)
+    fields, memberships = {}, {}
+    for name in CONFIGURATION:
+        values = [r[name] for r in rows]
+        grouping, ids = partition(values, name == 'criterion')
+        memberships[name] = ids
+        groups = []
+        for group_id, definition in enumerate(grouping['groups']):
+            outcomes = [r['MRE-'] for r, g in zip(rows, ids) if g == group_id]
+            stats = summary(outcomes)
+            groups.append({'group_id': group_id, 'definition': definition,
+                           'row_count': len(outcomes), 'mre': stats, 'sparse': stats['n'] < 5})
+        included = [r['MRE-'] for r, g in zip(rows, ids) if g is not None and r['MRE-'] is not None]
+        overall = summary(included)
+        labeled = [g for g in groups if g['mre']['n']]
+        status = ('all_missing_predictor' if not grouping['groups'] else
+                  'constant_predictor' if len(set(v for v in values if v is not None)) == 1 else
+                  'insufficient_labeled_groups' if len(labeled) < 2 else 'ok')
+        mean = overall['mean']
+        ss_total = math.fsum((y - mean) ** 2 for y in included) if included else 0.0
+        ss_between = math.fsum(g['mre']['n'] * (g['mre']['mean'] - mean) ** 2 for g in labeled) if labeled else 0.0
+        if status == 'ok' and ss_total == 0:
+            status = 'constant_outcome'
+        score = ss_between / ss_total if status == 'ok' else None
+        for g in groups:
+            delta = g['mre']['mean'] - mean if g['mre']['n'] else None
+            g['mean_minus_included_mean'] = delta
+            g['observed_direction'] = ('unavailable' if delta is None else 'equal' if delta == 0
+                                       else 'higher_MRE' if delta > 0 else 'lower_MRE')
+        low = min((g['mre']['mean'] for g in labeled), default=None)
+        high = max((g['mre']['mean'] for g in labeled), default=None)
+        fields[name] = {'field': name, 'rank': None, 'status': status, 'eta_squared': score,
+                        'ss_between': ss_between, 'ss_total': ss_total,
+                        'nonmissing_predictor_count': len(values) - values.count(None),
+                        'distinct_nonmissing_values': len(set(v for v in values if v is not None)),
+                        'grouping': grouping, 'groups': groups, 'included_mre': overall,
+                        'missing_predictor_mre': summary([r['MRE-'] for r in rows if r[name] is None]),
+                        'highest_mean_group_ids': [g['group_id'] for g in labeled if g['mre']['mean'] == high],
+                        'lowest_mean_group_ids': [g['group_id'] for g in labeled if g['mre']['mean'] == low]}
+    ranked = sorted((f for f in fields.values() if f['eta_squared'] is not None),
+                    key=lambda f: -f['eta_squared'])
+    for f in ranked:
+        f['rank'] = 1 + sum(other['eta_squared'] > f['eta_squared'] for other in ranked)
+    joint = []
+    for a, b in combinations(CONFIGURATION, 2):
+        cells = {}
+        for r, ga, gb in zip(rows, memberships[a], memberships[b]):
+            if ga is not None and gb is not None:
+                cells.setdefault((ga, gb), []).append(r['MRE-'])
+        joint.append({'fields': [a, b], 'excluded_missing_predictor_rows': len(rows) - sum(map(len, cells.values())),
+                      'cells': [{'group_ids': list(key), 'row_count': len(ys),
+                                 'mre': summary(ys), 'sparse': sum(y is not None for y in ys) < 5}
+                                for key, ys in sorted(cells.items())]})
+    report = {'method': METHOD, 'target': {'field': 'MRE-', 'direction': 'minimize'},
+              'predictor_fields': list(CONFIGURATION), 'excluded_predictors': list(OBJECTIVES),
+              'record_count': len(rows), 'overall_mre': summary([r['MRE-'] for r in rows]),
+              'repeated_configurations': duplicates(tuple(r[n] for n in CONFIGURATION) for r in rows),
+              'ranked_findings': ranked,
+              'unranked_fields': [f for f in fields.values() if f['eta_squared'] is None],
+              'pairwise_group_summaries': joint, 'limitations': LIMITATIONS,
+              'environment': {'scikit_learn_version': sklearn.__version__},
+              'reuse': 'Unchanged Step 1 loader, quantiles and duplicate counts; Step 2 configuration normalization; Step 3 observed summaries. Steps 1–4 source and tests retained unchanged. Added grouped marginal ranking, directions, missing/sparse/constant handling and joint summaries.'}
+    report['maintainer_explanation'] = render_text(report)
+    json.dumps(report, allow_nan=False)
+    return report
+
+
+def render_text(report):
+    lines = ['Observed MRE- is minimized. Exploratory marginal associations only.',
+             'Rank by grouped eta-squared (between-group / total sum of squares); strength is unsigned.']
+    for f in report['ranked_findings']:
+        lines.append(f"Rank {f['rank']}: {f['field']}, eta-squared={f['eta_squared']:.8g}; n={f['included_mre']['n']}; mean MRE={f['included_mre']['mean']:.8g}.")
+        for label, key in [('Highest', 'highest_mean_group_ids'), ('Lowest', 'lowest_mean_group_ids')]:
+            for i in f[key]:
+                g = f['groups'][i]
+                lines.append(f"  {label} observed mean: {g['definition']}; n={g['mre']['n']}; mean={g['mre']['mean']:.8g}; median={g['mre']['median']:.8g}; sparse={g['sparse']}.")
+    for f in report['unranked_fields']:
+        lines.append(f"Unranked {f['field']}: {f['status']}; observed values/groups={f['grouping']['groups']}.")
+    lines.append('Use JSON group tables for all counts, missingness, quartile boundaries, MRE dispersion and pairwise overlap. Numeric directions need not be monotonic. Correlation, interactions, sparse groups and observational confounding limit attribution. Changing settings is not shown to reduce error.')
+    return '\n'.join(lines)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        _, rows = load_rows(args.dataset)
+        report = diagnose(rows)
+        report['dataset_path'] = str(args.dataset.resolve())
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    except (OSError, ValueError, OverflowError) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(report['maintainer_explanation'])
+
+
+if __name__ == '__main__':
+    main()
+```
+
+--- source/certify.py ---
+```python
+"""Compare two predeclared observed configuration families, without model predictions."""
+import argparse
+import json
+import math
+import platform
+import statistics
+from collections import Counter
+from pathlib import Path
+
+import scipy
+import sklearn
+from scipy.stats import t
+
+from summarize import CONFIGURATION, OBJECTIVES, duplicates, load_rows, quantile
+
+
+def observed_summary(values, total):
+    """Summarize finite observed values; missingness is counted per objective."""
+    clean = []
+    for value in values:
+        if value is None:
+            continue
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+            raise ValueError('Outcomes must be finite numbers or None')
+        clean.append(float(value))
+    ordered = sorted(clean)
+    return {'n': len(clean), 'missing': total - len(clean),
+            'mean': statistics.mean(clean) if clean else None,
+            'std_sample': statistics.stdev(clean) if len(clean) > 1 else None,
+            'median': statistics.median(clean) if clean else None,
+            'q25': quantile(ordered, .25) if clean else None,
+            'q75': quantile(ordered, .75) if clean else None,
+            'min': min(clean) if clean else None, 'max': max(clean) if clean else None}
+
+
+def welch_comparison(baseline, candidate, direction='minimize', practical_threshold=None):
+    """Two-sided Welch test of equal population means; CI is candidate minus baseline.
+
+    A threshold, if supplied, is a positive minimum meaningful improvement in the
+    recorded objective scale. It must be justified externally before interpreting
+    results. This function does not treat a nonsignificant test as equivalence.
+    """
+    if direction not in ('minimize', 'maximize'):
+        raise ValueError('direction must be minimize or maximize')
+    if practical_threshold is not None and (isinstance(practical_threshold, bool) or
+            not isinstance(practical_threshold, (int, float)) or
+            not math.isfinite(practical_threshold) or practical_threshold <= 0):
+        raise ValueError('practical_threshold must be positive and finite')
+    a = observed_summary(baseline, len(baseline))
+    b = observed_summary(candidate, len(candidate))
+    delta = b['mean'] - a['mean'] if a['n'] and b['n'] else None
+    improvement = None if delta is None else (-delta if direction == 'minimize' else delta)
+    result = {'candidate_minus_baseline_mean': delta, 'objective_direction': direction,
+              'observed_direction': ('unavailable' if delta is None else 'equal' if delta == 0
+                                     else 'candidate_better' if improvement > 0 else 'candidate_worse'),
+              'status': 'insufficient_data', 'standard_error': None, 'degrees_of_freedom': None,
+              't_statistic': None, 'p_two_sided': None, 'confidence_level': .95,
+              'confidence_interval': None, 'alpha': .05, 'statistically_detected': None,
+              'practical_threshold': practical_threshold,
+              'practical_assessment': 'Undetermined: no externally justified minimum meaningful improvement supplied.'
+              if practical_threshold is None else 'Unassessed: inferential interval unavailable.'}
+    if min(a['n'], b['n']) < 2:
+        return result
+    va = a['std_sample'] ** 2 / a['n']
+    vb = b['std_sample'] ** 2 / b['n']
+    variance = va + vb
+    if variance == 0:
+        result['status'] = 'zero_variance_inference_unavailable'
+        return result
+    se = math.sqrt(variance)
+    df = variance ** 2 / (va ** 2 / (a['n'] - 1) + vb ** 2 / (b['n'] - 1))
+    statistic = delta / se
+    p = float(2 * t.sf(abs(statistic), df))
+    margin = float(t.ppf(.975, df)) * se
+    interval = [delta - margin, delta + margin]
+    result.update(status='ok', standard_error=se, degrees_of_freedom=df,
+                  t_statistic=statistic, p_two_sided=p, confidence_interval=interval,
+                  statistically_detected=p < .05)
+    if practical_threshold is not None:
+        benefit_interval = [-interval[1], -interval[0]] if direction == 'minimize' else interval
+        result['practical_assessment'] = (
+            'Interval supports improvement exceeding the supplied threshold.'
+            if benefit_interval[0] > practical_threshold else
+            'Interval does not support improvement exceeding the supplied threshold; this is not an equivalence test.')
+    return result
+
+
+def select_families(rows, field, baseline, candidate):
+    """Membership uses only the declared configuration field, never objectives."""
+    if field not in CONFIGURATION or baseline is None or candidate is None or baseline == candidate:
+        raise ValueError('Use a configuration field and two distinct nonmissing family values')
+    groups = {'baseline': [], 'candidate': []}
+    excluded = []
+    for i, row in enumerate(rows):
+        value = row[field]
+        label = 'baseline' if value == baseline else 'candidate' if value == candidate else None
+        if label is None:
+            excluded.append(i)
+        else:
+            groups[label].append(i)
+    return groups, excluded
+
+
+def compare_families(rows, field='criterion', baseline='squared_error', candidate='absolute_error',
+                     primary='MRE-', practical_threshold=None):
+    """Reusable comparison on validated observed rows; no surrogate is consulted."""
+    if primary not in OBJECTIVES:
+        raise ValueError('Unknown primary objective')
+    groups, excluded = select_families(rows, field, baseline, candidate)
+    summaries = {}
+    for label, indices in groups.items():
+        summaries[label] = {'total_rows': len(indices), 'row_ids': [i + 1 for i in indices],
+                            'objectives': {name: observed_summary([rows[i][name] for i in indices], len(indices))
+                                           for name in OBJECTIVES},
+                            'configuration_repetitions': duplicates(tuple(rows[i][name] for name in CONFIGURATION)
+                                                                    for i in indices)}
+    comparison = welch_comparison([rows[i][primary] for i in groups['baseline']],
+                                 [rows[i][primary] for i in groups['candidate']],
+                                 OBJECTIVES[primary], practical_threshold)
+    differences = {name: (summaries['candidate']['objectives'][name]['mean'] -
+                         summaries['baseline']['objectives'][name]['mean'])
+                   if all(summaries[label]['objectives'][name]['n'] for label in groups) else None
+                   for name in OBJECTIVES}
+    if comparison['status'] != 'ok':
+        evidence = 'Inference unavailable because of insufficient observations or zero estimated variance.'
+    elif comparison['statistically_detected']:
+        evidence = 'A mean difference is detected under the stated sampling assumptions.'
+    else:
+        evidence = 'No mean difference is detected at alpha 0.05; this does not prove equivalence.'
+    conclusion = (f"Observed primary direction: {comparison['observed_direction']}. {evidence} "
+                  f"{comparison['practical_assessment']} This comparison does not certify a causal "
+                  'improvement or repeatability for a particular configuration.')
+    return {'group_definitions': {'field': field, 'baseline': baseline, 'candidate': candidate,
+                                 'selection': 'Fixed before examining outcomes; membership uses configuration only'},
+            'record_count': len(rows), 'included_count': sum(map(len, groups.values())),
+            'excluded_count': len(excluded),
+            'excluded_family_counts': [{'value': value, 'count': count} for value, count in
+                                       Counter(rows[i][field] for i in excluded).items()],
+            'excluded_missing_family_count': sum(rows[i][field] is None for i in excluded),
+            'groups': summaries, 'primary_objective': primary,
+            'candidate_minus_baseline_means': differences, 'primary_comparison': comparison,
+            'secondary_objectives': {'names': [name for name in OBJECTIVES if name != primary],
+                                     'scope': 'Descriptive only; no secondary tests, intervals, or significance claims'},
+            'method': {'name': 'Two-sided Welch unequal-variance t test and 95% Welch t interval for mean difference',
+                       'null': 'Equal population means', 'randomized': False, 'seed': 42,
+                       'seed_note': 'Deterministic procedure; no random draws',
+                       'multiplicity': 'One predeclared primary test; secondary summaries only',
+                       'small_samples': 'At least two observed outcomes per group; small-sample inference requires approximately normal populations',
+                       'missing': 'Available outcomes separately by objective; no imputation',
+                       'practical_criterion': 'A positive externally justified minimum meaningful mean improvement is required; none is assumed in the demo'},
+            'limitations': [
+                'Welch inference assumes independent observations within and between groups, finite variances, and approximate normality of sample means; large samples help but do not verify these assumptions.',
+                'Rows are observational configurations, not documented random samples. P values and intervals are conditional approximations, not guarantees for this fixed dataset or a wider population.',
+                'Other hyperparameters may differ between families; confounding and configuration selection prevent causal attribution to criterion.',
+                'Repeated configurations are counted but not assumed to be independent repeated measurements. Unreported dependence can invalidate row-level standard errors.',
+                'Missing outcomes may be selective; available-outcome comparisons need not represent missing configurations.',
+                'No client-approved practical threshold is available; statistical significance alone cannot establish practical relevance. No equivalence test is performed.',
+                'Recorded objective scales only: formulas, physical units, and compute costs are unspecified.',
+                'No surrogate predictions are used. This does not establish measurement repeatability for a particular configuration.',
+                'The separate required same analysis is not claimed complete; its exact procedure was not supplied.'],
+            'maintainer_conclusion': conclusion,
+            'versions': {'python': platform.python_version(), 'scikit_learn': sklearn.__version__, 'scipy': scipy.__version__}}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        _, rows = load_rows(args.dataset)
+        report = compare_families(rows)
+        report['dataset_path'] = str(args.dataset.resolve())
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
+    except (OSError, ValueError) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(json.dumps({key: report[key] for key in ('group_definitions', 'record_count', 'included_count',
+                     'excluded_count', 'excluded_family_counts', 'candidate_minus_baseline_means',
+                     'primary_comparison', 'maintainer_conclusion')}, indent=2, allow_nan=False))
+    for label, group in report['groups'].items():
+        print(label + ': ' + json.dumps({k: v for k, v in group.items() if k != 'row_ids'}))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+--- source/choose.py ---
+```python
+"""Retrospective constrained selection of recorded Health configurations."""
+import argparse
+import csv
+import json
+import math
+from pathlib import Path
+
+import sklearn
+
+from justify import difference, normalize_records, selection_key
+from summarize import CONFIGURATION, OBJECTIVES, load_rows
+
+RULE = ('Minimize MRE-, then maximize ACC+, then maximize PRED40+, then earliest '
+        'one-based CSV data-row number. Ties use exact normalized float equality.')
+LIMITATIONS = [
+    'The dataset contains no measured compute cost. A real compute-budget guarantee is unavailable. N_estimators is only a configuration constraint for this illustrative demo; other settings and hardware also affect actual compute.',
+    'Full-data retrospective selection, not a budgeted search over hidden outcomes or an independent validation result. Selection optimism can overstate future performance; freeze the configuration and validate on independent representative data.',
+    'Optimality is limited to the complete recorded feasible rows under the stated lexicographic rule. No unseen hyperparameter combinations are generated. Duplicate configurations remain separate observations; earliest row is not a time claim.',
+    'MRE- takes priority over any secondary-objective loss. There are no supplied practical thresholds or overall scores. Observed metric formulas, units and estimator semantics are unspecified.',
+    'Missing configuration fields or objectives exclude a row without imputation; missingness may be selective. Finite numeric configuration values are retained without inventing estimator parameter domains.',
+    'A positive finite numeric cap is a user constraint, not a compute measurement or a guarantee of deployability. Exact float comparisons may be sensitive to recorded precision.'
+]
+
+
+def validate_cap(value):
+    """Accept positive finite numeric caps; strings are parsed only by the CLI."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise ValueError('max_estimators must be a positive finite number')
+    try:
+        valid = math.isfinite(value) and value > 0
+    except OverflowError:
+        valid = False
+    if not valid:
+        raise ValueError('max_estimators must be a positive finite number')
+    return value
+
+
+def record(row_id, row):
+    return {'row_id': row_id, 'csv_line': row_id + 1,
+            'configuration': {n: row[n] for n in CONFIGURATION},
+            'observed_objectives': {n: row[n] for n in OBJECTIVES}}
+
+
+def choose_rows(rows, max_estimators=100):
+    """Select only fully observed recorded configurations, retaining original IDs."""
+    cap = validate_cap(max_estimators)
+    if not isinstance(rows, (list, tuple)):
+        raise ValueError('rows must be a list or tuple')
+    rows = normalize_records(rows) if rows else []
+    complete, feasible, excluded = [], [], []
+    incomplete_count = over_cap_count = 0
+    for row_id, row in enumerate(rows, 1):
+        missing_config = [n for n in CONFIGURATION if row[n] is None]
+        missing_objectives = [n for n in OBJECTIVES if row[n] is None]
+        above = row['N_estimators'] is not None and row['N_estimators'] > cap
+        if not missing_config and not missing_objectives:
+            complete.append((row_id, row))
+            if not above:
+                feasible.append((row_id, row))
+            else:
+                over_cap_count += 1
+        else:
+            incomplete_count += 1
+        if missing_config or missing_objectives or above:
+            excluded.append({'row_id': row_id, 'missing_configuration': missing_config,
+                             'missing_objectives': missing_objectives, 'above_cap': above})
+    report = {'status': 'selected' if feasible else 'no_feasible_candidate',
+              'constraint': {'field': 'N_estimators', 'operator': '<=', 'cap': cap,
+                             'measured_compute_budget': False, 'real_compute_budget_guarantee': False},
+              'selection_rule': RULE, 'objective_directions': dict(OBJECTIVES),
+              'counts': {'candidate': len(rows), 'complete': len(complete),
+                         'excluded': len(excluded), 'feasible': len(feasible),
+                         'incomplete': incomplete_count, 'complete_above_cap': over_cap_count},
+              'count_convention': 'Candidate means every input row; excluded = incomplete + complete_above_cap; candidate = excluded + feasible. Missing reasons may overlap within excluded_records.',
+              'excluded_records': excluded, 'selected_record': None, 'cap_evidence': None,
+              'tie_evidence': None, 'tradeoffs': None, 'limitations': LIMITATIONS.copy(),
+              'reuse': 'Steps 1–6 source and tests retained unchanged. Reuses Step 1 CSV loading/schema/directions, Step 6 record normalization, lexicographic selection key and direction-aware differences. Adds complete-configuration filtering, inclusive cap, explicit empty result, count/exclusion audit and feasible-set comparisons.',
+              'environment': {'scikit_learn_version': sklearn.__version__}}
+    if feasible:
+        row_id, selected = min(feasible, key=selection_key)
+        report['selected_record'] = record(row_id, selected)
+        report['cap_evidence'] = {'recorded_N_estimators': selected['N_estimators'],
+                                  'cap': cap, 'satisfies_inclusive_cap': selected['N_estimators'] <= cap}
+        mre = [(i, r) for i, r in feasible if r['MRE-'] == selected['MRE-']]
+        acc = [(i, r) for i, r in mre if r['ACC+'] == selected['ACC+']]
+        pred = [(i, r) for i, r in acc if r['PRED40+'] == selected['PRED40+']]
+        report['tie_evidence'] = {'minimum_mre_count': len(mre), 'after_acc_count': len(acc),
+                                  'after_pred40_count': len(pred), 'final_tied_row_ids': [i for i, _ in pred]}
+        champions = {}
+        for name, direction in OBJECTIVES.items():
+            i, r = min(feasible, key=lambda item: (
+                item[1][name] if direction == 'minimize' else -item[1][name], item[0]))
+            champions[name] = {**record(i, r), 'selected_difference': difference(selected[name], r[name], direction)}
+        i, r = min(complete, key=selection_key)
+        report['tradeoffs'] = {'feasible_objective_champions': champions,
+                              'unconstrained_complete_winner': record(i, r),
+                              'unconstrained_winner_satisfies_cap': r['N_estimators'] <= cap,
+                              'scope': 'Champions use complete feasible rows, with earliest-row champion ties. Unconstrained reference uses complete recorded rows only; neither reference is independent validation.'}
+    json.dumps(report, allow_nan=False)
+    return report
+
+
+def choose(dataset, max_estimators=100):
+    _, rows = load_rows(dataset)
+    report = choose_rows(rows, max_estimators)
+    report['dataset_path'] = str(Path(dataset).resolve())
+    return report
+
+
+def render_text(report):
+    lines = ['Retrospective recorded-configuration selection',
+             f"Constraint: N_estimators <= {report['constraint']['cap']}",
+             report['selection_rule'], 'Counts: ' + json.dumps(report['counts']),
+             report['count_convention'], 'Status: ' + report['status']]
+    if report['selected_record'] is None:
+        lines.append('No feasible candidate; no configuration is selected.')
+    else:
+        lines.extend(['Selected recorded configuration: ' + json.dumps(report['selected_record']),
+                      'Cap evidence: ' + json.dumps(report['cap_evidence']),
+                      'Tie evidence: ' + json.dumps(report['tie_evidence']),
+                      'Trade-offs: ' + json.dumps(report['tradeoffs'])])
+    lines.extend(report['limitations'])
+    lines.append(report['reuse'])
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--max-estimators', type=float, default=100)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        report = choose(args.dataset, args.max_estimators)
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    except (OSError, ValueError, OverflowError, csv.Error) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(render_text(report), end='')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+--- source/flow.py ---
+```python
+"""Incremental descriptive evaluation of separately supplied observed objectives."""
+import argparse
+import copy
+import csv
+import json
+import math
+from pathlib import Path
+
+import sklearn
+
+from guess import validate_configuration
+from summarize import CONFIGURATION, EXPECTED, OBJECTIVES
+
+ARRIVAL_RULES = {
+    'order': 'CSV original data-record order simulates arrivals, not verified chronological order.',
+    'identity': 'One-based arrival index; duplicate configurations count as separate arrivals.',
+    'input': 'update(configuration, outcomes): separate dictionaries; unknown or misplaced keys rejected.',
+    'missing': 'Omitted keys, None, and blank strings mean missing; no objective imputation. Numeric strings normalize to finite floats; booleans and non-finite values rejected.',
+    'statistics': 'Welford incremental mean and M2 separately per objective, using observed values only. Sample variance M2/(n-1) and sample standard deviation are null for n<2; mean null for n=0.',
+    'ties': 'Exact equality after float normalization; earliest arrival retained as best. best_tie_count counts all arrivals attaining the current best, including repeated configurations.',
+    'causality': 'Each update reads only its arguments and current accumulators; no batch summaries, rescans, fitting, predictions, repeated tests, or stopping rules.',
+    'invalid': 'Invalid arrivals raise ValueError without changing state. Finite inputs causing non-finite moment arithmetic are also rejected.',
+    'snapshots': 'Returned snapshots are detached copies. Evaluator stores constant-size accumulators and best configurations; replay retains O(arrivals) history.'
+}
+LIMITATIONS = [
+    'Row order is a simulation, not verified time order; arrivals are not asserted independent or randomized.',
+    'Observed best values describe received outcomes only; no optimality, future-performance, uncertainty, significance, or stopping guarantee.',
+    'Missing outcomes may be selective; each objective uses its own observed subset.',
+    'Recorded metric scales and directions only; formulas, physical units, compute costs, and theoretical ranges are unspecified.',
+    'Float arithmetic can round near ties and running moments; extreme magnitudes overflowing moment arithmetic are rejected.',
+    'Configuration validation reuses Step 2 normalization; absent configuration fields are permitted, with no invented hyperparameter domains.',
+    'No overall objective score, prediction, or Step 3 inferential procedure is applied during streaming.'
+]
+
+
+def normalize_outcomes(outcomes):
+    """Reuse finite-number normalization, with objective-specific keys."""
+    if not isinstance(outcomes, dict) or set(outcomes) - set(OBJECTIVES):
+        raise ValueError('Outcomes must be a dictionary containing only objective keys')
+    return {name: validate_configuration({'N_estimators': outcomes.get(name)})['N_estimators']
+            for name in OBJECTIVES}
+
+
+class FlowEvaluator:
+    """Consume one arrival per call, using O(number of objectives) state."""
+
+    def __init__(self):
+        self._received = 0
+        self._state = {name: {'observed_count': 0, 'missing_count': 0,
+                             'mean': None, 'm2': 0.0, 'best': None, 'best_tie_count': 0}
+                       for name in OBJECTIVES}
+
+    def snapshot(self):
+        """Return detached, JSON-ready current summaries, without mutation."""
+        objectives = copy.deepcopy(self._state)
+        for name, state in objectives.items():
+            count = state['observed_count']
+            m2 = state.pop('m2')
+            variance = max(0.0, m2) / (count - 1) if count > 1 else None
+            state.update(direction=OBJECTIVES[name], variance_sample=variance,
+                         std_sample=math.sqrt(variance) if variance is not None else None)
+        return {'configurations_received': self._received, 'objectives': objectives}
+
+    def update(self, configuration, outcomes):
+        """Validate atomically, update Welford moments, and return a snapshot."""
+        config = validate_configuration(configuration)
+        values = normalize_outcomes(outcomes)
+        states = copy.deepcopy(self._state)
+        arrival = self._received + 1
+        for name, value in values.items():
+            state = states[name]
+            if value is None:
+                state['missing_count'] += 1
+                continue
+            state['observed_count'] += 1
+            count = state['observed_count']
+            if count == 1:
+                state['mean'] = value
+            else:
+                delta = value - state['mean']
+                state['mean'] += delta / count
+                state['m2'] += delta * (value - state['mean'])
+                if not all(math.isfinite(state[key]) for key in ('mean', 'm2')):
+                    raise ValueError('Arrival exceeds finite running-moment arithmetic')
+            best = state['best']
+            better = (best is None or
+                      (value < best['value'] if OBJECTIVES[name] == 'minimize'
+                       else value > best['value']))
+            if better:
+                state['best'] = {'arrival_index': arrival, 'value': value,
+                                 'configuration': config.copy()}
+                state['best_tie_count'] = 1
+            elif value == best['value']:
+                state['best_tie_count'] += 1
+        self._state = states
+        self._received = arrival
+        return self.snapshot()
+
+
+def iter_arrivals(dataset):
+    """Validate the reused schema and reveal one CSV record at a time."""
+    with Path(dataset).open(encoding='utf-8-sig', newline='') as handle:
+        reader = csv.reader(handle)
+        headers = next(reader, None)
+        if not headers or len(headers) != len(set(headers)) or set(headers) != EXPECTED:
+            raise ValueError('Expected exactly the eight unique Health column names')
+        received = False
+        for line, cells in enumerate(reader, 2):
+            if len(cells) != len(headers):
+                raise ValueError(f'Row {line}: expected {len(headers)} cells')
+            row = dict(zip(headers, cells))
+            try:
+                config = validate_configuration({name: row[name] for name in CONFIGURATION})
+                outcomes = normalize_outcomes({name: row[name] for name in OBJECTIVES})
+            except ValueError as exc:
+                raise ValueError(f'Row {line}: {exc}') from exc
+            received = True
+            yield config, outcomes
+        if not received:
+            raise ValueError('Dataset must contain at least one record')
+
+
+def replay(dataset):
+    """Retain per-arrival snapshots; never consult later records in an update."""
+    evaluator = FlowEvaluator()
+    history = []
+    for config, outcomes in iter_arrivals(dataset):
+        snapshot = evaluator.update(config, outcomes)
+        history.append({'arrival_index': snapshot['configurations_received'],
+                        'configuration': config, 'observed_objectives': outcomes,
+                        'summary': snapshot})
+    return {'dataset_path': str(Path(dataset).resolve()),
+            'configuration_fields': list(CONFIGURATION),
+            'objective_directions': dict(OBJECTIVES), 'arrival_rules': dict(ARRIVAL_RULES),
+            'history': history, 'final_summary': evaluator.snapshot(),
+            'limitations': list(LIMITATIONS),
+            'environment': {'scikit_learn_version': sklearn.__version__}}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        report = replay(args.dataset)
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(ARRIVAL_RULES['order'])
+    print(json.dumps(report['final_summary'], indent=2, allow_nan=False))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+--- source/guess.py ---
+```python
+"""Predict recorded Health MRE- and ACC+ from configuration fields only."""
+import argparse
+import json
+import math
+import platform
+from pathlib import Path
+
+import numpy as np
+import scipy
+import sklearn
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+from summarize import CONFIGURATION, OBJECTIVES, load_rows
+
+TARGETS = {'MRE-': 'minimize', 'ACC+': 'maximize'}
+NUMERIC = [i for i, name in enumerate(CONFIGURATION) if name != 'criterion']
+SETTINGS = dict(n_estimators=120, max_depth=12, min_samples_leaf=2,
+                max_features=1.0, bootstrap=True, criterion='squared_error',
+                random_state=42, n_jobs=1)
+LIMITATIONS = [
+    'Targets are recorded CSV metrics; no metric formula, unit, cost, or causal meaning is inferred.',
+    'A single seed-42 group holdout estimates performance on unseen configurations from this dataset only.',
+    'No tuning uses held-out targets; model settings are fixed in advance.',
+    'Unseen categories encode as all zero; unseen numeric values may extrapolate poorly.',
+    'Missing numeric inputs use training medians (zero for entirely missing columns); missing criterion uses the training mode (zero category if entirely missing).',
+    'Missing target labels are excluded separately per target; neither targets nor PRED40+ enter predictors.',
+    'No theoretical metric ranges are assumed or imposed. Forest predictions are within the training target range; this does not guarantee validity on unseen configurations.',
+    'Predictions are point estimates with no uncertainty or accuracy guarantee; evaluation MAE is in each recorded target scale.',
+    'Numeric inputs follow Step 1 finite-float validation; no undocumented parameter-domain or integer restrictions are added.',
+    'Row IDs are one-based data-record positions, not persistent identifiers; header is CSV line 1.'
+]
+
+
+def validate_configuration(value):
+    """Require only known predictor keys; omitted/null/blank fields mean missing."""
+    if not isinstance(value, dict):
+        raise ValueError('Configuration must be a JSON object')
+    extra = set(value) - set(CONFIGURATION)
+    if extra:
+        raise ValueError(f'Objective or unknown configuration fields: {sorted(extra)}')
+    result = {}
+    for name in CONFIGURATION:
+        cell = value.get(name)
+        if cell is None or (isinstance(cell, str) and not cell.strip()):
+            result[name] = None
+        elif name == 'criterion':
+            if not isinstance(cell, str):
+                raise ValueError('criterion must be a string or null')
+            result[name] = cell.strip()
+        else:
+            if isinstance(cell, bool) or not isinstance(cell, (str, int, float)):
+                raise ValueError(f'{name} must be a finite number or null')
+            try:
+                number = float(cell)
+            except (ValueError, OverflowError) as exc:
+                raise ValueError(f'{name} must be a finite number') from exc
+            if not math.isfinite(number):
+                raise ValueError(f'{name} must be finite')
+            result[name] = number
+    return result
+
+
+def feature_matrix(rows):
+    """Select only the five predictors, regardless of other keys in CSV rows."""
+    return np.asarray([[row[name] if row[name] is not None else
+                        (None if name == 'criterion' else np.nan)
+                        for name in CONFIGURATION] for row in rows], dtype=object)
+
+
+def make_model():
+    numeric = SimpleImputer(strategy='median', keep_empty_features=True)
+    category = Pipeline([
+        ('impute', SimpleImputer(missing_values=None, strategy='most_frequent',
+                                 keep_empty_features=True)),
+        ('encode', OneHotEncoder(handle_unknown='ignore', sparse_output=False))])
+    preprocess = ColumnTransformer([
+        ('numeric', numeric, NUMERIC), ('category', category, [1])], remainder='drop')
+    return Pipeline([('preprocess', preprocess),
+                     ('regressor', RandomForestRegressor(**SETTINGS))])
+
+
+def split_rows(rows):
+    """Group on normalized predictors alone, holding out ceil(20% of groups)."""
+    mapping = {}
+    groups = []
+    for row in rows:
+        key = tuple(row[name] for name in CONFIGURATION)
+        if key not in mapping:
+            mapping[key] = len(mapping)
+        groups.append(mapping[key])
+    if len(mapping) < 2:
+        raise ValueError('At least two distinct normalized configurations required')
+    train, heldout = next(GroupShuffleSplit(n_splits=1, test_size=.2,
+                                            random_state=42).split(rows, groups=groups))
+    return train, heldout, groups
+
+
+def fit_evaluate(rows):
+    """Fit per-target pipelines on labeled training rows; evaluate only afterward."""
+    train, heldout, groups = split_rows(rows)
+    features = feature_matrix(rows)
+    models, results = {}, {}
+    for target in TARGETS:
+        labeled_train = [int(i) for i in train if rows[i][target] is not None]
+        labeled_test = [int(i) for i in heldout if rows[i][target] is not None]
+        if not labeled_train or not labeled_test:
+            raise ValueError(f'{target}: labeled training and held-out rows required')
+        y_train = np.asarray([rows[i][target] for i in labeled_train])
+        model = make_model().fit(features[labeled_train], y_train)
+        baseline = float(np.mean(y_train))
+        predicted = model.predict(features[labeled_test])
+        actual = [rows[i][target] for i in labeled_test]
+        pre = model.named_steps['preprocess']
+        results[target] = {
+            'direction': TARGETS[target], 'training_sample_size': len(labeled_train),
+            'heldout_sample_size': len(labeled_test),
+            'training_row_ids': [i + 1 for i in labeled_train],
+            'heldout_row_ids': [i + 1 for i in labeled_test],
+            'training_mean_baseline': baseline,
+            'training_target_range': [float(min(y_train)), float(max(y_train))],
+            'model_mae': float(mean_absolute_error(actual, predicted)),
+            'baseline_mae': float(mean_absolute_error(actual, np.full(len(actual), baseline))),
+            'learned_numeric_imputation': pre.named_transformers_['numeric'].statistics_.tolist(),
+            'learned_criterion_categories': pre.named_transformers_['category'].named_steps['encode'].categories_[0].tolist(),
+            'heldout_predictions': [dict(row_id=i + 1, actual=y, predicted=float(p), baseline=baseline)
+                                    for i, y, p in zip(labeled_test, actual, predicted)]}
+        models[target] = model
+    identity = lambda indices: [dict(row_id=int(i) + 1, csv_line=int(i) + 2,
+                                     group_id=groups[i]) for i in indices]
+    split = {'seed': 42, 'test_group_fraction': .2,
+             'method': 'GroupShuffleSplit on first-seen IDs of normalized predictor tuples',
+             'row_count': len(rows), 'group_count': len(set(groups)),
+             'training_row_count': len(train), 'heldout_row_count': len(heldout),
+             'training_group_count': len({groups[i] for i in train}),
+             'heldout_group_count': len({groups[i] for i in heldout}),
+             'training': identity(train), 'heldout': identity(heldout),
+             'groups': [dict(group_id=g, configuration={n: r[n] for n in CONFIGURATION})
+                        for g, r in sorted({groups[i]: r for i, r in enumerate(rows)}.items())]}
+    return models, {'target_definitions': {t: {'direction': d, 'definition': 'Recorded CSV column; formula unspecified'} for t, d in TARGETS.items()},
+                    'predictor_fields': list(CONFIGURATION), 'excluded_objectives': list(OBJECTIVES),
+                    'model_settings': {'estimator': 'Independent RandomForestRegressor per target', **SETTINGS},
+                    'preprocessing': {'numeric_fields': [CONFIGURATION[i] for i in NUMERIC],
+                                      'numeric': 'Training median; keep empty columns with zero fallback',
+                                      'criterion': 'Training mode imputation then one-hot; unknown categories ignored',
+                                      'fit_scope': 'Labeled training rows separately for each target'},
+                    'versions': {'python': platform.python_version(), 'scikit_learn': sklearn.__version__,
+                                 'numpy': np.__version__, 'scipy': scipy.__version__},
+                    'split': split, 'targets': results, 'limitations': LIMITATIONS}
+
+
+def predict_configuration(models, configuration):
+    clean = validate_configuration(configuration)
+    features = feature_matrix([clean])
+    return {target: float(models[target].predict(features)[0]) for target in TARGETS}
+
+
+def unique_json_object(pairs):
+    result = {}
+    for name, value in pairs:
+        if name in result:
+            raise ValueError(f'Duplicate JSON field: {name}')
+        result[name] = value
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--configuration', required=True, type=Path)
+    parser.add_argument('--evaluation', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        config = validate_configuration(json.loads(args.configuration.read_text(),
+                                                  object_pairs_hook=unique_json_object))
+        _, rows = load_rows(args.dataset)
+        models, report = fit_evaluate(rows)
+        report['dataset_path'] = str(args.dataset.resolve())
+        prediction = predict_configuration(models, config)
+        report['illustrative_demo'] = {'label': 'Illustrative configuration; not an optimized recommendation',
+                                       'configuration': config, 'predictions': prediction}
+        args.evaluation.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
+    except (OSError, ValueError) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(json.dumps({'label': report['illustrative_demo']['label'], 'predictions': prediction,
+                      'heldout_mae': {t: {'model': r['model_mae'], 'training_mean_baseline': r['baseline_mae']}
+                                      for t, r in report['targets'].items()}}, indent=2, allow_nan=False))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+--- source/justify.py ---
+```python
+"""Explain an MRE-first recorded configuration using descriptive evidence only."""
+import argparse
+import csv
+import json
+from pathlib import Path
+
+import sklearn
+
+from blame import METHOD, LIMITATIONS as DIAGNOSIS_LIMITATIONS, diagnose, partition
+from certify import observed_summary
+from flow import normalize_outcomes
+from guess import validate_configuration
+from summarize import CONFIGURATION, OBJECTIVES, load_rows, summarize
+
+PREFERENCE = ('Illustrative MRE-first preference rule, not a universally best '
+              'multi-objective recommendation. Minimize observed MRE-, then '
+              'maximize ACC+, then maximize PRED40+, then earliest one-based CSV data-row number.')
+LIMITATIONS = [
+    'Selection optimism: choosing an extreme after examining all recorded outcomes can overstate future performance. The selected observation is not an independent validation result.',
+    'A single best observation establishes neither statistical certainty nor repeatability. Repeated configurations are rows, not established independent replications.',
+    'Marginal associations do not causally explain this individual outcome and must not be added as prediction contributions. Confounding, correlated settings, interactions and sparse groups limit interpretation.',
+    'No predictions, overall score, significance tests or uncertainty intervals are used in this justification. All numerical evidence is observed or descriptive arithmetic.',
+    'Metric formulas, units, theoretical ranges, compute costs and deployment guarantees are unspecified. A recorded zero MRE- is not proof of perfect future performance.',
+    'Available-outcome historical distributions include the selected record and may use different subsets. Complete-outcome selection excludes any record missing an objective; missing hyperparameters remain explicit and require resolution.',
+    'Historical means and medians are descriptive reference vectors, not runnable configurations. Historical objective champions are outcome-selected references, not independent controls.',
+    'CSV row number identifies record order, not time. Finite floats and exact normalized equality define ties; extreme arithmetic that is not finite is rejected.',
+    'The rule prioritizes MRE- before any loss in secondary objectives; platform preferences and acceptable trade-offs have not been supplied.'
+]
+CHECKS = [
+    'Confirm metric definitions, directions, scales and the provenance of zero or unusual values; audit evaluation splits and leakage.',
+    'Agree with the platform team on objective priorities, minimum acceptable ACC+ and PRED40+, and practical improvement thresholds before validation.',
+    'Freeze the proposed configuration and evaluate it and agreed baselines on independent representative data with repeated evaluations and appropriate uncertainty assessment.',
+    'Confirm hyperparameter names, supported values and missing settings against the actual estimator and deployed library version; the CSV is not an estimator constructor contract.',
+    'Measure latency, memory and compute cost in the target environment, then assess data shift, monitoring, rollback and operational acceptance before deployment.'
+]
+
+
+def normalize_records(rows):
+    """Normalize reusable inputs; omitted schema fields mean missing."""
+    if not isinstance(rows, (list, tuple)) or not rows:
+        raise ValueError('rows must be a nonempty list or tuple')
+    normalized = []
+    for row in rows:
+        if not isinstance(row, dict) or set(row) - (set(CONFIGURATION) | set(OBJECTIVES)):
+            raise ValueError('Records must be dictionaries containing only Health fields')
+        normalized.append({**validate_configuration({n: row.get(n) for n in CONFIGURATION}),
+                           **normalize_outcomes({n: row.get(n) for n in OBJECTIVES})})
+    return normalized
+
+
+def selection_key(item):
+    row_id, row = item
+    return row['MRE-'], -row['ACC+'], -row['PRED40+'], row_id
+
+
+def difference(value, reference, direction):
+    """Keep raw difference and direction-aware improvement separate."""
+    delta = value - reference
+    benefit = -delta if direction == 'minimize' else delta
+    return {'selected_minus_reference': delta, 'improvement_in_objective_direction': benefit,
+            'observed_relation': 'equal' if benefit == 0 else 'better' if benefit > 0 else 'worse'}
+
+
+def justify_rows(rows):
+    """Return traceable historical evidence without fitting or causal attribution."""
+    rows = normalize_records(rows)
+    complete = [(i, row) for i, row in enumerate(rows, 1)
+                if all(row[n] is not None for n in OBJECTIVES)]
+    excluded = [{'row_id': i, 'missing_objectives': [n for n in OBJECTIVES if r[n] is None]}
+                for i, r in enumerate(rows, 1) if any(r[n] is None for n in OBJECTIVES)]
+    if not complete:
+        raise ValueError('No record has observed values for all three objectives')
+    selected_id, selected = min(complete, key=selection_key)
+    config = {n: selected[n] for n in CONFIGURATION}
+    outcomes = {n: selected[n] for n in OBJECTIVES}
+    mre_ties = [(i, r) for i, r in complete if r['MRE-'] == selected['MRE-']]
+    acc_ties = [(i, r) for i, r in mre_ties if r['ACC+'] == selected['ACC+']]
+    pred_ties = [(i, r) for i, r in acc_ties if r['PRED40+'] == selected['PRED40+']]
+    positions = {}
+    for name, direction in OBJECTIVES.items():
+        values = [r[name] for r in rows if r[name] is not None]
+        value = selected[name]
+        below, equal, above = (sum(v < value for v in values), sum(v == value for v in values),
+                               sum(v > value for v in values))
+        stats = observed_summary(values, len(rows))
+        best = min(values) if direction == 'minimize' else max(values)
+        positions[name] = {'direction': direction, 'selected_value': value, 'summary': stats,
+                           'strictly_below_count': below, 'equal_count': equal,
+                           'strictly_above_count': above,
+                           'rank_from_best_competition': 1 + (below if direction == 'minimize' else above),
+                           'strictly_better_count': below if direction == 'minimize' else above,
+                           'lower_tail_midrank_percentile': 100 * (below + equal / 2) / len(values),
+                           'references': {key: {'value': ref, **difference(value, ref, direction)}
+                                          for key, ref in [('historical_mean', stats['mean']),
+                                                           ('historical_median', stats['median']),
+                                                           ('historical_best', best)]}}
+    reference_records = {}
+    first_id, first = complete[0]
+    references = [('earliest_complete_record', first_id, first)]
+    for name, direction in OBJECTIVES.items():
+        champion_id, champion = min(complete, key=lambda item: (
+            item[1][name] if direction == 'minimize' else -item[1][name], item[0]))
+        references.append((name + '_champion', champion_id, champion))
+    for label, row_id, row in references:
+        reference_records[label] = {'row_id': row_id, 'configuration': {n: row[n] for n in CONFIGURATION},
+                                    'observed_objectives': {n: row[n] for n in OBJECTIVES},
+                                    'differences': {n: difference(selected[n], row[n], d)
+                                                    for n, d in OBJECTIVES.items()}}
+    diagnosis = diagnose(rows)
+    by_name = {f['field']: f for f in diagnosis['ranked_findings'] + diagnosis['unranked_fields']}
+    settings = {}
+    for name in CONFIGURATION:
+        field = by_name[name]
+        _, memberships = partition([r[name] for r in rows], name == 'criterion')
+        group_id = memberships[selected_id - 1]
+        settings[name] = {'selected_value': selected[name], 'rank': field['rank'],
+                          'eta_squared': field['eta_squared'], 'status': field['status'],
+                          'grouping': field['grouping'], 'included_mre': field['included_mre'],
+                          'selected_group': None if group_id is None else field['groups'][group_id],
+                          'missing_predictor_mre': field['missing_predictor_mre']}
+    same_ids = [i for i, r in enumerate(rows, 1) if all(r[n] == selected[n] for n in CONFIGURATION)]
+    dominators = []
+    for i, r in complete:
+        benefits = [difference(r[n], selected[n], d)['improvement_in_objective_direction']
+                    for n, d in OBJECTIVES.items()]
+        if all(b >= 0 for b in benefits) and any(b > 0 for b in benefits):
+            dominators.append(i)
+    report = {'preference': PREFERENCE, 'record_count': len(rows),
+              'objective_directions': dict(OBJECTIVES),
+              'selection': {'eligible_count': len(complete), 'excluded_count': len(excluded),
+                            'excluded_records': excluded,
+                            'minimum_mre_tie_count': len(mre_ties),
+                            'remaining_after_acc_tie_count': len(acc_ties),
+                            'remaining_after_pred40_tie_count': len(pred_ties),
+                            'final_tied_row_ids': [i for i, _ in pred_ties],
+                            'ties': 'Exact equality of normalized finite floats; final tie uses earliest data row.'},
+              'recommended_record': {'row_id': selected_id, 'csv_line': selected_id + 1,
+                                     'configuration': config, 'observed_objectives': outcomes,
+                                     'missing_configuration_fields': [n for n in CONFIGURATION if config[n] is None]},
+              'historical_positions': positions, 'reference_records': reference_records,
+              'reference_conventions': {
+                  'distribution': 'All nonmissing values per objective, including selected and otherwise excluded records; no imputation.',
+                  'mean_median': 'All available outcomes per objective; vectors are not runnable configurations.',
+                  'record_references': 'Earliest complete row and each objective champion among complete rows; champion ties use earliest row.',
+                  'percentile': '100*(strictly below + 0.5*equal)/nonmissing count; lower-tail midrank, irrespective of objective direction.',
+                  'rank': '1 + strictly better count in the objective direction; equality shares competition rank.',
+                  'differences': 'Raw selected minus reference; improvement reverses sign only for minimized objectives.'},
+              'setting_evidence': settings, 'diagnosis_method': METHOD,
+              'diagnosis_limitations': DIAGNOSIS_LIMITATIONS,
+              'same_configuration_evidence': {'row_ids': same_ids, 'record_count': len(same_ids),
+                   'objectives': {n: observed_summary([rows[i-1][n] for i in same_ids], len(same_ids))
+                                  for n in OBJECTIVES}},
+              'tradeoffs': {'dominating_complete_row_ids': dominators,
+                            'nondominated_among_complete_records': not dominators,
+                            'scope': 'Finite complete-outcome historical records only; nondominance does not establish universal optimality.'},
+              'evidence_scope': {'observed': 'Recorded outcomes, distribution summaries, differences and marginal diagnosis.',
+                                 'predictions': None, 'assumptions': 'MRE-first priorities are illustrative; metric semantics and representativeness need external confirmation.'},
+              'limitations': LIMITATIONS, 'deployment_checks': CHECKS,
+              'environment': {'scikit_learn_version': sklearn.__version__},
+              'reuse': 'Steps 1–5 source/tests unchanged. Reuses loading and file summaries, configuration/outcome normalization, observed comparison summaries and marginal diagnosis.'}
+    json.dumps(report, allow_nan=False)
+    return report
+
+
+def justify(dataset):
+    """Use the preserved CSV loader and summary on the supplied dataset path."""
+    _, rows = load_rows(dataset)
+    report = justify_rows(rows)
+    historical = summarize(dataset)
+    report['dataset_path'] = historical['dataset_path']
+    report['historical_data_quality'] = {key: historical[key] for key in (
+        'record_count', 'duplicate_records', 'repeated_configurations')}
+    return report
+
+
+def render_text(report):
+    """Render all numeric claims directly from structured evidence."""
+    record = report['recommended_record']
+    selection = report['selection']
+    lines = ['Platform-team configuration justification', report['preference'],
+             f"Recommend recorded data row {record['row_id']} (CSV line {record['csv_line']}) for independent validation.",
+             'Hyperparameters: ' + json.dumps(record['configuration'], sort_keys=True),
+             'Recorded objectives: ' + json.dumps(record['observed_objectives'], sort_keys=True),
+             f"Eligible {selection['eligible_count']} of {report['record_count']}; excluded {selection['excluded_count']} for missing objectives.",
+             'Excluded records and missing outcomes: ' + json.dumps(selection['excluded_records']),
+             f"Tied at minimum MRE-: {selection['minimum_mre_tie_count']}; after higher ACC+: {selection['remaining_after_acc_tie_count']}; after higher PRED40+: {selection['remaining_after_pred40_tie_count']}; final row IDs: {selection['final_tied_row_ids']}.",
+             selection['ties'], 'Missing hyperparameters: ' + json.dumps(record['missing_configuration_fields']),
+             '\nHistorical distributions and references (all available values per objective, including selected):']
+    for name, pos in report['historical_positions'].items():
+        lines.append(f"{name} ({pos['direction']}): observed={pos['selected_value']}; summary={json.dumps(pos['summary'])}; best-first rank={pos['rank_from_best_competition']}; below/equal/above={pos['strictly_below_count']}/{pos['equal_count']}/{pos['strictly_above_count']}; lower-tail midrank percentile={pos['lower_tail_midrank_percentile']}.")
+        for label, ref in pos['references'].items():
+            lines.append(f"  {label}: {json.dumps(ref)}")
+    lines.extend(report['reference_conventions'].values())
+    lines.append('\nHistorical record comparisons (positive improvement means better in that objective direction):')
+    for label, ref in report['reference_records'].items():
+        lines.append(f"{label}: row {ref['row_id']}; recorded objectives={json.dumps(ref['observed_objectives'])}; selected differences={json.dumps(ref['differences'])}.")
+    lines.append('\nRelevant setting-level diagnosis of observed MRE-:')
+    lines.append(METHOD['grouping'])
+    for name, setting in report['setting_evidence'].items():
+        lines.append(f"{name}={setting['selected_value']}; marginal rank={setting['rank']}; eta-squared={setting['eta_squared']}; status={setting['status']}; selected group={json.dumps(setting['selected_group'])}; field included MRE summary={json.dumps(setting['included_mre'])}.")
+        if setting['selected_group'] is None:
+            lines.append('  Missing selected setting; no nonmissing group attribution. Missing-setting MRE: ' + json.dumps(setting['missing_predictor_mre']))
+    lines.append('These are marginal associations, not causal explanations or additive prediction contributions; no predictions are used.')
+    lines.append('Same configuration evidence: ' + json.dumps(report['same_configuration_evidence']))
+    lines.append('Historical Pareto check: ' + json.dumps(report['tradeoffs']))
+    lines.append('Secondary-objective losses are shown explicitly against their historical best and champion records above. No overall score or practical acceptance threshold is assumed.')
+    lines.append('\nLimitations:')
+    lines.extend('- ' + item for item in report['limitations'])
+    lines.append('\nChecks before deployment:')
+    lines.extend('- ' + item for item in report['deployment_checks'])
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output-dir', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        report = justify(args.dataset)
+        rendered = render_text(report)
+        args.output_dir.mkdir(parents=True, exist_ok=True)
+        (args.output_dir / 'justification.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+        (args.output_dir / 'justification.txt').write_text(rendered, encoding='utf-8')
+    except (OSError, ValueError, OverflowError, csv.Error) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(rendered, end='')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+--- source/summarize.py ---
+```python
+"""Describe Health CSV configurations and objectives without fitting a model."""
+import argparse
+import csv
+import json
+import math
+import statistics
+from collections import Counter
+from pathlib import Path
+
+import sklearn
+
+CONFIGURATION = ('N_estimators', 'criterion', 'Min_sample_leaves',
+                 'Min_impurity_decrease', 'Max_depth')
+OBJECTIVES = {'MRE-': 'minimize', 'ACC+': 'maximize', 'PRED40+': 'maximize'}
+CATEGORICAL = {'criterion'}
+EXPECTED = set(CONFIGURATION) | set(OBJECTIVES)
+
+
+def quantile(values, fraction):
+    """Compute a linearly interpolated quantile on sorted, nonempty values."""
+    position = (len(values) - 1) * fraction
+    lower = math.floor(position)
+    upper = math.ceil(position)
+    return values[lower] + (values[upper] - values[lower]) * (position - lower)
+
+
+def duplicates(keys):
+    """Count groups, participating records, and extra records separately."""
+    counts = Counter(keys)
+    return {'unique_count': len(counts),
+            'repeated_group_count': sum(n > 1 for n in counts.values()),
+            'records_in_repeated_groups': sum(n for n in counts.values() if n > 1),
+            'extra_record_count': sum(n - 1 for n in counts.values())}
+
+
+def load_rows(dataset):
+    """Validate and normalize the shared eight-column Health CSV schema."""
+    rows = []
+    with Path(dataset).open(encoding='utf-8-sig', newline='') as handle:
+        reader = csv.reader(handle)
+        headers = next(reader, None)
+        if not headers or len(headers) != len(set(headers)) or set(headers) != EXPECTED:
+            raise ValueError('Expected exactly the eight unique Health column names')
+        for line, raw in enumerate(reader, 2):
+            if len(raw) != len(headers):
+                raise ValueError(f'Row {line}: expected {len(headers)} cells')
+            row = {}
+            for name, cell in zip(headers, raw):
+                cell = cell.strip()
+                if not cell:
+                    row[name] = None
+                elif name in CATEGORICAL:
+                    row[name] = cell
+                else:
+                    try:
+                        number = float(cell)
+                    except ValueError as exc:
+                        raise ValueError(f'Row {line}, {name}: invalid numeric value') from exc
+                    if not math.isfinite(number):
+                        raise ValueError(f'Row {line}, {name}: non-finite numeric value')
+                    row[name] = number
+            rows.append(row)
+    if not rows:
+        raise ValueError('Dataset must contain at least one record')
+    return headers, rows
+
+
+def summarize(dataset):
+    """Validate the schema and return a JSON-serializable descriptive report."""
+    headers, rows = load_rows(dataset)
+    columns = {}
+    for name in headers:
+        values = [row[name] for row in rows if row[name] is not None]
+        distinct = sorted(set(values))
+        info = {'role': 'objective' if name in OBJECTIVES else 'configuration',
+                'type': 'categorical' if name in CATEGORICAL else 'numeric',
+                'nonmissing_count': len(values), 'missing_count': len(rows) - len(values),
+                'distinct_count': len(distinct), 'distinct_values': distinct}
+        if name in CATEGORICAL:
+            info['value_counts'] = dict(sorted(Counter(values).items()))
+        else:
+            ordered = sorted(values)
+            info['statistics'] = None if not values else {
+                'count': len(values), 'mean': statistics.mean(values),
+                'std_sample': statistics.stdev(values) if len(values) > 1 else None,
+                'min': ordered[0], 'q25': quantile(ordered, .25),
+                'median': statistics.median(ordered), 'q75': quantile(ordered, .75),
+                'max': ordered[-1]}
+        if name in OBJECTIVES:
+            info['direction'] = OBJECTIVES[name]
+            best = (min(values) if OBJECTIVES[name] == 'minimize' else max(values)) if values else None
+            info['best_observed'] = best
+            info['best_observed_count'] = values.count(best) if values else 0
+        columns[name] = info
+    return {'dataset_path': str(Path(dataset).resolve()),
+            'record_count': len(rows), 'column_count': len(headers), 'column_names': headers,
+            'configuration_fields': list(CONFIGURATION), 'objective_directions': OBJECTIVES,
+            'columns': columns,
+            'duplicate_records': duplicates(tuple(row[n] for n in headers) for row in rows),
+            'repeated_configurations': duplicates(tuple(row[n] for n in CONFIGURATION) for row in rows),
+            'environment': {'scikit_learn_version': sklearn.__version__},
+            'conventions': {
+                'missing': 'Empty or whitespace-only cells; other numeric tokens must be finite numbers.',
+                'distinct': 'Nonmissing normalized values only; numeric values parsed as float.',
+                'quantiles': 'Linear interpolation at (n - 1) * p.',
+                'std': 'Sample standard deviation (n - 1); null for fewer than two values.',
+                'duplicates': 'After trimming whitespace and parsing numbers; missing cells compare equal.',
+                'scope': 'Descriptive observed metrics only; no training, formulas, units, or timeline inferred.'}}
+
+
+def render_text(report):
+    lines = [f"Records: {report['record_count']}; columns: {report['column_count']}"]
+    for role in ('configuration', 'objective'):
+        lines.append(f'\n{role.title()} fields:')
+        for name, info in report['columns'].items():
+            if info['role'] != role:
+                continue
+            lines.append(f"{name}: {info['type']}; missing={info['missing_count']}; distinct={info['distinct_count']}")
+            if info['type'] == 'categorical':
+                lines.append('  Value counts: ' + json.dumps(info['value_counts'], sort_keys=True))
+            else:
+                lines.append('  Statistics: ' + json.dumps(info['statistics'], sort_keys=True))
+                if role == 'configuration':
+                    lines.append('  Distinct values: ' + json.dumps(info['distinct_values']))
+            if role == 'objective':
+                lines.append(f"  Direction: {info['direction']}; best observed={info['best_observed']}; count={info['best_observed_count']}")
+    for key in ('duplicate_records', 'repeated_configurations'):
+        lines.append(f'\n{key}: ' + json.dumps(report[key], sort_keys=True))
+    lines.append('\nFull distinct values for every column are in summary.json.')
+    lines.append('\nConventions: ' + json.dumps(report['conventions'], sort_keys=True))
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output-dir', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = summarize(args.dataset)
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    (args.output_dir / 'summary.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    rendered = render_text(report)
+    (args.output_dir / 'summary.txt').write_text(rendered, encoding='utf-8')
+    print(rendered, end='')
+
+
+if __name__ == '__main__':
+    main()
+```

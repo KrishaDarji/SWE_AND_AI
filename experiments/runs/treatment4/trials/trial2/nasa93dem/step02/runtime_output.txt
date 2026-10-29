@@ -1,0 +1,5 @@
+FINAL demonstration stdout: train_count=68, test_count=25, held_out_mae=583.2809735550276, baseline_mae=674.0317647058823, proposal_prediction=412.7515170767638
+real 1.02
+user 0.88
+sys 0.12
+CORRECTION FINAL: real 0.94; user 0.82; sys 0.11. Prior runtime output was summarized.

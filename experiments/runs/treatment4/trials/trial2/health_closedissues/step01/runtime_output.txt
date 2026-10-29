@@ -1,0 +1,145 @@
+{
+  "record_count": 10000,
+  "columns": [
+    "MRE-",
+    "ACC+",
+    "PRED40+",
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "data_types": {
+    "MRE-": "numeric",
+    "ACC+": "numeric",
+    "PRED40+": "numeric",
+    "N_estimators": "numeric",
+    "criterion": "categorical",
+    "Min_sample_leaves": "numeric",
+    "Min_impurity_decrease": "numeric",
+    "Max_depth": "numeric"
+  },
+  "missing_values": {
+    "MRE-": 0,
+    "ACC+": 0,
+    "PRED40+": 0,
+    "N_estimators": 0,
+    "criterion": 0,
+    "Min_sample_leaves": 0,
+    "Min_impurity_decrease": 0,
+    "Max_depth": 0
+  },
+  "numeric_statistics": {
+    "MRE-": {
+      "count": 10000,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.70909397643463,
+      "std": 0.20138583166955112,
+      "q25": 0.5723858615611193,
+      "median": 0.8091310751104565,
+      "q75": 0.8251840942562592
+    },
+    "ACC+": {
+      "count": 10000,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.49593851329765903,
+      "std": 0.10714696118634402,
+      "q25": 0.43255366869593076,
+      "median": 0.43992310157000963,
+      "q75": 0.5712912528035885
+    },
+    "PRED40+": {
+      "count": 10000,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.14684285714285714,
+      "std": 0.2663863080228427,
+      "q25": 0.0,
+      "median": 0.0,
+      "q75": 0.14285714285714285
+    },
+    "N_estimators": {
+      "count": 10000,
+      "min": 10.0,
+      "max": 200.0,
+      "mean": 106.061,
+      "std": 57.12980202136184,
+      "q25": 60.0,
+      "median": 110.0,
+      "q75": 160.0
+    },
+    "Min_sample_leaves": {
+      "count": 10000,
+      "min": 1.0,
+      "max": 20.0,
+      "mean": 10.4796,
+      "std": 5.778943142132478,
+      "q25": 5.0,
+      "median": 11.0,
+      "q75": 15.0
+    },
+    "Min_impurity_decrease": {
+      "count": 10000,
+      "min": 0.0,
+      "max": 10.0,
+      "mean": 4.996175,
+      "std": 2.947067036796924,
+      "q25": 2.5,
+      "median": 5.0,
+      "q75": 7.5
+    },
+    "Max_depth": {
+      "count": 10000,
+      "min": 1.0,
+      "max": 20.0,
+      "mean": 10.523,
+      "std": 5.754204636611389,
+      "q25": 6.0,
+      "median": 11.0,
+      "q75": 16.0
+    }
+  },
+  "categorical_frequencies": {
+    "criterion": {
+      "absolute_error": 3302,
+      "poisson": 3335,
+      "squared_error": 3363
+    }
+  },
+  "configuration_fields": [
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "outcome_fields": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "optimization_directions": {
+    "MRE-": "minimize",
+    "ACC+": "maximize",
+    "PRED40+": "maximize"
+  },
+  "distinct_configuration_count": 10000,
+  "repeated_configurations": {},
+  "duplicate_row_count": 0,
+  "scikit_learn_version": "1.6.0",
+  "parsing_assumptions": [
+    "The first row is a comma-separated header.",
+    "Empty strings are missing values.",
+    "Numeric fields are parsed as decimal numbers; criterion is categorical."
+  ],
+  "limitations": [
+    "Descriptive statistics do not define metric formulas, units, valid ranges, or compute costs.",
+    "No issue timeline or closure events are inferred from the filename."
+  ]
+}
+real 0.71
+user 0.58
+sys 0.10

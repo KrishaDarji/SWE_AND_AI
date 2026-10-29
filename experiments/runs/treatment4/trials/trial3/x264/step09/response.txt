@@ -1,0 +1,11 @@
+Implemented Step 9 anomaly screening and preserved all Step 8 interfaces.
+
+Source: source/summarize_x264.py
+Tests: tests/test_summarize_x264.py
+Command: python3 "SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step09/source/summarize_x264.py" "SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --spot
+
+Method: threshold 3.0, defined before examining records. Each assessed configuration group is excluded from its own reference. The reference uses all nearest configuration groups by Hamming distance; duplicate rows remain in the assessed group and cannot influence its expected value. Original CSV record identifiers are preserved when invalid outcomes are filtered. Scores are (observed - reference mean) / reference sample standard deviation. Defined scores below threshold report "below threshold"; unavailable scores remain explicitly undefined, with separate reasons for insufficient groups and zero variability. All-invalid inputs report their invalid outcome count. Undefined values are JSON null.
+
+Results: all 31 tests passed. The real demonstration processed 1,152 valid records, flagged 0 records, and took 1.75 seconds real time measured with /usr/bin/time -p. No verified anomaly labels exist; flags are investigation candidates, not confirmed measurement errors.
+
+Known limitations: no independent reference yields an undefined score; zero reference variability yields an undefined score; small inputs may not meet the minimum comparison-group requirement; nearest-group similarity is based only on encoded setting equality; lower Performance- is treated as better; no units are inferred.

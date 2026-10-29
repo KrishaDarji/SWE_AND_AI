@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,4,3,model configuration and quality,flow,302,82,1,0.16,1,"17 tests; reused Step 3 source/tests; /usr/bin/time -p; CSV order is demonstration sequence; no convergence/stopping claims; repaired missing python command with python3"

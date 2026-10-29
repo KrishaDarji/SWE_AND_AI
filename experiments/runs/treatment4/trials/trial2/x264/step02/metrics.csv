@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,2,video encoding,guess,94,41,1,0.00742354104295373,2,"5 tests; runtime_seconds from perf_counter around evaluation; grouped 80/20 split random_state=42; reused Step 1; 1 grouping-shape error and 1 overstrong test assertion repaired; target is Performance-; training-only pipeline fitting"

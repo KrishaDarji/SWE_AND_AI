@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,2,model configuration and quality,justify,415,55,1,0.05,5,"25 tests; Step 5 source/tests copied and preserved; /usr/bin/time -p demonstration; non-finite outcomes excluded from selection and median counts; repaired python->python3, three assertion expectation repairs, and one portable-find command; observed-data only"

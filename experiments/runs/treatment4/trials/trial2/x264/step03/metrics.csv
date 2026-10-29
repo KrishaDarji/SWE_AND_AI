@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,2,video encoding,certify,161,68,1,0.81,3,"7 tests passed; reused Step 2 source/tests; /usr/bin/time -p real elapsed time for demonstration subprocess excluding tests; Welch-Satterthwaite df and 10000-permutation check with seed 42; rows are configurations, not repeated runs; includes original no_asm grouping repair, corrected test-fixture assertion, and missing original failed log documented"

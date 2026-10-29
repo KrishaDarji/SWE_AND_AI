@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,4,3,software project estimation,race,766,84,1,1.00,19,"45 tests passed; Step 9 source/tests accumulated; 10 GroupShuffleSplit seeds 42-51; runtime measured with /usr/bin/time -p; error count retains two shell/non-test failures, sixteen collection errors across two failed suites, and one failed assertion; repaired source package marker and held-out fixture; overlapping repeated splits; no statistical superiority claim."

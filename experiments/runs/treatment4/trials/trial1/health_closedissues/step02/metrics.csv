@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,1,health_closedissues,guess,312,183,1,2.390457916,1,passed/total=16/16; test_wall_seconds=8.034434792; regression_demo_wall_seconds=0.726938334; attempt=2; baseline=131 application LOC + 65 runner LOC; Step 1 runner excluded; new_loc=nonblank noncomment insert/replace new-side lines via difflib; measurement runner excluded; initial checks succeeded; expected negative tests excluded; see preserved attempt logs and response.txt for repair history

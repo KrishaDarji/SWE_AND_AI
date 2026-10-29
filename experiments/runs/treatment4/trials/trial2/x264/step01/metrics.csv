@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,2,video encoding,remember,54,54,true,0.71,0,"Model=<CURRENT_MODEL>; reasoning=<CURRENT_REASONING>; 2 unit tests passed; implementation completed without unexpected errors."

@@ -1,0 +1,16 @@
+Implemented Treatment 4, Trial 2, Dataset 2, Step 4 (flow).
+
+1. Complete accumulated source code: `source/nasa93_summary.py`. It preserves Step 3 interfaces and adds `assess_arrivals(path)`, which processes CSV-order arrivals, uses the first two valid observations as labeled warm-up, predicts each later Effort- before revealing it, compares against the prior-history mean, and records identifiers, counts, predictions, revealed outcomes, absolute errors, and cumulative MAEs. Missing descriptors use the existing `<MISSING>` token and unseen categories are ignored by the existing OneHotEncoder configuration.
+
+2. Tests: the copied Step 3 regression tests plus `tests/test_flow.py`. The complete suite passed: 17 tests.
+
+3. Command:
+`python3 source/nasa93_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --assess-arrivals`
+
+4. Explanation: sequential predictions are trained only on previously revealed rows. Empty input and inputs shorter than two valid rows return no scored predictions. Missing or non-finite Effort- raises `ValueError`. CSV order is a demonstration sequence, not a verified timeline; the implementation makes no convergence claim and has no automatic stopping rule.
+
+5. Assumptions and limitations: the existing Step 3 preprocessing and RandomForestRegressor construction are reused; only the 22 descriptors are modeled, with X-suffix metadata and outcomes excluded. Effort- must be available to reveal after prediction. The sequence is observational and does not establish project-planning causality.
+
+Measured demonstration real time was 6.85 seconds using `/usr/bin/time -p`. The required artifacts, including preserved failed and repaired execution output, are in this Step 4 directory.
+
+Correction: metrics.csv now records `new_loc=53`, counting added/replaced nonblank, noncomment implementation lines against Step 3. Net growth remains 52 because one previous line was replaced. `total_loc` remains 220. No source, tests, or execution logs were changed, and no rerun was performed.

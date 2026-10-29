@@ -1,0 +1,17 @@
+{
+  "label": "Illustrative configuration; not an optimized recommendation",
+  "predictions": {
+    "MRE-": 0.37172971540529537,
+    "ACC+": 0.6806264546860898
+  },
+  "heldout_mae": {
+    "MRE-": {
+      "model": 0.013879674043302374,
+      "training_mean_baseline": 0.16459861627286873
+    },
+    "ACC+": {
+      "model": 0.00915287155651082,
+      "training_mean_baseline": 0.08820967314102454
+    }
+  }
+}

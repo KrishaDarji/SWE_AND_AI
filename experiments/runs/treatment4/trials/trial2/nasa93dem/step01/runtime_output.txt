@@ -1,0 +1,340 @@
+{
+  "record_count": 93,
+  "columns": [
+    "idX",
+    "centerX",
+    "YearX",
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced",
+    "Kloc+",
+    "Effort-",
+    "Defects-",
+    "MonthsX"
+  ],
+  "inferred_types": {
+    "idX": "numeric",
+    "centerX": "numeric",
+    "YearX": "numeric",
+    "prec": "categorical",
+    "flex": "categorical",
+    "resl": "categorical",
+    "team": "categorical",
+    "pmat": "categorical",
+    "rely": "categorical",
+    "data": "categorical",
+    "cplx": "categorical",
+    "ruse": "categorical",
+    "docu": "categorical",
+    "time": "categorical",
+    "stor": "categorical",
+    "pvol": "categorical",
+    "acap": "categorical",
+    "pcap": "categorical",
+    "pcon": "categorical",
+    "apex": "categorical",
+    "plex": "categorical",
+    "ltex": "categorical",
+    "tool": "categorical",
+    "site": "categorical",
+    "sced": "categorical",
+    "Kloc+": "numeric",
+    "Effort-": "numeric",
+    "Defects-": "numeric",
+    "MonthsX": "numeric"
+  },
+  "missing_values": {
+    "idX": 0,
+    "centerX": 0,
+    "YearX": 0,
+    "prec": 0,
+    "flex": 0,
+    "resl": 0,
+    "team": 0,
+    "pmat": 0,
+    "rely": 0,
+    "data": 0,
+    "cplx": 0,
+    "ruse": 0,
+    "docu": 0,
+    "time": 0,
+    "stor": 0,
+    "pvol": 0,
+    "acap": 0,
+    "pcap": 0,
+    "pcon": 0,
+    "apex": 0,
+    "plex": 0,
+    "ltex": 0,
+    "tool": 0,
+    "site": 0,
+    "sced": 0,
+    "Kloc+": 0,
+    "Effort-": 0,
+    "Defects-": 0,
+    "MonthsX": 0
+  },
+  "numeric_statistics": {
+    "idX": {
+      "count": 93,
+      "mean": 46.98924731182796,
+      "std": 26.997783573944794,
+      "min": 1.0,
+      "q25": 24.0,
+      "median": 47.0,
+      "q75": 70.0,
+      "max": 93.0
+    },
+    "centerX": {
+      "count": 93,
+      "mean": 3.2795698924731185,
+      "std": 1.6834591161074934,
+      "min": 1.0,
+      "q25": 2.0,
+      "median": 2.0,
+      "q75": 5.0,
+      "max": 6.0
+    },
+    "YearX": {
+      "count": 93,
+      "mean": 1980.8279569892472,
+      "std": 3.3350042562842876,
+      "min": 1971.0,
+      "q25": 1979.0,
+      "median": 1980.0,
+      "q75": 1983.0,
+      "max": 1987.0
+    },
+    "Kloc+": {
+      "count": 93,
+      "mean": 94.02204301075268,
+      "std": 133.5979471867733,
+      "min": 0.9,
+      "q25": 15.4,
+      "median": 47.5,
+      "q75": 111.0,
+      "max": 980.0
+    },
+    "Effort-": {
+      "count": 93,
+      "mean": 624.4118279569893,
+      "std": 1135.9280652026785,
+      "min": 8.4,
+      "q25": 70.0,
+      "median": 252.0,
+      "q75": 600.0,
+      "max": 8211.0
+    },
+    "Defects-": {
+      "count": 93,
+      "mean": 3761.7634408602153,
+      "std": 6145.055586471356,
+      "min": 28.0,
+      "q25": 636.0,
+      "median": 2007.0,
+      "q75": 4868.0,
+      "max": 50961.0
+    },
+    "MonthsX": {
+      "count": 93,
+      "mean": 24.176344086021505,
+      "std": 12.967219522364365,
+      "min": 4.9,
+      "q25": 14.8,
+      "median": 21.4,
+      "q75": 31.5,
+      "max": 96.4
+    }
+  },
+  "categorical_frequencies": {
+    "prec": {
+      "h": 93
+    },
+    "flex": {
+      "h": 93
+    },
+    "resl": {
+      "h": 93
+    },
+    "team": {
+      "vh": 93
+    },
+    "pmat": {
+      "h": 43,
+      "l": 20,
+      "n": 30
+    },
+    "rely": {
+      "h": 42,
+      "l": 2,
+      "n": 39,
+      "vh": 10
+    },
+    "data": {
+      "h": 17,
+      "l": 37,
+      "n": 31,
+      "vh": 8
+    },
+    "cplx": {
+      "h": 58,
+      "l": 3,
+      "n": 10,
+      "vh": 17,
+      "xh": 5
+    },
+    "ruse": {
+      "n": 93
+    },
+    "docu": {
+      "n": 93
+    },
+    "time": {
+      "h": 13,
+      "n": 54,
+      "vh": 18,
+      "xh": 8
+    },
+    "stor": {
+      "h": 10,
+      "n": 49,
+      "vh": 21,
+      "xh": 13
+    },
+    "pvol": {
+      "h": 9,
+      "l": 65,
+      "n": 19
+    },
+    "acap": {
+      "h": 51,
+      "n": 32,
+      "vh": 10
+    },
+    "pcap": {
+      "h": 39,
+      "n": 44,
+      "vh": 10
+    },
+    "pcon": {
+      "n": 93
+    },
+    "apex": {
+      "h": 46,
+      "l": 1,
+      "n": 34,
+      "vh": 12
+    },
+    "plex": {
+      "h": 22,
+      "l": 14,
+      "n": 53,
+      "vl": 4
+    },
+    "ltex": {
+      "h": 69,
+      "l": 6,
+      "n": 14,
+      "vl": 4
+    },
+    "tool": {
+      "h": 10,
+      "n": 83
+    },
+    "site": {
+      "n": 93
+    },
+    "sced": {
+      "l": 34,
+      "n": 59
+    }
+  },
+  "column_roles": {
+    "project_descriptors": [
+      "prec",
+      "flex",
+      "resl",
+      "team",
+      "pmat",
+      "rely",
+      "data",
+      "cplx",
+      "ruse",
+      "docu",
+      "time",
+      "stor",
+      "pvol",
+      "acap",
+      "pcap",
+      "pcon",
+      "apex",
+      "plex",
+      "ltex",
+      "tool",
+      "site",
+      "sced"
+    ],
+    "metadata_excluded_from_future_modeling": [
+      "idX",
+      "centerX",
+      "YearX",
+      "MonthsX"
+    ],
+    "outcomes": [
+      "Kloc+",
+      "Effort-",
+      "Defects-"
+    ],
+    "outcome_directions": {
+      "Kloc+": "+",
+      "Effort-": "-",
+      "Defects-": "-"
+    },
+    "outcome_semantics": {
+      "Kloc+": "delivered size",
+      "Effort-": "effort",
+      "Defects-": "defects"
+    }
+  },
+  "parsing_assumptions": [
+    "CSV header defines columns.",
+    "Whitespace is stripped.",
+    "Blank, ?, NA, N/A, none, and null are missing.",
+    "Numeric-looking values are parsed as floating-point numbers; other values remain categorical strings.",
+    "Kloc+ is an outcome, not automatically a predictor."
+  ],
+  "limitations": [
+    "No units are inferred.",
+    "Numeric category codes are not converted into continuous quantities.",
+    "The summary is descriptive and does not establish causal relationships."
+  ],
+  "tooling": {
+    "python": "3.12.6",
+    "scikit_learn": "1.6.0"
+  }
+}
+real 0.77
+user 0.59
+sys 0.12
+
+ATTEMPT: final successful demonstration
+EXIT_STATUS: 0

@@ -1,0 +1,142 @@
+FINAL DEMONSTRATION
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step08/source/summarize_runs.py", line 454, in <module>
+    main()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step08/source/summarize_runs.py", line 450, in main
+    print(json.dumps(result, indent=2, sort_keys=True))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
+real 0.74
+user 0.62
+sys 0.09
+FINAL DEMONSTRATION REPAIRED
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step08/source/summarize_runs.py", line 454, in <module>
+    main()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step08/source/summarize_runs.py", line 450, in main
+    print(json.dumps(result, indent=2, sort_keys=True))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
+real 0.73
+user 0.63
+sys 0.09
+FINAL DEMONSTRATION REPAIRED 2
+{
+  "baseline": {
+    "configuration": {
+      "no_8x8dct": 0.0,
+      "no_asm": 1.0,
+      "no_cabac": 0.0,
+      "no_deblock": 0.0,
+      "no_fast_pskip": 0.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 0.0,
+      "no_weightb": 0.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 1.0,
+      "rc_lookahead_40": 0.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    },
+    "csv_row": 2,
+    "measured_performance": 268.72,
+    "record_id": "csv_record_1"
+  },
+  "change_cost": 1,
+  "change_count_proxy_note": "Raw-column change count is a proxy: correlated or one-hot fields may represent fewer conceptual changes.",
+  "changed_settings": [
+    {
+      "from": 0.0,
+      "setting": "no_8x8dct",
+      "to": 1.0
+    }
+  ],
+  "lower_is_better": true,
+  "measure": "Performance-",
+  "observed_improvement": 14.133000000000038,
+  "raw_fields": {
+    "Performance-": "254.587 ",
+    "no_8x8dct": "1",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "repaired": {
+    "configuration": {
+      "no_8x8dct": 1.0,
+      "no_asm": 1.0,
+      "no_cabac": 0.0,
+      "no_deblock": 0.0,
+      "no_fast_pskip": 0.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 0.0,
+      "no_weightb": 0.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 1.0,
+      "rc_lookahead_40": 0.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    },
+    "csv_row": 66,
+    "measured_performance": 254.587,
+    "record_id": "csv_record_65"
+  },
+  "runtime_seconds": 0.0035780000034719706,
+  "selection_rule": "strict improvement; minimum raw-column change cost, then Performance-, then CSV record order",
+  "status": "repaired"
+}
+real 0.74
+user 0.64
+sys 0.09

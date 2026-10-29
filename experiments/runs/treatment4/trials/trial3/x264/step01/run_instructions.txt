@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Run implementation:
+python3 "experiments/runs/treatment4/trials/trial3/x264/step01/source/summarize_x264.py" "moot/optimize/config/X264_AllMeasurements.csv"
+
+Run tests:
+python3 -m unittest discover -s "experiments/runs/treatment4/trials/trial3/x264/step01/tests" -p 'test_*.py'

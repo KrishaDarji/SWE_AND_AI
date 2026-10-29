@@ -1,0 +1,19 @@
+Make one focused correction to Health Trial 2 Step 4.
+
+In running_summaries_csv(), replace the full records list with an iterator
+or generator that yields each mapped CSV record directly to running_summaries
+while the CSV file remains open.
+
+Preserve configuration mapping, identifiers, statistics, and tie-breaking.
+Keeping returned snapshots is acceptable; do not additionally buffer all inputs.
+
+Add a test verifying an earlier record is processed before the input iterator
+produces the next record.
+
+Preserve existing logs. Capture corrected tests and demonstration directly
+into new attempt-labeled files.
+Update measured metrics and calculate new_loc against Step 3.
+Keep prompt.txt unchanged; save this as correction_prompt_02.txt.
+Save your exact final response in response.txt.
+
+Write only inside the existing Health trial2/step04 directory.

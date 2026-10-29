@@ -1,0 +1,11 @@
+Implemented Step 8 by preserving Step 7 and adding repair().
+
+The repair search uses the first CSV record by default, considers only finite observed outcomes strictly below the baseline, compares settings numerically, and selects minimum raw-column changes, then lowest Performance-, then CSV order. It reports full configurations, outcomes, exact raw old/new values, change count, improvement, and the raw-column proxy limitation. Invalid baselines and missing/non-finite settings or outcomes are explicit errors; no improving observation returns status: no_repair.
+
+Verification: 25 tests pass, including inherited regression tests and synthetic tests for minimum-change priority, numeric equivalence, tie-breaking, no improvement, invalid/missing values, and exact change reporting. The demonstration ran against the first X264 record: no_8x8dct changed from 0 to 1; Performance- changed from 268.720 to 254.587, improvement 14.133; runtime was 0.80s real time.
+
+Run from the Step 8 directory:
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 run_repair.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Assumptions and limitations: Performance- is lower-is-better; CSV order is the tie-break order; raw columns are only a proxy for conceptual changes because correlated or one-hot fields may encode one concept; observed improvements are retrospective and are neither causal evidence nor guarantees of future performance. The Step 7 Python/scikit-learn interfaces remain intact.

@@ -1,0 +1,5 @@
+Run from the repository root:
+python3 'experiments/runs/treatment4/trials/trial2/x264/step03/source/summarize_runs.py' 'moot/optimize/config/X264_AllMeasurements.csv' --certify --practical-threshold 5.0
+
+Tests:
+python3 -m unittest discover -s 'experiments/runs/treatment4/trials/trial2/x264/step03/tests' -v

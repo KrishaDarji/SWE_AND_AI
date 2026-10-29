@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,2,software project estimation,certify,168,37,1,1.48,5,"14 tests; Step 2 source/tests copied and preserved; /usr/bin/time -p real from preserved final demonstration log; illustrative threshold is 10% of tool=n mean; error count includes 1 failed setup copy, 1 unavailable python command, and 3 import errors in the repaired suite run; no expected negative cases counted"

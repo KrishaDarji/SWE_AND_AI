@@ -1,0 +1,120 @@
+You are running Treatment 4, Trial 2, Dataset 3, Step 4 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: flow
+- Current requirement: Evaluate configurations as validation results arrive one at a time.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/health_closedissues/step03/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/health_closedissues/step03/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/health_closedissues/step04/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 3 implementation where appropriate.
+Copy accumulated source and tests into Step 4, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Health Step 3 source and tests.
+- Files created in the current Step 4 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Process CSV records incrementally in their existing order.
+- Update per-outcome count, mean, sample variance, and best observed value
+  after each arriving record.
+- Track MRE- as minimize, ACC+ and PRED40+ as maximize.
+- Retain the configuration and record identifier associated with each best value.
+- Use incremental statistics rather than repeatedly recomputing all prior rows.
+- Each update must depend only on records received so far.
+- Define empty input, first observation, ties, and missing/non-finite outcomes.
+  Maintain separate valid counts for each outcome.
+- Clearly distinguish running summaries from predictions for unseen configurations.
+- State that CSV order is a demonstration sequence, not a verified timeline.
+- Do not claim convergence, sufficient evidence, or an automatic stopping rule.
+- Do not invent metric formulas, ranges, units, or compute costs.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test each prefix against independently calculated batch statistics.
+Cover outcome directions, best configurations, ties, empty input,
+one observation, and missing/non-finite outcomes.
+Verify later records cannot change earlier snapshots.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files when each
+  command runs, including the first attempt.
+- Preserve failed and successful outputs. Never overwrite an earlier attempt.
+- Reference the final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for execution logs or reconstruct missing output.
+- Verify the full prompt, all logs, and required artifacts before finishing.
+- Ensure run instructions specify the working directory and valid quoted paths.
+
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: model configuration and quality
+- skill: flow
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with Health Step 3,
+  excluding blank and comment-only lines. Count new-side diff lines;
+  do not use net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure counts and timing agree with source differences and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Health Step 4 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

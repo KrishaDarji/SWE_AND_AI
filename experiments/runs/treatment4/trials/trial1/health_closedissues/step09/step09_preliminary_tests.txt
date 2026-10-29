@@ -1,0 +1,23 @@
+test_cli_display_is_separate_and_csv_validation (test_spot.SpotTests.test_cli_display_is_separate_and_csv_validation) ... ok
+test_configuration_is_context_not_score_input (test_spot.SpotTests.test_configuration_is_context_not_score_input) ... ok
+test_constants_and_small_inputs (test_spot.SpotTests.test_constants_and_small_inputs) ... ok
+test_degenerate_scale_fallbacks (test_spot.SpotTests.test_degenerate_scale_fallbacks) ... ok
+test_hand_calculated_scores_and_both_tails (test_spot.SpotTests.test_hand_calculated_scores_and_both_tails) ... ok
+test_invalid_inputs (test_spot.SpotTests.test_invalid_inputs) ... ok
+test_missing_objectives_and_max_combination (test_spot.SpotTests.test_missing_objectives_and_max_combination) ... ok
+test_real_csv_independent_score_calculations (test_spot.SpotTests.test_real_csv_independent_score_calculations) ... FAIL
+test_strict_threshold_boundary_and_not_quota (test_spot.SpotTests.test_strict_threshold_boundary_and_not_quota) ... ok
+test_ties_reproducibility_detachment (test_spot.SpotTests.test_ties_reproducibility_detachment) ... ok
+
+======================================================================
+FAIL: test_real_csv_independent_score_calculations (test_spot.SpotTests.test_real_csv_independent_score_calculations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09/tests/test_spot.py", line 124, in test_real_csv_independent_score_calculations
+    self.assertGreater(scale, 0)
+AssertionError: 0.0 not greater than 0
+
+----------------------------------------------------------------------
+Ran 10 tests in 4.087s
+
+FAILED (failures=1)

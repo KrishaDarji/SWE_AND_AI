@@ -1,0 +1,11 @@
+Implemented Step 10 in the requested directory.
+
+Source: `source/` contains the complete accumulated Step 9 implementation plus `race.py`. Tests: `tests/` contains all inherited regression tests plus race tests. The suite passed: 34 tests.
+
+The comparison uses the unchanged observed-outcome selector, identical eligibility rules, N_estimators <= 100, independent baseline RNG instances seeded 42–51, and fixed tie tolerance 1e-12. On the historical dataset, all 10 paired draws were selector wins; mean paired MRE- difference (baseline minus selector) was 0.7697643593519882, with min 0.3480117820324005 and max 0.9294550810014727. ACC+ and PRED40+ trade-offs are reported descriptively per run; no composite or statistical-superiority claim is made.
+
+Run: `python3 -m pytest -q "experiments/runs/treatment4/trials/trial3/health_closedissues/step10/tests"`
+
+Demonstration: `/usr/bin/time -p python3 "experiments/runs/treatment4/trials/trial3/health_closedissues/step10/source/race.py" "moot/optimize/hpo/Health-ClosedIssues0000.csv"`
+
+Known limitations: this is retrospective sampling from one historical dataset, not independent validation or independent LLM trials. The selector inspects all feasible outcomes while the baseline samples one record, so a win does not establish superior budgeted search. The estimator cap is only a compute proxy. The project's final “same” procedure remains pending because it was unavailable.

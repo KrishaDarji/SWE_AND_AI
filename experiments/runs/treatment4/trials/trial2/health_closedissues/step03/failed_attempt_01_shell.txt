@@ -1,0 +1,1 @@
+Command failed before completion: zsh reported `read-only variable: status` while recording the test exit code. The test suite output itself was captured in attempt_01_test_suite.txt.

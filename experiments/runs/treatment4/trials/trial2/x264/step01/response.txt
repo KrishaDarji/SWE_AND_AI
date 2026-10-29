@@ -1,0 +1,11 @@
+Implemented Step 1 independently with Python and scikit-learn.
+
+Source: source/summarize_runs.py
+Tests: tests/test_summarize_runs.py
+Run from the repository root:
+python3 -m unittest discover -s experiments/runs/treatment4/trials/trial2/x264/step01/tests -v
+python3 experiments/runs/treatment4/trials/trial2/x264/step01/source/summarize_runs.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+The implementation summarizes 1,152 runs, 16 encoder settings, and the Performance- measure. It reports setting-on frequencies, mean/std/min/max/median performance, best and worst rows, per-setting on/off differences, and standardized LinearRegression coefficients after scikit-learn scaling. Test output and actual runtime output are captured in test_output.txt and runtime_output.txt.
+
+Assumptions and limitations: Performance- is treated as the sole quality measure and lower values are treated as better because the best run is selected by minimum value. Associations are observational and not causal; the linear model does not represent interactions. Settings that never switch off have no on/off difference.

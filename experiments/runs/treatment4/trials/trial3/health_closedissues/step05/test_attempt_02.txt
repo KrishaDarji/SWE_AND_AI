@@ -1,0 +1,33 @@
+test_constants_missing_all_missing_and_determinism (test_blame.BlameTests.test_constants_missing_all_missing_and_determinism) ... FAIL
+test_known_numeric_and_categorical_associations_and_exclusion (test_blame.BlameTests.test_known_numeric_and_categorical_associations_and_exclusion) ... ok
+test_nonfinite_outcome_is_excluded (test_blame.BlameTests.test_nonfinite_outcome_is_excluded) ... ok
+test_fixed_groups_direction_and_counts (test_certify.CertifyTests.test_fixed_groups_direction_and_counts) ... ok
+test_missing_insufficient_zero_variance_and_invalid_threshold (test_certify.CertifyTests.test_missing_insufficient_zero_variance_and_invalid_threshold) ... ok
+test_no_threshold_is_undetermined (test_certify.CertifyTests.test_no_threshold_is_undetermined) ... ok
+test_welch_arithmetic_and_threshold_uncertainty (test_certify.CertifyTests.test_welch_arithmetic_and_threshold_uncertainty) ... ok
+test_csv_integration (test_flow.FlowTests.test_csv_integration) ... ok
+test_directions_statistics_best_and_ties (test_flow.FlowTests.test_directions_statistics_best_and_ties) ... ok
+test_empty_one_missing_nonfinite_and_defensive_copy (test_flow.FlowTests.test_empty_one_missing_nonfinite_and_defensive_copy) ... ok
+test_iterator_consumed_once_and_snapshots_are_independent (test_flow.FlowTests.test_iterator_consumed_once_and_snapshots_are_independent) ... ok
+test_grouping_and_reproducibility (test_quality_predict.QualityTests.test_grouping_and_reproducibility) ... ok
+test_invalid_and_insufficient_data (test_quality_predict.QualityTests.test_invalid_and_insufficient_data) ... ok
+test_missing_unseen_and_preprocessing (test_quality_predict.QualityTests.test_missing_unseen_and_preprocessing) ... ok
+test_outcome_exclusion_and_identical_group (test_quality_predict.QualityTests.test_outcome_exclusion_and_identical_group) ... ok
+test_step1_regression_imports (test_quality_predict.QualityTests.test_step1_regression_imports) ... ok
+test_duplicate_counting (test_summarize.SummarizeTests.test_duplicate_counting) ... ok
+test_empty_input (test_summarize.SummarizeTests.test_empty_input) ... ok
+test_missing_nonfinite_and_roles (test_summarize.SummarizeTests.test_missing_nonfinite_and_roles) ... ok
+test_numeric_and_categorical_summaries (test_summarize.SummarizeTests.test_numeric_and_categorical_summaries) ... ok
+
+======================================================================
+FAIL: test_constants_missing_all_missing_and_determinism (test_blame.BlameTests.test_constants_missing_all_missing_and_determinism)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step05/tests/test_blame.py", line 29, in test_constants_missing_all_missing_and_determinism
+    self.assertEqual(a["settings"][-1]["score"], 0.0)
+AssertionError: None != 0.0
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.033s
+
+FAILED (failures=1)

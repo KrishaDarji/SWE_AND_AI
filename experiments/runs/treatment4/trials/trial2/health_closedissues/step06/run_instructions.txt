@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Run implementation:
+python3 experiments/runs/treatment4/trials/trial2/health_closedissues/step06/source/justify.py moot/optimize/hpo/Health-ClosedIssues0000.csv
+Run complete suite:
+python3 -m unittest discover -s experiments/runs/treatment4/trials/trial2/health_closedissues/step06/tests -v

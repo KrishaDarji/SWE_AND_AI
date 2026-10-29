@@ -1,0 +1,23 @@
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_budget_is_enforced_and_recommendation_is_evaluated (test_summarize_runs.SummarizeRunsTests.test_budget_is_enforced_and_recommendation_is_evaluated) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_invalid_and_zero_budgets_are_rejected (test_summarize_runs.SummarizeRunsTests.test_invalid_and_zero_budgets_are_rejected) ... ok
+test_justify_keeps_measured_estimate_and_association_categories_distinct (test_summarize_runs.SummarizeRunsTests.test_justify_keeps_measured_estimate_and_association_categories_distinct) ... ok
+test_justify_selects_lowest_observed_and_reports_reference_and_evidence (test_summarize_runs.SummarizeRunsTests.test_justify_selects_lowest_observed_and_reports_reference_and_evidence) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_outcome_isolation_and_budget_overrun (test_summarize_runs.SummarizeRunsTests.test_outcome_isolation_and_budget_overrun) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_reproducibility_and_no_duplicate_evaluations (test_summarize_runs.SummarizeRunsTests.test_reproducibility_and_no_duplicate_evaluations) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.013s
+
+OK

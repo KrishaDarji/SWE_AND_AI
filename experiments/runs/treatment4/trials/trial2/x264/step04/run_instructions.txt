@@ -1,0 +1,8 @@
+Run from repository root:
+python3 experiments/runs/treatment4/trials/trial2/x264/step04/source/summarize_runs.py moot/optimize/config/X264_AllMeasurements.csv --flow
+
+Run tests:
+python3 -m unittest discover -s experiments/runs/treatment4/trials/trial2/x264/step04/tests -v
+
+Timing uses /usr/bin/time -p around the demonstration subprocess; real excludes tests.
+

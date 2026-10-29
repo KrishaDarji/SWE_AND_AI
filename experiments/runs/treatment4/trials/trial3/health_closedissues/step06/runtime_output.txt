@@ -1,0 +1,61 @@
+{
+  "eligible_count": 10000,
+  "historical_references": {},
+  "interpretation": "The recommendation is retrospective observed-data evidence. The best MRE- need not be best ACC+ or PRED40+; settings can be correlated and share explanatory information. Differences are not additive local contributions or causal effects, and future performance is not guaranteed.",
+  "policy": "lowest observed MRE-, ties by higher ACC+, then higher PRED40+, then earliest CSV record",
+  "recommendation": {
+    "comparisons_with_historical_references": {
+      "ACC+": {
+        "observed_minus_reference": 0.3502082665812239,
+        "reference_name": "dataset finite-value median",
+        "reference_valid_count": 10000
+      },
+      "MRE-": {
+        "observed_minus_reference": -0.8091310751104565,
+        "reference_name": "dataset finite-value median",
+        "reference_valid_count": 10000
+      },
+      "PRED40+": {
+        "observed_minus_reference": 0.8571428571428571,
+        "reference_name": "dataset finite-value median",
+        "reference_valid_count": 10000
+      }
+    },
+    "configuration": {
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "csv_record_number": 32,
+    "measured_outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    },
+    "original_record_id": 31
+  },
+  "record_count": 10000,
+  "references": {
+    "ACC+": {
+      "name": "dataset finite-value median",
+      "valid_count": 10000,
+      "value": 0.43992310157000963
+    },
+    "MRE-": {
+      "name": "dataset finite-value median",
+      "valid_count": 10000,
+      "value": 0.8091310751104565
+    },
+    "PRED40+": {
+      "name": "dataset finite-value median",
+      "valid_count": 10000,
+      "value": 0.0
+    }
+  },
+  "status": "eligible recommendation found"
+}
+real 0.04
+user 0.03
+sys 0.00

@@ -1,0 +1,11 @@
+Implemented an independent scikit-learn/NumPy-backed NASA93 historical-project summarizer.
+
+Source: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py (2 tests; numeric summaries, categorical frequencies, missing/non-finite values, roles, directions, and empty input)
+Run: python3 run_measurement.py from the specified Step 1 directory.
+
+The real demonstration measured 93 records, all 29 columns, no missing values, and reports project descriptors, X-suffix metadata exclusions, and Kloc+/Effort-/Defects- outcome directions. Kloc+ is not automatically treated as a predictor. Blank and non-finite values parse as missing; empty CSV input returns an empty summary.
+
+Assumptions and limitations: numeric-looking fields are numeric; other fields are categorical labels; numeric category codes are not interpreted as continuous quantities. Statistics use NumPy population standard deviation. The parser expects a headered CSV.
+
+Correction: independently counted source/nasa93_summary.py using the requested convention—nonblank, noncomment implementation lines, including docstrings, while excluding tests and measurement runners. The verified count is 80, so total_loc and new_loc are corrected to 80. All other measurements, source, tests, prompts, and execution logs were preserved; no rerun was performed.

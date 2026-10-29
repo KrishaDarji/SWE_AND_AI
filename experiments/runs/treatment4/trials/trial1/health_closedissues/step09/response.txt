@@ -1,0 +1,65 @@
+Treatment 4 / Trial 1 / Health / Step 9: spot
+
+Completed output directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09
+
+Deliverables
+Complete updated application code is in source/: summarize.py, guess.py, certify.py, flow.py, choose.py, blame.py, justify.py, fix.py, and the new spot.py. Complete preserved tests plus test_spot.py are in tests/. The eight prior application modules and eight prior test modules are byte-identical to their permitted Step 8 inputs. verification.json records these checks and confirms that the dataset SHA-256 was unchanged across execution. No source, tests, reports or recommendations from other steps or datasets were used. example_configuration.json is recreated from the allowed dataset's first record because a preserved test requires that fixture; it was not copied from an unpermitted previous output.
+
+Method
+The new reusable screen_rows(rows, threshold=3.5) and screen(dataset, threshold=3.5) functions perform descriptive two-sided marginal robust screening. Configuration context fields: N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth. Screened objectives: MRE- (minimize), ACC+ (maximize), PRED40+ (maximize). No objective is used to predict another objective; there are no predictions or residuals.
+
+Reuse: Step 1 load_rows/schema and field roles, Step 7 normalize_records, and its existing Step 2 configuration and Step 4 outcome normalization machinery. Values normalize to finite floats, criterion strings are trimmed, blanks/omitted values become missing. No objective imputation or model fitting occurs. Configuration fields supply observed context and exact normalized duplicate-configuration grouping only; they do not enter the anomaly score.
+
+For each objective with at least five observations, compute the median and median absolute deviation (MAD). Scale is 1.4826*MAD. If MAD is zero, use IQR/1.349; if IQR is also zero, use the observed range; a constant column receives zero scores. Quartiles interpolate at (n-1)*p. An objective score is abs(observed-median)/scale. Missing values and objectives with fewer than five observed records receive null scores. The record score is the maximum available objective score (null if all unavailable). This is a descriptive distance from the observed distribution, not an unseen prediction error or optimization-quality score.
+
+Flag a record only when its score is strictly greater than 3.5, equivalent to OR across scored objectives. The cutoff is heuristic, with no probability, estimated error-rate, or multiple-testing guarantee. It imposes no quota. Larger scores mean more unusual in either tail; objective directions only label better/worse relative to the median. Ties sort by ascending one-based CSV data-row identity, and unscored rows sort last. All records are retained in anomalies.json; --display-limit affects console output only. No randomness is involved.
+
+Measured findings
+Screened 10000 records; flagged 2151; unscored 0. These are exploratory priorities, not confirmed errors. The broad flagged set illustrates that marginal screening can identify legitimate configuration-dependent performance regimes.
+MRE-: median=0.80913107511; MAD=0.0686303388895; scale=0.101751340438; scale method=1.4826 * MAD.
+ACC+: median=0.43992310157; MAD=0.0301185517462; scale=0.044653764819; scale method=1.4826 * MAD.
+PRED40+: median=0; MAD=0; scale=0.10589854919; scale method=IQR / 1.349 fallback.
+
+Top three findings (data-row IDs exclude the header):
+Row 7556: score=12.5426579528; crosses threshold=True; configuration={"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 3.0, "Max_depth": 10.0}; observed objectives={"MRE-": 0.029749631811487497, "ACC+": 1.0, "PRED40+": 1.0}.
+Row 7396: score=11.1506238376; crosses threshold=True; configuration={"N_estimators": 20.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 4.75, "Max_depth": 16.0}; observed objectives={"MRE-": 0.22179675994108983, "ACC+": 0.937840436, "PRED40+": 1.0}.
+Row 2707: score=10.9999397264; crosses threshold=True; configuration={"N_estimators": 140.0, "criterion": "poisson", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 3.5, "Max_depth": 13.0}; observed objectives={"MRE-": 0.16715758468335787, "ACC+": 0.9311118231336111, "PRED40+": 1.0}.
+
+Evidence for the first finding:
+MRE-: observed-minus-median=-0.779381443299; score=7.65966757732; better than the recorded median; crosses threshold=True.
+ACC+: observed-minus-median=0.56007689843; score=12.5426579528; better than the recorded median; crosses threshold=True.
+PRED40+: observed-minus-median=1; score=9.443; better than the recorded median; crosses threshold=True.
+
+Maintainer checks
+Trace flagged row identities to evaluation logs; confirm metric definitions, directions, aggregation, parsing and transcription. Audit data/split versions, sample counts, preprocessing, leakage and evaluation seeds. Re-evaluate unusual configurations on a common independent validation set with repeated outcomes and uncertainty. Compare differing outcomes for repeated configurations against their logging provenance. Keep original records and record any verified corrections separately. Neither unusually good nor poor results automatically establish errors.
+
+Validation and audit
+Entire suite: 90/90 passed (80 preserved tests, 10 new tests). All nine implementation/demo subprocesses exited 0. Tests cover hand-calculated scores, strict threshold and ties, zero MAD/IQR, constant and small data, missing outcomes and configurations, invalid inputs and overflow, deterministic reproducibility, context-only configuration fields, max/OR combination, full-dataset independent scoring and CLI display limits. No residual/group-training exclusion tests are applicable because this method fits no prediction model. Existing prediction tests retain their group-exclusion checks.
+
+Step 9 subprocess wall time: 1.364352500 seconds. Full-suite wall time: 38.788703167 seconds. Eight regression-demo wall times combined: 10.548652416 seconds. Application LOC: 1410; added application LOC relative to Step 8: 165 (insert/replace new-side nonblank, non-comment-only lines, including docstrings; tests and measurement runner excluded). Unexpected failed commands/attempts: 3.
+
+Preserved failures: the preliminary Step 9 run failed a test that wrongly assumed every objective's MAD was positive; the test was repaired to independently calculate the documented fallbacks. A premature diagnostic tail attempted to read a not-yet-created test output file and is conservatively counted. The first complete suite passed 89/90; a preserved test needed example_configuration.json, recreated from the permitted CSV. No prior source/test modules were changed. See step09_preliminary_tests.txt, attempt01/, and repair_log.txt. Expected invalid-input test subprocess failures are excluded from error_count. Final test_output.txt and runtime_output.txt contain the successful results.
+
+Assumptions and limitations
+The batch itself, including each evaluated record and duplicate configurations, defines the reference distribution. This can mask anomalies or overweight common configurations. Scores describe marginal rarity; they cannot establish conditional unexpectedness, metric correctness, causes, or future performance. MAD/IQR fallbacks are conservative for concentrated/discrete distributions; the range fallback can suppress flags. Selective missingness, differing objective subsets and small samples limit coverage. Missing configurations compare equal for context only. Exact normalized equality defines ties; float rounding is possible and arithmetic overflow is rejected. No verified anomaly labels exist, so no precision, recall, detection accuracy, or confirmed error claims are made. Metric formulas, theoretical ranges, compute costs and guaranteed objective relationships are unspecified. No original records were changed.
+
+Commands
+Requirements: environment python3 with scikit-learn 1.6.0 and its existing dependencies. No installation or version changes needed.
+
+Working directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09'
+
+Run the complete suite (preserved Steps 1-8 plus Step 9):
+PYTHONDONTWRITEBYTECODE=1 TMPDIR='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09/tmp' python3 -m unittest discover -s tests -v
+
+Run Step 9 alone, accepting a dataset path argument:
+PYTHONDONTWRITEBYTECODE=1 python3 source/spot.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output anomalies.json --threshold 3.5 --display-limit 10
+
+Repeat all measured tests and all nine demos, preserving separate timings and generating metrics.csv:
+python3 measure_run.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' > measurement_output.txt 2>&1
+
+The runner creates regression_demos/ with exact command outputs and JSON reports for summarize, guess, certify, flow, choose, blame, justify, and fix. verification.json records commands, return codes, timings, byte-for-byte preservation checks, and the dataset SHA-256 check. test_output.txt records the complete suite; runtime_output.txt records only the Step 9 demo. The runner stays outside source/ and is excluded from application LOC.
+
+Each ranked finding is stored in anomalies.json regardless of console display limit. Scores strictly greater than 3.5 are flagged; ties keep ascending one-based CSV data-row identity. The boundary is not inclusive. Unscored records appear last. Threshold changes are exploratory sensitivity settings, not estimated error rates.
+
+Original preliminary failed test output is retained in step09_preliminary_tests.txt; repair_log.txt explains the repair. error_count includes historical unexpected execution failures for this run. Expected invalid-input test subprocess exits are excluded.

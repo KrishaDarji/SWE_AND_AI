@@ -1,0 +1,64 @@
+........................FFF............                                  [100%]
+=================================== FAILURES ===================================
+____________ test_invalid_candidate_predictions_are_excluded[-3.0] _____________
+
+prediction = -3.0
+
+    @pytest.mark.parametrize("prediction", [-3.0, float("nan"), float("inf")])
+    def test_invalid_candidate_predictions_are_excluded(prediction):
+        class Model:
+            def predict(self, frame):
+                return [prediction if row[0] == "bad" else 5.0 for row in frame]
+        result = {"predictor_names": ["a"], "model": Model(), "train_rows": [
+            {"idX": 1, "a": "bad"}, {"idX": 2, "a": "good"}]}
+        report = repair(result, {"a": "original"}, 10)
+>       assert report["status"] == "repair-suggested"
+E       AssertionError: assert 'no-repair-needed' == 'repair-suggested'
+E         
+E         - repair-suggested
+E         + no-repair-needed
+
+tests/test_nasa93_fix.py:72: AssertionError
+_____________ test_invalid_candidate_predictions_are_excluded[nan] _____________
+
+prediction = nan
+
+    @pytest.mark.parametrize("prediction", [-3.0, float("nan"), float("inf")])
+    def test_invalid_candidate_predictions_are_excluded(prediction):
+        class Model:
+            def predict(self, frame):
+                return [prediction if row[0] == "bad" else 5.0 for row in frame]
+        result = {"predictor_names": ["a"], "model": Model(), "train_rows": [
+            {"idX": 1, "a": "bad"}, {"idX": 2, "a": "good"}]}
+        report = repair(result, {"a": "original"}, 10)
+>       assert report["status"] == "repair-suggested"
+E       AssertionError: assert 'no-repair-needed' == 'repair-suggested'
+E         
+E         - repair-suggested
+E         + no-repair-needed
+
+tests/test_nasa93_fix.py:72: AssertionError
+_____________ test_invalid_candidate_predictions_are_excluded[inf] _____________
+
+prediction = inf
+
+    @pytest.mark.parametrize("prediction", [-3.0, float("nan"), float("inf")])
+    def test_invalid_candidate_predictions_are_excluded(prediction):
+        class Model:
+            def predict(self, frame):
+                return [prediction if row[0] == "bad" else 5.0 for row in frame]
+        result = {"predictor_names": ["a"], "model": Model(), "train_rows": [
+            {"idX": 1, "a": "bad"}, {"idX": 2, "a": "good"}]}
+        report = repair(result, {"a": "original"}, 10)
+>       assert report["status"] == "repair-suggested"
+E       AssertionError: assert 'no-repair-needed' == 'repair-suggested'
+E         
+E         - repair-suggested
+E         + no-repair-needed
+
+tests/test_nasa93_fix.py:72: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_nasa93_fix.py::test_invalid_candidate_predictions_are_excluded[-3.0]
+FAILED tests/test_nasa93_fix.py::test_invalid_candidate_predictions_are_excluded[nan]
+FAILED tests/test_nasa93_fix.py::test_invalid_candidate_predictions_are_excluded[inf]
+3 failed, 36 passed in 1.32s

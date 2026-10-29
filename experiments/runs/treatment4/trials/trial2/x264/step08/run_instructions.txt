@@ -1,0 +1,5 @@
+Working directory: "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+Run tests:
+python3 -m unittest discover -s "experiments/runs/treatment4/trials/trial2/x264/step08/tests" -p 'test_*.py'
+Run demonstration:
+/usr/bin/time -p python3 "experiments/runs/treatment4/trials/trial2/x264/step08/source/summarize_runs.py" "moot/optimize/config/X264_AllMeasurements.csv" --repair

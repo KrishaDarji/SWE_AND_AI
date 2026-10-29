@@ -1,0 +1,130 @@
+You are running Treatment 4, Trial 3, Dataset 3, Step 5 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: blame
+- Current requirement: Explain which hyperparameters are associated with high model error.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step04/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step04/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step05/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 4 implementation where appropriate.
+Copy accumulated source and tests into Step 5, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 Health Step 4 source and tests.
+- Files created in the current Step 5 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Rank the five configuration settings by association with observed MRE-.
+- Exclude MRE-, ACC+, and PRED40+ from explanatory variables.
+- Treat criterion as categorical and other settings as numeric.
+- Explain the method and use a consistent primary score across all settings.
+- If numeric settings are grouped, define groups without using outcomes,
+  report boundaries, and explain the information lost.
+- Distinguish marginal from adjusted associations if both are reported.
+- Do not directly rank unlike scores, such as absolute correlation and
+  eta-squared, as equivalent measures.
+- If adjusted modeling is used, remove each setting's complete transformed
+  feature block, including its missing indicators.
+- Handle all-missing settings without assuming fixed transformed column positions.
+- Report supporting counts, outcome summaries, and direction where meaningful.
+- Do not infer categorical rating order from alphabetical labels.
+- Handle constants, missing/non-finite values, small samples, and tied scores.
+- Use deterministic tie-breaking.
+- Explain correlated settings and shared explanatory information.
+- Treat lower MRE- as better.
+- Do not claim causality, guaranteed gains, metric formulas, units,
+  valid ranges, or compute costs.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test known synthetic associations, excluded outcomes, mixed setting types,
+constants, missing/all-missing values, and deterministic ordering.
+Independently verify scores, counts, and summaries.
+If adjusted modeling is used, test complete transformed-block removal.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify required artifacts and specify valid quoted run commands.
+
+Run tests and the association-analysis demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 5
+- treatment: 4
+- trial: 3
+- domain: model configuration and quality
+- skill: blame
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners. Include docstrings.
+- new_loc: added or replaced implementation lines compared with Health Step 4,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the association-analysis
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+  Retain all failures from this step if corrections are later required.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 Health Step 5 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

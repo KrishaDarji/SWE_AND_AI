@@ -1,0 +1,7 @@
+From the Step 8 directory, run:
+
+PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step08" pytest -q tests
+
+Run the demonstration:
+
+/usr/bin/time -p env PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step08/source" python3 source/nasa93_fix.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --budget 100

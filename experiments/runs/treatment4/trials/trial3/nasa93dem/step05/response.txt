@@ -1,0 +1,22 @@
+Corrected Trial 3 NASA93 Step 5’s direction calculation.
+
+`rank_associations()` now treats descriptor categories as nominal. It reports the highest-mean and lowest-mean categories with their Effort- means, without inferring rating order from alphabetical labels. Alphabetical ordering remains only for deterministic display and tie-breaking. Constants and equal category means report `no directional contrast (equal category means)`. Eta-squared scoring and predictor exclusions are unchanged.
+
+Added synthetic regression coverage where alphabetical order differs from effort order, plus an equal-means test verifying that no unsupported ordinal claim is generated.
+
+Verification:
+
+- Complete regression suite: 20 tests passed.
+- NASA93 demonstration: passed with 93 usable rows.
+- Measured demonstration runtime: 0.76 seconds real time.
+- Updated LOC metrics: total_loc 374; new_loc 115 versus Step 4.
+
+Run the analysis with:
+
+PYTHONPATH=. python3 source/nasa93_blame.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Run tests with:
+
+PYTHONPATH=. python3 -m unittest discover -s tests -v
+
+Existing logs were preserved; corrected outputs were captured in `test_output_attempt5.log` and `runtime_output_attempt3.log`.

@@ -1,0 +1,27 @@
+Correct Health Trial 2 Step 5 under the original restrictions.
+
+1. Use a consistent score across all five settings for the primary ranking.
+   You may use the adjusted partial-R² approach, provided each setting's
+   complete transformed feature block is removed together.
+   Keep Spearman and eta-squared as separately labeled descriptive evidence;
+   do not directly rank their raw values against each other.
+
+2. Map transformed columns reliably to their original settings.
+   Include associated missing indicators in each numeric setting's block.
+   Handle all-missing numeric columns explicitly rather than assuming fixed
+   transformed column positions.
+
+3. Report signed Spearman correlation as well as its magnitude for numeric
+   settings. For criterion, report per-level MRE counts and summaries.
+
+4. Add tests covering mixed categorical/numeric ranking, missing indicators,
+   all-missing columns, and independently checked score calculations.
+   Preserve all earlier regression tests.
+
+Preserve existing logs. Capture corrected tests and demonstration directly
+into new attempt-labeled files.
+Update actual metrics, calculating new_loc against Step 4.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+
+Write only inside the existing Health trial2/step05 directory.

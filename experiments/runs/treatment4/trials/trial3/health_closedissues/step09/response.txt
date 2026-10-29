@@ -1,0 +1,12 @@
+Implemented Step 9 in the requested output directory.
+
+The accumulated Step 8 source and tests were copied unchanged, and source/spot.py plus tests/test_spot.py were added. The screen uses a robust median/MAD score, threshold 3.5, references including the assessed record, explicit undefined/null handling, preserved record identifiers, separate unique-record and per-outcome counts, and JSON-safe output. Flags are investigation candidates only and the screen is marginal rather than configuration-conditioned.
+
+Verification: 31 tests passed. The real-dataset demonstration completed successfully in 0.19 seconds real time, measured with /usr/bin/time -p. The three wrapper/interpreter failures from repaired attempts are retained in the attempt logs and counted in metrics.csv.
+
+Run:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step09"
+python3 -m pytest -q
+python3 source/spot.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Known limitations: no verified error labels are available; missing/non-finite values are not scored; zero robust scale makes non-median scores undefined/unbounded; the marginal screen can flag legitimate configuration differences; CSVs without an explicit record_id use the zero-based row index.

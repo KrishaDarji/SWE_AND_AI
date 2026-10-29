@@ -1,0 +1,51 @@
+{
+  "definitions": {
+    "candidate": "absolute_error",
+    "confidence_level": 0.95,
+    "difference": "candidate minus reference",
+    "lower_is_better": true,
+    "primary": "MRE-",
+    "reference": "squared_error",
+    "test": "two-sided Welch unequal-variance"
+  },
+  "groups": {
+    "candidate_count": 3302,
+    "candidate_mean": 0.7508694690284082,
+    "reference_count": 3363,
+    "reference_mean": 0.6737202958486018
+  },
+  "interpretation": "Negative differences favor the candidate; configurations are different observations, not repeated measurements, and other settings may confound differences. No causal effect, repeated-run noise estimate, or guaranteed gain is claimed.",
+  "practical_importance": "undetermined: no threshold supplied",
+  "practical_threshold": null,
+  "primary": {
+    "ci95": [
+      0.06718485038290585,
+      0.08711349597670696
+    ],
+    "degrees_of_freedom": 6661.6898268289115,
+    "difference": 0.07714917317980641,
+    "p_value_two_sided": 3.532519491044834e-51,
+    "standard_error": 0.00508300788171081,
+    "t_statistic": 15.177858263292713,
+    "zero_variance": false
+  },
+  "secondary": {
+    "ACC+": {
+      "candidate_count": 3302,
+      "candidate_mean": 0.47779311364779153,
+      "candidate_minus_reference": -0.031031312750314344,
+      "reference_count": 3363,
+      "reference_mean": 0.5088244263981059
+    },
+    "PRED40+": {
+      "candidate_count": 3302,
+      "candidate_mean": 0.12667647313316602,
+      "candidate_minus_reference": -0.05351978021206147,
+      "reference_count": 3363,
+      "reference_mean": 0.1801962533452275
+    }
+  }
+}
+real 0.35
+user 0.30
+sys 0.05

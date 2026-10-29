@@ -1,0 +1,10 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step10
+
+Run the complete suite:
+python3 -m unittest discover -s tests -v
+
+Run the comparison:
+/usr/bin/time -p python3 run_comparison.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+The implementation is source/summarize_x264.py. The dataset path must remain quoted because it contains spaces.

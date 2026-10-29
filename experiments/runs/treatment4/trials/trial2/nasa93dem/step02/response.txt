@@ -1,0 +1,7 @@
+Corrected Step 2 in source/nasa93_summary.py without modifying Step 1.
+
+The pipeline excludes X-suffix metadata and Kloc+, Effort-, and Defects-, treats all 22 descriptors as categorical, encodes missing values as an explicit <MISSING> category, ignores unseen categories with OneHotEncoder(handle_unknown="ignore"), and uses GroupShuffleSplit(test_size=0.25, random_state=42). The corrected suite has 10 passing tests, including outcome isolation and explicit missing-category behavior.
+
+Measured evaluation: 68 training projects, 25 held out; held-out MAE 583.2809735550276; training-mean baseline MAE 674.0317647058823. A separate final model fitted on all historical data produced proposal prediction 412.7515170767638. Run from the Step 2 directory with ./run_tests.sh, then /usr/bin/time -p python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv".
+
+The correction demonstration took 0.97 seconds real. total_loc is 132 and new_loc is 50. Raw outputs are preserved in attempt-labeled log files. Three new attempts had one failure each before the final pass. Historical error_count 13 remains uncertain because prior logs were summarized; the recorded total is therefore 16.

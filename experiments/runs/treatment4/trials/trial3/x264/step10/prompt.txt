@@ -1,0 +1,132 @@
+You are running Treatment 4, Trial 3, Dataset 1, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: race
+- Current requirement: Compare our tuner against a baseline search strategy.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/config/X264_AllMeasurements.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/x264/step09/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/x264/step09/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/x264/step10/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 9 implementation where appropriate.
+Copy accumulated source and tests into Step 10, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 X264 Step 9 source and tests.
+- Files created in the current Step 10 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other trials, datasets, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Compare the existing Step 7 selector against uniform random search
+  without replacement.
+- Reuse choose_configuration unchanged; do not upgrade or replace its strategy.
+- Inspect and disclose its strategy: it shuffles unique candidates randomly.
+- If the strategies are equivalent, report that fact. Identical results are valid;
+  do not introduce differences merely to produce a winner.
+- Use budget 20 for each strategy and seeds 42 through 51.
+- Give each strategy a fresh counted evaluation callback for every seed.
+- Keep candidate order, deduplication rules, available information, and budgets equal.
+- Permit selection access only to settings and outcomes revealed by callback calls.
+- Freeze recommendations before any retrospective full-dataset audit.
+- Report each seed, evaluation order, budget used, recommended configuration,
+  measured Performance-, and optional retrospective gap.
+- Define difference as retained-selector Performance- minus baseline Performance-.
+  Negative beyond tolerance means selector win; positive means selector loss.
+- Fix tie tolerance before examining results and report paired arithmetic,
+  descriptive wins/ties/losses, and summary differences.
+- Do not claim statistical superiority or invent the project's final "same"
+  procedure. Mark that analysis pending if unavailable.
+- These seeded repetitions are benchmark repeats, not independent LLM trials.
+- Treat lower Performance- as better; do not invent units or quality measures.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test equal budgets, fresh callbacks, reproducibility, hidden-outcome isolation,
+duplicate prevention, paired arithmetic, known win/loss/tie cases,
+and unchanged reuse of the existing selector.
+Allow equivalent strategies to return identical results.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify all artifacts and cross-check every numerical claim.
+- Specify the working directory and valid quoted paths in run instructions.
+
+Run tests and the search-comparison demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 10
+- treatment: 4
+- trial: 3
+- domain: video encoding
+- skill: race
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with Trial 3 Step 9,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the comparison
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure metrics agree with source differences and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 X264 Step 10 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

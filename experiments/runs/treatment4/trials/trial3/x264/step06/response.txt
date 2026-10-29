@@ -1,0 +1,13 @@
+Implemented Step 6 justification in [source/summarize_x264.py](source/summarize_x264.py), preserving the accumulated Step 5 source and tests.
+
+The recommendation is retrospective dataset evidence: CSV record 70, with the complete observed configuration and Performance- 244.23. It is compared with the named historical reference, the first CSV record (record 0, Performance- 268.72): recommended minus reference is -24.49. Lower Performance- is better; ties select the earliest CSV record. The output labels measured evidence and states that associations do not establish the effect of changing a setting, correlated settings can share explanatory information, and future performance or statistical superiority is not guaranteed.
+
+The suite has 20 passing tests, including regression coverage and synthetic tests for recommendation selection, tie-breaking, reference arithmetic, evidence labels, missing/non-finite values, and no usable records. The demonstration runtime was measured with /usr/bin/time -p: real 0.78 seconds. No unexpected errors occurred.
+
+Run tests with:
+python3 -m unittest discover -s 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step06/tests' -v
+
+Run the demonstration with:
+/usr/bin/time -p python3 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step06/source/summarize_x264.py' 'SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --justify
+
+Known limitations: this is observational, retrospective evidence from finite CSV records; it does not estimate causal effects, guarantee future results, or claim statistical superiority. Invalid/non-finite outcomes are excluded, and a non-finite first record produces no arithmetic comparison.

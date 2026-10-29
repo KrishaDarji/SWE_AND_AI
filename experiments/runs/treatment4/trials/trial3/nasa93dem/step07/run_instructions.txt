@@ -1,0 +1,3 @@
+Run from this directory:
+PYTHONPATH=. python3 -m pytest -q tests
+PYTHONPATH=. /usr/bin/time -p python3 source/nasa93_choose.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --budget 100

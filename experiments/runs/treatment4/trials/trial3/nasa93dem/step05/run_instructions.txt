@@ -1,0 +1,7 @@
+From the Step 5 directory, run:
+
+PYTHONPATH=. python3 source/nasa93_blame.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Run the complete regression suite:
+
+PYTHONPATH=. python3 -m unittest discover -s tests -v

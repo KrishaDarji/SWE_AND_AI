@@ -1,0 +1,96 @@
+{
+  "excluded_outcomes": [
+    "ACC+",
+    "MRE-",
+    "PRED40+"
+  ],
+  "method": "marginal variance explained; r^2 for numeric and eta^2 for categorical",
+  "outcome": {
+    "direction": "minimize",
+    "max": 1.0,
+    "mean": 0.70909397643463,
+    "min": 0.0,
+    "name": "MRE-",
+    "valid_count": 10000
+  },
+  "settings": [
+    {
+      "direction": 0.027998036866062528,
+      "observed": {
+        "max": 20.0,
+        "min": 1.0
+      },
+      "rank": 1,
+      "score": 0.6454969275826465,
+      "setting": "Min_sample_leaves",
+      "type": "numeric",
+      "valid_count": 10000
+    },
+    {
+      "direction": null,
+      "groups": {
+        "absolute_error": {
+          "count": 3302,
+          "mean_mre": 0.7508694690284082
+        },
+        "poisson": {
+          "count": 3335,
+          "mean_mre": 0.7034025255399244
+        },
+        "squared_error": {
+          "count": 3363,
+          "mean_mre": 0.6737202958486018
+        }
+      },
+      "observed": {
+        "absolute_error": 0.7508694690284082,
+        "poisson": 0.7034025255399244,
+        "squared_error": 0.6737202958486018
+      },
+      "rank": 2,
+      "score": 0.024851322742382987,
+      "setting": "criterion",
+      "type": "categorical",
+      "valid_count": 10000
+    },
+    {
+      "direction": 0.0046215158797540306,
+      "observed": {
+        "max": 10.0,
+        "min": 0.0
+      },
+      "rank": 3,
+      "score": 0.004573946739134682,
+      "setting": "Min_impurity_decrease",
+      "type": "numeric",
+      "valid_count": 10000
+    },
+    {
+      "direction": 0.000270709820671095,
+      "observed": {
+        "max": 20.0,
+        "min": 1.0
+      },
+      "rank": 4,
+      "score": 5.983024783928278e-05,
+      "setting": "Max_depth",
+      "type": "numeric",
+      "valid_count": 10000
+    },
+    {
+      "direction": -2.2439805282919465e-05,
+      "observed": {
+        "max": 200.0,
+        "min": 10.0
+      },
+      "rank": 5,
+      "score": 4.052339105138465e-05,
+      "setting": "N_estimators",
+      "type": "numeric",
+      "valid_count": 10000
+    }
+  ]
+}
+real 0.08
+user 0.07
+sys 0.01

@@ -1,0 +1,43 @@
+{
+  "historical_comparison": {
+    "historical_reference": "first CSV record",
+    "lower_is_better": true,
+    "recommended_minus_reference": -24.490000000000038,
+    "reference_minus_recommended": 24.490000000000038,
+    "reference_performance": 268.72,
+    "reference_record_id": 0
+  },
+  "interpretation": "Retrospective dataset evidence only; it does not guarantee future performance or establish statistical superiority. Associations do not establish the effect of changing a setting, and correlated settings can share explanatory information.",
+  "invalid_or_nonfinite_outcome_count": 0,
+  "outcome": {
+    "direction": "lower is better",
+    "name": "Performance-"
+  },
+  "recommendation": {
+    "configuration": {
+      "no_8x8dct": "1",
+      "no_asm": "1",
+      "no_cabac": "1",
+      "no_deblock": "1",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    },
+    "evidence_label": "measured observed dataset record",
+    "performance": 244.23,
+    "record_id": 70
+  },
+  "usable_record_count": 1152
+}
+real 0.78
+user 0.67
+sys 0.10

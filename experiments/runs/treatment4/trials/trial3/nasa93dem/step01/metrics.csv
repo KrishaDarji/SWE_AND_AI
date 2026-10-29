@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,3,software project estimation,remember,80,80,1,0.66,2,"2 tests; /usr/bin/time -p real; blank/non-finite missing; X-suffix metadata excluded; LOC independently verified as nonblank, noncomment implementation lines including docstrings; no rerun"

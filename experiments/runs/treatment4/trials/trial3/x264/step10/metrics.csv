@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,4,3,video encoding,race,589,69,1,0.95,1,"34 tests; unchanged choose_configuration reuse; /usr/bin/time -p real; equivalent strategies; one repaired shell-wrapper failure recorded"

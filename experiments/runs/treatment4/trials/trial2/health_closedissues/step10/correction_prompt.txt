@@ -1,0 +1,23 @@
+Correct Health Trial 2 Step 10 under the original restrictions.
+
+1. Keep the difference defined as baseline MRE- minus selector MRE-.
+   Label its direction explicitly:
+   - Positive beyond tolerance: selector win.
+   - Negative beyond tolerance: selector loss.
+   - Within tolerance: tie.
+   Fix wins/losses and the response interpretation accordingly.
+
+2. Add synthetic tests with a known selector win, loss, and tie.
+   Independently verify the sign convention rather than mirroring the code.
+
+3. Reuse choose._cap for baseline eligibility validation so both paths reject
+   non-finite caps consistently, including positive infinity.
+
+Preserve the existing selector unchanged and retain previous logs.
+Capture corrected tests and demonstration into new attempt-labeled files.
+Update actual metrics, calculating new_loc against Step 9.
+Cross-check every numerical claim against the corrected output.
+
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+Write only inside the existing Health trial2/step10 directory.

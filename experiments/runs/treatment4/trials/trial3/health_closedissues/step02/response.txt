@@ -1,0 +1,10 @@
+Implemented Step 2 in `experiments/runs/treatment4/trials/trial3/health_closedissues/step02/`.
+
+Source includes the accumulated Step 1 `summarize(path)` interface and `quality_predict.py`. The predictor uses only the five configuration settings, treats `criterion` categorically, imputes numeric missing/non-finite values, uses a normalized categorical missing marker, ignores unseen criteria, groups identical normalized configurations, and evaluates with `GroupShuffleSplit(test_size=0.2, random_state=42)`. It reports held-out MAE and a separate training-mean baseline for MRE- and ACC+, and supports proposal prediction through `fit_and_predict`.
+
+The suite has 9 passing tests covering Step 1 regression, outcome exclusion, grouping, reproducibility, missing settings, unseen criteria, preprocessing, invalid targets, insufficient data, and proposal prediction. The measured dataset evaluation used 8,000 training and 2,000 held-out rows: MRE- MAE 0.09641630963477062 versus baseline 0.16738763880480406; ACC+ MAE 0.052652367161534694 versus baseline 0.08987054341675894. Proposal prediction was MRE- 0.4443566487546201 and ACC+ 0.6283862002462115. Runtime was 0.82 seconds using `/usr/bin/time -p`.
+
+Run with:
+`python3 -m unittest discover -s 'experiments/runs/treatment4/trials/trial3/health_closedissues/step02/tests' -v`
+
+Known limitations: Ridge predictions are estimates, no metric formula/range/unit/cost is inferred, and final all-history proposal fitting is distinct from held-out evaluation. Non-finite targets are excluded per target; an evaluation with no valid training target or fewer than two rows raises `ValueError`.

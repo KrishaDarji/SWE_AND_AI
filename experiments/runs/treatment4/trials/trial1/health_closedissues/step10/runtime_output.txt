@@ -1,0 +1,17 @@
+All commands use current python3/scikit-learn 1.6.0; no packages installed.
+Input checks: working directory and allowed inputs present. Output directory absent before creation (expected). Initial rg returned 1 for no AGENTS.md matches (normal no-match status); neither was a failed execution attempt.
+tests: 48.797905125 seconds; exit 1; output test_output.txt
+step10_demo: 1.065267334 seconds; exit 0; output race_demo_output.txt
+regression_summarize: 0.731648291 seconds; exit 0; output regression_summarize_output.txt
+regression_guess: 2.444400417 seconds; exit 0; output regression_guess_output.txt
+regression_certify: 0.702511583 seconds; exit 0; output regression_certify_output.txt
+regression_blame: 1.328054750 seconds; exit 0; output regression_blame_output.txt
+regression_spot: 1.447454291 seconds; exit 0; output regression_spot_output.txt
+regression_justify: 1.280130459 seconds; exit 0; output regression_justify_output.txt
+regression_choose: 1.025828667 seconds; exit 0; output regression_choose_output.txt
+regression_fix: 1.060269792 seconds; exit 0; output regression_fix_output.txt
+regression_flow: 1.804913000 seconds; exit 0; output regression_flow_output.txt
+Preserved failure: initial unittest run had one missing example_configuration.json fixture (98/99 passed). Measurement wrapper exit 1 propagated that same failure, counted once. See test_output_attempt1.txt, metrics_attempt1.csv and measurement_attempt1.json.
+Additional operational failure: premature tail of test_output.txt before capture completed: tail: test_output.txt: No such file or directory. Switched to existence-checked progress reads; no application impact. Counted once.
+Repair: generated example_configuration.json from an explicit valid illustrative configuration inside Step 10; no prior artifact was read. Preserved tests/source unchanged.
+tests_after_fixture_repair: 49.996072125 seconds; exit 0; test_output.txt. No demo reruns: all original demos passed.

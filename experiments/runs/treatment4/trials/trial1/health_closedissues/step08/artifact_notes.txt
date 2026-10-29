@@ -1,0 +1,31 @@
+Scope and preservation
+Only Step 8 output files were written. No dataset or Step 7 file was modified.
+The seven Step 7 source modules and seven test modules are copied byte-for-byte.
+The original test_guess.py expects example_configuration.json beside source/;
+that fixture was not among the allowed previous inputs. It was newly generated
+from the supplied Health CSV data row 1, without inspecting any previous fixture.
+The initial full suite failed on that missing fixture (79/80 passed). The failure
+and initial measurements are retained as initial_test_output.txt,
+initial_measurement_output.txt, initial_metrics.csv and initial_runtime_output.txt.
+The fixture was then added and the full suite and all demos rerun.
+measurement_attempts.jsonl retains subprocess commands, exit codes and timings.
+Unexpected failed subprocess attempts count once, without counting the wrapper
+exit that reports the same failure again. Expected invalid-input tests and
+expected absent-directory/search probes are excluded from error_count.
+The initial standalone Step 8 suite passed 11/11; see step08_initial_tests.txt.
+
+Interpretation
+Cost is the number of unequal normalized settings, regardless of numeric
+magnitude, without categorical ordering or measured operational costs.
+Rows are observations; duplicates remain separate and may yield cost zero.
+Missing settings or MRE exclude a candidate, with overlapping reason counts.
+Missing ACC or PRED40 does not exclude a candidate and remains explicit null.
+The baseline requires all settings and observed MRE, but not secondary metrics.
+Finite numeric floats and trimmed categorical strings reuse previous validation;
+there is no newly inferred estimator parameter domain or metric formula.
+Strict improvement and tie equality use exact normalized floating comparisons.
+The baseline and all other rows are searched without an estimator cap.
+No independent validation, intervention, prediction, or repeatability claim is made.
+Preserved earlier demos retain their original behavior, including their own
+assumptions and limitations; Step 8 does not use their predictions or inference.
+All test temporary directories in the full run were kept inside Step 8.

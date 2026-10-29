@@ -1,0 +1,3 @@
+Run from the repository root:
+python3 -m unittest discover -s 'experiments/runs/treatment4/trials/trial3/health_closedissues/step02/tests' -v
+python3 -c "import sys; sys.path.insert(0, 'experiments/runs/treatment4/trials/trial3/health_closedissues/step02/source'); from quality_predict import evaluate; print(evaluate('moot/optimize/hpo/Health-ClosedIssues0000.csv'))"

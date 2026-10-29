@@ -1,0 +1,10 @@
+Final demonstration attempt: runtime_attempt01.stdout
+Captured stdout is the complete JSON summary in runtime_attempt01.stdout.
+
+Final demonstration attempt: runtime_attempt01.stderr
+Captured stderr:
+real 0.64
+user 0.53
+sys 0.09
+
+Exit code: 0 (runtime_attempt01.exit)

@@ -1,0 +1,20 @@
+test_direction_and_counts (test_nasa93_certify.CertifyTests.test_direction_and_counts) ... ok
+test_missing_insufficient_zero_variance_and_invalid_threshold (test_nasa93_certify.CertifyTests.test_missing_insufficient_zero_variance_and_invalid_threshold) ... ok
+test_threshold_crossing_and_no_significance_required (test_nasa93_certify.CertifyTests.test_threshold_crossing_and_no_significance_required) ... ok
+test_welch_arithmetic_and_negative_direction (test_nasa93_certify.CertifyTests.test_welch_arithmetic_and_negative_direction) ... ok
+test_actual_missing_training_value_and_target_filter (test_nasa93_effort.EffortTests.test_actual_missing_training_value_and_target_filter) ... ok
+test_excludes_metadata_and_outcomes_and_keeps_step1 (test_nasa93_effort.EffortTests.test_excludes_metadata_and_outcomes_and_keeps_step1) ... ok
+test_group_split_reproducible_and_missing_unseen_proposal (test_nasa93_effort.EffortTests.test_group_split_reproducible_and_missing_unseen_proposal) ... ok
+test_held_out_outcomes_do_not_change_training_or_baseline (test_nasa93_effort.EffortTests.test_held_out_outcomes_do_not_change_training_or_baseline) ... ok
+test_identical_descriptors_cannot_cross_boundary (test_nasa93_effort.EffortTests.test_identical_descriptors_cannot_cross_boundary) ... ok
+test_empty_short_and_invalid_effort (test_nasa93_flow.FlowTests.test_empty_short_and_invalid_effort) ... ok
+test_future_outcomes_and_records_do_not_change_current_prediction (test_nasa93_flow.FlowTests.test_future_outcomes_and_records_do_not_change_current_prediction) ... ok
+test_missing_and_unseen_descriptors (test_nasa93_flow.FlowTests.test_missing_and_unseen_descriptors) ... ok
+test_warmup_and_cumulative_arithmetic (test_nasa93_flow.FlowTests.test_warmup_and_cumulative_arithmetic) ... ok
+test_all_required_behaviors (test_nasa93_summary.SummaryTests.test_all_required_behaviors) ... ok
+test_empty_input (test_nasa93_summary.SummaryTests.test_empty_input) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.025s
+
+OK

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,4,1,health_closedissues,spot,1410,165,1,1.364352500,3,"passed/total=90/90; test_seconds=38.788703167; regression_demo_seconds=10.548652416; runtime_seconds is Step 9 subprocess only; historical unexpected failures=3 (preliminary assertion, diagnostic read, missing fixture); see step09_preliminary_tests.txt and repair_log.txt; all previous source/tests copied byte-for-byte; no residual prediction; seed not applicable; display limit 10 does not affect threshold 3.5"

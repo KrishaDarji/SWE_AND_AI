@@ -1,0 +1,119 @@
+You are running Treatment 4, Trial 2, Dataset 2, Step 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: certify
+- Current requirement: Tell us whether one process is genuinely less costly than another.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step02/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step02/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step03/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 2 implementation where appropriate.
+Copy accumulated source and tests into Step 3, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed NASA93 Step 2 source and tests.
+- Files created in the current Step 3 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Compare observed Effort- between projects with tool=n and tool=h.
+- Fix this comparison before inspecting outcomes; do not search for significance.
+- Report group definitions, sample sizes, means, mean difference, a 95%
+  confidence interval, and a two-sided Welch unequal-variance test.
+- Compute the interval using Welch–Satterthwaite degrees of freedom.
+- Accept a nonnegative user-supplied practical-effect threshold.
+- For the demonstration only, use 10% of the tool=n mean effort and clearly
+  label this as an illustrative threshold, not a client requirement.
+- Separate statistical evidence of a difference from zero, whether the point
+  estimate exceeds the threshold, and whether the entire interval exceeds it.
+- An interval crossing the practical threshold leaves practical importance
+  uncertain. Failure to detect a difference does not establish equivalence.
+- Effort- is an observed effort measure, not verified monetary cost.
+- Discuss skew, small or imbalanced groups, and differences in project scope.
+  These observational comparisons do not establish a causal process effect.
+- Do not invent units or claim repeated-run measurement noise.
+- Handle missing outcomes, insufficient groups, and zero-variance inputs explicitly.
+- Preserve earlier summary and prediction interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test group selection, difference direction, unequal-variance intervals,
+insufficient data, zero variance, and practical-threshold interpretation.
+Include a case where the point estimate exceeds the threshold but its interval
+crosses that threshold. Do not require significance for tests to pass.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve every failed attempt and final successful output with attempt labels.
+- Do not substitute summaries for execution logs or reconstruct missing output.
+- Verify the complete prompt and all required artifacts are saved correctly.
+- Ensure run instructions specify the working directory and valid quoted paths.
+
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: software project estimation
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 2,
+  excluding blank and comment-only lines; not net growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Do not substitute an internal timer.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure the error count agrees with the preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified NASA93 Step 3 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

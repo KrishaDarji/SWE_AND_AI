@@ -1,0 +1,7 @@
+Implemented Step 8 in the new output directory.
+
+The implementation adds `repair_proposal` and the `--repair` demonstration. It reuses the Step 7 grouped split and training-fitted RandomForest pipeline, uses the earliest held-out record with budget 100, searches distinct descriptor configurations from training rows only, and ranks feasible repairs by changed-field count, predicted effort, and earliest training CSV record.
+
+Verification: 28 tests passed; demonstration runtime was 1.03 seconds (`/usr/bin/time -p` real); error count was 0. The demonstration found a repair with predicted effort 58.3455 and six changed fields.
+
+Known limitations: change count is only a proxy for effort or operational risk; candidates are hypothetical observed combinations and may not be actionable or preserve scope; model differences are not causal improvements or guaranteed savings; held-out outcomes are not used to choose repairs.

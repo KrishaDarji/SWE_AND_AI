@@ -1,0 +1,10 @@
+Steps 1–8 complete test suite: exit=0, wall=34.682749s
+Preserved demo summarize: exit=0, wall=0.712208s
+Preserved demo guess: exit=0, wall=2.396794s
+Preserved demo certify: exit=0, wall=0.695008s
+Preserved demo flow: exit=0, wall=1.584891s
+Preserved demo blame: exit=0, wall=1.055742s
+Preserved demo justify: exit=0, wall=1.159918s
+Preserved demo choose: exit=0, wall=0.905782s
+Step 8 baseline data row 1: exit=0, wall=0.879695s
+{"total_loc": 1245, "new_loc": 116, "passed": 80, "total": 80, "error_count": 1, "demo_wall_seconds": 0.8796946670627221}

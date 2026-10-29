@@ -1,0 +1,53 @@
+{
+  "ACC+": {
+    "best_configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "3",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "best_record_id": 7555,
+    "best_value": 1.0,
+    "direction": "maximize",
+    "mean": 0.49593851329765815,
+    "outcome": "ACC+",
+    "sample_variance": 0.01148161945341333,
+    "valid_count": 10000
+  },
+  "MRE-": {
+    "best_configuration": {
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "best_record_id": 31,
+    "best_value": 0.0,
+    "direction": "minimize",
+    "mean": 0.7090939764346323,
+    "outcome": "MRE-",
+    "sample_variance": 0.04056030922815965,
+    "valid_count": 10000
+  },
+  "PRED40+": {
+    "best_configuration": {
+      "Max_depth": "19",
+      "Min_impurity_decrease": "0.25",
+      "Min_sample_leaves": "1",
+      "N_estimators": "40",
+      "criterion": "squared_error"
+    },
+    "best_record_id": 13,
+    "best_value": 1.0,
+    "direction": "maximize",
+    "mean": 0.14684285714285772,
+    "outcome": "PRED40+",
+    "sample_variance": 0.07096876197823884,
+    "valid_count": 10000
+  }
+}
+real 0.16
+user 0.15
+sys 0.00

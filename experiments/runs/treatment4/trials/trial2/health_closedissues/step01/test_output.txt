@@ -1,0 +1,10 @@
+test_empty_input (test_summarizer.SummarizerTests.test_empty_input) ... ok
+test_missing_duplicates_and_repeated_configurations (test_summarizer.SummarizerTests.test_missing_duplicates_and_repeated_configurations) ... ok
+test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+
+command_exit=0

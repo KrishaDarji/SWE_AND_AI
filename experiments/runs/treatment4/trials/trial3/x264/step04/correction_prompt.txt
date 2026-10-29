@@ -1,0 +1,19 @@
+Correct Trial 3 X264 Step 4's demonstration.
+
+The saved command invokes main(), which calls summarize(), so runtime_output.txt
+contains a batch summary rather than benchmark_csv() flow results.
+
+- Add a separate flow demonstration runner outside source/, or a --flow option
+  preserving existing CLI behavior.
+- Consume benchmark_csv() and report snapshot count plus the final snapshot,
+  including count, mean, sample variance, best value, identifier, and configuration.
+- Run the flow demonstration with /usr/bin/time -p and directly capture stdout
+  and stderr into a new attempt file.
+- Preserve the previous output, labeling it as the summarizer demonstration.
+- Update runtime_seconds using the actual flow subprocess timing.
+- Recalculate LOC only if implementation source changes.
+- Update run_instructions.txt and response.txt to reference the correct command.
+
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Do not modify previous steps.
+Write only inside the existing Trial 3 X264 step04 directory.

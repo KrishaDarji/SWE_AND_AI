@@ -1,0 +1,95 @@
+Implemented Treatment 4, Trial 1, Health Step 8.
+
+Complete application code is supplied in source/:
+  summarize.py, guess.py, certify.py, flow.py, blame.py, justify.py, choose.py,
+  fix.py (new reusable recorded repair search).
+Complete tests are supplied in tests/:
+  all seven preserved test modules plus test_fix.py (11 new tests).
+The seven prior source files and seven test files are byte-identical to the
+allowed Step 7 copies. Loading/schema, normalization, objective differences
+and record rendering are reused. No previous saved recommendation was read.
+
+Reusable APIs:
+  fix.repair(dataset, baseline_row)
+  fix.repair_rows(rows, baseline_row)
+Both require a one-based baseline data-row number. The CLI accepts a dataset
+path and --baseline-row. Baseline settings and MRE must be present. Incomplete
+candidate settings or MRE are excluded; secondary objectives may be null.
+
+Recorded demo (baseline data row 1):
+  Baseline settings: {"N_estimators": 40.0, "criterion": "squared_error", "Min_sample_leaves": 3.0, "Min_impurity_decrease": 2.75, "Max_depth": 10.0}
+  Baseline objectives: {"MRE-": 0.3148748159057436, "ACC+": 0.7276513937840435, "PRED40+": 0.5714285714285714}
+  Recommended data row: 1945
+  Recommended settings: {"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 3.0, "Min_impurity_decrease": 5.0, "Max_depth": 10.0}
+  Recommended objectives: {"MRE-": 0.2673048600883652, "ACC+": 0.6619673181672541, "PRED40+": 0.5714285714285714}
+  Changed fields: [{"field": "N_estimators", "old": 40.0, "new": 10.0}, {"field": "Min_impurity_decrease", "old": 2.75, "new": 5.0}]
+  Change cost: 2
+  Observed MRE reduction (baseline minus recommendation): 0.04756995581737844
+  ACC difference (recommendation minus baseline): -0.06568407561678946
+  PRED40 difference (recommendation minus baseline): 0.0
+ACC is worse in this observation; PRED40 is equal. No claim that all objectives
+improve is made. Complete machine-readable evidence is in repair.json, with
+identical report content printed in runtime_output.txt.
+
+Scope: all 10000 CSV records, no estimator cap;
+10000 complete settings/MRE records,
+0 excluded and 736 strictly improving records.
+Rule: Among complete settings with observed MRE- strictly below baseline, minimize differing normalized configuration fields, then lower MRE-, then earlier one-based CSV data-row number. Exact normalized equality; secondary objectives do not break ties.
+Tie audit: {"minimum_change_cost": 2, "minimum_cost_count": 6, "lowest_MRE_at_minimum_cost": 0.2673048600883652, "final_tied_row_ids": [1945]}
+The baseline is included in counts but cannot strictly improve on itself.
+No cost-zero or cost-one strictly improving candidate exists in this demo.
+
+Validation and measurements:
+  Entire suite: 80/80 passed (69 preserved + 11 new).
+  Independent exhaustive real-CSV and generated-grid calculations verify cost
+  minimality and exact selected rows. Tests also cover tie rules, accurate
+  changed fields, strict improvement, no improvement, duplicate settings,
+  zero cost, missing values, normalization, invalid baseline rows and CLI errors.
+  Preserved Steps 1–7 demos and Step 8 demo all exited successfully.
+  Step 8 demo subprocess wall time only: 0.879694667 seconds.
+  Full-suite subprocess wall time: 34.682748584 seconds.
+  Regression-demo subprocess timings: {"blame": 1.0557424169965088, "certify": 0.6950076250359416, "choose": 0.9057817501015961, "flow": 1.5848911670036614, "guess": 2.3967944169417024, "justify": 1.1599182499339804, "summarize": 0.7122082080459222}
+  Application LOC: 1245; added application LOC: 116.
+  LOC includes nonblank, non-comment-only source Python lines and docstrings;
+  added LOC uses insert/replace new-side lines against Step 7, not net growth.
+  Tests and the measurement runner are excluded.
+  test_pass=1; error_count=1.
+
+One unexpected full-suite subprocess attempt initially failed: the preserved
+Step 2 test required example_configuration.json outside its copied tests folder.
+The missing fixture was generated from dataset row 1 inside Step 8; no old
+fixture was inspected and no preserved source or test was changed. The initial
+79/80 result, traceback and measurements remain in initial_* files. The final
+80/80 result is in test_output.txt. measurement_attempts.jsonl retains both
+attempts, commands, return codes and timings. error_count retains the one
+unexpected failure, with no double-counting of the wrapper exit reporting it.
+Expected negative-test failures are excluded.
+
+Run from:
+  cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step08'
+Tests:
+  mkdir -p tmp
+  TMPDIR="$PWD/tmp" PYTHONDONTWRITEBYTECODE=1 python3 -B -m unittest discover -s tests -v
+Implementation:
+  python3 -B source/fix.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --baseline-row 1 --output repair.json
+All tests/demos/measurements:
+  python3 -B measure.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Exact commands are also saved in run_instructions.txt. Use the existing python3
+with scikit-learn 1.6.0; no packages were installed or versions changed.
+
+Assumptions and limitations:
+Change cost counts unequal normalized fields as a proxy for change size, not
+measured intervention cost. Numeric magnitude does not change cost, and there
+is no categorical ordering. Floats compare exactly after existing finite-number
+normalization and categorical whitespace trimming. Row numbers are record
+positions, not time. Repeated settings are separate observations. If identical
+settings have a lower recorded MRE, cost zero explicitly identifies no setting
+change. Missing secondary outcomes remain null, including unavailable deltas.
+Invalid baselines raise ValueError (CLI exit 2); no improvement returns explicit
+status no_improving_candidate, no recommendation and null cost/reduction.
+Selection optimism and selective missingness limit interpretation. No unseen
+configuration, causal inference, repeatability, statistical certification,
+independent validation, invented metric formula, compute cost or deployment
+guarantee is supplied. Finite recorded values are not an estimator constructor
+contract. Extreme arithmetic that cannot serialize as finite JSON is rejected.
+All outputs are inside Step 8. Dataset and Step 7 files were not modified.

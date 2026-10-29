@@ -1,0 +1,38 @@
+{
+  "comparison": {
+    "A": {
+      "mean": 472.1355069444445,
+      "n": 576,
+      "no_8x8dct": 0
+    },
+    "B": {
+      "mean": 451.37168576388893,
+      "n": 576,
+      "no_8x8dct": 1
+    },
+    "lower_is_better": true,
+    "outcome": "Performance-"
+  },
+  "limitations": [
+    "Rows are different configurations, not repeated-run measurements; configuration variation cannot establish measurement noise or causal effects.",
+    "Failure to detect a difference does not establish equivalence."
+  ],
+  "mean_difference_A_minus_B": 20.763821180555567,
+  "practical_effect": {
+    "entire_interval_exceeds_threshold": false,
+    "interpretation": "interval crosses the practical threshold; practical importance is uncertain",
+    "point_estimate_exceeds_threshold": true,
+    "threshold": 5.0,
+    "threshold_is_illustrative": true
+  },
+  "welch": {
+    "confidence_level": 0.95,
+    "df": 1149.2372777191688,
+    "interval_A_minus_B": [
+      1.9996990185387773,
+      39.52794334257236
+    ],
+    "p_value_two_sided": 0.030125862173739682,
+    "t": 2.1711245916071125
+  }
+}

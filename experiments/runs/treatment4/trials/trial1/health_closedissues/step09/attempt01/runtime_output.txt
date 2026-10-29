@@ -1,0 +1,656 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/spot.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv', '--output', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09/anomalies.json']
+{
+  "record_count": 10000,
+  "flagged_count": 2151,
+  "threshold": {
+    "value": 3.5,
+    "comparison": "strictly greater than",
+    "combination": "OR over scored objectives, equivalent to maximum > threshold",
+    "interpretation": "Heuristic exploratory distance cutoff; no estimated error rate and no fixed quota."
+  },
+  "displayed_findings": [
+    {
+      "row_id": 7556,
+      "configuration": {
+        "N_estimators": 10.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 3.0,
+        "Max_depth": 10.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.029749631811487497,
+        "ACC+": 1.0,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 12.542657952820068,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.029749631811487497,
+          "score": 7.6596675773195075,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.779381443298969,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 1.0,
+          "score": 12.542657952820068,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.5600768984299904,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.029749631811487497,
+            "max": 0.029749631811487497
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 1
+    },
+    {
+      "row_id": 7396,
+      "configuration": {
+        "N_estimators": 20.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 4.75,
+        "Max_depth": 16.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.22179675994108983,
+        "ACC+": 0.937840436,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 11.150623837622788,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.22179675994108983,
+          "score": 5.77225137912891,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.5873343151693666,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.937840436,
+          "score": 11.150623837622788,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.49791733442999037,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.22179675994108983,
+            "max": 0.22179675994108983
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.937840436,
+            "max": 0.937840436
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 2
+    },
+    {
+      "row_id": 2707,
+      "configuration": {
+        "N_estimators": 140.0,
+        "criterion": "poisson",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 3.5,
+        "Max_depth": 13.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.16715758468335787,
+        "ACC+": 0.9311118231336111,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 10.999939726357645,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.16715758468335787,
+          "score": 6.3092386563748555,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.6419734904270986,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.9311118231336111,
+          "score": 10.999939726357645,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.49118872156360144,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.16715758468335787,
+            "max": 0.16715758468335787
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.9311118231336111,
+            "max": 0.9311118231336111
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 3
+    },
+    {
+      "row_id": 7869,
+      "configuration": {
+        "N_estimators": 10.0,
+        "criterion": "poisson",
+        "Min_sample_leaves": 2.0,
+        "Min_impurity_decrease": 3.5,
+        "Max_depth": 7.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.24403534609720176,
+        "ACC+": 0.9240628,
+        "PRED40+": 0.8571428571428571
+      },
+      "anomaly_score": 10.842080178295154,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.24403534609720176,
+          "score": 5.553693215074631,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.5650957290132547,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.9240628,
+          "score": 10.842080178295154,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.48413969842999033,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 0.8571428571428571,
+          "score": 8.094,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.8571428571428571,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.24403534609720176,
+            "max": 0.24403534609720176
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.9240628,
+            "max": 0.9240628
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 0.8571428571428571,
+            "max": 0.8571428571428571
+          }
+        }
+      },
+      "rank": 4
+    },
+    {
+      "row_id": 3955,
+      "configuration": {
+        "N_estimators": 170.0,
+        "criterion": "poisson",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 3.25,
+        "Max_depth": 7.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.17334315169366715,
+        "ACC+": 0.8977891701377765,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 10.253694630766521,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.17334315169366715,
+          "score": 6.248447643856447,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.6357879234167894,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.8977891701377765,
+          "score": 10.253694630766521,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.45786606856776685,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.17334315169366715,
+            "max": 0.17334315169366715
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.8977891701377765,
+            "max": 0.8977891701377765
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 5
+    },
+    {
+      "row_id": 9917,
+      "configuration": {
+        "N_estimators": 40.0,
+        "criterion": "absolute_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 1.5,
+        "Max_depth": 7.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.085272459,
+        "ACC+": 0.8974687600128163,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 10.246519197155063,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.085272459,
+          "score": 7.113995874620493,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.7238586161104564,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.8974687600128163,
+          "score": 10.246519197155063,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.45754565844280665,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.085272459,
+            "max": 0.085272459
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.8974687600128163,
+            "max": 0.8974687600128163
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 6
+    },
+    {
+      "row_id": 2399,
+      "configuration": {
+        "N_estimators": 10.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 9.0,
+        "Max_depth": 18.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.1734904270986745,
+        "ACC+": 0.8958667093880167,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 10.210642029097801,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.1734904270986745,
+          "score": 6.247000238796485,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.635640648011782,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.8958667093880167,
+          "score": 10.210642029097801,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.4559436078180071,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.1734904270986745,
+            "max": 0.1734904270986745
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.8958667093880167,
+            "max": 0.8958667093880167
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 7
+    },
+    {
+      "row_id": 7022,
+      "configuration": {
+        "N_estimators": 10.0,
+        "criterion": "absolute_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 3.75,
+        "Max_depth": 14.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.24874815905743738,
+        "ACC+": 0.8958667093880167,
+        "PRED40+": 0.8571428571428571
+      },
+      "anomaly_score": 10.210642029097801,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.24874815905743738,
+          "score": 5.507376253155844,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.560382916053019,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.8958667093880167,
+          "score": 10.210642029097801,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.4559436078180071,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 0.8571428571428571,
+          "score": 8.094,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.8571428571428571,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.24874815905743738,
+            "max": 0.24874815905743738
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.8958667093880167,
+            "max": 0.8958667093880167
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 0.8571428571428571,
+            "max": 0.8571428571428571
+          }
+        }
+      },
+      "rank": 8
+    },
+    {
+      "row_id": 8446,
+      "configuration": {
+        "N_estimators": 120.0,
+        "criterion": "poisson",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 3.25,
+        "Max_depth": 14.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.1589101620029455,
+        "ACC+": 0.8949054790131368,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 10.18911572826344,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.1589101620029455,
+          "score": 6.390293339732733,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.650220913107511,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.8949054790131368,
+          "score": 10.18911572826344,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.45498237744312714,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.1589101620029455,
+            "max": 0.1589101620029455
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.8949054790131368,
+            "max": 0.8949054790131368
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 9
+    },
+    {
+      "row_id": 3698,
+      "configuration": {
+        "N_estimators": 80.0,
+        "criterion": "poisson",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 1.75,
+        "Max_depth": 3.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.13799705449189983,
+        "ACC+": 0.8926626081384171,
+        "PRED40+": 1.0
+      },
+      "anomaly_score": 10.138887692983268,
+      "crosses_threshold": true,
+      "supporting_evidence": {
+        "MRE-": {
+          "observed": 0.13799705449189983,
+          "score": 6.595824858247354,
+          "crosses_threshold": true,
+          "observed_minus_median": -0.6711340206185566,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "ACC+": {
+          "observed": 0.8926626081384171,
+          "score": 10.138887692983268,
+          "crosses_threshold": true,
+          "observed_minus_median": 0.4527395065684075,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        },
+        "PRED40+": {
+          "observed": 1.0,
+          "score": 9.443,
+          "crosses_threshold": true,
+          "observed_minus_median": 1.0,
+          "relation_to_median_in_objective_direction": "better",
+          "status": "scored"
+        }
+      },
+      "same_configuration_context": {
+        "record_count": 1,
+        "observed_objective_ranges": {
+          "MRE-": {
+            "observed_count": 1,
+            "min": 0.13799705449189983,
+            "max": 0.13799705449189983
+          },
+          "ACC+": {
+            "observed_count": 1,
+            "min": 0.8926626081384171,
+            "max": 0.8926626081384171
+          },
+          "PRED40+": {
+            "observed_count": 1,
+            "min": 1.0,
+            "max": 1.0
+          }
+        }
+      },
+      "rank": 10
+    }
+  ]
+}
+
+Exit status: 0
+Wall seconds: 1.412728000

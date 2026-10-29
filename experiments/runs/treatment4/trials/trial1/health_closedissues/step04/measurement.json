@@ -1,0 +1,106 @@
+{
+  "attempts": [
+    {
+      "label": "entire_suite",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "returncode": 0,
+      "wall_seconds": 12.501075207954273
+    },
+    {
+      "label": "step4_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/flow.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+        "--output",
+        "flow.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 1.707319957902655
+    },
+    {
+      "label": "step1_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/summarize.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+        "--output-dir",
+        "regression_step01"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.7393423330504447
+    },
+    {
+      "label": "step2_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/guess.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+        "--configuration",
+        "example_configuration.json",
+        "--evaluation",
+        "regression_step02.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 2.689038541051559
+    },
+    {
+      "label": "step3_demo",
+      "command": [
+        "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+        "-B",
+        "source/certify.py",
+        "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+        "--output",
+        "regression_step03.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 0.7661069999448955
+    }
+  ],
+  "passed": 34,
+  "total": 34,
+  "test_pass": true,
+  "all_checks_passed": true,
+  "total_loc": 623,
+  "new_loc": 139,
+  "error_count": 3,
+  "preserved_files": {
+    "source/certify.py": true,
+    "source/guess.py": true,
+    "source/summarize.py": true,
+    "tests/test_certify.py": true,
+    "tests/test_guess.py": true,
+    "tests/test_summarize.py": true
+  },
+  "preliminary_command": {
+    "command": "rg --files -g AGENTS.md -g !node_modules -g !venv -g !\\.git",
+    "returncode": 1,
+    "output": "",
+    "meaning": "No matches; conservatively counted as an unsuccessful command. No repair needed."
+  },
+  "additional_failed_attempts": [
+    {
+      "command": "python3 -B measure.py",
+      "returncode": 1,
+      "reason": "Initial measurement runner SyntaxError, repaired before execution."
+    },
+    {
+      "command": "tail -n 8 test_output.txt",
+      "returncode": 1,
+      "reason": "Progress probe before buffered log existed."
+    }
+  ]
+}

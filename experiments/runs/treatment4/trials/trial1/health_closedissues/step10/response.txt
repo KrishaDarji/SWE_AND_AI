@@ -1,0 +1,59 @@
+Implemented Treatment 4, Trial 1, Health Step 10.
+
+Complete application source is supplied in source/: summarize.py, guess.py, certify.py, blame.py, spot.py, justify.py, choose.py, fix.py, flow.py and race.py. Complete tests are supplied in tests/. The nine prior source files and nine prior test files are retained byte-for-byte from the allowed Health Step 9 directories. preservation.json records that check. No other implementation, dataset, saved report or saved selection was used.
+
+Added source/race.py for a retrospective comparison of the unmodified Step 7 constrained selector against uniform selection of one recorded feasible row per seed. Both use exactly the Step 7 complete-record and inclusive N_estimators eligibility audit. The baseline generator receives row identities only. Each seed starts a fresh random.Random instance; after identity selection, observed values are retrieved for reporting. The cap and seed list are CLI parameters. Input dataset is an argument. No estimator fitting is needed for the new descriptive race; preserved prior steps continue to use installed scikit-learn 1.6.0 where appropriate.
+
+Actual demo: cap 100; seeds 42 through 51. All 10,000 rows are complete, 4,877 are feasible and 5,123 exceed the cap. N_estimators is a configuration constraint, not measured compute cost.
+
+Selected candidate: one-based data row 32, CSV line 33.
+Settings: {"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 6.75, "Max_depth": 5.0}
+Observed objectives: {"MRE-": 0.0, "ACC+": 0.7901313681512335, "PRED40+": 0.8571428571428571}
+Baseline row identities in seed order: [1882, 669, 6913, 4610, 1311, 5957, 9227, 1156, 8390, 4156].
+Every baseline setting, objective, candidate-minus-baseline difference, direction-aware relation, secondary-objective loss list and lexicographic result is in race.json and race_demo_output.txt.
+Lexicographic counts: 10 wins, 0 ties, 0 losses. Each objective also has 10 wins, 0 ties, 0 losses in this particular demo; therefore no secondary-objective losses were observed for these seeds. The report still includes explicit per-seed loss lists and per-objective loss counts. Synthetic tests exercise secondary-objective losses and all priority/tie levels.
+
+Mean candidate-minus-baseline differences (descriptive only):
+MRE-: -0.7697643593519882
+ACC+: 0.3267542454454021
+PRED40+: 0.7857142857142857
+No unexplained aggregate score is used.
+
+Validation: 99/99 tests passed after repair, including all preserved Steps 1–9 tests and nine Step 10 tests. All nine prior CLI demos passed. The tests check exact shared eligibility and cap boundaries, finite/missing outcomes, no candidates, invalid inputs and files, independent arithmetic on the CSV, priorities, ties excluding identity, reproducibility and baseline identity invariance to changes in nonmissing objective values.
+
+Measurements:
+Application total_loc: 1578.
+Added new-side application lines relative to Step 9: 168.
+Step 10 demo subprocess wall time: 1.0652673341101035 seconds (includes process startup/imports, input loading, race, serialization and stdout capture; excludes tests and regression demos).
+Final full-suite wall time: 49.99607212503906 seconds; initial suite wall time: 48.79790512495674 seconds. Regression times are separately recorded in runtime_output.txt, measurement.json and metrics.csv notes.
+Internal candidate timing: 0.04002149996813387 seconds.
+Internal baseline timing across ten seeds: 7.56668159738183e-05 seconds.
+Full timing scopes and shared setup timings are in race.json. Candidate timing covers the unchanged exhaustive choose_rows audit; baseline timing covers only RNG construction/identity choice. These unequal workloads do not establish compute efficiency.
+
+Unexpected root failures: 2, retained and documented. The first suite passed 98/99 tests but lacked the local example_configuration.json expected by a preserved test. Created an explicit valid fixture inside Step 10 without reading any previous saved configuration and reran the entire suite successfully. Also attempted to tail the captured test log before it existed; subsequent progress reads checked existence. The measurement wrapper's propagated exit status counts with its underlying test failure, not as a second root failure. No application/source or preserved-test repair was needed. Initial failure artifacts are retained as test_output_attempt1.txt, metrics_attempt1.csv and measurement_attempt1.json. No completed successful demos were rerun during the repair.
+
+Assumptions and limitations:
+This comparison uses recorded outcomes retrospectively. The exhaustive selector sees and ranks all feasible objectives while random selection does not optimize values; this is an information and search-effort advantage. Lexicographic wins are expected by construction under the selector's own preference rule. The results establish neither learning effectiveness, sample efficiency, prospective improvement nor statistical superiority. Seeds remain within Trial 1 and are not independent LLM trials. CSV row order is record identity, not chronology. Duplicates remain separate rows. Missing data are excluded without imputation. Float comparisons are exact after normalization, with finite differences required. Metric formulas, units, practical acceptance thresholds and representativeness are unspecified. No measurement repeatability or deployment guarantee is established.
+The project's required same comparison procedure was not supplied in the allowed inputs: statistical analysis is PENDING and was not replaced with a different test. No raw difference or win-count significance claim is made.
+
+Commands and all regression invocations are supplied in run_instructions.txt and measure.py. Measurement and repair runners are outside source/ and excluded from application LOC. Original dataset and Step 9 inputs were not modified. All outputs are inside this Step 10 directory.
+
+Use python3 with scikit-learn 1.6.0. No installation or dependency changes are needed.
+
+Working directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step10'
+
+Run all 99 tests (Steps 1–9 unchanged, plus Step 10):
+PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -v
+
+Run Step 10 demo (cap 100, seeds 42–51):
+PYTHONDONTWRITEBYTECODE=1 python3 source/race.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --max-estimators 100 --seeds 42 43 44 45 46 47 48 49 50 51 --output race.json
+
+Run full measurement, all tests and preserved Steps 1–9 CLI demos:
+python3 measure.py
+
+measure.py contains each full regression CLI command and writes stdout/stderr logs, wall times, preservation checks and metrics. It creates the explicit local configuration fixtures before testing. It writes only within this Step 10 directory. It measures Step 10 demo subprocess wall time separately from tests, internal method timings and all nine regression demos. A rerun overwrites current result files; preserved attempt1 files record the original setup failure. repair_measurement.py is the runner used for the recorded fixture repair and full-suite retest; it retains the original demo measurements.
+
+The current metrics include two unexpected root failures: the first missing-fixture test execution and an early progress-read command before its log existed. The measurement-wrapper exit propagated the test failure and is not counted twice. Expected negative tests and ordinary missing-directory/no-match checks are excluded. See runtime_output.txt and test_output_attempt1.txt.
+
+All application code is in source/. All tests are in tests/. The prior nine modules and nine test files are byte-identical to allowed Step 9 inputs (preservation.json). No prior reports or selections are consumed.

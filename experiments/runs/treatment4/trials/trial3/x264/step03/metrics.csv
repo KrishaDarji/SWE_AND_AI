@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,3,video encoding,certify,207,47,1,0.79,2,"13 tests (8 inherited plus 5 new); reused Step 2 interfaces and tests; /usr/bin/time -p demonstration; finite-value filtering; demonstration default threshold 5.0 with provenance; two repaired failures preserved: missing packages under /usr/bin/python3"

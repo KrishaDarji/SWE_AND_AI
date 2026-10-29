@@ -1,0 +1,10 @@
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.005s
+
+OK

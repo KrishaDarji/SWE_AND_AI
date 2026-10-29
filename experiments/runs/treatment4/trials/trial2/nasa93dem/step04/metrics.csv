@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,4,2,software project estimation,flow,220,53,1,6.85,2,"17 tests passed; reused Step 3 source/interfaces and tests; timing is /usr/bin/time -p real for demonstration subprocess; corrected new_loc to 53 added/replaced nonblank, noncomment lines versus Step 3 (net growth 52 because one previous line was replaced); missing effort raises ValueError; CSV order is demonstration-only; no stopping rule"

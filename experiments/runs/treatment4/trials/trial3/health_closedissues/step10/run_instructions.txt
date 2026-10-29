@@ -1,0 +1,7 @@
+Run the complete regression suite:
+
+python3 -m pytest -q "experiments/runs/treatment4/trials/trial3/health_closedissues/step10/tests"
+
+Run the selector comparison with timing:
+
+/usr/bin/time -p python3 "experiments/runs/treatment4/trials/trial3/health_closedissues/step10/source/race.py" "moot/optimize/hpo/Health-ClosedIssues0000.csv"

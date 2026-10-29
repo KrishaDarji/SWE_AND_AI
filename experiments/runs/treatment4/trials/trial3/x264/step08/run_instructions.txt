@@ -1,0 +1,10 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step08
+
+Run tests:
+python3 -m unittest discover -s tests -v
+
+Run repair demonstration:
+/usr/bin/time -p python3 run_repair.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+The quoted dataset path is valid. The implementation is in source/summarize_x264.py and the measurement runner is outside source/.

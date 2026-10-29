@@ -1,0 +1,9 @@
+Working directory: "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Run tests:
+python3 "experiments/runs/treatment4/trials/trial2/health_closedissues/step01/run_tests.py"
+
+Run the demonstration and capture output:
+/usr/bin/time -p python3 "experiments/runs/treatment4/trials/trial2/health_closedissues/step01/run_demo.py" > "experiments/runs/treatment4/trials/trial2/health_closedissues/step01/runtime_output.txt" 2>&1
+
+The demonstration reads "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" and writes no files outside this step directory.

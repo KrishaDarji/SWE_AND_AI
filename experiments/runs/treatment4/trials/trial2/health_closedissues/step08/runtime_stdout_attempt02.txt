@@ -1,0 +1,59 @@
+{
+  "baseline": {
+    "configuration": {
+      "Max_depth": 10.0,
+      "Min_impurity_decrease": 2.75,
+      "Min_sample_leaves": 3.0,
+      "N_estimators": 40.0,
+      "criterion": "squared_error"
+    },
+    "outcomes": {
+      "ACC+": 0.7276513937840435,
+      "MRE-": 0.3148748159057436,
+      "PRED40+": 0.5714285714285714
+    },
+    "record_id": 1
+  },
+  "candidate_count": 736,
+  "change_count": 2,
+  "change_count_note": "Change count is a proxy for configuration difference, not measured implementation cost.",
+  "changed_fields": [
+    {
+      "field": "N_estimators",
+      "new": 10.0,
+      "old": 40.0
+    },
+    {
+      "field": "Min_impurity_decrease",
+      "new": 5.0,
+      "old": 2.75
+    }
+  ],
+  "observed_mre_improvement": 0.04756995581737844,
+  "repaired": {
+    "configuration": {
+      "Max_depth": 10.0,
+      "Min_impurity_decrease": 5.0,
+      "Min_sample_leaves": 3.0,
+      "N_estimators": 10.0,
+      "criterion": "squared_error"
+    },
+    "outcomes": {
+      "ACC+": 0.6619673181672541,
+      "MRE-": 0.2673048600883652,
+      "PRED40+": 0.5714285714285714
+    },
+    "record_id": 1945
+  },
+  "retrospective_observed_data_repair": true,
+  "secondary_outcome_tradeoffs": {
+    "ACC+": -0.06568407561678946,
+    "PRED40+": 0.0
+  },
+  "secondary_outcome_worsening": {
+    "ACC+": true,
+    "PRED40+": false
+  },
+  "selection_order": "change count, MRE-, ACC+, PRED40+, earliest CSV record",
+  "status": "repaired"
+}

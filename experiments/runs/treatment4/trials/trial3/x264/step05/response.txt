@@ -1,0 +1,15 @@
+Implemented Treatment 4, Trial 3, Dataset 1, Step 5 in source/summarize_x264.py.
+
+The new blame() API and --blame CLI rank encoder settings by one consistent marginal eta-squared score: between-setting outcome variation divided by total outcome variation. Lower Performance- is better. Missing/non-finite settings become an explicit group; invalid targets are excluded; constants, insufficient groups, zero outcome variance, and ties are handled explicitly. Each result includes group counts, means, minima, maxima, fastest/slowest groups, and status. Correlation, mutual exclusivity, observational limits, and non-causal interpretation are documented in the result.
+
+All Step 4 behavior was copied forward. The complete regression suite has 18 passing tests, including the new synthetic association, constants, multi-value/missing settings, small-group, and deterministic-order checks.
+
+Command:
+python3 -m unittest discover -s 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step05/tests' -v
+
+Demonstration:
+/usr/bin/time -p python3 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step05/source/summarize_x264.py' 'SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --blame --json 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step05/blame.json'
+
+Measured result: 1152 valid rows, 16 settings, runtime real 0.83 seconds. The leading settings were ref_9 (eta-squared 0.6445017930) and ref_1 (0.6434940425). These are marginal observational associations, not causal responsibility or guaranteed effects of changing a setting. Correlated or mutually exclusive settings may share explanatory information.
+
+Artifacts: source/, tests/, prompt.txt, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. Failed verification attempts were preserved as test_output_attempt1.txt and test_output_attempt2.txt; successful attempt 3 is referenced by the final logs. Error count is 3: two repaired test-fixture assertions and one repaired verification-command failure.

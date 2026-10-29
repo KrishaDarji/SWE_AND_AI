@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,4,3,video encoding,fix,453,66,1,0.80,2,"25 tests; Step 7 source/tests reused; timing is /usr/bin/time -p real for repair subprocess; two unexpected failed test errors across preserved attempts (missing NumPy environment and one initial synthetic assertion), then repaired; observed first-record repair only; raw-column proxy and retrospective non-causal limitations apply"

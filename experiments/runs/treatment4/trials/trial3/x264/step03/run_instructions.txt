@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Run tests:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step03/tests" -v
+
+Run demonstration:
+/usr/bin/time -p /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step03/run_demo.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"

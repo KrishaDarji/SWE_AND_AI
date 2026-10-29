@@ -1,0 +1,6 @@
+Run from any directory with:
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step10' && PYTHONPATH=. pytest -q
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step10' && /usr/bin/time -p python3 run_comparison.py
+
+The dataset path is resolved by run_comparison.py relative to the repository root.

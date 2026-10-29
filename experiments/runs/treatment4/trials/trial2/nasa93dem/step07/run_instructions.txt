@@ -1,0 +1,3 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step07
+Run tests: PYTHONPATH="." python3 -m unittest discover -s tests -v
+Run demonstration: python3 source/nasa93_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --choose --budget 100

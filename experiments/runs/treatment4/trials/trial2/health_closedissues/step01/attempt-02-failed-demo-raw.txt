@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step01/run_demo.py", line 9, in <module>
+    data = summarize_csv(Path(__file__).parents[6] / "moot/optimize/hpo/Health-ClosedIssues0000.csv")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step01/source/summarizer.py", line 50, in summarize_csv
+    raise FileNotFoundError(str(path))
+FileNotFoundError: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/moot/optimize/hpo/Health-ClosedIssues0000.csv
+real 0.61
+user 0.52
+sys 0.08

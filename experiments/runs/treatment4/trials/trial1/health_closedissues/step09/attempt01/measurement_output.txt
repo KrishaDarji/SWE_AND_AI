@@ -1,0 +1,23 @@
+tests: exit=1; wall=38.784s
+step09_demo: exit=0; wall=1.413s
+step01_summarize: exit=0; wall=0.722s
+step02_guess: exit=0; wall=2.427s
+step03_certify: exit=0; wall=0.707s
+step04_flow: exit=0; wall=1.590s
+step05_choose: exit=0; wall=0.880s
+step06_blame: exit=0; wall=1.039s
+step07_justify: exit=0; wall=1.145s
+step08_fix: exit=0; wall=0.867s
+{
+  "step": 9,
+  "treatment": 4,
+  "trial": 1,
+  "domain": "health_closedissues",
+  "skill": "spot",
+  "total_loc": 1410,
+  "new_loc": 165,
+  "test_pass": 0,
+  "runtime_seconds": "1.412728000",
+  "error_count": 2,
+  "notes": "passed/total=see test_output/90; test_seconds=38.783953375; regression_demo_seconds=9.377636208; runtime_seconds is Step 9 subprocess only; preliminary unexpected failure=1 (test assumption repaired); see step09_preliminary_tests.txt and repair_log.txt; all previous source/tests copied byte-for-byte; no residual prediction; seed not applicable; display limit 10 does not affect threshold 3.5"
+}

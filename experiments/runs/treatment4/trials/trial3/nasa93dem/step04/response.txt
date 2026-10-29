@@ -1,0 +1,12 @@
+Implemented Step 4 in `source/nasa93_flow.py` and preserved all Step 3 source and regression tests.
+
+The flow processes arrivals in CSV order. The first two valid finite-effort observations are explicitly labeled warm-up and are not scored. Each later prediction is fit only on prior revealed projects using the reused Step 3 preprocessing and Ridge estimator; the prior-history mean is also reported. Missing descriptors and unseen categories use the existing constant-imputation and `handle_unknown="ignore"` behavior. Invalid or missing effort is not revealed or added to history.
+
+Artifacts are in this Step 4 directory. The complete accumulated source is under `source/`, and tests are under `tests/`. The suite passed 15 tests. The NASA93 demonstration completed successfully in measured real time `0.98` seconds.
+
+Run command:
+`python3 -m unittest discover -s tests -v && python3 -m source.nasa93_flow "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"`
+
+Assumptions and limitations: CSV order is a demonstration sequence, not a verified timeline. Effort must be finite numeric data to be revealed and added to history. Empty input returns no rows; short input returns warm-up rows only. The implementation does not invent effort units, claim convergence, or apply an automatic stopping rule. The model is trained from two prior warm-up projects onward and uses only the 22 non-X, non-outcome descriptors.
+
+Recorded artifacts include the verbatim prompt, preserved failed and successful test logs, the runtime log, metrics, and run instructions.

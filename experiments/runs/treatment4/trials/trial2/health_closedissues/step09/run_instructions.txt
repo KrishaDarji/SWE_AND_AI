@@ -1,0 +1,4 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Run tests: python3 -m pytest -q "experiments/runs/treatment4/trials/trial2/health_closedissues/step09/tests"
+Run implementation: /usr/bin/time -p python3 "experiments/runs/treatment4/trials/trial2/health_closedissues/step09/source/spot.py" "moot/optimize/hpo/Health-ClosedIssues0000.csv"
+Paths are quoted where spaces occur.

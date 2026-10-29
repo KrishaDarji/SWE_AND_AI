@@ -1,0 +1,337 @@
+{
+  "cap": 100.0,
+  "eligible_count": 4877,
+  "interpretation": "Difference is baseline MRE- minus selector MRE-. Positive beyond tolerance is a selector win, negative beyond tolerance is a selector loss, and within tolerance is a tie. These are retrospective draws from one historical dataset, not independent validation samples or independent LLM trials. The selector inspects all feasible observed outcomes while the baseline samples one record; a win is not evidence of superior budgeted search. ACC+ and PRED40+ are descriptive trade-offs. The estimator cap is a compute proxy, not measured cost. Final project same procedure analysis is pending if unavailable.",
+  "mre_difference_summary": {
+    "max": 0.9294550810014727,
+    "mean": 0.7697643593519882,
+    "median": 0.824300441826215,
+    "min": 0.3480117820324005
+  },
+  "selector": {
+    "configuration": {
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    },
+    "record_id": 32
+  },
+  "tie_tolerance": 1e-12,
+  "trials": [
+    {
+      "baseline_configuration": {
+        "Max_depth": "17",
+        "Min_impurity_decrease": "4.5",
+        "Min_sample_leaves": "13",
+        "N_estimators": "40",
+        "criterion": "squared_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.42934956744633124,
+        "MRE-": 0.8325478645066273,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 1882,
+      "mre_difference": 0.8325478645066273,
+      "seed": 42,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "11",
+        "Min_impurity_decrease": "0",
+        "Min_sample_leaves": "3",
+        "N_estimators": "70",
+        "criterion": "absolute_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.669336751,
+        "MRE-": 0.3480117820324005,
+        "PRED40+": 0.5714285714285714
+      },
+      "baseline_record_id": 669,
+      "mre_difference": 0.3480117820324005,
+      "seed": 43,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "19",
+        "Min_impurity_decrease": "1.75",
+        "Min_sample_leaves": "10",
+        "N_estimators": "10",
+        "criterion": "absolute_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.3892983018263377,
+        "MRE-": 0.9294550810014727,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 6913,
+      "mre_difference": 0.9294550810014727,
+      "seed": 44,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "13",
+        "Min_impurity_decrease": "1.75",
+        "Min_sample_leaves": "6",
+        "N_estimators": "80",
+        "criterion": "squared_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.5879525793015059,
+        "MRE-": 0.5487481590574373,
+        "PRED40+": 0.14285714285714285
+      },
+      "baseline_record_id": 4610,
+      "mre_difference": 0.5487481590574373,
+      "seed": 45,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "20",
+        "Min_impurity_decrease": "6",
+        "Min_sample_leaves": "17",
+        "N_estimators": "80",
+        "criterion": "absolute_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.41268824094841394,
+        "MRE-": 0.8708394698085419,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 1311,
+      "mre_difference": 0.8708394698085419,
+      "seed": 46,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "12",
+        "Min_impurity_decrease": "7.75",
+        "Min_sample_leaves": "16",
+        "N_estimators": "30",
+        "criterion": "absolute_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.40692085869913486,
+        "MRE-": 0.8849779086892489,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 5957,
+      "mre_difference": 0.8849779086892489,
+      "seed": 47,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "4.5",
+        "Min_sample_leaves": "15",
+        "N_estimators": "40",
+        "criterion": "poisson"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.4351169496956104,
+        "MRE-": 0.8197349042709866,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 9227,
+      "mre_difference": 0.8197349042709866,
+      "seed": 48,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "20",
+        "Min_impurity_decrease": "6.25",
+        "Min_sample_leaves": "12",
+        "N_estimators": "70",
+        "criterion": "poisson"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.4360781800704902,
+        "MRE-": 0.8173784977908689,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 1156,
+      "mre_difference": 0.8173784977908689,
+      "seed": 49,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "9",
+        "Min_impurity_decrease": "1.25",
+        "Min_sample_leaves": "9",
+        "N_estimators": "20",
+        "criterion": "squared_error"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.430951618,
+        "MRE-": 0.8288659793814432,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 8390,
+      "mre_difference": 0.8288659793814432,
+      "seed": 50,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    },
+    {
+      "baseline_configuration": {
+        "Max_depth": "11",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "13",
+        "N_estimators": "40",
+        "criterion": "poisson"
+      },
+      "baseline_outcomes": {
+        "ACC+": 0.4360781800704902,
+        "MRE-": 0.8170839469808542,
+        "PRED40+": 0.0
+      },
+      "baseline_record_id": 4156,
+      "mre_difference": 0.8170839469808542,
+      "seed": 51,
+      "selector_configuration": {
+        "Max_depth": "5",
+        "Min_impurity_decrease": "6.75",
+        "Min_sample_leaves": "1",
+        "N_estimators": "10",
+        "criterion": "squared_error"
+      },
+      "selector_outcomes": {
+        "ACC+": 0.7901313681512335,
+        "MRE-": 0.0,
+        "PRED40+": 0.8571428571428571
+      },
+      "selector_record_id": 32
+    }
+  ],
+  "wins_ties_losses": {
+    "losses": 0,
+    "ties": 0,
+    "wins": 10
+  }
+}
+real 0.07
+user 0.06
+sys 0.00

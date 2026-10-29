@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,4,3,model configuration and quality,blame,380,78,1,0.08,2,"20 tests; reused Step 4 source/tests; /usr/bin/time -p; marginal r^2/eta^2; 2 repaired failures: missing dependency runtime and one test expectation"

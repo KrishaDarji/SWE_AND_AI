@@ -1,0 +1,15 @@
+test_duplicate_counts_independently (test_summarize.ActualDatasetTests.test_duplicate_counts_independently) ... ok
+test_schema_and_every_column_against_independent_csv_calculations (test_summarize.ActualDatasetTests.test_schema_and_every_column_against_independent_csv_calculations) ... ok
+test_all_missing_and_single_observation (test_summarize.FixtureTests.test_all_missing_and_single_observation) ... ok
+test_cli_success_and_expected_failure (test_summarize.FixtureTests.test_cli_success_and_expected_failure) ... ok
+test_hand_calculated_numeric_statistics (test_summarize.FixtureTests.test_hand_calculated_numeric_statistics) ... ok
+test_invalid_inputs (test_summarize.FixtureTests.test_invalid_inputs) ... ok
+test_reordered_columns (test_summarize.FixtureTests.test_reordered_columns) ... ok
+test_whitespace_missing_and_duplicates (test_summarize.FixtureTests.test_whitespace_missing_and_duplicates) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.445s
+
+OK
+
+Measured test subprocess wall time: 2.127182500 seconds

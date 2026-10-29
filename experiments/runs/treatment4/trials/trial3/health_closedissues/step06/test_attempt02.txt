@@ -1,0 +1,13 @@
+............F.........
+======================================================================
+FAIL: test_policy_ties_identifier_configuration_and_medians (test_justify.JustifyTests.test_policy_ties_identifier_configuration_and_medians)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step06/tests/test_justify.py", line 37, in test_policy_ties_identifier_configuration_and_medians
+    self.assertEqual(rec["original_record_id"], 1)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.030s
+
+FAILED (failures=1)

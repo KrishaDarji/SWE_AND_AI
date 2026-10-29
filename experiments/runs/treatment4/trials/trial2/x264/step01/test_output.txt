@@ -1,0 +1,7 @@
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+OK

@@ -1,0 +1,18 @@
+Corrected Health Trial 2 Step 5 in [step05](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step05).
+
+Changes:
+- Primary ranking now uses one common adjusted partial-R² score.
+- Complete transformed blocks are removed together.
+- Numeric missing indicators are mapped to their owning settings.
+- All-missing numeric settings use explicit fallback imputation and indicators.
+- Signed and absolute Spearman values are reported separately.
+- Criterion includes per-level counts and MRE- summaries.
+- Added independent tests for mixed data, blocks, missing indicators, all-missing values, and score calculations.
+- Preserved all previous regression tests and logs.
+
+Results:
+- 22 tests passed.
+- Dataset ranking: Min_sample_leaves, criterion, Min_impurity_decrease, N_estimators, Max_depth.
+- Corrected demonstration runtime: 0.83 seconds.
+- Corrected logs: [attempt_09_test_suite.txt](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step05/attempt_09_test_suite.txt) and [attempt_03_runtime.txt](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step05/attempt_03_runtime.txt).
+- Updated [metrics.csv](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step05/metrics.csv) and saved [correction_prompt.txt](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step05/correction_prompt.txt).

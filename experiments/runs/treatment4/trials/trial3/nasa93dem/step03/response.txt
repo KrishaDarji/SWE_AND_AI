@@ -1,0 +1,11 @@
+Implemented Step 3 certification in source/nasa93_certify.py and preserved the Step 2 source/tests.
+
+Result: A=tool=n (n=83, mean Effort-=606.0638554); B=tool=h (n=10, mean=776.7). A minus B = -170.6361446. Welch 95% CI: [-727.3030969, 386.0308077], df=15.5525809, t=-0.6513411, two-sided p=0.5243347. The point estimate exceeds the illustrative threshold (10% of A mean = 60.6063855), but the interval crosses both practical boundaries and statistical evidence is not significant. The point estimate favors B (lower observed effort), while practical importance is uncertain.
+
+Effort- is observed effort, not verified monetary cost. The data are skew-prone, groups are imbalanced, and project scope may differ. This observational comparison does not establish causal process effects, repeated-run noise, units, or guaranteed savings. Missing/non-finite outcomes are excluded; both groups need at least two finite observations; zero Welch variance and invalid thresholds are rejected. Failure to detect a difference is not equivalence.
+
+Complete accumulated source and tests are in source/ and tests/. The inherited Step 2 interfaces remain intact. Run:
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 run_demo.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' 60.60638554216868
+
+Tests: 11 passed. Demonstration real time: 0.63 seconds. Error count is 9 under the requested accounting: captured dependency/import and assertion errors, repaired shell-wrapper and work-directory command failures, excluding suite exit statuses and expected negative cases. All attempts are preserved in attempt logs; the final logs are test_output.txt and runtime_output.txt.

@@ -1,0 +1,77 @@
+Treatment 4 / Trial 1 / Health / Step 4 completed.
+
+Complete application source: source/flow.py, source/summarize.py, source/guess.py,
+and source/certify.py. Complete tests: tests/test_flow.py plus the three preserved
+test modules. Commands and reusable API example: run_instructions.txt.
+The measurement runner is measure.py, outside application source/.
+
+Reuse and additions
+The three prior application modules and three prior test modules are copied
+byte-for-byte from the allowed Step 3 directories. Step 4 reuses the schema,
+objective directions, and Step 2 finite-number/configuration normalization.
+A new FlowEvaluator.update(configuration, outcomes) validates separate inputs
+atomically and updates observed/missing counts, Welford mean/M2, sample variance,
+sample standard deviation, and a separate observed best for each objective.
+The evaluator retains fixed-size state, without rescanning past observations.
+The new CSV iterator validates one record at a time; replay retains detached
+per-arrival configurations, observed objectives, and summaries in flow.json.
+No model fitting is needed for these descriptive online statistics. Existing
+scikit-learn modeling remains available through the preserved Step 2 interface.
+
+Arrival and statistical conventions
+Original CSV record order simulates arrivals; it is not verified chronological
+order. Each update uses only that arrival and existing accumulators. Empty,
+whitespace-only, omitted, or None outcomes are missing, excluded separately
+from each objective's moments and best selection, and counted without imputation.
+Configuration missingness does not itself exclude an observed objective.
+Numeric strings are normalized to finite floats; invalid and misplaced keys,
+booleans, non-finite numbers, and overflowing moment arithmetic are rejected
+without changing state. MRE- is minimized; ACC+ and PRED40+ are maximized.
+Mean is null for zero observations; sample variance and standard deviation
+use denominator n-1 and are null for fewer than two observations.
+Exact normalized float ties retain the earliest arrival; all arrivals attaining
+the current best count toward best_tie_count. Repeated configurations count as
+separate arrivals. No combined objective score is computed.
+
+Validation and actual measurements
+34/34 tests passed, including all preserved Steps 1-3 tests. Added tests compare
+all fixture prefixes to independent statistics, check objective directions and
+ties, missing/single/constant outcomes, invalid input atomicity and overflow,
+detached inputs/history, CSV errors/reordering, future-change invariance,
+CLI behavior, actual-data prefixes, and final streamed versus batch statistics.
+All four demos returned zero. All six preserved source/test files are identical.
+Application LOC: 623 total; 139 added application lines, measured with comment
+token removal and insert/replace new-side diff counting; docstrings included.
+Step 4 demo subprocess wall time: 1.707319958 seconds, including startup,
+imports, replay, serialization, writing flow.json, stdout and shutdown.
+Entire test subprocess: 12.501075208 seconds (unittest reports 11.117 seconds).
+Regression demo wall times: Step 1 0.739342333 seconds; Step 2 2.689038541 seconds;
+Step 3 0.766107000 seconds. See measurement.json for unrounded timings.
+error_count=3: initial rg discovery returned no matches; initial measurement
+runner had a missing closing brace, repaired before tests ran; an early log-read
+probe ran before the buffered log existed. repair_log.txt preserves these failed
+attempts. Expected negative-test failures are excluded. No application repair
+was required. All application tests and demos succeeded on their first run.
+
+Observed final results (all objectives: 10,000 observed, zero missing)
+Objective | Mean | Sample variance | Best | First best arrival | Best tie count
+MRE- | 0.7090939764346323 | 0.04056030922815959 | 0.0 | 32 | 1
+ACC+ | 0.49593851329765815 | 0.011481619453413293 | 1.0 | 7556 | 1
+PRED40+ | 0.14684285714285772 | 0.07096876197823895 | 1.0 | 14 | 372
+The respective configurations and full per-arrival histories are in flow.json.
+
+Assumptions and limitations
+These are descriptive recorded outcomes. Row order does not establish time,
+randomization or independence. Missingness may be selective; objectives may
+use different observed subsets. No metric formula, physical unit, compute cost,
+parameter domain, theoretical metric range, or uncertainty guarantee is inferred.
+Float rounding affects near ties and moments; extreme overflowing inputs are
+rejected. Best observed does not establish future performance or optimality.
+No predictions, repeated significance tests, stopping guarantees, or streaming
+statistical-significance claims are added. The preserved Step 3 comparison runs
+separately as a regression demo with its existing assumptions and limitations.
+Evaluator state is constant-size; retaining/exporting the complete history uses
+linear memory. Earlier steps' original limitations remain applicable.
+
+All requested outputs, regression artifacts, and measurement files are confined
+to this Step 4 directory. Dataset and Step 3 inputs were not modified.

@@ -1,0 +1,24 @@
+COMMAND: ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "source/choose.py", "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv", "--max-estimators", "100", "--output", "regression_choose.json"]
+WALL_SECONDS: 1.025828667
+EXIT_CODE: 0
+STDOUT:
+Retrospective recorded-configuration selection
+Constraint: N_estimators <= 100.0
+Minimize MRE-, then maximize ACC+, then maximize PRED40+, then earliest one-based CSV data-row number. Ties use exact normalized float equality.
+Counts: {"candidate": 10000, "complete": 10000, "excluded": 5123, "feasible": 4877, "incomplete": 0, "complete_above_cap": 5123}
+Candidate means every input row; excluded = incomplete + complete_above_cap; candidate = excluded + feasible. Missing reasons may overlap within excluded_records.
+Status: selected
+Selected recorded configuration: {"row_id": 32, "csv_line": 33, "configuration": {"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 6.75, "Max_depth": 5.0}, "observed_objectives": {"MRE-": 0.0, "ACC+": 0.7901313681512335, "PRED40+": 0.8571428571428571}}
+Cap evidence: {"recorded_N_estimators": 10.0, "cap": 100.0, "satisfies_inclusive_cap": true}
+Tie evidence: {"minimum_mre_count": 1, "after_acc_count": 1, "after_pred40_count": 1, "final_tied_row_ids": [32]}
+Trade-offs: {"feasible_objective_champions": {"MRE-": {"row_id": 32, "csv_line": 33, "configuration": {"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 6.75, "Max_depth": 5.0}, "observed_objectives": {"MRE-": 0.0, "ACC+": 0.7901313681512335, "PRED40+": 0.8571428571428571}, "selected_difference": {"selected_minus_reference": 0.0, "improvement_in_objective_direction": -0.0, "observed_relation": "equal"}}, "ACC+": {"row_id": 7556, "csv_line": 7557, "configuration": {"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 3.0, "Max_depth": 10.0}, "observed_objectives": {"MRE-": 0.029749631811487497, "ACC+": 1.0, "PRED40+": 1.0}, "selected_difference": {"selected_minus_reference": -0.20986863184876647, "improvement_in_objective_direction": -0.20986863184876647, "observed_relation": "worse"}}, "PRED40+": {"row_id": 14, "csv_line": 15, "configuration": {"N_estimators": 40.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 0.25, "Max_depth": 19.0}, "observed_objectives": {"MRE-": 0.20530191458026506, "ACC+": 0.8260173021467478, "PRED40+": 1.0}, "selected_difference": {"selected_minus_reference": -0.1428571428571429, "improvement_in_objective_direction": -0.1428571428571429, "observed_relation": "worse"}}}, "unconstrained_complete_winner": {"row_id": 32, "csv_line": 33, "configuration": {"N_estimators": 10.0, "criterion": "squared_error", "Min_sample_leaves": 1.0, "Min_impurity_decrease": 6.75, "Max_depth": 5.0}, "observed_objectives": {"MRE-": 0.0, "ACC+": 0.7901313681512335, "PRED40+": 0.8571428571428571}}, "unconstrained_winner_satisfies_cap": true, "scope": "Champions use complete feasible rows, with earliest-row champion ties. Unconstrained reference uses complete recorded rows only; neither reference is independent validation."}
+The dataset contains no measured compute cost. A real compute-budget guarantee is unavailable. N_estimators is only a configuration constraint for this illustrative demo; other settings and hardware also affect actual compute.
+Full-data retrospective selection, not a budgeted search over hidden outcomes or an independent validation result. Selection optimism can overstate future performance; freeze the configuration and validate on independent representative data.
+Optimality is limited to the complete recorded feasible rows under the stated lexicographic rule. No unseen hyperparameter combinations are generated. Duplicate configurations remain separate observations; earliest row is not a time claim.
+MRE- takes priority over any secondary-objective loss. There are no supplied practical thresholds or overall scores. Observed metric formulas, units and estimator semantics are unspecified.
+Missing configuration fields or objectives exclude a row without imputation; missingness may be selective. Finite numeric configuration values are retained without inventing estimator parameter domains.
+A positive finite numeric cap is a user constraint, not a compute measurement or a guarantee of deployability. Exact float comparisons may be sensitive to recorded precision.
+Steps 1–6 source and tests retained unchanged. Reuses Step 1 CSV loading/schema/directions, Step 6 record normalization, lexicographic selection key and direction-aware differences. Adds complete-configuration filtering, inclusive cap, explicit empty result, count/exclusion audit and feasible-set comparisons.
+
+STDERR:
+

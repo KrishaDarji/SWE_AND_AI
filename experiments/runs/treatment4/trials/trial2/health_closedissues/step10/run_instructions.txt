@@ -1,0 +1,10 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step10
+
+Test:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m pytest -q tests
+
+Demonstration:
+/usr/bin/time -p /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -u run_race.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+The latest captured logs are test_output_attempt2.txt and runtime_output_attempt3.txt; test_output.txt and runtime_output.txt contain those latest final attempt contents.

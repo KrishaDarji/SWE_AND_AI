@@ -1,0 +1,125 @@
+You are running Treatment 4, Trial 2, Dataset 2, Step 8 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: fix
+- Current requirement: Suggest a repair for a proposal likely to exceed its effort budget.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step07/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step07/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step08/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 7 implementation where appropriate.
+Copy accumulated source and tests into Step 8, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed NASA93 Step 7 source and tests.
+- Files created in the current Step 8 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Reuse the existing grouped split and training-only effort estimator.
+- Accept a complete proposal containing the 22 descriptors and an effort budget.
+- For the demonstration, use the earliest CSV record in the held-out set
+  as the proposal and use budget 100.
+- Exclude metadata and all outcomes from proposal inputs.
+- Search distinct descriptor configurations observed in training rows only.
+- Predict candidate effort using the same training-fitted pipeline.
+- If the proposal already satisfies the budget, return an explicit
+  no-repair-needed result.
+- Otherwise, among candidates predicted to satisfy the budget, minimize
+  the number of changed descriptor fields, then predicted effort,
+  then earliest training CSV record.
+- If none is predicted feasible, return an explicit no-feasible-repair result.
+- Report original/candidate descriptors, changed fields, change count,
+  estimated efforts, budget, and feasibility.
+- Treat descriptor-change count as a proxy, not monetary cost or operational risk.
+- Treat candidates as hypothetical alternatives: not every descriptor is
+  actionable, and observed combinations may not preserve project scope.
+- Do not interpret model differences as causal improvements or guaranteed savings.
+- Do not use held-out outcomes to choose proposals, repairs, or explanations.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test budget feasibility, minimum-change priority, tie-breaking,
+already-feasible proposals, no feasible repair, and invalid inputs.
+Verify candidates come only from training rows and changes to held-out
+outcomes do not alter repair results.
+Do not require the real demonstration to find a repair for tests to pass.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve failed attempts and final successful output with attempt labels.
+- Do not substitute summaries for execution logs or reconstruct missing output.
+- Verify the complete prompt and all required artifacts are saved correctly.
+- Ensure run instructions specify the working directory and valid quoted paths.
+
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: software project estimation
+- skill: fix
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 7,
+  excluding blank and comment-only lines. Count new-side diff lines;
+  do not use net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure counts and timing agree with source differences and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified NASA93 Step 8 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

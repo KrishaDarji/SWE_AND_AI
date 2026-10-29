@@ -1,0 +1,15 @@
+Final test attempt: test_attempt02.stdout
+Captured stdout:
+
+(empty)
+
+Final test attempt: test_attempt02.stderr
+Captured stderr:
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+
+Exit code: 0 (test_attempt02.exit)
+Preserved earlier attempt files: test_attempt01.stdout, test_attempt01.stderr.

@@ -1,0 +1,7 @@
+Implemented Step 6 in `experiments/runs/treatment4/trials/trial2/health_closedissues/step06/`.
+
+Recommendation: observed record 32, configuration `N_estimators=10`, `criterion=squared_error`, `Min_sample_leaves=1`, `Min_impurity_decrease=6.75`, `Max_depth=5`.
+
+Measured outcomes: MRE- 0.0, ACC+ 0.7901313681512335, PRED40+ 0.8571428571428571. Dataset medians are MRE- 0.8091310751104565, ACC+ 0.43992310157000963, and PRED40+ 0.0. The demonstration policy is lowest observed MRE-, ties by higher ACC+, then higher PRED40+, then earliest CSV record. This is retrospective observed-data evidence; it does not guarantee future performance or establish statistical superiority. Best MRE- need not be best ACC+ or PRED40+.
+
+Artifacts include the accumulated source and tests, `prompt.txt`, preserved attempt logs, `test_output.txt`, `runtime_output.txt`, `metrics.csv`, and `run_instructions.txt`. The complete suite passes: 25 tests. Demonstration timing was 0.05 seconds real time using `/usr/bin/time -p`.

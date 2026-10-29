@@ -1,0 +1,8 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step08
+
+Run the complete suite:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run the demonstration:
+python3 source/fix.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" --baseline-record-id 1

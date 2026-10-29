@@ -1,0 +1,45 @@
+{
+  "threshold": 3.5,
+  "method": "robust univariate screening after log1p",
+  "fields": [
+    {
+      "field": "Kloc+",
+      "valid_count": 93,
+      "excluded": [],
+      "reference": 47.49999999999999,
+      "log1p_median": 3.8815637979434374,
+      "mad": 1.0483504538872213,
+      "robust_scale": 1.554284382933194,
+      "scoring_rule": "abs(log1p(observed)-median(log1p(valid)))/(1.4826*MAD(log1p(valid)))",
+      "reference_includes_assessed_record": true
+    },
+    {
+      "field": "Effort-",
+      "valid_count": 93,
+      "excluded": [],
+      "reference": 252.00000000000003,
+      "log1p_median": 5.53338948872752,
+      "mad": 1.088016163036614,
+      "robust_scale": 1.613092763318084,
+      "scoring_rule": "abs(log1p(observed)-median(log1p(valid)))/(1.4826*MAD(log1p(valid)))",
+      "reference_includes_assessed_record": true
+    },
+    {
+      "field": "Defects-",
+      "valid_count": 93,
+      "excluded": [],
+      "reference": 2006.9999999999998,
+      "log1p_median": 7.60489448081162,
+      "mad": 0.9957203187436896,
+      "robust_scale": 1.4762549445693942,
+      "scoring_rule": "abs(log1p(observed)-median(log1p(valid)))/(1.4826*MAD(log1p(valid)))",
+      "reference_includes_assessed_record": true
+    }
+  ],
+  "flags": [],
+  "total_flag_count": 0,
+  "interpretation": "Flags are investigation candidates, not confirmed errors. Large projects can legitimately have large effort or defect counts. This does not condition on project scope, establish anomaly-detection accuracy, or quantify prediction uncertainty."
+}
+real 0.80
+user 0.68
+sys 0.10

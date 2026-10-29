@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,2,video encoding,justify,294,39,1,0.01571325003169477,1,"14 tests; reused and copied Step 5 source/tests; time.perf_counter demonstration timing excluding tests; synthetic recommendation/tie/evidence/limitation checks; one repaired shell-variable naming failure preserved in test artifact history; observational associations and in-sample estimates are labeled; lower Performance- is better"

@@ -1,0 +1,13 @@
+Implemented Step 3 certification in the specified output directory.
+
+Complete accumulated source is in source/ (including the preserved Step 2 quality_predict.py and summarize.py plus certify.py). Tests are in tests/, with 13 tests passing.
+
+Command:
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 source/certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Measured demonstration: reference squared_error n=3363, mean MRE-=0.6737202958; candidate absolute_error n=3302, mean MRE-=0.7508694690; candidate-reference=0.0771491732. The 95% Welch CI is [0.0671848504, 0.0871134960], df=6661.6898, two-sided p=3.53e-51. Since MRE- is lower-is-better, this observed difference favors the reference, not the candidate. No practical threshold was supplied, so practical importance is undetermined. ACC+ and PRED40+ are descriptive secondary outcomes.
+
+The implementation handles missing/non-finite values, invalid thresholds, insufficient groups, and zero variance. It treats configurations as different observations and does not claim causality, repeated-run noise, equivalence, or guaranteed gains. Captured logs are in test_output.txt and runtime_output.txt; attempt-labeled logs preserve earlier failures.
+
+Known limitations: criterion groups may differ in other settings, so confounding is possible; this is an observational configuration comparison, and failure to detect a difference would not establish equivalence.

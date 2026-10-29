@@ -1,0 +1,61 @@
+{
+  "baseline_configuration": {
+    "no_8x8dct": "0",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "baseline_performance": 268.72,
+  "baseline_record_id": 0,
+  "change_count": 1,
+  "change_count_note": "raw-column proxy; correlated or one-hot fields may represent fewer conceptual changes",
+  "changed_settings": [
+    {
+      "new": "1",
+      "old": "0",
+      "setting": "no_8x8dct"
+    }
+  ],
+  "direction": "lower is better",
+  "improvement": 14.133000000000038,
+  "limitations": [
+    "Observed improvements are not causal or future-performance guarantees."
+  ],
+  "outcome": "Performance-",
+  "repaired_configuration": {
+    "no_8x8dct": "1",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "repaired_performance": 254.587,
+  "repaired_record_id": 64,
+  "status": "repaired"
+}
+real 0.80
+user 0.69
+sys 0.10

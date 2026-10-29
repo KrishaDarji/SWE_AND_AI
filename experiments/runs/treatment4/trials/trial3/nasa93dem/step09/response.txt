@@ -1,0 +1,26 @@
+Implemented Step 9 spot screening and preserved the complete Step 8 source and tests.
+
+The new `source/nasa93_spot.py` uses a marginal robust univariate screen: it applies
+log1p to nonnegative Kloc+, Effort-, and Defects-, centers each outcome at its median,
+and scores by absolute deviation divided by 1.4826 times MAD. The threshold is 3.5,
+and reference statistics include the assessed record. Missing, non-finite, and negative
+values are excluded with explicit reasons while original idX identifiers are retained.
+Zero robust scale produces a null score and flags only non-center values. JSON output
+uses null rather than NaN or Infinity. Flags are investigation candidates, not confirmed
+errors; large projects may legitimately have large effort or defect counts. This is a
+marginal screen and makes no scope-adjusted, accuracy, causal, or prediction-uncertainty
+claim.
+
+Validation: 42 tests passed, including all copied Step 8 regression tests and Step 9
+synthetic tests. The NASA93 demonstration completed successfully and found 0 flagged
+records at threshold 3.5. Its measured `/usr/bin/time -p` real time was 0.66 seconds.
+
+Run from the Step 9 directory:
+
+    python3 -m pytest -q tests
+    python3 source/nasa93_spot.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Known limitations: this is a marginal, univariate candidate screen; it does not adjust
+for project scope, model interactions, labels, or causal mechanisms. Including the
+assessed record in its reference statistics can moderate its own score. MAD can be zero
+for tied data, in which case non-center values are flagged without a finite score.

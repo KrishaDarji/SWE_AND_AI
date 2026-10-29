@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,3,model configuration and quality,justify,449,69,1,0.04,3,"22 tests; Step 5 source/tests reused; /usr/bin/time -p; finite medians; original zero-based CSV ids; two python-command lookup repairs and one corrected test expectation retained"

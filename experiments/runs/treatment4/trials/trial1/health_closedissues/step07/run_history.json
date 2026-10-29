@@ -1,0 +1,109 @@
+[
+  {
+    "attempts": [
+      {
+        "label": "tests",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "returncode": 0,
+        "wall_seconds": 29.205710500013083
+      },
+      {
+        "label": "step1",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/summarize.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output-dir",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/regression_demos/step1"
+        ],
+        "returncode": 0,
+        "wall_seconds": 0.7155470000579953
+      },
+      {
+        "label": "step2",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/guess.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--configuration",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/example_configuration.json",
+          "--evaluation",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/regression_demos/step2.json"
+        ],
+        "returncode": 0,
+        "wall_seconds": 2.395785708911717
+      },
+      {
+        "label": "step3",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/certify.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/regression_demos/step3.json"
+        ],
+        "returncode": 0,
+        "wall_seconds": 0.707774291979149
+      },
+      {
+        "label": "step4",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/flow.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/regression_demos/step4.json"
+        ],
+        "returncode": 0,
+        "wall_seconds": 1.5849536249879748
+      },
+      {
+        "label": "step5",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/blame.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/regression_demos/step5.json"
+        ],
+        "returncode": 0,
+        "wall_seconds": 1.012242874945514
+      },
+      {
+        "label": "step6",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/justify.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output-dir",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/regression_demos/step6"
+        ],
+        "returncode": 0,
+        "wall_seconds": 1.1637506659608334
+      },
+      {
+        "label": "step7",
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "source/choose.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--max-estimators",
+          "100",
+          "--output",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step07/selection.json"
+        ],
+        "returncode": 0,
+        "wall_seconds": 0.8932496659690514
+      }
+    ],
+    "unexpected_error_count": 0
+  }
+]

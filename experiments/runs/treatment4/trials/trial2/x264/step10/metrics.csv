@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,4,2,video encoding,race,525,48,1,0.75,0,"30 tests; Step 9 source copied and selector reused unchanged; /usr/bin/time -p real demonstration timing; fresh evaluators per seed; seeded benchmark repeats; warning from joblib is non-failing; no repairs needed"

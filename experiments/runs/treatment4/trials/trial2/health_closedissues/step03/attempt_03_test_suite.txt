@@ -1,0 +1,25 @@
+test_direction_and_welch_interval (test_certify.CertifyTests.test_direction_and_welch_interval) ... FAIL
+test_insufficient_and_invalid_threshold (test_certify.CertifyTests.test_insufficient_and_invalid_threshold) ... ok
+test_missing_and_zero_variance (test_certify.CertifyTests.test_missing_and_zero_variance) ... ok
+test_threshold_uncertainty (test_certify.CertifyTests.test_threshold_uncertainty) ... ok
+test_excludes_pred40_grouped_reproducible_and_baselines (test_predictor.PredictorTests.test_excludes_pred40_grouped_reproducible_and_baselines) ... ok
+test_missing_settings_and_unseen_criterion (test_predictor.PredictorTests.test_missing_settings_and_unseen_criterion) ... ok
+test_missing_target_rows_are_not_used (test_predictor.PredictorTests.test_missing_target_rows_are_not_used) ... ok
+test_training_only_preprocessing_and_targets (test_predictor.PredictorTests.test_training_only_preprocessing_and_targets) ... ok
+test_empty_input (test_summarizer.SummarizerTests.test_empty_input) ... ok
+test_missing_duplicates_and_repeated_configurations (test_summarizer.SummarizerTests.test_missing_duplicates_and_repeated_configurations) ... ok
+test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies) ... ok
+
+======================================================================
+FAIL: test_direction_and_welch_interval (test_certify.CertifyTests.test_direction_and_welch_interval)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 19, in test_direction_and_welch_interval
+    self.assertAlmostEqual(result["primary"]["welch_satterthwaite_df"], 4.0)
+AssertionError: 2.9411764705882346 != 4.0 within 7 places (1.0588235294117654 difference)
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.355s
+
+FAILED (failures=1)
+test_exit=1

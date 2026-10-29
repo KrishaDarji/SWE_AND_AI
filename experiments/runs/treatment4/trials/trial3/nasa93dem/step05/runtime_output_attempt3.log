@@ -1,0 +1,89 @@
+NASA93 Effort- association ranking
+Usable rows: 93
+Overall Effort- mean: 624.412
+Primary score: marginal eta-squared (between-category / total Effort- variation).
+Scores are marginal associations; correlated descriptors can share explanatory information.
+Higher effort alone does not establish inefficiency; scope differs, and Kloc+ is excluded.
+1. time: score=0.417943; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=xh (2964.26); lowest=n (334.389)
+   h: n=13, mean=734.077, median=458, min=90, max=2460
+   n: n=54, mean=334.389, median=156, min=8.4, max=2400
+   vh: n=18, mean=375.344, median=215.5, min=12, max=1248
+   xh: n=8, mean=2964.26, median=1848.5, min=72, max=8211
+2. rely: score=0.342147; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=vh (2467.21); lowest=n (269.159)
+   h: n=42, mean=483.548, median=326.4, min=8.4, max=2460
+   l: n=2, mean=1296, median=1296, min=192, max=2400
+   n: n=39, mean=269.159, median=170, min=24, max=1368
+   vh: n=10, mean=2467.21, median=1709.2, min=107, max=8211
+3. cplx: score=0.19168; groups=5; direction=nominal contrast; highest and lowest category means reported; highest=xh (1901.9); lowest=h (315.245)
+   h: n=58, mean=315.245, median=118.8, min=8.4, max=2400
+   l: n=3, mean=844.333, median=973, min=192, max=1368
+   n: n=10, mean=494.2, median=320, min=48, max=2400
+   vh: n=17, mean=1341.27, median=648, min=12, max=8211
+   xh: n=5, mean=1901.9, median=1924.5, min=107, max=4560
+4. stor: score=0.163585; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=xh (1668.85); lowest=n (323.249)
+   h: n=10, mean=887.7, median=580.5, min=107, max=2460
+   n: n=49, mean=323.249, median=117.6, min=8.4, max=2400
+   vh: n=21, mean=555.19, median=240, min=12, max=4560
+   xh: n=13, mean=1668.85, median=648, min=60, max=8211
+5. plex: score=0.152537; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=vl (1559.25); lowest=l (346.857)
+   h: n=22, mean=1285.69, median=651.5, min=72, max=8211
+   l: n=14, mean=346.857, median=203.5, min=12, max=1350
+   n: n=53, mean=352.683, median=117.6, min=8.4, max=2400
+   vl: n=4, mean=1559.25, median=623.5, min=430, max=4560
+6. data: score=0.143988; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=h (1522.19); lowest=vh (365.125)
+   h: n=17, mean=1522.19, median=1181, min=98.8, max=8211
+   l: n=37, mean=370.162, median=72, min=8.4, max=4560
+   n: n=31, mean=502.452, median=300, min=12, max=2460
+   vh: n=8, mean=365.125, median=181, min=62, max=1350
+7. acap: score=0.0606163; groups=3; direction=nominal contrast; highest and lowest category means reported; highest=h (876.124); lowest=n (301.344)
+   h: n=51, mean=876.124, median=420, min=24, max=8211
+   n: n=32, mean=301.344, median=75, min=8.4, max=2400
+   vh: n=10, mean=374.5, median=215.5, min=62, max=1181
+8. pvol: score=0.057823; groups=3; direction=nominal contrast; highest and lowest category means reported; highest=n (1158.59); lowest=l (477.538)
+   h: n=9, mean=557.444, median=480, min=12, max=1368
+   l: n=65, mean=477.538, median=240, min=8.4, max=4560
+   n: n=19, mean=1158.59, median=252, min=42, max=8211
+9. pcap: score=0.0574408; groups=3; direction=nominal contrast; highest and lowest category means reported; highest=h (921.623); lowest=n (348.705)
+   h: n=39, mean=921.623, median=400, min=24, max=8211
+   n: n=44, mean=348.705, median=115.8, min=8.4, max=2460
+   vh: n=10, mean=678.4, median=425, min=72, max=2400
+10. sced: score=0.0545537; groups=2; direction=nominal contrast; highest and lowest category means reported; highest=n (824.734); lowest=l (276.794)
+   l: n=34, mean=276.794, median=118.8, min=8.4, max=1248
+   n: n=59, mean=824.734, median=400, min=12, max=8211
+11. pmat: score=0.0507212; groups=3; direction=nominal contrast; highest and lowest category means reported; highest=l (817.66); lowest=n (255.967)
+   h: n=43, mean=791.584, median=278, min=8.4, max=8211
+   l: n=20, mean=817.66, median=501.7, min=72, max=4560
+   n: n=30, mean=255.967, median=132, min=12, max=1350
+12. apex: score=0.0231256; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=h (774.702); lowest=n (402.471)
+   h: n=46, mean=774.702, median=276, min=48, max=8211
+   l: n=1, mean=648, median=648, min=648, max=648
+   n: n=34, mean=402.471, median=117.6, min=8.4, max=2460
+   vh: n=12, mean=675.167, median=342, min=24, max=4560
+13. ltex: score=0.00463016; groups=4; direction=nominal contrast; highest and lowest category means reported; highest=h (662.033); lowest=vl (401)
+   h: n=69, mean=662.033, median=252, min=8.4, max=8211
+   l: n=6, mean=427.333, median=259, min=12, max=1350
+   n: n=14, mean=587.286, median=162, min=42, max=2400
+   vl: n=4, mean=401, median=395, min=215, max=599
+14. tool: score=0.00218901; groups=2; direction=nominal contrast; highest and lowest category means reported; highest=h (776.7); lowest=n (606.064)
+   h: n=10, mean=776.7, median=528.5, min=72, max=2460
+   n: n=83, mean=606.064, median=215, min=8.4, max=8211
+15. docu: score=0; groups=1; direction=no directional contrast (equal category means); highest=n (624.412); lowest=n (624.412)
+   n: n=93, mean=624.412, median=252, min=8.4, max=8211
+16. flex: score=0; groups=1; direction=no directional contrast (equal category means); highest=h (624.412); lowest=h (624.412)
+   h: n=93, mean=624.412, median=252, min=8.4, max=8211
+17. pcon: score=0; groups=1; direction=no directional contrast (equal category means); highest=n (624.412); lowest=n (624.412)
+   n: n=93, mean=624.412, median=252, min=8.4, max=8211
+18. prec: score=0; groups=1; direction=no directional contrast (equal category means); highest=h (624.412); lowest=h (624.412)
+   h: n=93, mean=624.412, median=252, min=8.4, max=8211
+19. resl: score=0; groups=1; direction=no directional contrast (equal category means); highest=h (624.412); lowest=h (624.412)
+   h: n=93, mean=624.412, median=252, min=8.4, max=8211
+20. ruse: score=0; groups=1; direction=no directional contrast (equal category means); highest=n (624.412); lowest=n (624.412)
+   n: n=93, mean=624.412, median=252, min=8.4, max=8211
+21. site: score=0; groups=1; direction=no directional contrast (equal category means); highest=n (624.412); lowest=n (624.412)
+   n: n=93, mean=624.412, median=252, min=8.4, max=8211
+22. team: score=0; groups=1; direction=no directional contrast (equal category means); highest=vh (624.412); lowest=vh (624.412)
+   vh: n=93, mean=624.412, median=252, min=8.4, max=8211
+real 0.76
+user 0.64
+sys 0.10
+exit_status=0

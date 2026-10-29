@@ -1,0 +1,8 @@
+Working directory:
+`/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step09`
+
+Run the complete suite:
+`python3 -m unittest discover -s tests -p 'test_*.py' -v`
+
+Run the NASA93 screening demonstration:
+`/usr/bin/time -p python3 source/nasa93_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --spot`

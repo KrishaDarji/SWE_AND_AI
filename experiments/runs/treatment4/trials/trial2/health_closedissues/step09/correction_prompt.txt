@@ -1,0 +1,14 @@
+Correct Health Trial 2 Step 9's response only.
+
+Read per_outcome_flag_counts from the preserved final runtime output:
+- MRE-: 1496
+- ACC+: 2124
+- PRED40+: 3475
+- Unique flagged records: 3475
+
+Update response.txt and your final response to report these counts accurately.
+Preserve source, tests, metrics, prompt, and execution logs.
+Save this correction as correction_prompt.txt.
+No rerun is needed.
+
+Write only inside the existing Health trial2/step09 directory.

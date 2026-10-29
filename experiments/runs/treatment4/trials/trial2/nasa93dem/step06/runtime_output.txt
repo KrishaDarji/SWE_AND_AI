@@ -1,0 +1,363 @@
+ATTEMPT 1: demonstration
+{
+  "evidence": {
+    "estimate": {
+      "label": "MODEL_ESTIMATE",
+      "effort": 146.02943690476192,
+      "method": "training-only RandomForestRegressor pipeline"
+    },
+    "training_history_reference": {
+      "label": "TRAINING_HISTORY_REFERENCE",
+      "statistic": "median Effort-",
+      "effort": 276.0,
+      "training_count": 68
+    },
+    "historical_associations": {
+      "label": "HISTORICAL_ASSOCIATION",
+      "method": "training-only marginal categorical eta-squared",
+      "top": [
+        {
+          "descriptor": "time",
+          "score_eta_squared": 0.3808577887046787,
+          "groups": [
+            {
+              "level": "h",
+              "n": 10,
+              "mean_effort": 651.8
+            },
+            {
+              "level": "n",
+              "n": 41,
+              "mean_effort": 302.5365853658537
+            },
+            {
+              "level": "vh",
+              "n": 11,
+              "mean_effort": 496.47272727272735
+            },
+            {
+              "level": "xh",
+              "n": 6,
+              "mean_effort": 2871.6
+            }
+          ]
+        },
+        {
+          "descriptor": "rely",
+          "score_eta_squared": 0.35213260096733723,
+          "groups": [
+            {
+              "level": "h",
+              "n": 38,
+              "mean_effort": 381.86842105263156
+            },
+            {
+              "level": "l",
+              "n": 2,
+              "mean_effort": 1296.0
+            },
+            {
+              "level": "n",
+              "n": 21,
+              "mean_effort": 306.15238095238095
+            },
+            {
+              "level": "vh",
+              "n": 7,
+              "mean_effort": 2582.942857142857
+            }
+          ]
+        },
+        {
+          "descriptor": "data",
+          "score_eta_squared": 0.23656452953233434,
+          "groups": [
+            {
+              "level": "h",
+              "n": 14,
+              "mean_effort": 1656.7714285714285
+            },
+            {
+              "level": "l",
+              "n": 27,
+              "mean_effort": 163.2962962962963
+            },
+            {
+              "level": "n",
+              "n": 25,
+              "mean_effort": 476.12
+            },
+            {
+              "level": "vh",
+              "n": 2,
+              "mean_effort": 1053.0
+            }
+          ]
+        }
+      ]
+    },
+    "audit": {
+      "label": "MEASURED_AUDIT_VALUE",
+      "effort": 24.0,
+      "held_out_row_index": 10
+    }
+  },
+  "proposal": {
+    "held_out_row_index": 10,
+    "descriptors": {
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "n",
+      "rely": "n",
+      "data": "l",
+      "cplx": "h",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "n",
+      "pvol": "l",
+      "acap": "h",
+      "pcap": "h",
+      "pcon": "n",
+      "apex": "vh",
+      "plex": "n",
+      "ltex": "h",
+      "tool": "n",
+      "site": "n",
+      "sced": "n"
+    },
+    "descriptor_count": 22,
+    "excluded_inputs": [
+      "idX",
+      "centerX",
+      "YearX",
+      "Kloc+",
+      "Effort-",
+      "Defects-",
+      "MonthsX"
+    ]
+  },
+  "explanation": [
+    "The model estimate is generated before revealing the held-out Effort-.",
+    "The median is a training-history reference, not a guarantee or a cost.",
+    "Associations describe marginal training-row patterns; they are not additive local contributions, causal effects, or guarantees.",
+    "Missing or unseen descriptor levels are represented explicitly and ignored by one-hot encoding when unseen.",
+    "Correlated project factors may share explanatory information, so evidence should not be added together.",
+    "The measured audit value is reported separately after the pre-audit explanation."
+  ],
+  "settings": {
+    "split": "GroupShuffleSplit(test_size=0.25, random_state=42)",
+    "grouping": "identical descriptor configurations",
+    "predictors": [
+      "prec",
+      "flex",
+      "resl",
+      "team",
+      "pmat",
+      "rely",
+      "data",
+      "cplx",
+      "ruse",
+      "docu",
+      "time",
+      "stor",
+      "pvol",
+      "acap",
+      "pcap",
+      "pcon",
+      "apex",
+      "plex",
+      "ltex",
+      "tool",
+      "site",
+      "sced"
+    ]
+  }
+}
+real 0.93
+user 0.78
+sys 0.10
+
+ATTEMPT 2: repaired demonstration
+{
+  "evidence": {
+    "estimate": {
+      "label": "MODEL_ESTIMATE",
+      "effort": 146.02943690476192,
+      "method": "training-only RandomForestRegressor pipeline"
+    },
+    "training_history_reference": {
+      "label": "TRAINING_HISTORY_REFERENCE",
+      "statistic": "median Effort-",
+      "effort": 276.0,
+      "training_count": 68
+    },
+    "historical_associations": {
+      "label": "HISTORICAL_ASSOCIATION",
+      "method": "training-only marginal categorical eta-squared",
+      "top": [
+        {
+          "descriptor": "time",
+          "score_eta_squared": 0.3808577887046787,
+          "groups": [
+            {
+              "level": "h",
+              "n": 10,
+              "mean_effort": 651.8
+            },
+            {
+              "level": "n",
+              "n": 41,
+              "mean_effort": 302.5365853658537
+            },
+            {
+              "level": "vh",
+              "n": 11,
+              "mean_effort": 496.47272727272735
+            },
+            {
+              "level": "xh",
+              "n": 6,
+              "mean_effort": 2871.6
+            }
+          ]
+        },
+        {
+          "descriptor": "rely",
+          "score_eta_squared": 0.35213260096733723,
+          "groups": [
+            {
+              "level": "h",
+              "n": 38,
+              "mean_effort": 381.86842105263156
+            },
+            {
+              "level": "l",
+              "n": 2,
+              "mean_effort": 1296.0
+            },
+            {
+              "level": "n",
+              "n": 21,
+              "mean_effort": 306.15238095238095
+            },
+            {
+              "level": "vh",
+              "n": 7,
+              "mean_effort": 2582.942857142857
+            }
+          ]
+        },
+        {
+          "descriptor": "data",
+          "score_eta_squared": 0.23656452953233434,
+          "groups": [
+            {
+              "level": "h",
+              "n": 14,
+              "mean_effort": 1656.7714285714285
+            },
+            {
+              "level": "l",
+              "n": 27,
+              "mean_effort": 163.2962962962963
+            },
+            {
+              "level": "n",
+              "n": 25,
+              "mean_effort": 476.12
+            },
+            {
+              "level": "vh",
+              "n": 2,
+              "mean_effort": 1053.0
+            }
+          ]
+        }
+      ]
+    },
+    "audit": {
+      "label": "MEASURED_AUDIT_VALUE",
+      "effort": 24.0,
+      "held_out_row_index": 10
+    }
+  },
+  "proposal": {
+    "held_out_row_index": 10,
+    "descriptors": {
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "n",
+      "rely": "n",
+      "data": "l",
+      "cplx": "h",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "n",
+      "pvol": "l",
+      "acap": "h",
+      "pcap": "h",
+      "pcon": "n",
+      "apex": "vh",
+      "plex": "n",
+      "ltex": "h",
+      "tool": "n",
+      "site": "n",
+      "sced": "n"
+    },
+    "descriptor_count": 22,
+    "excluded_inputs": [
+      "idX",
+      "centerX",
+      "YearX",
+      "Kloc+",
+      "Effort-",
+      "Defects-",
+      "MonthsX"
+    ]
+  },
+  "explanation": [
+    "The model estimate is generated before revealing the held-out Effort-.",
+    "The median is a training-history reference, not a guarantee or a cost.",
+    "Associations describe marginal training-row patterns; they are not additive local contributions, causal effects, or guarantees.",
+    "Missing or unseen descriptor levels are represented explicitly and ignored by one-hot encoding when unseen.",
+    "Correlated project factors may share explanatory information, so evidence should not be added together.",
+    "The measured audit value is reported separately after the pre-audit explanation."
+  ],
+  "settings": {
+    "split": "GroupShuffleSplit(test_size=0.25, random_state=42)",
+    "grouping": "identical descriptor configurations",
+    "predictors": [
+      "prec",
+      "flex",
+      "resl",
+      "team",
+      "pmat",
+      "rely",
+      "data",
+      "cplx",
+      "ruse",
+      "docu",
+      "time",
+      "stor",
+      "pvol",
+      "acap",
+      "pcap",
+      "pcon",
+      "apex",
+      "plex",
+      "ltex",
+      "tool",
+      "site",
+      "sced"
+    ]
+  }
+}
+real 0.85
+user 0.75
+sys 0.09

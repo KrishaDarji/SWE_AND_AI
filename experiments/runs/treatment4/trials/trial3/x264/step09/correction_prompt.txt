@@ -1,0 +1,22 @@
+Correct Trial 3 X264 Step 9's reporting.
+
+1. Give defined scores below threshold the reason "below threshold".
+   Reserve "score undefined" for genuinely unavailable scores.
+   Keep separate reasons for insufficient groups and zero variability.
+
+2. Preserve original CSV record identifiers before filtering invalid outcomes.
+   Do not renumber surviving records after filtering.
+   Count invalid outcomes correctly even when all outcomes are invalid.
+
+Add tests for:
+- A finite, below-threshold score with the correct reason.
+- An invalid-outcome row preceding a valid row, preserving its CSV identifier.
+- All-invalid outcomes with the correct invalid count.
+
+Preserve earlier interfaces and logs.
+Capture corrected tests and demonstration into new attempt files.
+Update measured metrics and new_loc against Trial 3 Step 8.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+
+Write only inside the existing Trial 3 X264 step09 directory.

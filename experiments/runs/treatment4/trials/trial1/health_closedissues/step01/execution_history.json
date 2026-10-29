@@ -1,0 +1,28 @@
+[
+  {
+    "python": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+    "scikit_learn": "1.6.0",
+    "test_command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01/tests",
+      "-v"
+    ],
+    "demo_command": [
+      "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01/source/summarize.py",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+      "--output-dir",
+      "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01"
+    ],
+    "test_returncode": 0,
+    "demo_returncode": 0,
+    "test_seconds": 2.127182500087656,
+    "demo_seconds": 0.7611656669760123,
+    "passed": 8,
+    "total": 8
+  }
+]

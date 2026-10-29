@@ -1,0 +1,121 @@
+You are running Treatment 4, Trial 3, Dataset 2, Step 5 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: blame
+- Current requirement: Explain which project factors are associated with excessive effort.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/nasa93dem/step04/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/nasa93dem/step04/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/nasa93dem/step05/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 4 implementation where appropriate.
+Copy accumulated source and tests into Step 5, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 NASA93 Step 4 source and tests.
+- Files created in the current Step 5 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Rank the 22 project descriptors by association with observed Effort-.
+- Exclude X-suffix metadata and Kloc+, Effort-, and Defects- from explanatory inputs.
+- Treat descriptor ratings as categorical.
+- Explain the ranking method and use a consistent primary score.
+- Distinguish marginal associations from adjusted associations if both are used.
+- Report group counts, effort summaries, scores, and direction where meaningful.
+- Handle constants, missing/non-finite values, small groups, and tied scores.
+- Use deterministic tie-breaking.
+- Explain correlated descriptors and shared explanatory information.
+- Higher effort alone does not establish inefficiency because project scope differs.
+- Delivered size is excluded, so do not claim size-adjusted productivity.
+- Do not claim causal effects, guaranteed process improvements, defect-risk
+  findings, monetary costs, or invented effort units.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test known synthetic associations, excluded columns, categorical handling,
+constants, missing values, small groups, and deterministic ordering.
+Independently verify scores, group counts, and effort summaries.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify required artifacts and specify valid quoted run commands.
+
+Run tests and the association-analysis demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 5
+- treatment: 4
+- trial: 3
+- domain: software project estimation
+- skill: blame
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners. Include docstrings.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 4,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the association-analysis
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 NASA93 Step 5 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

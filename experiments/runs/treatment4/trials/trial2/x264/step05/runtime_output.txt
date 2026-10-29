@@ -1,0 +1,437 @@
+{
+  "assumptions": [
+    "configuration rows are observational",
+    "associations are not causal responsibility",
+    "one-hot encoding uses the first sorted level as reference"
+  ],
+  "full_model_r2": 0.956200449367365,
+  "lower_is_better": true,
+  "measure": "Performance-",
+  "mutually_exclusive_pairs": [],
+  "outcome_summary": {
+    "max": 821.963,
+    "mean": 461.7535963541667,
+    "median": 452.7785,
+    "min": 244.23,
+    "std": 162.49115009089647
+  },
+  "ranking_method": "descending adjusted delta R-squared, then eta-squared, then setting name; eta-squared is marginal group association and adjusted delta R-squared is the full one-hot linear model increase after all other settings",
+  "runs": 1152,
+  "runtime_seconds": 0.011311291949823499,
+  "settings": [
+    {
+      "adjusted_delta_r2": 0.03769159718307724,
+      "constant": false,
+      "eta_squared": 0.037691597183077276,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 493.3001545138889,
+          "min": 244.23,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 672.6,
+          "mean": 430.20703819444446,
+          "min": 244.277,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 493.3001545138889,
+      "mean_min": 430.20703819444446,
+      "mean_range": 63.09311631944445,
+      "setting": "no_mixed_refs"
+    },
+    {
+      "adjusted_delta_r2": 0.03078699490299197,
+      "constant": false,
+      "eta_squared": 0.03078699490299209,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 726.917,
+          "mean": 433.2425364583333,
+          "min": 244.23,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 821.963,
+          "mean": 490.2646562500001,
+          "min": 249.363,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 490.2646562500001,
+      "mean_min": 433.2425364583333,
+      "mean_range": 57.022119791666796,
+      "setting": "no_fast_pskip"
+    },
+    {
+      "adjusted_delta_r2": 0.02437690512597035,
+      "constant": false,
+      "eta_squared": 0.024376905125970384,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 745.597,
+          "mean": 436.3836822916667,
+          "min": 244.23,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 821.963,
+          "mean": 487.12351041666665,
+          "min": 275.387,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 487.12351041666665,
+      "mean_min": 436.3836822916667,
+      "mean_range": 50.739828124999974,
+      "setting": "no_mbtree"
+    },
+    {
+      "adjusted_delta_r2": 0.004082208133125653,
+      "constant": false,
+      "eta_squared": 0.004082208133125634,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 472.1355069444445,
+          "min": 259.807,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 784.02,
+          "mean": 451.37168576388893,
+          "min": 244.23,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 472.1355069444445,
+      "mean_min": 451.37168576388893,
+      "mean_range": 20.763821180555567,
+      "setting": "no_8x8dct"
+    },
+    {
+      "adjusted_delta_r2": 0.0005837384643699872,
+      "constant": false,
+      "eta_squared": 0.0005837384643700344,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 465.6794930555556,
+          "min": 254.013,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 809.97,
+          "mean": 457.82769965277777,
+          "min": 244.23,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 465.6794930555556,
+      "mean_min": 457.82769965277777,
+      "mean_range": 7.851793402777844,
+      "setting": "no_cabac"
+    },
+    {
+      "adjusted_delta_r2": 8.691428974305637e-07,
+      "constant": false,
+      "eta_squared": 8.691428974416727e-07,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 818.04,
+          "mean": 461.6021093749999,
+          "min": 244.303,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 821.963,
+          "mean": 461.9050833333333,
+          "min": 244.23,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.9050833333333,
+      "mean_min": 461.6021093749999,
+      "mean_range": 0.302973958333439,
+      "setting": "no_deblock"
+    },
+    {
+      "adjusted_delta_r2": 2.940311708554688e-07,
+      "constant": false,
+      "eta_squared": 2.9403117090628396e-07,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.76,
+          "mean": 461.8417065972222,
+          "min": 244.23,
+          "n": 576,
+          "value": 0.0
+        },
+        {
+          "max": 821.963,
+          "mean": 461.66548611111114,
+          "min": 244.28,
+          "n": 576,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.8417065972222,
+      "mean_min": 461.66548611111114,
+      "mean_range": 0.176220486111049,
+      "setting": "no_weightb"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": false,
+      "eta_squared": 0.6445017930440722,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 573.757,
+          "mean": 369.5120065104167,
+          "min": 244.23,
+          "n": 768,
+          "value": 0.0
+        },
+        {
+          "max": 821.963,
+          "mean": 646.2367760416666,
+          "min": 490.043,
+          "n": 384,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 646.2367760416666,
+      "mean_min": 369.5120065104167,
+      "mean_range": 276.72476953124993,
+      "setting": "ref_9"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": false,
+      "eta_squared": 0.643494042463734,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 553.92304296875,
+          "min": 361.703,
+          "n": 768,
+          "value": 0.0
+        },
+        {
+          "max": 310.793,
+          "mean": 277.414703125,
+          "min": 244.23,
+          "n": 384,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 553.92304296875,
+      "mean_min": 277.414703125,
+      "mean_range": 276.50833984375,
+      "setting": "ref_1"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": false,
+      "eta_squared": 1.2183343356474427e-05,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.76,
+          "mean": 462.1546458333333,
+          "min": 246.2,
+          "n": 768,
+          "value": 0.0
+        },
+        {
+          "max": 821.963,
+          "mean": 460.9514973958333,
+          "min": 244.23,
+          "n": 384,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 462.1546458333333,
+      "mean_min": 460.9514973958333,
+      "mean_range": 1.2031484374999764,
+      "setting": "rc_lookahead_20"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": false,
+      "eta_squared": 7.884681107354659e-06,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 461.43096484374996,
+          "min": 244.23,
+          "n": 768,
+          "value": 0.0
+        },
+        {
+          "max": 821.76,
+          "mean": 462.39885937500003,
+          "min": 247.483,
+          "n": 384,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 462.39885937500003,
+      "mean_min": 461.43096484374996,
+      "mean_range": 0.9678945312500673,
+      "setting": "rc_lookahead_60"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": false,
+      "eta_squared": 4.6580242782443254e-07,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 461.6751783854167,
+          "min": 244.23,
+          "n": 768,
+          "value": 0.0
+        },
+        {
+          "max": 821.757,
+          "mean": 461.91043229166667,
+          "min": 246.2,
+          "n": 384,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.91043229166667,
+      "mean_min": 461.6751783854167,
+      "mean_range": 0.2352539062499659,
+      "setting": "rc_lookahead_40"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": false,
+      "eta_squared": 3.942409437987495e-07,
+      "interpretation": "marginal and adjusted association",
+      "level_count": 2,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 461.82573958333336,
+          "min": 244.23,
+          "n": 768,
+          "value": 0.0
+        },
+        {
+          "max": 573.757,
+          "mean": 461.6093098958333,
+          "min": 361.703,
+          "n": 384,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.82573958333336,
+      "mean_min": 461.6093098958333,
+      "mean_range": 0.2164296875000673,
+      "setting": "ref_5"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": true,
+      "eta_squared": 0.0,
+      "interpretation": "constant: no within-dataset association",
+      "level_count": 1,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 461.7535963541667,
+          "min": 244.23,
+          "n": 1152,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.7535963541667,
+      "mean_min": 461.7535963541667,
+      "mean_range": 0.0,
+      "setting": "no_asm"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": true,
+      "eta_squared": 0.0,
+      "interpretation": "constant: no within-dataset association",
+      "level_count": 1,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 461.7535963541667,
+          "min": 244.23,
+          "n": 1152,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.7535963541667,
+      "mean_min": 461.7535963541667,
+      "mean_range": 0.0,
+      "setting": "rc_lookahead"
+    },
+    {
+      "adjusted_delta_r2": 0.0,
+      "constant": true,
+      "eta_squared": 0.0,
+      "interpretation": "constant: no within-dataset association",
+      "level_count": 1,
+      "levels": [
+        {
+          "max": 821.963,
+          "mean": 461.7535963541667,
+          "min": 244.23,
+          "n": 1152,
+          "value": 1.0
+        }
+      ],
+      "mean_max": 461.7535963541667,
+      "mean_min": 461.7535963541667,
+      "mean_range": 0.0,
+      "setting": "ref"
+    }
+  ]
+}
+real 0.74
+user 0.64
+sys 0.09

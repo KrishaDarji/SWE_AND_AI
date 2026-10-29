@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,3,software project estimation,certify,217,67,1,0.63,9,"11 tests; reused Step 2 source/tests; /usr/bin/time -p demo; illustrative threshold is 10% of tool=n mean; skew, imbalance, scope and observed-effort limitations documented; preserved failed attempts and repaired wrapper/test failures"

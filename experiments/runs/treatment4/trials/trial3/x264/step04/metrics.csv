@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,4,3,video encoding,flow,251,56,1,1.40,3,"16 tests; reused Step 3 interfaces; /usr/bin/time -p flow demonstration timing excluding tests; 1152 snapshots; incremental Welford statistics; prior summarizer output preserved; CSV order is demonstration sequence"

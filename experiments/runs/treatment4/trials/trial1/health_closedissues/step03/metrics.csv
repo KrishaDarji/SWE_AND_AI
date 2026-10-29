@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,1,health_closedissues,certify,484,172,1,0.699939542,0,passed/total=24/24; test_seconds=10.053827750; regression_step1_seconds=0.705507417; regression_step2_seconds=2.366207583; Welch deterministic; seed 42 reserved; secondary objectives descriptive; no approved practical threshold; preserved Step 2 source/tests byte-for-byte; example configuration newly supplied because prior root artifacts are outside allowed inputs; no repairs or unexpected prior failures

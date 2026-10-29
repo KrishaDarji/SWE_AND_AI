@@ -1,0 +1,7 @@
+Predictors: prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced
+Train/test: 70/23
+Held-out MAE: 508.167; training-mean baseline MAE: 579.12
+Estimator: {'type': 'Ridge', 'alpha': 1.0, 'split': 'GroupShuffleSplit', 'test_size': 0.25, 'random_state': 42}
+real 0.73
+user 0.63
+sys 0.09

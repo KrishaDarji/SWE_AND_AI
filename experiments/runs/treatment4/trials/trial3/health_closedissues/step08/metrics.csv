@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,4,3,model configuration and quality,fix,604,121,1,0.05,6,"29 tests; Step 7 source/tests copied and preserved; /usr/bin/time -p; baseline is first CSV record; retrospective observed-data repair; retained 3 initial assertion failures, one corrected-suite assertion failure, one shell-wrapper failure, and one unavailable-python demonstration failure"

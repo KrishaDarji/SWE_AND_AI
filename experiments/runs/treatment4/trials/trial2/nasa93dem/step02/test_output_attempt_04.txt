@@ -1,0 +1,24 @@
+test_exclusions_and_group_split_reproducible (test_estimation.EstimationTests.test_exclusions_and_group_split_reproducible) ... ok
+test_final_model_is_distinct_from_holdout (test_estimation.EstimationTests.test_final_model_is_distinct_from_holdout) ... ok
+test_held_out_outcomes_are_isolated (test_estimation.EstimationTests.test_held_out_outcomes_are_isolated) ... ok
+test_missing_is_explicit_category (test_estimation.EstimationTests.test_missing_is_explicit_category) ... ERROR
+test_missing_unseen_and_proposal (test_estimation.EstimationTests.test_missing_unseen_and_proposal) ... ok
+test_training_only_preprocessing (test_estimation.EstimationTests.test_training_only_preprocessing) ... ok
+test_empty_input (test_nasa93_summary.SummaryTests.test_empty_input) ... ok
+test_missing_values (test_nasa93_summary.SummaryTests.test_missing_values) ... ok
+test_numeric_and_categorical_summaries (test_nasa93_summary.SummaryTests.test_numeric_and_categorical_summaries) ... ok
+test_roles_and_directions (test_nasa93_summary.SummaryTests.test_roles_and_directions) ... ok
+
+======================================================================
+ERROR: test_missing_is_explicit_category (test_estimation.EstimationTests.test_missing_is_explicit_category)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step02/tests/test_estimation.py", line 37, in test_missing_is_explicit_category
+    proposal[a["predictors"][0]] = "never-seen"
+    ^^^^^^^^
+NameError: name 'proposal' is not defined
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.670s
+
+FAILED (errors=1)

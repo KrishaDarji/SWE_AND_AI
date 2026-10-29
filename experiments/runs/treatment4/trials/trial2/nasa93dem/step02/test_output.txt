@@ -1,0 +1,9 @@
+ATTEMPT 1 (failed): initial suite had 4 fixture-path errors.
+ATTEMPT 2 (failed): corrected path still had 4 fixture-path errors.
+ATTEMPT 3 (failed): path fixed; 4 estimator input errors.
+ATTEMPT 4 (failed): 4 estimator input errors after grouping repair.
+ATTEMPT 5 (failed): syntax error in preprocessing patch.
+ATTEMPT 6 (failed): 1 test error in training-only assertion.
+FINAL: Ran 8 tests in 0.466s; OK
+CORRECTION FINAL: Ran 9 tests in 0.601s; OK
+Historical logs above are summarized records; exact prior stdout/stderr was unavailable. The correction run output was captured from this execution.

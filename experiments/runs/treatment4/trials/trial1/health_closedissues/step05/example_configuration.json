@@ -1,0 +1,1 @@
+{"N_estimators": 100, "criterion": "squared_error", "Min_sample_leaves": 1, "Min_impurity_decrease": 0, "Max_depth": 10}

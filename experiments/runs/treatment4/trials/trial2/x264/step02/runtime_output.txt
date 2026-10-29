@@ -1,0 +1,14 @@
+{
+  "baseline_mae": 135.97237591832706,
+  "mae": 26.294303480525663,
+  "random_state": 42,
+  "runtime_seconds": 0.00742354104295373,
+  "settings": ["no_asm", "no_8x8dct", "no_cabac", "no_deblock", "no_fast_pskip", "no_mbtree", "no_mixed_refs", "no_weightb", "rc_lookahead", "rc_lookahead_20", "rc_lookahead_40", "rc_lookahead_60", "ref", "ref_1", "ref_5", "ref_9"],
+  "test_groups": 231,
+  "test_rows": 231,
+  "train_groups": 921,
+  "train_rows": 921
+}
+real 0.71
+user 0.61
+sys 0.08

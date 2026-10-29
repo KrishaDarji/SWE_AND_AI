@@ -1,0 +1,16 @@
+test_actual_csv_independent_exhaustive_calculation (test_fix.RepairTests.test_actual_csv_independent_exhaustive_calculation) ... ok
+test_cli_real_data_and_invalid_baseline_and_csv (test_fix.RepairTests.test_cli_real_data_and_invalid_baseline_and_csv) ... ok
+test_cost_precedes_error_and_numeric_magnitude_counts_once (test_fix.RepairTests.test_cost_precedes_error_and_numeric_magnitude_counts_once) ... ok
+test_duplicates_zero_cost_and_normalization (test_fix.RepairTests.test_duplicates_zero_cost_and_normalization) ... ok
+test_each_missing_setting_and_mre_rejects_baseline_and_excludes_candidate (test_fix.RepairTests.test_each_missing_setting_and_mre_rejects_baseline_and_excludes_candidate) ... ok
+test_independent_exhaustive_generated_grid (test_fix.RepairTests.test_independent_exhaustive_generated_grid) ... ok
+test_invalid_baseline_rows_and_reusable_inputs (test_fix.RepairTests.test_invalid_baseline_rows_and_reusable_inputs) ... ok
+test_missing_outcomes_settings_and_overlapping_exclusions (test_fix.RepairTests.test_missing_outcomes_settings_and_overlapping_exclusions) ... ok
+test_mre_then_earliest_ties_ignore_secondary_objectives (test_fix.RepairTests.test_mre_then_earliest_ties_ignore_secondary_objectives) ... ok
+test_nonfirst_baseline_inputs_detached_and_exact_changed_fields (test_fix.RepairTests.test_nonfirst_baseline_inputs_detached_and_exact_changed_fields) ... ok
+test_strict_improvement_and_explicit_empty_result (test_fix.RepairTests.test_strict_improvement_and_explicit_empty_result) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 5.074s
+
+OK

@@ -1,0 +1,82 @@
+ATTEMPT 2 (final successful implementation run)
+{
+  "assumptions": [
+    "independent configuration rows",
+    "Welch unequal-variance t test",
+    "two-sided alpha=0.05",
+    "observational association, not causation",
+    "non-detection is not equivalence"
+  ],
+  "conclusion": "B is meaningfully faster than A",
+  "difference_ci_95": [
+    1.999712138871054,
+    39.52793022224008
+  ],
+  "group_a_mean": 472.1355069444445,
+  "group_a_n": 576,
+  "group_b_mean": 451.37168576388893,
+  "group_b_n": 576,
+  "group_definition": {
+    "A": "no_8x8dct=0",
+    "B": "no_8x8dct=1"
+  },
+  "lower_is_better": true,
+  "measure": "Performance-",
+  "observed_difference_a_minus_b": 20.763821180555567,
+  "permutation_p_value": 0.033096690330966905,
+  "permutations": 10000,
+  "practical_threshold": 5.0,
+  "practical_threshold_label": "illustrative default",
+  "practically_meaningful": true,
+  "random_state": 42,
+  "runtime_seconds": 0.09543979191221297,
+  "statistically_detected": true,
+  "welch_p_value": 0.030125862173739682,
+  "welch_t": 2.1711245916071125
+}
+real 0.81
+user 0.70
+sys 0.09
+REPAIR RUNTIME ATTEMPT 1 (corrected demonstration)
+{
+  "assumptions": [
+    "independent configuration rows",
+    "Welch unequal-variance t test",
+    "two-sided alpha=0.05",
+    "observational association, not causation",
+    "non-detection is not equivalence"
+  ],
+  "conclusion": "statistical difference detected; point estimate exceeds threshold but practical importance is uncertain",
+  "confidence_interval_entirely_beyond_threshold": false,
+  "difference_ci_95": [
+    1.9996990185387773,
+    39.52794334257236
+  ],
+  "difference_from_zero_statistically_detected": true,
+  "group_a_mean": 472.1355069444445,
+  "group_a_n": 576,
+  "group_b_mean": 451.37168576388893,
+  "group_b_n": 576,
+  "group_definition": {
+    "A": "no_8x8dct=0",
+    "B": "no_8x8dct=1"
+  },
+  "lower_is_better": true,
+  "measure": "Performance-",
+  "observed_difference_a_minus_b": 20.763821180555567,
+  "permutation_p_value": 0.033096690330966905,
+  "permutations": 10000,
+  "point_estimate_exceeds_threshold": true,
+  "practical_importance": "uncertain: interval crosses practical threshold",
+  "practical_threshold": 5.0,
+  "practical_threshold_label": "illustrative default",
+  "random_state": 42,
+  "runtime_seconds": 0.09720762504730374,
+  "statistically_detected": true,
+  "welch_p_value": 0.030125862173739682,
+  "welch_satterthwaite_df": 1149.2372777191688,
+  "welch_t": 2.1711245916071125
+}
+real 0.81
+user 0.70
+sys 0.09

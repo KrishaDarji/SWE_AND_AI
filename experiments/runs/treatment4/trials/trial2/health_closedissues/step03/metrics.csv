@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,2,model configuration and quality,certify,231,87,1,0.36,10,"11 tests; reused Step 2 source/tests; /usr/bin/time -p demonstration timing; no client threshold; fixed two-criterion Welch comparison; corrected error count to 10 from the six preserved attempt-log categories, without counting failed suite exit statuses"

@@ -1,0 +1,427 @@
+{
+  "cap": 100,
+  "eligible_count": 4877,
+  "information_advantage": "selector inspects all feasible outcomes; baseline samples one record",
+  "interpretation": "retrospective draws from one historical dataset, not independent validation samples or independent LLM trials",
+  "runs": [
+    {
+      "acc_plus_difference": -0.3607818007049023,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "17",
+          "Min_impurity_decrease": "4.5",
+          "Min_sample_leaves": "13",
+          "N_estimators": "40",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 1882,
+        "measured_outcomes": {
+          "ACC+": 0.42934956744633124,
+          "MRE-": 0.8325478645066273,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 1881
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8325478645066273,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 42,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.12079461715123352,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "11",
+          "Min_impurity_decrease": "0",
+          "Min_sample_leaves": "3",
+          "N_estimators": "70",
+          "criterion": "absolute_error"
+        },
+        "csv_record_number": 669,
+        "measured_outcomes": {
+          "ACC+": 0.669336751,
+          "MRE-": 0.3480117820324005,
+          "PRED40+": 0.5714285714285714
+        },
+        "original_record_id": 668
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.3480117820324005,
+      "pred40_plus_difference": -0.2857142857142857,
+      "seed": 43,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.40083306632489585,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "19",
+          "Min_impurity_decrease": "1.75",
+          "Min_sample_leaves": "10",
+          "N_estimators": "10",
+          "criterion": "absolute_error"
+        },
+        "csv_record_number": 6913,
+        "measured_outcomes": {
+          "ACC+": 0.3892983018263377,
+          "MRE-": 0.9294550810014727,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 6912
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.9294550810014727,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 44,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.20217878884972762,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "13",
+          "Min_impurity_decrease": "1.75",
+          "Min_sample_leaves": "6",
+          "N_estimators": "80",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 4610,
+        "measured_outcomes": {
+          "ACC+": 0.5879525793015059,
+          "MRE-": 0.5487481590574373,
+          "PRED40+": 0.14285714285714285
+        },
+        "original_record_id": 4609
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.5487481590574373,
+      "pred40_plus_difference": -0.7142857142857142,
+      "seed": 45,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.3774431272028196,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "20",
+          "Min_impurity_decrease": "6",
+          "Min_sample_leaves": "17",
+          "N_estimators": "80",
+          "criterion": "absolute_error"
+        },
+        "csv_record_number": 1311,
+        "measured_outcomes": {
+          "ACC+": 0.41268824094841394,
+          "MRE-": 0.8708394698085419,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 1310
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8708394698085419,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 46,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.38321050945209867,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "12",
+          "Min_impurity_decrease": "7.75",
+          "Min_sample_leaves": "16",
+          "N_estimators": "30",
+          "criterion": "absolute_error"
+        },
+        "csv_record_number": 5957,
+        "measured_outcomes": {
+          "ACC+": 0.40692085869913486,
+          "MRE-": 0.8849779086892489,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 5956
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8849779086892489,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 47,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.35501441845562315,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "4.5",
+          "Min_sample_leaves": "15",
+          "N_estimators": "40",
+          "criterion": "poisson"
+        },
+        "csv_record_number": 9227,
+        "measured_outcomes": {
+          "ACC+": 0.4351169496956104,
+          "MRE-": 0.8197349042709866,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 9226
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8197349042709866,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 48,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.3540531880807433,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "20",
+          "Min_impurity_decrease": "6.25",
+          "Min_sample_leaves": "12",
+          "N_estimators": "70",
+          "criterion": "poisson"
+        },
+        "csv_record_number": 1156,
+        "measured_outcomes": {
+          "ACC+": 0.4360781800704902,
+          "MRE-": 0.8173784977908689,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 1155
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8173784977908689,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 49,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.35917975015123355,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "9",
+          "Min_impurity_decrease": "1.25",
+          "Min_sample_leaves": "9",
+          "N_estimators": "20",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 8390,
+        "measured_outcomes": {
+          "ACC+": 0.430951618,
+          "MRE-": 0.8288659793814432,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 8389
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8288659793814432,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 50,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    },
+    {
+      "acc_plus_difference": -0.3540531880807433,
+      "baseline": {
+        "configuration": {
+          "Max_depth": "11",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "13",
+          "N_estimators": "40",
+          "criterion": "poisson"
+        },
+        "csv_record_number": 4156,
+        "measured_outcomes": {
+          "ACC+": 0.4360781800704902,
+          "MRE-": 0.8170839469808542,
+          "PRED40+": 0.0
+        },
+        "original_record_id": 4155
+      },
+      "classification": "selector win",
+      "paired_mre_difference": 0.8170839469808542,
+      "pred40_plus_difference": -0.8571428571428571,
+      "seed": 51,
+      "selector": {
+        "configuration": {
+          "Max_depth": "5",
+          "Min_impurity_decrease": "6.75",
+          "Min_sample_leaves": "1",
+          "N_estimators": "10",
+          "criterion": "squared_error"
+        },
+        "csv_record_number": 32,
+        "measured_outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "original_record_id": 31
+      }
+    }
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "selector_strategy": "choose minimum observed MRE-, then higher ACC+, PRED40+, earliest record",
+  "status": "compared",
+  "summary": {
+    "count": 10,
+    "losses": 0,
+    "max": 0.9294550810014727,
+    "mean": 0.7697643593519882,
+    "min": 0.3480117820324005,
+    "ties": 0,
+    "tradeoff_note": "ACC+ and PRED40+ differences are descriptive paired trade-offs; no composite metric is formed.",
+    "wins": 10
+  },
+  "tie_tolerance": 1e-12
+}
+real 0.05
+user 0.04
+sys 0.00
+runtime_exit=0

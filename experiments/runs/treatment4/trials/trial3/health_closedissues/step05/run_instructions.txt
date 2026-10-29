@@ -1,0 +1,3 @@
+Run from the repository root:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m unittest discover -s "experiments/runs/treatment4/trials/trial3/health_closedissues/step05/tests" -v
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 "experiments/runs/treatment4/trials/trial3/health_closedissues/step05/source/blame.py" "moot/optimize/hpo/Health-ClosedIssues0000.csv"

@@ -1,0 +1,63 @@
+ATTEMPT 1: complete regression and Step 6 suite
+test_known_association_exclusions_and_order (test_blame.BlameTests.test_known_association_exclusions_and_order) ... ok
+test_missing_is_category_and_ties_are_deterministic (test_blame.BlameTests.test_missing_is_category_and_ties_are_deterministic) ... ok
+test_groups_direction_and_threshold_crossing (test_comparison.ComparisonTests.test_groups_direction_and_threshold_crossing) ... ok
+test_insufficient_and_zero_variance (test_comparison.ComparisonTests.test_insufficient_and_zero_variance) ... ok
+test_threshold_validation (test_comparison.ComparisonTests.test_threshold_validation) ... ok
+test_unequal_variance_interval_and_p_value (test_comparison.ComparisonTests.test_unequal_variance_interval_and_p_value) ... ok
+test_exclusions_and_group_split_reproducible (test_estimation.EstimationTests.test_exclusions_and_group_split_reproducible) ... ok
+test_final_model_is_distinct_from_holdout (test_estimation.EstimationTests.test_final_model_is_distinct_from_holdout) ... ok
+test_held_out_outcomes_are_isolated (test_estimation.EstimationTests.test_held_out_outcomes_are_isolated) ... ok
+test_missing_is_explicit_category (test_estimation.EstimationTests.test_missing_is_explicit_category) ... ok
+test_missing_unseen_and_proposal (test_estimation.EstimationTests.test_missing_unseen_and_proposal) ... ok
+test_training_only_preprocessing (test_estimation.EstimationTests.test_training_only_preprocessing) ... ok
+test_empty_and_short_inputs (test_flow.FlowTests.test_empty_and_short_inputs) ... ok
+test_missing_unseen_and_outcome_isolation (test_flow.FlowTests.test_missing_unseen_and_outcome_isolation) ... ok
+test_warmup_and_cumulative_arithmetic (test_flow.FlowTests.test_warmup_and_cumulative_arithmetic) ... ok
+test_held_out_outcome_does_not_change_pre_audit_result (test_justification.JustificationTests.test_held_out_outcome_does_not_change_pre_audit_result) ... ok
+test_labels_inputs_and_training_only_evidence (test_justification.JustificationTests.test_labels_inputs_and_training_only_evidence) ... FAIL
+test_empty_input (test_nasa93_summary.SummaryTests.test_empty_input) ... ok
+test_missing_values (test_nasa93_summary.SummaryTests.test_missing_values) ... ok
+test_numeric_and_categorical_summaries (test_nasa93_summary.SummaryTests.test_numeric_and_categorical_summaries) ... ok
+test_roles_and_directions (test_nasa93_summary.SummaryTests.test_roles_and_directions) ... ok
+
+======================================================================
+FAIL: test_labels_inputs_and_training_only_evidence (test_justification.JustificationTests.test_labels_inputs_and_training_only_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step06/tests/test_justification.py", line 22, in test_labels_inputs_and_training_only_evidence
+    self.assertEqual(evidence["training_history_reference"]["training_count"], 69)
+AssertionError: 68 != 69
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.286s
+
+FAILED (failures=1)
+
+ATTEMPT 2: repaired complete regression and Step 6 suite
+test_known_association_exclusions_and_order (test_blame.BlameTests.test_known_association_exclusions_and_order) ... ok
+test_missing_is_category_and_ties_are_deterministic (test_blame.BlameTests.test_missing_is_category_and_ties_are_deterministic) ... ok
+test_groups_direction_and_threshold_crossing (test_comparison.ComparisonTests.test_groups_direction_and_threshold_crossing) ... ok
+test_insufficient_and_zero_variance (test_comparison.ComparisonTests.test_insufficient_and_zero_variance) ... ok
+test_threshold_validation (test_comparison.ComparisonTests.test_threshold_validation) ... ok
+test_unequal_variance_interval_and_p_value (test_comparison.ComparisonTests.test_unequal_variance_interval_and_p_value) ... ok
+test_exclusions_and_group_split_reproducible (test_estimation.EstimationTests.test_exclusions_and_group_split_reproducible) ... ok
+test_final_model_is_distinct_from_holdout (test_estimation.EstimationTests.test_final_model_is_distinct_from_holdout) ... ok
+test_held_out_outcomes_are_isolated (test_estimation.EstimationTests.test_held_out_outcomes_are_isolated) ... ok
+test_missing_is_explicit_category (test_estimation.EstimationTests.test_missing_is_explicit_category) ... ok
+test_missing_unseen_and_proposal (test_estimation.EstimationTests.test_missing_unseen_and_proposal) ... ok
+test_training_only_preprocessing (test_estimation.EstimationTests.test_training_only_preprocessing) ... ok
+test_empty_and_short_inputs (test_flow.FlowTests.test_empty_and_short_inputs) ... ok
+test_missing_unseen_and_outcome_isolation (test_flow.FlowTests.test_missing_unseen_and_outcome_isolation) ... ok
+test_warmup_and_cumulative_arithmetic (test_flow.FlowTests.test_warmup_and_cumulative_arithmetic) ... ok
+test_held_out_outcome_does_not_change_pre_audit_result (test_justification.JustificationTests.test_held_out_outcome_does_not_change_pre_audit_result) ... ok
+test_labels_inputs_and_training_only_evidence (test_justification.JustificationTests.test_labels_inputs_and_training_only_evidence) ... ok
+test_empty_input (test_nasa93_summary.SummaryTests.test_empty_input) ... ok
+test_missing_values (test_nasa93_summary.SummaryTests.test_missing_values) ... ok
+test_numeric_and_categorical_summaries (test_nasa93_summary.SummaryTests.test_numeric_and_categorical_summaries) ... ok
+test_roles_and_directions (test_nasa93_summary.SummaryTests.test_roles_and_directions) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 1.219s
+
+OK

@@ -1,0 +1,11 @@
+Implemented Step 7 in the requested directory.
+
+- Added `source/nasa93_choose.py` for retrospective observed-record selection under a finite nonnegative Effort- budget (demonstration budget 100).
+- Preserved all Step 6 source and tests, adding regression coverage for boundaries, maximum selection, both tie-breakers, invalid budgets, missing/non-finite outcomes, empty input, and no feasible records.
+- The chooser reports the budget, feasible/total counts, original identifier, 22 descriptors, separate X-suffix metadata, observed outcomes, and selection rule. It explicitly distinguishes Kloc+ as a delivered-size proxy and does not make causal or predictive claims.
+- Test result: 28 passed.
+- Demonstration result: record 47, observed Effort- 97, observed Kloc+ 165, feasible 61/93; measured real time 0.62 seconds.
+- Run command: `PYTHONPATH=. python3 -m pytest -q tests`; demonstration command is in `run_instructions.txt`.
+- Artifacts include prompt.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, and preserved attempt logs.
+
+Assumptions and limitations: CSV order defines “earliest”; idX is reported as the original identifier and X-suffix fields remain metadata; records with missing/non-finite Effort- or Kloc+ are unusable; Kloc+ is not business value, productivity, or a causal outcome; this selects among observed records and cannot guarantee future feasibility or outcomes.

@@ -1,0 +1,5 @@
+{"estimator_settings": {"n_estimators": 100, "n_jobs": 1, "random_state": 42, "type": "RandomForestRegressor"}, "metrics": {"ACC+": {"baseline_mae": 0.09134788713504281, "mae": 0.010693234540807695}, "MRE-": {"baseline_mae": 0.16990093968969905, "mae": 0.015399274665618122}}, "predictor_names": ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"], "test_count": 2000, "train_count": 8000, "training_mean_baselines": {"ACC+": 0.4947189602696436, "MRE-": 0.7112005154627968}}
+{"ACC+": 0.6709804550807595, "MRE-": 0.25749484536412387}
+real 4.91
+user 4.69
+sys 0.18

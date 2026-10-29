@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,4,2,model configuration and quality,flow,288,57,1,0.05,1,"17 tests passed: 11 inherited and 6 flow; CSV adapter streams mapped records without buffering inputs; Step 3 source/tests copied; one initial failed command (python unavailable) preserved; timing is /usr/bin/time -p real for demonstration; CSV order is demonstration sequence; no convergence or stopping rule claimed"

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,4,2,video encoding,blame,255,57,1,0.74,1,"12 tests; Step 4 source/tests copied and interfaces preserved; /usr/bin/time -p real seconds excluding tests; one repaired synthetic-test expectation; observational associations, lower Performance- is better"

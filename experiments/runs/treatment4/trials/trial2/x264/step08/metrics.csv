@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,4,2,video encoding,fix,407,52,1,0.74,2,"22 tests; reused Step 7; /usr/bin/time -p real elapsed demonstration subprocess; observed first-record baseline; raw-column change count is a proxy; repaired JSON NumPy integer serialization after failed attempts"

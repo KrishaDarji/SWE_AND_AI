@@ -1,0 +1,30 @@
+Environment: python3 with scikit-learn 1.6.0 and its installed dependencies.
+Observed executable: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+No installations or dependency changes are needed.
+
+Set shell variables (all output stays inside this step directory):
+OUT='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01'
+DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+Tests only:
+python3 -m unittest discover -s "$OUT/tests" -v
+
+Implementation only:
+python3 "$OUT/source/summarize.py" "$DATASET" --output-dir "$OUT"
+
+Full measured run (tests, demo, captured outputs, metrics):
+python3 "$OUT/source/run_experiment.py" "$DATASET"
+
+The runner measures only the demo subprocess for runtime_seconds, including
+interpreter startup, imports, CSV reading, calculations, serialization, and stdout.
+Test subprocess timing is recorded separately in metrics notes and test_output.txt.
+Full-run attempts are appended to execution_history.json and preserve numbered
+copies of both logs. Latest logs and metrics are replaced on each measured run.
+Unexpected test/demo nonzero returns contribute to error_count; expected negative
+tests do not. Initial path/schema checks succeeded. No repairs were needed.
+
+The pure summarize(path) function returns the report dictionary. render_text(report)
+formats it. The Health schema is deliberately fixed; column order may vary, but
+missing, extra, and duplicate headers are rejected. The CLI accepts another CSV
+path with that schema; the actual-dataset tests remain anchored to the authorized
+Health CSV. Use only within this dataset and trial for the present experiment.

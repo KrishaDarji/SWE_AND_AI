@@ -1,0 +1,20 @@
+{
+  "working_directory": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step05",
+  "python": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+  "scikit_learn_version": "1.6.0",
+  "dataset": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+  "allowed_source": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step04/source",
+  "allowed_tests": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step04/tests",
+  "unchanged_previous_file_sha256": {
+    "source/certify.py": "ca76d6b42a03325facb2e0300e6c59fd906e9aa149c0baef7415f512dfbde473",
+    "source/flow.py": "13e8a85e6067ba77ae92b51e4b293f5df604f53f9338b329b101cdb702167b22",
+    "source/guess.py": "a0e4e0f99ea4f5db4cbc53900821ac13eb5c120277c501a7f918d1668173e866",
+    "source/summarize.py": "db69fb53736c652dc20fca22293e40916118d2ebff1995a02847db971fad1651",
+    "tests/test_certify.py": "1058c851d953eb9a4039ae6bee947fbeb34163665c0e2b1811fab98dafb1685c",
+    "tests/test_flow.py": "020cc278b0152fceb1ccd4bfd4a6073e1142542849d250ce3c1af8018c83e912",
+    "tests/test_guess.py": "a3c67f4827583927df96e273c2281ddd2d88bc22270dca272125500a5da416ce",
+    "tests/test_summarize.py": "5df20d965a6d220f27ea8c5bd727d1ed326a269074502905198d430a3f32ec5c"
+  },
+  "input_policy": "Only specified CSV, Step 4 source/tests, current-step files and installed APIs were used.",
+  "repair_attempts": "None; all measured tests and demos passed on the first attempt."
+}

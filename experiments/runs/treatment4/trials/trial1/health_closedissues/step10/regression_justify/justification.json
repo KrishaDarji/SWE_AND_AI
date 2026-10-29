@@ -1,0 +1,826 @@
+{
+  "preference": "Illustrative MRE-first preference rule, not a universally best multi-objective recommendation. Minimize observed MRE-, then maximize ACC+, then maximize PRED40+, then earliest one-based CSV data-row number.",
+  "record_count": 10000,
+  "objective_directions": {
+    "MRE-": "minimize",
+    "ACC+": "maximize",
+    "PRED40+": "maximize"
+  },
+  "selection": {
+    "eligible_count": 10000,
+    "excluded_count": 0,
+    "excluded_records": [],
+    "minimum_mre_tie_count": 1,
+    "remaining_after_acc_tie_count": 1,
+    "remaining_after_pred40_tie_count": 1,
+    "final_tied_row_ids": [
+      32
+    ],
+    "ties": "Exact equality of normalized finite floats; final tie uses earliest data row."
+  },
+  "recommended_record": {
+    "row_id": 32,
+    "csv_line": 33,
+    "configuration": {
+      "N_estimators": 10.0,
+      "criterion": "squared_error",
+      "Min_sample_leaves": 1.0,
+      "Min_impurity_decrease": 6.75,
+      "Max_depth": 5.0
+    },
+    "observed_objectives": {
+      "MRE-": 0.0,
+      "ACC+": 0.7901313681512335,
+      "PRED40+": 0.8571428571428571
+    },
+    "missing_configuration_fields": []
+  },
+  "historical_positions": {
+    "MRE-": {
+      "direction": "minimize",
+      "selected_value": 0.0,
+      "summary": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.70909397643463,
+        "std_sample": 0.2013959017163944,
+        "median": 0.8091310751104565,
+        "q25": 0.5723858615611193,
+        "q75": 0.8251840942562592,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "strictly_below_count": 0,
+      "equal_count": 1,
+      "strictly_above_count": 9999,
+      "rank_from_best_competition": 1,
+      "strictly_better_count": 0,
+      "lower_tail_midrank_percentile": 0.005,
+      "references": {
+        "historical_mean": {
+          "value": 0.70909397643463,
+          "selected_minus_reference": -0.70909397643463,
+          "improvement_in_objective_direction": 0.70909397643463,
+          "observed_relation": "better"
+        },
+        "historical_median": {
+          "value": 0.8091310751104565,
+          "selected_minus_reference": -0.8091310751104565,
+          "improvement_in_objective_direction": 0.8091310751104565,
+          "observed_relation": "better"
+        },
+        "historical_best": {
+          "value": 0.0,
+          "selected_minus_reference": 0.0,
+          "improvement_in_objective_direction": -0.0,
+          "observed_relation": "equal"
+        }
+      }
+    },
+    "ACC+": {
+      "direction": "maximize",
+      "selected_value": 0.7901313681512335,
+      "summary": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.49593851329765903,
+        "std_sample": 0.10715231893623793,
+        "median": 0.43992310157000963,
+        "q25": 0.43255366869593076,
+        "q75": 0.5712912528035885,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "strictly_below_count": 9899,
+      "equal_count": 1,
+      "strictly_above_count": 100,
+      "rank_from_best_competition": 101,
+      "strictly_better_count": 100,
+      "lower_tail_midrank_percentile": 98.995,
+      "references": {
+        "historical_mean": {
+          "value": 0.49593851329765903,
+          "selected_minus_reference": 0.2941928548535745,
+          "improvement_in_objective_direction": 0.2941928548535745,
+          "observed_relation": "better"
+        },
+        "historical_median": {
+          "value": 0.43992310157000963,
+          "selected_minus_reference": 0.3502082665812239,
+          "improvement_in_objective_direction": 0.3502082665812239,
+          "observed_relation": "better"
+        },
+        "historical_best": {
+          "value": 1.0,
+          "selected_minus_reference": -0.20986863184876647,
+          "improvement_in_objective_direction": -0.20986863184876647,
+          "observed_relation": "worse"
+        }
+      }
+    },
+    "PRED40+": {
+      "direction": "maximize",
+      "selected_value": 0.8571428571428571,
+      "summary": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.14684285714285714,
+        "std_sample": 0.2663996283372757,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.14285714285714285,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "strictly_below_count": 9447,
+      "equal_count": 181,
+      "strictly_above_count": 372,
+      "rank_from_best_competition": 373,
+      "strictly_better_count": 372,
+      "lower_tail_midrank_percentile": 95.375,
+      "references": {
+        "historical_mean": {
+          "value": 0.14684285714285714,
+          "selected_minus_reference": 0.7102999999999999,
+          "improvement_in_objective_direction": 0.7102999999999999,
+          "observed_relation": "better"
+        },
+        "historical_median": {
+          "value": 0.0,
+          "selected_minus_reference": 0.8571428571428571,
+          "improvement_in_objective_direction": 0.8571428571428571,
+          "observed_relation": "better"
+        },
+        "historical_best": {
+          "value": 1.0,
+          "selected_minus_reference": -0.1428571428571429,
+          "improvement_in_objective_direction": -0.1428571428571429,
+          "observed_relation": "worse"
+        }
+      }
+    }
+  },
+  "reference_records": {
+    "earliest_complete_record": {
+      "row_id": 1,
+      "configuration": {
+        "N_estimators": 40.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 3.0,
+        "Min_impurity_decrease": 2.75,
+        "Max_depth": 10.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.3148748159057436,
+        "ACC+": 0.7276513937840435,
+        "PRED40+": 0.5714285714285714
+      },
+      "differences": {
+        "MRE-": {
+          "selected_minus_reference": -0.3148748159057436,
+          "improvement_in_objective_direction": 0.3148748159057436,
+          "observed_relation": "better"
+        },
+        "ACC+": {
+          "selected_minus_reference": 0.062479974367189994,
+          "improvement_in_objective_direction": 0.062479974367189994,
+          "observed_relation": "better"
+        },
+        "PRED40+": {
+          "selected_minus_reference": 0.2857142857142857,
+          "improvement_in_objective_direction": 0.2857142857142857,
+          "observed_relation": "better"
+        }
+      }
+    },
+    "MRE-_champion": {
+      "row_id": 32,
+      "configuration": {
+        "N_estimators": 10.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 6.75,
+        "Max_depth": 5.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.0,
+        "ACC+": 0.7901313681512335,
+        "PRED40+": 0.8571428571428571
+      },
+      "differences": {
+        "MRE-": {
+          "selected_minus_reference": 0.0,
+          "improvement_in_objective_direction": -0.0,
+          "observed_relation": "equal"
+        },
+        "ACC+": {
+          "selected_minus_reference": 0.0,
+          "improvement_in_objective_direction": 0.0,
+          "observed_relation": "equal"
+        },
+        "PRED40+": {
+          "selected_minus_reference": 0.0,
+          "improvement_in_objective_direction": 0.0,
+          "observed_relation": "equal"
+        }
+      }
+    },
+    "ACC+_champion": {
+      "row_id": 7556,
+      "configuration": {
+        "N_estimators": 10.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 3.0,
+        "Max_depth": 10.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.029749631811487497,
+        "ACC+": 1.0,
+        "PRED40+": 1.0
+      },
+      "differences": {
+        "MRE-": {
+          "selected_minus_reference": -0.029749631811487497,
+          "improvement_in_objective_direction": 0.029749631811487497,
+          "observed_relation": "better"
+        },
+        "ACC+": {
+          "selected_minus_reference": -0.20986863184876647,
+          "improvement_in_objective_direction": -0.20986863184876647,
+          "observed_relation": "worse"
+        },
+        "PRED40+": {
+          "selected_minus_reference": -0.1428571428571429,
+          "improvement_in_objective_direction": -0.1428571428571429,
+          "observed_relation": "worse"
+        }
+      }
+    },
+    "PRED40+_champion": {
+      "row_id": 14,
+      "configuration": {
+        "N_estimators": 40.0,
+        "criterion": "squared_error",
+        "Min_sample_leaves": 1.0,
+        "Min_impurity_decrease": 0.25,
+        "Max_depth": 19.0
+      },
+      "observed_objectives": {
+        "MRE-": 0.20530191458026506,
+        "ACC+": 0.8260173021467478,
+        "PRED40+": 1.0
+      },
+      "differences": {
+        "MRE-": {
+          "selected_minus_reference": -0.20530191458026506,
+          "improvement_in_objective_direction": 0.20530191458026506,
+          "observed_relation": "better"
+        },
+        "ACC+": {
+          "selected_minus_reference": -0.03588593399551432,
+          "improvement_in_objective_direction": -0.03588593399551432,
+          "observed_relation": "worse"
+        },
+        "PRED40+": {
+          "selected_minus_reference": -0.1428571428571429,
+          "improvement_in_objective_direction": -0.1428571428571429,
+          "observed_relation": "worse"
+        }
+      }
+    }
+  },
+  "reference_conventions": {
+    "distribution": "All nonmissing values per objective, including selected and otherwise excluded records; no imputation.",
+    "mean_median": "All available outcomes per objective; vectors are not runnable configurations.",
+    "record_references": "Earliest complete row and each objective champion among complete rows; champion ties use earliest row.",
+    "percentile": "100*(strictly below + 0.5*equal)/nonmissing count; lower-tail midrank, irrespective of objective direction.",
+    "rank": "1 + strictly better count in the objective direction; equality shares competition rank.",
+    "differences": "Raw selected minus reference; improvement reverses sign only for minimized objectives."
+  },
+  "setting_evidence": {
+    "N_estimators": {
+      "selected_value": 10.0,
+      "rank": 5,
+      "eta_squared": 0.00014386551030408818,
+      "status": "ok",
+      "grouping": {
+        "kind": "quartile_ranges",
+        "cuts": [
+          60.0,
+          110.0,
+          160.0
+        ],
+        "groups": [
+          {
+            "lower": 10.0,
+            "upper": 60.0,
+            "lower_inclusive": true,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 60.0,
+            "upper": 110.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 110.0,
+            "upper": 160.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 160.0,
+            "upper": 200.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          }
+        ]
+      },
+      "included_mre": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.70909397643463,
+        "std_sample": 0.2013959017163944,
+        "median": 0.8091310751104565,
+        "q25": 0.5723858615611193,
+        "q75": 0.8251840942562592,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "selected_group": {
+        "group_id": 0,
+        "definition": {
+          "lower": 10.0,
+          "upper": 60.0,
+          "lower_inclusive": true,
+          "upper_inclusive": true
+        },
+        "row_count": 2877,
+        "mre": {
+          "n": 2877,
+          "missing": 0,
+          "mean": 0.7113805443889084,
+          "std_sample": 0.20117815938027142,
+          "median": 0.8060382916053019,
+          "q25": 0.5780559646539027,
+          "q75": 0.832842415,
+          "min": 0.0,
+          "max": 1.0
+        },
+        "sparse": false,
+        "mean_minus_included_mean": 0.0022865679542783957,
+        "observed_direction": "higher_MRE"
+      },
+      "missing_predictor_mre": {
+        "n": 0,
+        "missing": 0,
+        "mean": null,
+        "std_sample": null,
+        "median": null,
+        "q25": null,
+        "q75": null,
+        "min": null,
+        "max": null
+      }
+    },
+    "criterion": {
+      "selected_value": "squared_error",
+      "rank": 2,
+      "eta_squared": 0.024851322742383,
+      "status": "ok",
+      "grouping": {
+        "kind": "categories",
+        "cuts": [],
+        "groups": [
+          {
+            "value": "absolute_error"
+          },
+          {
+            "value": "poisson"
+          },
+          {
+            "value": "squared_error"
+          }
+        ]
+      },
+      "included_mre": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.70909397643463,
+        "std_sample": 0.2013959017163944,
+        "median": 0.8091310751104565,
+        "q25": 0.5723858615611193,
+        "q75": 0.8251840942562592,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "selected_group": {
+        "group_id": 2,
+        "definition": {
+          "value": "squared_error"
+        },
+        "row_count": 3363,
+        "mre": {
+          "n": 3363,
+          "missing": 0,
+          "mean": 0.6737202958486018,
+          "std_sample": 0.21083607001356217,
+          "median": 0.8050073637702503,
+          "q25": 0.5098674522702503,
+          "q75": 0.8151693667157583,
+          "min": 0.0,
+          "max": 0.8780559646539028
+        },
+        "sparse": false,
+        "mean_minus_included_mean": -0.03537368058602819,
+        "observed_direction": "lower_MRE"
+      },
+      "missing_predictor_mre": {
+        "n": 0,
+        "missing": 0,
+        "mean": null,
+        "std_sample": null,
+        "median": null,
+        "q25": null,
+        "q75": null,
+        "min": null,
+        "max": null
+      }
+    },
+    "Min_sample_leaves": {
+      "selected_value": 1.0,
+      "rank": 1,
+      "eta_squared": 0.8016122778992393,
+      "status": "ok",
+      "grouping": {
+        "kind": "quartile_ranges",
+        "cuts": [
+          5.0,
+          11.0,
+          15.0
+        ],
+        "groups": [
+          {
+            "lower": 1.0,
+            "upper": 5.0,
+            "lower_inclusive": true,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 5.0,
+            "upper": 11.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 11.0,
+            "upper": 15.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 15.0,
+            "upper": 20.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          }
+        ]
+      },
+      "included_mre": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.70909397643463,
+        "std_sample": 0.2013959017163944,
+        "median": 0.8091310751104565,
+        "q25": 0.5723858615611193,
+        "q75": 0.8251840942562592,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "selected_group": {
+        "group_id": 0,
+        "definition": {
+          "lower": 1.0,
+          "upper": 5.0,
+          "lower_inclusive": true,
+          "upper_inclusive": true
+        },
+        "row_count": 2523,
+        "mre": {
+          "n": 2523,
+          "missing": 0,
+          "mean": 0.40239072987967367,
+          "std_sample": 0.13292160409183978,
+          "median": 0.41752577319587625,
+          "q25": 0.2935198821796759,
+          "q75": 0.5051546391752576,
+          "min": 0.0,
+          "max": 0.7761413843888071
+        },
+        "sparse": false,
+        "mean_minus_included_mean": -0.30670324655495634,
+        "observed_direction": "lower_MRE"
+      },
+      "missing_predictor_mre": {
+        "n": 0,
+        "missing": 0,
+        "mean": null,
+        "std_sample": null,
+        "median": null,
+        "q25": null,
+        "q75": null,
+        "min": null,
+        "max": null
+      }
+    },
+    "Min_impurity_decrease": {
+      "selected_value": 6.75,
+      "rank": 3,
+      "eta_squared": 0.0048475919376224814,
+      "status": "ok",
+      "grouping": {
+        "kind": "quartile_ranges",
+        "cuts": [
+          2.5,
+          5.0,
+          7.5
+        ],
+        "groups": [
+          {
+            "lower": 0.0,
+            "upper": 2.5,
+            "lower_inclusive": true,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 2.5,
+            "upper": 5.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 5.0,
+            "upper": 7.5,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 7.5,
+            "upper": 10.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          }
+        ]
+      },
+      "included_mre": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.70909397643463,
+        "std_sample": 0.2013959017163944,
+        "median": 0.8091310751104565,
+        "q25": 0.5723858615611193,
+        "q75": 0.8251840942562592,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "selected_group": {
+        "group_id": 2,
+        "definition": {
+          "lower": 5.0,
+          "upper": 7.5,
+          "lower_inclusive": false,
+          "upper_inclusive": true
+        },
+        "row_count": 2413,
+        "mre": {
+          "n": 2413,
+          "missing": 0,
+          "mean": 0.7119371201792328,
+          "std_sample": 0.19326254727423675,
+          "median": 0.8091310751104565,
+          "q25": 0.5653902798232695,
+          "q75": 0.8250368188512517,
+          "min": 0.0,
+          "max": 0.9544918998527245
+        },
+        "sparse": false,
+        "mean_minus_included_mean": 0.0028431437446028163,
+        "observed_direction": "higher_MRE"
+      },
+      "missing_predictor_mre": {
+        "n": 0,
+        "missing": 0,
+        "mean": null,
+        "std_sample": null,
+        "median": null,
+        "q25": null,
+        "q75": null,
+        "min": null,
+        "max": null
+      }
+    },
+    "Max_depth": {
+      "selected_value": 5.0,
+      "rank": 4,
+      "eta_squared": 0.0001902949499567759,
+      "status": "ok",
+      "grouping": {
+        "kind": "quartile_ranges",
+        "cuts": [
+          6.0,
+          11.0,
+          16.0
+        ],
+        "groups": [
+          {
+            "lower": 1.0,
+            "upper": 6.0,
+            "lower_inclusive": true,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 6.0,
+            "upper": 11.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 11.0,
+            "upper": 16.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          },
+          {
+            "lower": 16.0,
+            "upper": 20.0,
+            "lower_inclusive": false,
+            "upper_inclusive": true
+          }
+        ]
+      },
+      "included_mre": {
+        "n": 10000,
+        "missing": 0,
+        "mean": 0.70909397643463,
+        "std_sample": 0.2013959017163944,
+        "median": 0.8091310751104565,
+        "q25": 0.5723858615611193,
+        "q75": 0.8251840942562592,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "selected_group": {
+        "group_id": 0,
+        "definition": {
+          "lower": 1.0,
+          "upper": 6.0,
+          "lower_inclusive": true,
+          "upper_inclusive": true
+        },
+        "row_count": 2987,
+        "mre": {
+          "n": 2987,
+          "missing": 0,
+          "mean": 0.7059010745129577,
+          "std_sample": 0.20104645411902242,
+          "median": 0.808100147,
+          "q25": 0.5628129604690721,
+          "q75": 0.8235640648011782,
+          "min": 0.0,
+          "max": 0.9527245949926361
+        },
+        "sparse": false,
+        "mean_minus_included_mean": -0.00319290192167232,
+        "observed_direction": "lower_MRE"
+      },
+      "missing_predictor_mre": {
+        "n": 0,
+        "missing": 0,
+        "mean": null,
+        "std_sample": null,
+        "median": null,
+        "q25": null,
+        "q75": null,
+        "min": null,
+        "max": null
+      }
+    }
+  },
+  "diagnosis_method": {
+    "name": "Marginal grouped eta-squared of observed MRE-",
+    "formula": "SS_between = sum_g n_g*(mean_g-grand_mean)^2; SS_total = sum_i (y_i-grand_mean)^2; eta_squared = SS_between/SS_total.",
+    "ranking": "Descending eta_squared, competition ranks (1,1,3); exact floating-score ties share rank, display ties in CONFIGURATION order. Unavailable scores are unranked.",
+    "direction": "Eta-squared is unsigned association strength, not direction or conditional importance. Group means, medians and differences from the field-specific overall mean describe direction.",
+    "grouping": "criterion uses exact string categories, never ordinal codes. Numeric fields with <=8 distinct nonmissing values use exact values; otherwise use quartile cuts at p=.25,.5,.75, linear interpolation (n-1)*p over ALL nonmissing predictor rows, independently of outcomes. Duplicate cuts removed; cuts equal to observed maximum removed. Intervals: first [minimum,cut], subsequent (previous_cut,cut], last (last_cut,maximum]. No extrapolation.",
+    "missing": "No imputation. Ranking excludes missing predictor or MRE per field; report missing-predictor MRE separately. Boundaries include predictor rows with missing MRE. Report every nonempty predictor group, even if all outcomes missing.",
+    "sparse": "Flag groups with fewer than 5 observed MRE values; retain them in exploratory scores, without treating the flag as a significance threshold.",
+    "degenerate": "Constant/all-missing predictors, fewer than two labeled groups, and zero outcome variance have null score and no rank.",
+    "inference": "Exploratory descriptive analysis of this finite dataset. No significance tests, certified wins, uncertainty intervals, fitting, tuning, or predictive validation.",
+    "seed": 42,
+    "randomness": "No random operations; seed is documented for consistency, not used.",
+    "pairwise": "Joint nonmissing predictor group counts and observed MRE summaries for all ten pairs expose overlap, imbalance and possible interactions. These are descriptive cells, not adjusted effects or formal interaction tests."
+  },
+  "diagnosis_limitations": [
+    "Observational configuration selection and unrecorded factors confound associations; changing a setting is not shown to cause error reduction.",
+    "Marginal scores do not isolate a field from correlated settings. Joint tables expose co-occurrence but do not control confounding. Correlated fields can share or mask associations.",
+    "Interactions may reverse or cancel marginal directions. Joint tables are exploratory and can be sparse; no interaction model or conditional importance is estimated.",
+    "Eta-squared favors fine partitions and is sample-specific; category counts and numeric coarsening affect ranking. It is not out-of-sample importance, and differently missing subsets need not be comparable.",
+    "Sparse or singleton groups can exaggerate apparent strength. No p values, multiple-test claims, uncertainty guarantees, practical thresholds, or optimized recommendations are provided.",
+    "Repeated configurations count as rows and may overweight settings; independence, random sampling and measurement repeatability are not established.",
+    "Missing outcomes or predictors may be selective. Constants cannot support observed setting comparisons; constant outcomes cannot support strength estimates.",
+    "Quartile bins hide within-range trends; observed extreme mean groups do not establish monotonic numeric effects. Boundary choices use predictor values only.",
+    "MRE- is the recorded scale with unspecified formula and units. Neither ACC+ nor PRED40+ is a diagnostic predictor.",
+    "Finite float arithmetic is used; unrepresentable summary arithmetic is rejected. Rankings near ties may be sensitive to rounding."
+  ],
+  "same_configuration_evidence": {
+    "row_ids": [
+      32
+    ],
+    "record_count": 1,
+    "objectives": {
+      "MRE-": {
+        "n": 1,
+        "missing": 0,
+        "mean": 0.0,
+        "std_sample": null,
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "ACC+": {
+        "n": 1,
+        "missing": 0,
+        "mean": 0.7901313681512335,
+        "std_sample": null,
+        "median": 0.7901313681512335,
+        "q25": 0.7901313681512335,
+        "q75": 0.7901313681512335,
+        "min": 0.7901313681512335,
+        "max": 0.7901313681512335
+      },
+      "PRED40+": {
+        "n": 1,
+        "missing": 0,
+        "mean": 0.8571428571428571,
+        "std_sample": null,
+        "median": 0.8571428571428571,
+        "q25": 0.8571428571428571,
+        "q75": 0.8571428571428571,
+        "min": 0.8571428571428571,
+        "max": 0.8571428571428571
+      }
+    }
+  },
+  "tradeoffs": {
+    "dominating_complete_row_ids": [],
+    "nondominated_among_complete_records": true,
+    "scope": "Finite complete-outcome historical records only; nondominance does not establish universal optimality."
+  },
+  "evidence_scope": {
+    "observed": "Recorded outcomes, distribution summaries, differences and marginal diagnosis.",
+    "predictions": null,
+    "assumptions": "MRE-first priorities are illustrative; metric semantics and representativeness need external confirmation."
+  },
+  "limitations": [
+    "Selection optimism: choosing an extreme after examining all recorded outcomes can overstate future performance. The selected observation is not an independent validation result.",
+    "A single best observation establishes neither statistical certainty nor repeatability. Repeated configurations are rows, not established independent replications.",
+    "Marginal associations do not causally explain this individual outcome and must not be added as prediction contributions. Confounding, correlated settings, interactions and sparse groups limit interpretation.",
+    "No predictions, overall score, significance tests or uncertainty intervals are used in this justification. All numerical evidence is observed or descriptive arithmetic.",
+    "Metric formulas, units, theoretical ranges, compute costs and deployment guarantees are unspecified. A recorded zero MRE- is not proof of perfect future performance.",
+    "Available-outcome historical distributions include the selected record and may use different subsets. Complete-outcome selection excludes any record missing an objective; missing hyperparameters remain explicit and require resolution.",
+    "Historical means and medians are descriptive reference vectors, not runnable configurations. Historical objective champions are outcome-selected references, not independent controls.",
+    "CSV row number identifies record order, not time. Finite floats and exact normalized equality define ties; extreme arithmetic that is not finite is rejected.",
+    "The rule prioritizes MRE- before any loss in secondary objectives; platform preferences and acceptable trade-offs have not been supplied."
+  ],
+  "deployment_checks": [
+    "Confirm metric definitions, directions, scales and the provenance of zero or unusual values; audit evaluation splits and leakage.",
+    "Agree with the platform team on objective priorities, minimum acceptable ACC+ and PRED40+, and practical improvement thresholds before validation.",
+    "Freeze the proposed configuration and evaluate it and agreed baselines on independent representative data with repeated evaluations and appropriate uncertainty assessment.",
+    "Confirm hyperparameter names, supported values and missing settings against the actual estimator and deployed library version; the CSV is not an estimator constructor contract.",
+    "Measure latency, memory and compute cost in the target environment, then assess data shift, monitoring, rollback and operational acceptance before deployment."
+  ],
+  "environment": {
+    "scikit_learn_version": "1.6.0"
+  },
+  "reuse": "Steps 1\u20135 source/tests unchanged. Reuses loading and file summaries, configuration/outcome normalization, observed comparison summaries and marginal diagnosis.",
+  "dataset_path": "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+  "historical_data_quality": {
+    "record_count": 10000,
+    "duplicate_records": {
+      "unique_count": 10000,
+      "repeated_group_count": 0,
+      "records_in_repeated_groups": 0,
+      "extra_record_count": 0
+    },
+    "repeated_configurations": {
+      "unique_count": 10000,
+      "repeated_group_count": 0,
+      "records_in_repeated_groups": 0,
+      "extra_record_count": 0
+    }
+  }
+}

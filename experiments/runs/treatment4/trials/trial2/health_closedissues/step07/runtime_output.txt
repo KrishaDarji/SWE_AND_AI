@@ -1,0 +1,27 @@
+{
+  "cap": 100.0,
+  "compute_proxy": "upper limit on N_estimators; other settings also affect compute",
+  "feasible_count": 4877,
+  "limitation": "The N_estimators cap is only a compute proxy; it is not a measured runtime, memory, or monetary cost and does not guarantee future quality or feasibility.",
+  "observed_outcomes_note": "Selection uses observed outcomes, not predictions for unseen settings.",
+  "selected": {
+    "configuration": {
+      "Max_depth": "5",
+      "Min_impurity_decrease": "6.75",
+      "Min_sample_leaves": "1",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    },
+    "record_id": 32
+  },
+  "selection_method": "retrospective selection among observed configurations",
+  "total_count": 10000
+}
+real 0.05
+user 0.04
+sys 0.00

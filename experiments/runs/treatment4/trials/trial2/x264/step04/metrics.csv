@@ -1,0 +1,3 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,4,2,video encoding,flow,198,45,1,0.72,1,"10 tests; Step 3 source/tests reused; /usr/bin/time -p real; one repaired shell variable-name failure; 1152 CSV snapshots; order is demonstration sequence"
+

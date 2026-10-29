@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,4,3,model configuration and quality,choose,501,63,1,0.05,2,"26 tests passed; reused Step 6 source/tests; /usr/bin/time -p demonstration; estimator cap is a compute proxy; preserved repaired shell-wrapper and interpreter failures"

@@ -1,0 +1,22 @@
+{
+  "byte_identical_to_allowed_step09": [
+    "source/justify.py",
+    "source/choose.py",
+    "source/guess.py",
+    "source/flow.py",
+    "source/summarize.py",
+    "source/fix.py",
+    "source/blame.py",
+    "source/spot.py",
+    "source/certify.py",
+    "tests/test_blame.py",
+    "tests/test_justify.py",
+    "tests/test_flow.py",
+    "tests/test_choose.py",
+    "tests/test_summarize.py",
+    "tests/test_guess.py",
+    "tests/test_spot.py",
+    "tests/test_fix.py",
+    "tests/test_certify.py"
+  ]
+}

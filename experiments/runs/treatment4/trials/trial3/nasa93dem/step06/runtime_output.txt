@@ -1,0 +1,20 @@
+MODEL ESTIMATE (pre-audit)
+Selected held-out identifier: 1
+Proposal inputs: 22 descriptors only; metadata and outcomes excluded.
+Training-only Ridge estimate: 474.796
+Training-history reference (mean): 821.722
+Training-history reference (median): 360
+HISTORICAL ASSOCIATIONS (training rows only; marginal, not additive or causal)
+time: eta_squared=0.401169; nominal contrast; highest and lowest category means reported
+rely: eta_squared=0.388775; nominal contrast; highest and lowest category means reported
+cplx: eta_squared=0.206302; nominal contrast; highest and lowest category means reported
+LIMITS
+Missing/unseen descriptor categories are imputed or ignored by the fitted pipeline.
+Correlated descriptors may share explanatory information; associations are not local contributions.
+This historical estimate does not establish project scope, units, costs, intervals, or deployment guarantees.
+AUDIT (observed held-out value revealed afterward)
+Observed Effort-: 117.6
+Invalid-target rows before selected CSV record: 0
+real 0.74
+user 0.64
+sys 0.09

@@ -1,0 +1,13 @@
+Implemented Step 8 retrospective observed-data repair in the accumulated Step 7 module.
+
+Demonstration result: the first CSV record has Performance- 268.720. The selected observed repair is CSV record 65 with Performance- 254.587, improving by 14.133. It changes only no_8x8dct from 0 to 1, for raw-column change cost 1. Lower Performance- is better.
+
+The repair ranks strictly improving observed candidates by raw-column change cost, then measured Performance-, then CSV order. Raw-column count is explicitly a proxy because correlated or one-hot fields may represent fewer conceptual changes. Invalid baselines and no-repair cases are handled explicitly. This is retrospective observed-data repair, not a causal or deployment guarantee.
+
+The complete suite passes: 22 tests. Run it with:
+python3 -m unittest discover -s "experiments/runs/treatment4/trials/trial2/x264/step08/tests" -p 'test_*.py'
+
+Run the demonstration with:
+/usr/bin/time -p python3 "experiments/runs/treatment4/trials/trial2/x264/step08/source/summarize_runs.py" "moot/optimize/config/X264_AllMeasurements.csv" --repair
+
+Artifacts are in the Step 8 directory: source, tests, prompt.txt, response.txt, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. Known limitations: only observed configurations are considered; association and observed improvement do not establish causality or future performance; one-hot/raw fields can overcount conceptual changes.

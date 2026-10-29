@@ -1,0 +1,13 @@
+======================================================================
+ERROR: test_missing_constant_and_deterministic (test_blame.BlameTests.test_missing_constant_and_deterministic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 24, in test_missing_constant_and_deterministic
+    self.assertEqual(a["finite_mre_count"], 3); self.assertIsNone(a["marginal"]["Min_sample_leaves"]["score"])
+                                                                  ~^^^^^^^^^^^^
+KeyError: 'marginal'
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.363s
+
+FAILED (errors=1)

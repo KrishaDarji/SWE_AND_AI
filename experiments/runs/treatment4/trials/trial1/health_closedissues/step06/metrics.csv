@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,1,health_closedissues,justify,1002,214,1,1.190509417,5,passed/total=59/59; test_seconds=19.863872542; step01_demo_seconds=0.721854709; step02_demo_seconds=2.417301375; step03_demo_seconds=0.723747958; step04_demo_seconds=1.749226541; step05_demo_seconds=1.100168208; prior_failed_measurement_attempts=1; see setup_log.txt and attempt logs; preserved_files_identical=True; setup find failure and two premature reads documented; no dependency changes; observed-only justification

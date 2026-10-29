@@ -1,0 +1,23 @@
+......................F.........                                         [100%]
+=================================== FAILURES ===================================
+________________ test_priority_and_tie_breaking_with_stub_model ________________
+
+    def test_priority_and_tie_breaking_with_stub_model():
+        class Model:
+            def predict(self, frame):
+                return [float(len([v for v in row if v == "high"]) * 10 + len([v for v in row if v == "medium"]) * 5 + 1) for row in frame]
+    
+        result = {"predictor_names": ["a", "b"], "model": Model(), "train_rows": [
+            {"idX": 20, "a": "medium", "b": "low"},
+            {"idX": 10, "a": "low", "b": "low"},
+            {"idX": 30, "a": "low", "b": "medium"},
+        ]}
+        report = repair(result, {"a": "high", "b": "high"}, 6)
+        assert report["status"] == "repair-suggested"
+>       assert report["change_count"] == 1
+E       assert 2 == 1
+
+tests/test_nasa93_fix.py:50: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_nasa93_fix.py::test_priority_and_tie_breaking_with_stub_model
+1 failed, 31 passed in 0.89s

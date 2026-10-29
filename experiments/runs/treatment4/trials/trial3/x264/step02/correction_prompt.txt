@@ -1,0 +1,23 @@
+Correct Trial 3 X264 Step 2 under the original restrictions.
+
+1. Normalize blank, missing, nonnumeric, and non-finite encoder-setting values
+   to the same missing marker recognized by the imputer.
+   Use consistent handling in training, grouping, and supplied configurations.
+   Ensure most-frequent imputation actually occurs on training data only.
+   Define behavior for a completely missing training setting.
+
+2. Add tests containing actual missing training values, missing prediction
+   values, and non-finite strings. Inspect transformed/imputed values,
+   rather than checking only that prediction returns a number.
+
+3. Recover exact outputs supporting the four reported failures into separate
+   attempt-labeled files. If unavailable, disclose which logs are missing
+   and the evidence supporting the count.
+
+Preserve earlier source interfaces, regression tests, and existing logs.
+Capture corrected tests and demonstration directly into new attempt files.
+Update actual metrics, calculating new_loc against Trial 3 Step 1.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+
+Write only inside the existing Trial 3 X264 step02 directory.

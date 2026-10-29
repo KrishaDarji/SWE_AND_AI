@@ -1,0 +1,11 @@
+Corrected Trial 3 X264 Step 2 and preserved the Step 1 summary interface.
+
+Source: source/summarize_x264.py
+Tests: tests/test_summarize_x264.py
+Run: python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+The implementation normalizes blank, missing, nonnumeric, and non-finite settings to None consistently for training, grouping, and prediction. It uses GroupShuffleSplit(test_size=0.2, random_state=42), training-only most-frequent imputation and one-hot encoding, and RandomForestRegressor(n_estimators=200, random_state=42). A completely missing training setting uses the explicit __MISSING_SETTING__ marker. It supports predict(path, configurations), rejects missing setting names, and reports transformed/imputed behavior through tests.
+
+Measured demonstration: train=921, test=231, held-out MAE=0.23845404761900285, training-mean baseline MAE=135.97237591832706, runtime real=1.02 seconds. Eight tests pass. The dataset has 1,152 distinct encoder configurations, so the grouped split keeps duplicate configurations together.
+
+Assumptions and limitations: invalid target rows are excluded and counted; numeric settings are canonicalized as finite numeric strings; categorical encoding treats canonical setting values as categories; the target is only Performance- and no units or quality measure are inferred; results are limited to this dataset and split. Exact outputs for the four earlier failures were unavailable; this is disclosed in failure_evidence.txt. The corrected outputs are in test_attempt03.* and runtime_attempt02.*.

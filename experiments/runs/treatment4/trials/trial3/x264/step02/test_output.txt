@@ -1,0 +1,13 @@
+test_all_missing_outcome (test_summarize_x264.SummaryTests.test_all_missing_outcome) ... ok
+test_completely_missing_training_setting_uses_explicit_marker (test_summarize_x264.SummaryTests.test_completely_missing_training_setting_uses_explicit_marker) ... ok
+test_empty_input (test_summarize_x264.SummaryTests.test_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_reports_settings (test_summarize_x264.SummaryTests.test_grouped_evaluation_is_reproducible_and_reports_settings) ... ok
+test_prediction_missing_setting_and_invalid_target (test_summarize_x264.SummaryTests.test_prediction_missing_setting_and_invalid_target) ... ok
+test_setting_missingness_is_normalized_and_imputed_from_training (test_summarize_x264.SummaryTests.test_setting_missingness_is_normalized_and_imputed_from_training) ... ok
+test_summary_frequencies_missing_and_outcome (test_summarize_x264.SummaryTests.test_summary_frequencies_missing_and_outcome) ... ok
+test_training_only_fit_does_not_use_held_out_outcomes (test_summarize_x264.SummaryTests.test_training_only_fit_does_not_use_held_out_outcomes) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.729s
+
+OK

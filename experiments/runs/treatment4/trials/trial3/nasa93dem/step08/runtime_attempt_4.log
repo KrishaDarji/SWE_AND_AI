@@ -1,0 +1,17 @@
+NASA93 proposal repair
+Status: repair-suggested
+Proposal record identifier: 1
+Budget (Effort-): 100
+Original estimated effort: 474.796
+Candidate estimated effort: 7.158774337523596
+Predicted feasible: True
+Invalid candidate predictions excluded: 4
+Change count (proxy only): 6
+Changed fields: [{'descriptor': 'pmat', 'old': 'h', 'new': 'n'}, {'descriptor': 'rely', 'old': 'h', 'new': 'n'}, {'descriptor': 'acap', 'old': 'n', 'new': 'h'}, {'descriptor': 'apex', 'old': 'n', 'new': 'vh'}, {'descriptor': 'ltex', 'old': 'h', 'new': 'l'}, {'descriptor': 'sced', 'old': 'l', 'new': 'n'}]
+Original descriptors: {'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'h', 'rely': 'h', 'data': 'l', 'cplx': 'h', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'n', 'pvol': 'l', 'acap': 'n', 'pcap': 'n', 'pcon': 'n', 'apex': 'n', 'plex': 'n', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'l'}
+Candidate descriptors: {'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'n', 'rely': 'n', 'data': 'l', 'cplx': 'h', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'n', 'pvol': 'l', 'acap': 'h', 'pcap': 'n', 'pcon': 'n', 'apex': 'vh', 'plex': 'n', 'ltex': 'l', 'tool': 'n', 'site': 'n', 'sced': 'n'}
+Candidates are hypothetical: descriptors may not be actionable, and observed combinations may not preserve project scope.
+Change count is a proxy, not monetary cost or operational risk; model differences are not causal improvements or guaranteed savings.
+real 0.78
+user 0.67
+sys 0.10

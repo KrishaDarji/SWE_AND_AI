@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+08,4,2,software project estimation,fix,435,62,1,1.03,0,"28 tests; reused Step 7 grouped split and estimator; /usr/bin/time -p demonstration real; training-only candidates; hypothetical/noncausal assumptions; no repairs"

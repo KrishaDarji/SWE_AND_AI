@@ -1,0 +1,30 @@
+test_empty_input (test_summarizer.SummarizerTests.test_empty_input) ... FAIL
+test_missing_duplicates_and_repeated_configurations (test_summarizer.SummarizerTests.test_missing_duplicates_and_repeated_configurations) ... ok
+test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies) ... FAIL
+
+======================================================================
+FAIL: test_empty_input (test_summarizer.SummarizerTests.test_empty_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step01/tests/test_summarizer.py", line 33, in test_empty_input
+    with self.assertRaises(ValueError): summarize_csv(self.write([]))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step01/tests/test_summarizer.py", line 23, in test_summaries_roles_and_frequencies
+    self.assertEqual(result["categorical_frequencies"], {"a": 2}); self.assertEqual(result["configuration_fields"], ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'criterion': {'a': 2}} != {'a': 2}
+- {'criterion': {'a': 2}}
++ {'a': 2}
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=2)
+
+command_exit=1

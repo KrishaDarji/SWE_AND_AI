@@ -1,0 +1,7 @@
+Final test attempt: test_attempt02.stdout and test_attempt02.stderr.
+Exit: 0
+The complete suite ran 11 tests and passed (OK).
+Earlier failed attempt is preserved in test_attempt01.stdout, test_attempt01.stderr, and test_attempt01.exit; it failed because /usr/bin/python3 lacked numpy.
+Corrected final test attempt: test_attempt03.stdout and test_attempt03.stderr.
+Exit: 0
+The corrected complete suite ran 13 tests and passed: 8 inherited tests plus 5 new practical-effect tests.

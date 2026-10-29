@@ -1,0 +1,70 @@
+exit=1
+test_excludes_pred40_grouped_reproducible_and_baselines (test_predictor.PredictorTests.test_excludes_pred40_grouped_reproducible_and_baselines) ... ERROR
+test_missing_settings_and_unseen_criterion (test_predictor.PredictorTests.test_missing_settings_and_unseen_criterion) ... ERROR
+test_missing_target_rows_are_not_used (test_predictor.PredictorTests.test_missing_target_rows_are_not_used) ... ERROR
+test_training_only_preprocessing_and_targets (test_predictor.PredictorTests.test_training_only_preprocessing_and_targets) ... ERROR
+test_empty_input (test_summarizer.SummarizerTests.test_empty_input) ... ok
+test_missing_duplicates_and_repeated_configurations (test_summarizer.SummarizerTests.test_missing_duplicates_and_repeated_configurations) ... ok
+test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies) ... ok
+
+======================================================================
+ERROR: test_excludes_pred40_grouped_reproducible_and_baselines (test_predictor.PredictorTests.test_excludes_pred40_grouped_reproducible_and_baselines)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 29, in test_excludes_pred40_grouped_reproducible_and_baselines
+    path = self.write(make_rows()); a = evaluate(path); b = evaluate(path)
+                                        ^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/source/predictor.py", line 60, in evaluate
+    train, test = [usable[i] for i in train_i], [usable[i] for i in test_i]
+                   ~~~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_missing_settings_and_unseen_criterion (test_predictor.PredictorTests.test_missing_settings_and_unseen_criterion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 33, in test_missing_settings_and_unseen_criterion
+    path = self.write(make_rows()); models = fit_final(path)
+                                             ^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/source/predictor.py", line 89, in fit_final
+    model.fit(_features(usable), [float(r[target]) for r in usable])
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sklearn/base.py", line 1389, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sklearn/pipeline.py", line 652, in fit
+    return self._fit(X, y, routed_params, raw_params)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sklearn/pipeline.py", line 586, in _fit
+    Xt, fitted_transformer = fit_transform_one_cached(
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sklearn/pipeline.py", line 1540, in _fit_transform_one
+    res = transformer.fit_transform(X, y, **params.get("fit_transform", {}))
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/sklearn/utils/validation.py", line 1093, in check_array
+    raise ValueError("Expected 2D array, got 1D array instead")
+ValueError: Expected 2D array, got 1D array instead
+
+======================================================================
+ERROR: test_missing_target_rows_are_not_used (test_predictor.PredictorTests.test_missing_target_rows_are_not_used)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 48, in test_missing_target_rows_are_not_used
+    rows = make_rows(); rows[0]["MRE-"] = ""; result = evaluate(self.write(rows)); self.assertEqual(result["train_count"] + result["test_count"], 19)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/source/predictor.py", line 60, in evaluate
+    train, test = [usable[i] for i in train_i], [usable[i] for i in test_i]
+                   ~~~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_training_only_preprocessing_and_targets (test_predictor.PredictorTests.test_training_only_preprocessing_and_targets)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 37, in test_training_only_preprocessing_and_targets
+    original = self.write(make_rows(False)); one = evaluate(original)
+                                                   ^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/source/predictor.py", line 60, in evaluate
+    train, test = [usable[i] for i in train_i], [usable[i] for i in test_i]
+                   ~~~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.064s
+
+FAILED (errors=4)

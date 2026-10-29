@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,4,1,health_closedissues,justify,1002,214,0,1.156954625,2,passed/total=58/59; test_seconds=19.878902292; step01_demo_seconds=0.733018250; step02_demo_seconds=2.385636791; step03_demo_seconds=0.722574625; step04_demo_seconds=1.589286792; step05_demo_seconds=1.029044375; preserved_files_identical=True; setup find failure repaired; no dependency changes; observed-only justification

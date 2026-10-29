@@ -1,0 +1,1158 @@
+Treatment 4, Trial 1, Health, Step 3 — certify
+
+The fixed comparison does not show an observed quality improvement. Baseline
+criterion=squared_error has 3,363 rows and candidate criterion=absolute_error
+has 3,302 rows. The other 3,335 rows (criterion=poisson) are excluded.
+There are no missing outcomes in either included group for any objective.
+There are no repeated normalized configurations within either included family.
+
+Observed means (candidate minus baseline):
+MRE-: baseline 0.6737202958; candidate 0.7508694690; difference +0.0771491732.
+ACC+: baseline 0.5088244264; candidate 0.4777931136; difference -0.0310313128.
+PRED40+: baseline 0.1801962533; candidate 0.1266764731; difference -0.0535197802.
+MRE- is minimized, so the candidate is worse on the predeclared primary objective.
+ACC+ and PRED40+ are maximized; their summaries are strictly descriptive.
+Full observed distribution summaries and missing counts are in certification.json.
+
+Statistical evidence: a two-sided Welch unequal-variance t test of equal means
+and its 95% t confidence interval use observed MRE values only. Candidate minus
+baseline is +0.0771491732, SE 0.0050830079, df 6661.6898, t 15.17786,
+p=3.532519491e-51, interval [0.0671848504, 0.0871134960]. At alpha 0.05,
+a mean difference is detected under the assumptions; the candidate is worse.
+Welch accommodates unequal group variances and sizes. Large group sizes motivate
+an approximate normal sampling distribution of means, despite nonnormal raw
+outcomes. There is one predeclared primary test; no secondary tests are performed.
+The statistical procedure is deterministic, so seed 42 requires no random draws.
+
+Practical criterion: an externally justified positive minimum meaningful mean
+improvement in the primary recorded scale would be required to assess practical
+benefit. No client-approved threshold was supplied, so the demo leaves it null
+and reports practical relevance as undetermined. The reusable API can assess
+whether the confidence interval supports improvement exceeding a supplied
+threshold. It does not test equivalence. A nonsignificant result must not be
+interpreted as proof of equivalence; identical constant samples receive an
+explicit unavailable-inference status rather than a fabricated p value.
+
+For the platform maintainer: this fixed dataset comparison gives evidence against
+an average MRE improvement for the candidate family. Practical importance remains
+unresolved. Other hyperparameters may differ between families, so these results
+cannot establish a causal benefit or measurement repeatability for a particular
+configuration. The recorded rows are not documented random independent samples;
+Welch p values and intervals are conditional approximations. Shared data, selection,
+or dependence between configurations can invalidate row-level uncertainty.
+Available-outcome analysis may be biased when missingness is selective. Very small
+samples require approximately normal populations; fewer than two outcomes per
+group or zero combined estimated variance receive no inferential result.
+No metric formula, physical unit, compute cost, surrogate measurement, or separate
+required same analysis completion is inferred. That exact procedure was not supplied.
+
+Reuse: source/summarize.py, source/guess.py, tests/test_summarize.py and
+tests/test_guess.py are copied byte-for-byte from the allowed Step 2 directories.
+The existing loader, schema, objective directions, quantiles and duplicate counter
+are reused. Added source/certify.py implements fixed configuration-only membership,
+per-outcome summaries, Welch evidence, practical-effect separation and a JSON CLI.
+Added tests/test_certify.py covers independent analytic examples, direction, identical
+and constant samples, small/invalid samples, missing outcomes, exclusions,
+objective-independent grouping, practical separation, and reproducibility.
+The prior root example configuration was outside allowed inputs; a fresh explicit
+illustrative configuration is supplied here for the unchanged Step 2 test/demo.
+
+Validation: 24/24 tests pass. All three demos exit 0. No unexpected execution
+failures occurred and no repairs were needed. Test subprocess wall time:
+10.053827750 seconds. Step 1 demo:
+0.705507417 seconds. Step 2 demo:
+2.366207583 seconds. Step 3 demo only:
+0.699939542 seconds (metrics.csv runtime_seconds).
+Application LOC: 484; added application LOC: 172.
+LOC includes nonblank, non-comment-only source Python lines including docstrings.
+new_loc counts insert/replace new-side application lines relative to allowed Step 2,
+not net growth. The runner is outside source/ and excluded. Expected negative-test
+subprocess exits are not unexpected errors. Raw logs and measurements are retained.
+Only Step 3 files were written; the dataset and Step 2 inputs were not modified.
+
+Commands
+Use the existing python3 environment (scikit-learn 1.6.0); install nothing.
+Run from the Step 3 output directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step03'
+
+Full preserved Steps 1–2 and new Step 3 test suite:
+python3 -m unittest discover -s tests -v
+
+Step 1 regression demo:
+python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir regression_step1
+
+Step 2 regression demo (new illustrative input, not a recommendation):
+python3 source/guess.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --configuration example_configuration.json --evaluation regression_step2.json
+
+Step 3 fixed recorded comparison:
+python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output certification.json
+
+Re-run the suite and demos with wall-time and LOC measurements:
+python3 measure.py
+
+All three application CLIs accept the dataset path as a positional argument.
+measure.py is a measurement runner outside source/ and uses the specified Health dataset.
+Reuse API: compare_families(validated_rows, field='criterion', baseline='squared_error',
+    candidate='absolute_error', primary='MRE-', practical_threshold=None).
+Rows may be loaded with summarize.load_rows(dataset_path). The optional positive
+threshold is in the recorded primary scale; callers must justify it externally.
+The demo supplies no threshold. Inference is deterministic, with no random draws;
+seed 42 is used by the preserved randomized Step 2 implementation.
+
+Complete updated application source and test suite follow. They are also saved as
+individual runnable files in source/ and tests/.
+
+File: source/certify.py
+```python
+"""Compare two predeclared observed configuration families, without model predictions."""
+import argparse
+import json
+import math
+import platform
+import statistics
+from collections import Counter
+from pathlib import Path
+
+import scipy
+import sklearn
+from scipy.stats import t
+
+from summarize import CONFIGURATION, OBJECTIVES, duplicates, load_rows, quantile
+
+
+def observed_summary(values, total):
+    """Summarize finite observed values; missingness is counted per objective."""
+    clean = []
+    for value in values:
+        if value is None:
+            continue
+        if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+            raise ValueError('Outcomes must be finite numbers or None')
+        clean.append(float(value))
+    ordered = sorted(clean)
+    return {'n': len(clean), 'missing': total - len(clean),
+            'mean': statistics.mean(clean) if clean else None,
+            'std_sample': statistics.stdev(clean) if len(clean) > 1 else None,
+            'median': statistics.median(clean) if clean else None,
+            'q25': quantile(ordered, .25) if clean else None,
+            'q75': quantile(ordered, .75) if clean else None,
+            'min': min(clean) if clean else None, 'max': max(clean) if clean else None}
+
+
+def welch_comparison(baseline, candidate, direction='minimize', practical_threshold=None):
+    """Two-sided Welch test of equal population means; CI is candidate minus baseline.
+
+    A threshold, if supplied, is a positive minimum meaningful improvement in the
+    recorded objective scale. It must be justified externally before interpreting
+    results. This function does not treat a nonsignificant test as equivalence.
+    """
+    if direction not in ('minimize', 'maximize'):
+        raise ValueError('direction must be minimize or maximize')
+    if practical_threshold is not None and (isinstance(practical_threshold, bool) or
+            not isinstance(practical_threshold, (int, float)) or
+            not math.isfinite(practical_threshold) or practical_threshold <= 0):
+        raise ValueError('practical_threshold must be positive and finite')
+    a = observed_summary(baseline, len(baseline))
+    b = observed_summary(candidate, len(candidate))
+    delta = b['mean'] - a['mean'] if a['n'] and b['n'] else None
+    improvement = None if delta is None else (-delta if direction == 'minimize' else delta)
+    result = {'candidate_minus_baseline_mean': delta, 'objective_direction': direction,
+              'observed_direction': ('unavailable' if delta is None else 'equal' if delta == 0
+                                     else 'candidate_better' if improvement > 0 else 'candidate_worse'),
+              'status': 'insufficient_data', 'standard_error': None, 'degrees_of_freedom': None,
+              't_statistic': None, 'p_two_sided': None, 'confidence_level': .95,
+              'confidence_interval': None, 'alpha': .05, 'statistically_detected': None,
+              'practical_threshold': practical_threshold,
+              'practical_assessment': 'Undetermined: no externally justified minimum meaningful improvement supplied.'
+              if practical_threshold is None else 'Unassessed: inferential interval unavailable.'}
+    if min(a['n'], b['n']) < 2:
+        return result
+    va = a['std_sample'] ** 2 / a['n']
+    vb = b['std_sample'] ** 2 / b['n']
+    variance = va + vb
+    if variance == 0:
+        result['status'] = 'zero_variance_inference_unavailable'
+        return result
+    se = math.sqrt(variance)
+    df = variance ** 2 / (va ** 2 / (a['n'] - 1) + vb ** 2 / (b['n'] - 1))
+    statistic = delta / se
+    p = float(2 * t.sf(abs(statistic), df))
+    margin = float(t.ppf(.975, df)) * se
+    interval = [delta - margin, delta + margin]
+    result.update(status='ok', standard_error=se, degrees_of_freedom=df,
+                  t_statistic=statistic, p_two_sided=p, confidence_interval=interval,
+                  statistically_detected=p < .05)
+    if practical_threshold is not None:
+        benefit_interval = [-interval[1], -interval[0]] if direction == 'minimize' else interval
+        result['practical_assessment'] = (
+            'Interval supports improvement exceeding the supplied threshold.'
+            if benefit_interval[0] > practical_threshold else
+            'Interval does not support improvement exceeding the supplied threshold; this is not an equivalence test.')
+    return result
+
+
+def select_families(rows, field, baseline, candidate):
+    """Membership uses only the declared configuration field, never objectives."""
+    if field not in CONFIGURATION or baseline is None or candidate is None or baseline == candidate:
+        raise ValueError('Use a configuration field and two distinct nonmissing family values')
+    groups = {'baseline': [], 'candidate': []}
+    excluded = []
+    for i, row in enumerate(rows):
+        value = row[field]
+        label = 'baseline' if value == baseline else 'candidate' if value == candidate else None
+        if label is None:
+            excluded.append(i)
+        else:
+            groups[label].append(i)
+    return groups, excluded
+
+
+def compare_families(rows, field='criterion', baseline='squared_error', candidate='absolute_error',
+                     primary='MRE-', practical_threshold=None):
+    """Reusable comparison on validated observed rows; no surrogate is consulted."""
+    if primary not in OBJECTIVES:
+        raise ValueError('Unknown primary objective')
+    groups, excluded = select_families(rows, field, baseline, candidate)
+    summaries = {}
+    for label, indices in groups.items():
+        summaries[label] = {'total_rows': len(indices), 'row_ids': [i + 1 for i in indices],
+                            'objectives': {name: observed_summary([rows[i][name] for i in indices], len(indices))
+                                           for name in OBJECTIVES},
+                            'configuration_repetitions': duplicates(tuple(rows[i][name] for name in CONFIGURATION)
+                                                                    for i in indices)}
+    comparison = welch_comparison([rows[i][primary] for i in groups['baseline']],
+                                 [rows[i][primary] for i in groups['candidate']],
+                                 OBJECTIVES[primary], practical_threshold)
+    differences = {name: (summaries['candidate']['objectives'][name]['mean'] -
+                         summaries['baseline']['objectives'][name]['mean'])
+                   if all(summaries[label]['objectives'][name]['n'] for label in groups) else None
+                   for name in OBJECTIVES}
+    if comparison['status'] != 'ok':
+        evidence = 'Inference unavailable because of insufficient observations or zero estimated variance.'
+    elif comparison['statistically_detected']:
+        evidence = 'A mean difference is detected under the stated sampling assumptions.'
+    else:
+        evidence = 'No mean difference is detected at alpha 0.05; this does not prove equivalence.'
+    conclusion = (f"Observed primary direction: {comparison['observed_direction']}. {evidence} "
+                  f"{comparison['practical_assessment']} This comparison does not certify a causal "
+                  'improvement or repeatability for a particular configuration.')
+    return {'group_definitions': {'field': field, 'baseline': baseline, 'candidate': candidate,
+                                 'selection': 'Fixed before examining outcomes; membership uses configuration only'},
+            'record_count': len(rows), 'included_count': sum(map(len, groups.values())),
+            'excluded_count': len(excluded),
+            'excluded_family_counts': [{'value': value, 'count': count} for value, count in
+                                       Counter(rows[i][field] for i in excluded).items()],
+            'excluded_missing_family_count': sum(rows[i][field] is None for i in excluded),
+            'groups': summaries, 'primary_objective': primary,
+            'candidate_minus_baseline_means': differences, 'primary_comparison': comparison,
+            'secondary_objectives': {'names': [name for name in OBJECTIVES if name != primary],
+                                     'scope': 'Descriptive only; no secondary tests, intervals, or significance claims'},
+            'method': {'name': 'Two-sided Welch unequal-variance t test and 95% Welch t interval for mean difference',
+                       'null': 'Equal population means', 'randomized': False, 'seed': 42,
+                       'seed_note': 'Deterministic procedure; no random draws',
+                       'multiplicity': 'One predeclared primary test; secondary summaries only',
+                       'small_samples': 'At least two observed outcomes per group; small-sample inference requires approximately normal populations',
+                       'missing': 'Available outcomes separately by objective; no imputation',
+                       'practical_criterion': 'A positive externally justified minimum meaningful mean improvement is required; none is assumed in the demo'},
+            'limitations': [
+                'Welch inference assumes independent observations within and between groups, finite variances, and approximate normality of sample means; large samples help but do not verify these assumptions.',
+                'Rows are observational configurations, not documented random samples. P values and intervals are conditional approximations, not guarantees for this fixed dataset or a wider population.',
+                'Other hyperparameters may differ between families; confounding and configuration selection prevent causal attribution to criterion.',
+                'Repeated configurations are counted but not assumed to be independent repeated measurements. Unreported dependence can invalidate row-level standard errors.',
+                'Missing outcomes may be selective; available-outcome comparisons need not represent missing configurations.',
+                'No client-approved practical threshold is available; statistical significance alone cannot establish practical relevance. No equivalence test is performed.',
+                'Recorded objective scales only: formulas, physical units, and compute costs are unspecified.',
+                'No surrogate predictions are used. This does not establish measurement repeatability for a particular configuration.',
+                'The separate required same analysis is not claimed complete; its exact procedure was not supplied.'],
+            'maintainer_conclusion': conclusion,
+            'versions': {'python': platform.python_version(), 'scikit_learn': sklearn.__version__, 'scipy': scipy.__version__}}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        _, rows = load_rows(args.dataset)
+        report = compare_families(rows)
+        report['dataset_path'] = str(args.dataset.resolve())
+        args.output.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
+    except (OSError, ValueError) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(json.dumps({key: report[key] for key in ('group_definitions', 'record_count', 'included_count',
+                     'excluded_count', 'excluded_family_counts', 'candidate_minus_baseline_means',
+                     'primary_comparison', 'maintainer_conclusion')}, indent=2, allow_nan=False))
+    for label, group in report['groups'].items():
+        print(label + ': ' + json.dumps({k: v for k, v in group.items() if k != 'row_ids'}))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+File: source/guess.py
+```python
+"""Predict recorded Health MRE- and ACC+ from configuration fields only."""
+import argparse
+import json
+import math
+import platform
+from pathlib import Path
+
+import numpy as np
+import scipy
+import sklearn
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+from summarize import CONFIGURATION, OBJECTIVES, load_rows
+
+TARGETS = {'MRE-': 'minimize', 'ACC+': 'maximize'}
+NUMERIC = [i for i, name in enumerate(CONFIGURATION) if name != 'criterion']
+SETTINGS = dict(n_estimators=120, max_depth=12, min_samples_leaf=2,
+                max_features=1.0, bootstrap=True, criterion='squared_error',
+                random_state=42, n_jobs=1)
+LIMITATIONS = [
+    'Targets are recorded CSV metrics; no metric formula, unit, cost, or causal meaning is inferred.',
+    'A single seed-42 group holdout estimates performance on unseen configurations from this dataset only.',
+    'No tuning uses held-out targets; model settings are fixed in advance.',
+    'Unseen categories encode as all zero; unseen numeric values may extrapolate poorly.',
+    'Missing numeric inputs use training medians (zero for entirely missing columns); missing criterion uses the training mode (zero category if entirely missing).',
+    'Missing target labels are excluded separately per target; neither targets nor PRED40+ enter predictors.',
+    'No theoretical metric ranges are assumed or imposed. Forest predictions are within the training target range; this does not guarantee validity on unseen configurations.',
+    'Predictions are point estimates with no uncertainty or accuracy guarantee; evaluation MAE is in each recorded target scale.',
+    'Numeric inputs follow Step 1 finite-float validation; no undocumented parameter-domain or integer restrictions are added.',
+    'Row IDs are one-based data-record positions, not persistent identifiers; header is CSV line 1.'
+]
+
+
+def validate_configuration(value):
+    """Require only known predictor keys; omitted/null/blank fields mean missing."""
+    if not isinstance(value, dict):
+        raise ValueError('Configuration must be a JSON object')
+    extra = set(value) - set(CONFIGURATION)
+    if extra:
+        raise ValueError(f'Objective or unknown configuration fields: {sorted(extra)}')
+    result = {}
+    for name in CONFIGURATION:
+        cell = value.get(name)
+        if cell is None or (isinstance(cell, str) and not cell.strip()):
+            result[name] = None
+        elif name == 'criterion':
+            if not isinstance(cell, str):
+                raise ValueError('criterion must be a string or null')
+            result[name] = cell.strip()
+        else:
+            if isinstance(cell, bool) or not isinstance(cell, (str, int, float)):
+                raise ValueError(f'{name} must be a finite number or null')
+            try:
+                number = float(cell)
+            except (ValueError, OverflowError) as exc:
+                raise ValueError(f'{name} must be a finite number') from exc
+            if not math.isfinite(number):
+                raise ValueError(f'{name} must be finite')
+            result[name] = number
+    return result
+
+
+def feature_matrix(rows):
+    """Select only the five predictors, regardless of other keys in CSV rows."""
+    return np.asarray([[row[name] if row[name] is not None else
+                        (None if name == 'criterion' else np.nan)
+                        for name in CONFIGURATION] for row in rows], dtype=object)
+
+
+def make_model():
+    numeric = SimpleImputer(strategy='median', keep_empty_features=True)
+    category = Pipeline([
+        ('impute', SimpleImputer(missing_values=None, strategy='most_frequent',
+                                 keep_empty_features=True)),
+        ('encode', OneHotEncoder(handle_unknown='ignore', sparse_output=False))])
+    preprocess = ColumnTransformer([
+        ('numeric', numeric, NUMERIC), ('category', category, [1])], remainder='drop')
+    return Pipeline([('preprocess', preprocess),
+                     ('regressor', RandomForestRegressor(**SETTINGS))])
+
+
+def split_rows(rows):
+    """Group on normalized predictors alone, holding out ceil(20% of groups)."""
+    mapping = {}
+    groups = []
+    for row in rows:
+        key = tuple(row[name] for name in CONFIGURATION)
+        if key not in mapping:
+            mapping[key] = len(mapping)
+        groups.append(mapping[key])
+    if len(mapping) < 2:
+        raise ValueError('At least two distinct normalized configurations required')
+    train, heldout = next(GroupShuffleSplit(n_splits=1, test_size=.2,
+                                            random_state=42).split(rows, groups=groups))
+    return train, heldout, groups
+
+
+def fit_evaluate(rows):
+    """Fit per-target pipelines on labeled training rows; evaluate only afterward."""
+    train, heldout, groups = split_rows(rows)
+    features = feature_matrix(rows)
+    models, results = {}, {}
+    for target in TARGETS:
+        labeled_train = [int(i) for i in train if rows[i][target] is not None]
+        labeled_test = [int(i) for i in heldout if rows[i][target] is not None]
+        if not labeled_train or not labeled_test:
+            raise ValueError(f'{target}: labeled training and held-out rows required')
+        y_train = np.asarray([rows[i][target] for i in labeled_train])
+        model = make_model().fit(features[labeled_train], y_train)
+        baseline = float(np.mean(y_train))
+        predicted = model.predict(features[labeled_test])
+        actual = [rows[i][target] for i in labeled_test]
+        pre = model.named_steps['preprocess']
+        results[target] = {
+            'direction': TARGETS[target], 'training_sample_size': len(labeled_train),
+            'heldout_sample_size': len(labeled_test),
+            'training_row_ids': [i + 1 for i in labeled_train],
+            'heldout_row_ids': [i + 1 for i in labeled_test],
+            'training_mean_baseline': baseline,
+            'training_target_range': [float(min(y_train)), float(max(y_train))],
+            'model_mae': float(mean_absolute_error(actual, predicted)),
+            'baseline_mae': float(mean_absolute_error(actual, np.full(len(actual), baseline))),
+            'learned_numeric_imputation': pre.named_transformers_['numeric'].statistics_.tolist(),
+            'learned_criterion_categories': pre.named_transformers_['category'].named_steps['encode'].categories_[0].tolist(),
+            'heldout_predictions': [dict(row_id=i + 1, actual=y, predicted=float(p), baseline=baseline)
+                                    for i, y, p in zip(labeled_test, actual, predicted)]}
+        models[target] = model
+    identity = lambda indices: [dict(row_id=int(i) + 1, csv_line=int(i) + 2,
+                                     group_id=groups[i]) for i in indices]
+    split = {'seed': 42, 'test_group_fraction': .2,
+             'method': 'GroupShuffleSplit on first-seen IDs of normalized predictor tuples',
+             'row_count': len(rows), 'group_count': len(set(groups)),
+             'training_row_count': len(train), 'heldout_row_count': len(heldout),
+             'training_group_count': len({groups[i] for i in train}),
+             'heldout_group_count': len({groups[i] for i in heldout}),
+             'training': identity(train), 'heldout': identity(heldout),
+             'groups': [dict(group_id=g, configuration={n: r[n] for n in CONFIGURATION})
+                        for g, r in sorted({groups[i]: r for i, r in enumerate(rows)}.items())]}
+    return models, {'target_definitions': {t: {'direction': d, 'definition': 'Recorded CSV column; formula unspecified'} for t, d in TARGETS.items()},
+                    'predictor_fields': list(CONFIGURATION), 'excluded_objectives': list(OBJECTIVES),
+                    'model_settings': {'estimator': 'Independent RandomForestRegressor per target', **SETTINGS},
+                    'preprocessing': {'numeric_fields': [CONFIGURATION[i] for i in NUMERIC],
+                                      'numeric': 'Training median; keep empty columns with zero fallback',
+                                      'criterion': 'Training mode imputation then one-hot; unknown categories ignored',
+                                      'fit_scope': 'Labeled training rows separately for each target'},
+                    'versions': {'python': platform.python_version(), 'scikit_learn': sklearn.__version__,
+                                 'numpy': np.__version__, 'scipy': scipy.__version__},
+                    'split': split, 'targets': results, 'limitations': LIMITATIONS}
+
+
+def predict_configuration(models, configuration):
+    clean = validate_configuration(configuration)
+    features = feature_matrix([clean])
+    return {target: float(models[target].predict(features)[0]) for target in TARGETS}
+
+
+def unique_json_object(pairs):
+    result = {}
+    for name, value in pairs:
+        if name in result:
+            raise ValueError(f'Duplicate JSON field: {name}')
+        result[name] = value
+    return result
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--configuration', required=True, type=Path)
+    parser.add_argument('--evaluation', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        if sklearn.__version__ != '1.6.0':
+            raise ValueError('Use scikit-learn 1.6.0')
+        config = validate_configuration(json.loads(args.configuration.read_text(),
+                                                  object_pairs_hook=unique_json_object))
+        _, rows = load_rows(args.dataset)
+        models, report = fit_evaluate(rows)
+        report['dataset_path'] = str(args.dataset.resolve())
+        prediction = predict_configuration(models, config)
+        report['illustrative_demo'] = {'label': 'Illustrative configuration; not an optimized recommendation',
+                                       'configuration': config, 'predictions': prediction}
+        args.evaluation.write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
+    except (OSError, ValueError) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    print(json.dumps({'label': report['illustrative_demo']['label'], 'predictions': prediction,
+                      'heldout_mae': {t: {'model': r['model_mae'], 'training_mean_baseline': r['baseline_mae']}
+                                      for t, r in report['targets'].items()}}, indent=2, allow_nan=False))
+
+
+if __name__ == '__main__':
+    main()
+```
+
+File: source/summarize.py
+```python
+"""Describe Health CSV configurations and objectives without fitting a model."""
+import argparse
+import csv
+import json
+import math
+import statistics
+from collections import Counter
+from pathlib import Path
+
+import sklearn
+
+CONFIGURATION = ('N_estimators', 'criterion', 'Min_sample_leaves',
+                 'Min_impurity_decrease', 'Max_depth')
+OBJECTIVES = {'MRE-': 'minimize', 'ACC+': 'maximize', 'PRED40+': 'maximize'}
+CATEGORICAL = {'criterion'}
+EXPECTED = set(CONFIGURATION) | set(OBJECTIVES)
+
+
+def quantile(values, fraction):
+    """Compute a linearly interpolated quantile on sorted, nonempty values."""
+    position = (len(values) - 1) * fraction
+    lower = math.floor(position)
+    upper = math.ceil(position)
+    return values[lower] + (values[upper] - values[lower]) * (position - lower)
+
+
+def duplicates(keys):
+    """Count groups, participating records, and extra records separately."""
+    counts = Counter(keys)
+    return {'unique_count': len(counts),
+            'repeated_group_count': sum(n > 1 for n in counts.values()),
+            'records_in_repeated_groups': sum(n for n in counts.values() if n > 1),
+            'extra_record_count': sum(n - 1 for n in counts.values())}
+
+
+def load_rows(dataset):
+    """Validate and normalize the shared eight-column Health CSV schema."""
+    rows = []
+    with Path(dataset).open(encoding='utf-8-sig', newline='') as handle:
+        reader = csv.reader(handle)
+        headers = next(reader, None)
+        if not headers or len(headers) != len(set(headers)) or set(headers) != EXPECTED:
+            raise ValueError('Expected exactly the eight unique Health column names')
+        for line, raw in enumerate(reader, 2):
+            if len(raw) != len(headers):
+                raise ValueError(f'Row {line}: expected {len(headers)} cells')
+            row = {}
+            for name, cell in zip(headers, raw):
+                cell = cell.strip()
+                if not cell:
+                    row[name] = None
+                elif name in CATEGORICAL:
+                    row[name] = cell
+                else:
+                    try:
+                        number = float(cell)
+                    except ValueError as exc:
+                        raise ValueError(f'Row {line}, {name}: invalid numeric value') from exc
+                    if not math.isfinite(number):
+                        raise ValueError(f'Row {line}, {name}: non-finite numeric value')
+                    row[name] = number
+            rows.append(row)
+    if not rows:
+        raise ValueError('Dataset must contain at least one record')
+    return headers, rows
+
+
+def summarize(dataset):
+    """Validate the schema and return a JSON-serializable descriptive report."""
+    headers, rows = load_rows(dataset)
+    columns = {}
+    for name in headers:
+        values = [row[name] for row in rows if row[name] is not None]
+        distinct = sorted(set(values))
+        info = {'role': 'objective' if name in OBJECTIVES else 'configuration',
+                'type': 'categorical' if name in CATEGORICAL else 'numeric',
+                'nonmissing_count': len(values), 'missing_count': len(rows) - len(values),
+                'distinct_count': len(distinct), 'distinct_values': distinct}
+        if name in CATEGORICAL:
+            info['value_counts'] = dict(sorted(Counter(values).items()))
+        else:
+            ordered = sorted(values)
+            info['statistics'] = None if not values else {
+                'count': len(values), 'mean': statistics.mean(values),
+                'std_sample': statistics.stdev(values) if len(values) > 1 else None,
+                'min': ordered[0], 'q25': quantile(ordered, .25),
+                'median': statistics.median(ordered), 'q75': quantile(ordered, .75),
+                'max': ordered[-1]}
+        if name in OBJECTIVES:
+            info['direction'] = OBJECTIVES[name]
+            best = (min(values) if OBJECTIVES[name] == 'minimize' else max(values)) if values else None
+            info['best_observed'] = best
+            info['best_observed_count'] = values.count(best) if values else 0
+        columns[name] = info
+    return {'dataset_path': str(Path(dataset).resolve()),
+            'record_count': len(rows), 'column_count': len(headers), 'column_names': headers,
+            'configuration_fields': list(CONFIGURATION), 'objective_directions': OBJECTIVES,
+            'columns': columns,
+            'duplicate_records': duplicates(tuple(row[n] for n in headers) for row in rows),
+            'repeated_configurations': duplicates(tuple(row[n] for n in CONFIGURATION) for row in rows),
+            'environment': {'scikit_learn_version': sklearn.__version__},
+            'conventions': {
+                'missing': 'Empty or whitespace-only cells; other numeric tokens must be finite numbers.',
+                'distinct': 'Nonmissing normalized values only; numeric values parsed as float.',
+                'quantiles': 'Linear interpolation at (n - 1) * p.',
+                'std': 'Sample standard deviation (n - 1); null for fewer than two values.',
+                'duplicates': 'After trimming whitespace and parsing numbers; missing cells compare equal.',
+                'scope': 'Descriptive observed metrics only; no training, formulas, units, or timeline inferred.'}}
+
+
+def render_text(report):
+    lines = [f"Records: {report['record_count']}; columns: {report['column_count']}"]
+    for role in ('configuration', 'objective'):
+        lines.append(f'\n{role.title()} fields:')
+        for name, info in report['columns'].items():
+            if info['role'] != role:
+                continue
+            lines.append(f"{name}: {info['type']}; missing={info['missing_count']}; distinct={info['distinct_count']}")
+            if info['type'] == 'categorical':
+                lines.append('  Value counts: ' + json.dumps(info['value_counts'], sort_keys=True))
+            else:
+                lines.append('  Statistics: ' + json.dumps(info['statistics'], sort_keys=True))
+                if role == 'configuration':
+                    lines.append('  Distinct values: ' + json.dumps(info['distinct_values']))
+            if role == 'objective':
+                lines.append(f"  Direction: {info['direction']}; best observed={info['best_observed']}; count={info['best_observed_count']}")
+    for key in ('duplicate_records', 'repeated_configurations'):
+        lines.append(f'\n{key}: ' + json.dumps(report[key], sort_keys=True))
+    lines.append('\nFull distinct values for every column are in summary.json.')
+    lines.append('\nConventions: ' + json.dumps(report['conventions'], sort_keys=True))
+    return '\n'.join(lines) + '\n'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('dataset', type=Path)
+    parser.add_argument('--output-dir', required=True, type=Path)
+    args = parser.parse_args()
+    try:
+        report = summarize(args.dataset)
+    except (OSError, ValueError, csv.Error) as exc:
+        parser.exit(2, f'Error: {exc}\n')
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    (args.output_dir / 'summary.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n', encoding='utf-8')
+    rendered = render_text(report)
+    (args.output_dir / 'summary.txt').write_text(rendered, encoding='utf-8')
+    print(rendered, end='')
+
+
+if __name__ == '__main__':
+    main()
+```
+
+File: tests/test_certify.py
+```python
+"""Analytic statistical fixtures, fixed membership, missingness, and actual CSV checks."""
+import copy
+import json
+import math
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'source'))
+from certify import compare_families, select_families, welch_comparison
+from summarize import CONFIGURATION, load_rows
+
+DATASET = Path('/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv')
+
+
+def fixture():
+    families = ['squared_error'] * 3 + ['absolute_error'] * 3 + ['poisson', None]
+    return [dict(zip(CONFIGURATION, [i, family, 2, 0, 5]),
+                 **{'MRE-': value, 'ACC+': value + 1, 'PRED40+': value + 2})
+            for i, (family, value) in enumerate(zip(families, [3, 4, 5, 1, 2, 3, 90, 99]))]
+
+
+class CertifyTests(unittest.TestCase):
+    def test_hand_calculated_welch(self):
+        # Means 4 and 2, sample variances 1 each, SE sqrt(2/3), df=4.
+        # For df=4, two-sided t tail at sqrt(6) is 1-3u/2+u^3/2, u=sqrt(.6).
+        r = welch_comparison([3, 4, 5], [1, 2, 3])
+        self.assertEqual(r['candidate_minus_baseline_mean'], -2)
+        self.assertAlmostEqual(r['standard_error'], math.sqrt(2 / 3))
+        self.assertAlmostEqual(r['degrees_of_freedom'], 4)
+        self.assertAlmostEqual(r['t_statistic'], -math.sqrt(6))
+        u = math.sqrt(.6)
+        self.assertAlmostEqual(r['p_two_sided'], 1 - 1.5 * u + .5 * u ** 3)
+        margin = 2.7764451051977987 * math.sqrt(2 / 3)
+        for actual, expected in zip(r['confidence_interval'], [-2 - margin, -2 + margin]):
+            self.assertAlmostEqual(actual, expected)
+        self.assertFalse(r['statistically_detected'])
+        self.assertEqual(r['observed_direction'], 'candidate_better')
+
+    def test_improvement_direction_and_unequal_variance(self):
+        r = welch_comparison([10, 11, 12], [0, 2, 4, 6])
+        # Variance contributions: 1/3 and (20/3)/4 = 5/3.
+        self.assertEqual(r['candidate_minus_baseline_mean'], -8)
+        self.assertAlmostEqual(r['standard_error'], math.sqrt(2))
+        self.assertAlmostEqual(r['degrees_of_freedom'], 4 / ((1 / 3) ** 2 / 2 + (5 / 3) ** 2 / 3))
+        self.assertTrue(r['statistically_detected'])
+        self.assertEqual(r['observed_direction'], 'candidate_better')
+        self.assertEqual(welch_comparison([10, 11, 12], [0, 2, 4, 6], 'maximize')['observed_direction'], 'candidate_worse')
+        self.assertEqual(welch_comparison([0, 2, 4, 6], [10, 11, 12])['observed_direction'], 'candidate_worse')
+
+    def test_identical_samples_and_degenerate_constants(self):
+        r = welch_comparison([1, 2, 3], [1, 2, 3])
+        self.assertEqual(r['p_two_sided'], 1)
+        self.assertEqual(r['candidate_minus_baseline_mean'], 0)
+        self.assertEqual(r['observed_direction'], 'equal')
+        self.assertFalse(r['statistically_detected'])
+        for candidate in ([1, 1], [2, 2]):
+            r = welch_comparison([1, 1], candidate)
+            self.assertEqual(r['status'], 'zero_variance_inference_unavailable')
+            self.assertIsNone(r['p_two_sided'])
+        self.assertEqual(welch_comparison([1, 1], [1, 2])['status'], 'ok')
+
+    def test_small_and_invalid_samples(self):
+        for a, b in [([], []), ([1], [2, 3]), ([None], [2, 3]), ([1, 2], [])]:
+            r = welch_comparison(a, b)
+            self.assertEqual(r['status'], 'insufficient_data')
+            self.assertIsNone(r['confidence_interval'])
+        for value in [float('nan'), float('inf'), '1', True]:
+            with self.assertRaises(ValueError):
+                welch_comparison([value, 2], [1, 2])
+        for threshold in [0, -1, math.inf, math.nan, True, '1']:
+            with self.assertRaises(ValueError):
+                welch_comparison([1, 2], [3, 4], practical_threshold=threshold)
+        with self.assertRaises(ValueError):
+            welch_comparison([1, 2], [3, 4], 'invalid')
+        with self.assertRaises(ValueError):
+            compare_families(fixture(), primary='unknown')
+        for field, a, b in [('MRE-', 1, 2), ('criterion', 'a', 'a'), ('criterion', None, 'b')]:
+            with self.assertRaises(ValueError):
+                select_families(fixture(), field, a, b)
+
+    def test_missing_outcomes_exclusions_and_no_mutation(self):
+        rows = fixture()
+        rows[0]['MRE-'] = None
+        rows[3]['ACC+'] = None
+        saved = copy.deepcopy(rows)
+        r = compare_families(rows)
+        self.assertEqual(rows, saved)
+        self.assertEqual(r['excluded_count'], 2)
+        self.assertEqual(r['excluded_missing_family_count'], 1)
+        self.assertEqual(r['included_count'], 6)
+        self.assertEqual(r['groups']['baseline']['objectives']['MRE-']['missing'], 1)
+        self.assertEqual(r['groups']['baseline']['objectives']['MRE-']['n'], 2)
+        self.assertEqual(r['groups']['candidate']['objectives']['ACC+']['missing'], 1)
+        self.assertEqual(r['candidate_minus_baseline_means']['MRE-'], -2.5)
+        self.assertIn('Descriptive only', r['secondary_objectives']['scope'])
+        rows = [row for row in rows if row['criterion'] != 'absolute_error']
+        self.assertEqual(compare_families(rows)['primary_comparison']['status'], 'insufficient_data')
+        rows = fixture()
+        for row in rows[:3]:
+            row['MRE-'] = None
+        r = compare_families(rows)
+        self.assertIsNone(r['candidate_minus_baseline_means']['MRE-'])
+        self.assertEqual(r['groups']['baseline']['objectives']['MRE-']['missing'], 3)
+
+    def test_membership_independent_of_all_outcomes(self):
+        rows = fixture()
+        expected = select_families(rows, 'criterion', 'squared_error', 'absolute_error')
+        for i, row in enumerate(rows):
+            for name in ('MRE-', 'ACC+', 'PRED40+'):
+                row[name] = None if i % 2 else 10000 - i
+        self.assertEqual(select_families(rows, 'criterion', 'squared_error', 'absolute_error'), expected)
+        r = compare_families(rows)
+        self.assertEqual(r['groups']['baseline']['row_ids'], [1, 2, 3])
+        self.assertEqual(r['groups']['candidate']['row_ids'], [4, 5, 6])
+
+    def test_reproducibility_and_practical_separation(self):
+        self.assertEqual(compare_families(fixture()), compare_families(fixture()))
+        a = welch_comparison([10, 11, 12], [0, 1, 2])
+        b = welch_comparison([10, 11, 12], [0, 1, 2], practical_threshold=1)
+        c = welch_comparison([10, 11, 12], [0, 1, 2], practical_threshold=20)
+        self.assertTrue(a['statistically_detected'])
+        self.assertIsNone(a['practical_threshold'])
+        self.assertIn('Undetermined', a['practical_assessment'])
+        self.assertIn('supports improvement', b['practical_assessment'])
+        self.assertIn('does not support', c['practical_assessment'])
+        self.assertEqual(a['p_two_sided'], c['p_two_sided'])
+
+    def test_actual_dataset_and_cli(self):
+        _, rows = load_rows(DATASET)
+        r = compare_families(rows)
+        self.assertEqual(r['record_count'], 10000)
+        for label, family in [('baseline', 'squared_error'), ('candidate', 'absolute_error')]:
+            selected = [row for row in rows if row['criterion'] == family]
+            self.assertEqual(r['groups'][label]['total_rows'], len(selected))
+            for objective in ('MRE-', 'ACC+', 'PRED40+'):
+                values = [row[objective] for row in selected if row[objective] is not None]
+                self.assertAlmostEqual(r['groups'][label]['objectives'][objective]['mean'], sum(values) / len(values))
+        with tempfile.TemporaryDirectory(dir=ROOT / 'tests') as folder:
+            output = Path(folder) / 'report.json'
+            cmd = [sys.executable, str(ROOT / 'source/certify.py'), str(DATASET), '--output', str(output)]
+            a = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(a.returncode, 0, a.stderr)
+            first = output.read_bytes()
+            b = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(b.returncode, 0, b.stderr)
+            self.assertEqual(first, output.read_bytes())
+            self.assertEqual(a.stdout, b.stdout)
+            self.assertEqual(json.loads(first)['primary_comparison'], r['primary_comparison'])
+            cmd[2] = str(Path(folder) / 'missing.csv')
+            bad = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(bad.returncode, 2)
+            self.assertIn('Error:', bad.stderr)
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+```
+
+File: tests/test_guess.py
+```python
+"""Grouped split, validation, leakage, and independent evaluation checks."""
+import copy
+import json
+import math
+import subprocess
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'source'))
+from guess import (CONFIGURATION, TARGETS, feature_matrix, fit_evaluate,
+                   predict_configuration, split_rows, validate_configuration)
+from summarize import load_rows
+
+DATASET = Path('/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv')
+
+
+def fixture():
+    return [dict(zip(CONFIGURATION, [i, 'a' if i % 2 else 'b',
+                                     i % 3, i / 10, i + 2]),
+                 **{'MRE-': i / 10 + j, 'ACC+': 1 - i / 20 + j, 'PRED40+': 99})
+            for i in range(15) for j in range(2)]
+
+
+class GuessTests(unittest.TestCase):
+    def test_input_validation(self):
+        self.assertTrue(all(v is None for v in validate_configuration({}).values()))
+        clean = validate_configuration({'N_estimators': ' 10.0 ', 'criterion': ' a ', 'Max_depth': ' '})
+        self.assertEqual(clean['N_estimators'], 10)
+        self.assertEqual(clean['criterion'], 'a')
+        self.assertIsNone(clean['Max_depth'])
+        for value in [[], None, {'MRE-': 1}, {'ACC+': 1}, {'PRED40+': 1}, {'extra': 1},
+                      {'criterion': 1}, {'N_estimators': True}, {'Max_depth': []},
+                      {'Max_depth': 'bad'}, {'Max_depth': math.inf}, {'Max_depth': 'NaN'}]:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                validate_configuration(value)
+
+    def test_normalized_group_split(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / 'tests') as directory:
+            p = Path(directory) / 'data.csv'
+            p.write_text('MRE-,ACC+,PRED40+,N_estimators,criterion,Min_sample_leaves,Min_impurity_decrease,Max_depth\n'
+                         '1,2,3,10, a ,1,0,4\n4,5,6,10.0,a,1.0,0.0,4.0\n1,2,3,20,b,2,0,5\n')
+            _, rows = load_rows(p)
+        train, heldout, groups = split_rows(rows)
+        self.assertEqual(groups[0], groups[1])
+        self.assertFalse({groups[i] for i in train} & {groups[i] for i in heldout})
+        self.assertEqual(len({groups[i] for i in heldout}), 1)
+        with self.assertRaises(ValueError):
+            split_rows(rows[:2])
+
+    def test_reproducibility_and_independent_mae(self):
+        rows = fixture()
+        _, a = fit_evaluate(rows)
+        _, b = fit_evaluate(rows)
+        self.assertEqual(a, b)
+        self.assertEqual(a['split']['group_count'], 15)
+        self.assertEqual(a['split']['heldout_group_count'], 3)
+        self.assertEqual(a['split']['heldout_row_count'], 6)
+        for target, report in a['targets'].items():
+            predictions = report['heldout_predictions']
+            model_mae = sum(abs(x['actual'] - x['predicted']) for x in predictions) / len(predictions)
+            mean = sum(rows[i-1][target] for i in report['training_row_ids']) / report['training_sample_size']
+            baseline_mae = sum(abs(x['actual'] - mean) for x in predictions) / len(predictions)
+            self.assertAlmostEqual(report['model_mae'], model_mae)
+            self.assertAlmostEqual(report['baseline_mae'], baseline_mae)
+            self.assertAlmostEqual(report['training_mean_baseline'], mean)
+
+    def test_targets_cannot_affect_fit_or_predictions(self):
+        rows = fixture()
+        train, test, _ = split_rows(rows)
+        changed = copy.deepcopy(rows)
+        for i in test:
+            changed[i]['MRE-'] = 100000
+            changed[i]['ACC+'] = -100000
+        for row in changed:
+            row['PRED40+'] = -999999
+        a, report_a = fit_evaluate(rows)
+        b, report_b = fit_evaluate(changed)
+        self.assertEqual(report_a['split'], report_b['split'])
+        np.testing.assert_array_equal(feature_matrix(rows), feature_matrix(changed))
+        for target in TARGETS:
+            np.testing.assert_array_equal(a[target].predict(feature_matrix(rows)),
+                                          b[target].predict(feature_matrix(rows)))
+            self.assertEqual(report_a['targets'][target]['training_mean_baseline'],
+                             report_b['targets'][target]['training_mean_baseline'])
+        changed = copy.deepcopy(rows)
+        for row in changed:
+            row['ACC+'] = 10000
+        c, _ = fit_evaluate(changed)
+        np.testing.assert_array_equal(a['MRE-'].predict(feature_matrix(rows)),
+                                      c['MRE-'].predict(feature_matrix(rows)))
+        for model in a.values():
+            self.assertEqual(model.n_features_in_, 5)
+            used = [i for _, _, indices in model.named_steps['preprocess'].transformers_ for i in indices]
+            self.assertEqual(sorted(used), list(range(5)))
+
+    def test_missing_values_unseen_category_and_training_only_preprocessing(self):
+        rows = fixture()
+        for row in rows:
+            if row['N_estimators'] == 1:
+                row['criterion'] = None
+            if row['N_estimators'] == 0:
+                row['N_estimators'] = None
+        train, test, _ = split_rows(rows)
+        rows[train[2]]['MRE-'] = None
+        rows[test[0]]['ACC+'] = None
+        for i in test:
+            rows[i]['N_estimators'] = 1000000
+            rows[i]['criterion'] = 'heldout_only'
+        models, report = fit_evaluate(rows)
+        for target in TARGETS:
+            ids = report['targets'][target]['training_row_ids']
+            expected_median = float(np.median([rows[i-1]['N_estimators'] for i in ids
+                                             if rows[i-1]['N_estimators'] is not None]))
+            self.assertEqual(report['targets'][target]['learned_numeric_imputation'][0], expected_median)
+            self.assertNotIn('heldout_only', report['targets'][target]['learned_criterion_categories'])
+        self.assertEqual(report['targets']['MRE-']['training_sample_size'], len(train)-1)
+        self.assertEqual(report['targets']['ACC+']['heldout_sample_size'], len(test)-1)
+        for config in [{}, {'criterion': 'unseen'}, {'Max_depth': None}]:
+            self.assertTrue(all(math.isfinite(x) for x in predict_configuration(models, config).values()))
+        for row in rows:
+            row['criterion'] = None
+            row['N_estimators'] = None
+        models, report = fit_evaluate(rows)
+        self.assertEqual(report['targets']['MRE-']['learned_numeric_imputation'][0], 0)
+        self.assertTrue(all(math.isfinite(x) for x in predict_configuration(models, {'criterion': 'unseen'}).values()))
+
+    def test_missing_target_labels_require_train_and_test_samples(self):
+        rows = fixture()
+        train, test, _ = split_rows(rows)
+        for indices in (train, test):
+            changed = copy.deepcopy(rows)
+            for i in indices:
+                changed[i]['MRE-'] = None
+            with self.assertRaises(ValueError):
+                fit_evaluate(changed)
+
+    def test_cli_rejects_objective_unknown_and_duplicate_keys(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / 'tests') as directory:
+            config = Path(directory) / 'config.json'
+            output = Path(directory) / 'evaluation.json'
+            for content in ['{"MRE-": 1}', '{"unknown": 1}', '{"criterion":"a","criterion":"b"}', '[]']:
+                config.write_text(content)
+                p = subprocess.run([sys.executable, str(ROOT / 'source/guess.py'), str(DATASET),
+                                    '--configuration', str(config), '--evaluation', str(output)],
+                                   capture_output=True, text=True)
+                self.assertEqual(p.returncode, 2, p.stderr)
+                self.assertIn('Error:', p.stderr)
+                self.assertFalse(output.exists())
+
+
+class ActualPredictionTests(unittest.TestCase):
+    def test_actual_dataset_evaluation_and_prediction(self):
+        _, rows = load_rows(DATASET)
+        models, report = fit_evaluate(rows)
+        split = report['split']
+        self.assertEqual(split['row_count'], 10000)
+        self.assertEqual(split['heldout_group_count'], math.ceil(.2 * split['group_count']))
+        self.assertFalse({r['group_id'] for r in split['training']} &
+                         {r['group_id'] for r in split['heldout']})
+        self.assertEqual({r['row_id'] for r in split['training'] + split['heldout']}, set(range(1,10001)))
+        for target, result in report['targets'].items():
+            items = result['heldout_predictions']
+            mean = sum(rows[i-1][target] for i in result['training_row_ids']) / result['training_sample_size']
+            self.assertAlmostEqual(result['model_mae'], sum(abs(p['actual']-p['predicted']) for p in items)/len(items))
+            self.assertAlmostEqual(result['baseline_mae'], sum(abs(p['actual']-mean) for p in items)/len(items))
+            self.assertEqual([p['actual'] for p in items], [rows[i-1][target] for i in result['heldout_row_ids']])
+        config = json.loads((ROOT / 'example_configuration.json').read_text())
+        self.assertEqual(set(predict_configuration(models, config)), set(TARGETS))
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+```
+
+File: tests/test_summarize.py
+```python
+"""Hand-calculated fixtures plus independent calculations on the actual CSV."""
+import csv
+import json
+import subprocess
+import sys
+import tempfile
+import unittest
+from collections import Counter
+from pathlib import Path
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'source'))
+from summarize import summarize
+
+DATASET = Path('/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv')
+HEADERS = ['MRE-', 'ACC+', 'PRED40+', 'N_estimators', 'criterion',
+           'Min_sample_leaves', 'Min_impurity_decrease', 'Max_depth']
+CONFIG = ['N_estimators', 'criterion', 'Min_sample_leaves', 'Min_impurity_decrease', 'Max_depth']
+
+
+class FixtureTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(dir=ROOT / 'tests')
+        self.addCleanup(self.temp.cleanup)
+        self.path = Path(self.temp.name) / 'fixture.csv'
+
+    def write(self, rows, headers=HEADERS):
+        with self.path.open('w', newline='', encoding='utf-8') as handle:
+            writer = csv.writer(handle)
+            writer.writerow(headers)
+            writer.writerows(rows)
+        return self.path
+
+    def test_hand_calculated_numeric_statistics(self):
+        self.write([[x, x, x, x, 'squared_error', x, x, x] for x in [1, 2, 3, 4]])
+        report = summarize(self.path)
+        expected = {'count': 4, 'mean': 2.5, 'std_sample': (5 / 3) ** .5,
+                    'min': 1, 'q25': 1.75, 'median': 2.5, 'q75': 3.25, 'max': 4}
+        for name in HEADERS:
+            if name != 'criterion':
+                for key, value in expected.items():
+                    self.assertAlmostEqual(report['columns'][name]['statistics'][key], value)
+        self.assertEqual(report['columns']['MRE-']['best_observed'], 1)
+        self.assertEqual(report['columns']['ACC+']['best_observed'], 4)
+        self.assertEqual(report['columns']['PRED40+']['direction'], 'maximize')
+        self.assertEqual(report['configuration_fields'], CONFIG)
+
+    def test_whitespace_missing_and_duplicates(self):
+        a = [1, 2, 3, 10, ' squared_error ', 1, 0, 4]
+        b = ['1.0', 2, 3, '10.0', 'squared_error', 1, 0, 4]
+        c = [9, 8, 7, 10, 'squared_error ', 1, 0, 4]
+        d = ['', ' ', '', '', '   ', '', '', '']
+        report = summarize(self.write([a, b, c, d]))
+        self.assertEqual(report['record_count'], 4)
+        self.assertEqual(report['column_count'], 8)
+        self.assertEqual(report['columns']['criterion']['value_counts'], {'squared_error': 3})
+        self.assertEqual(report['columns']['criterion']['distinct_values'], ['squared_error'])
+        for info in report['columns'].values():
+            self.assertEqual(info['missing_count'], 1)
+        self.assertEqual(report['duplicate_records'], {'unique_count': 3, 'repeated_group_count': 1,
+                         'records_in_repeated_groups': 2, 'extra_record_count': 1})
+        self.assertEqual(report['repeated_configurations'], {'unique_count': 2, 'repeated_group_count': 1,
+                         'records_in_repeated_groups': 3, 'extra_record_count': 2})
+
+    def test_all_missing_and_single_observation(self):
+        report = summarize(self.write([[''] * 8]))
+        self.assertIsNone(report['columns']['MRE-']['statistics'])
+        self.assertIsNone(report['columns']['MRE-']['best_observed'])
+        self.assertEqual(report['columns']['MRE-']['best_observed_count'], 0)
+        report = summarize(self.write([[1, 2, 3, 10, 'poisson', 1, 0, 4]]))
+        self.assertIsNone(report['columns']['MRE-']['statistics']['std_sample'])
+        self.assertEqual(report['columns']['MRE-']['statistics']['q25'], 1)
+
+    def test_invalid_inputs(self):
+        for headers in [[], HEADERS[:-1], HEADERS + ['extra'], HEADERS[:-1] + ['MRE-']]:
+            with self.subTest(headers=headers):
+                with self.assertRaises(ValueError):
+                    summarize(self.write([], headers))
+        with self.assertRaises(ValueError):
+            summarize(self.write([]))
+        for row in [[1], [1] * 9, ['bad'] + [1] * 7,
+                    ['nan'] + [1] * 7, ['inf'] + [1] * 7, ['-inf'] + [1] * 7]:
+            with self.subTest(row=row):
+                with self.assertRaises(ValueError):
+                    summarize(self.write([row]))
+        with self.assertRaises(FileNotFoundError):
+            summarize(Path(self.temp.name) / 'missing.csv')
+
+    def test_reordered_columns(self):
+        report = summarize(self.write([[4, 0, 1, 'poisson', 10, 3, 2, 1]], HEADERS[::-1]))
+        self.assertEqual(report['column_names'], HEADERS[::-1])
+        self.assertEqual(report['columns']['MRE-']['best_observed'], 1)
+
+    def test_cli_success_and_expected_failure(self):
+        self.write([[1, 2, 3, 10, 'poisson', 1, 0, 4]])
+        output = Path(self.temp.name) / 'report'
+        command = [sys.executable, str(ROOT / 'source/summarize.py'), str(self.path), '--output-dir', str(output)]
+        result = subprocess.run(command, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads((output / 'summary.json').read_text())['record_count'], 1)
+        self.assertEqual((output / 'summary.txt').read_text(), result.stdout)
+        self.path.unlink()
+        result = subprocess.run(command, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 2)
+        self.assertIn('Error:', result.stderr)
+
+
+class ActualDatasetTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.report = summarize(DATASET)
+        with DATASET.open(newline='', encoding='utf-8-sig') as handle:
+            reader = csv.DictReader(handle)
+            cls.headers = reader.fieldnames
+            cls.rows = [{k: v.strip() for k, v in row.items()} for row in reader]
+
+    def test_schema_and_every_column_against_independent_csv_calculations(self):
+        self.assertEqual(len(self.rows), 10000)
+        self.assertEqual(self.headers, HEADERS)
+        self.assertEqual(self.report['record_count'], len(self.rows))
+        self.assertEqual(self.report['column_count'], len(HEADERS))
+        for name in self.headers:
+            info = self.report['columns'][name]
+            raw = [row[name] for row in self.rows if row[name] != '']
+            self.assertEqual(info['missing_count'], len(self.rows) - len(raw))
+            if name == 'criterion':
+                self.assertEqual(info['distinct_values'], sorted(set(raw)))
+                self.assertEqual(info['distinct_count'], len(set(raw)))
+                self.assertEqual(info['value_counts'], dict(Counter(raw)))
+                continue
+            values = np.asarray(raw, dtype=float)
+            self.assertEqual(info['distinct_values'], sorted(set(values.tolist())))
+            self.assertEqual(info['distinct_count'], len(set(values.tolist())))
+            expected = dict(zip(['min', 'q25', 'median', 'q75', 'max'], np.quantile(values, [0, .25, .5, .75, 1])))
+            expected.update(count=len(values), mean=np.mean(values), std_sample=np.std(values, ddof=1))
+            for key, value in expected.items():
+                self.assertAlmostEqual(info['statistics'][key], value, places=12, msg=f'{name}.{key}')
+            if name in ['MRE-', 'ACC+', 'PRED40+']:
+                best = np.min(values) if name == 'MRE-' else np.max(values)
+                self.assertEqual(info['best_observed'], best)
+                self.assertEqual(info['best_observed_count'], int(np.sum(values == best)))
+
+    def test_duplicate_counts_independently(self):
+        normalized = [{k: (v if k == 'criterion' else float(v)) if v else None
+                       for k, v in row.items()} for row in self.rows]
+        for key, names in [('duplicate_records', self.headers), ('repeated_configurations', CONFIG)]:
+            groups = Counter(tuple(row[name] for name in names) for row in normalized)
+            repeated = [count for count in groups.values() if count >= 2]
+            self.assertEqual(self.report[key], {'unique_count': len(groups),
+                             'repeated_group_count': len(repeated),
+                             'records_in_repeated_groups': sum(repeated),
+                             'extra_record_count': len(normalized) - len(groups)})
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
+```

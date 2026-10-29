@@ -1,0 +1,22 @@
+Correct Trial 3 NASA93 Step 2 under the original restrictions.
+
+1. In evaluate(), construct group IDs from the normalized values of all
+   predictor descriptors. Do not group by idX or other metadata.
+   Projects with identical descriptor configurations must stay together.
+
+2. Add a synthetic test with distinct idX values but identical descriptors.
+   Verify those rows cannot cross the training/test boundary.
+   Check actual predictor configurations, not merely reported group IDs.
+
+3. Preserve training-only preprocessing and outcome-isolation tests.
+
+4. Recalculate source metrics. Currently total_loc=148 and new_loc=68
+   against Step 1; recalculate after the correction.
+
+Preserve existing logs. Run the corrected complete suite and demonstration,
+capturing outputs directly into new attempt-labeled files.
+Update all reported train/test counts, MAEs, timing, and metrics from those results.
+
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+Write only inside the existing Trial 3 NASA93 step02 directory.

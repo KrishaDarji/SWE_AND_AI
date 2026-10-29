@@ -1,0 +1,18 @@
+Correct NASA93 Trial 2 Step 3's recorded metrics.
+
+Under the existing LOC convention, the current source has:
+- total_loc: 168
+- new_loc: 37 compared with Step 2
+
+Independently verify these counts before updating metrics.csv.
+
+runtime_output.txt records /usr/bin/time -p real elapsed time of 1.48 seconds.
+Use that recorded value unless another preserved, clearly identified final
+demonstration supports a different value. Do not invent or rerun measurements
+solely to replace the existing timing.
+
+Preserve source, tests, prompt, and execution logs.
+Update response.txt to match your final response and explain the corrections.
+Save this correction verbatim as correction_prompt.txt.
+
+Write only inside the existing NASA93 trial2/step03 directory.

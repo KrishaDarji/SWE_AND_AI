@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,4,2,software project estimation,guess,132,50,1,0.97,16,"10 tests; explicit <MISSING> categorical token; handle_unknown=ignore; raw attempt logs; historical error count 13 uncertain; three new failed attempts before final pass"

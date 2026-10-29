@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,4,2,model configuration and quality,blame,360,72,1,0.83,8,"22 tests; reused and copied Step 4 source/tests; /usr/bin/time -p demonstration real; adjusted partial-R2 common ranking with complete transformed blocks; corrected tests/demo in attempt_09_test_suite.txt and attempt_03_runtime.txt; preserved earlier logs"

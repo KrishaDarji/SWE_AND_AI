@@ -1,0 +1,13 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/nasa93dem/step04
+
+Run tests:
+python3 -m unittest discover -s tests -v
+
+Run the demonstration:
+python3 source/nasa93_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --assess-arrivals
+
+The demonstration reads rows in CSV order, uses the first two valid rows as
+warm-up, and prints JSON scored arrivals. CSV order is a demonstration
+sequence, not a verified timeline. There is no convergence claim or automatic
+stopping rule.

@@ -1,0 +1,129 @@
+You are running Treatment 4, Trial 3, Dataset 3, Step 6 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: justify
+- Current requirement: Justify a recommended configuration to the platform team.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step05/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step05/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/health_closedissues/step06/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 5 implementation where appropriate.
+Copy accumulated source and tests into Step 6, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 Health Step 5 source and tests.
+- Files created in the current Step 6 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Produce structured evidence and a readable justification for an observed
+  recommended configuration.
+- Select the lowest observed MRE-, breaking ties by higher ACC+,
+  then higher PRED40+, then earliest CSV record.
+- Label this ordering as the demonstration policy.
+- Report the full five-field configuration, original record identifier,
+  all three measured outcomes, and comparison with named historical references.
+- Use per-outcome medians over finite dataset values as references,
+  reporting the valid count for each.
+- Explain trade-offs: best MRE- need not mean best ACC+ or PRED40+.
+- Reuse earlier summaries or association analysis where useful.
+- Separate measured results, model estimates if included, and associations.
+- Do not present global scores as additive local contributions or causal effects.
+- Explain correlated settings and shared explanatory information.
+- Handle missing/non-finite outcomes, ties, and no eligible records explicitly.
+- Preserve original CSV identifiers when excluding invalid records.
+- Present recommendations as retrospective observed-data evidence.
+- Do not claim guaranteed future performance or statistical superiority.
+- Do not invent metric formulas, ranges, units, resource costs, or constraints.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test selection and all tie-breakers, per-outcome reference arithmetic,
+evidence labels, original identifiers, missing/non-finite values,
+and no eligible records.
+Use synthetic fixtures with independently known expected results.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify required artifacts and specify valid quoted run commands.
+
+Run tests and the recommendation-justification demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 6
+- treatment: 4
+- trial: 3
+- domain: model configuration and quality
+- skill: justify
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners. Include docstrings.
+- new_loc: added or replaced implementation lines compared with Health Step 5,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the justification
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+  Retain all failures from this step if corrections are later required.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 Health Step 6 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

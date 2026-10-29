@@ -1,0 +1,27 @@
+Use the existing python3 environment (scikit-learn 1.6.0); install nothing.
+Run from the Step 3 output directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step03'
+
+Full preserved Steps 1–2 and new Step 3 test suite:
+python3 -m unittest discover -s tests -v
+
+Step 1 regression demo:
+python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir regression_step1
+
+Step 2 regression demo (new illustrative input, not a recommendation):
+python3 source/guess.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --configuration example_configuration.json --evaluation regression_step2.json
+
+Step 3 fixed recorded comparison:
+python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output certification.json
+
+Re-run the suite and demos with wall-time and LOC measurements:
+python3 measure.py
+
+All three application CLIs accept the dataset path as a positional argument.
+measure.py is a measurement runner outside source/ and uses the specified Health dataset.
+Reuse API: compare_families(validated_rows, field='criterion', baseline='squared_error',
+    candidate='absolute_error', primary='MRE-', practical_threshold=None).
+Rows may be loaded with summarize.load_rows(dataset_path). The optional positive
+threshold is in the recorded primary scale; callers must justify it externally.
+The demo supplies no threshold. Inference is deterministic, with no random draws;
+seed 42 is used by the preserved randomized Step 2 implementation.

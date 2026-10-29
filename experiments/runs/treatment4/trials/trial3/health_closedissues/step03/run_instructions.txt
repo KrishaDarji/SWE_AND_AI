@@ -1,0 +1,6 @@
+Run from this Step 3 directory:
+
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 source/certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+The implementation is source/certify.py; the accumulated Step 2 interfaces remain in source/quality_predict.py and source/summarize.py.

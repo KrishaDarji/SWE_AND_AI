@@ -1,0 +1,10 @@
+Implemented Step 7 retrospective selection in source/nasa93_summary.py.
+
+Run:
+python3 source/nasa93_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --choose --budget 100
+
+The demonstration succeeded: budget 100.0; 31 feasible of 93 total records. It maximizes observed Kloc+ as an explicitly labeled delivered-size proxy, then breaks ties by lower observed Effort- and earliest CSV record. The selected result reports its identifier, all 22 project descriptors, observed effort, and delivered size. X-suffix metadata and outcomes are kept out of descriptor settings.
+
+The implementation handles invalid budgets, missing outcomes, and no feasible records. It states that selection uses observed historical outcomes rather than predictions for an unseen proposal, and makes no causal or future-feasibility guarantee. The complete suite passed 25 tests, including preserved Step 6 regression tests and new boundary, maximum-size, tie-break, invalid-budget, missing-outcome, and no-feasible tests. Measured demonstration real time was 0.80 seconds via /usr/bin/time -p.
+
+Known assumptions and limitations: CSV order defines earliest record; blank, ?, NA, N/A, none, and null are missing; finite numeric Effort- and Kloc+ are required for feasibility; no units, monetary costs, or business-value measure are inferred; Kloc+ is not equated with business value or productivity.

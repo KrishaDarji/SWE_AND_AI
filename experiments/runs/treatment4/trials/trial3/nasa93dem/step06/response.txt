@@ -1,0 +1,11 @@
+Implemented the Step 6 NASA93 Effort justification extension.
+
+Source and tests are in the step06 directory. The implementation reuses the Step 5 grouped held-out split and fitted categorical Ridge pipeline, explains the earliest held-out record using its 22 descriptors, reports training-only mean/median references and marginal associations, and reveals the observed Effort- only in a separate audit section.
+
+Verification: 22 tests passed. The demonstration produced an estimate of 474.796, training mean 821.722, training median 360, and audited observed Effort- 117.6. The measured demonstration runtime was 0.74 seconds real time.
+
+Run:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m pytest -q tests
+/usr/bin/time -p /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/nasa93_justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+Known limitations: missing/unseen categories are handled by the fitted pipeline; marginal associations are not causal or additive; correlated descriptors may share information; the estimate does not specify units, costs, intervals, or deployment guarantees.

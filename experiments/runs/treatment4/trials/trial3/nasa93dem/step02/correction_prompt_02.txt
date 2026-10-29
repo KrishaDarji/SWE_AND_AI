@@ -1,0 +1,12 @@
+Correct Trial 3 NASA93 Step 2's new_loc only.
+
+source/nasa93_summary.py is unchanged from Step 1.
+The new source/nasa93_effort.py has 70 nonblank, noncomment lines,
+including docstrings.
+
+Set new_loc=70. Keep total_loc=150 and other measured values unchanged.
+Update response.txt to explain the correction.
+Save this as correction_prompt_02.txt.
+Preserve source, tests, prompt, and logs. No rerun is needed.
+
+Write only inside the existing Trial 3 NASA93 step02 directory.

@@ -1,0 +1,74 @@
+
+==================================== ERRORS ====================================
+_________________ ERROR collecting tests/test_nasa93_blame.py __________________
+ImportError while importing test module '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step07/tests/test_nasa93_blame.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_nasa93_blame.py:4: in <module>
+    from source.nasa93_blame import rank_associations
+E   ModuleNotFoundError: No module named 'source'
+________________ ERROR collecting tests/test_nasa93_certify.py _________________
+ImportError while importing test module '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step07/tests/test_nasa93_certify.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_nasa93_certify.py:3: in <module>
+    from source.nasa93_certify import certify
+E   ModuleNotFoundError: No module named 'source'
+_________________ ERROR collecting tests/test_nasa93_choose.py _________________
+ImportError while importing test module '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step07/tests/test_nasa93_choose.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_nasa93_choose.py:3: in <module>
+    from nasa93_choose import choose
+E   ModuleNotFoundError: No module named 'nasa93_choose'
+_________________ ERROR collecting tests/test_nasa93_effort.py _________________
+ImportError while importing test module '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step07/tests/test_nasa93_effort.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_nasa93_effort.py:7: in <module>
+    from source.nasa93_effort import TARGET, build_pipeline, evaluate, predict_proposal, predictor_names
+E   ModuleNotFoundError: No module named 'source'
+__________________ ERROR collecting tests/test_nasa93_flow.py __________________
+ImportError while importing test module '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step07/tests/test_nasa93_flow.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_nasa93_flow.py:3: in <module>
+    from source.nasa93_flow import assess_arrivals
+E   ModuleNotFoundError: No module named 'source'
+________________ ERROR collecting tests/test_nasa93_summary.py _________________
+ImportError while importing test module '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step07/tests/test_nasa93_summary.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_nasa93_summary.py:7: in <module>
+    from source.nasa93_summary import summarize
+E   ModuleNotFoundError: No module named 'source'
+=========================== short test summary info ============================
+ERROR tests/test_nasa93_blame.py
+ERROR tests/test_nasa93_certify.py
+ERROR tests/test_nasa93_choose.py
+ERROR tests/test_nasa93_effort.py
+ERROR tests/test_nasa93_flow.py
+ERROR tests/test_nasa93_summary.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 6 errors during collection !!!!!!!!!!!!!!!!!!!!
+6 errors in 1.25s
+real 1.90
+user 1.02
+sys 0.25

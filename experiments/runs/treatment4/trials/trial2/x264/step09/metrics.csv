@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,4,2,video encoding,spot,477,70,1,0.87,6,"27 corrected tests passed; reused all Step 8 interfaces and regression tests; /usr/bin/time -p real for corrected demonstration; 24 of 1152 real rows flagged as candidates at score threshold 3.5; actual nearest-group counts and IDs are reported; errors include prior preserved repairs, one corrected-test assertion, and two failed inspection commands; no verified labels"

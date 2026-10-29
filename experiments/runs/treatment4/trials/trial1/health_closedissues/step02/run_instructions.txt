@@ -1,0 +1,31 @@
+Use the existing python3 environment: Python 3.12.6, scikit-learn 1.6.0,
+NumPy 2.3.5, SciPy 1.16.3. No dependency installations or changes.
+
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02'
+
+Run all tests (including unchanged Step 1 regression tests):
+python3 -m unittest discover -s tests -v
+
+Run the Step 2 demo with an explicitly illustrative configuration:
+python3 source/guess.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --configuration example_configuration.json --evaluation evaluation.json
+
+The configuration JSON accepts the five predictor keys only. Omitted keys,
+nulls, and blank strings represent missing values. criterion is a trimmed
+string; numeric fields accept finite numbers or numeric strings. Objective,
+unknown, duplicate JSON keys, booleans as numbers, and nonfinite numbers are
+rejected. Output predictions use exactly the MRE- and ACC+ keys.
+To predict another configuration, replace --configuration with its JSON file.
+The command refits fixed models on the same reproducible training split;
+it does not refit using held-out labels. Evaluation output includes actual
+held-out labels for scoring only. There is no saved pickle model.
+
+Run preserved Step 1 behavior:
+python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir step01_regression_demo
+
+Reproduce all measurements and append preserved attempt logs:
+python3 measure.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+Pass a different allowed dataset path in place of the shown positional path.
+The preserved Step 1 tests and actual-dataset Step 2 test intentionally use the
+specified Health dataset path. All commands above write within this Step 2
+directory. Dataset and Step 1 files are read only.

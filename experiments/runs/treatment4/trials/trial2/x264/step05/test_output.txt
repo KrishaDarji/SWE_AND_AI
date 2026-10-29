@@ -1,0 +1,51 @@
+=== ATTEMPT 1: complete regression suite ===
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... FAIL
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+======================================================================
+FAIL: test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/x264/step05/tests/test_summarize_runs.py", line 105, in test_blame_known_associations_constants_multivalue_and_order
+    self.assertEqual([item["setting"] for item in result["settings"]], ["slow", "multi", "other", "constant"])
+AssertionError: Lists differ: ['multi', 'slow', 'constant', 'other'] != ['slow', 'multi', 'other', 'constant']
+
+First differing element 0:
+'multi'
+'slow'
+
+- ['multi', 'slow', 'constant', 'other']
++ ['slow', 'multi', 'other', 'constant']
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.014s
+
+FAILED (failures=1)
+=== ATTEMPT 2: repaired complete regression suite ===
+test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic (test_summarize_runs.SummarizeRunsTests.test_blame_detects_mutually_exclusive_settings_and_ties_are_deterministic) ... ok
+test_blame_known_associations_constants_multivalue_and_order (test_summarize_runs.SummarizeRunsTests.test_blame_known_associations_constants_multivalue_and_order) ... ok
+test_certification_uses_predeclared_no_asm_groups (test_summarize_runs.SummarizeRunsTests.test_certification_uses_predeclared_no_asm_groups) ... ok
+test_empty_one_observation_and_tied_best (test_summarize_runs.SummarizeRunsTests.test_empty_one_observation_and_tied_best) ... ok
+test_flow_empty_input (test_summarize_runs.SummarizeRunsTests.test_flow_empty_input) ... ok
+test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline (test_summarize_runs.SummarizeRunsTests.test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline) ... ok
+test_incremental_prefixes_match_batch_statistics (test_summarize_runs.SummarizeRunsTests.test_incremental_prefixes_match_batch_statistics) ... ok
+test_loads_numeric_settings_and_measure (test_summarize_runs.SummarizeRunsTests.test_loads_numeric_settings_and_measure) ... ok
+test_predict_accepts_a_complete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_accepts_a_complete_configuration) ... ok
+test_predict_rejects_incomplete_configuration (test_summarize_runs.SummarizeRunsTests.test_predict_rejects_incomplete_configuration) ... ok
+test_summary_has_expected_statistics_and_extrema (test_summarize_runs.SummarizeRunsTests.test_summary_has_expected_statistics_and_extrema) ... ok
+test_welch_interval_uses_unequal_variance_degrees_of_freedom (test_summarize_runs.SummarizeRunsTests.test_welch_interval_uses_unequal_variance_degrees_of_freedom) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.011s
+
+OK

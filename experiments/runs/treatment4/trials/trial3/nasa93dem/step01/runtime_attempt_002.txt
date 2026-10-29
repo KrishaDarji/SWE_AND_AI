@@ -1,0 +1,41 @@
+NASA93 historical project summary
+Record count: 93
+Columns: idX, centerX, YearX, prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced, Kloc+, Effort-, Defects-, MonthsX
+Inferred data types: idX=numeric; centerX=numeric; YearX=numeric; prec=categorical; flex=categorical; resl=categorical; team=categorical; pmat=categorical; rely=categorical; data=categorical; cplx=categorical; ruse=categorical; docu=categorical; time=categorical; stor=categorical; pvol=categorical; acap=categorical; pcap=categorical; pcon=categorical; apex=categorical; plex=categorical; ltex=categorical; tool=categorical; site=categorical; sced=categorical; Kloc+=numeric; Effort-=numeric; Defects-=numeric; MonthsX=numeric
+Missing values: idX=0; centerX=0; YearX=0; prec=0; flex=0; resl=0; team=0; pmat=0; rely=0; data=0; cplx=0; ruse=0; docu=0; time=0; stor=0; pvol=0; acap=0; pcap=0; pcon=0; apex=0; plex=0; ltex=0; tool=0; site=0; sced=0; Kloc+=0; Effort-=0; Defects-=0; MonthsX=0
+Numeric descriptive statistics (min, max, mean, std):
+  idX: min=1, max=93, mean=46.9892, std=26.8522
+  centerX: min=1, max=6, mean=3.27957, std=1.67438
+  YearX: min=1971, max=1987, mean=1980.83, std=3.31703
+  Kloc+: min=0.9, max=980, mean=94.022, std=132.878
+  Effort-: min=8.4, max=8211, mean=624.412, std=1129.8
+  Defects-: min=28, max=50961, mean=3761.76, std=6111.93
+  MonthsX: min=4.9, max=96.4, mean=24.1763, std=12.8973
+Categorical frequencies:
+  prec: h=93
+  flex: h=93
+  resl: h=93
+  team: vh=93
+  pmat: h=43, l=20, n=30
+  rely: h=42, l=2, n=39, vh=10
+  data: h=17, l=37, n=31, vh=8
+  cplx: h=58, l=3, n=10, vh=17, xh=5
+  ruse: n=93
+  docu: n=93
+  time: h=13, n=54, vh=18, xh=8
+  stor: h=10, n=49, vh=21, xh=13
+  pvol: h=9, l=65, n=19
+  acap: h=51, n=32, vh=10
+  pcap: h=39, n=44, vh=10
+  pcon: n=93
+  apex: h=46, l=1, n=34, vh=12
+  plex: h=22, l=14, n=53, vl=4
+  ltex: h=69, l=6, n=14, vl=4
+  tool: h=10, n=83
+  site: n=93
+  sced: l=34, n=59
+Roles: {'project_descriptors': ['prec', 'flex', 'resl', 'team', 'pmat', 'rely', 'data', 'cplx', 'ruse', 'docu', 'time', 'stor', 'pvol', 'acap', 'pcap', 'pcon', 'apex', 'plex', 'ltex', 'tool', 'site', 'sced'], 'metadata_excluded_from_modeling': ['idX', 'centerX', 'YearX', 'MonthsX'], 'outcomes': ['Kloc+', 'Effort-', 'Defects-']}
+Outcome directions: {'Kloc+': 'maximize', 'Effort-': 'minimize', 'Defects-': 'minimize'}
+Delivered size: Kloc+; effort: Effort-; defects: Defects-.
+X-suffix columns are excluded metadata for future modeling; delivered size is not automatically a predictor.
+Parsing: blank and non-finite numeric values become missing; empty CSVs return zero records and empty summaries.

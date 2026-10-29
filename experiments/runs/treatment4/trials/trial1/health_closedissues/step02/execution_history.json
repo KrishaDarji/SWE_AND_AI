@@ -1,0 +1,90 @@
+[
+  {
+    "attempt": 1,
+    "executions": {
+      "tests": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/tests",
+          "-v"
+        ],
+        "returncode": 1,
+        "seconds": 8.081407958059572
+      },
+      "demo": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/source/guess.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--configuration",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/example_configuration.json",
+          "--evaluation",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/evaluation.json"
+        ],
+        "returncode": 0,
+        "seconds": 2.3949199999915436
+      },
+      "regression_demo": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/source/summarize.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output-dir",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/step01_regression_demo"
+        ],
+        "returncode": 0,
+        "seconds": 0.7183157500112429
+      }
+    },
+    "passed": 15,
+    "total": 16
+  },
+  {
+    "attempt": 2,
+    "executions": {
+      "tests": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/tests",
+          "-v"
+        ],
+        "returncode": 0,
+        "seconds": 8.034434792003594
+      },
+      "demo": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/source/guess.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--configuration",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/example_configuration.json",
+          "--evaluation",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/evaluation.json"
+        ],
+        "returncode": 0,
+        "seconds": 2.390457916073501
+      },
+      "regression_demo": {
+        "command": [
+          "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/source/summarize.py",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv",
+          "--output-dir",
+          "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step02/step01_regression_demo"
+        ],
+        "returncode": 0,
+        "seconds": 0.7269383340608329
+      }
+    },
+    "passed": 16,
+    "total": 16
+  }
+]

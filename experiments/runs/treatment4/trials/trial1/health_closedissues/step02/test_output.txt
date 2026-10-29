@@ -1,0 +1,23 @@
+test_actual_dataset_evaluation_and_prediction (test_guess.ActualPredictionTests.test_actual_dataset_evaluation_and_prediction) ... ok
+test_cli_rejects_objective_unknown_and_duplicate_keys (test_guess.GuessTests.test_cli_rejects_objective_unknown_and_duplicate_keys) ... ok
+test_input_validation (test_guess.GuessTests.test_input_validation) ... ok
+test_missing_target_labels_require_train_and_test_samples (test_guess.GuessTests.test_missing_target_labels_require_train_and_test_samples) ... ok
+test_missing_values_unseen_category_and_training_only_preprocessing (test_guess.GuessTests.test_missing_values_unseen_category_and_training_only_preprocessing) ... ok
+test_normalized_group_split (test_guess.GuessTests.test_normalized_group_split) ... ok
+test_reproducibility_and_independent_mae (test_guess.GuessTests.test_reproducibility_and_independent_mae) ... ok
+test_targets_cannot_affect_fit_or_predictions (test_guess.GuessTests.test_targets_cannot_affect_fit_or_predictions) ... ok
+test_duplicate_counts_independently (test_summarize.ActualDatasetTests.test_duplicate_counts_independently) ... ok
+test_schema_and_every_column_against_independent_csv_calculations (test_summarize.ActualDatasetTests.test_schema_and_every_column_against_independent_csv_calculations) ... ok
+test_all_missing_and_single_observation (test_summarize.FixtureTests.test_all_missing_and_single_observation) ... ok
+test_cli_success_and_expected_failure (test_summarize.FixtureTests.test_cli_success_and_expected_failure) ... ok
+test_hand_calculated_numeric_statistics (test_summarize.FixtureTests.test_hand_calculated_numeric_statistics) ... ok
+test_invalid_inputs (test_summarize.FixtureTests.test_invalid_inputs) ... ok
+test_reordered_columns (test_summarize.FixtureTests.test_reordered_columns) ... ok
+test_whitespace_missing_and_duplicates (test_summarize.FixtureTests.test_whitespace_missing_and_duplicates) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 6.700s
+
+OK
+
+Measured tests subprocess wall time: 8.034434792 seconds

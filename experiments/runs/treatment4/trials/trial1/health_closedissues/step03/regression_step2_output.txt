@@ -1,0 +1,21 @@
+Command: ['/Library/Frameworks/Python.framework/Versions/3.12/bin/python3', 'source/guess.py', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv', '--configuration', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step03/example_configuration.json', '--evaluation', '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step03/regression_step2.json']
+{
+  "label": "Illustrative configuration; not an optimized recommendation",
+  "predictions": {
+    "MRE-": 0.3305293757139169,
+    "ACC+": 0.6809000361681351
+  },
+  "heldout_mae": {
+    "MRE-": {
+      "model": 0.013879674043302374,
+      "training_mean_baseline": 0.16459861627286873
+    },
+    "ACC+": {
+      "model": 0.00915287155651082,
+      "training_mean_baseline": 0.08820967314102454
+    }
+  }
+}
+
+Exit code: 0
+Wall seconds: 2.366207583

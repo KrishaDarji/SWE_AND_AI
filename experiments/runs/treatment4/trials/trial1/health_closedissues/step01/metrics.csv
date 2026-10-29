@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,4,1,health_closedissues,remember,196,196,1,0.761165667,0,passed/total=8/8; test_wall_seconds=2.127182500; attempt=1; expected negative tests excluded from errors; initial path/schema checks succeeded; no repair attempts

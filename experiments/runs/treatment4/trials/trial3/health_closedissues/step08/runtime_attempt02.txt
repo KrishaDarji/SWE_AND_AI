@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "2.75",
+      "Min_sample_leaves": "3",
+      "N_estimators": "40",
+      "criterion": "squared_error"
+    },
+    "measured_outcomes": {
+      "ACC+": 0.7276513937840435,
+      "MRE-": 0.3148748159057436,
+      "PRED40+": 0.5714285714285714
+    },
+    "original_record_id": 0
+  },
+  "candidate": {
+    "change_count": 2,
+    "changes": [
+      {
+        "field": "N_estimators",
+        "new": "10",
+        "old": "40"
+      },
+      {
+        "field": "Min_impurity_decrease",
+        "new": "5",
+        "old": "2.75"
+      }
+    ],
+    "configuration": {
+      "Max_depth": "10",
+      "Min_impurity_decrease": "5",
+      "Min_sample_leaves": "3",
+      "N_estimators": "10",
+      "criterion": "squared_error"
+    },
+    "measured_outcomes": {
+      "ACC+": 0.6619673181672541,
+      "MRE-": 0.2673048600883652,
+      "PRED40+": 0.5714285714285714
+    },
+    "mre_improvement": 0.04756995581737844,
+    "original_record_id": 1944,
+    "secondary_comparisons": {
+      "ACC+": {
+        "difference": -0.06568407561678946,
+        "reason": null,
+        "worsening": true
+      },
+      "PRED40+": {
+        "difference": 0.0,
+        "reason": null,
+        "worsening": false
+      }
+    }
+  },
+  "change_count_definition": "number of differing configuration fields (proxy, not measured implementation cost)",
+  "interpretation": "retrospective observed-data repair",
+  "record_count": 10000,
+  "status": "improving candidate found"
+}
+real 0.05
+user 0.04
+sys 0.00

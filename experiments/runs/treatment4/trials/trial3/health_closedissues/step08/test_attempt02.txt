@@ -1,0 +1,16 @@
+...........F.................                                            [100%]
+=================================== FAILURES ===================================
+___ test_minimum_change_beats_larger_improvement_and_reports_numeric_changes ___
+
+tmp_path = PosixPath('/private/var/folders/6s/nl7vyczd1cg4synhvvd8v8840000gn/T/pytest-of-vivek/pytest-14/test_minimum_change_beats_larg0')
+
+    def test_minimum_change_beats_larger_improvement_and_reports_numeric_changes(tmp_path):
+        p = write(tmp_path, [row(), row(criterion="absolute_error", mre=9, acc=1, pred=1), row(n=11, mre=1, acc=99, pred=99)])
+        result = repair(p)
+>       assert result["candidate"]["original_record_id"] == 1
+E       assert 2 == 1
+
+tests/test_fix.py:29: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_fix.py::test_minimum_change_beats_larger_improvement_and_reports_numeric_changes
+1 failed, 28 passed in 0.93s

@@ -1,0 +1,35 @@
+Correct the existing Treatment 4, Trial 2, X264 Step 3.
+
+Continue under the original access and output restrictions.
+Keep all changes inside the existing step03 directory.
+
+1. Compute the confidence interval consistently with the Welch unequal-variance
+   test, using Welch–Satterthwaite degrees of freedom.
+
+2. Separate:
+   - Statistical evidence of a difference from zero.
+   - Whether the observed difference exceeds the practical threshold.
+   - Whether the confidence interval lies entirely beyond that threshold.
+
+   Do not claim an established practically meaningful improvement merely because
+   the point estimate exceeds the threshold. An interval crossing the threshold
+   leaves practical importance uncertain. An interval crossing zero does not
+   establish equivalence.
+
+3. Add tests covering unequal variances and a point estimate exceeding the
+   practical threshold while its confidence interval crosses that threshold.
+   Preserve earlier regression tests.
+
+4. Preserve existing outputs and append directly captured repair/test/runtime
+   results with attempt labels. Recover the original failed attempt from this
+   chat if available; otherwise explicitly document that its output is missing.
+   Do not fabricate or reconstruct missing logs.
+
+5. Update metrics from actual measurements. Count new_loc against Step 2,
+   include all Step 3 unexpected errors, and state the timing method.
+
+6. Keep prompt.txt as the original full prompt. Save this correction separately
+   as correction_prompt.txt. Update response.txt to match your final response
+   exactly, including assumptions and limitations.
+
+Run the corrected tests and demonstration, and record their actual outputs.

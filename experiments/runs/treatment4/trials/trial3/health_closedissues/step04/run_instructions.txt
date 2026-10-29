@@ -1,0 +1,5 @@
+Run tests:
+python3 -m unittest discover -s 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step04/tests' -v
+
+Run the flow demonstration:
+/usr/bin/time -p python3 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step04/source/flow.py' 'SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'

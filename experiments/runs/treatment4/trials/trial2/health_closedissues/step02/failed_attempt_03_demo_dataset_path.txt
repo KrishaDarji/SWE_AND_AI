@@ -1,0 +1,18 @@
+exit=1
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/run_demo.py", line 8, in <module>
+    result = evaluate(dataset)
+             ^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/source/predictor.py", line 53, in evaluate
+    rows = load_rows(path)
+           ^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step02/source/predictor.py", line 25, in load_rows
+    with Path(path).open(newline="", encoding="utf-8") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+real 0.81
+user 0.68
+sys 0.10

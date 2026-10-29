@@ -1,0 +1,22 @@
+Correct Trial 3 NASA93 Step 8's prediction validation.
+
+The demonstration accepts predicted effort -350.602 as a feasible repair.
+
+- Keep the inherited estimator unchanged.
+- Require finite, nonnegative estimated effort for candidate feasibility.
+- Exclude invalid predictions and report how many were excluded.
+- If the original proposal prediction is negative/non-finite, return an explicit
+  invalid-estimate result rather than no-repair-needed.
+- If no valid feasible candidate remains, return no-feasible-repair.
+- Do not silently clip predictions or interpret negative effort as savings.
+
+Add tests for negative/non-finite candidate predictions, invalid original
+predictions, and no valid candidate remaining.
+Preserve training-only candidate selection and outcome-isolation tests.
+
+Preserve existing logs. Capture corrected tests and demonstration into new
+attempt files. Update measured metrics and new_loc against Step 7.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your final response verbatim in response.txt.
+
+Write only inside the existing Trial 3 NASA93 step08 directory.

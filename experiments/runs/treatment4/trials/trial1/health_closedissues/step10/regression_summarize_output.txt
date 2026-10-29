@@ -1,0 +1,43 @@
+COMMAND: ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "source/summarize.py", "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv", "--output-dir", "regression_summarize"]
+WALL_SECONDS: 0.731648291
+EXIT_CODE: 0
+STDOUT:
+Records: 10000; columns: 8
+
+Configuration fields:
+N_estimators: numeric; missing=0; distinct=20
+  Statistics: {"count": 10000, "max": 200.0, "mean": 106.061, "median": 110.0, "min": 10.0, "q25": 60.0, "q75": 160.0, "std_sample": 57.132658725717526}
+  Distinct values: [10.0, 20.0, 30.0, 40.0, 50.0, 60.0, 70.0, 80.0, 90.0, 100.0, 110.0, 120.0, 130.0, 140.0, 150.0, 160.0, 170.0, 180.0, 190.0, 200.0]
+criterion: categorical; missing=0; distinct=3
+  Value counts: {"absolute_error": 3302, "poisson": 3335, "squared_error": 3363}
+Min_sample_leaves: numeric; missing=0; distinct=20
+  Statistics: {"count": 10000, "max": 20.0, "mean": 10.4796, "median": 11.0, "min": 1.0, "q25": 5.0, "q75": 15.0, "std_sample": 5.779232110962428}
+  Distinct values: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0]
+Min_impurity_decrease: numeric; missing=0; distinct=41
+  Statistics: {"count": 10000, "max": 10.0, "mean": 4.996175, "median": 5.0, "min": 0.0, "q25": 2.5, "q75": 7.5, "std_sample": 2.947214401201186}
+  Distinct values: [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0, 3.25, 3.5, 3.75, 4.0, 4.25, 4.5, 4.75, 5.0, 5.25, 5.5, 5.75, 6.0, 6.25, 6.5, 6.75, 7.0, 7.25, 7.5, 7.75, 8.0, 8.25, 8.5, 8.75, 9.0, 9.25, 9.5, 9.75, 10.0]
+Max_depth: numeric; missing=0; distinct=20
+  Statistics: {"count": 10000, "max": 20.0, "mean": 10.523, "median": 11.0, "min": 1.0, "q25": 6.0, "q75": 16.0, "std_sample": 5.754492368423285}
+  Distinct values: [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0, 17.0, 18.0, 19.0, 20.0]
+
+Objective fields:
+MRE-: numeric; missing=0; distinct=3216
+  Statistics: {"count": 10000, "max": 1.0, "mean": 0.70909397643463, "median": 0.8091310751104565, "min": 0.0, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "std_sample": 0.2013959017163944}
+  Direction: minimize; best observed=0.0; count=1
+ACC+: numeric; missing=0; distinct=1265
+  Statistics: {"count": 10000, "max": 1.0, "mean": 0.49593851329765903, "median": 0.43992310157000963, "min": 0.0, "q25": 0.43255366869593076, "q75": 0.5712912528035885, "std_sample": 0.10715231893623793}
+  Direction: maximize; best observed=1.0; count=1
+PRED40+: numeric; missing=0; distinct=8
+  Statistics: {"count": 10000, "max": 1.0, "mean": 0.14684285714285714, "median": 0.0, "min": 0.0, "q25": 0.0, "q75": 0.14285714285714285, "std_sample": 0.2663996283372757}
+  Direction: maximize; best observed=1.0; count=372
+
+duplicate_records: {"extra_record_count": 0, "records_in_repeated_groups": 0, "repeated_group_count": 0, "unique_count": 10000}
+
+repeated_configurations: {"extra_record_count": 0, "records_in_repeated_groups": 0, "repeated_group_count": 0, "unique_count": 10000}
+
+Full distinct values for every column are in summary.json.
+
+Conventions: {"distinct": "Nonmissing normalized values only; numeric values parsed as float.", "duplicates": "After trimming whitespace and parsing numbers; missing cells compare equal.", "missing": "Empty or whitespace-only cells; other numeric tokens must be finite numbers.", "quantiles": "Linear interpolation at (n - 1) * p.", "scope": "Descriptive observed metrics only; no training, formulas, units, or timeline inferred.", "std": "Sample standard deviation (n - 1); null for fewer than two values."}
+
+STDERR:
+

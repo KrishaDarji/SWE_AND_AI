@@ -1,0 +1,109 @@
+You are running Treatment 4, Trial 2, Dataset 2, Step 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: remember
+- Current requirement: Summarize the historical software projects and their outcomes.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step01/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+This is Step 1 of a new dataset. Implement independently from scratch.
+Reuse becomes permitted only in later steps of this same dataset and trial.
+
+You may read only:
+- The specified dataset.
+- Files created in the current Step 1 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to code, tests, prompts, reports, or architecture from:
+- X264 or any other dataset.
+- Trial 1 or any other trial.
+- Other treatments.
+- Root-level project implementations.
+- Git history, previous chats, or remembered solutions.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Summarize record count, columns, inferred data types, and missing values.
+- Report descriptive statistics for numeric fields and frequencies for
+  categorical fields.
+- Distinguish project descriptors, metadata, and outcome columns.
+- Treat columns ending in X as excluded metadata for future modeling.
+- Identify Kloc+ as delivered size, Effort- as effort, and Defects- as defects.
+- Preserve the + and - optimization directions without treating delivered
+  size as a predictor automatically.
+- Do not invent units or interpret numeric category codes as continuous
+  quantities without justification.
+- State parsing assumptions and limitations.
+- Keep the implementation reusable for later NASA93 steps.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test numeric summaries, categorical frequencies, missing-value handling,
+column-role identification, and empty-input behavior using synthetic fixtures.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve failed attempts and final successful output with attempt labels.
+- Do not manually reconstruct, shorten, or alter execution output.
+- Verify the complete prompt and all required artifacts are saved correctly.
+- Ensure run instructions specify the working directory and valid quoted paths.
+
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: software project estimation
+- total_loc: implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: equal to total_loc because this dataset starts from scratch.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Do not substitute an internal timer.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, assumptions, and repairs.
+  Ensure the error count agrees with the preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified NASA93 Step 1 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

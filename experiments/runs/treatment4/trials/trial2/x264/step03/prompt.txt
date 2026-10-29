@@ -1,0 +1,104 @@
+You are running Treatment 4, Trial 2, Dataset 1, Step 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: certify
+- Current requirement: Tell us whether a faster configuration is meaningfully faster or within normal noise.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/config/X264_AllMeasurements.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/x264/step02/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/x264/step02/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/x264/step03/
+
+Resolve <repository root> to the exact absolute path above.
+Quote all shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may be used for statistical calculations.
+
+Extend and reuse the allowed Step 2 implementation where appropriate.
+Copy accumulated source and tests into Step 3, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Step 2 source and tests.
+- Files created in the current Step 3 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other trials, datasets, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report the exact path without searching elsewhere.
+
+Implementation:
+- Compare Performance- between two explicitly defined groups of encoder settings.
+- Define the comparison before inspecting group outcomes; do not search for
+  whichever comparison produces significance.
+- Report group definitions, sample sizes, means, observed difference,
+  uncertainty, statistical method, and assumptions.
+- Treat lower Performance- as better; do not invent measurement units.
+- Distinguish statistical evidence from practical importance.
+- Accept a user-supplied practical-effect threshold. Label any demonstration
+  threshold as illustrative.
+- Do not treat variation across different configurations as repeated-run
+  measurement noise.
+- Explain that observational group differences do not establish causation,
+  and that failure to detect a difference does not establish equivalence.
+- Use a fixed seed for any randomized statistical procedure.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Artifact recording:
+- Save this entire user prompt verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve failed attempts and final successful output with clear attempt labels.
+- Do not manually reconstruct, shorten, or alter execution output.
+- If exact conversation export is unavailable, report that limitation explicitly.
+- Verify all artifacts are in the exact Step 3 output directory.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with Step 2,
+  excluding blank and comment-only lines; not net growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: elapsed time of the current skill demonstration subprocess,
+  excluding tests; state the timing method.
+- error_count: unexpected errors during this step, including repaired failures;
+  exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Step 3 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

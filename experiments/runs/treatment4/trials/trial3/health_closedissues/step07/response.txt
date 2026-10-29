@@ -1,0 +1,17 @@
+Implemented Step 7 retrospective capped configuration selection.
+
+Files are in the Step 7 output directory, including complete accumulated source and regression tests. The new `source/choose.py` accepts a finite nonnegative cap, uses `N_estimators <= cap` as an explicitly labeled compute proxy, filters for complete configurations, finite numeric settings/outcomes, and nonblank criterion, then selects observed records by MRE- ascending, ACC+ descending, PRED40+ descending, and earliest CSV record.
+
+Verification:
+- 26 tests passed, including Step 6 regression tests and cap boundaries, tie-breakers, invalid infinity/negative/type caps, missing/non-finite values, missing criterion, empty input, and no feasible records.
+- Demonstration: cap 100; 4,877 feasible of 10,000 total; original record identifier 31; configuration `N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5`; measured outcomes `MRE-=0.0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571`.
+- `/usr/bin/time -p` real elapsed time: 0.05 seconds.
+
+Selection uses observed outcomes, not predictions for unseen settings. Other settings also affect compute, so the estimator cap is only a proxy. No causal, future-feasibility, guaranteed-quality, metric-formula, unit, range, or measured-compute-cost claim is made.
+
+Run:
+`python3 -m pytest "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step07/tests"`
+
+`python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/health_closedissues/step07/source/choose.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" --cap 100`
+
+Known limitations: retrospective selection only covers observed eligible rows; the cap does not measure total compute; CSV record identifiers are zero-based original row indexes; and the copied Step 6 modules retain their prior interfaces and behavior.

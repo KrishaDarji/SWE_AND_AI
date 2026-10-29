@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,4,2,software project estimation,spot,493,58,1,0.80,2,"31 tests; Step 8 source/tests copied and reused; timing is /usr/bin/time -p real for demonstration; two repaired failures: one shell-command failure (read-only status variable) and one unexpected test assertion; final logs preserved; references include assessed records; real dataset produced 0 flags"

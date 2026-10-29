@@ -1,0 +1,4579 @@
+{
+  "interpretation": "Flags are investigation candidates, not confirmed errors. Large projects may legitimately have large effort or defect counts; this marginal screen is not scope-adjusted, accuracy-validated, or a prediction-uncertainty estimate.",
+  "method": "absolute robust z-score on log1p outcome, median and 1.4826*MAD",
+  "outcomes": [
+    "Kloc+",
+    "Effort-",
+    "Defects-"
+  ],
+  "per_outcome_flag_counts": {
+    "Defects-": 0,
+    "Effort-": 0,
+    "Kloc+": 0
+  },
+  "records": [
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 808.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.6158120364625099,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 117.6,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.46967726803600957,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 25.9,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.3792340177949143,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 1
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 767.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.6510425256826422,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 117.6,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.46967726803600957,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 24.6,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.4111033048225543,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 2
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 240.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.4361323937440709,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 31.2,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.2779321084652762,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 7.7,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.1054867379161928,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 3
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 256.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.3925903540435267,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 36.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.1917923257735215,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 8.2,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.069534206315122,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 4
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 302.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.2810535756436567,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 25.2,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.4057654522583198,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 9.7,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.9723574868734536,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 5
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 69.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 2.2735905143682897,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 8.4,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 2.041221605060466,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 2.2,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.7489804426958582,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 6
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 109.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.9674204145452572,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 10.8,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.9002564681715455,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 3.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.5296341051053024,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 7
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2077.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.02321190589308966,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 352.8,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.207887792087279,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 66.6,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.21363155208370438,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 8
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 226.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.4766720825216815,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 72.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.7705260824693424,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 7.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.1204498054343632,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 9
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 566.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.8565831950203681,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 72.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.7705260824693424,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 20.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5385381011423261,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 10
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 188.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.6007719225226906,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 24.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.4348298600623772,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 6.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.2453664658427712,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 11
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2832.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.23315554016267503,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 360.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.22037695394165113,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 100.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.47195785208462193,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 12
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 456.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.0026798523944482,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 36.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.1917923257735215,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 11.3,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.8826985271356451,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 13
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 5434.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.6744907594765952,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 215.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.09801735190859404,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 100.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.47195785208462193,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 14
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 626.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7884464295685786,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 48.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0176533104272532,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 20.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5385381011423261,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 15
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4342.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5225561848656287,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 360.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.22037695394165113,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 100.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.47195785208462193,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 16
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4868.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5999975672423187,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 324.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.1552518858785766,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 150.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7307002832571741,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 17
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 986.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.4810987722620646,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 60.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8818560574459069,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 31.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.2575614302012531,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 18
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 470.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9822398171327786,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 48.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0176533104272532,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 15.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7134956047173524,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 19
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1276.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.3066039686736533,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 60.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8818560574459069,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 32.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.23806348643491498,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 20
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 614.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.8015364943283888,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 60.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8818560574459069,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 19.7,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5477955688297681,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 21
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2077.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.02321190589308966,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 300.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.10769422563400294,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 66.6,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.21363155208370438,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 22
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 920.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5279809205202456,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 120.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.45725761090983996,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 29.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.29842486962053455,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 23
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 575.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.8459154190877134,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 90.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.6338940980104311,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 15.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7134956047173524,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 24
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1553.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.17361970628913867,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 210.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.11253621575863317,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 38.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.14025885752154613,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 25
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 427.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.0470896581353744,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 48.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0176533104272532,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 10.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.9545669643447982,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 26
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 765.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.6528088624638828,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 70.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.787747388483966,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 15.4,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.6976087999205541,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 27
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2409.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.12361519691729835,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 239.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.03270150767834504,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 48.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.013130719098323865,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 28
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 810.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.614139468275013,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 82.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.6909391116716239,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 16.3,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.6632359610371329,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 29
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 636.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7777280133509397,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 62.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8618566730634107,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 12.8,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.8086648875724449,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 29
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1619.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.14544442569018412,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 170.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.24284154087895815,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 32.6,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.236145801247528,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 31
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1763.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.08775939733273683,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 192.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.16781384553843903,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 35.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.18288257958209767,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 32
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 172.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.6606907196703367,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 18.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.6049607117669324,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 5.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.293046268179759,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 33
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 324.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.2335737165053604,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 50.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.9928529173417313,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 10.4,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.9315865606334303,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 34
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 437.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.0314448571613892,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 60.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8818560574459069,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 14.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7550185858694735,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 35
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 290.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.3084265835963333,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 42.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0986283078901284,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 6.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.2009776318272416,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 36
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 683.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7295058127667772,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 60.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8818560574459069,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 13.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7994074198850032,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 37
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 3343.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.34548808474388687,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 444.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.35006343483754765,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 90.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.404878100483662,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 38
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 420.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.05826006061909,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 42.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0986283078901284,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 8.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.0836750591475344,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 39
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 887.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.552697717166627,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 114.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.48878612457626847,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 16.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.6744907594765952,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 40
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 7998.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9362727875166347,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1248.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.98984327355959,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 177.9,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.8397840233767175,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 41
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 8543.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9809214090800193,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 2400.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.3949917566210097,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 302.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.1787862167850665,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 42
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 9820.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.0752775150292042,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1368.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0467137259284731,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 282.1,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.1350795347020135,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 43
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 8518.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9789364408549068,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 973.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.8356753223182117,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 284.7,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.1409614165630542,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 44
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2327.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.1001658477647575,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 400.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.2855210494104915,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 79.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.3219892332611532,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 45
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 18447.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.5023263900695218,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 2400.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.3949917566210097,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 423.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.3949632905638685,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 46
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 5092.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.6304655232463707,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 420.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.3156937756681533,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 190.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.8818911424152861,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 47
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2007.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.0,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 252.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.0,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 47.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.0,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 48
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1058.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.433403551035583,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 107.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5277181083202478,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 21.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5086079183870301,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 49
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4815.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5925836247967368,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 571.4,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5061386285531184,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 78.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.31389625983558134,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 50
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 704.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7090216238392749,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 98.8,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5766694430496758,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 11.4,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.8774889205015372,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 51
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1191.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.3532632592390344,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 155.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.299755533267268,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 19.3,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5603497799109846,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 52
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4840.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5960908800781397,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 750.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.6744907594765952,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 101.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.47829665118161735,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 53
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 11761.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.1974454688271403,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 2120.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.3181222519798064,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 219.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.9728359655492439,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 54
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2685.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.19706209780480666,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 370.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.23731590804020503,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 50.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.0323376052238496,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 55
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 6293.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7738890907803014,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1181.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.9556633966093506,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 227.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.9958163692606118,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 56
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2950.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.2607983773721556,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 278.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.060642695397521644,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 70.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.24520356974741545,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 57
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 28.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 2.8705059830036346,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 8.4,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 2.041221605060466,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 0.9,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 2.084373971291643,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 58
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 50961.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 2.190638593305726,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 4560.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.792772092062214,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 980.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.9346579651963038,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 59
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 8547.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9812384649115914,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 720.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.6492184903261654,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 350.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.2733978718793435,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 60
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2404.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.12220836407146839,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 458.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.36926625354624276,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 70.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.24520356974741545,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 61
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 9308.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.0390092022704616,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 2460.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.4102930800979259,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 271.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.109345424354477,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 62
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2743.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.21153358990119664,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 162.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.27254433093880664,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 90.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.404878100483662,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 63
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1219.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.33753542700557165,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 150.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.319950385773831,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 40.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.10808300789981627,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 64
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4210.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5016484111193419,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 636.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5724284355137005,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 137.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.6727789963638291,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 65
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 5848.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7242187459316238,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 882.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.7748690839734217,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 150.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7307002832571741,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 66
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 8477.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9756684483255641,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 444.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.35006343483754765,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 339.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.2529121704174466,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 67
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 10313.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.1084555549289572,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 192.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.16781384553843903,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 240.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.0314927906060851,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 68
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 6129.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7560046130407223,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 576.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5111006611205078,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 144.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7046136192981418,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 69
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 6136.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7567777000085516,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 432.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.33311676271466245,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 151.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7349470505179346,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 70
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1555.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.17274846530500157,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 72.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.7705260824693424,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 34.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.20988162786426534,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 71
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4907.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.605401748733767,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 300.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.10769422563400294,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 98.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.4590897650560916,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 72
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4256.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5090079378096273,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 300.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.10769422563400294,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 85.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.36851911053055286,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 73
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 813.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.6116383339684289,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 240.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.030123844295793702,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 20.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5385381011423261,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 74
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 4511.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5484156482215385,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 600.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5363643464793588,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 111.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.5384697179883006,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 75
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 7553.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.897499464665469,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 756.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.6794238928054841,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 162.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7799000081154562,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 76
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 17597.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.470373437446496,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1200.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.9655491418538695,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 352.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.2770534663959072,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 77
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 7867.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.925087298586951,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 97.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5879525540155992,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 165.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7916337601559702,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 78
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2004.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.0010127932688387706,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 409.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.29928078654186924,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 60.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.14753417633723345,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 79
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 3340.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.3448801058503109,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 703.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.6344265442772437,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 100.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.47195785208462193,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 80
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2984.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.2685583181099697,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1350.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.0385086879856926,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 32.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.24773859964435324,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 81
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2227.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.07042490907007987,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 480.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.39828942016743224,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 53.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.06911235151067861,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 82
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1594.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.15597947118804772,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 599.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5353319946165709,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 41.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.0925790551845581,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 83
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 933.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.5184863531861293,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 430.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.33024672448498293,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 24.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.42636211259141266,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 84
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 6266.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.7709769735911322,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 4178.2,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.7385767853460532,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 165.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.7916337601559702,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 85
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2468.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.13999885947467186,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1772.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.2071970253468718,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 65.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.19822044631341448,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 86
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2658.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.19021843853218012,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1645.9,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.161285057964925,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 70.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.24520356974741545,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 87
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 2102.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.03131281291292399,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 1924.5,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.258174055875569,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 50.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.0323376052238496,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 88
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 406.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.081169144422126,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 648.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.5839981738178621,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 7.25,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.1396566915598894,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 89
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 8848.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.0046809745916565,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 8211.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 2.1573231053700375,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 233.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.012528553136667,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 90
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 1253.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.3189156191148814,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 480.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 0.39828942016743224,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 16.3,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 0.6632359610371329,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 91
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 477.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 0.9722465307229289,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 12.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.8402166315345623,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 6.2,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.2272418052105043,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 92
+    },
+    {
+      "flagged": false,
+      "flagged_fields": [],
+      "outcomes": {
+        "Defects-": {
+          "flagged": false,
+          "observed": 231.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 7.60489448081162,
+            "mad": 0.9957203187436896,
+            "robust_scale": 1.4762549445693942,
+            "valid_count": 93
+          },
+          "score": 1.4619135516425439,
+          "threshold": 3.5
+        },
+        "Effort-": {
+          "flagged": false,
+          "observed": 38.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 5.53338948872752,
+            "mad": 1.088016163036614,
+            "robust_scale": 1.613092763318084,
+            "valid_count": 93
+          },
+          "score": 1.1591570460905753,
+          "threshold": 3.5
+        },
+        "Kloc+": {
+          "flagged": false,
+          "observed": 3.0,
+          "reason": "within threshold",
+          "reference": {
+            "includes_assessed_record": true,
+            "log1p_median": 3.8815637979434374,
+            "mad": 1.0483504538872213,
+            "robust_scale": 1.554284382933194,
+            "valid_count": 93
+          },
+          "score": 1.6054136966328882,
+          "threshold": 3.5
+        }
+      },
+      "record_identifier": 93
+    }
+  ],
+  "reference_statistics_include_assessed_record": true,
+  "threshold": 3.5,
+  "unique_flagged_record_count": 0
+}
+real 0.67
+user 0.55
+sys 0.09

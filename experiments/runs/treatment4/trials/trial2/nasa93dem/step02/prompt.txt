@@ -1,0 +1,110 @@
+You are running Treatment 4, Trial 2, Dataset 2, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: guess
+- Current requirement: Estimate effort before approving a new project proposal.
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step01/source/
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step01/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial2/nasa93dem/step02/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 1 implementation where appropriate.
+Copy accumulated source and tests into Step 2, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed NASA93 Step 1 source and tests.
+- Files created in the current Step 2 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Predict Effort- from the 22 project descriptors.
+- Exclude all X-suffix metadata and all outcome columns from predictors,
+  including Kloc+, Effort-, and Defects-.
+- Treat descriptor ratings as categorical rather than assuming numeric distances.
+- Use a scikit-learn preprocessing/model pipeline.
+- Handle missing descriptor values and unseen categories explicitly.
+- Evaluate using a reproducible grouped held-out split:
+  test_size=0.25 and random_state=42.
+- Keep projects with identical predictor configurations together.
+- Fit preprocessing and the estimator using training data only.
+- Compare held-out MAE against a baseline predicting the training mean effort.
+- Report train/test counts, predictor names, model settings, and both MAEs.
+- Support predictions for a supplied proposal containing descriptor values.
+- Distinguish held-out evaluation from any final model fitted on all historical data.
+- Do not invent effort units or claim deployment reliability from one split.
+- Preserve the Step 1 summary interface.
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for Step 1.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+Test excluded predictors, grouped splitting, reproducibility, missing values,
+unseen categories, proposal prediction, and training-only preprocessing.
+Verify held-out outcomes cannot affect training or predictions.
+Do not require the estimator to outperform the baseline for tests to pass.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly from executed commands.
+- Preserve failed attempts and final successful output with attempt labels.
+- Do not manually reconstruct, shorten, or alter execution output.
+- Verify the complete prompt and all required artifacts are saved correctly.
+- Ensure run instructions specify the working directory and valid quoted paths.
+Run the tests and implementation. Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- domain: software project estimation
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 1,
+  excluding blank and comment-only lines; not net growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Do not substitute an internal timer.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not count a failed suite again in addition to its individual test failures.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+  Ensure the error count agrees with the preserved logs.
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified NASA93 Step 2 output directory.
+Do not save into the outer SWEAI_Project/experiments folder.

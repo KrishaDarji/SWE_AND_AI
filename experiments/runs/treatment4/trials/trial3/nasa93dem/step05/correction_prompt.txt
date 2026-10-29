@@ -1,0 +1,21 @@
+Correct Trial 3 NASA93 Step 5's direction calculation.
+
+rank_associations() currently sorts category labels alphabetically and describes
+them as higher-rated categories. That interpretation is invalid.
+
+Treat categories as nominal:
+- Report the highest-mean and lowest-mean categories with their effort values.
+- Do not infer rating order from alphabetical sorting.
+- Constants or equal means should report no directional contrast.
+- Keep alphabetical sorting only for deterministic display and tie-breaking.
+- Preserve eta-squared scores and predictor exclusions.
+
+Add a synthetic test where alphabetical order differs from rating order,
+and verify no unsupported ordinal claim is generated.
+
+Preserve existing logs. Capture corrected tests and demonstration into new
+attempt files. Update measured metrics and new_loc against Step 4.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your final response verbatim in response.txt.
+
+Write only inside the existing Trial 3 NASA93 step05 directory.

@@ -1,0 +1,73 @@
+COMMAND: ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "source/justify.py", "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv", "--output-dir", "regression_justify"]
+WALL_SECONDS: 1.280130459
+EXIT_CODE: 0
+STDOUT:
+Platform-team configuration justification
+Illustrative MRE-first preference rule, not a universally best multi-objective recommendation. Minimize observed MRE-, then maximize ACC+, then maximize PRED40+, then earliest one-based CSV data-row number.
+Recommend recorded data row 32 (CSV line 33) for independent validation.
+Hyperparameters: {"Max_depth": 5.0, "Min_impurity_decrease": 6.75, "Min_sample_leaves": 1.0, "N_estimators": 10.0, "criterion": "squared_error"}
+Recorded objectives: {"ACC+": 0.7901313681512335, "MRE-": 0.0, "PRED40+": 0.8571428571428571}
+Eligible 10000 of 10000; excluded 0 for missing objectives.
+Excluded records and missing outcomes: []
+Tied at minimum MRE-: 1; after higher ACC+: 1; after higher PRED40+: 1; final row IDs: [32].
+Exact equality of normalized finite floats; final tie uses earliest data row.
+Missing hyperparameters: []
+
+Historical distributions and references (all available values per objective, including selected):
+MRE- (minimize): observed=0.0; summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}; best-first rank=1; below/equal/above=0/1/9999; lower-tail midrank percentile=0.005.
+  historical_mean: {"value": 0.70909397643463, "selected_minus_reference": -0.70909397643463, "improvement_in_objective_direction": 0.70909397643463, "observed_relation": "better"}
+  historical_median: {"value": 0.8091310751104565, "selected_minus_reference": -0.8091310751104565, "improvement_in_objective_direction": 0.8091310751104565, "observed_relation": "better"}
+  historical_best: {"value": 0.0, "selected_minus_reference": 0.0, "improvement_in_objective_direction": -0.0, "observed_relation": "equal"}
+ACC+ (maximize): observed=0.7901313681512335; summary={"n": 10000, "missing": 0, "mean": 0.49593851329765903, "std_sample": 0.10715231893623793, "median": 0.43992310157000963, "q25": 0.43255366869593076, "q75": 0.5712912528035885, "min": 0.0, "max": 1.0}; best-first rank=101; below/equal/above=9899/1/100; lower-tail midrank percentile=98.995.
+  historical_mean: {"value": 0.49593851329765903, "selected_minus_reference": 0.2941928548535745, "improvement_in_objective_direction": 0.2941928548535745, "observed_relation": "better"}
+  historical_median: {"value": 0.43992310157000963, "selected_minus_reference": 0.3502082665812239, "improvement_in_objective_direction": 0.3502082665812239, "observed_relation": "better"}
+  historical_best: {"value": 1.0, "selected_minus_reference": -0.20986863184876647, "improvement_in_objective_direction": -0.20986863184876647, "observed_relation": "worse"}
+PRED40+ (maximize): observed=0.8571428571428571; summary={"n": 10000, "missing": 0, "mean": 0.14684285714285714, "std_sample": 0.2663996283372757, "median": 0.0, "q25": 0.0, "q75": 0.14285714285714285, "min": 0.0, "max": 1.0}; best-first rank=373; below/equal/above=9447/181/372; lower-tail midrank percentile=95.375.
+  historical_mean: {"value": 0.14684285714285714, "selected_minus_reference": 0.7102999999999999, "improvement_in_objective_direction": 0.7102999999999999, "observed_relation": "better"}
+  historical_median: {"value": 0.0, "selected_minus_reference": 0.8571428571428571, "improvement_in_objective_direction": 0.8571428571428571, "observed_relation": "better"}
+  historical_best: {"value": 1.0, "selected_minus_reference": -0.1428571428571429, "improvement_in_objective_direction": -0.1428571428571429, "observed_relation": "worse"}
+All nonmissing values per objective, including selected and otherwise excluded records; no imputation.
+All available outcomes per objective; vectors are not runnable configurations.
+Earliest complete row and each objective champion among complete rows; champion ties use earliest row.
+100*(strictly below + 0.5*equal)/nonmissing count; lower-tail midrank, irrespective of objective direction.
+1 + strictly better count in the objective direction; equality shares competition rank.
+Raw selected minus reference; improvement reverses sign only for minimized objectives.
+
+Historical record comparisons (positive improvement means better in that objective direction):
+earliest_complete_record: row 1; recorded objectives={"MRE-": 0.3148748159057436, "ACC+": 0.7276513937840435, "PRED40+": 0.5714285714285714}; selected differences={"MRE-": {"selected_minus_reference": -0.3148748159057436, "improvement_in_objective_direction": 0.3148748159057436, "observed_relation": "better"}, "ACC+": {"selected_minus_reference": 0.062479974367189994, "improvement_in_objective_direction": 0.062479974367189994, "observed_relation": "better"}, "PRED40+": {"selected_minus_reference": 0.2857142857142857, "improvement_in_objective_direction": 0.2857142857142857, "observed_relation": "better"}}.
+MRE-_champion: row 32; recorded objectives={"MRE-": 0.0, "ACC+": 0.7901313681512335, "PRED40+": 0.8571428571428571}; selected differences={"MRE-": {"selected_minus_reference": 0.0, "improvement_in_objective_direction": -0.0, "observed_relation": "equal"}, "ACC+": {"selected_minus_reference": 0.0, "improvement_in_objective_direction": 0.0, "observed_relation": "equal"}, "PRED40+": {"selected_minus_reference": 0.0, "improvement_in_objective_direction": 0.0, "observed_relation": "equal"}}.
+ACC+_champion: row 7556; recorded objectives={"MRE-": 0.029749631811487497, "ACC+": 1.0, "PRED40+": 1.0}; selected differences={"MRE-": {"selected_minus_reference": -0.029749631811487497, "improvement_in_objective_direction": 0.029749631811487497, "observed_relation": "better"}, "ACC+": {"selected_minus_reference": -0.20986863184876647, "improvement_in_objective_direction": -0.20986863184876647, "observed_relation": "worse"}, "PRED40+": {"selected_minus_reference": -0.1428571428571429, "improvement_in_objective_direction": -0.1428571428571429, "observed_relation": "worse"}}.
+PRED40+_champion: row 14; recorded objectives={"MRE-": 0.20530191458026506, "ACC+": 0.8260173021467478, "PRED40+": 1.0}; selected differences={"MRE-": {"selected_minus_reference": -0.20530191458026506, "improvement_in_objective_direction": 0.20530191458026506, "observed_relation": "better"}, "ACC+": {"selected_minus_reference": -0.03588593399551432, "improvement_in_objective_direction": -0.03588593399551432, "observed_relation": "worse"}, "PRED40+": {"selected_minus_reference": -0.1428571428571429, "improvement_in_objective_direction": -0.1428571428571429, "observed_relation": "worse"}}.
+
+Relevant setting-level diagnosis of observed MRE-:
+criterion uses exact string categories, never ordinal codes. Numeric fields with <=8 distinct nonmissing values use exact values; otherwise use quartile cuts at p=.25,.5,.75, linear interpolation (n-1)*p over ALL nonmissing predictor rows, independently of outcomes. Duplicate cuts removed; cuts equal to observed maximum removed. Intervals: first [minimum,cut], subsequent (previous_cut,cut], last (last_cut,maximum]. No extrapolation.
+N_estimators=10.0; marginal rank=5; eta-squared=0.00014386551030408818; status=ok; selected group={"group_id": 0, "definition": {"lower": 10.0, "upper": 60.0, "lower_inclusive": true, "upper_inclusive": true}, "row_count": 2877, "mre": {"n": 2877, "missing": 0, "mean": 0.7113805443889084, "std_sample": 0.20117815938027142, "median": 0.8060382916053019, "q25": 0.5780559646539027, "q75": 0.832842415, "min": 0.0, "max": 1.0}, "sparse": false, "mean_minus_included_mean": 0.0022865679542783957, "observed_direction": "higher_MRE"}; field included MRE summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}.
+criterion=squared_error; marginal rank=2; eta-squared=0.024851322742383; status=ok; selected group={"group_id": 2, "definition": {"value": "squared_error"}, "row_count": 3363, "mre": {"n": 3363, "missing": 0, "mean": 0.6737202958486018, "std_sample": 0.21083607001356217, "median": 0.8050073637702503, "q25": 0.5098674522702503, "q75": 0.8151693667157583, "min": 0.0, "max": 0.8780559646539028}, "sparse": false, "mean_minus_included_mean": -0.03537368058602819, "observed_direction": "lower_MRE"}; field included MRE summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}.
+Min_sample_leaves=1.0; marginal rank=1; eta-squared=0.8016122778992393; status=ok; selected group={"group_id": 0, "definition": {"lower": 1.0, "upper": 5.0, "lower_inclusive": true, "upper_inclusive": true}, "row_count": 2523, "mre": {"n": 2523, "missing": 0, "mean": 0.40239072987967367, "std_sample": 0.13292160409183978, "median": 0.41752577319587625, "q25": 0.2935198821796759, "q75": 0.5051546391752576, "min": 0.0, "max": 0.7761413843888071}, "sparse": false, "mean_minus_included_mean": -0.30670324655495634, "observed_direction": "lower_MRE"}; field included MRE summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}.
+Min_impurity_decrease=6.75; marginal rank=3; eta-squared=0.0048475919376224814; status=ok; selected group={"group_id": 2, "definition": {"lower": 5.0, "upper": 7.5, "lower_inclusive": false, "upper_inclusive": true}, "row_count": 2413, "mre": {"n": 2413, "missing": 0, "mean": 0.7119371201792328, "std_sample": 0.19326254727423675, "median": 0.8091310751104565, "q25": 0.5653902798232695, "q75": 0.8250368188512517, "min": 0.0, "max": 0.9544918998527245}, "sparse": false, "mean_minus_included_mean": 0.0028431437446028163, "observed_direction": "higher_MRE"}; field included MRE summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}.
+Max_depth=5.0; marginal rank=4; eta-squared=0.0001902949499567759; status=ok; selected group={"group_id": 0, "definition": {"lower": 1.0, "upper": 6.0, "lower_inclusive": true, "upper_inclusive": true}, "row_count": 2987, "mre": {"n": 2987, "missing": 0, "mean": 0.7059010745129577, "std_sample": 0.20104645411902242, "median": 0.808100147, "q25": 0.5628129604690721, "q75": 0.8235640648011782, "min": 0.0, "max": 0.9527245949926361}, "sparse": false, "mean_minus_included_mean": -0.00319290192167232, "observed_direction": "lower_MRE"}; field included MRE summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}.
+These are marginal associations, not causal explanations or additive prediction contributions; no predictions are used.
+Same configuration evidence: {"row_ids": [32], "record_count": 1, "objectives": {"MRE-": {"n": 1, "missing": 0, "mean": 0.0, "std_sample": null, "median": 0.0, "q25": 0.0, "q75": 0.0, "min": 0.0, "max": 0.0}, "ACC+": {"n": 1, "missing": 0, "mean": 0.7901313681512335, "std_sample": null, "median": 0.7901313681512335, "q25": 0.7901313681512335, "q75": 0.7901313681512335, "min": 0.7901313681512335, "max": 0.7901313681512335}, "PRED40+": {"n": 1, "missing": 0, "mean": 0.8571428571428571, "std_sample": null, "median": 0.8571428571428571, "q25": 0.8571428571428571, "q75": 0.8571428571428571, "min": 0.8571428571428571, "max": 0.8571428571428571}}}
+Historical Pareto check: {"dominating_complete_row_ids": [], "nondominated_among_complete_records": true, "scope": "Finite complete-outcome historical records only; nondominance does not establish universal optimality."}
+Secondary-objective losses are shown explicitly against their historical best and champion records above. No overall score or practical acceptance threshold is assumed.
+
+Limitations:
+- Selection optimism: choosing an extreme after examining all recorded outcomes can overstate future performance. The selected observation is not an independent validation result.
+- A single best observation establishes neither statistical certainty nor repeatability. Repeated configurations are rows, not established independent replications.
+- Marginal associations do not causally explain this individual outcome and must not be added as prediction contributions. Confounding, correlated settings, interactions and sparse groups limit interpretation.
+- No predictions, overall score, significance tests or uncertainty intervals are used in this justification. All numerical evidence is observed or descriptive arithmetic.
+- Metric formulas, units, theoretical ranges, compute costs and deployment guarantees are unspecified. A recorded zero MRE- is not proof of perfect future performance.
+- Available-outcome historical distributions include the selected record and may use different subsets. Complete-outcome selection excludes any record missing an objective; missing hyperparameters remain explicit and require resolution.
+- Historical means and medians are descriptive reference vectors, not runnable configurations. Historical objective champions are outcome-selected references, not independent controls.
+- CSV row number identifies record order, not time. Finite floats and exact normalized equality define ties; extreme arithmetic that is not finite is rejected.
+- The rule prioritizes MRE- before any loss in secondary objectives; platform preferences and acceptable trade-offs have not been supplied.
+
+Checks before deployment:
+- Confirm metric definitions, directions, scales and the provenance of zero or unusual values; audit evaluation splits and leakage.
+- Agree with the platform team on objective priorities, minimum acceptable ACC+ and PRED40+, and practical improvement thresholds before validation.
+- Freeze the proposed configuration and evaluate it and agreed baselines on independent representative data with repeated evaluations and appropriate uncertainty assessment.
+- Confirm hyperparameter names, supported values and missing settings against the actual estimator and deployed library version; the CSV is not an estimator constructor contract.
+- Measure latency, memory and compute cost in the target environment, then assess data shift, monitoring, rollback and operational acceptance before deployment.
+
+STDERR:
+

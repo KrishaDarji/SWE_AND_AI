@@ -1,0 +1,126 @@
+You are running Treatment 4, Trial 3, Dataset 2, Step 4 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn
+- Reuse instructed: Yes, within the same dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: flow
+- Current requirement: Assess project proposals as they arrive during portfolio planning.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+<repository root>/moot/optimize/process/nasa93dem.csv
+
+Allowed previous implementation:
+<repository root>/experiments/runs/treatment4/trials/trial3/nasa93dem/step03/source/
+<repository root>/experiments/runs/treatment4/trials/trial3/nasa93dem/step03/tests/
+
+Output directory:
+<repository root>/experiments/runs/treatment4/trials/trial3/nasa93dem/step04/
+
+Resolve <repository root> to the exact absolute path above.
+Quote shell paths containing spaces.
+
+Use Python with scikit-learn. NumPy and SciPy may also be used.
+
+Extend and reuse the allowed Step 3 implementation where appropriate.
+Copy accumulated source and tests into Step 4, preserving earlier behavior.
+Do not modify previous steps.
+
+You may read only:
+- The specified dataset.
+- The allowed Trial 3 NASA93 Step 3 source and tests.
+- Files created in the current Step 4 directory.
+- Official Python, NumPy, SciPy, and scikit-learn documentation.
+
+Do not refer to other datasets, trials, treatments, root-level implementations,
+Git history, previous chats, or previous steps' saved prompts and reports.
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Simulate project arrivals in existing CSV order.
+- For each arrival, predict Effort- using only previously revealed projects.
+- Freeze the current prediction before revealing its actual effort.
+- After revealing effort, add the project to history for subsequent arrivals.
+- Reuse the existing preprocessing and estimator construction.
+- Use only the 22 descriptors; exclude X-suffix metadata and all outcomes.
+- Fit preprocessing and the estimator exclusively on prior revealed data.
+- Use the first two valid observations as explicitly labeled warm-up.
+  Do not score predictions for warm-up observations.
+- For subsequent arrivals, also predict using the prior-history mean baseline.
+- Report arrival identifier, prior training count, prediction, baseline,
+  revealed effort, absolute errors, and cumulative MAEs.
+- Handle missing descriptors and unseen categories consistently with Step 2.
+- Define empty input, short input, and missing/non-finite effort behavior.
+- Process arrivals sequentially without inspecting future outcomes.
+- State that CSV order is a demonstration sequence, not a verified timeline.
+- Do not invent effort units or claim convergence or an automatic stopping rule.
+- Preserve all earlier skill interfaces.
+
+Return:
+1. Complete accumulated source code.
+2. Tests, including regression tests for earlier skills.
+3. One command to run the implementation.
+4. A short explanation.
+5. Known assumptions and limitations.
+
+Create the output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test warm-up behavior, cumulative error arithmetic, empty/short inputs,
+and missing/unseen descriptors.
+Verify changing the current or future outcomes cannot change the current
+prediction, and future records cannot change earlier results.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference the latest final attempt files from test_output.txt and
+  runtime_output.txt, or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Verify required artifacts and specify valid quoted run commands.
+
+Run tests and the sequential-arrival demonstration.
+Record actual measured results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 4
+- treatment: 4
+- trial: 3
+- domain: software project estimation
+- skill: flow
+- total_loc: accumulated implementation Python lines, excluding blank lines,
+  comment-only lines, tests, and measurement runners. Include docstrings.
+- new_loc: added or replaced implementation lines compared with NASA93 Step 3,
+  excluding blank and comment-only lines. Count new-side diff lines,
+  not net LOC growth.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the sequential-arrival
+  demonstration subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, reuse, timing method, assumptions, and repairs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the specified Trial 3 NASA93 Step 4 directory.
+Do not save into the outer SWEAI_Project/experiments folder.

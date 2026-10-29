@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,4,3,model configuration and quality,certify,238,93,1,0.35,4,"13 tests passed; Step 2 source/tests copied and preserved; runtime is /usr/bin/time -p real for comparison subprocess; no threshold supplied; 4 repaired non-test command failures retained (shell wrapper, unavailable python interpreter, and verification command)"

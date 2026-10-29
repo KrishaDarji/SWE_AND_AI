@@ -1,0 +1,12 @@
+test_excludes_pred40_grouped_reproducible_and_baselines (test_predictor.PredictorTests.test_excludes_pred40_grouped_reproducible_and_baselines) ... ok
+test_missing_settings_and_unseen_criterion (test_predictor.PredictorTests.test_missing_settings_and_unseen_criterion) ... ok
+test_missing_target_rows_are_not_used (test_predictor.PredictorTests.test_missing_target_rows_are_not_used) ... ok
+test_training_only_preprocessing_and_targets (test_predictor.PredictorTests.test_training_only_preprocessing_and_targets) ... ok
+test_empty_input (test_summarizer.SummarizerTests.test_empty_input) ... ok
+test_missing_duplicates_and_repeated_configurations (test_summarizer.SummarizerTests.test_missing_duplicates_and_repeated_configurations) ... ok
+test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.351s
+
+OK

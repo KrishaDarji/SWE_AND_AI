@@ -1,0 +1,69 @@
+Fresh Health Step 1 implementation completed.
+
+Complete source code:
+- source/summarize.py: CSV validation, reusable summarize(path), numeric/categorical
+  summaries, objective directions, duplicate counts, text rendering, and CLI.
+- source/run_experiment.py: test/demo subprocess execution, timing, preserved logs,
+  execution history, source LOC counting, and metrics recording.
+Tests: tests/test_summarize.py. Exact runnable commands: run_instructions.txt.
+The complete source and tests are supplied as files, without external project code.
+
+Approach:
+Read the CSV using the standard library and preserve its eight column names.
+Trim surrounding whitespace; keep criterion as nominal strings. Parse the other
+seven columns as finite numbers. Separate the five configuration fields from the
+three objectives. Report nonmissing distinct values, missing counts, count, mean,
+sample standard deviation, min, quartiles, median, max, and categorical counts.
+Report best observed values per objective independently, without combining them.
+Count repeated normalized full rows and configuration tuples separately, including
+unique groups, repeated groups, records in repeated groups, and extra records.
+No estimator fitting is needed for descriptive CSV summaries. scikit-learn 1.6.0
+is verified and recorded; NumPy, its required dependency, is used in independent
+tests rather than sharing the implementation's statistical routines.
+
+Actual results:
+- 10,000 records, 8 columns; every column has zero missing cells.
+- Numeric configuration ranges: N_estimators 10..200 (20 distinct),
+  Min_sample_leaves 1..20 (20), Min_impurity_decrease 0..10 (41),
+  Max_depth 1..20 (20).
+- criterion: absolute_error=3302, poisson=3335, squared_error=3363.
+- MRE-: minimize; mean=0.70909397643463; best=0 (1 record).
+- ACC+: maximize; mean=0.49593851329765903; best=1 (1 record).
+- PRED40+: maximize; mean=0.14684285714285714; best=1 (372 records).
+- No duplicate records or repeated configurations; 10,000 unique configurations.
+Full statistics are in summary.txt; every distinct value is in summary.json.
+
+Validation and measured metrics:
+Eight of eight tests passed. Hand-calculated fixtures cover numeric summaries,
+categorical whitespace, missing values, duplicate rows versus repeated configs,
+all-missing/singleton columns, reordered columns, malformed rows/headers, invalid
+numeric tokens, nonfinite values, absent input, and CLI behavior. Separate CSV
+calculations using NumPy and Counter check every actual column's statistics,
+distinct values, missing counts, categorical frequencies, objective extrema, and
+duplicate counts. No other datasets or regression tests were used.
+Total LOC=196; new LOC=196; test_pass=1.
+Demo subprocess wall time=0.761165667 seconds.
+passed/total=8/8; test_wall_seconds=2.127182500; attempt=1; expected negative tests excluded from errors; initial path/schema checks succeeded; no repair attempts.
+Unexpected failures=0; no repair attempts.
+Raw logs: test_output.txt, runtime_output.txt; first-attempt copies retained.
+
+Assumptions and limitations:
+- Empty or whitespace-only cells are missing. Literal NA/null/NaN are not missing
+  sentinels: numeric occurrences are rejected. Missing values are omitted from
+  statistics and distinct values, with explicit missing counts. No imputation.
+- Numeric values use Python floating point. Numeric spellings such as 10 and 10.0
+  compare equal for distinct/duplicate checks; categorical values are case sensitive.
+- Quantiles interpolate linearly at (n-1)*p. Standard deviation uses n-1 and is null
+  for fewer than two observations; all-missing numeric statistics are null.
+- Duplicates are normalized-value duplicates; missing cells compare equal. Repeated
+  configurations ignore objectives. Extra-record counts count repetitions after
+  the first record, while participating-record counts include all group members.
+- The schema is fixed and empty datasets are rejected. Values are described, not
+  checked against any inferred estimator restrictions or assumed physical ranges.
+- Best observed objective values need not identify one common best configuration.
+  No metric formulas, physical units, timelines, closure events, training validity,
+  generalization claims, or compute costs are inferred from this file.
+- The implementation keeps the dataset and distinct values in memory; it is a
+  reusable foundation for this Health dataset/trial, not a streaming summarizer.
+- Required source and reports are complete; no repository files outside the
+  specified output directory were modified and no dependencies were changed.

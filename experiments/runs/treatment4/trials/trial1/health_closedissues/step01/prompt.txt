@@ -1,0 +1,132 @@
+You are running Treatment 4, Trial 1, Dataset 3, Step 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Background: scikit-learn 1.6.0
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: machine-learning model configuration
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: remember
+- Current requirement: Summarize model-quality metrics and configuration settings.
+
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset path:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Use Python's standard library and scikit-learn with its required
+dependencies. Use scikit-learn where appropriate.
+Do not install additional packages or change dependency versions.
+
+This is Step 1 for this dataset and trial.
+No previous generated implementation is allowed.
+Build a fresh, reusable foundation for later Health steps.
+
+Allowed references:
+- The Health dataset specified above.
+- Files inside the current step's output directory.
+- Installed standard-library and scikit-learn APIs.
+
+Do not inspect or use:
+- X264, NASA93, or other datasets' implementations or tests.
+- Other treatments, trials, or step directories.
+- Archived or invalidated runs.
+- The shared src/core/ implementation or root scripts/ and tests/.
+- Git history, previous conversations, or persistent memory.
+
+Verify the working directory and dataset path first.
+If an input is missing, report it rather than searching elsewhere.
+Create the output directory and source/ and tests/ subdirectories
+if they do not exist.
+
+Inspect the actual CSV schema and summarize:
+- Record and column counts.
+- Numeric and categorical configuration settings.
+- Missing-value counts and distinct values.
+- Numeric summary statistics and categorical value counts.
+- Model-quality objectives separately from configuration inputs.
+- Duplicate records and repeated configuration counts.
+
+Objective directions:
+- MRE-: minimize.
+- ACC+: maximize.
+- PRED40+: maximize.
+
+Configuration fields:
+- N_estimators
+- criterion
+- Min_sample_leaves
+- Min_impurity_decrease
+- Max_depth
+
+Preserve actual column names.
+Strip surrounding whitespace from categorical values.
+Do not infer issue timelines, closure events, compute costs,
+physical units, or metric formulas that the file does not supply.
+Do not interpret the objective columns as configuration inputs.
+Do not invent an ordinal mapping for categorical settings.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. Commands to run the tests and implementation.
+4. A short explanation of the approach.
+5. Known assumptions and limitations.
+
+Save all outputs in exactly:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step01/
+
+The directory must contain:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- summary.json
+- summary.txt
+- run_instructions.txt
+
+Use independently checkable fixtures to test numeric summaries,
+categorical whitespace, missing values, duplicates, and invalid inputs.
+Check actual dataset results against independent CSV calculations.
+Do not run X264 or NASA93 regression tests.
+
+Record these metrics in metrics.csv:
+step
+treatment
+trial
+domain
+skill
+total_loc
+new_loc
+test_pass
+runtime_seconds
+error_count
+notes
+
+Use these conventions:
+- step: 1; treatment: 4; trial: 1;
+  domain: health_closedissues; skill: remember.
+- test_pass: 1 if the entire suite passes, otherwise 0;
+  record passed/total counts separately in notes.
+- runtime_seconds: current demo subprocess wall time only;
+  record test timing separately.
+- total_loc: nonblank, non-comment-only Python lines inside source/;
+  include docstrings, exclude tests and installed libraries.
+- new_loc: equals total_loc because this dataset starts fresh.
+- error_count: this run's unexpected failed commands or execution
+  attempts; exclude expected negative-test failures.
+
+Accept the dataset path as an argument.
+Use python3 from the environment containing scikit-learn 1.6.0.
+Run tests and the implementation, capture outputs and runtime,
+and record actual measured metrics. Do not fabricate results.
+Preserve failures and document any repair attempts.
+
+Do not modify the dataset or other repository files.
+Write only inside the absolute output directory above.
+Do not copy code or context from other datasets, treatments,
+trials, steps, archived runs, or previous chats.

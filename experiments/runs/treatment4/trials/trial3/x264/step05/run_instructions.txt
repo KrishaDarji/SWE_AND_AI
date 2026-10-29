@@ -1,0 +1,12 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project
+
+Run the complete regression suite:
+python3 -m unittest discover -s 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step05/tests' -v
+
+Run the blame demonstration:
+/usr/bin/time -p python3 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step05/source/summarize_x264.py' 'SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv' --blame --json 'SWE_AND_AI/experiments/runs/treatment4/trials/trial3/x264/step05/blame.json'
+
+The dataset path above is relative to the working directory and should be:
+'SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+All paths containing spaces are quoted.

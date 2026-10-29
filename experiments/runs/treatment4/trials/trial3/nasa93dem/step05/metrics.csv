@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,4,3,software project estimation,blame,374,115,1,0.76,4,"20 tests; reused all Step 4 source/tests; /usr/bin/time -p demonstration; eta-squared marginal categorical ranking; nominal highest/lowest category reporting; constants/missing/small groups handled; preserved prior logs and repairs"

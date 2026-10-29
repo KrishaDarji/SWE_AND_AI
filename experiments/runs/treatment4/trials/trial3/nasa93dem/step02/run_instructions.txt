@@ -1,0 +1,4 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02
+Run tests: python3 -m unittest discover -s tests -v
+Run demonstration: /usr/bin/time -p python3 source/nasa93_effort.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+The CSV path is quoted because it contains spaces. The demonstration uses a reproducible GroupShuffleSplit(test_size=0.25, random_state=42).

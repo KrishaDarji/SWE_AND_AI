@@ -1,0 +1,14 @@
+Correct Trial 3 NASA93 Step 1's LOC metrics only.
+
+Independently verify source/nasa93_summary.py using the specified convention:
+count nonblank, noncomment implementation lines, including docstrings;
+exclude tests and measurement runners.
+
+The current count is 80. Set total_loc=80 and new_loc=80.
+Preserve other measurements, source, tests, prompt, and execution logs.
+
+Update response.txt to explain the correction.
+Save this request as correction_prompt.txt.
+No rerun is needed.
+
+Write only inside the existing Trial 3 NASA93 step01 directory.

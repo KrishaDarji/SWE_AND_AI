@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,4,3,video encoding,spot,520,68,1,1.75,0,"31 tests passed; reused Step 8 source and tests; /usr/bin/time -p real for corrected screening subprocess; threshold 3.0 defined before records; 1152 valid real records and 0 flags; original CSV identifiers preserved; no repairs"

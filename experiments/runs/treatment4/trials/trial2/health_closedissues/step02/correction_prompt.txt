@@ -1,0 +1,17 @@
+Correct Health Trial 2 Step 2's failure records only.
+
+metrics.csv reports four test errors and two failed non-test commands,
+but the saved logs contain only successful outputs.
+
+Recover exact failed outputs from this execution chat into separate,
+attempt-labeled files inside step02. Do not reconstruct raw logs.
+
+If any exact outputs are unavailable, document which are missing and the
+evidence supporting the error count. Reconcile error_count with that evidence.
+
+Preserve source, tests, prompt, successful outputs, and measured timing.
+Save this correction verbatim as correction_prompt.txt.
+Update response.txt to accurately disclose the logging status.
+No rerun is needed.
+
+Write only inside the existing Health trial2/step02 directory.

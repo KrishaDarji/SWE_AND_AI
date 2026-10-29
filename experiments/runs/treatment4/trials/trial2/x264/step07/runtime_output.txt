@@ -1,0 +1,485 @@
+{
+  "budget_used": 20,
+  "candidate_count": 1152,
+  "evaluation_order": [
+    228,
+    51,
+    563,
+    501,
+    457,
+    285,
+    209,
+    1116,
+    178,
+    864,
+    65,
+    61,
+    191,
+    447,
+    476,
+    1034,
+    54,
+    1149,
+    407,
+    859
+  ],
+  "limitations": [
+    "Only evaluated candidates can be recommended.",
+    "Random sampling may miss the global minimum."
+  ],
+  "observations": [
+    {
+      "Performance-": 295.68,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 310.217,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 495.45,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 463.347,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 426.75,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 295.683,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 1.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 286.427,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 631.053,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 0.0,
+        "ref_9": 1.0
+      }
+    },
+    {
+      "Performance-": 263.253,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 726.89,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 0.0,
+        "ref_9": 1.0
+      }
+    },
+    {
+      "Performance-": 254.177,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 299.843,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 251.637,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 476.127,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 535.8,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 1.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 0.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 580.877,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 0.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 0.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 0.0,
+        "ref_9": 1.0
+      }
+    },
+    {
+      "Performance-": 304.94,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 0.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 1.0,
+        "ref_5": 0.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 651.287,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 1.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 0.0,
+        "ref_9": 1.0
+      }
+    },
+    {
+      "Performance-": 448.11,
+      "configuration": {
+        "no_8x8dct": 0.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 0.0,
+        "rc_lookahead_40": 1.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 1.0,
+        "ref_9": 0.0
+      }
+    },
+    {
+      "Performance-": 613.397,
+      "configuration": {
+        "no_8x8dct": 1.0,
+        "no_asm": 1.0,
+        "no_cabac": 0.0,
+        "no_deblock": 1.0,
+        "no_fast_pskip": 1.0,
+        "no_mbtree": 0.0,
+        "no_mixed_refs": 1.0,
+        "no_weightb": 1.0,
+        "rc_lookahead": 1.0,
+        "rc_lookahead_20": 1.0,
+        "rc_lookahead_40": 0.0,
+        "rc_lookahead_60": 0.0,
+        "ref": 1.0,
+        "ref_1": 0.0,
+        "ref_5": 0.0,
+        "ref_9": 1.0
+      }
+    }
+  ],
+  "random_state": 42,
+  "recommendation": {
+    "Performance-": 251.637,
+    "configuration": {
+      "no_8x8dct": 1.0,
+      "no_asm": 1.0,
+      "no_cabac": 1.0,
+      "no_deblock": 1.0,
+      "no_fast_pskip": 1.0,
+      "no_mbtree": 0.0,
+      "no_mixed_refs": 1.0,
+      "no_weightb": 1.0,
+      "rc_lookahead": 1.0,
+      "rc_lookahead_20": 0.0,
+      "rc_lookahead_40": 1.0,
+      "rc_lookahead_60": 0.0,
+      "ref": 1.0,
+      "ref_1": 1.0,
+      "ref_5": 0.0,
+      "ref_9": 0.0
+    }
+  },
+  "recommendation_frozen": true,
+  "requested_budget": 20,
+  "retrospective_audit": {
+    "audit_influenced_selection": false,
+    "observed_global_minimum": 244.23,
+    "recommendation_gap": 7.407000000000011
+  },
+  "strategy": "seeded random unique sample; lowest measured Performance-, earliest evaluation breaks ties"
+}
+real 0.81
+user 0.65
+sys 0.12

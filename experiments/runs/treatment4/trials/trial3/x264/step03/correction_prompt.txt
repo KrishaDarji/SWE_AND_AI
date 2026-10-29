@@ -1,0 +1,24 @@
+Correct Trial 3 X264 Step 3's practical-effect interpretation.
+
+Handle both directions:
+- Positive A-minus-B favors B.
+- Negative A-minus-B favors A.
+- Point-estimate magnitude exceeds the threshold when abs(difference) > threshold.
+- Interval-supported practical importance requires the entire interval above
+  +threshold or below -threshold.
+- Report which group is favored and explain uncertainty clearly.
+- Do not call a supplied threshold illustrative unless it is the demonstration
+  default; distinguish threshold provenance explicitly.
+
+Add synthetic tests for improvements favoring either group and for intervals
+crossing zero or a practical threshold.
+
+Correct the test breakdown in response.txt: the previous saved suite had
+8 inherited tests plus 3 new tests, totaling 11.
+
+Preserve existing logs. Capture corrected tests and demonstration into new
+attempt files. Update measured metrics and new_loc against Trial 3 Step 2.
+Keep prompt.txt unchanged; save this as correction_prompt.txt.
+Save your exact final response in response.txt.
+
+Write only inside the existing Trial 3 X264 step03 directory.

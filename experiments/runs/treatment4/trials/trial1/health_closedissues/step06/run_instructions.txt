@@ -1,0 +1,39 @@
+Use the environment's python3 with scikit-learn 1.6.0; no packages installed or versions changed.
+
+Working directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06'
+
+Verify environment:
+python3 -c 'import sklearn; print(sklearn.__version__); assert sklearn.__version__ == "1.6.0"'
+
+Run the full suite, Step 6 demo, and preserved Steps 1–5 CLI demos, recording actual measurements:
+PYTHONDONTWRITEBYTECODE=1 python3 measure.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+The runner accepts a dataset path. The unchanged inherited full-dataset tests specifically use the supplied Health dataset. It creates example_configuration.json from its first record before running tests. It runs each CLI in a separate subprocess, writes captured stdout/stderr, and preserves numbered attempt logs. It writes only beneath this Step 6 directory. It reads Step 5 source/tests to verify byte identity and measure added application lines.
+
+Run the full suite alone after the bundled fixture is present:
+PYTHONDONTWRITEBYTECODE=1 TMPDIR='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06/tmp' python3 -m unittest discover -s tests -v
+
+Run Step 6 alone with an explicit dataset argument:
+PYTHONDONTWRITEBYTECODE=1 python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step06'
+
+Preserved CLI commands (output directory regression/ already exists):
+PYTHONDONTWRITEBYTECODE=1 python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir regression/summary
+PYTHONDONTWRITEBYTECODE=1 python3 source/guess.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --configuration example_configuration.json --evaluation regression/evaluation.json
+PYTHONDONTWRITEBYTECODE=1 python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output regression/comparison.json
+PYTHONDONTWRITEBYTECODE=1 python3 source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output regression/flow.json
+PYTHONDONTWRITEBYTECODE=1 python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output regression/diagnosis.json
+
+Reusable interfaces:
+Add source/ to Python's module search path, then call justify.justify(dataset_path) or justify.justify_rows(records), and justify.render_text(report). Rows may contain only known Health schema keys; omitted/blank values are missing. At least one record with all three observed objectives is required. Missing configuration values remain explicit, with no invented domains or imputation. Invalid rows raise ValueError. CLI errors exit 2.
+
+Evidence:
+justification.json: structured observed evidence, row identities, selection counts, missing outcomes, historical distributions/references, selected-setting marginal diagnosis, same-configuration summaries, Pareto scope, limitations and validation checks.
+justification.txt: readable platform-team explanation rendered from that evidence.
+No Step 6 model is trained; regression/evaluation.json belongs solely to the preserved Step 2 behavior.
+
+Measurement conventions:
+Application LOC counts nonblank, non-comment-only lines in source/*.py, including docstrings. new_loc counts insert/replace new-side application lines relative to allowed Step 5 source using difflib with autojunk disabled; it is not net growth. Tests and measure.py are excluded.
+runtime_seconds is the perf_counter wall time of the Step 6 demo subprocess alone, including interpreter/import time. Test and regression-demo timings are recorded separately in metrics.csv notes and measurement_details.json.
+error_count accumulates unexpected failed setup/inspection commands, failed suite/demo subprocesses and failed overall measurement invocations; expected negative-test exits and normal rg no-match are excluded. See setup_log.txt and preserved attempt logs for repairs.
+On reruns, metrics.csv contains the latest measurements and cumulative errors from recorded attempts, while numbered execution/console logs remain preserved. Current original failure measurements are also preserved under attempt_01_*.

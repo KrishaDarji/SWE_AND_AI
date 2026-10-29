@@ -1,0 +1,11 @@
+Implemented Step 10 in the requested output directory.
+
+The accumulated Step 9 source and tests were copied forward, with the new comparison in source/nasa93_race.py. It uses only the 22 descriptors, fresh inherited pipelines, GroupShuffleSplit(test_size=0.25) with seeds 42–51, descriptor-based group separation, identical held-out projects, training-mean baselines, paired difference = model MAE minus baseline MAE, fixed tie tolerance 1e-12, and explicit negative prediction counts.
+
+Verification: 45 tests passed. The demonstration completed in 1.00 seconds real time. Results were 1 descriptive model win, 0 ties, and 9 losses. Repeated splits overlap and are not independent datasets or independent LLM trials; statistical superiority and deployment reliability are not claimed, and the final same procedure is pending if unavailable.
+
+Run:
+PYTHONPATH=. pytest -q
+/usr/bin/time -p python3 run_comparison.py
+
+Artifacts include prompt.txt, response.txt, source/, tests/, attempt-preserving test and runtime logs, metrics.csv, and run_instructions.txt.

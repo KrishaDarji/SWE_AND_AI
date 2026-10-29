@@ -1,0 +1,79 @@
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+
+import numpy as np
+from scipy import stats
+
+sys.path.insert(0, str(Path(__file__).parents[1] / "source"))
+from summarize_runs import certify, evaluate, load_dataset, predict, summarize
+
+
+class SummarizeRunsTests(unittest.TestCase):
+    def setUp(self):
+        self.path = Path(tempfile.mkstemp(suffix=".csv")[1])
+        self.path.write_text(
+            "a,b,Performance-\n1,0,10.0\n0,1,20.0\n1,1,15.0\n", encoding="utf-8"
+        )
+
+    def tearDown(self):
+        self.path.unlink(missing_ok=True)
+
+    def test_loads_numeric_settings_and_measure(self):
+        names, x, y = load_dataset(self.path)
+        self.assertEqual(names, ["a", "b"])
+        np.testing.assert_array_equal(x, [[1, 0], [0, 1], [1, 1]])
+        np.testing.assert_allclose(y, [10, 20, 15])
+
+    def test_summary_has_expected_statistics_and_extrema(self):
+        result = summarize(self.path)
+        self.assertEqual(result["runs"], 3)
+        self.assertEqual(result["setting_count"], 2)
+        self.assertEqual(result["best_run"]["value"], 10.0)
+        self.assertEqual(result["worst_run"]["value"], 20.0)
+        self.assertAlmostEqual(result["measure_summary"]["mean"], 15.0)
+        self.assertEqual(set(result["setting_on_counts"]), {"a", "b"})
+
+    def test_grouped_evaluation_is_reproducible_and_compares_with_mean_baseline(self):
+        result = evaluate(self.path, test_size=0.34, random_state=7)
+        self.assertEqual(result, evaluate(self.path, test_size=0.34, random_state=7))
+        self.assertGreater(result["train_groups"], 0)
+        self.assertGreater(result["test_groups"], 0)
+        self.assertLessEqual(result["mae"], result["baseline_mae"])
+
+    def test_predict_accepts_a_complete_configuration(self):
+        value = predict(self.path, {"a": 1, "b": 0})
+        self.assertIsInstance(value, float)
+
+    def test_predict_rejects_incomplete_configuration(self):
+        with self.assertRaises(ValueError):
+            predict(self.path, {"a": 1})
+
+    def test_certification_uses_predeclared_no_asm_groups(self):
+        path = self.path
+        path.write_text("no_8x8dct,other,Performance-\n0,0,10\n0,1,11\n1,0,20\n1,1,21\n", encoding="utf-8")
+        result = certify(path, practical_threshold=5, permutations=100, random_state=3)
+        self.assertEqual(result["group_definition"], {"A": "no_8x8dct=0", "B": "no_8x8dct=1"})
+        self.assertEqual((result["group_a_n"], result["group_b_n"]), (2, 2))
+        self.assertEqual(result["observed_difference_a_minus_b"], -10.0)
+        self.assertTrue(result["point_estimate_exceeds_threshold"])
+        self.assertTrue(result["confidence_interval_entirely_beyond_threshold"])
+        self.assertEqual(result, certify(path, practical_threshold=5, permutations=100, random_state=3))
+
+    def test_welch_interval_uses_unequal_variance_degrees_of_freedom(self):
+        self.path.write_text("no_8x8dct,other,Performance-\n0,0,0\n0,1,10\n1,0,0\n1,1,-2\n", encoding="utf-8")
+        result = certify(self.path, practical_threshold=5, permutations=100, random_state=4)
+        a, b = np.array([0., 10.]), np.array([0., -2.])
+        va, vb = a.var(ddof=1) / 2, b.var(ddof=1) / 2
+        expected_df = (va + vb) ** 2 / (va ** 2 + vb ** 2)
+        self.assertAlmostEqual(result["welch_satterthwaite_df"], expected_df)
+        self.assertAlmostEqual(result["difference_ci_95"][0], stats.t.interval(
+            .95, expected_df, loc=6, scale=np.sqrt(va + vb))[0])
+        self.assertTrue(result["point_estimate_exceeds_threshold"])
+        self.assertFalse(result["confidence_interval_entirely_beyond_threshold"])
+        self.assertEqual(result["practical_importance"], "uncertain: interval crosses practical threshold")
+
+
+if __name__ == "__main__":
+    unittest.main()

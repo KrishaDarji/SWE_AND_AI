@@ -1,0 +1,12 @@
+test_empty_input (test_nasa93_summary.SummaryTests.test_empty_input) ... ok
+test_missing_values (test_nasa93_summary.SummaryTests.test_missing_values) ... ok
+test_numeric_and_categorical_summaries (test_nasa93_summary.SummaryTests.test_numeric_and_categorical_summaries) ... ok
+test_roles_and_directions (test_nasa93_summary.SummaryTests.test_roles_and_directions) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+
+ATTEMPT: final successful test run
+EXIT_STATUS: 0

@@ -1,0 +1,10 @@
+Implemented Step 7 budget-limited configuration selection and preserved all Step 6 interfaces.
+
+Result: 20 unique seeded evaluations (seed 42) from 1,152 candidates. The frozen recommendation has measured Performance- 251.637. The retrospective observed global minimum is 244.23, giving a recommendation gap of 7.407; the audit did not influence selection.
+
+Tests: all 18 tests passed. The suite covers regression behavior, budget enforcement, reproducibility, duplicate prevention, recommendation membership, invalid/zero budgets, overrun handling, candidate-count limits, and hidden-outcome isolation.
+
+Run command:
+python3 run_demo.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+The implementation uses a seeded random unique sample and recommends the lowest measured Performance-, with earliest evaluation order breaking ties. It cannot guarantee the global optimum when the budget is smaller than the candidate set; the dataset audit is retrospective only. Timing is /usr/bin/time -p real elapsed time for the demonstration subprocess.

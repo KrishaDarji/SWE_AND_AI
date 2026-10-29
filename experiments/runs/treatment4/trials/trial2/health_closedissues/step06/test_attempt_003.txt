@@ -1,0 +1,44 @@
+test_complete_blocks_and_independent_partial_score (test_blame.BlameTests.test_complete_blocks_and_independent_partial_score) ... ok
+test_missing_constant_and_deterministic (test_blame.BlameTests.test_missing_constant_and_deterministic) ... ok
+test_missing_indicator_all_missing_and_independent_evidence (test_blame.BlameTests.test_missing_indicator_all_missing_and_independent_evidence) ... ok
+test_numeric_categorical_exclusions_and_order (test_blame.BlameTests.test_numeric_categorical_exclusions_and_order) ... ok
+test_signed_spearman_and_criterion_summaries (test_blame.BlameTests.test_signed_spearman_and_criterion_summaries) ... ok
+test_direction_and_welch_interval (test_certify.CertifyTests.test_direction_and_welch_interval) ... ok
+test_insufficient_and_invalid_threshold (test_certify.CertifyTests.test_insufficient_and_invalid_threshold) ... ok
+test_missing_and_zero_variance (test_certify.CertifyTests.test_missing_and_zero_variance) ... ok
+test_threshold_uncertainty (test_certify.CertifyTests.test_threshold_uncertainty) ... ok
+test_best_configuration_is_defensively_copied (test_flow.FlowTests.test_best_configuration_is_defensively_copied) ... ok
+test_csv_integration_maps_exact_best_configurations (test_flow.FlowTests.test_csv_integration_maps_exact_best_configurations) ... ok
+test_directions_batch_stats_and_best (test_flow.FlowTests.test_directions_batch_stats_and_best) ... ok
+test_empty_and_one_observation (test_flow.FlowTests.test_empty_and_one_observation) ... ok
+test_iterator_processes_record_before_requesting_next (test_flow.FlowTests.test_iterator_processes_record_before_requesting_next) ... ok
+test_missing_nonfinite_ties_and_prefix_immutability (test_flow.FlowTests.test_missing_nonfinite_ties_and_prefix_immutability) ... ok
+test_missing_nonfinite_and_earliest_tie (test_justify.JustifyTests.test_missing_nonfinite_and_earliest_tie) ... FAIL
+test_no_finite_mre (test_justify.JustifyTests.test_no_finite_mre) ... ok
+test_policy_ties_and_reference_arithmetic (test_justify.JustifyTests.test_policy_ties_and_reference_arithmetic) ... ok
+test_excludes_pred40_grouped_reproducible_and_baselines (test_predictor.PredictorTests.test_excludes_pred40_grouped_reproducible_and_baselines) ... ok
+test_missing_settings_and_unseen_criterion (test_predictor.PredictorTests.test_missing_settings_and_unseen_criterion) ... ok
+test_missing_target_rows_are_not_used (test_predictor.PredictorTests.test_missing_target_rows_are_not_used) ... ok
+test_training_only_preprocessing_and_targets (test_predictor.PredictorTests.test_training_only_preprocessing_and_targets) ... ok
+test_empty_input (test_summarizer.SummarizerTests.test_empty_input) ... ok
+test_missing_duplicates_and_repeated_configurations (test_summarizer.SummarizerTests.test_missing_duplicates_and_repeated_configurations) ... ok
+test_summaries_roles_and_frequencies (test_summarizer.SummarizerTests.test_summaries_roles_and_frequencies) ... ok
+
+======================================================================
+FAIL: test_missing_nonfinite_and_earliest_tie (test_justify.JustifyTests.test_missing_nonfinite_and_earliest_tie)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step06/tests/test_justify.py", line 25, in test_missing_nonfinite_and_earliest_tie
+    self.assertEqual(got["median_valid_counts"], {"MRE-": 2, "ACC+": 0, "PRED40+": 1})
+AssertionError: {'MRE-': 2, 'ACC+': 0, 'PRED40+': 2} != {'MRE-': 2, 'ACC+': 0, 'PRED40+': 1}
+- {'ACC+': 0, 'MRE-': 2, 'PRED40+': 2}
+?                                   ^
+
++ {'ACC+': 0, 'MRE-': 2, 'PRED40+': 1}
+?                                   ^
+
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.362s
+
+FAILED (failures=1)

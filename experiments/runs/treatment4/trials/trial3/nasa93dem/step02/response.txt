@@ -1,0 +1,11 @@
+Corrected Treatment 4, Trial 3, Dataset 2, Step 2 in the requested output directory. This update corrects the source-difference LOC measurement only; no source, tests, logs, or rerun results were changed.
+
+Source: source/nasa93_summary.py and source/nasa93_effort.py. The Step 1 summary interface is preserved. Effort estimation excludes X-suffix metadata and all outcomes, treats descriptors categorically, uses explicit missing markers, OneHotEncoder(handle_unknown="ignore"), Ridge(alpha=1.0), and GroupShuffleSplit(test_size=0.25, random_state=42). Groups are constructed from normalized values of every predictor descriptor, never idX or other metadata.
+
+Tests: 7 passed, including all Step 1 regression tests and the synthetic identical-descriptor boundary test. Demonstration: 60 training rows and 33 held-out rows; held-out MAE 569.386 versus training-mean baseline MAE 638.392; /usr/bin/time -p real time 0.74 seconds. Corrected metrics are total_loc=150 and new_loc=70 because source/nasa93_summary.py is unchanged from Step 1 and source/nasa93_effort.py has 70 nonblank, noncomment lines including docstrings.
+
+Run from the recorded working directory with:
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 source/nasa93_effort.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Known limitations: one grouped split and a small historical dataset do not establish deployment reliability; the model reports effort in the dataset's existing target units without inventing unit names; final all-history fitting is intentionally separate and not performed by the demonstration.

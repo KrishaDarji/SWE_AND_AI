@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step03/run_demo.py", line 1, in <module>
+    from source.nasa93_certify import certify_csv
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step03/source/nasa93_certify.py", line 10, in <module>
+    from nasa93_summary import read_csv
+ModuleNotFoundError: No module named 'nasa93_summary'
+real 0.33
+user 0.29
+sys 0.04

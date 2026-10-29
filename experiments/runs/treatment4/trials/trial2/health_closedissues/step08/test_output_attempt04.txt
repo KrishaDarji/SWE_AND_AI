@@ -1,0 +1,15 @@
+.............F..................
+======================================================================
+FAIL: test_all_tiebreakers_changed_fields_and_worsening (test_fix.FixTests.test_all_tiebreakers_changed_fields_and_worsening)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial2/health_closedissues/step08/tests/test_fix.py", line 29, in test_all_tiebreakers_changed_fields_and_worsening
+    self.assertEqual(result["changed_fields"][0]["field"], "criterion"); self.assertTrue(result["secondary_outcome_worsening"]["ACC+"])
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.371s
+
+FAILED (failures=1)
+exit_code=1

@@ -1,0 +1,57 @@
+{
+  "group_definitions": {
+    "candidate": "criterion=absolute_error",
+    "reference": "criterion=squared_error"
+  },
+  "interpretation": "Rows are different configurations, not repeated measurements of one configuration. Other settings may confound criterion-family differences; this analysis does not estimate repeated-run noise, establish equivalence, claim causality, or guarantee gains.",
+  "practical_effect": {
+    "importance": "undetermined: no client threshold was supplied",
+    "threshold": null
+  },
+  "primary": {
+    "candidate_count": 3302,
+    "candidate_mean": 0.7508694690284082,
+    "candidate_variance": 0.041668116453715966,
+    "confidence_interval": [
+      0.06718485038290585,
+      0.08711349597670696
+    ],
+    "confidence_level": 0.95,
+    "difference_candidate_minus_reference": 0.07714917317980641,
+    "p_value": 3.532519491044834e-51,
+    "reference_count": 3363,
+    "reference_mean": 0.6737202958486018,
+    "reference_variance": 0.04445184841876369,
+    "standard_error": 0.00508300788171081,
+    "t_statistic": 15.177858263292713,
+    "test": "two-sided Welch unequal-variance t-test",
+    "welch_satterthwaite_df": 6661.6898268289115
+  },
+  "primary_outcome": "MRE-",
+  "secondary_descriptive_outcomes": {
+    "ACC+": {
+      "absolute_error": {
+        "count": 3302,
+        "mean": 0.47779311364779153
+      },
+      "squared_error": {
+        "count": 3363,
+        "mean": 0.5088244263981059
+      }
+    },
+    "PRED40+": {
+      "absolute_error": {
+        "count": 3302,
+        "mean": 0.12667647313316602
+      },
+      "squared_error": {
+        "count": 3363,
+        "mean": 0.1801962533452275
+      }
+    }
+  }
+}
+real 0.36
+user 0.31
+sys 0.04
+demo_exit=0

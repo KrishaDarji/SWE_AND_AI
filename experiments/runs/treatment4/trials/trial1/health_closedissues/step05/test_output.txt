@@ -1,0 +1,51 @@
+{"label": "all_tests", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python3", "-m", "unittest", "discover", "-s", "tests", "-v"], "returncode": 0, "wall_seconds": 15.587056583957747}
+test_actual_dataset_independent_ranking_calculations_and_cli (test_blame.BlameTests.test_actual_dataset_independent_ranking_calculations_and_cli) ... ok
+test_categorical_relabeling_and_no_objective_predictors (test_blame.BlameTests.test_categorical_relabeling_and_no_objective_predictors) ... ok
+test_constant_outcome_and_equal_direction (test_blame.BlameTests.test_constant_outcome_and_equal_direction) ... ok
+test_hand_calculated_boundaries_and_boundary_membership (test_blame.BlameTests.test_hand_calculated_boundaries_and_boundary_membership) ... ok
+test_independent_score_direction_ties_and_constants (test_blame.BlameTests.test_independent_score_direction_ties_and_constants) ... ok
+test_invalid_inputs (test_blame.BlameTests.test_invalid_inputs) ... ok
+test_joint_tables_show_perfect_cooccurrence (test_blame.BlameTests.test_joint_tables_show_perfect_cooccurrence) ... ok
+test_missing_values_counts_and_unlabeled_groups (test_blame.BlameTests.test_missing_values_counts_and_unlabeled_groups) ... ok
+test_ranking_order_and_competition_ranks (test_blame.BlameTests.test_ranking_order_and_competition_ranks) ... ok
+test_reproducibility_normalization_and_no_mutation (test_blame.BlameTests.test_reproducibility_normalization_and_no_mutation) ... ok
+test_sparse_threshold (test_blame.BlameTests.test_sparse_threshold) ... ok
+test_actual_dataset_and_cli (test_certify.CertifyTests.test_actual_dataset_and_cli) ... ok
+test_hand_calculated_welch (test_certify.CertifyTests.test_hand_calculated_welch) ... ok
+test_identical_samples_and_degenerate_constants (test_certify.CertifyTests.test_identical_samples_and_degenerate_constants) ... ok
+test_improvement_direction_and_unequal_variance (test_certify.CertifyTests.test_improvement_direction_and_unequal_variance) ... ok
+test_membership_independent_of_all_outcomes (test_certify.CertifyTests.test_membership_independent_of_all_outcomes) ... ok
+test_missing_outcomes_exclusions_and_no_mutation (test_certify.CertifyTests.test_missing_outcomes_exclusions_and_no_mutation) ... ok
+test_reproducibility_and_practical_separation (test_certify.CertifyTests.test_reproducibility_and_practical_separation) ... ok
+test_small_and_invalid_samples (test_certify.CertifyTests.test_small_and_invalid_samples) ... ok
+test_actual_csv_final_statistics_against_independent_batch (test_flow.FlowTests.test_actual_csv_final_statistics_against_independent_batch) ... ok
+test_cli_success_and_expected_failure (test_flow.FlowTests.test_cli_success_and_expected_failure) ... ok
+test_csv_validation_reordering_and_missing (test_flow.FlowTests.test_csv_validation_reordering_and_missing) ... ok
+test_detached_inputs_snapshots_and_no_retained_history (test_flow.FlowTests.test_detached_inputs_snapshots_and_no_retained_history) ... ok
+test_directions_ties_and_separate_best_configurations (test_flow.FlowTests.test_directions_ties_and_separate_best_configurations) ... ok
+test_empty_missing_single_and_zero_variance (test_flow.FlowTests.test_empty_missing_single_and_zero_variance) ... ok
+test_future_changes_do_not_change_earlier_outputs (test_flow.FlowTests.test_future_changes_do_not_change_earlier_outputs) ... ok
+test_independent_statistics_after_every_arrival (test_flow.FlowTests.test_independent_statistics_after_every_arrival) ... ok
+test_invalid_arrivals_are_atomic (test_flow.FlowTests.test_invalid_arrivals_are_atomic) ... ok
+test_overflow_is_atomic (test_flow.FlowTests.test_overflow_is_atomic) ... ok
+test_actual_dataset_evaluation_and_prediction (test_guess.ActualPredictionTests.test_actual_dataset_evaluation_and_prediction) ... ok
+test_cli_rejects_objective_unknown_and_duplicate_keys (test_guess.GuessTests.test_cli_rejects_objective_unknown_and_duplicate_keys) ... ok
+test_input_validation (test_guess.GuessTests.test_input_validation) ... ok
+test_missing_target_labels_require_train_and_test_samples (test_guess.GuessTests.test_missing_target_labels_require_train_and_test_samples) ... ok
+test_missing_values_unseen_category_and_training_only_preprocessing (test_guess.GuessTests.test_missing_values_unseen_category_and_training_only_preprocessing) ... ok
+test_normalized_group_split (test_guess.GuessTests.test_normalized_group_split) ... ok
+test_reproducibility_and_independent_mae (test_guess.GuessTests.test_reproducibility_and_independent_mae) ... ok
+test_targets_cannot_affect_fit_or_predictions (test_guess.GuessTests.test_targets_cannot_affect_fit_or_predictions) ... ok
+test_duplicate_counts_independently (test_summarize.ActualDatasetTests.test_duplicate_counts_independently) ... ok
+test_schema_and_every_column_against_independent_csv_calculations (test_summarize.ActualDatasetTests.test_schema_and_every_column_against_independent_csv_calculations) ... ok
+test_all_missing_and_single_observation (test_summarize.FixtureTests.test_all_missing_and_single_observation) ... ok
+test_cli_success_and_expected_failure (test_summarize.FixtureTests.test_cli_success_and_expected_failure) ... ok
+test_hand_calculated_numeric_statistics (test_summarize.FixtureTests.test_hand_calculated_numeric_statistics) ... ok
+test_invalid_inputs (test_summarize.FixtureTests.test_invalid_inputs) ... ok
+test_reordered_columns (test_summarize.FixtureTests.test_reordered_columns) ... ok
+test_whitespace_missing_and_duplicates (test_summarize.FixtureTests.test_whitespace_missing_and_duplicates) ... ok
+
+----------------------------------------------------------------------
+Ran 45 tests in 14.165s
+
+OK

@@ -1,0 +1,23 @@
+{
+  "python": "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3",
+  "runs": {
+    "tests": {
+      "seconds": 10.05382774991449,
+      "exit_code": 0
+    },
+    "step1": {
+      "seconds": 0.7055074169766158,
+      "exit_code": 0
+    },
+    "step2": {
+      "seconds": 2.3662075829925016,
+      "exit_code": 0
+    },
+    "step3": {
+      "seconds": 0.6999395419843495,
+      "exit_code": 0
+    }
+  },
+  "total_loc": 484,
+  "new_loc": 172
+}

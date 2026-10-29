@@ -1,0 +1,3 @@
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step06'
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3 -m pytest -q tests
+/usr/bin/time -p /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 source/nasa93_justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'

@@ -1,0 +1,19 @@
+Requirements: environment python3 with scikit-learn 1.6.0 and its existing dependencies. No installation or version changes needed.
+
+Working directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09'
+
+Run the complete suite (preserved Steps 1-8 plus Step 9):
+PYTHONDONTWRITEBYTECODE=1 TMPDIR='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step09/tmp' python3 -m unittest discover -s tests -v
+
+Run Step 9 alone, accepting a dataset path argument:
+PYTHONDONTWRITEBYTECODE=1 python3 source/spot.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output anomalies.json --threshold 3.5 --display-limit 10
+
+Repeat all measured tests and all nine demos, preserving separate timings and generating metrics.csv:
+python3 measure_run.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' > measurement_output.txt 2>&1
+
+The runner creates regression_demos/ with exact command outputs and JSON reports for summarize, guess, certify, flow, choose, blame, justify, and fix. verification.json records commands, return codes, timings, byte-for-byte preservation checks, and the dataset SHA-256 check. test_output.txt records the complete suite; runtime_output.txt records only the Step 9 demo. The runner stays outside source/ and is excluded from application LOC.
+
+Each ranked finding is stored in anomalies.json regardless of console display limit. Scores strictly greater than 3.5 are flagged; ties keep ascending one-based CSV data-row identity. The boundary is not inclusive. Unscored records appear last. Threshold changes are exploratory sensitivity settings, not estimated error rates.
+
+Original preliminary failed test output is retained in step09_preliminary_tests.txt; repair_log.txt explains the repair. error_count includes historical unexpected execution failures for this run. Expected invalid-input test subprocess exits are excluded.

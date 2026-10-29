@@ -1,0 +1,155 @@
+{
+  "categorical_frequencies": {
+    "criterion": {
+      "absolute_error": 3302,
+      "poisson": 3335,
+      "squared_error": 3363
+    }
+  },
+  "columns": [
+    "MRE-",
+    "ACC+",
+    "PRED40+",
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "configuration_fields": [
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "data_types": {
+    "ACC+": "numeric",
+    "MRE-": "numeric",
+    "Max_depth": "numeric",
+    "Min_impurity_decrease": "numeric",
+    "Min_sample_leaves": "numeric",
+    "N_estimators": "numeric",
+    "PRED40+": "numeric",
+    "criterion": "categorical"
+  },
+  "distinct_configuration_count": 10000,
+  "duplicate_row_count": 0,
+  "limitations": [
+    "No metric formula, unit, valid range, or compute cost is inferred.",
+    "The filename is not interpreted as an issue timeline or closure event."
+  ],
+  "missing_values": {
+    "ACC+": 0,
+    "MRE-": 0,
+    "Max_depth": 0,
+    "Min_impurity_decrease": 0,
+    "Min_sample_leaves": 0,
+    "N_estimators": 0,
+    "PRED40+": 0,
+    "criterion": 0
+  },
+  "non_finite_values": {
+    "ACC+": 0,
+    "MRE-": 0,
+    "Max_depth": 0,
+    "Min_impurity_decrease": 0,
+    "Min_sample_leaves": 0,
+    "N_estimators": 0,
+    "PRED40+": 0,
+    "criterion": 0
+  },
+  "numeric_statistics": {
+    "ACC+": {
+      "count": 10000,
+      "max": 1.0,
+      "mean": 0.49593851329765914,
+      "median": 0.43992310157000963,
+      "min": 0.0,
+      "q25": 0.43255366869593076,
+      "q75": 0.5712912528035885,
+      "std": 0.10714696118634402
+    },
+    "MRE-": {
+      "count": 10000,
+      "max": 1.0,
+      "mean": 0.70909397643463,
+      "median": 0.8091310751104565,
+      "min": 0.0,
+      "q25": 0.5723858615611193,
+      "q75": 0.8251840942562592,
+      "std": 0.20138583166955112
+    },
+    "Max_depth": {
+      "count": 10000,
+      "max": 20.0,
+      "mean": 10.523,
+      "median": 11.0,
+      "min": 1.0,
+      "q25": 6.0,
+      "q75": 16.0,
+      "std": 5.754204636611389
+    },
+    "Min_impurity_decrease": {
+      "count": 10000,
+      "max": 10.0,
+      "mean": 4.996175,
+      "median": 5.0,
+      "min": 0.0,
+      "q25": 2.5,
+      "q75": 7.5,
+      "std": 2.9470670367969234
+    },
+    "Min_sample_leaves": {
+      "count": 10000,
+      "max": 20.0,
+      "mean": 10.4796,
+      "median": 11.0,
+      "min": 1.0,
+      "q25": 5.0,
+      "q75": 15.0,
+      "std": 5.778943142132478
+    },
+    "N_estimators": {
+      "count": 10000,
+      "max": 200.0,
+      "mean": 106.061,
+      "median": 110.0,
+      "min": 10.0,
+      "q25": 60.0,
+      "q75": 160.0,
+      "std": 57.12980202136184
+    },
+    "PRED40+": {
+      "count": 10000,
+      "max": 1.0,
+      "mean": 0.1468428571428571,
+      "median": 0.0,
+      "min": 0.0,
+      "q25": 0.0,
+      "q75": 0.14285714285714285,
+      "std": 0.26638630802284263
+    }
+  },
+  "optimization_directions": {
+    "ACC+": "maximize",
+    "MRE-": "minimize",
+    "PRED40+": "maximize"
+  },
+  "outcome_fields": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "parsing_assumptions": [
+    "The first CSV row is a header; comma-separated UTF-8 text is expected.",
+    "Blank cells are missing; numeric tokens are parsed as float.",
+    "Non-finite or non-numeric numeric cells are excluded from statistics."
+  ],
+  "record_count": 10000,
+  "repeated_configurations": {},
+  "sklearn_version": "1.6.0"
+}
+real 0.66
+user 0.56
+sys 0.09

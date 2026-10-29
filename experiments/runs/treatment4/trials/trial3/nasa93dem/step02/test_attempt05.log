@@ -1,0 +1,62 @@
+test_actual_missing_training_value_and_target_filter (test_nasa93_effort.EffortTests.test_actual_missing_training_value_and_target_filter) ... ERROR
+test_excludes_metadata_and_outcomes_and_keeps_step1 (test_nasa93_effort.EffortTests.test_excludes_metadata_and_outcomes_and_keeps_step1) ... ok
+test_group_split_reproducible_and_missing_unseen_proposal (test_nasa93_effort.EffortTests.test_group_split_reproducible_and_missing_unseen_proposal) ... ERROR
+test_held_out_outcomes_do_not_change_training_or_baseline (test_nasa93_effort.EffortTests.test_held_out_outcomes_do_not_change_training_or_baseline) ... ERROR
+test_identical_descriptors_cannot_cross_boundary (test_nasa93_effort.EffortTests.test_identical_descriptors_cannot_cross_boundary) ... ERROR
+test_all_required_behaviors (test_nasa93_summary.SummaryTests.test_all_required_behaviors) ... ok
+test_empty_input (test_nasa93_summary.SummaryTests.test_empty_input) ... ok
+
+======================================================================
+ERROR: test_actual_missing_training_value_and_target_filter (test_nasa93_effort.EffortTests.test_actual_missing_training_value_and_target_filter)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/tests/test_nasa93_effort.py", line 47, in test_actual_missing_training_value_and_target_filter
+    result = evaluate(path)
+             ^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/source/nasa93_effort.py", line 61, in evaluate
+    train, test = [rows[i] for i in train_idx], [rows[i] for i in test_idx]
+                                                 ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_group_split_reproducible_and_missing_unseen_proposal (test_nasa93_effort.EffortTests.test_group_split_reproducible_and_missing_unseen_proposal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/tests/test_nasa93_effort.py", line 26, in test_group_split_reproducible_and_missing_unseen_proposal
+    result = evaluate(self.make(self.csv()))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/source/nasa93_effort.py", line 61, in evaluate
+    train, test = [rows[i] for i in train_idx], [rows[i] for i in test_idx]
+                   ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_held_out_outcomes_do_not_change_training_or_baseline (test_nasa93_effort.EffortTests.test_held_out_outcomes_do_not_change_training_or_baseline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/tests/test_nasa93_effort.py", line 52, in test_held_out_outcomes_do_not_change_training_or_baseline
+    first = evaluate(self.make(self.csv("10,20,30,40")))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/source/nasa93_effort.py", line 61, in evaluate
+    train, test = [rows[i] for i in train_idx], [rows[i] for i in test_idx]
+                   ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_identical_descriptors_cannot_cross_boundary (test_nasa93_effort.EffortTests.test_identical_descriptors_cannot_cross_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/tests/test_nasa93_effort.py", line 38, in test_identical_descriptors_cannot_cross_boundary
+    result = evaluate(self.make(text), test_size=0.34)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial3/nasa93dem/step02/source/nasa93_effort.py", line 61, in evaluate
+    train, test = [rows[i] for i in train_idx], [rows[i] for i in test_idx]
+                   ~~~~^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.004s
+
+FAILED (errors=4)
+TEST_STATUS=1
+RUN_STATUS=1

@@ -1,0 +1,116 @@
+Treatment 4 / Trial 1 / Health / Step 5: blame
+
+Complete updated application code is in source/: summarize.py, guess.py, certify.py, flow.py, blame.py.
+All preserved tests and Step 5 tests are in tests/. run_instructions.txt contains complete commands.
+
+Observed MRE- is minimized. Exploratory marginal associations only.
+Rank by grouped eta-squared (between-group / total sum of squares); strength is unsigned.
+Rank 1: Min_sample_leaves, eta-squared=0.80161228; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 11.0, 'upper': 15.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2033; mean=0.8385963; median=0.8185567; sparse=False.
+  Lowest observed mean: {'lower': 1.0, 'upper': 5.0, 'lower_inclusive': True, 'upper_inclusive': True}; n=2523; mean=0.40239073; median=0.41752577; sparse=False.
+Rank 2: criterion, eta-squared=0.024851323; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'value': 'absolute_error'}; n=3302; mean=0.75086947; median=0.87746686; sparse=False.
+  Lowest observed mean: {'value': 'squared_error'}; n=3363; mean=0.6737203; median=0.80500736; sparse=False.
+Rank 3: Min_impurity_decrease, eta-squared=0.0048475919; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 7.5, 'upper': 10.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2457; mean=0.73124732; median=0.80927835; sparse=False.
+  Lowest observed mean: {'lower': 0.0, 'upper': 2.5, 'lower_inclusive': True, 'upper_inclusive': True}; n=2689; mean=0.69592805; median=0.80913108; sparse=False.
+Rank 4: Max_depth, eta-squared=0.00019029495; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 11.0, 'upper': 16.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2536; mean=0.71315333; median=0.80913108; sparse=False.
+  Lowest observed mean: {'lower': 1.0, 'upper': 6.0, 'lower_inclusive': True, 'upper_inclusive': True}; n=2987; mean=0.70590107; median=0.80810015; sparse=False.
+Rank 5: N_estimators, eta-squared=0.00014386551; n=10000; mean MRE=0.70909398.
+  Highest observed mean: {'lower': 10.0, 'upper': 60.0, 'lower_inclusive': True, 'upper_inclusive': True}; n=2877; mean=0.71138054; median=0.80603829; sparse=False.
+  Lowest observed mean: {'lower': 110.0, 'upper': 160.0, 'lower_inclusive': False, 'upper_inclusive': True}; n=2566; mean=0.70514999; median=0.81008837; sparse=False.
+Use JSON group tables for all counts, missingness, quartile boundaries, MRE dispersion and pairwise overlap. Numeric directions need not be monotonic. Correlation, interactions, sparse groups and observational confounding limit attribution. Changing settings is not shown to reduce error.
+
+Method and interpretation
+The ranking measures the fraction of observed MRE variation between the declared groups (eta-squared), not causal effect, sign, predictive quality, or adjusted importance.
+criterion is grouped by exact strings. Numeric fields with at most eight distinct values use exact values; otherwise quartiles are computed over all nonmissing predictor rows using interpolation at (n-1)*p. Boundaries are selected without looking at outcomes. All exact boundaries, interval inclusivity, counts, MRE summaries and directions are in blame.json.
+Numeric grouping and all group means in this dataset:
+Min_sample_leaves: cuts=[5.0, 11.0, 15.0]
+  {'lower': 1.0, 'upper': 5.0, 'lower_inclusive': True, 'upper_inclusive': True}: rows=2523, labeled=2523, missing_MRE=0, mean=0.40239072987967367, median=0.41752577319587625, sample_sd=0.13292160409183978
+  {'lower': 5.0, 'upper': 11.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2955, labeled=2955, missing_MRE=0, mean=0.7729154798647339, median=0.8066273932253313, sample_sd=0.09959070988197292
+  {'lower': 11.0, 'upper': 15.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2033, labeled=2033, missing_MRE=0, mean=0.8385962980445157, median=0.8185567010309277, sample_sd=0.03842351094694173
+  {'lower': 15.0, 'upper': 20.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2489, labeled=2489, missing_MRE=0, mean=0.8384397090940514, median=0.8191458026509573, sample_sd=0.03804339989908303
+criterion: cuts=[]
+  {'value': 'absolute_error'}: rows=3302, labeled=3302, missing_MRE=0, mean=0.7508694690284082, median=0.8774668630338732, sample_sd=0.20412769643954728
+  {'value': 'poisson'}: rows=3335, labeled=3335, missing_MRE=0, mean=0.7034025255399243, median=0.806480118, sample_sd=0.18038999925102667
+  {'value': 'squared_error'}: rows=3363, labeled=3363, missing_MRE=0, mean=0.6737202958486018, median=0.8050073637702503, sample_sd=0.21083607001356217
+Min_impurity_decrease: cuts=[2.5, 5.0, 7.5]
+  {'lower': 0.0, 'upper': 2.5, 'lower_inclusive': True, 'upper_inclusive': True}: rows=2689, labeled=2689, missing_MRE=0, mean=0.6959280459129026, median=0.8091310751104565, sample_sd=0.21825006904873534
+  {'lower': 2.5, 'upper': 5.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2441, labeled=2441, missing_MRE=0, mean=0.6984884511590218, median=0.8086892488954344, sample_sd=0.21556789397940093
+  {'lower': 5.0, 'upper': 7.5, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2413, labeled=2413, missing_MRE=0, mean=0.7119371201792328, median=0.8091310751104565, sample_sd=0.19326254727423675
+  {'lower': 7.5, 'upper': 10.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2457, labeled=2457, missing_MRE=0, mean=0.7312473213735627, median=0.8092783505154639, sample_sd=0.17131884698610006
+Max_depth: cuts=[6.0, 11.0, 16.0]
+  {'lower': 1.0, 'upper': 6.0, 'lower_inclusive': True, 'upper_inclusive': True}: rows=2987, labeled=2987, missing_MRE=0, mean=0.7059010745129577, median=0.808100147, sample_sd=0.20104645411902242
+  {'lower': 6.0, 'upper': 11.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2480, labeled=2480, missing_MRE=0, mean=0.709854743693708, median=0.8091310751104565, sample_sd=0.20168099413646504
+  {'lower': 11.0, 'upper': 16.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2536, labeled=2536, missing_MRE=0, mean=0.7131533313473085, median=0.8091310751104565, sample_sd=0.19928000247709787
+  {'lower': 16.0, 'upper': 20.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=1997, labeled=1997, missing_MRE=0, mean=0.7077699760234977, median=0.8098674521354933, sample_sd=0.2042718695081687
+N_estimators: cuts=[60.0, 110.0, 160.0]
+  {'lower': 10.0, 'upper': 60.0, 'lower_inclusive': True, 'upper_inclusive': True}: rows=2877, labeled=2877, missing_MRE=0, mean=0.7113805443889084, median=0.8060382916053019, sample_sd=0.20117815938027142
+  {'lower': 60.0, 'upper': 110.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2538, labeled=2538, missing_MRE=0, mean=0.710204769677888, median=0.8092783505154639, sample_sd=0.19804133210097927
+  {'lower': 110.0, 'upper': 160.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2566, labeled=2566, missing_MRE=0, mean=0.7051499901839169, median=0.8100883652430044, sample_sd=0.20664063188026613
+  {'lower': 160.0, 'upper': 200.0, 'lower_inclusive': False, 'upper_inclusive': True}: rows=2019, labeled=2019, missing_MRE=0, mean=0.70945188602526, median=0.809720177, sample_sd=0.199201033630696
+
+No configuration fields are constant in this dataset. Constant/all-missing fields and zero-variance MRE are handled as unrankable by the reusable implementation and covered by tests.
+Observed rows=10000; overall MRE summary={"n": 10000, "missing": 0, "mean": 0.70909397643463, "std_sample": 0.2013959017163944, "median": 0.8091310751104565, "q25": 0.5723858615611193, "q75": 0.8251840942562592, "min": 0.0, "max": 1.0}.
+Configuration repetition summary={"unique_count": 10000, "repeated_group_count": 0, "records_in_repeated_groups": 0, "extra_record_count": 0}.
+The JSON contains all ten pairwise joint group tables. For example, inspect criterion by leaf ranges to see whether the criterion direction persists within those ranges. Joint cells describe co-occurrence and possible interactions; they do not adjust away correlated settings or estimate a conditional causal effect.
+
+Reuse and additions
+Unchanged Step 1 loader, quantiles and duplicate counts; Step 2 configuration normalization; Step 3 observed summaries. Steps 1–4 source and tests retained unchanged. Added grouped marginal ranking, directions, missing/sparse/constant handling and joint summaries.
+The four previous application files and all four previous test files are byte-identical copies of the allowed Step 4 files; hashes are in verification.json. An illustrative configuration required by the preserved prediction test was created locally, without reading previous saved recommendations.
+Step 5 uses no fitted model or learned preprocessing. Predictive train/test evaluation therefore does not apply to its descriptive score. The preserved Step 2 demo still uses training-only preprocessing and the seed-42 configuration-group holdout; its outputs are under regression/.
+Preserved Step 2 held-out evaluation (model MAE versus training-mean baseline MAE):
+  MRE-: 0.013879674043302374 versus 0.16459861627286873; training n=8000, heldout n=2000.
+  ACC+: 0.00915287155651082 versus 0.08820967314102454; training n=8000, heldout n=2000.
+The prediction results are a single within-dataset holdout estimate, without a wider-population guarantee. They do not validate the Step 5 association ranking.
+
+Validation and measured metrics
+45/45 tests passed, including the 34 unchanged Steps 1–4 tests and 11 Step 5 tests.
+Step 5 tests cover hand-calculated sums of squares, competition ranks, direction, categorical relabeling, objective exclusion, missingness, constants, tied extrema, quartile boundaries, sparse groups, co-occurrence, invalid inputs, nonmutation, independent calculations on the actual CSV, and reproducible CLI bytes.
+Application LOC=788; new-side insert/replace application LOC=165; Step 5 demo subprocess wall seconds=1.0614611660130322; unexpected failed commands=0.
+Tests and all five demos passed on the first run. No repairs were needed. Expected rejection tests are excluded from error_count. Raw outputs and exact commands/timings are preserved in test_output.txt, runtime_output.txt and attempts.jsonl; separate test and regression timings are in metrics.csv.
+measure.py is outside source/ and excluded from application LOC. LOC excludes blank and comment-only lines, includes docstrings, and compares insert/replace new-side lines against the allowed Step 4 source.
+
+Assumptions and limitations
+- Observational configuration selection and unrecorded factors confound associations; changing a setting is not shown to cause error reduction.
+- Marginal scores do not isolate a field from correlated settings. Joint tables expose co-occurrence but do not control confounding. Correlated fields can share or mask associations.
+- Interactions may reverse or cancel marginal directions. Joint tables are exploratory and can be sparse; no interaction model or conditional importance is estimated.
+- Eta-squared favors fine partitions and is sample-specific; category counts and numeric coarsening affect ranking. It is not out-of-sample importance, and differently missing subsets need not be comparable.
+- Sparse or singleton groups can exaggerate apparent strength. No p values, multiple-test claims, uncertainty guarantees, practical thresholds, or optimized recommendations are provided.
+- Repeated configurations count as rows and may overweight settings; independence, random sampling and measurement repeatability are not established.
+- Missing outcomes or predictors may be selective. Constants cannot support observed setting comparisons; constant outcomes cannot support strength estimates.
+- Quartile bins hide within-range trends; observed extreme mean groups do not establish monotonic numeric effects. Boundary choices use predictor values only.
+- MRE- is the recorded scale with unspecified formula and units. Neither ACC+ nor PRED40+ is a diagnostic predictor.
+- Finite float arithmetic is used; unrepresentable summary arithmetic is rejected. Rankings near ties may be sensitive to rounding.
+
+Commands
+Use the verified environment: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 (scikit-learn 1.6.0).
+No dependencies were installed or changed.
+
+Working directory:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment4/trials/trial1/health_closedissues/step05'
+
+Entire preserved and added test suite:
+python3 -m unittest discover -s tests -v
+
+Step 5 diagnosis (dataset is a positional argument):
+python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output blame.json
+
+Preserved Steps 1–4 demos:
+python3 source/summarize.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output-dir regression/step1
+python3 source/guess.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --configuration example_configuration.json --evaluation regression/step2.json
+python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output regression/step3.json
+python3 source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --output regression/step4.json
+
+Remeasure tests, Step 5 subprocess and all regression demos, and regenerate metrics:
+python3 measure.py
+The runner creates regression/ if needed and appends raw command results to attempts.jsonl,
+test_output.txt and runtime_output.txt so prior failures survive any repairs.
+Tests use temporary directories beneath this step's tests/ directory.
+The example configuration was created for this step; it is illustrative, not a recommendation.
+
+All output paths in these commands are inside this step directory. Choose an output path
+inside this directory when invoking a CLI manually. The CLI does not enforce that restriction
+for reuse elsewhere.
+

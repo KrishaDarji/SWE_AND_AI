@@ -1,0 +1,11 @@
+Implemented the Step 7 budget-limited configuration selector.
+
+Source: source/summarize_x264.py
+Tests: tests/test_summarize_x264.py
+Runner: run_demo.py
+
+The selector accepts only candidate settings and an evaluation callback. It uses a deterministic seed (42), evaluates at most 20 unique candidates, hides outcomes behind the callback, prevents duplicate evaluations, breaks ties by evaluation order, and freezes the recommendation before the separate audit. Lower Performance- is better.
+
+Verification: 23 tests passed. The demonstration used 20 evaluations and selected a measured Performance- of 252.63. The independent retrospective audit reported an observed minimum of 244.23, for a recommendation gap of 8.40. Runtime was 0.81 seconds real, measured with /usr/bin/time -p. Full raw outputs are in test_output.txt and runtime_output.txt; failed attempts are preserved as attempt1 files.
+
+Known limitations: deterministic random search can miss the global optimum; results are limited to measured candidates and do not establish future performance or causal effects. Duplicate configurations are treated as one candidate, with the last dataset outcome used by the demonstration's callback mapping.
