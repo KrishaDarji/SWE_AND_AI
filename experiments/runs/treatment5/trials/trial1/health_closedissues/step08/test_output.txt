@@ -1,0 +1,15 @@
+test_criterion_whitespace_is_normalized (test_repair.RepairTests.test_criterion_whitespace_is_normalized) ... ok
+test_empty (test_repair.RepairTests.test_empty) ... ok
+test_minimum_change_beats_large_improvement (test_repair.RepairTests.test_minimum_change_beats_large_improvement) ... ok
+test_missing_criterion_candidate_is_ineligible (test_repair.RepairTests.test_missing_criterion_candidate_is_ineligible) ... ok
+test_missing_criterion_invalidates_baseline (test_repair.RepairTests.test_missing_criterion_invalidates_baseline) ... ok
+test_missing_secondary_invalid_and_none (test_repair.RepairTests.test_missing_secondary_invalid_and_none) ... ok
+test_numeric_equivalence (test_repair.RepairTests.test_numeric_equivalence) ... ok
+test_reporting_and_worsening (test_repair.RepairTests.test_reporting_and_worsening) ... ok
+test_ties_and_tradeoffs (test_repair.RepairTests.test_ties_and_tradeoffs) ... ok
+test_valid_criterion_continues_working (test_repair.RepairTests.test_valid_criterion_continues_working) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.000s
+
+OK

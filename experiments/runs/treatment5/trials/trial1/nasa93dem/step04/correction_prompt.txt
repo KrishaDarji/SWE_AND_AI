@@ -1,0 +1,40 @@
+Correct Treatment 5, Trial 1, NASA93, Step 4.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/
+
+Fix these implementation issues:
+
+1. DESCRIPTORS currently includes idX, centerX, and YearX.
+   Remove all X-suffix metadata. Use exactly the 22 project descriptors.
+   Exclude all outcome columns from prediction inputs.
+
+2. assess() reads the current Effort- before prediction.
+   Once two valid historical observations exist, compute and freeze the
+   current prediction and prior-history baseline before reading its outcome.
+   Then reveal/validate effort, score if valid, and update history.
+   Invalid outcomes must not enter history or cumulative errors.
+
+3. Pass the CSV iterator directly into assessment rather than buffering all
+   arrivals with list(read_rows(...)) before processing.
+
+Add meaningful regression tests:
+- Assert the exact descriptor set excludes every X-suffix column.
+- Changing metadata or non-target outcomes cannot change predictions.
+- Use a guarded row/outcome accessor to prove prediction occurs before
+  accessing the current Effort-.
+- Changing current/future outcomes cannot change the current prediction.
+- Verify warm-up, invalid outcomes, and both cumulative MAEs independently.
+- Verify earlier snapshots remain unchanged.
+
+Use only current NASA93 Step 4 files, the specified NASA93 dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps or other experiment runs.
+
+Preserve existing artifacts and logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Preserve the original demo_results.csv before replacing it.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Keep fixtures and outputs inside the exact Step 4 directory above.

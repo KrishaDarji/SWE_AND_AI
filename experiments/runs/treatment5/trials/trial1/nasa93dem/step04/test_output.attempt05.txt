@@ -1,0 +1,12 @@
+test_current_and_future_outcomes_do_not_change_frozen_prediction (test_arrival_estimator.FlowTests) ... ok
+test_earlier_snapshots_remain_unchanged (test_arrival_estimator.FlowTests) ... ok
+test_exact_22_descriptors (test_arrival_estimator.FlowTests) ... ok
+test_metadata_and_non_target_outcomes_do_not_change_prediction (test_arrival_estimator.FlowTests) ... ok
+test_prediction_precedes_current_outcome (test_arrival_estimator.FlowTests) ... ok
+test_warmup_invalid_and_independent_cumulative_maes (test_arrival_estimator.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+EXIT=0

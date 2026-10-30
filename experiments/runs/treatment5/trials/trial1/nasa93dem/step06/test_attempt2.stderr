@@ -1,0 +1,86 @@
+EE/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py:23: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/6s/nl7vyczd1cg4synhvvd8v8840000gn/T/s6.csv' mode='w' encoding='UTF-8'>
+  p=os.path.join(tempfile.gettempdir(),'s6.csv'); open(p,'w').write('idX,prec,flex,Effort-\n5,a,b,notnum\n7, a , b ,3\n'); return p
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+EEE
+======================================================================
+ERROR: test_evidence_and_selection (tests.test_estimator.Tests.test_evidence_and_selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 15, in test_evidence_and_selection
+    m=Estimator(self.rows()[:3]); z=m.predict({'prec':'a','flex':'0'}); self.assertTrue(z['evidence'].startswith('model_behavior:')); self.assertEqual(min(self.rows()[3:],key=lambda r:(r['line'],r['id']) )['id'],'4')
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in __init__
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in <genexpr>
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_excluded_inputs_and_missing_unseen (tests.test_estimator.Tests.test_excluded_inputs_and_missing_unseen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 11, in test_excluded_inputs_and_missing_unseen
+    m=Estimator(self.rows()[:3]); self.assertNotIn('Kloc+',DESCRIPTORS)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in __init__
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in <genexpr>
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_insufficient_and_ids (tests.test_estimator.Tests.test_insufficient_and_ids)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 21, in test_insufficient_and_ids
+    self.assertEqual(load_rows(self._csv()),[{'line':3,'id':'7','x':('a', 'b'),'y':3.0}])
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 16, in load_rows
+    out.append({'line':original, 'id':raw['idX'].strip(), 'x':tuple(norm(raw[k]) for k in DESCRIPTORS), 'y':y})
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 16, in <genexpr>
+    out.append({'line':original, 'id':raw['idX'].strip(), 'x':tuple(norm(raw[k]) for k in DESCRIPTORS), 'y':y})
+                                                                         ~~~^^^
+KeyError: 'resl'
+
+======================================================================
+ERROR: test_outcome_does_not_change_frozen_prediction (tests.test_estimator.Tests.test_outcome_does_not_change_frozen_prediction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 18, in test_outcome_does_not_change_frozen_prediction
+    m1=Estimator(a[:3]); m2=Estimator(b[:3]); self.assertEqual(m1.predict({'prec':'b','flex':'1'}),m2.predict({'prec':'b','flex':'1'}))
+       ^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in __init__
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in <genexpr>
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_prediction_and_training_reference (tests.test_estimator.Tests.test_prediction_and_training_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 8, in test_prediction_and_training_reference
+    m=Estimator(self.rows()[:3]); p={'prec':'a','flex':'0'}
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in __init__
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 35, in <genexpr>
+    self.values=[set(r['x'][i] for r in train) for i in range(len(DESCRIPTORS))]
+                     ~~~~~~^^^
+IndexError: tuple index out of range
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.025s
+
+FAILED (errors=5)
+real 0.06
+user 0.03
+sys 0.01

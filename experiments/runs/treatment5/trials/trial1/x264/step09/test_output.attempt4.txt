@@ -1,0 +1,34 @@
+test_distinct_group_minimum (test_anomaly_detector.DetectorTests) ... ok
+test_group_isolation_and_reference_ids (test_anomaly_detector.DetectorTests) ... FAIL
+test_missing_nonfinite_and_zero_variability (test_anomaly_detector.DetectorTests) ... ok
+test_normal_and_anomalous (test_anomaly_detector.DetectorTests) ... ok
+test_small_empty_constants_and_zero_variability (test_anomaly_detector.DetectorTests) ... ok
+test_strict_json_and_counts (test_anomaly_detector.DetectorTests) ... ok
+
+======================================================================
+FAIL: test_group_isolation_and_reference_ids (test_anomaly_detector.DetectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step09/tests/test_anomaly_detector.py", line 21, in test_group_isolation_and_reference_ids
+    self.assertEqual(first["flags"], [])
+AssertionError: Lists differ: [{'record_id': 2, 'observed': 999, 'expect[227 chars]on'}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'record_id': 2, 'observed': 999, 'expected_reference': 10.0, 'score': 989.0, 'threshold': 3.0, 'comparison_count': 3, 'comparison_group': {'preset': 'a', 'ref': 'a'}, 'reference_group_ids': [['b', 'b'], ['c', 'c'], ['d', 'd']], 'reason': 'absolute_studentized_deviation'}
+
++ []
+- [{'comparison_count': 3,
+-   'comparison_group': {'preset': 'a', 'ref': 'a'},
+-   'expected_reference': 10.0,
+-   'observed': 999,
+-   'reason': 'absolute_studentized_deviation',
+-   'record_id': 2,
+-   'reference_group_ids': [['b', 'b'], ['c', 'c'], ['d', 'd']],
+-   'score': 989.0,
+-   'threshold': 3.0}]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

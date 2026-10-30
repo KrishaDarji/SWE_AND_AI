@@ -1,0 +1,2 @@
+Attempt 01 (preserved): demonstration completed successfully; see runtime_output.attempt01.txt for complete captured stdout/stderr.
+Attempt 02 (final): demonstration completed successfully; see runtime_output.attempt02.txt for complete captured stdout/stderr.

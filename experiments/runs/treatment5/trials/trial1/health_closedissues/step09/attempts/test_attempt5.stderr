@@ -1,0 +1,31 @@
+test_both_directions (test_spot_screen.SpotTests) ... ok
+test_boundary_changes_under_double_scaling (test_spot_screen.SpotTests) ... FAIL
+test_constant_zero_scale_and_json (test_spot_screen.SpotTests) ... ok
+test_missing_nonfinite_small_empty (test_spot_screen.SpotTests) ... ok
+test_score_arithmetic_iqr_fallback (test_spot_screen.SpotTests) ... FAIL
+test_score_arithmetic_nonzero_mad (test_spot_screen.SpotTests) ... ok
+test_unusual_and_ids (test_spot_screen.SpotTests) ... ok
+
+======================================================================
+FAIL: test_boundary_changes_under_double_scaling (test_spot_screen.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09/tests/test_spot_screen.py", line 33, in test_boundary_changes_under_double_scaling
+    self.assertGreater(corrected, 3.5); self.assertLess(erroneous, 3.5)
+AssertionError: 4.094490028565314 not less than 3.5
+
+======================================================================
+FAIL: test_score_arithmetic_iqr_fallback (test_spot_screen.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09/tests/test_spot_screen.py", line 27, in test_score_arithmetic_iqr_fallback
+    self.assertEqual(out["references"]["MRE-"]["method"], "median/IQR fallback")
+AssertionError: 'median/MAD' != 'median/IQR fallback'
+- median/MAD
++ median/IQR fallback
+
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (failures=2)

@@ -1,0 +1,13 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step01
+
+Python interpreter:
+/usr/bin/python3
+
+Test command:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step01' && /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+
+Demonstration command:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step01' && /usr/bin/time -p /usr/bin/python3 source/summarizer.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Valid quoted paths are used for paths containing spaces. The final captured attempts are test_attempt_02.log and runtime_attempt_02.log; earlier failed output is retained in attempt 01 files.

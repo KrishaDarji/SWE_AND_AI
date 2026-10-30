@@ -1,0 +1,11 @@
+Implemented the independent Python budget-limited selector in the exact Step 7 directory.
+
+Files include source/choose.py, tests/test_choose.py, run_demo.py, prompt.txt, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. The command is:
+
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step07" && PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step07" python3 run_demo.py
+
+The selector uses seed 42, a 20-distinct-evaluation budget, duplicate suppression, finite-result validation, deterministic IDs c00000 onward based on input order, and lower-value tie-breaking. It freezes the recommendation before a separate retrospective audit. The demo selected c00004 with Performance- 260.267; the audit minimum was 244.23, gap 16.037.
+
+The implementation adapts EZR's one-pass NUM summary and deterministic ordering ideas, without using Lua. Tests cover budget enforcement, reproducibility, duplicates, hidden outcomes, invalid inputs, nonfinite results, empty candidates, and oversized budgets. All 4 tests pass; measured demonstration real time was 0.05 seconds.
+
+Known limitations: seeded random sampling is not an optimizer guarantee, and the audit reads the complete dataset only for retrospective reporting.

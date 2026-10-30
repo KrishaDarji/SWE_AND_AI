@@ -1,0 +1,5 @@
+Final test log: test_output.attempt03.txt
+Preserved initial failed test log: test_output.attempt01.txt
+Preserved repaired intermediate test log: test_output.attempt02.txt
+
+The final log is the actual stdout/stderr capture from the successful five-test run; the attempt files contain the complete earlier captures.

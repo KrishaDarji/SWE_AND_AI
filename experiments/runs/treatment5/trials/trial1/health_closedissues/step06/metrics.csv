@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,1,model configuration and quality,justify,59,59,1,0.10,2,"6 tests; /usr/bin/time -p real; final test attempt 3 and runtime attempt 3; EZR csv/coercion, stable ordering, and summaries adapted; references use all finite values per outcome while selection retains all-outcome eligibility; CSV identifiers, ties, missing/nonfinite values, and no-eligible handling; earlier attempt 1 floating-point assertion failures preserved and counted"

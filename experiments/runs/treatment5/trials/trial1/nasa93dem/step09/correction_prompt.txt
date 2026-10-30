@@ -1,0 +1,31 @@
+Correct Treatment 5, Trial 1, NASA93, Step 9.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step09/
+
+Fix record identity and unique flagged-record counting.
+
+load() currently uses idX as identifier, and screen() adds that value to a set.
+idX is not unique in NASA93, so distinct flagged rows can collapse into one.
+
+- Preserve the original CSV data-row position as a unique record identifier.
+- Keep idX separately as metadata.
+- Count unique flagged records by original CSV position.
+- Preserve identifiers when individual outcomes are invalid or excluded.
+- Include both original position and idX in reported records.
+- Keep the screening method, threshold, and zero-scale policy unchanged.
+
+Add a regression fixture containing duplicate idX values where both distinct
+rows flag. Verify the unique flagged count is two, and per-outcome counts
+remain correct. Also verify original positions survive invalid outcomes.
+
+Use only current NASA93 Step 9 files, the specified NASA93 dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps or other experiment runs.
+
+Preserve existing artifacts and logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Keep fixtures and outputs inside the exact Step 9 directory above.

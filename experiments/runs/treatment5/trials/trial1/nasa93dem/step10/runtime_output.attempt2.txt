@@ -1,0 +1,44 @@
+SEED 42 train 92 test 1
+positions [(70, '69')]
+predictions [330.888889]
+observed [576.0] baseline 624.938043 model_mae 245.11111111142748 baseline_mae 48.93804347826085 difference 196.17306763316662 negative 0
+SEED 43 train 92 test 1
+positions [(13, '12')]
+predictions [72.0]
+observed [360.0] baseline 627.28587 model_mae 288.0 baseline_mae 267.28586956521747 difference 20.714130434782533 negative 0
+SEED 44 train 92 test 1
+positions [(50, '49')]
+predictions [1163.041667]
+observed [107.0] baseline 630.03587 model_mae 1056.0416666664212 baseline_mae 523.0358695652175 difference 533.0057971012037 negative 0
+SEED 45 train 92 test 1
+positions [(41, '40')]
+predictions [52.5]
+observed [114.0] baseline 629.959783 model_mae 61.49999999997387 baseline_mae 515.9597826086957 difference -454.45978260872187 negative 0
+SEED 46 train 92 test 1
+positions [(14, '13')]
+predictions [110.4]
+observed [36.0] baseline 630.807609 model_mae 74.39999999999999 baseline_mae 594.8076086956522 difference -520.4076086956522 negative 0
+SEED 47 train 92 test 1
+positions [(46, '45')]
+predictions [108.352941]
+observed [400.0] baseline 626.851087 model_mae 291.64705882357055 baseline_mae 226.85108695652173 difference 64.79597186704882 negative 0
+SEED 48 train 92 test 1
+positions [(65, '64')]
+predictions [162.0]
+observed [150.0] baseline 629.568478 model_mae 12.0 baseline_mae 479.5684782608696 difference -467.5684782608696 negative 0
+SEED 49 train 92 test 1
+positions [(14, '13')]
+predictions [110.4]
+observed [36.0] baseline 630.807609 model_mae 74.39999999999999 baseline_mae 594.8076086956522 difference -520.4076086956522 negative 0
+SEED 50 train 92 test 1
+positions [(58, '57')]
+predictions [407.37931]
+observed [278.0] baseline 628.177174 model_mae 129.37931034456864 baseline_mae 350.1771739130435 difference -220.79786356847484 negative 0
+SEED 51 train 92 test 1
+positions [(40, '39')]
+predictions [60.0]
+observed [42.0] baseline 630.742391 model_mae 18.0 baseline_mae 588.7423913043478 difference -570.7423913043478 negative 0
+SUMMARY mean_difference -193.9694766097517 median_difference -337.6288230885983 wins 6 ties 0 losses 4
+real 0.02
+user 0.01
+sys 0.00

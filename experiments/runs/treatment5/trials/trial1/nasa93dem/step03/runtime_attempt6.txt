@@ -1,0 +1,19 @@
+Illustrative threshold: 10% of tool=n mean effort (not a client requirement) = 60.60638554216868
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/run_demo.py", line 7, in <module>
+    main(['certify.py', data, str(threshold)])
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 128, in main
+    result = compare(groups["n"], groups["h"], threshold)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 106, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 82, in t_quantile
+    while t_cdf(lo, df) > p: lo *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 73, in t_cdf
+    raise ArithmeticError("t CDF numerical result outside [0, 1]")
+ArithmeticError: t CDF numerical result outside [0, 1]
+real 0.02
+user 0.01
+sys 0.00

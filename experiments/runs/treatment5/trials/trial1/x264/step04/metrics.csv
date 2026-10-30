@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,1,video encoding,flow,61,61,1,0.04,1,"6 tests; /usr/bin/time -p real; EZR iterator, Welford NUM.add-style updates, and least/min-so-far adaptation; CSV order is demonstration sequence; lower Performance- wins; missing/nonfinite skipped; first lazy-order fixture was repaired and preserved as attempt 001; no convergence, evidence sufficiency, or stopping rule claimed"

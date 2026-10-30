@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,1,video encoding,choose,73,73,1,0.05,1,"4 tests; /usr/bin/time -p demonstration real=0.05s; EZR-inspired one-pass NUM summary, seeded stable candidate sampling, and deterministic tie-breaking; lower Performance- is better; 1 repaired shell-wrapper failure preserved in attempt02; audit is post-freeze; IDs are zero-padded input positions; standard-library-only; budget is distinct evaluations."

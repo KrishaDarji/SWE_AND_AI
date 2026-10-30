@@ -1,0 +1,6 @@
+Health ClosedIssues criterion certification
+Assumptions: independent configuration observations; finite MRE- values only; Welch unequal-variance inference. Other settings may confound differences; no causal, repeated-run-noise, equivalence, or guaranteed-gain claim.
+{'definitions': 'MRE- is primary; candidate-minus-reference, lower is better. ACC+ and PRED40+ are descriptive only.', 'counts': {'reference': 3363, 'candidate': 3302}, 'means': {'reference': 0.6737202958486018, 'candidate': 0.7508694690284082}, 'welch': {'difference': 0.07714917317980641, 'df': 6661.6898268289115, 'se': 0.00508300788171081, 't': 15.177858263292713, 'p': 0.0, 'ci_low': 0.06718485038289562, 'ci_high': 0.08711349597671719}, 'practical_threshold': None, 'practical_importance': 'undetermined (no threshold supplied)', 'secondary': {'ACC+': {'squared_error': {'count': 3363, 'mean': 0.5088244263981059}, 'absolute_error': {'count': 3302, 'mean': 0.47779311364779153}}, 'PRED40+': {'squared_error': {'count': 3363, 'mean': 0.1801962533452275}, 'absolute_error': {'count': 3302, 'mean': 0.12667647313316605}}}}
+real 0.03
+user 0.03
+sys 0.00

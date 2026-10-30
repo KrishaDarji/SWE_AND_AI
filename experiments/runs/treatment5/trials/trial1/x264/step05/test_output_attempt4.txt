@@ -1,0 +1,16 @@
+test_association_constants_missing_and_multivalue (test_blame.BlameTests.test_association_constants_missing_and_multivalue) ... FAIL
+test_deterministic_ties_and_primary_score (test_blame.BlameTests.test_deterministic_ties_and_primary_score) ... ok
+test_nonfinite_outcome_is_excluded (test_blame.BlameTests.test_nonfinite_outcome_is_excluded) ... ok
+
+======================================================================
+FAIL: test_association_constants_missing_and_multivalue (test_blame.BlameTests.test_association_constants_missing_and_multivalue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step05/tests/test_blame.py", line 20, in test_association_constants_missing_and_multivalue
+    self.assertTrue(any(a == "strong" and b == "corr" for a, b in duplicates))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=1)

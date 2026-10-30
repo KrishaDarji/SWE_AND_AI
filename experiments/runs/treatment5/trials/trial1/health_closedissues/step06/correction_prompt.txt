@@ -1,0 +1,31 @@
+Correct Treatment 5, Trial 1, Health, Step 6.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step06/
+
+Fix reference calculation in analyze():
+
+Selection may continue requiring all three outcomes to be finite.
+However, calculate each historical reference median and valid count from
+all finite values of that particular outcome across the original dataset,
+including rows ineligible for recommendation because another outcome is missing.
+
+Do not change the selection policy or tie-breaking.
+Preserve original CSV record identifiers.
+
+Add a synthetic regression test where different rows are missing different
+outcomes. Independently verify each reference median and valid count, while
+confirming recommendation eligibility remains unchanged.
+Also test references when no row has all three outcomes but individual
+outcomes still have usable values.
+
+Use only current Health Step 6 files, the specified Health dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps or other experiment runs.
+
+Preserve existing artifacts and logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Keep fixtures and outputs inside the exact Step 6 directory above.

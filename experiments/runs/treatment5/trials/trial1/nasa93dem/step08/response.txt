@@ -1,0 +1,14 @@
+Implemented the Python application and tests in the required directory.
+
+Files:
+- source/repair.py — categorical training-only estimator, grouped split, validation, and repair ranking.
+- source/run_demo.py — NASA93 demonstration using the earliest held-out row and budget 100.
+- tests/test_step08.py — 10 synthetic tests covering feasibility, priorities, ties, invalid inputs, training-only candidates, identifiers, and held-out independence.
+- test_output.txt and runtime_output.txt — references to preserved actual attempt logs.
+- metrics.csv and run_instructions.txt.
+
+The implementation adapts EZR ideas from the authorized source: CSV streaming/coercion, whitespace-normalized symbolic columns, seeded deterministic sampling, grouped rows, and simple symbolic summaries. It is independently implemented in Python and has no Lua or third-party dependency.
+
+Measured results: all 10 tests passed. The demonstration completed successfully in 0.03 seconds real time. It used 70 training rows and 23 held-out rows; the held-out proposal had estimated effort 3951.9, so the selected hypothetical repair had predicted effort 60.0 under budget 100, with 8 changed descriptors.
+
+Assumptions and limitations: descriptors are categorical strings; unseen proposals use a nearest categorical training-row fallback, while repairs are restricted to distinct configurations observed in training. Change count is only a proxy, not monetary cost or operational risk. Descriptor combinations are hypothetical and may not be actionable or preserve project scope. Model differences are not causal improvements or guaranteed savings. Invalid targets are excluded while preserving their CSV line and idX values in diagnostics; idX is treated as an identifier value, not assumed unique.

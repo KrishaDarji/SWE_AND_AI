@@ -1,0 +1,11 @@
+test_all_outcome_references (test_justify_config.Tests) ... ok
+test_medians_evidence_and_identifier (test_justify_config.Tests) ... ok
+test_missing_nonfinite_excluded (test_justify_config.Tests) ... ok
+test_no_eligible (test_justify_config.Tests) ... ok
+test_selection_and_tiebreakers (test_justify_config.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK
+tests_run=5 failures=0 errors=0

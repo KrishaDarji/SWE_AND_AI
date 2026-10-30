@@ -1,0 +1,11 @@
+test_direction_and_threshold_crossing (test_certify.TestCertify.test_direction_and_threshold_crossing) ... ok
+test_group_selection_and_whitespace (test_certify.TestCertify.test_group_selection_and_whitespace) ... ok
+test_invalid_and_insufficient (test_certify.TestCertify.test_invalid_and_insufficient) ... ok
+test_reference_t_values (test_certify.TestCertify.test_reference_t_values) ... ok
+test_welch_known_values (test_certify.TestCertify.test_welch_known_values) ... ok
+test_zero_variance_missing_nonfinite (test_certify.TestCertify.test_zero_variance_missing_nonfinite) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.293s
+
+OK

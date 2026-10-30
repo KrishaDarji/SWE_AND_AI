@@ -1,0 +1,13 @@
+Implemented and verified the independent Python comparison in the exact Step 10 directory.
+
+Source: source/tuner.py
+Tests: tests/test_tuner.py
+Runner: run_demo.py
+
+The race tuner uses EZR-informed ideas from the authorized Lua: deterministic seeded randomness, stable candidate ordering, numeric normalization, and distance-based active selection. It evaluates one seeded candidate, then selects the unevaluated configuration farthest from evaluated configurations. Uniform random search uses the same candidate pool, budget, seeds, callback model, and deterministic deduplication. Lower Performance- is better.
+
+Verification: all 5 tests pass. The demonstration uses budget 20 and seeds 42 through 51, with fresh callbacks for every strategy and seed. Runtime measured by /usr/bin/time -p: real 6.52 seconds. Paired difference is tuner Performance- minus baseline Performance-. With tie tolerance 0, race wins 4, ties 0, losses 6; mean difference -8.2 and total difference -82.0. These are benchmark repeats, not independent LLM trials. No statistical superiority or final same procedure is claimed.
+
+Known limitations: the tuner is a compact independent active-search adaptation, not a full EZR reproduction; the dataset is treated as a finite fully enumerated candidate pool; retrospective gaps were not used for selection; and Performance- units are not inferred.
+
+Run tests and the demonstration using the commands in run_instructions.txt.

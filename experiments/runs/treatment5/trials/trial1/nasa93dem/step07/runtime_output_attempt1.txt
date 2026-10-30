@@ -1,0 +1,13 @@
+Selection uses observed outcomes, not predictions for unseen proposals.
+Kloc+ is used only as an explicitly labeled delivered-size proxy for value; it is not code productivity or business value.
+budget=100.0
+feasible/total=31/93
+selection_rule=max observed Kloc+; ties=min observed Effort-; then earliest CSV record
+original_record_position=78
+original_record_identifier=78
+descriptor_settings=prec=h, flex=h, resl=h, team=vh, pmat=l, rely=h, data=n, cplx=vh, ruse=n, docu=n, time=n, stor=vh, pvol=l, acap=h, pcap=h, pcon=n, apex=h, plex=h, ltex=h, tool=n, site=n, sced=l
+observed_effort=97
+delivered_size_proxy_Kloc+=165
+real 0.03
+user 0.01
+sys 0.00

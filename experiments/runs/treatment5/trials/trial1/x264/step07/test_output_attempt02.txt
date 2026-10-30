@@ -1,0 +1,10 @@
+test_budget_and_duplicate_prevention (test_choose.ChooseTests.test_budget_and_duplicate_prevention) ... ok
+test_hidden_outcomes_only_callback (test_choose.ChooseTests.test_hidden_outcomes_only_callback) ... ok
+test_invalid_inputs (test_choose.ChooseTests.test_invalid_inputs) ... ok
+test_reproducible_and_membership (test_choose.ChooseTests.test_reproducible_and_membership) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+attempt02 exit=0

@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02
+Python interpreter: /usr/bin/python3
+Test command: python3 -m unittest discover -s tests -v
+Demonstration command: /usr/bin/time -p python3 source/guess_model.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+All paths containing spaces are quoted. Logs are preserved as test_output_attempt1..4.txt and runtime_output_attempt1..4.txt; test_output.txt and runtime_output.txt reference the final attempt.

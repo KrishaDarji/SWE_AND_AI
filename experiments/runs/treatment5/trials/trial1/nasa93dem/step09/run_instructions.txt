@@ -1,0 +1,5 @@
+working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step09
+interpreter: /usr/bin/python3
+tests: python3 -m unittest discover -s tests
+demo: /usr/bin/time -p python3 source/spot.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+All paths containing spaces are quoted.

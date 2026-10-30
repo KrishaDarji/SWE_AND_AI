@@ -1,0 +1,12 @@
+Implemented the requested Python application and tests.
+
+Result: the observed MRE- association ranking is Min_sample_leaves, criterion, Min_impurity_decrease, N_estimators, Max_depth. Scores are eta-squared from one consistent grouping-based measure; lower MRE- is better. The measured runtime was 0.06 seconds and all 4 tests passed.
+
+The implementation is in source/blame.py and tests/test_blame.py. Run it with:
+/usr/bin/python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+EZR background informed the streaming numeric-summary style, missing-value handling, deterministic sorting, and simple column/type abstractions. Numeric settings are grouped into four equal-frequency groups using predictor values only; boundaries are printed. This loses within-group ordering and fine-grained variation. criterion is categorical. MRE-, ACC+, and PRED40+ are excluded as explanatory variables.
+
+The analysis is marginal, not adjusted: correlated settings can share explanatory information, so association is not causal and should not be interpreted as an independent effect. Constants, missing/nonfinite values, empty usable groups, and ties are handled deterministically. The dataset had 10,000 usable MRE- values and no missing setting values in the measured run. No metric formula, units, valid ranges, guaranteed gains, or compute-cost claims are inferred.
+
+Correction update: quantile grouping now filters invalid numeric values while preserving missing positions; category direction is no longer inferred from labels; numeric direction reports monotonic, nonmonotonic, or no-variation patterns; and empty outcomes produce a clear result without traceback. The corrected suite has 6 passing tests and the final measured runtime is 0.07 seconds. Final logs are attempt 3, with earlier attempts preserved.

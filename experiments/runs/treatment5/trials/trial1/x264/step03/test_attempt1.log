@@ -1,0 +1,9 @@
+test_direction_and_reference_values (test_certify.TestCertify.test_direction_and_reference_values) ... ok
+test_large_statistic (test_certify.TestCertify.test_large_statistic) ... ok
+test_missing_and_insufficient (test_certify.TestCertify.test_missing_and_insufficient) ... ok
+test_zero_and_threshold (test_certify.TestCertify.test_zero_and_threshold) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

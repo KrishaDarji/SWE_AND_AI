@@ -1,0 +1,70 @@
+test_direction_and_threshold_crossing (test_certify.TestCertify.test_direction_and_threshold_crossing) ... ERROR
+test_group_selection_and_whitespace (test_certify.TestCertify.test_group_selection_and_whitespace) ... ok
+test_invalid_and_insufficient (test_certify.TestCertify.test_invalid_and_insufficient) ... ok
+test_reference_t_values (test_certify.TestCertify.test_reference_t_values) ... FAIL
+test_welch_known_values (test_certify.TestCertify.test_welch_known_values) ... ERROR
+test_zero_variance_missing_nonfinite (test_certify.TestCertify.test_zero_variance_missing_nonfinite) ... ERROR
+
+======================================================================
+ERROR: test_direction_and_threshold_crossing (test_certify.TestCertify.test_direction_and_threshold_crossing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 12, in test_direction_and_threshold_crossing
+    r=compare([1,2,3,4],[10,11,12,13], 8); self.assertLess(r["difference"],0); self.assertTrue(r["point_exceeds"]); self.assertFalse(r["entirely_practical"])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 106, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 82, in t_quantile
+    while t_cdf(lo, df) > p: lo *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 73, in t_cdf
+    raise ArithmeticError("t CDF numerical result outside [0, 1]")
+ArithmeticError: t CDF numerical result outside [0, 1]
+
+======================================================================
+ERROR: test_welch_known_values (test_certify.TestCertify.test_welch_known_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 15, in test_welch_known_values
+    r=compare([1,2,3],[4,5,100],0); self.assertAlmostEqual(r["df"],2.001315645, places=6); self.assertAlmostEqual(r["difference"],-34.333333, places=5)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 106, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 82, in t_quantile
+    while t_cdf(lo, df) > p: lo *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 73, in t_cdf
+    raise ArithmeticError("t CDF numerical result outside [0, 1]")
+ArithmeticError: t CDF numerical result outside [0, 1]
+
+======================================================================
+ERROR: test_zero_variance_missing_nonfinite (test_certify.TestCertify.test_zero_variance_missing_nonfinite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 31, in test_zero_variance_missing_nonfinite
+    r=compare([2,2,2],[1,2,4],0); self.assertNotEqual(r.get("status"), "undefined"); self.assertIsNotNone(r["p_two_sided"])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 106, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 82, in t_quantile
+    while t_cdf(lo, df) > p: lo *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 73, in t_cdf
+    raise ArithmeticError("t CDF numerical result outside [0, 1]")
+ArithmeticError: t CDF numerical result outside [0, 1]
+
+======================================================================
+FAIL: test_reference_t_values (test_certify.TestCertify.test_reference_t_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 18, in test_reference_t_values
+    self.assertAlmostEqual(t_cdf(t, 1), .5 + math.atan(t)/math.pi, places=10 if abs(t)<100 else 8)
+AssertionError: 0.5003183106677497 != 0.5003183097800805 within 10 places (8.876691603987297e-10 difference)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1, errors=3)

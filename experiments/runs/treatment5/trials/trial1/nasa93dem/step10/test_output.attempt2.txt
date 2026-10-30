@@ -1,0 +1,14 @@
+.....F
+======================================================================
+FAIL: test_reproducible_and_separated (test_estimator.Tests.test_reproducible_and_separated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/tests/test_estimator.py", line 10, in test_reproducible_and_separated
+    rs=[row([str(i%3),'a'],i+1,i+2) for i in range(12)]; a=split_indices(rs,42); self.assertEqual(a,split_indices(rs,42)); self.assertTrue(set(rs[i]['x'] for i in a[0]).isdisjoint(set(rs[i]['x'] for i in a[1])))
+                                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

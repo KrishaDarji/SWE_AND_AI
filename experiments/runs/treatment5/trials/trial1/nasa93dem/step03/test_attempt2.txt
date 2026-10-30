@@ -1,0 +1,20 @@
+test_direction_and_threshold_crossing (test_certify.TestCertify.test_direction_and_threshold_crossing) ... ok
+test_group_selection_and_whitespace (test_certify.TestCertify.test_group_selection_and_whitespace) ... ok
+test_invalid_and_insufficient (test_certify.TestCertify.test_invalid_and_insufficient) ... ok
+test_reference_t_values (test_certify.TestCertify.test_reference_t_values) ... FAIL
+test_welch_known_values (test_certify.TestCertify.test_welch_known_values) ... ok
+test_zero_variance_missing_nonfinite (test_certify.TestCertify.test_zero_variance_missing_nonfinite) ... ok
+
+======================================================================
+FAIL: test_reference_t_values (test_certify.TestCertify.test_reference_t_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 17, in test_reference_t_values
+    self.assertAlmostEqual(t_quantile(.975, 10), 2.22813885, places=5); self.assertAlmostEqual(t_cdf(0,10), .5, places=12)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 5.60787713657753 != 2.22813885 within 5 places (3.37973828657753 difference)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.025s
+
+FAILED (failures=1)

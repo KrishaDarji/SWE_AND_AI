@@ -1,0 +1,19 @@
+test_cdf_reference (test_certify.T.test_cdf_reference) ... ok
+test_groups_direction (test_certify.T.test_groups_direction) ... ok
+test_missing_insufficient_zero (test_certify.T.test_missing_insufficient_zero) ... ok
+test_threshold (test_certify.T.test_threshold) ... ok
+test_welch_known (test_certify.T.test_welch_known) ... FAIL
+
+======================================================================
+FAIL: test_welch_known (test_certify.T.test_welch_known)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step03/tests/test_certify.py", line 9, in test_welch_known
+    r=certify.welch([1,2,3,4],[2,4,6,8]); self.assertAlmostEqual(r['df'],4.8,6); self.assertTrue(0<r['p']<1); self.assertLess(r['ci_low'],r['ci_high'])
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 4.411764705882353 != 4.8 within 6 places (0.38823529411764657 difference)
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=1)

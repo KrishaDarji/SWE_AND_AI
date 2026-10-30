@@ -1,0 +1,7 @@
+Implemented the independent Python predictor in source/predictor.py with tests in tests/test_predictor.py.
+
+It uses all 16 encoder settings to predict Performance-; lower is better. The reproducible seed-42 grouped split produced 922 training rows and 230 held-out rows across 1,152 configuration groups. Held-out MAE was 26.010996055 versus 140.463652825 for the training-mean baseline. The fitted model is a standardized linear ridge model (ridge=1e-6), with preprocessing fit only on training rows. Supplied prediction configurations are schema-validated and reject incomplete, extra, nonnumeric, and nonfinite inputs.
+
+EZR machinery adapted: streaming/strict CSV handling, Welford-style numeric summaries, seeded shuffling, and normalization with a tiny numerical safeguard. No Lua or third-party packages are used.
+
+Tests: 4 passed. Demonstration timing: 0.06 seconds real via /usr/bin/time -p. One initial demonstration path failure was repaired and preserved in logs/runtime_attempt1.*; successful outputs are in logs/*_attempt2.* and summarized verbatim in test_output.txt and runtime_output.txt. Known limitations are the fixed grouped split, numeric-settings assumption, and linear model.

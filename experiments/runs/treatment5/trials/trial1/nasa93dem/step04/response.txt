@@ -1,0 +1,7 @@
+Corrected Treatment 5, Trial 1, NASA93, Step 4.
+
+Fixed the implementation to use exactly the 22 project descriptors, excluding all X-suffix metadata and outcome columns. assess() now computes prediction and baseline before accessing the current Effort-, validates the revealed outcome afterward, and only adds valid outcomes to history. main() passes read_rows() directly to assess() without buffering arrivals.
+
+Added six regression tests covering exact descriptors, metadata/non-target outcome invariance, guarded pre-revelation access, current/future outcome invariance, warm-up and invalid outcomes, independently accumulated prediction/baseline MAEs, and immutable earlier snapshots.
+
+Final results: 6 tests passed; 93 records streamed; measured /usr/bin/time -p real time: 0.09 seconds. The original demo output is preserved as demo_results.before_correction.csv. Earlier logs remain preserved in attempt-labeled files; the final test and runtime logs are identified by test_output.txt and runtime_output.txt.

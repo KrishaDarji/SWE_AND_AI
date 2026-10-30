@@ -1,0 +1,49 @@
+test_empty_short_and_invalid (test_arrival_estimator.FlowTests) ... ok
+test_future_mutation_cannot_change_frozen_prediction (test_arrival_estimator.FlowTests) ... FAIL
+test_missing_unseen_and_exclusions (test_arrival_estimator.FlowTests) ... FAIL
+test_prediction_precedes_reveal (test_arrival_estimator.FlowTests) ... FAIL
+test_warmup_and_known_arithmetic (test_arrival_estimator.FlowTests) ... FAIL
+
+======================================================================
+FAIL: test_future_mutation_cannot_change_frozen_prediction (test_arrival_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/tests/test_arrival_estimator.py", line 27, in test_future_mutation_cannot_change_frozen_prediction
+    self.assertEqual(assess(first)[2]["status"], "warm-up")
+AssertionError: 'scored' != 'warm-up'
+- scored
++ warm-up
+
+
+======================================================================
+FAIL: test_missing_unseen_and_exclusions (test_arrival_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/tests/test_arrival_estimator.py", line 22, in test_missing_unseen_and_exclusions
+    self.assertEqual(got[2]["status"], "warm-up")
+AssertionError: 'scored' != 'warm-up'
+- scored
++ warm-up
+
+
+======================================================================
+FAIL: test_prediction_precedes_reveal (test_arrival_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/tests/test_arrival_estimator.py", line 33, in test_prediction_precedes_reveal
+    self.assertEqual(got[2]["prediction"], 15.0); self.assertEqual(got[3]["prediction"], 15.0)
+AssertionError: 13.333333333333334 != 15.0
+
+======================================================================
+FAIL: test_warmup_and_known_arithmetic (test_arrival_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/tests/test_arrival_estimator.py", line 14, in test_warmup_and_known_arithmetic
+    self.assertEqual(got[3]["cumulative_mae"], 25.0)
+AssertionError: 30.833333333333336 != 25.0
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=4)
+EXIT=1

@@ -1,0 +1,26 @@
+Retrospective observed-data configuration justification
+
+Demonstration policy: select the lowest observed MRE-, breaking ties by higher ACC+, then higher PRED40+, then earliest CSV record.
+Eligibility: a row is eligible only when all three outcomes are finite numeric values; its original CSV record number (header excluded) is preserved.
+Eligible records: 10000
+Reference median MRE-: 0.80913107511 (valid count: 10000)
+Reference median ACC+: 0.43992310157 (valid count: 10000)
+Reference median PRED40+: 0 (valid count: 10000)
+Recommended configuration (observed record 32):
+  N_estimators: 10
+  criterion: squared_error
+  Min_sample_leaves: 1
+  Min_impurity_decrease: 6.75
+  Max_depth: 5
+Measured outcomes:
+  MRE-: 0 (below reference median 0.80913107511)
+  ACC+: 0.7901313681512335 (above reference median 0.43992310157)
+  PRED40+: 0.8571428571428571 (above reference median 0)
+The MRE- choice is the demonstration policy result; it need not be best on ACC+ or PRED40+.
+These are measured results, not model estimates or causal effects. Settings can be correlated and may share explanatory information, so global scores are not additive local contributions.
+This is retrospective observed-data evidence, not a guarantee of future performance or statistical superiority.
+Assumptions and limitations: CSV order is the fallback identifier; only finite numeric outcomes are eligible; missing/nonfinite rows are excluded; no resource costs, metric ranges, formulas, or constraints are inferred.
+EZR-informed adaptations: csv-style streaming/coercion, stable deterministic ordering, and summary/reference arithmetic reflect ezr-lib.lua; the explicit goal direction and tie policy are specified for this demonstration. No Lua code is executed.
+real 0.11
+user 0.08
+sys 0.01

@@ -1,0 +1,5 @@
+Complete source: source/certify.py
+Tests: tests/test_certify.py (6 tests)
+EZR-informed machinery: whitespace/BOM-aware CSV coercion, one-pass numeric mean/M2 variance, and group summaries. Welch-Satterthwaite inference is implemented independently in Python standard library.
+The demo compares fixed tool=n (A) against tool=h (B), using an illustrative threshold equal to 10% of A mean; it is not a client requirement.
+Assumptions and limitations: independent observations, finite numeric Effort-, two-sided alpha=.05; results may be affected by skew, imbalance, and scope differences. Effort- is observed effort, not verified monetary cost. No causal effect, repeated-run noise, units, or guaranteed savings are claimed. Non-significance is not equivalence; threshold-crossing intervals are practically uncertain.

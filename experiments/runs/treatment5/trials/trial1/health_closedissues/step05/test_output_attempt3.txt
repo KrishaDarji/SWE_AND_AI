@@ -1,0 +1,15 @@
+FINAL_ATTEMPT=3
+exit_status=0
+--- stdout ---
+--- stderr ---
+test_constants_missing_all_missing (test_blame.BlameTests) ... ok
+test_excluded_and_mixed_columns (test_blame.BlameTests) ... ok
+test_label_renaming_and_nonmonotonic_path (test_blame.BlameTests) ... ok
+test_mixed_and_all_missing_numeric (test_blame.BlameTests) ... ok
+test_no_valid_outcomes_main (test_blame.BlameTests) ... ok
+test_numeric_and_categorical_known_through_analyze (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

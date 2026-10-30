@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step07
+Python interpreter: python3 (standard library only)
+Run tests: PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step07" python3 -m unittest discover -s tests -v
+Run demonstration: /usr/bin/time -p sh -c "cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step07' && PYTHONPATH='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step07' python3 run_demo.py"
+All paths with spaces are quoted; run_demo.py reads only the authorized absolute dataset path.

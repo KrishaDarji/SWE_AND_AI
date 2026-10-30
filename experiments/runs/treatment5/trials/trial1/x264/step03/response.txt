@@ -1,0 +1,16 @@
+Implemented Step 3 in Python using only the standard library.
+
+Source: source/certify.py
+Tests: tests/test_certify.py
+Run: python3 -m unittest discover -s tests -v
+Demonstration: python3 source/certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Comparison fixed in advance: A is no_8x8dct=0 and B is no_8x8dct=1. Both groups contain 576 finite configuration rows. Means are A=472.1355069444445 and B=451.3716857638889; A minus B=20.763821180555624. Welch t=2.1711245916071182, df=1149.2372777191688, two-sided p=0.0301258621737599, 95% CI [1.999699018536301, 39.52794334257494]. Lower Performance- is better.
+
+The difference has statistical evidence against zero at alpha=.05. The point estimate exceeds the illustrative practical threshold of 5.0, but the interval crosses that threshold, so practical importance is uncertain. This is not an equivalence finding. Rows are different configurations, not repeated-run measurements; configuration variation cannot establish measurement noise or causal effects.
+
+EZR-informed machinery: the implementation follows the supplied EZR statistical style of numeric summaries, variance-based comparison, and confidence intervals, translated independently. It implements Welch unequal-variance degrees of freedom, a two-sided t probability, and a 95% t interval. The t CDF uses the regularized incomplete beta function with a continued fraction; the critical value uses bisection. Reference checks cover t=2.228138851 at df=10, the near-normal 1.959963984540 value, small/large statistics, and arithmetic direction.
+
+The suite has 4 passing tests. Missing/nonfinite values are omitted; empty or insufficient groups, zero standard error, and invalid thresholds raise ValueError. No randomized calculation is used. The practical threshold is illustrative and has no invented units. Limitations include observational configuration rows, the chosen threshold, and numerical approximation tolerance.
+
+Artifacts include preserved logs, metrics.csv, and run_instructions.txt. One initial zsh wrapper failed because it used the read-only variable name status; the corrected attempt passed and the repaired command is counted in error_count.

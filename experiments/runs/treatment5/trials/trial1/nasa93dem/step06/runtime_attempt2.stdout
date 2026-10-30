@@ -1,0 +1,9 @@
+TRAIN_ROWS 70
+TEST_ROWS 23
+HELD_OUT_RECORD 9
+PROPOSAL_DESCRIPTORS 22
+FROZEN_ESTIMATE 480.0
+TRAINING_MEDIAN_REFERENCE 239.5
+EVIDENCE model_behavior: median effort of 3 nearest training row(s) at descriptor distance 5
+UNSEEN_DESCRIPTORS none
+AUDIT {'label': 'measured_audit_value', 'record_id': '9', 'observed_effort': 72.0}

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,1,software project estimation,guess,91,91,1,0.03,2,"10 tests; final logs are attempt3; /usr/bin/time -p real; finite target validation excludes and counts invalid targets; EZR CSV coercion/roles and symbolic grouping adapted; categorical grouped split seed 42; 70 train/23 test; baseline exceeded model; two repaired failed patch commands counted"

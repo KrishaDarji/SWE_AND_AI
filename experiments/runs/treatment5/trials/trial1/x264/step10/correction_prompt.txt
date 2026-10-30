@@ -1,0 +1,10 @@
+Correct Treatment 5, Trial 1, X264, Step 10.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/
+
+Fix functional issues: return callback observations from finish; keep outcomes private; deduplicate identical configurations for direct calls; validate positive integer budgets excluding booleans/fractions; handle nonfinite observations; compute actual paired differences and win/tie/loss summaries with mean and median; report full recommendations and outcomes.
+
+Strengthen tests for callback outcomes, privacy, duplicate prevention, summaries, invalid inputs, equal budgets, reproducibility, and hidden-outcome isolation.
+
+Use only current Step 10 files, the authorized X264 dataset, and the two authorized EZR Lua files. Preserve original artifacts and logs, save this correction prompt separately, rerun budget 20 and seeds 42 through 51, preserve incorrect results separately, update metrics including earlier failures, identify final attempts in main logs, do not claim statistical superiority, and write only inside the exact Step 10 directory.

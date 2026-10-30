@@ -1,0 +1,4 @@
+{'predictors': ['N_estimators', 'criterion', 'Min_sample_leaves', 'Min_impurity_decrease', 'Max_depth'], 'train_count': 8000, 'test_count': 2000, 'train_groups': 8000, 'test_groups': 2000, 'settings': {'seed': 42, 'test_fraction': 0.2}, 'metrics': {'MRE-': {'heldout_mae': 0.09386913284820107, 'training_mean_baseline_mae': 0.16604018269382761}, 'ACC+': {'heldout_mae': 0.05213793957326888, 'training_mean_baseline_mae': 0.09007118811959755}}}
+real 0.08
+user 0.07
+sys 0.00

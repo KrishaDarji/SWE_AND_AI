@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment5/trials/trial1/x264/step02/run_demo.py", line 4, in <module>
+    r=fit_evaluate(os.path.join(os.path.dirname(__file__), "../../../../../../SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment5/trials/trial1/x264/step02/source/predictor.py", line 94, in fit_evaluate
+    names, rows = read_csv(path); train, test = grouped_split(rows)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment5/trials/trial1/x264/step02/source/predictor.py", line 25, in read_csv
+    with open(path, newline="", encoding="utf-8-sig") as stream:
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/experiments/runs/treatment5/trials/trial1/x264/step02/../../../../../../SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+real 0.02
+user 0.01
+sys 0.00

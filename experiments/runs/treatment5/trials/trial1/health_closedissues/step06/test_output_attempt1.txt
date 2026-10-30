@@ -1,0 +1,41 @@
+test_all_outcome_references (test_justify_config.Tests) ... FAIL
+test_medians_evidence_and_identifier (test_justify_config.Tests) ... FAIL
+test_missing_nonfinite_excluded (test_justify_config.Tests) ... ok
+test_no_eligible (test_justify_config.Tests) ... ok
+test_selection_and_tiebreakers (test_justify_config.Tests) ... ok
+
+======================================================================
+FAIL: test_all_outcome_references (test_justify_config.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step06/tests/test_justify_config.py", line 28, in test_all_outcome_references
+    a=j.analyze(p); self.assertEqual(a["references"]["ACC+"],(.6,2)); self.assertEqual(a["references"]["PRED40+"],(.4,2))
+AssertionError: Tuples differ: (0.6000000000000001, 2) != (0.6, 2)
+
+First differing element 0:
+0.6000000000000001
+0.6
+
+- (0.6000000000000001, 2)
++ (0.6, 2)
+
+======================================================================
+FAIL: test_medians_evidence_and_identifier (test_justify_config.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step06/tests/test_justify_config.py", line 18, in test_medians_evidence_and_identifier
+    a=j.analyze(p); self.assertEqual(a["references"]["MRE-"],(.3,2)); out=j.render(p)
+AssertionError: Tuples differ: (0.30000000000000004, 2) != (0.3, 2)
+
+First differing element 0:
+0.30000000000000004
+0.3
+
+- (0.30000000000000004, 2)
++ (0.3, 2)
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.007s
+
+FAILED (failures=2)
+tests_run=5 failures=2 errors=0

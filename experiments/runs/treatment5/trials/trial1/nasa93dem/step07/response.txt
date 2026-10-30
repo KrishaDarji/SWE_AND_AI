@@ -1,0 +1,14 @@
+Implemented the independent Python selector and tests in:
+
+[source/choose.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step07/source/choose.py)
+[tests/test_choose.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step07/tests/test_choose.py)
+
+Run it with:
+
+    /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step07/source/choose.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" 100
+
+The 8-test suite passes. The demonstration found 31 feasible of 93 records and selected original CSV record 78 (idX 78): observed Effort- 97 and delivered-size proxy Kloc+ 165.
+
+EZR-inspired machinery: CSV row streaming, retained original positions, finite numeric checks, and deterministic sorted selection/tie-breaking. No Lua or external packages are used. centerX and YearX remain separate X-suffix metadata; the 22 descriptor settings are reported separately.
+
+Assumptions and limitations: Kloc+ is only an observed delivered-size proxy, not business value or productivity. Selection is retrospective over observed outcomes, not prediction for unseen proposals. It does not establish causation or guarantee future feasibility. Invalid outcomes are excluded, budgets must be finite and nonnegative, and no monetary units or invented costs are used.

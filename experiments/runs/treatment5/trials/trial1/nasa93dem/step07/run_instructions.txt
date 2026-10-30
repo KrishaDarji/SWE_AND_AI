@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step07
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step07/tests" -v
+Demonstration command: /usr/bin/time -p /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step07/source/choose.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" 100
+All paths containing spaces are quoted. Logs preserve attempts: test_output_attempt1 was a shell-wrapper failure; test_output_attempt2 passed and is copied to test_output.txt. runtime_output_attempt1 passed and is copied to runtime_output.txt.

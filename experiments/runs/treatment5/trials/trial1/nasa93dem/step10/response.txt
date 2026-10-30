@@ -1,0 +1,11 @@
+Implemented and corrected the requested independent Python estimator and comparison in the exact Step 10 directory.
+
+Source: source/estimator.py. Tests: tests/test_estimator.py. Correction prompt: correction_prompt.txt. Run with the commands in run_instructions.txt.
+
+The estimator adapts EZR’s column-oriented design, symbolic equality distance, explicit missing handling, one-pass training summaries, and seeded reproducible sampling ideas. It uses normalized categorical descriptors, grouped 75/25 splits for seeds 42–51, fresh fitting per split, and a training-mean baseline.
+
+Target policy: invalid, missing, nonnumeric, NaN, and infinite Effort- values are explicitly excluded and counted before grouping; original CSV positions and idX are retained. Zero is valid. All-invalid input raises a clear error.
+
+Measured result: 7 tests passed. The corrected demonstration completed in 0.03 seconds real time. NASA93 had 0 invalid targets excluded and 93 usable rows. Across the ten overlapping repeated splits, model-minus-baseline MAE had mean -76.56504486316086 and median -75.99128963889223, with 8 descriptive wins, 0 ties, and 2 losses. No negative predictions occurred.
+
+Limitations: repeated splits overlap and are not independent datasets or independent LLM trials; this is not a statistical superiority claim. No deployment reliability or effort units are asserted. Invalid targets are excluded from fitting, unseen descriptors are handled as categorical mismatches, and the project’s final “same” procedure remains pending if unavailable.

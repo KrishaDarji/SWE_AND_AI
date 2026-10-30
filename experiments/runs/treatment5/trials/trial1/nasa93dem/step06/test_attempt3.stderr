@@ -1,0 +1,98 @@
+EE/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py:23: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/6s/nl7vyczd1cg4synhvvd8v8840000gn/T/s6.csv' mode='w' encoding='UTF-8'>
+  p=os.path.join(tempfile.gettempdir(),'s6.csv'); keys=','.join(['idX']+DESCRIPTORS+['Effort-']); vals=','.join(['5']+['a']*22+['notnum']); vals2=','.join(['7']+[' a ']*22+['3']); open(p,'w').write(keys+'\n'+vals+'\n'+vals2+'\n'); return p
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FEE
+======================================================================
+ERROR: test_evidence_and_selection (tests.test_estimator.Tests.test_evidence_and_selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 15, in test_evidence_and_selection
+    m=Estimator(self.rows()[:3]); z=m.predict({'prec':'a','flex':'0'}); self.assertTrue(z['evidence'].startswith('model_behavior:')); self.assertEqual(min(self.rows()[3:],key=lambda r:(r['line'],r['id']) )['id'],'4')
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 39, in predict
+    if missing: raise ValueError('invalid proposal; missing descriptors: '+','.join(missing))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid proposal; missing descriptors: resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+
+======================================================================
+ERROR: test_excluded_inputs_and_missing_unseen (tests.test_estimator.Tests.test_excluded_inputs_and_missing_unseen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 12, in test_excluded_inputs_and_missing_unseen
+    z=m.predict({'prec':' unseen ','flex':'9'}); self.assertEqual(z['unseen_descriptors'],['flex'])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 39, in predict
+    if missing: raise ValueError('invalid proposal; missing descriptors: '+','.join(missing))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid proposal; missing descriptors: resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+
+======================================================================
+ERROR: test_outcome_does_not_change_frozen_prediction (tests.test_estimator.Tests.test_outcome_does_not_change_frozen_prediction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 18, in test_outcome_does_not_change_frozen_prediction
+    m1=Estimator(a[:3]); m2=Estimator(b[:3]); self.assertEqual(m1.predict({'prec':'b','flex':'1'}),m2.predict({'prec':'b','flex':'1'}))
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 39, in predict
+    if missing: raise ValueError('invalid proposal; missing descriptors: '+','.join(missing))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid proposal; missing descriptors: resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+
+======================================================================
+ERROR: test_prediction_and_training_reference (tests.test_estimator.Tests.test_prediction_and_training_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 9, in test_prediction_and_training_reference
+    z=m.predict(p); self.assertEqual(z['estimate'],1.0); self.assertEqual(z['reference'],2.0)
+      ^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py", line 39, in predict
+    if missing: raise ValueError('invalid proposal; missing descriptors: '+','.join(missing))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid proposal; missing descriptors: resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+
+======================================================================
+FAIL: test_insufficient_and_ids (tests.test_estimator.Tests.test_insufficient_and_ids)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 21, in test_insufficient_and_ids
+    self.assertEqual(load_rows(self._csv()),[{'line':3,'id':'7','x':('a', 'b'),'y':3.0}])
+AssertionError: Lists differ: [{'li[26 chars]a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a[69 chars]3.0}] != [{'li[26 chars]a', 'b'), 'y': 3.0}]
+
+First differing element 0:
+{'lin[25 chars]a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a[68 chars] 3.0}
+{'lin[25 chars]a', 'b'), 'y': 3.0}
+
++ [{'id': '7', 'line': 3, 'x': ('a', 'b'), 'y': 3.0}]
+- [{'id': '7',
+-   'line': 3,
+-   'x': ('a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a',
+-         'a'),
+-   'y': 3.0}]
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=1, errors=4)
+real 0.04
+user 0.03
+sys 0.00

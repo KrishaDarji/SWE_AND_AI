@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,1,video encoding,justify,75,75,1,0.03,0,"4 tests; /usr/bin/time -p real; adapted EZR csv streaming/coercion, sorted minimum selection, and finite numeric handling; independent implementation; no repairs needed; first CSV record is historical reference; invalid/nonfinite outcomes excluded."

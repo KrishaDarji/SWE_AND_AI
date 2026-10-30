@@ -1,0 +1,13 @@
+Final attempt: logs/test_attempt2.stdout and logs/test_attempt2.stderr
+stdout:
+test_grouped_reproducible_and_repeated (test_predictor.Tests) ... ok
+test_invalid_data_and_insufficient_groups (test_predictor.Tests) ... ok
+test_prediction_and_schema_validation (test_predictor.Tests) ... ok
+test_training_only_fit_and_outcome_invariance (test_predictor.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK
+stderr: empty
+Earlier preserved attempt: logs/test_attempt1.stdout and logs/test_attempt1.stderr (successful).

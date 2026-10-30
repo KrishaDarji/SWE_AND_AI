@@ -1,0 +1,8 @@
+Historical project and delivery-outcome summary
+Records: 0
+Columns:
+Numeric descriptive statistics (count, mean, sd, min, median, max):
+Categorical frequencies:
+Roles: descriptors=; metadata=
+Outcomes: 
+Interpretation: Kloc+ is delivered size, Effort- is effort, and Defects- is defects; X-suffix fields are excluded metadata. Numeric category codes are reported as numeric only when parsed as finite numbers, without assigning continuous meaning.

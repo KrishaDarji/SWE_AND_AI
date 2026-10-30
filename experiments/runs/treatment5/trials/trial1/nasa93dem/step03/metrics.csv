@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,5,1,software project estimation,certify,131,131,1,0.07,14,"6 tests; final test attempt 8 and runtime attempt 8; /usr/bin/time -p real; stable adaptive Simpson integration after tan transform with df=1 analytic CDF, validated inputs and bounds, bisection quantile; Welch undefined when both groups constant; independent observations, observed effort not cost; prior failures preserved in attempts 1-7 and counted."

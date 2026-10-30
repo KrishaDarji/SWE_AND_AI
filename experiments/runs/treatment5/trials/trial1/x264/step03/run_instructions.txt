@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step03
+Python interpreter: python3 (standard library only)
+Tests: python3 -m unittest discover -s tests -v
+Demonstration: python3 source/certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+Quoted paths above are required because the repository path contains spaces.

@@ -1,0 +1,10 @@
+Implemented the independent Python anomaly detector in `source/anomaly_detector.py`.
+
+It compares each Performance- value with the mean of at least two finite outcomes from the same configuration, excluding every outcome in the assessed configuration group. The threshold is predeclared as an absolute standardized deviation of 3.0. Lower Performance- is treated as better, but the score is two-sided for spotting unusual values. Undefined cases use JSON null; nonfinite JSON is prohibited.
+
+EZR machinery adapted: NUM’s one-pass mean/m2 update and sample standard deviation, plus its numeric normalization idea and lower-is-better goal convention. No Lua is executed or imported.
+
+Tests cover synthetic normal/anomalous observations, isolation, duplicate-group exclusion, empty/small input, constants, zero variability, strict JSON, and comparison counts. All 4 tests passed. The real demonstration took 0.03 seconds and flagged 0 records; all 1152 records lacked the required independent same-configuration references. Flags are investigation candidates, not confirmed errors, and no accuracy claim is made without labels.
+
+Run with:
+`/usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step09/source/anomaly_detector.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"`

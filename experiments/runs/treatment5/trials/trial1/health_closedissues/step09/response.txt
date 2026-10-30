@@ -1,0 +1,8 @@
+Corrected Treatment 5, Trial 1, Health, Step 9.
+
+Fixed the double normalization: screen() now calculates score = (value - reference_median) / scale. The threshold, reference definition, IQR fallback, and zero-scale policy are unchanged.
+Run command: see run_instructions.txt.
+
+Added independent regression tests for nonzero-MAD arithmetic, IQR-fallback arithmetic, a boundary flag change caused by erroneous double scaling, and both high and low unusual values. The final suite has 7 passing tests. Final attempt logs are attempts/test_attempt6.* and attempts/runtime_attempt6.*; earlier failures remain preserved.
+
+The corrected real-data demonstration succeeded in 0.07 seconds. It produced 5,327 per-outcome flags across 2,151 unique records: MRE- 1,496, ACC+ 2,124, PRED40+ 1,707. These counts were measured after correction and were not used to tune the threshold. Metrics records 7 total unexpected failures across all attempts, including the initial wrapper failure and repaired assertions.

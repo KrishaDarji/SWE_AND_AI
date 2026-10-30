@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09
+Python interpreter: /usr/bin/python3
+Tests: (cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09" && /usr/bin/python3 -m unittest discover -s tests -v)
+Demonstration: /usr/bin/time -p /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09/source/spot_screen.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+Final demonstration output is captured in attempts/runtime_attempt6.stdout and runtime_attempt6.stderr; final passing tests are in attempts/test_attempt6.stdout and test_attempt6.stderr. Earlier attempts remain preserved.

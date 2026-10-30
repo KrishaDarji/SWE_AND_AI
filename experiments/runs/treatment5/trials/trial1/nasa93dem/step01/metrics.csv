@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,1,software project estimation,remember,81,81,1,0.02,0,"6 tests passed including complete empty/header-only/normal reporting paths and empty CLI; /usr/bin/time -p demonstration real; EZR NUM/SYM streaming summaries, missing handling, and goal directions adapted; X-suffix metadata excluded; prior attempt logs preserved; no failed command executions"

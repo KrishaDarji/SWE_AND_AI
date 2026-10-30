@@ -1,0 +1,5 @@
+Attempt 01 (preserved): test suite failed one assertion because the fixture expected Welch df=4.8; actual/reference arithmetic is 4.411764705882353.
+See test_output.attempt01.txt for the complete captured stdout/stderr.
+
+Attempt 02 (final): test suite passed.
+See test_output.attempt02.txt for the complete captured stdout/stderr.

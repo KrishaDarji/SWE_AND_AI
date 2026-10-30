@@ -1,0 +1,25 @@
+........F......E
+======================================================================
+ERROR: test_training_only_split (test_step08.RepairTests.test_training_only_split)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step08/tests/test_step08.py", line 29, in test_training_only_split
+    tr, te = grouped_split(rows([(("a","b"), i) for i in range(8)]))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step08/tests/../source/repair.py", line 34, in grouped_split
+    if len(keys) < 2: raise ValueError("insufficient data: need at least two distinct descriptor groups")
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: insufficient data: need at least two distinct descriptor groups
+
+======================================================================
+FAIL: test_multiple_groups_nonempty_without_split (test_step08.RepairTests.test_multiple_groups_nonempty_without_split)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step08/tests/test_step08.py", line 43, in test_multiple_groups_nonempty_without_split
+    self.assertNotEqual(set(tuple(x["descriptors"].items()) for x in tr) & set(tuple(x["descriptors"].items()) for x in te), set())
+AssertionError: set() == set()
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.001s
+
+FAILED (failures=1, errors=1)

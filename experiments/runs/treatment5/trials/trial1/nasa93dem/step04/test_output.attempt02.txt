@@ -1,0 +1,28 @@
+test_empty_short_and_invalid (test_arrival_estimator.FlowTests) ... ok
+test_future_mutation_cannot_change_frozen_prediction (test_arrival_estimator.FlowTests) ... FAIL
+test_missing_unseen_and_exclusions (test_arrival_estimator.FlowTests) ... ok
+test_prediction_precedes_reveal (test_arrival_estimator.FlowTests) ... ok
+test_warmup_and_known_arithmetic (test_arrival_estimator.FlowTests) ... FAIL
+
+======================================================================
+FAIL: test_future_mutation_cannot_change_frozen_prediction (test_arrival_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/tests/test_arrival_estimator.py", line 30, in test_future_mutation_cannot_change_frozen_prediction
+    self.assertEqual(before[2], after[2]); self.assertEqual(before[3], after[3])
+AssertionError: {'arr[114 chars]rt': 30.0, 'absolute_error': 15.0, 'baseline_a[73 chars]15.0} != {'arr[114 chars]rt': 999.0, 'absolute_error': 984.0, 'baseline[78 chars]84.0}
+Diff is 725 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_warmup_and_known_arithmetic (test_arrival_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04/tests/test_arrival_estimator.py", line 14, in test_warmup_and_known_arithmetic
+    self.assertEqual(got[3]["cumulative_mae"], 35.0)
+AssertionError: 30.833333333333336 != 35.0
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=2)
+EXIT=1

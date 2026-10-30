@@ -1,0 +1,13 @@
+test_final_attempt=3 status=0
+test_all_outcome_references (test_justify_config.Tests) ... ok
+test_medians_evidence_and_identifier (test_justify_config.Tests) ... ok
+test_missing_nonfinite_excluded (test_justify_config.Tests) ... ok
+test_no_eligible (test_justify_config.Tests) ... ok
+test_references_include_ineligible_rows (test_justify_config.Tests) ... ok
+test_selection_and_tiebreakers (test_justify_config.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK
+tests_run=6 failures=0 errors=0

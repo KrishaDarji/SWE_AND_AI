@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,1,software project estimation,justify,67,67,1,0.02,11,"5 tests passed; /usr/bin/time -p real for demonstration; EZR CSV/normalization/seeded grouping/median/symbolic distance/tie-break adaptations; assumptions and limitations in run_instructions; 11 repaired test assertion/error occurrences across attempts, preserved in attempt logs"

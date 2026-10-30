@@ -1,0 +1,47 @@
+FINAL test_attempt03.stdout
+FINAL test_attempt03.stderr
+F.....
+======================================================================
+FAIL: test_duplicate_idx_rows_count_separately (test_spot.SpotTests.test_duplicate_idx_rows_count_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step09/tests/test_spot.py", line 24, in test_duplicate_idx_rows_count_separately
+    self.assertEqual(out["unique_flagged_record_count"], 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)
+FINAL exit=1
+FINAL test_attempt04.stdout
+FINAL test_attempt04.stderr
+F.....
+======================================================================
+FAIL: test_duplicate_idx_rows_count_separately (test_spot.SpotTests.test_duplicate_idx_rows_count_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step09/tests/test_spot.py", line 26, in test_duplicate_idx_rows_count_separately
+    self.assertEqual([r["original_position"] for r in out["records"][-2:]], [5, 6])
+AssertionError: Lists differ: [6, 7] != [5, 6]
+
+First differing element 0:
+6
+5
+
+- [6, 7]
++ [5, 6]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)
+FINAL exit=1
+FINAL test_attempt05.stdout
+FINAL test_attempt05.stderr
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+FINAL exit=0

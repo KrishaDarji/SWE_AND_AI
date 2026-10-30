@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,5,1,model configuration and quality,race,82,82,1,0.09,0,"4 corrected tests; final runtime copied from runtime_output_attempt2.stderr using /usr/bin/time -p; prior attempt logs preserved; eligibility validates finite complete records before cap, then shares feasible pool; EZR adaptations and retrospective limitations disclosed in runtime output."

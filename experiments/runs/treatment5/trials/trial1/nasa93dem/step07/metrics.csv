@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,1,software project estimation,choose,72,72,1,0.03,1,"8 tests; /usr/bin/time -p real elapsed demonstration subprocess excluding tests; EZR csv/iteration, finite numeric validation, deterministic sorted-selection ideas adapted; centerX/YearX kept as metadata and 22 descriptors reported; observed Kloc+ proxy only; one repaired shell-wrapper failure preserved in logs"

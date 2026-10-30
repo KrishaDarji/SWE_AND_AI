@@ -1,0 +1,13 @@
+...F....
+======================================================================
+FAIL: test_regular_known_standardized_score (test_blame.BlameTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step05/tests/test_blame.py", line 17, in test_regular_known_standardized_score
+    self.assertAlmostEqual(effect["score"], -1.0)
+AssertionError: -0.7071067811865475 != -1.0 within 7 places (0.29289321881345254 difference)
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+FAILED (failures=1)

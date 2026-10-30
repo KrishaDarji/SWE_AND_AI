@@ -1,0 +1,11 @@
+Final attempt: logs/runtime_attempt2.stdout and logs/runtime_attempt2.stderr
+stdout:
+predictors=no_asm,no_8x8dct,no_cabac,no_deblock,no_fast_pskip,no_mbtree,no_mixed_refs,no_weightb,rc_lookahead,rc_lookahead_20,rc_lookahead_40,rc_lookahead_60,ref,ref_1,ref_5,ref_9
+rows=1152 train=922 test=230 groups=1152
+ridge=1e-6 seed=42 grouped_test_fraction=0.2
+held_out_mae=26.010996055 training_mean_baseline_mae=140.463652825
+stderr (timing):
+real 0.06
+user 0.05
+sys 0.01
+Earlier preserved failed attempt: logs/runtime_attempt1.stdout and logs/runtime_attempt1.stderr.

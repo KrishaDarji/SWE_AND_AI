@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step10
+Python interpreter: /usr/bin/python3
+Test command: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step10' && /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration command: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step10' && /usr/bin/time -p /usr/bin/python3 run_demo.py
+All paths are absolute or quoted where spaces occur. The demonstration reads only the authorized Health CSV; source and tests use standard-library modules.

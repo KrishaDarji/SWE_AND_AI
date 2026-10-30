@@ -1,0 +1,15 @@
+test_actual_missing (test_estimator.EstimatorTests) ... ok
+test_clean_and_schema (test_estimator.EstimatorTests) ... ok
+test_evaluate_excludes_invalid_targets_even_if_held_out (test_estimator.EstimatorTests) ... ok
+test_evaluate_no_usable_targets (test_estimator.EstimatorTests) ... ok
+test_group_split_reproducible_and_never_all (test_estimator.EstimatorTests) ... ok
+test_heldout_changes_do_not_enter_fit (test_estimator.EstimatorTests) ... ok
+test_insufficient_groups (test_estimator.EstimatorTests) ... ok
+test_outcome_independence (test_estimator.EstimatorTests) ... ok
+test_prediction_and_unseen (test_estimator.EstimatorTests) ... ok
+test_proposal_validation (test_estimator.EstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+OK

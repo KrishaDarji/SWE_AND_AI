@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,1,software project estimation,flow,74,74,1,0.09,4,"5 tests; /usr/bin/time -p real; EZR symbolic columns, missing handling, CSV streaming and sequential summaries adapted; CSV order is demonstration only; no units/convergence/stopping rule; 4 repaired unexpected assertions preserved in attempt logs"

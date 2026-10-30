@@ -1,0 +1,13 @@
+....F
+======================================================================
+FAIL: test_unusual_and_ordinary (test_spot.SpotTests.test_unusual_and_ordinary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step09/tests/test_spot.py", line 12, in test_unusual_and_ordinary
+    self.assertEqual(out["unique_flagged_record_count"], 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=1)

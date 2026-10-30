@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,1,video encoding,guess,91,91,1,0.06,1,"4 tests; /usr/bin/time -p demonstration; EZR-inspired streaming CSV, Welford summaries, seeded shuffle, normalization; independent grouped ridge predictor; 1 repaired demo path failure preserved in logs; assumptions: numeric settings, exact configuration groups, lower Performance- is better; limitations: linear model, small ridge, one fixed split"

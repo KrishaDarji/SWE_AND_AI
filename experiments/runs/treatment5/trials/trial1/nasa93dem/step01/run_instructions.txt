@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step01
+Python interpreter: python3 (standard library only)
+Test command: python3 -m unittest discover -s tests -v
+Implementation command: python3 run_demo.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+The quoted dataset path is absolute; the commands must be run from the working directory above.

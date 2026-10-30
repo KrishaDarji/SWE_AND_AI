@@ -1,0 +1,3 @@
+Correction request received in chat on 2026-10-29:
+Correct Treatment 5, Trial 1, NASA93, Step 8.
+Fix grouped_split so complete descriptor groups remain intact, require at least two groups and nonempty train/test; select the earliest held-out CSV record explicitly; add the requested tests; preserve artifacts/logs and rerun tests and demonstration.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,5,1,model configuration and quality,spot,69,69,1,0.07,7,"7 tests; final logs are attempts/test_attempt6.* and attempts/runtime_attempt6.*; /usr/bin/time -p real; score=(value-median)/scale where scale is pre-normalized MAD or IQR fallback; EZR median/ranking/statistical helper ideas adapted independently; marginal screen includes assessed record; 1 wrapper failure and 6 repaired test assertions across all attempts preserved"

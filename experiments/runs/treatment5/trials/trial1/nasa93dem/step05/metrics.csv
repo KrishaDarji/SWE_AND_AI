@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,1,software project estimation,blame,67,67,1,0.02,2,"9 tests; /usr/bin/time -p real elapsed demonstration; EZR-inspired streaming NUM summaries and pooled-SD Cohen-style association; signed unbounded effects preserve lower/higher direction; categorical trimmed values; excluded X/Kloc+/Effort-/Defects-; earlier repaired assertion and cache-permission verification failure remain preserved; higher effort is association, not inefficiency or causation."

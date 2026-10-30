@@ -1,0 +1,19 @@
+Implemented and verified the independent Python justification application.
+
+Artifacts:
+- Source: source/justify.py
+- Tests: tests/test_justify.py
+- Run instructions: run_instructions.txt
+- Captured test output: test_output.txt
+- Captured runtime output: runtime_output.txt
+- Metrics: metrics.csv
+
+The implementation reads the CSV with the standard library, excludes missing/nonfinite Performance- outcomes, selects the lowest observed Performance- with earliest-record tie-breaking, retains the complete configuration, and compares it with the first CSV data record as a named historical reference. It explicitly handles invalid and zero reference outcomes and distinguishes measured results, model estimates, and associations.
+
+EZR background machinery adapted: CSV row streaming/coercion concepts from ezr-lib.lua, plus numeric finite-value handling and ordered minimum selection informed by ezr.lua's NUM/statistical-column conventions. No Lua application or external package is used.
+
+Observed demonstration: recommended CSV data record 72; Performance- 244.230000. First-record reference: 268.720. Absolute difference: 24.490000. Percentage improvement: 9.113575%. Lower Performance- is better. This is retrospective dataset evidence, not a guarantee of future performance or statistical superiority.
+
+Tests: 4 passed. Runtime: 0.03 seconds real, measured with /usr/bin/time -p. Implementation LOC: 75; new LOC: 75; error count: 0.
+
+Assumptions and limitations: CSV order defines the historical reference and tie-break; invalid/nonfinite outcomes are excluded from selection; no units, separate quality measures, resource costs, constraints, or causal/statistical comparison were supplied.

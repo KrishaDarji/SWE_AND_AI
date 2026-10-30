@@ -1,0 +1,13 @@
+NASA93 effort evaluation
+predictors: ['prec', 'flex', 'resl', 'team', 'pmat', 'rely', 'data', 'cplx', 'ruse', 'docu', 'time', 'stor', 'pvol', 'acap', 'pcap', 'pcon', 'apex', 'plex', 'ltex', 'tool', 'site', 'sced']
+train_count: 70
+test_count: 23
+groups: 39
+mae: 930.027536231884
+baseline_mae: 481.4850310559006
+excluded_targets: {}
+split: grouped 75/25, seed=42
+settings: categorical exact-group mean; Hamming nearest-group fallback; train-only fit
+real 0.03
+user 0.02
+sys 0.00

@@ -1,0 +1,12 @@
+test_callback_observation_and_privacy (test_tuner.Tests) ... ok
+test_compare_shape (test_tuner.Tests) ... ok
+test_duplicate_configs_and_both_strategies (test_tuner.Tests) ... ok
+test_equal_budget_reproducibility_and_hidden_outcomes (test_tuner.Tests) ... ok
+test_invalid_budgets_and_observations (test_tuner.Tests) ... ok
+test_summary_known_behavior (test_tuner.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 6.688s
+
+OK
+test_exit=0

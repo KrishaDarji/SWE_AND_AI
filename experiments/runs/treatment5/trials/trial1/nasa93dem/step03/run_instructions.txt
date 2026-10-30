@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 run_tests.py
+Demonstration command: /usr/bin/time -p /usr/bin/python3 run_demo.py
+All paths are absolute where data/output paths are used; quote paths containing spaces.

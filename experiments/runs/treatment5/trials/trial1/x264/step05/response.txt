@@ -1,0 +1,14 @@
+Implemented and verified the independent Python solution in the exact Step 5 directory.
+
+Source: source/blame.py
+Tests: tests/test_blame.py
+Run instructions: run_instructions.txt
+Measured logs: test_output.txt and runtime_output.txt; failed attempts are preserved as test_output_attempt1.txt through test_output_attempt7.txt and runtime_output_attempt1.txt through runtime_output_attempt6.txt.
+
+The implementation ranks settings using one primary marginal score: eta-squared (between-group outcome variation divided by total outcome variation). Lower Performance- is better; each setting reports group counts, means, standard deviations, and the best/worst observed group direction. Missing and nonfinite setting values are grouped explicitly, constant settings receive score zero, small groups are retained and shown, and ties are ordered deterministically by setting name. Identical observed setting signatures are reported as redundant shared information.
+
+The translated/adapted EZR machinery is the one-pass NUM summary (mean, M2, standard deviation), CSV/header handling, missing-value convention, stable deterministic ordering, and minimization-aware reporting inspired by ezr.lua and ezr-lib.lua. No Lua runtime or external package is used.
+
+Tests cover synthetic strong and multivalue associations, constants, missing values, categorical values, redundant correlated settings, nonfinite outcomes, primary-score behavior, and deterministic ordering. The measured demonstration runtime was 0.03 seconds real time. Seven unexpected assertion failures occurred in repaired intermediate test attempts; the final attempt passed.
+
+Assumptions and limitations: this is observational marginal association, not causal responsibility; correlated or mutually exclusive settings can share explanatory information; a low score does not prove irrelevance after redundancy; eta-squared uses outcome-group means and is sensitive to sparse groups and encoding choices; rows with nonfinite Performance- are excluded; no adjusted model is used.

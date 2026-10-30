@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,5,1,video encoding,certify,79,79,1,0.02,2,"4 tests; /usr/bin/time -p real; EZR-style summary/statistics and Welch CI adapted independently; incomplete-beta continued fraction and bisection t quantile; rows are configurations, not repeated runs; lower Performance- is better; repaired zsh wrapper and macOS find portability failures counted"

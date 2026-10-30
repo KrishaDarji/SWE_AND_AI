@@ -1,0 +1,15 @@
+Recommendation status: retrospective dataset evidence
+Measured result (observed): Performance- = 244.230000
+Record identifier: CSV data record 72
+Complete configuration: no_asm=1, no_8x8dct=1, no_cabac=1, no_deblock=1, no_fast_pskip=0, no_mbtree=0, no_mixed_refs=0, no_weightb=0, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=1, ref_5=0, ref_9=0
+Historical reference: first CSV data record (record 2)
+Historical reference outcome (measured): 268.720 
+Absolute difference: 24.490000
+Percentage improvement: 9.113575%
+Model estimates: none; all reported outcomes are measured observations.
+Associations: none computed. Associations would not establish the effect of changing a setting, and correlated settings can share explanatory information.
+Interpretation: lower Performance- is better; this recommendation is retrospective and does not guarantee future performance or statistical superiority.
+Assumptions and limitations: CSV order defines the historical reference and tie-break; invalid/nonfinite outcomes are excluded from selection; no units, quality measures, resource costs, or constraints were supplied.
+real 0.03
+user 0.02
+sys 0.00

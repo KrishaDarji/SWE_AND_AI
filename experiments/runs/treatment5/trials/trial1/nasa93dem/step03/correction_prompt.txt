@@ -1,0 +1,38 @@
+Correct Treatment 5, Trial 1, NASA93, Step 3.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/
+
+Fix two statistical code issues:
+
+1. t_cdf uses 2,000 fixed Simpson intervals over [0,abs(t)].
+   For large t, the grid becomes too coarse and probabilities can leave [0,1].
+   Replace this with a numerically stable implementation.
+   Clamping incorrect probabilities is not a sufficient fix.
+   Validate numerical helpers and quantile inputs explicitly.
+
+2. When both groups have zero variance, Welch's standard error is zero.
+   Return an explicit undefined-test status/reason rather than manufacturing
+   a Welch p-value, significance claim, or inferential confidence interval.
+   Descriptive group means and differences may still be reported.
+   Handle one constant group and one varying group normally.
+
+Add regression tests:
+- For df=1, check the CDF against 0.5 + atan(t)/pi at small, moderate,
+  and large positive/negative t, including abs(t)=10000.
+- Verify symmetry, probability bounds, and known critical values.
+- Check unequal-variance p-values and confidence intervals against
+  independently known references.
+- Test equal and unequal constant groups as undefined Welch tests.
+- Test one constant group with one varying group.
+
+Use only current NASA93 Step 3 files, the specified NASA93 dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps or other experiment runs.
+
+Preserve existing artifacts and attempt logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Keep fixtures and outputs inside the exact Step 3 directory above.

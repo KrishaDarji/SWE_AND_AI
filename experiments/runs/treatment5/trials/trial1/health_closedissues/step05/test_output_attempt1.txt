@@ -1,0 +1,22 @@
+exit_status=1
+--- stdout ---
+--- stderr ---
+test_constants_missing_all_missing (test_blame.BlameTests) ... ok
+test_deterministic_tie_order (test_blame.BlameTests) ... ERROR
+test_excluded_and_mixed_columns (test_blame.BlameTests) ... ok
+test_numeric_and_categorical_known (test_blame.BlameTests) ... ok
+
+======================================================================
+ERROR: test_deterministic_tie_order (test_blame.BlameTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step05/tests/test_blame.py", line 21, in test_deterministic_tie_order
+    self.assertEqual([z["setting"] for z in blame.analyze_fixture(rows)], blame.SETTINGS)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step05/tests/test_blame.py", line 21, in <listcomp>
+    self.assertEqual([z["setting"] for z in blame.analyze_fixture(rows)], blame.SETTINGS)
+TypeError: list indices must be integers or slices, not str
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (errors=1)

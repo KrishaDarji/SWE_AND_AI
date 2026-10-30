@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 91, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 89, in main
+    argv=argv or sys.argv[1:]; model=GuessModel(load_csv(argv[0] if argv else 'Health-ClosedIssues0000.csv'))
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 55, in __init__
+    self._fit()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 68, in _fit
+    X=[vec(k) for k,_ in self.train]; p=len(X[0]); self.coeffs=[]
+       ^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 65, in vec
+    for i in numeric: z.append((k[i] if k[i] is not None else self.mu[i]-0.)-self.mu[i]) / self.sd[i]
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'NoneType' and 'float'
+real 0.05
+user 0.05
+sys 0.00

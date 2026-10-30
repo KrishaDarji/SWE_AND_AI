@@ -1,0 +1,11 @@
+test_compare_shape (test_tuner.Tests) ... ok
+test_equal_budget_fresh_callbacks_reproducibility (test_tuner.Tests) ... ok
+test_hidden_outcomes_do_not_change_selection (test_tuner.Tests) ... ok
+test_invalid_inputs_and_nonfinite (test_tuner.Tests) ... ok
+test_pair_arithmetic_and_known_cases (test_tuner.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.580s
+
+OK
+test_exit=0

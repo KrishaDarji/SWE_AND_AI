@@ -1,0 +1,15 @@
+Final runtime attempt: runtime_attempt_02.log
+Captured stdout and stderr (including /usr/bin/time -p):
+Historical run summary
+status: ok
+record_count: 1152
+encoder_settings: 16
+outcome: Performance- (lower is better)
+missing_outcomes: 0
+invalid_outcomes: 0
+statistics: {'count': 1152, 'min': 244.23, 'max': 821.963, 'mean': 461.7535963541663, 'median': 452.7785}
+real 0.05
+user 0.04
+sys 0.00
+Exit status: 0
+Earlier runtime attempt preserved as runtime_attempt_01.log.

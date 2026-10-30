@@ -1,0 +1,9 @@
+Final test attempt: test_attempt_02.log
+Captured stdout and stderr:
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+Exit status: 0
+Earlier failed attempt preserved as test_attempt_01.log; it had 1 assertion failure and was repaired.

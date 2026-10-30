@@ -1,0 +1,37 @@
+Correct Treatment 5, Trial 1, NASA93, Step 10.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/
+
+Fix target handling:
+
+1. Replace the truthiness check math.isfinite(y or math.nan).
+   Zero is a valid finite numeric target and must remain 0.0.
+
+2. Apply an explicit invalid-target policy before grouped splitting.
+   Either reject invalid targets clearly, or exclude and count them.
+   Do not allow None, NaN, or Infinity into baseline means, MAE arithmetic,
+   or reported comparison results.
+
+3. Preserve original CSV positions and idX when filtering.
+   Handle no usable targets and insufficient remaining descriptor groups clearly.
+   Use the same usable training/test records for both estimators.
+
+Add integration tests exercising loading through compare():
+- Valid zero-effort targets remain usable.
+- Missing, nonnumeric, NaN, and infinite targets follow the documented policy.
+- Both baseline and model MAEs remain finite for usable inputs.
+- All-invalid input produces a clear error.
+- Original identifiers survive filtering.
+
+Do not otherwise change the model or comparison strategy.
+Use only current NASA93 Step 10 files, the specified NASA93 dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps or other experiment runs.
+
+Preserve existing artifacts and attempt logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration for seeds 42 through 51.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Keep fixtures and outputs inside the exact Step 10 directory above.

@@ -1,0 +1,16 @@
+.F....
+======================================================================
+FAIL: test_header_only_input (test_summarizer.SummaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step01/tests/test_summarizer.py", line 33, in test_header_only_input
+    self.assertEqual(self.summary("x,Performance-\n")["status"], "header_only")
+AssertionError: 'no_valid_outcomes' != 'header_only'
+- no_valid_outcomes
++ header_only
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

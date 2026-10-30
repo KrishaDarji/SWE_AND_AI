@@ -1,0 +1,170 @@
+You are running Treatment 5, Trial 1, Dataset 3, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: No
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: race
+- Current requirement: Compare our configuration selector against a historical baseline.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step10/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Implement this skill independently from scratch.
+Implement the selector needed for this comparison within Step 10.
+Do not read, copy, import, or extend previous implementations, including Step 7.
+Using the explicitly supplied EZR source as reference is permitted.
+
+You may read only:
+- The specified Health dataset.
+- The two authorized EZR source files.
+- Files created in the current Health Step 10 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+previous steps, other datasets, other trials, other treatments,
+root-level implementations, Git history, or previous chats.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Independently implement a retrospective observed-data selector.
+- Translate or adapt relevant EZR machinery where applicable.
+- Apply N_estimators <= 100 to both selector and baseline.
+- Treat this cap as a compute proxy, not measured cost.
+- Use identical eligibility for both: complete five-field configuration,
+  finite numeric settings and all three outcomes, and nonmissing criterion.
+- Configuration fields:
+  N_estimators, criterion, Min_sample_leaves,
+  Min_impurity_decrease, Max_depth.
+- Selector: minimize MRE-, then maximize ACC+, then PRED40+,
+  then choose the earliest original CSV record.
+- Baseline: uniformly sample one eligible historical record for each seed.
+- Use independent baseline RNG instances with seeds 42 through 51.
+- Fix the policy and tie tolerance before inspecting comparison results.
+- Report each seed, original identifiers, full configurations,
+  all three measured outcomes, and paired MRE- difference.
+- Define difference as baseline MRE- minus selector MRE-:
+  positive beyond tolerance means selector win; negative means selector loss.
+- Summarize paired differences, including mean and median,
+  and descriptive wins/ties/losses.
+- Report ACC+ and PRED40+ trade-offs descriptively.
+- Disclose the unequal search/information advantage: the selector inspects all
+  feasible outcomes, while the baseline samples one record.
+  A win does not establish superior budgeted search.
+- The selector is deterministic and may return the same record each run.
+  Do not invent variability to produce stronger results.
+- These are retrospective draws from one historical dataset, not independent
+  validation samples or independent LLM trials.
+- Do not claim statistical superiority or invent the project's final "same"
+  procedure. Mark that analysis pending if unavailable.
+- Handle invalid caps, missing/nonfinite values, empty input,
+  and no eligible records explicitly.
+- Preserve original CSV identifiers when filtering invalid records.
+- Report raw total, valid, and feasible counts separately.
+- Do not invent metric formulas, ranges, units, or future-performance guarantees.
+- State assumptions and limitations.
+- Do not implement or preserve earlier skill interfaces.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation, including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test selector ordering and all tie-breakers, matching eligibility,
+cap compliance, seed reproducibility, independent RNG use, and paired arithmetic.
+Test comparison-summary logic with independently known win/loss/tie differences.
+Test invalid caps including infinity, missing criterion, invalid outcomes,
+and no eligible records.
+Independently verify counts and original identifiers.
+Do not require selector wins for tests to pass.
+Keep synthetic fixtures inside this Health Step 10 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Health Step 10 output directory.
+
+Run tests and the implementation. Record actual measured results.
+Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 10
+- treatment: 5
+- trial: 1
+- domain: model configuration and quality
+- skill: race
+- total_loc: implementation Python lines, including any translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and the supplied Lua reference files.
+- new_loc: equal to total_loc because this implementation is independent.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, EZR adaptations, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the exact Health Step 10 output directory specified above.

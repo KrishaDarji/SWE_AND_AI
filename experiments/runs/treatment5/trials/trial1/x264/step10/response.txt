@@ -1,0 +1,13 @@
+Corrected and verified the independent Python comparison in the exact Step 10 directory.
+
+Source: source/tuner.py; tests: tests/test_tuner.py; runner: run_demo.py.
+
+Strategies receive only id/config objects; outcomes are private behind fresh callbacks. Duplicate configurations are canonicalized to their first identifier. Callback observations, not candidate indices, determine recommendations and reports. Budgets require positive integers, and nonfinite observations are rejected.
+
+The race tuner uses EZR-informed deterministic seeded randomness, numeric normalization, and distance-based active selection. Uniform random search uses the same candidate pool, budget, seeds, callback model, and deduplication. Lower Performance- is better.
+
+Verification: all 6 tests pass. The demonstration uses budget 20 and seeds 42 through 51, with fresh callbacks for every strategy and seed. Runtime measured by /usr/bin/time -p: real 6.61 seconds. Paired difference is tuner Performance- minus baseline Performance-. With fixed tie tolerance 0, race wins 5, ties 0, losses 5; mean difference -4.7168 and median -0.065. These are benchmark repeats, not independent LLM trials. No statistical superiority is claimed.
+
+Known limitations: the tuner is a compact independent active-search adaptation, not a full EZR reproduction; the dataset is treated as a finite fully enumerated candidate pool; retrospective gaps were not used for selection; and Performance- units are not inferred. Original incorrect artifacts are preserved with *_original names; correction attempts 3 and 4 are preserved.
+
+Run tests and the demonstration using the commands in run_instructions.txt.

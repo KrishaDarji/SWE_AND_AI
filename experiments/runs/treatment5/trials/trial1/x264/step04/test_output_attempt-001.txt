@@ -1,0 +1,24 @@
+test_csv_integration_and_lazy_order (test_flow.FlowTests) ... FAIL
+test_csv_reader (test_flow.FlowTests) ... ok
+test_empty_and_one (test_flow.FlowTests) ... ok
+test_missing_nonfinite_and_snapshot_copy (test_flow.FlowTests) ... ok
+test_prefixes_match_batch (test_flow.FlowTests) ... ok
+test_ties_keep_first_and_configuration (test_flow.FlowTests) ... ok
+
+======================================================================
+FAIL: test_csv_integration_and_lazy_order (test_flow.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step04/tests/test_flow.py", line 63, in test_csv_integration_and_lazy_order
+    self.assertEqual(evaluate(records())[-1]["best_performance"], 1.0)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step04/tests/../source/flow.py", line 47, in evaluate
+    for record_id, row in enumerate(records, 1):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step04/tests/test_flow.py", line 60, in records
+    self.assertEqual(len(seen), 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+FAILED (failures=1)
+test_status=1

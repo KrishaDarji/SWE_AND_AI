@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,1,video encoding,remember,94,94,1,0.05,1,"6 tests; /usr/bin/time -p real; translated EZR csv coercion, missing handling, symbolic frequencies, numeric mid/div statistics, and sorted median; empty/header-only/no-outcome/invalid-value assumptions; repaired one header-only classification assertion"

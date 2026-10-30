@@ -1,0 +1,21 @@
+A: no_8x8dct=0 (faster candidate); B: no_8x8dct=1
+n_a=576
+n_b=576
+mean_a=472.1355069444445
+mean_b=451.3716857638889
+difference=20.763821180555624
+t=2.1711245916071182
+df=1149.2372777191688
+p_value=0.0301258621737599
+ci_low=1.999699018536301
+ci_high=39.52794334257494
+threshold=5.0
+zero_difference_evidence=True
+point_exceeds_threshold=True
+interval_beyond_threshold=False
+practical_uncertain=True
+Lower Performance- is better; rows are configurations, not repeated-run measurements.
+Statistical difference and practical importance are reported separately; crossing the threshold makes practical importance uncertain.
+real 0.02
+user 0.01
+sys 0.00

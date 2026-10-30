@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04
+Python interpreter: /usr/bin/python3
+Run tests:
+  cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04' && /usr/bin/python3 -m unittest discover -s tests -v
+Run implementation:
+  cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step04' && /usr/bin/python3 source/arrival_estimator.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' demo_results.csv
+The quoted dataset path is the authorized input. The implementation output is a sequential arrival report.

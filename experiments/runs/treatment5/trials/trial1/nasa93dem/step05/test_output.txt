@@ -1,0 +1,1 @@
+Final sign-correction test output is captured verbatim in test_output_attempt4.txt. Earlier attempts remain preserved in test_output_attempt1.txt, test_output_attempt2.txt, and test_output_attempt3.txt.

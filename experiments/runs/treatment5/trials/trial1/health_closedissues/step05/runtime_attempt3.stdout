@@ -1,0 +1,7 @@
+MRE- summary: n=10000 mean=0.709094 min=0 max=1 lower_is_better=yes
+rank,setting,eta_squared,n,groups,missing,grouping,boundaries,direction,group_means
+1,Min_sample_leaves,0.807892300,10000,4,0,quantile4,1..5;5..10;10..15;15..20,nonmonotonic,{'0': 0.40239072987967395, '3': 0.8384397090940521, '1': 0.759873956599123, '2': 0.8386756317611728}
+2,criterion,0.024851323,10000,3,0,levels,,category-specific means,{'squared_error': 0.6737202958486007, 'absolute_error': 0.7508694690284093, 'poisson': 0.7034025255399252}
+3,Min_impurity_decrease,0.004847592,10000,4,0,quantile4,0..2.5;2.5..5;5..7.5;7.5..10,higher MRE- in higher numeric groups,{'1': 0.6984884511590223, '0': 0.6959280459129041, '2': 0.7119371201792339, '3': 0.7312473213735611}
+4,N_estimators,0.000364225,10000,4,0,quantile4,10..50;50..100;100..150;150..200,nonmonotonic,{'0': 0.7119273887017668, '3': 0.7097697551689647, '2': 0.7028145966282319, '1': 0.7122515685583027}
+5,Max_depth,0.000069426,10000,4,0,quantile4,1..5;5..10;10..15;15..20,nonmonotonic,{'1': 0.7076974401637005, '2': 0.7083772821816097, '0': 0.7083265610289737, '3': 0.7119563679714479}

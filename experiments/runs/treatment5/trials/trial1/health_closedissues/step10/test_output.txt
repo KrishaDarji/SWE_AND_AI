@@ -1,0 +1,3 @@
+FINAL preserved attempt 2: test_output_attempt2.stdout and test_output_attempt2.stderr
+Attempt 1 remains preserved in test_output_attempt1.stdout and test_output_attempt1.stderr.
+Attempt 2 ran 4 tests and passed; stderr contains the final exit marker.

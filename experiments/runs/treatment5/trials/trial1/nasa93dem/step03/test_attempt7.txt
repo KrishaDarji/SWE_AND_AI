@@ -1,0 +1,76 @@
+test_direction_and_threshold_crossing (test_certify.TestCertify.test_direction_and_threshold_crossing) ... ERROR
+test_group_selection_and_whitespace (test_certify.TestCertify.test_group_selection_and_whitespace) ... ok
+test_invalid_and_insufficient (test_certify.TestCertify.test_invalid_and_insufficient) ... ok
+test_reference_t_values (test_certify.TestCertify.test_reference_t_values) ... ERROR
+test_welch_known_values (test_certify.TestCertify.test_welch_known_values) ... ERROR
+test_zero_variance_missing_nonfinite (test_certify.TestCertify.test_zero_variance_missing_nonfinite) ... ERROR
+
+======================================================================
+ERROR: test_direction_and_threshold_crossing (test_certify.TestCertify.test_direction_and_threshold_crossing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 12, in test_direction_and_threshold_crossing
+    r=compare([1,2,3,4],[10,11,12,13], 8); self.assertLess(r["difference"],0); self.assertTrue(r["point_exceeds"]); self.assertFalse(r["entirely_practical"])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 117, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 94, in t_quantile
+    while t_cdf(hi, df) < p: hi *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 67, in t_cdf
+    raise ValueError("t and df must be finite, with df > 0")
+ValueError: t and df must be finite, with df > 0
+
+======================================================================
+ERROR: test_reference_t_values (test_certify.TestCertify.test_reference_t_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 21, in test_reference_t_values
+    self.assertAlmostEqual(t_quantile(.975, 10), 2.22813885, places=5)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 94, in t_quantile
+    while t_cdf(hi, df) < p: hi *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 67, in t_cdf
+    raise ValueError("t and df must be finite, with df > 0")
+ValueError: t and df must be finite, with df > 0
+
+======================================================================
+ERROR: test_welch_known_values (test_certify.TestCertify.test_welch_known_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 15, in test_welch_known_values
+    r=compare([1,2,3],[4,5,100],0); self.assertAlmostEqual(r["df"],2.001315645, places=6); self.assertAlmostEqual(r["difference"],-34.333333, places=5)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 117, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 94, in t_quantile
+    while t_cdf(hi, df) < p: hi *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 67, in t_cdf
+    raise ValueError("t and df must be finite, with df > 0")
+ValueError: t and df must be finite, with df > 0
+
+======================================================================
+ERROR: test_zero_variance_missing_nonfinite (test_certify.TestCertify.test_zero_variance_missing_nonfinite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/tests/test_certify.py", line 31, in test_zero_variance_missing_nonfinite
+    r=compare([2,2,2],[1,2,4],0); self.assertNotEqual(r.get("status"), "undefined"); self.assertIsNotNone(r["p_two_sided"])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 117, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 94, in t_quantile
+    while t_cdf(hi, df) < p: hi *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 67, in t_cdf
+    raise ValueError("t and df must be finite, with df > 0")
+ValueError: t and df must be finite, with df > 0
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.363s
+
+FAILED (errors=4)

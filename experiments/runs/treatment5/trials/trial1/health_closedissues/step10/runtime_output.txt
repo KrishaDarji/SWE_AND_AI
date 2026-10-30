@@ -1,0 +1,3 @@
+FINAL preserved attempt 2: runtime_output_attempt2.stdout and runtime_output_attempt2.stderr
+Attempt 1 remains preserved in runtime_output_attempt1.stdout and runtime_output_attempt1.stderr.
+Attempt 2 contains the real-data demonstration, /usr/bin/time -p output, and the final exit marker.

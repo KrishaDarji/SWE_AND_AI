@@ -1,0 +1,19 @@
+test_distinct_group_minimum (test_anomaly_detector.DetectorTests) ... ok
+test_group_isolation_and_reference_ids (test_anomaly_detector.DetectorTests) ... FAIL
+test_missing_nonfinite_and_zero_variability (test_anomaly_detector.DetectorTests) ... ok
+test_normal_and_anomalous (test_anomaly_detector.DetectorTests) ... ok
+test_small_empty_constants_and_zero_variability (test_anomaly_detector.DetectorTests) ... ok
+test_strict_json_and_counts (test_anomaly_detector.DetectorTests) ... ok
+
+======================================================================
+FAIL: test_group_isolation_and_reference_ids (test_anomaly_detector.DetectorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step09/tests/test_anomaly_detector.py", line 20, in test_group_isolation_and_reference_ids
+    self.assertEqual(first["flags"][0]["score"], second["flags"][0]["score"])
+AssertionError: 989.0 != 1009.0
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

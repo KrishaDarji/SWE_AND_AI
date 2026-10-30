@@ -1,0 +1,23 @@
+Model-quality and configuration summary
+record_count: 10000
+columns: MRE-, ACC+, PRED40+, N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth
+data_types: {'MRE-': 'numeric', 'ACC+': 'numeric', 'PRED40+': 'numeric', 'N_estimators': 'numeric', 'criterion': 'categorical', 'Min_sample_leaves': 'numeric', 'Min_impurity_decrease': 'numeric', 'Max_depth': 'numeric'}
+missing_values: {'MRE-': 0, 'ACC+': 0, 'PRED40+': 0, 'N_estimators': 0, 'criterion': 0, 'Min_sample_leaves': 0, 'Min_impurity_decrease': 0, 'Max_depth': 0}
+numeric MRE- {'count': 10000, 'min': 0.0, 'max': 1.0, 'mean': 0.70909397643463, 'median': 0.8091310751104565}
+numeric ACC+ {'count': 10000, 'min': 0.0, 'max': 1.0, 'mean': 0.49593851329765903, 'median': 0.43992310157000963}
+numeric PRED40+ {'count': 10000, 'min': 0.0, 'max': 1.0, 'mean': 0.14684285714285714, 'median': 0.0}
+numeric N_estimators {'count': 10000, 'min': 10.0, 'max': 200.0, 'mean': 106.061, 'median': 110.0}
+numeric Min_sample_leaves {'count': 10000, 'min': 1.0, 'max': 20.0, 'mean': 10.4796, 'median': 11.0}
+numeric Min_impurity_decrease {'count': 10000, 'min': 0.0, 'max': 10.0, 'mean': 4.996175, 'median': 5.0}
+numeric Max_depth {'count': 10000, 'min': 1.0, 'max': 20.0, 'mean': 10.523, 'median': 11.0}
+categorical criterion {'absolute_error': 3302, 'poisson': 3335, 'squared_error': 3363}
+roles: {'configuration': ['N_estimators', 'criterion', 'Min_sample_leaves', 'Min_impurity_decrease', 'Max_depth'], 'outcomes': ['MRE-', 'ACC+', 'PRED40+']}
+optimization_directions: {'MRE-': 'minimize', 'ACC+': 'maximize', 'PRED40+': 'maximize'}
+distinct_configurations: 10000
+repeated_configuration_rows: 0
+duplicate_rows: 0
+conventions: {'whitespace': 'strip each cell', 'missing': 'blank or ?; numeric nonfinite/invalid also missing', 'duplicates': 'duplicate_rows counts exact normalized full rows beyond first; repeated_configuration_rows counts all rows in configuration groups of size >1', 'empty/header_only': 'zero records and zero-valued summaries'}
+real 0.05
+user 0.05
+sys 0.00
+run_exit=0

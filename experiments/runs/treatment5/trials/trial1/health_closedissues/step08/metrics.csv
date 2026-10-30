@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,5,1,model configuration and quality,fix,62,62,1,0.04,1,"10 tests passed in final attempt 03; /usr/bin/time -p real elapsed demonstration timing; adapted EZR typed NUM/SYM values, finite checks, deterministic sorting/tie handling; criterion whitespace normalization and missing-value exclusion added; retrospective observed-data repair; cumulative unexpected assertion failures remain 1 from preserved attempt 01, with attempts 02-03 passing."

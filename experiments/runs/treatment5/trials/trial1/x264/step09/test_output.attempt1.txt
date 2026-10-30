@@ -1,0 +1,9 @@
+test_normal_and_anomalous (test_anomaly_detector.DetectorTests) ... ok
+test_outcome_isolation_and_duplicate_exclusion (test_anomaly_detector.DetectorTests) ... ok
+test_small_empty_constants_and_zero_variability (test_anomaly_detector.DetectorTests) ... ok
+test_strict_json_and_counts (test_anomaly_detector.DetectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

@@ -1,0 +1,11 @@
+Illustrative threshold: 10% of tool=n mean effort (not a client requirement) = 60.60638554216868
+A=tool=n (n=83, mean=606.064); B=tool=h (n=10, mean=776.7)
+mean difference A-B=-170.636; 95% CI [-727.303, 386.031]
+Welch t=-0.651341, df=15.5526, two-sided p=0.524335
+directional lower-effort point estimate favors A (n); point exceeds threshold=True; entire CI beyond threshold=False
+Effort- is observed effort, not verified monetary cost. Statistical difference and practical importance are separate; a CI crossing a practical threshold is uncertain, and non-significance is not equivalence. Skew, imbalance, and project-scope differences limit interpretation; no causal savings claim is made.
+Assumptions: independent observations, finite numeric Effort-, two-sided alpha=.05, Welch unequal variances.
+EZR adaptations: stripped CSV cells like ezr-lib thing/csv, one-pass NUM mean/M2 variance, and explicit group summaries.
+real 0.04
+user 0.03
+sys 0.00

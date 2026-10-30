@@ -1,0 +1,35 @@
+Correct Treatment 5, Trial 1, NASA93, Step 2.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step02/
+
+Fix target validation in evaluate():
+It currently excludes only MISSING targets, allowing NaN and Infinity into
+the held-out outcomes and potentially producing nonfinite MAE.
+
+Validate Effort- before splitting:
+- Apply one explicit policy for missing, nonnumeric, and nonfinite targets:
+  reject them clearly, or exclude them and report exclusion counts.
+- Ensure both model and baseline MAE use finite targets only.
+- Handle no usable records or insufficient predictor groups clearly.
+- Preserve identical-configuration grouping after descriptor normalization.
+
+Add integration tests exercising evaluate() with invalid targets, including
+cases that would otherwise place a nonfinite target in the held-out set.
+Strengthen the leakage tests by actually changing held-out targets and
+descriptors, then checking unchanged training fit, baseline, and preprocessing.
+The existing tests that fit the same training inputs twice do not establish this.
+
+Do not change the model simply because it loses to the baseline.
+
+Use only current NASA93 Step 2 files, the specified NASA93 dataset,
+and the two previously authorized EZR reference files.
+Do not access other experiment steps or runs.
+
+Preserve existing artifacts and logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Keep fixtures and captured outputs inside this Step 2 directory.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Write only inside the exact Step 2 directory above.

@@ -1,0 +1,7 @@
+idX,centerX,YearX,prec,flex,resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced,Kloc+,Effort-,Defects-,MonthsX
+7,1,2000,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0,0,0,1
+8,1,2000,b,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0,2,0,1
+9,1,2000,c,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0,NaN,0,1
+10,1,2000,d,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0,Infinity,0,1
+11,1,2000,e,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0,not-a-number,0,1
+12,1,2000,f,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,a,0,,0,1

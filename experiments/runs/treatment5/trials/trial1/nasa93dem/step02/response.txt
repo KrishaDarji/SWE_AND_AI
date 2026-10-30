@@ -1,0 +1,9 @@
+Corrected Treatment 5, Trial 1, NASA93, Step 2.
+
+evaluate() now validates Effort- before splitting. Missing, nonnumeric, and nonfinite targets are excluded consistently and reported in excluded_targets. No usable records and insufficient predictor groups raise clear errors. Descriptor normalization remains in grouped splitting and modeling.
+
+Added integration tests for invalid targets, including NaN/Infinity cases that could have entered the held-out set, and strengthened leakage tests to alter held-out descriptors and outcomes while confirming unchanged training fit, baseline, and preprocessing.
+
+Final verification: 10 tests passed. Real-data demonstration: 70 training rows, 23 test rows, 39 groups, finite held-out MAE 930.027536231884, finite baseline MAE 481.4850310559006, runtime real 0.03 seconds.
+
+The model was not changed because it lost to the baseline. Existing artifacts and logs were preserved; test_output.txt and runtime_output.txt point to attempt3, while earlier attempt logs remain available.

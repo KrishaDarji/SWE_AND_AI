@@ -1,0 +1,4 @@
+Final demonstration log: runtime_output.attempt03.txt
+Preserved earlier demonstration logs: runtime_output.attempt01.txt and runtime_output.attempt02.txt
+
+The final log is the actual stdout/stderr capture from the corrected 93-record demonstration subprocess, timed with /usr/bin/time -p. The original demo_results.csv is preserved as demo_results.before_correction.csv.

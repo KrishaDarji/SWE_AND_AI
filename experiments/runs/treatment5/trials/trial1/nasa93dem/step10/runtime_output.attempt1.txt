@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/run_demo.py", line 5, in <module>
+    rows=load_csv(data); results=compare(rows)
+                                 ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/source/estimator.py", line 66, in compare
+    ti,vi=split_indices(rows,seed); train=[rows[i] for i in ti]; test=[rows[i] for i in vi]
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/source/estimator.py", line 38, in split_indices
+    return sorted(train), sorted(test)
+                          ^^^^^^^^^^^^
+TypeError: 'int' object is not iterable
+real 0.02
+user 0.01
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,1,software project estimation,flow,74,74,1,0.09,5,"6 tests; /usr/bin/time -p real; exact 22 descriptors; pre-revelation prediction; direct CSV iterator; invalid outcomes excluded; prior 4 assertion failures and 1 repaired shell-wrapper failure preserved in attempt logs"

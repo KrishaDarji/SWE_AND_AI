@@ -1,0 +1,31 @@
+Implemented and verified the independent Python solution in the exact requested directory.
+
+Recommendation from the actual dataset:
+- CSV record identifier: 32 (header excluded)
+- N_estimators=10
+- criterion=squared_error
+- Min_sample_leaves=1
+- Min_impurity_decrease=6.75
+- Max_depth=5
+- Measured MRE-=0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571
+- Valid/eligible records: 10000
+- Reference medians: MRE-=0.80913107511, ACC+=0.43992310157, PRED40+=0; valid count 10000 for each
+
+The demonstration policy is lowest observed MRE-, breaking ties by higher ACC+, then higher PRED40+, then earliest CSV record. This is retrospective observed-data evidence, not a guarantee or claim of statistical superiority. The implementation explicitly handles missing/nonfinite outcomes, ties, original identifiers, and no eligible records. It keeps measured results separate from estimates and associations and does not treat global scores as additive local contributions or causal effects.
+
+EZR machinery adapted: CSV-style streaming/coercion, deterministic stable ordering, and summary/reference arithmetic informed by ezr-lib.lua. No Lua is executed and no packages are required.
+
+Artifacts:
+- source/justify_config.py
+- tests/test_justify_config.py
+- run_tests.py
+- prompt.txt
+- response.txt
+- test_output.txt and preserved attempt logs
+- runtime_output.txt and preserved attempt logs
+- metrics.csv
+- run_instructions.txt
+
+Correction: reference medians and valid counts now use all finite values for each outcome across the original dataset, including rows ineligible for recommendation. Selection eligibility and tie-breaking are unchanged. A regression fixture covers different missing outcomes and the case with no fully eligible row but usable per-outcome references.
+
+Verification: 6 tests passed; demonstration subprocess passed; measured real time was 0.10 seconds. Attempt 1 failed only on two exact floating-point median assertions and is preserved; attempts 2 and 3 passed. Implementation LOC is 59 and error_count is 2 as recorded in metrics.csv.

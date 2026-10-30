@@ -1,0 +1,157 @@
+You are running Treatment 5, Trial 1, Dataset 3, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: No
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: guess
+- Current requirement: Predict model error and accuracy before a full evaluation.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Implement this skill independently from scratch.
+Do not read, copy, import, or extend previous implementations.
+Using the explicitly supplied EZR source as reference is permitted.
+
+You may read only:
+- The specified Health dataset.
+- The two authorized EZR source files.
+- Files created in the current Health Step 2 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+previous steps, other datasets, other trials, other treatments,
+root-level implementations, Git history, or previous chats.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Predict MRE- and ACC+ using only these five configuration settings:
+  N_estimators, criterion, Min_sample_leaves,
+  Min_impurity_decrease, Max_depth.
+- Translate or adapt relevant EZR machinery for prediction.
+- Exclude all outcomes, including PRED40+, from predictors.
+- Treat criterion as categorical and other settings as numeric.
+- Handle actual missing/nonfinite numeric settings, missing criterion,
+  and unseen criterion values consistently.
+- Normalize settings consistently before grouping and prediction.
+- Use a reproducible approximately 80/20 grouped train/test split with seed 42.
+- Keep identical normalized configurations together.
+- Require at least two distinct groups and nonempty train/test sets.
+- Fit preprocessing and estimators on training rows only.
+- Report held-out MAE and a training-mean baseline MAE separately for each target.
+- Report predictor names, train/test counts, splitting procedure, and model settings.
+- Support predictions for a supplied configuration.
+- Validate supplied configurations against the fitted predictor schema.
+- Distinguish held-out evaluation from any final all-history model.
+- Define invalid-target and insufficient-data behavior explicitly.
+- Preserve valid zero-valued targets.
+- Do not invent metric formulas, valid ranges, units, or compute costs.
+- State assumptions and limitations.
+- Do not implement or preserve earlier skill interfaces.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation, including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test excluded outcomes, actual identical-configuration grouping, reproducibility,
+missing training/prediction settings, unseen criterion, and configuration prediction.
+Inspect preprocessing behavior rather than checking only finite predictions.
+Verify changing only held-out outcomes cannot alter fitted predictions
+or training-mean baselines.
+Verify held-out settings cannot affect training preprocessing.
+Test invalid targets, valid zero targets, insufficient groups,
+and incomplete/extra configuration fields.
+Do not require the model to outperform baselines for tests to pass.
+Keep synthetic fixtures inside this Health Step 2 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Health Step 2 output directory.
+
+Run tests and the implementation. Record actual measured results.
+Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 2
+- treatment: 5
+- trial: 1
+- domain: model configuration and quality
+- skill: guess
+- total_loc: implementation Python lines, including any translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and the supplied Lua reference files.
+- new_loc: equal to total_loc because this implementation is independent.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, EZR adaptations, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the exact Health Step 2 output directory specified above.

@@ -1,0 +1,20 @@
+F.....
+======================================================================
+FAIL: test_duplicate_idx_rows_count_separately (test_spot.SpotTests.test_duplicate_idx_rows_count_separately)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step09/tests/test_spot.py", line 26, in test_duplicate_idx_rows_count_separately
+    self.assertEqual([r["original_position"] for r in out["records"][-2:]], [5, 6])
+AssertionError: Lists differ: [6, 7] != [5, 6]
+
+First differing element 0:
+6
+5
+
+- [6, 7]
++ [5, 6]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

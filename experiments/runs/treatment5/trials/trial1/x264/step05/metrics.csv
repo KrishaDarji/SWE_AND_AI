@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,1,video encoding,blame,107,107,1,0.03,7,"3 tests; /usr/bin/time -p demonstration real; EZR-inspired Num summaries, missing-aware groups, stable sorting; observational eta-squared; correlated signatures reported; 7 repaired assertion failures across attempts"

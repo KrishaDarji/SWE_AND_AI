@@ -1,0 +1,4 @@
+{"comparison_definition": "mean outcome per distinct encoder-setting group; assessed group excluded entirely; reference variability is sample SD across eligible group means", "direction": "lower_is_better", "flagged_record_count": 0, "flags": [], "limitations": ["Flags are investigation candidates, not confirmed errors.", "No accuracy claim is made without verified anomaly labels.", "Groups with too few references or zero variability are not scored."], "minimum_comparisons": 2, "outcome": "Performance-", "record_identifier": "1-based CSV data-row number", "skipped_record_count": 0, "status": "ok", "threshold": 3.0}
+real 0.99
+user 0.98
+sys 0.01

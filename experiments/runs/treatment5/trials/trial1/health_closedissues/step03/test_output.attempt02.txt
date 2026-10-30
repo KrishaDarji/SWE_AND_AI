@@ -1,0 +1,10 @@
+test_cdf_reference (test_certify.T.test_cdf_reference) ... ok
+test_groups_direction (test_certify.T.test_groups_direction) ... ok
+test_missing_insufficient_zero (test_certify.T.test_missing_insufficient_zero) ... ok
+test_threshold (test_certify.T.test_threshold) ... ok
+test_welch_known (test_certify.T.test_welch_known) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

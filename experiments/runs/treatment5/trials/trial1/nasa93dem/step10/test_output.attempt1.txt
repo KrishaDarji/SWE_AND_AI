@@ -1,0 +1,33 @@
+....FE
+======================================================================
+ERROR: test_reproducible_and_separated (test_estimator.Tests.test_reproducible_and_separated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/tests/test_estimator.py", line 10, in test_reproducible_and_separated
+    rs=[row([str(i%3),'a'],i+1,i+2) for i in range(12)]; a=split_indices(rs,42); self.assertEqual(a,split_indices(rs,42)); self.assertTrue(set(rs[i]['x'] for i in a[0]).isdisjoint(set(rs[i]['x'] for i in a[1])))
+                                                           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/source/estimator.py", line 38, in split_indices
+    return sorted(train), sorted(test)
+                          ^^^^^^^^^^^^
+TypeError: 'int' object is not iterable
+
+======================================================================
+FAIL: test_outcomes_do_not_change_fit (test_estimator.Tests.test_outcomes_do_not_change_fit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step10/tests/test_estimator.py", line 19, in test_outcomes_do_not_change_fit
+    a=[row(['a'],2),row(['b'],4),row(['c'],9)]; b=[dict(x=r['x'],y=r['y']+100,position=r['position'],idX=r['idX']) for r in a]; self.assertEqual(Estimator().fit(a[:2]).predict(a[2:]),Estimator().fit(b[:2]).predict(b[2:]))
+                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [3.0] != [103.00000000000001]
+
+First differing element 0:
+3.0
+103.00000000000001
+
+- [3.0]
++ [103.00000000000001]
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1, errors=1)

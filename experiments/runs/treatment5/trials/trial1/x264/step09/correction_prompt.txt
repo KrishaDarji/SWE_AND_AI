@@ -1,0 +1,42 @@
+Correct Treatment 5, Trial 1, X264, Step 9.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step09/
+
+The reference-selection code currently reads outcomes from groups[key],
+excluding only the assessed row. This contradicts the required exclusion
+of every outcome from the assessed configuration group.
+
+Fix the implementation:
+- Exclude the entire assessed configuration group from reference selection.
+- Select comparable configurations using encoder settings only.
+- Define the comparison method and threshold before inspecting real flags.
+- Calculate expected values and variability only from eligible reference groups.
+- Apply the minimum-comparison requirement to the actual distinct groups used.
+- Report reference group identifiers and actual comparison counts.
+- Report explicit reasons when independent references or usable variability
+  are unavailable; use JSON null for undefined scores.
+- Preserve strict JSON serialization.
+- Do not tune the method to obtain a particular real-data flag count.
+
+Replace tests that incorrectly depend on same-configuration references.
+Add synthetic tests showing:
+- Same-configuration rows never enter their group's references.
+- Changing any outcomes in the assessed group cannot change its reference
+  selection, expected value, or reference variability.
+- Normal and anomalous cases have independently checked scores.
+- Actual distinct comparison-group counts enforce the minimum requirement.
+- Empty/small inputs, missing/nonfinite values, and zero variability are handled.
+- Outputs serialize with allow_nan=False.
+
+Use only current Step 9 files, the authorized X264 dataset, and:
+ /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+ /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Do not access previous steps or other experiment runs.
+Preserve existing artifacts and attempt logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Write only inside the exact Step 9 directory above.

@@ -1,0 +1,10 @@
+test_integration_validity_cap_ids_and_pool (test_selector.SelectorTests) ... ok
+test_invalid_caps_missing_and_empty (test_selector.SelectorTests) ... ok
+test_order_and_all_tie_breakers (test_selector.SelectorTests) ... ok
+test_seed_reproducibility_independent_rng_and_arithmetic (test_selector.SelectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+attempt=2 final=1 exit=0

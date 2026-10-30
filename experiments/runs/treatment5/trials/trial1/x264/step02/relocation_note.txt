@@ -1,0 +1,3 @@
+Moved existing Step 2 artifacts from the outer SWEAI_Project/experiments/runs/treatment5/trials/trial1/x264/step02 directory to /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step02.
+Updated only the working directory in run_instructions.txt; original instructions preserved separately.
+Code reviewed without rerunning experiments. Original source, prompt, response, measurements, and captured logs preserved.

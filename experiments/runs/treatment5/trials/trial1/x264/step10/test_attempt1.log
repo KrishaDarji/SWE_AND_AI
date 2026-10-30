@@ -1,0 +1,49 @@
+test_compare_shape (test_tuner.Tests) ... ERROR
+test_equal_budget_fresh_callbacks_reproducibility (test_tuner.Tests) ... ERROR
+test_hidden_outcomes_do_not_change_selection (test_tuner.Tests) ... ok
+test_invalid_inputs_and_nonfinite (test_tuner.Tests) ... ok
+test_pair_arithmetic_and_known_cases (test_tuner.Tests) ... ERROR
+
+======================================================================
+ERROR: test_compare_shape (test_tuner.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/test_tuner.py", line 28, in test_compare_shape
+    out=compare(os.environ["X264_DATA"],20,range(42,52)); self.assertEqual(len(out),20)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 62, in compare
+    r=fn(candidates,budget,seed,callback); r.update(strategy=name,seed=seed,columns=cols,calls=calls)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 40, in race
+    return finish(candidates, order, records)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 51, in finish
+    _,pos=min(valid,key=lambda z:(z[0],z[1])); idx=records[pos][0]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_equal_budget_fresh_callbacks_reproducibility (test_tuner.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/test_tuner.py", line 14, in test_equal_budget_fresh_callbacks_reproducibility
+    self.assertEqual(random_search(cs,20,42,lambda c:c["performance"])["budget"],20)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 46, in random_search
+    return finish(candidates, order, records)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 51, in finish
+    _,pos=min(valid,key=lambda z:(z[0],z[1])); idx=records[pos][0]
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_pair_arithmetic_and_known_cases (test_tuner.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/test_tuner.py", line 21, in test_pair_arithmetic_and_known_cases
+    cs=fixture(); r=race(cs,1,42,lambda c:1.0); self.assertEqual(r["recommended"]["id"],r["order"][0])
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 40, in race
+    return finish(candidates, order, records)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 51, in finish
+    _,pos=min(valid,key=lambda z:(z[0],z[1])); idx=records[pos][0]
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.675s
+
+FAILED (errors=3)
+test_exit=1

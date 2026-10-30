@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,5,1,video encoding,spot,78,78,1,1.00,4,"6 tests passed on final attempt; /usr/bin/time -p demonstration real; 4 failed test assertions across repaired attempts 2, 3, and 4 are counted; EZR-inspired online mean/variance, standard deviation, lower-is-better convention; threshold 3.0 and minimum 2 distinct encoder-setting reference groups; assessed group excluded entirely; real dataset flagged 0 with 0 skipped records; prompt provenance preserved and correction_prompt.txt saved."

@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step08
+Python interpreter: python3 (standard library only)
+Tests: python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step08/run_tests.py"
+Demonstration: /usr/bin/time -p python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step08/run_demo.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+All paths are quoted where needed and resolve from the working directory above.
+Captured logs: test_attempt_01.stdout.txt, test_attempt_01.stderr.txt, test_attempt_02.stdout.txt, test_attempt_02.stderr.txt, runtime_attempt_02.stdout.txt, runtime_attempt_02.stderr.txt.

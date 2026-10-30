@@ -1,0 +1,19 @@
+Illustrative threshold: 10% of tool=n mean effort (not a client requirement) = 60.60638554216868
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/run_demo.py", line 7, in <module>
+    main(['certify.py', data, str(threshold)])
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 139, in main
+    result = compare(groups["n"], groups["h"], threshold)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 117, in compare
+    crit = t_quantile(0.975, df); low, high = diff-crit*se, diff+crit*se
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 94, in t_quantile
+    while t_cdf(hi, df) < p: hi *= 2
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step03/source/certify.py", line 67, in t_cdf
+    raise ValueError("t and df must be finite, with df > 0")
+ValueError: t and df must be finite, with df > 0
+real 0.49
+user 0.48
+sys 0.00

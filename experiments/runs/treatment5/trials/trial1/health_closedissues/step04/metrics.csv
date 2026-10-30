@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,1,model configuration and quality,flow,61,61,1,0.12,1,"4 tests passed; /usr/bin/time -p real; EZR iter/NUM.add/least patterns adapted; streaming CSV and defensive snapshots; one repaired zsh wrapper failure; no stopping or convergence claims"

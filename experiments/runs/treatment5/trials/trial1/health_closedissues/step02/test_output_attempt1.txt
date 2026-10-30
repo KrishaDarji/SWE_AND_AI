@@ -1,0 +1,77 @@
+test_exclusion_grouping_repro_missing_unseen_and_prediction (test_guess_model.T.test_exclusion_grouping_repro_missing_unseen_and_prediction) ... ERROR
+test_holdout_outcomes_do_not_fit (test_guess_model.T.test_holdout_outcomes_do_not_fit) ... ERROR
+test_missing_and_invalid_targets_zero_and_insufficient (test_guess_model.T.test_missing_and_invalid_targets_zero_and_insufficient) ... ERROR
+test_preprocessing_train_only (test_guess_model.T.test_preprocessing_train_only) ... ERROR
+
+======================================================================
+ERROR: test_exclusion_grouping_repro_missing_unseen_and_prediction (test_guess_model.T.test_exclusion_grouping_repro_missing_unseen_and_prediction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/tests/test_guess_model.py", line 14, in test_exclusion_grouping_repro_missing_unseen_and_prediction
+    m=GuessModel(rows()); self.assertEqual(m.predictor_names,list(PREDICTORS)); self.assertEqual(m.evaluate().keys(),{'MRE-','ACC+'})
+      ^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 55, in __init__
+    self._fit()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 68, in _fit
+    X=[vec(k) for k,_ in self.train]; p=len(X[0]); self.coeffs=[]
+       ^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 65, in vec
+    for i in numeric: z.append((k[i] if k[i] is not None else self.mu[i]-0.)-self.mu[i]) / self.sd[i]
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'NoneType' and 'float'
+
+======================================================================
+ERROR: test_holdout_outcomes_do_not_fit (test_guess_model.T.test_holdout_outcomes_do_not_fit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/tests/test_guess_model.py", line 24, in test_holdout_outcomes_do_not_fit
+    a=GuessModel(rows()); changed=rows()
+      ^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 55, in __init__
+    self._fit()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 68, in _fit
+    X=[vec(k) for k,_ in self.train]; p=len(X[0]); self.coeffs=[]
+       ^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 65, in vec
+    for i in numeric: z.append((k[i] if k[i] is not None else self.mu[i]-0.)-self.mu[i]) / self.sd[i]
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'NoneType' and 'float'
+
+======================================================================
+ERROR: test_missing_and_invalid_targets_zero_and_insufficient (test_guess_model.T.test_missing_and_invalid_targets_zero_and_insufficient)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/tests/test_guess_model.py", line 20, in test_missing_and_invalid_targets_zero_and_insufficient
+    m=GuessModel(bad); self.assertTrue(math.isfinite(m.training_means[0])); self.assertGreaterEqual(m.training_means[0],0)
+      ^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 55, in __init__
+    self._fit()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 68, in _fit
+    X=[vec(k) for k,_ in self.train]; p=len(X[0]); self.coeffs=[]
+       ^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 65, in vec
+    for i in numeric: z.append((k[i] if k[i] is not None else self.mu[i]-0.)-self.mu[i]) / self.sd[i]
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'NoneType' and 'float'
+
+======================================================================
+ERROR: test_preprocessing_train_only (test_guess_model.T.test_preprocessing_train_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/tests/test_guess_model.py", line 29, in test_preprocessing_train_only
+    m=GuessModel(rows()); self.assertEqual(m.categories,sorted({k[1] for k in m.train_keys})); self.assertEqual(len(m.categories),2)
+      ^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 55, in __init__
+    self._fit()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 68, in _fit
+    X=[vec(k) for k,_ in self.train]; p=len(X[0]); self.coeffs=[]
+       ^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/source/guess_model.py", line 65, in vec
+    for i in numeric: z.append((k[i] if k[i] is not None else self.mu[i]-0.)-self.mu[i]) / self.sd[i]
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'NoneType' and 'float'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=4)

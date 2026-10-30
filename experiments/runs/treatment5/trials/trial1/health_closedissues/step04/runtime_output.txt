@@ -1,0 +1,5 @@
+{"final": {"ACC+": {"best_config": ["10", "squared_error", "1", "3", "10"], "best_record_id": 7556, "best_value": 1.0, "mean": 0.49593851329765815, "sample_variance": 0.011481619453413293, "valid_count": 10000}, "MRE-": {"best_config": ["10", "squared_error", "1", "6.75", "5"], "best_record_id": 32, "best_value": 0.0, "mean": 0.7090939764346323, "sample_variance": 0.04056030922815959, "valid_count": 10000}, "PRED40+": {"best_config": ["40", "squared_error", "1", "0.25", "19"], "best_record_id": 14, "best_value": 1.0, "mean": 0.14684285714285772, "sample_variance": 0.07096876197823895, "valid_count": 10000}}, "snapshot_count": 10000}
+real 0.12
+user 0.10
+sys 0.01
+Final captured attempt: runtime_output_attempt01.txt

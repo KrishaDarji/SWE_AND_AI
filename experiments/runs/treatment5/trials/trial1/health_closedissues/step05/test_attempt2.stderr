@@ -1,0 +1,9 @@
+test_constants_missing_all_missing (test_blame.BlameTests) ... ok
+test_deterministic_tie_order (test_blame.BlameTests) ... ok
+test_excluded_and_mixed_columns (test_blame.BlameTests) ... ok
+test_numeric_and_categorical_known (test_blame.BlameTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

@@ -1,0 +1,36 @@
+test_callback_observation_and_privacy (test_tuner.Tests) ... ERROR
+test_compare_shape (test_tuner.Tests) ... ok
+test_duplicate_configs_and_both_strategies (test_tuner.Tests) ... ok
+test_equal_budget_reproducibility_and_hidden_outcomes (test_tuner.Tests) ... ERROR
+test_invalid_budgets_and_observations (test_tuner.Tests) ... ok
+test_summary_known_behavior (test_tuner.Tests) ... ok
+
+======================================================================
+ERROR: test_callback_observation_and_privacy (test_tuner.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/test_tuner.py", line 9, in test_callback_observation_and_privacy
+    r=race(cs,20,42,cb); self.assertEqual(r["measured"],1000-r["recommended"]["id"]*7); self.assertEqual(len(seen),20)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 23, in race
+    cs=_prepare(candidates); _validate_budget(budget,len(cs)); rng=random.Random(seed); order=[]; records=[]; seen=set()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 6, in _validate_budget
+    if isinstance(budget,bool) or not isinstance(budget,int) or budget<1 or budget>n: raise ValueError("budget must be a positive integer")
+ValueError: budget must be a positive integer
+
+======================================================================
+ERROR: test_equal_budget_reproducibility_and_hidden_outcomes (test_tuner.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/test_tuner.py", line 12, in test_equal_budget_reproducibility_and_hidden_outcomes
+    self.assertEqual(race(cs,20,42,cb),race(cs,20,42,cb)); self.assertEqual(race(cs,20,42,cb)["order"],race(cs,20,42,lambda c:999)["order"])
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 23, in race
+    cs=_prepare(candidates); _validate_budget(budget,len(cs)); rng=random.Random(seed); order=[]; records=[]; seen=set()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/tests/../source/tuner.py", line 6, in _validate_budget
+    if isinstance(budget,bool) or not isinstance(budget,int) or budget<1 or budget>n: raise ValueError("budget must be a positive integer")
+ValueError: budget must be a positive integer
+
+----------------------------------------------------------------------
+Ran 6 tests in 6.597s
+
+FAILED (errors=2)
+test_exit=1

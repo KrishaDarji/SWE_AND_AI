@@ -1,0 +1,28 @@
+test_association_constants_missing_and_multivalue (test_blame.BlameTests.test_association_constants_missing_and_multivalue) ... FAIL
+test_deterministic_ties_and_primary_score (test_blame.BlameTests.test_deterministic_ties_and_primary_score) ... FAIL
+test_nonfinite_outcome_is_excluded (test_blame.BlameTests.test_nonfinite_outcome_is_excluded) ... ok
+
+======================================================================
+FAIL: test_association_constants_missing_and_multivalue (test_blame.BlameTests.test_association_constants_missing_and_multivalue)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step05/tests/test_blame.py", line 16, in test_association_constants_missing_and_multivalue
+    self.assertEqual(len(usable), 6); self.assertEqual(ranked[0]["setting"], "strong")
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'multi' != 'strong'
+- multi
++ strong
+
+
+======================================================================
+FAIL: test_deterministic_ties_and_primary_score (test_blame.BlameTests.test_deterministic_ties_and_primary_score)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step05/tests/test_blame.py", line 29, in test_deterministic_ties_and_primary_score
+    self.assertEqual(ranked1[0]["score"], 1.0)
+AssertionError: 0.0 != 1.0
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=2)

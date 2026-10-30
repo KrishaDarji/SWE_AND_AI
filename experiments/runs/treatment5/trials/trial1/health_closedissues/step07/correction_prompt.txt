@@ -1,0 +1,29 @@
+Correct Treatment 5, Trial 1, Health, Step 7.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step07/
+
+Fix two input/counting issues:
+
+1. Treat criterion="?" as missing, including surrounding whitespace.
+   Exclude it from eligible configurations, consistently with blank criterion.
+
+2. Preserve the total number of original CSV data records before filtering.
+   Report raw total_count separately from valid_count and feasible_count.
+   Preserve original record identifiers after exclusions.
+
+Add regression tests with blank/"?" criterion and invalid numeric rows,
+followed by a valid candidate.
+Verify raw total, valid count, feasible count, and selected original identifier.
+
+Keep the selection policy and tie-breaking unchanged.
+Use only current Health Step 7 files, the specified Health dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps or other experiment runs.
+
+Preserve existing artifacts and logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Keep fixtures and outputs inside the exact Step 7 directory above.

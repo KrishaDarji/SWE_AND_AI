@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step06
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 -m unittest discover -s tests
+Demonstration command: /usr/bin/python3 source/justify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+All paths containing spaces are quoted. The demonstration was timed with /usr/bin/time -p.

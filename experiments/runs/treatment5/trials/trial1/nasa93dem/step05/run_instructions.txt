@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step05
+Python interpreter: /usr/bin/python3
+Run tests: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step05' && /usr/bin/python3 -m unittest discover -s tests
+Run demonstration: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step05' && /usr/bin/time -p ./run_demo.sh
+The quoted paths above are valid absolute paths; run_demo.sh invokes source/blame.py with the authorized NASA93 dataset.

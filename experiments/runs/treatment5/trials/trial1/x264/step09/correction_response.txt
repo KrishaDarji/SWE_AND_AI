@@ -1,0 +1,5 @@
+Corrected Step 9. The detector now forms one outcome mean per distinct encoder-setting group, excludes the entire assessed group, and computes expected values and sample variability only from other eligible groups. Flags report reference group identifiers and the actual distinct-group count; insufficient references and zero variability remain explicit non-flagging cases with JSON-null scores where undefined.
+
+Replaced the tests with six synthetic tests covering group isolation, outcome-change invariance of reference selection and expected value, independently checked normal/anomalous scores, distinct-group minimums, empty/small/missing/nonfinite/zero-variability cases, and allow_nan=False serialization.
+
+Final tests passed. The final real-data demonstration took 0.97 seconds and flagged 0 records. Earlier repaired test failures are preserved in attempt logs and counted in metrics.csv.

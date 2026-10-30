@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/run_demo.py", line 4, in <module>
+    out=compare(DATA)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/source/tuner.py", line 62, in compare
+    r=fn(candidates,budget,seed,callback); r.update(strategy=name,seed=seed,columns=cols,calls=calls)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/source/tuner.py", line 40, in race
+    return finish(candidates, order, records)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10/source/tuner.py", line 51, in finish
+    _,pos=min(valid,key=lambda z:(z[0],z[1])); idx=records[pos][0]
+IndexError: list index out of range
+real 0.70
+user 0.67
+sys 0.01
+runtime_exit=1

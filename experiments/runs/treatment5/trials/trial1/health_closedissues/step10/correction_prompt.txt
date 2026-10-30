@@ -1,0 +1,33 @@
+Correct Treatment 5, Trial 1, Health, Step 10.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step10/
+
+Fix eligibility and valid-record counting:
+
+- Treat None, blank/whitespace-only criterion, and "?" as missing.
+- Define valid records using complete configurations, finite numeric settings,
+  finite outcomes, and a nonmissing criterion.
+- Count validity before applying the N_estimators cap.
+- Apply the cap to valid records to determine feasible records.
+- Use exactly the same feasible pool for selector and random baseline.
+- Handle missing CSV cells without calling .strip() on None.
+- Preserve original CSV positions after exclusions.
+
+Add an integration fixture with:
+- A valid record above the cap.
+- A valid feasible record.
+- Missing/"?" criterion.
+- Nonnumeric and nonfinite settings/outcomes.
+- A row with missing trailing cells.
+
+Independently verify raw, valid, and feasible counts, original identifiers,
+and that neither strategy can select an invalid record.
+
+Keep the selection policy, seeds, and comparison arithmetic unchanged.
+Use only current Step 10 files and the previously authorized inputs.
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main logs identify the final attempts.
+Write only inside the exact directory above.

@@ -1,0 +1,69 @@
+Historical project and delivery-outcome summary
+Records: 93
+Columns:
+  idX: numeric, missing=0
+  centerX: numeric, missing=0
+  YearX: numeric, missing=0
+  prec: categorical, missing=0
+  flex: categorical, missing=0
+  resl: categorical, missing=0
+  team: categorical, missing=0
+  pmat: categorical, missing=0
+  rely: categorical, missing=0
+  data: categorical, missing=0
+  cplx: categorical, missing=0
+  ruse: categorical, missing=0
+  docu: categorical, missing=0
+  time: categorical, missing=0
+  stor: categorical, missing=0
+  pvol: categorical, missing=0
+  acap: categorical, missing=0
+  pcap: categorical, missing=0
+  pcon: categorical, missing=0
+  apex: categorical, missing=0
+  plex: categorical, missing=0
+  ltex: categorical, missing=0
+  tool: categorical, missing=0
+  site: categorical, missing=0
+  sced: categorical, missing=0
+  Kloc+: numeric, missing=0
+  Effort-: numeric, missing=0
+  Defects-: numeric, missing=0
+  MonthsX: numeric, missing=0
+Numeric descriptive statistics (count, mean, sd, min, median, max):
+  idX: count=93, mean=46.9892, sd=26.9978, min=1, median=47, max=93
+  centerX: count=93, mean=3.27957, sd=1.68346, min=1, median=2, max=6
+  YearX: count=93, mean=1980.83, sd=3.335, min=1971, median=1980, max=1987
+  Kloc+: count=93, mean=94.022, sd=133.598, min=0.9, median=47.5, max=980
+  Effort-: count=93, mean=624.412, sd=1135.93, min=8.4, median=252, max=8211
+  Defects-: count=93, mean=3761.76, sd=6145.06, min=28, median=2007, max=50961
+  MonthsX: count=93, mean=24.1763, sd=12.9672, min=4.9, median=21.4, max=96.4
+Categorical frequencies:
+  prec: h=93
+  flex: h=93
+  resl: h=93
+  team: vh=93
+  pmat: h=43, l=20, n=30
+  rely: h=42, l=2, n=39, vh=10
+  data: h=17, l=37, n=31, vh=8
+  cplx: h=58, l=3, n=10, vh=17, xh=5
+  ruse: n=93
+  docu: n=93
+  time: h=13, n=54, vh=18, xh=8
+  stor: h=10, n=49, vh=21, xh=13
+  pvol: h=9, l=65, n=19
+  acap: h=51, n=32, vh=10
+  pcap: h=39, n=44, vh=10
+  pcon: n=93
+  apex: h=46, l=1, n=34, vh=12
+  plex: h=22, l=14, n=53, vl=4
+  ltex: h=69, l=6, n=14, vl=4
+  tool: h=10, n=83
+  site: n=93
+  sced: l=34, n=59
+Roles: descriptors=prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced; metadata=idX, centerX, YearX, MonthsX
+Outcomes: Kloc+ (maximize), Effort- (minimize), Defects- (minimize)
+Interpretation: Kloc+ is delivered size, Effort- is effort, and Defects- is defects; X-suffix fields are excluded metadata. Numeric category codes are reported as numeric only when parsed as finite numbers, without assigning continuous meaning.
+real 0.02
+user 0.01
+sys 0.00

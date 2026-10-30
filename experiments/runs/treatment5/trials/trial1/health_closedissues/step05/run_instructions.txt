@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step05
+Python interpreter: /usr/bin/python3
+Quoted command:
+/usr/bin/python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Test command:
+/usr/bin/python3 -m unittest discover -s tests -v

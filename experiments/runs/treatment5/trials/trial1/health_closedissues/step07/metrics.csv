@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,1,model configuration and quality,choose,84,84,1,0.04,0,"6 tests; final attempt 2; attempt 1 preserved and had no failures; /usr/bin/time -p real elapsed demonstration timing; EZR csv streaming, coercion, finite validation, and sorted multi-key selection ideas adapted independently in Python; ? and blank criteria excluded; raw, valid, and feasible counts separated; cap is an N_estimators compute proxy; observed outcomes only."

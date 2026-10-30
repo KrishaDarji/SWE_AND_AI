@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,5,1,video encoding,fix,75,75,1,0.02,0,"5 tests; /usr/bin/time -p real elapsed demonstration subprocess; EZR-inspired CSV iteration, copying, numeric validation, and deterministic sorting; baseline is first record; raw columns proxy conceptual changes; observed-only noncausal repair; no failures"

@@ -1,0 +1,24 @@
+test_complete_path_and_counts (test_report.ReportTests.test_complete_path_and_counts) ... FAIL
+test_missing_nonfinite_invalid_and_header (test_report.ReportTests.test_missing_nonfinite_invalid_and_header) ... ok
+test_roles_and_whitespace (test_report.ReportTests.test_roles_and_whitespace) ... ok
+
+======================================================================
+FAIL: test_complete_path_and_counts (test_report.ReportTests.test_complete_path_and_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step01/tests/test_report.py", line 15, in test_complete_path_and_counts
+    self.assertEqual(s["categorical"]["criterion"], {"squared_error": 2}); self.assertEqual(s["distinct_configurations"], 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'squared_error': 3} != {'squared_error': 2}
+- {'squared_error': 3}
+?                   ^
+
++ {'squared_error': 2}
+?                   ^
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=1)
+test_exit=1

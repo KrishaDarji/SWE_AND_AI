@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,1,model configuration and quality,remember,82,82,1,0.05,5,"3 tests passed; /usr/bin/time -p real value; EZR CSV/coercion, sorted stats/median, categorical counts, and goal directions adapted; strip cells, blank/? and invalid/nonfinite numerics missing; 5 repaired failures/errors across attempts"

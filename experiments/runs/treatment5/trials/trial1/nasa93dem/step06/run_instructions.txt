@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06
+Python interpreter: /usr/bin/python3 (Python 3.12)
+Run tests: python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests" -t "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06"
+Run demonstration: python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/source/estimator.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+EZR adaptations: CSV row handling, whitespace normalization, deterministic seeded shuffling, median summaries, categorical symbolic distance, sorted deterministic tie-breaking, and nearest-row model evidence. No Lua or third-party packages are used.
+
+The model groups identical 22-descriptor configurations before a seed-42 approximately 75/25 split. It uses only training rows for the median reference, nearest-neighbor estimate, and associations. The earliest held-out CSV record is explained, then its measured outcome is shown separately in the audit.
+
+Known limitations: categorical Hamming distance is simple; correlated descriptors are not causal effects; unseen or missing descriptors reduce interpretability or invalidate proposals; the estimate is not a cost, unit, interval, or deployment guarantee; results are limited to this dataset and split.

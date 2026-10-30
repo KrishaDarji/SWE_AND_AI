@@ -1,0 +1,48 @@
+.F/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py:25: ResourceWarning: unclosed file <_io.TextIOWrapper name='/var/folders/6s/nl7vyczd1cg4synhvvd8v8840000gn/T/s6.csv' mode='w' encoding='UTF-8'>
+  p=os.path.join(tempfile.gettempdir(),'s6.csv'); keys=','.join(['idX']+DESCRIPTORS+['Effort-']); vals=','.join(['5']+['a']*22+['notnum']); vals2=','.join(['7']+[' a ']*22+['3']); open(p,'w').write(keys+'\n'+vals+'\n'+vals2+'\n'); return p
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...
+======================================================================
+FAIL: test_excluded_inputs_and_missing_unseen (tests.test_estimator.Tests.test_excluded_inputs_and_missing_unseen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step06/tests/test_estimator.py", line 14, in test_excluded_inputs_and_missing_unseen
+    z=m.predict(self.proposal(' unseen ','9')); self.assertEqual(z['unseen_descriptors'],['prec','flex'])
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['prec', 'flex', 'resl', 'team', 'pmat', 'rely', 'data',[115 chars]ced'] != ['prec', 'flex']
+
+First list contains 20 additional elements.
+First extra element 2:
+'resl'
+
++ ['prec', 'flex']
+- ['prec',
+-  'flex',
+-  'resl',
+-  'team',
+-  'pmat',
+-  'rely',
+-  'data',
+-  'cplx',
+-  'ruse',
+-  'docu',
+-  'time',
+-  'stor',
+-  'pvol',
+-  'acap',
+-  'pcap',
+-  'pcon',
+-  'apex',
+-  'plex',
+-  'ltex',
+-  'tool',
+-  'site',
+-  'sced']
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=1)
+real 0.04
+user 0.03
+sys 0.01

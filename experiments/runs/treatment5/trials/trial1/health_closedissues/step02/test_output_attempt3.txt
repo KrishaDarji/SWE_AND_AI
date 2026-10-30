@@ -1,0 +1,24 @@
+test_exclusion_grouping_repro_missing_unseen_and_prediction (test_guess_model.T.test_exclusion_grouping_repro_missing_unseen_and_prediction) ... ok
+test_holdout_outcomes_do_not_fit (test_guess_model.T.test_holdout_outcomes_do_not_fit) ... FAIL
+test_missing_and_invalid_targets_zero_and_insufficient (test_guess_model.T.test_missing_and_invalid_targets_zero_and_insufficient) ... ok
+test_preprocessing_train_only (test_guess_model.T.test_preprocessing_train_only) ... ok
+
+======================================================================
+FAIL: test_holdout_outcomes_do_not_fit (test_guess_model.T.test_holdout_outcomes_do_not_fit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step02/tests/test_guess_model.py", line 28, in test_holdout_outcomes_do_not_fit
+    b=GuessModel(changed); self.assertEqual(a.coeffs,b.coeffs); self.assertEqual(a.training_means,b.training_means)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [[0.1833333275468223, 1.4690926914410486e-1[261 chars]687]] != [[266.51001506189493, -15.411879010777085, [236 chars]518]]
+
+First differing element 0:
+[0.1833333275468223, 1.4690926914410486e-1[106 chars]6568]
+[266.51001506189493, -15.411879010777085, [93 chars]0584]
+
+Diff is 701 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (failures=1)

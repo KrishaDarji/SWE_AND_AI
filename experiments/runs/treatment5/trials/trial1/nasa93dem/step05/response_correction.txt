@@ -1,0 +1,5 @@
+Corrected the zero-pooled-variance handling in source/blame.py.
+
+_effect() now distinguishes equal means with zero variability (score 0.0 with an explicit reason), different means with zero pooled variability (unbounded score with an explicit reason), and insufficient observations (undefined score with an explicit reason). Ranking treats unbounded effects as highest priority, preserves direction, and does not silently convert them to zero. Reports render unbounded scores as “unbounded” and include the reason.
+
+Added and independently checked tests for different/equal constant groups, insufficient observations, a regular known pooled-SD score, deterministic ordering, and readable unbounded reporting. The corrected suite ran 8 tests successfully. The real NASA93 demonstration also succeeded with /usr/bin/time -p real elapsed time 0.02 seconds. Attempt 2’s failed assertion and the repaired final attempt are preserved in the attempt-labeled logs; error_count is 1.

@@ -1,0 +1,32 @@
+Correct Treatment 5, Trial 1, Health, Step 9.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09/
+
+Fix double normalization in the anomaly score.
+
+reference() already defines:
+scale = MAD / 0.6744897501960817
+or the normal-consistent IQR fallback.
+
+Therefore, screen() should calculate:
+score = (value - reference_median) / scale
+
+Do not multiply by MAD_CONSISTENCY again.
+Keep the threshold, reference definition, IQR fallback, and zero-scale policy unchanged.
+
+Add independent arithmetic regression tests for:
+- Nonzero MAD: expected score = 0.6744897501960817 * (value-median) / MAD.
+- IQR fallback: expected score = (value-median) / (IQR/1.349).
+- A boundary example whose flag changes under the erroneous double scaling.
+- Both high and low unusual values.
+
+Verify unique-record and per-outcome flag counts after the correction.
+Do not tune the threshold to preserve the previous real-data flag count.
+
+Use only current Step 9 files and the previously authorized inputs.
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main logs identify the final attempts.
+Write only inside the exact directory above.

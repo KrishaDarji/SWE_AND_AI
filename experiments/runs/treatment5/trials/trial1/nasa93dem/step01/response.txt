@@ -1,0 +1,16 @@
+Corrected and verified the Python NASA93 historical-project summary.
+
+Complete source: [source/summary.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step01/source/summary.py)
+Tests: [tests/test_summary.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step01/tests/test_summary.py)
+Runner: [run_demo.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step01/run_demo.py)
+
+Run from the step directory with:
+python3 run_demo.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+The implementation reports record count, columns, inferred types, missing values, numeric statistics, categorical frequencies, roles, outcomes, and optimization directions. It identifies Kloc+ as delivered size, Effort- as effort, and Defects- as defects; all X-suffix fields are metadata excluded from future modeling. It handles whitespace, missing/nonfinite cells, invalid numeric outcomes, empty input, header-only input, and malformed rows.
+
+EZR machinery adapted from the authorized Lua reference: CSV/table ingestion concepts, first-letter NUM/SYM distinction adapted to inferred Python types, online-compatible numeric summary concepts (mean, sample standard deviation, min/max/median summary), symbolic frequency counts, missing-value handling, and +/- goal direction semantics. No Lua or third-party package is used.
+
+The empty-input structure now always contains descriptors, metadata, and outcomes, so the CLI produces a clear report instead of a traceback. Verification: 6 tests passed, including complete empty-input, header-only, and normal reporting paths; the empty-input CLI and NASA93 demonstration both succeeded. The NASA93 demonstration processed 93 records successfully. /usr/bin/time -p measured real elapsed time of 0.02 seconds. Earlier logs remain preserved, and final logs are test_output_attempt02.txt, empty_input_output_attempt02.txt, and runtime_output_attempt02.txt. Metrics are in metrics.csv.
+
+Assumptions and limitations: blank, ?, and common textual null markers are missing; finite numeric text is numeric, otherwise text is categorical; numeric category codes are not interpreted as continuous quantities; outcome columns must be numeric or missing; median is computed from retained finite numeric values; no modeling or causal interpretation is performed.

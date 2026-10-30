@@ -1,0 +1,52 @@
+Rows used: 1152
+Performance-: n=1152 mean=461.753596 sd=162.561722
+Ranking: explained variance (eta-squared), higher means stronger marginal association
+1. ref_9: score=0.644502 groups=2 direction=lower at 0.0 than 1.0
+   group=0.0 n=768 mean=369.512007 sd=100.766882
+   group=1.0 n=384 mean=646.236776 sd=88.871468
+2. ref_1: score=0.643494 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=768 mean=553.923043 sd=118.150943
+   group=1.0 n=384 mean=277.414703 sd=18.891064
+3. no_mixed_refs: score=0.037692 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=576 mean=493.300155 sd=181.932162
+   group=1.0 n=576 mean=430.207038 sd=133.437033
+4. no_fast_pskip: score=0.030787 groups=2 direction=lower at 0.0 than 1.0
+   group=0.0 n=576 mean=433.242536 sd=139.790442
+   group=1.0 n=576 mean=490.264656 sd=178.125319
+5. no_mbtree: score=0.024377 groups=2 direction=lower at 0.0 than 1.0
+   group=0.0 n=576 mean=436.383682 sd=152.386264
+   group=1.0 n=576 mean=487.123510 sd=168.485929
+6. no_8x8dct: score=0.004082 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=576 mean=472.135507 sd=164.377384
+   group=1.0 n=576 mean=451.371686 sd=160.195874
+7. no_cabac: score=0.000584 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=576 mean=465.679493 sd=162.196382
+   group=1.0 n=576 mean=457.827700 sd=162.972514
+8. rc_lookahead_20: score=0.000012 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=768 mean=462.154646 sd=162.483371
+   group=1.0 n=384 mean=460.951497 sd=162.927423
+9. rc_lookahead_60: score=0.000008 groups=2 direction=lower at 0.0 than 1.0
+   group=0.0 n=768 mean=461.430965 sd=162.695019
+   group=1.0 n=384 mean=462.398859 sd=162.504955
+10. no_deblock: score=0.000001 groups=2 direction=lower at 0.0 than 1.0
+   group=0.0 n=576 mean=461.602109 sd=162.204769
+   group=1.0 n=576 mean=461.905083 sd=163.058740
+11. rc_lookahead_40: score=0.000000 groups=2 direction=lower at 0.0 than 1.0
+   group=0.0 n=768 mean=461.675178 sd=162.611831
+   group=1.0 n=384 mean=461.910432 sd=162.673427
+12. ref_5: score=0.000000 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=768 mean=461.825740 sd=195.381402
+   group=1.0 n=384 mean=461.609310 sd=54.492658
+13. no_weightb: score=0.000000 groups=2 direction=lower at 1.0 than 0.0
+   group=0.0 n=576 mean=461.841707 sd=162.677908
+   group=1.0 n=576 mean=461.665486 sd=162.586802
+14. no_asm: score=0.000000 groups=1 direction=undetermined
+   group=1.0 n=1152 mean=461.753596 sd=162.561722
+15. rc_lookahead: score=0.000000 groups=1 direction=undetermined
+   group=1.0 n=1152 mean=461.753596 sd=162.561722
+16. ref: score=0.000000 groups=1 direction=undetermined
+   group=1.0 n=1152 mean=461.753596 sd=162.561722
+Redundant setting signatures: no_asm=rc_lookahead; no_asm=ref
+real 0.03
+user 0.02
+sys 0.00

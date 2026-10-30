@@ -1,0 +1,11 @@
+test_bad_shape (test_summary.SummaryTests.test_bad_shape) ... ok
+test_empty_and_header_only (test_summary.SummaryTests.test_empty_and_header_only) ... ok
+test_normal_data_complete_report (test_summary.SummaryTests.test_normal_data_complete_report) ... ok
+test_numeric_and_categories (test_summary.SummaryTests.test_numeric_and_categories) ... ok
+test_roles_and_directions (test_summary.SummaryTests.test_roles_and_directions) ... ok
+test_whitespace_missing_nonfinite_and_invalid_outcome (test_summary.SummaryTests.test_whitespace_missing_nonfinite_and_invalid_outcome) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK

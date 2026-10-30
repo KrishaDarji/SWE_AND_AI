@@ -1,0 +1,28 @@
+Attempt 1 stdout (captured directly):
+
+Attempt 1 stderr (captured directly):
+test_all_tiebreakers (test_selector.SelectorTests.test_all_tiebreakers) ... ok
+test_boundaries_and_best (test_selector.SelectorTests.test_boundaries_and_best) ... ok
+test_invalid_caps (test_selector.SelectorTests.test_invalid_caps) ... ok
+test_missing_nonfinite_criterion_and_empty (test_selector.SelectorTests.test_missing_nonfinite_criterion_and_empty) ... ok
+test_no_feasible_and_nonfinite_cap (test_selector.SelectorTests.test_no_feasible_and_nonfinite_cap) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+Final attempt: attempt 2 (stdout captured directly; empty):
+
+Final attempt: attempt 2 (stderr captured directly):
+test_all_tiebreakers (test_selector.SelectorTests.test_all_tiebreakers) ... ok
+test_boundaries_and_best (test_selector.SelectorTests.test_boundaries_and_best) ... ok
+test_invalid_caps (test_selector.SelectorTests.test_invalid_caps) ... ok
+test_missing_nonfinite_criterion_and_empty (test_selector.SelectorTests.test_missing_nonfinite_criterion_and_empty) ... ok
+test_no_feasible_and_nonfinite_cap (test_selector.SelectorTests.test_no_feasible_and_nonfinite_cap) ... ok
+test_raw_valid_feasible_counts_and_original_identifier (test_selector.SelectorTests.test_raw_valid_feasible_counts_and_original_identifier) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

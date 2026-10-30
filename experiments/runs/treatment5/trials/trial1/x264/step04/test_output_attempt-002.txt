@@ -1,0 +1,12 @@
+test_csv_integration_and_lazy_order (test_flow.FlowTests) ... ok
+test_csv_reader (test_flow.FlowTests) ... ok
+test_empty_and_one (test_flow.FlowTests) ... ok
+test_missing_nonfinite_and_snapshot_copy (test_flow.FlowTests) ... ok
+test_prefixes_match_batch (test_flow.FlowTests) ... ok
+test_ties_keep_first_and_configuration (test_flow.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
+test_status=0

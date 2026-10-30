@@ -1,0 +1,11 @@
+Implemented the independent Python Step 4 application and tests.
+
+Source: source/arrival_estimator.py
+Tests: tests/test_arrival_estimator.py
+Run command: see run_instructions.txt.
+
+The implementation processes arrivals in CSV order, uses the first two valid observations as warm-up, predicts each later effort before revealing it, reports a categorical nearest-neighbor prediction and prior-history mean baseline, and excludes X-suffix metadata and all outcomes from the 22-descriptor predictor set. Missing and unseen descriptor values count as uninformative mismatches. Invalid/nonfinite efforts are reported and excluded from scoring and history. Empty input yields no records; fewer than three valid observations yields warm-up-only output.
+
+EZR adaptations: symbolic-column normalization and frequency-oriented categorical treatment, explicit missing-value behavior, streaming/sequential row processing, and stable one-pass history updates were informed by Col/SYM/Tbl/csv machinery in the authorized ezr.lua and ezr-lib.lua. No Lua or external package is used.
+
+Tests passed: 5. Demonstration processed 93 records. Measured /usr/bin/time -p real time: 0.09 seconds. The initial failed test run is preserved and was repaired; error_count is therefore 4 unexpected failed assertions. The CSV order is only a demonstration sequence, not a verified project timeline. Effort units are not invented; no convergence or automatic stopping rule is claimed. Limitations include a simple categorical nearest-neighbor estimator, sparse-data sensitivity, and no causal or temporal interpretation.

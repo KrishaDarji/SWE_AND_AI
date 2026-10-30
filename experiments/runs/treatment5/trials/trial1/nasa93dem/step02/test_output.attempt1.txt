@@ -1,0 +1,12 @@
+test_actual_missing (test_estimator.EstimatorTests) ... ok
+test_clean_and_schema (test_estimator.EstimatorTests) ... ok
+test_group_split_reproducible_and_never_all (test_estimator.EstimatorTests) ... ok
+test_insufficient_groups (test_estimator.EstimatorTests) ... ok
+test_outcome_independence (test_estimator.EstimatorTests) ... ok
+test_prediction_and_unseen (test_estimator.EstimatorTests) ... ok
+test_proposal_validation (test_estimator.EstimatorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

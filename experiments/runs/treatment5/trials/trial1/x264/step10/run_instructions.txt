@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Python interpreter: /usr/bin/python3
+Run tests:
+  OUT='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10'; DATA='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'; X264_DATA="$DATA" /usr/bin/python3 -m unittest discover -s "$OUT/tests" -v
+Run demonstration:
+  OUT='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step10'; DATA='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'; X264_DATA="$DATA" METRICS_OUT="$OUT/metrics_detail.csv" /usr/bin/time -p /usr/bin/python3 "$OUT/run_demo.py"
+All paths are absolute and quoted where they contain spaces. Tests use only the Python standard library.

@@ -1,0 +1,23 @@
+Correct Treatment 5, Trial 1, Health, Step 8.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step08/
+
+Fix criterion normalization in _value():
+- Strip surrounding whitespace.
+- Treat None, blank/whitespace-only strings, and "?" as missing.
+- Reject such baselines as invalid and exclude such repair candidates.
+- Compare normalized criterion values when counting and reporting changes.
+
+Add regression tests proving:
+- Missing criterion invalidates a baseline.
+- An improving candidate with missing criterion cannot be selected.
+- " squared_error " and "squared_error" do not count as a setting change.
+- Valid criterion values continue working.
+
+Keep selection, numeric comparisons, and secondary-outcome handling unchanged.
+Use only the previously authorized inputs and current Step 8 files.
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run tests and the real-data demonstration, capture new attempt logs,
+and update actual metrics including earlier failures.
+Write only inside the exact directory above.

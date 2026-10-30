@@ -1,0 +1,15 @@
+Implemented the Step 8 Python repair tool and tests.
+
+Files:
+- [repair.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step08/source/repair.py)
+- [test_repair.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step08/tests/test_repair.py)
+- [metrics.csv](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step08/metrics.csv)
+
+Run with:
+python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/x264/step08/source/repair.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+The first CSV record was repaired by changing no_8x8dct from 0 to 1. Performance- changed from 268.720 to 254.587, an improvement of 14.133, with one raw-column change. The selection minimizes change count, then Performance-, then record order. Numeric comparison is used, and invalid, missing, or nonfinite values are rejected.
+
+Tests: 5 passed. Demonstration runtime: 0.02 seconds real, measured with /usr/bin/time -p.
+
+EZR background machinery adapted: CSV row iteration, reusable mapping/copy-style data handling, numeric validation, and deterministic sorted candidate selection. No Lua is executed or imported. The raw-column count is only a proxy because correlated or one-hot fields may represent fewer conceptual changes. The result is retrospective and observed; it is not causal and does not guarantee future performance. Assumptions and limitations are recorded in the implementation and run instructions.

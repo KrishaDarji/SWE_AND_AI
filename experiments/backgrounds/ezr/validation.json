@@ -1,0 +1,35 @@
+{
+  "scope": "Library setup only; no experiment runs executed",
+  "file_checksums_verified": 87,
+  "checks": [
+    {
+      "command": [
+        "lua",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "Lua 5.5.1  Copyright (C) 1994-2026 Lua.org, PUC-Rio\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "lua",
+        "-e",
+        "package.path=\"experiments/backgrounds/ezr/upstream/?.lua;\"..package.path; local e=require(\"ezr\"); local n=e.Num(\"Test\"); n:add(1); n:add(3); assert(n.n==2 and n.mu==2); print(\"PASS: ezr loads and numeric summary works\")"
+      ],
+      "exit_code": 0,
+      "stdout": "PASS: ezr loads and numeric summary works\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "lua",
+        "experiments/backgrounds/ezr/upstream/ezr-eg1.lua",
+        "--all"
+      ],
+      "exit_code": 0,
+      "stdout": "{:ent 0.92 :mode a :mu 3 :sd 1.58}\n{Clndrs Volume HpX Model origin Lbs- Acc+ Mpg+}\n{8 304 193 70 1 4732 18.5 10}\n{8 360 215 70 1 4615 14 10}\n399 rows\n{:mu 0.48 :n 100 :was 0.48}\n{:DATA data/ :budget 50 :cap 1024 :check 5 :few 128 :file auto93.csv :keepf 0.66 :leaf 3 :maxd 4 :more 4 :p 2 :round 2 :seed 1234567891 :stop 32}\n{:mu 3 :sd 1.58}\nfailures: 0\n",
+      "stderr": ""
+    }
+  ]
+}

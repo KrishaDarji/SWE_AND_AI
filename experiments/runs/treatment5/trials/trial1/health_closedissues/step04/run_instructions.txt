@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step04
+Python interpreter: python3 (standard library only)
+Test command: python3 -m unittest discover -s '.../step04/tests' -v
+Demonstration command: /usr/bin/time -p python3 '.../step04/source/flow.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' '.../step04/snapshots.jsonl'
+All paths containing spaces are quoted. The demonstration reads CSV order as a demonstration sequence, not a verified timeline.

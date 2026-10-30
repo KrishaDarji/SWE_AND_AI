@@ -1,0 +1,4 @@
+cap=100 feasible=4877 total=10000 record_id=32
+configuration={'N_estimators': 10.0, 'criterion': 'squared_error', 'Min_sample_leaves': 1.0, 'Min_impurity_decrease': 6.75, 'Max_depth': 5.0}
+outcomes={'MRE-': 0.0, 'ACC+': 0.7901313681512335, 'PRED40+': 0.8571428571428571}
+selection uses observed outcomes; it does not predict unseen settings

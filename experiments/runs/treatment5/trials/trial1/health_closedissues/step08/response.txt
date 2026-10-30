@@ -1,0 +1,10 @@
+Implemented the independent Python retrospective observed-data repair in [source/repair.py](source/repair.py), with tests in [tests/test_repair.py](tests/test_repair.py).
+
+Run:
+`python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step08/run_demo.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"`
+
+The first CSV record is the baseline (`csv_row_2`). The selected observed candidate is `csv_row_1946`: `N_estimators` 40→10 and `Min_impurity_decrease` 2.75→5.0. Change count is 2, explicitly a proxy rather than measured implementation cost. Observed MRE- improves by 0.04756995581737844; ACC+ worsens by 0.06568407561678946; PRED40+ is unchanged.
+
+The implementation adapts EZR’s typed numeric/symbol handling, finite-value validation, and deterministic ranking concepts. It does not invoke Lua. Tests cover minimum-change priority, numeric equivalence, tie-breakers, exact changes, secondary trade-offs, missing outcomes, invalid baselines, empty input, and no improvement. Six tests pass; the first failed assertion is preserved in attempt 01 and the repaired successful run in attempt 02.
+
+This is retrospective observed-data repair, not a causal estimate or guarantee of future quality. It makes no claim about metric formulas, units, ranges, or measured compute costs. Eligibility requires complete finite configuration fields and a finite candidate MRE- strictly below the valid baseline; unavailable secondary outcomes produce null differences and an explicit unknown-comparison reason. The CSV has no explicit identifier column, so identifiers are preserved when present and otherwise labeled by CSV row.

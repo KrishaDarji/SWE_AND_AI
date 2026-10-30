@@ -1,0 +1,11 @@
+Corrected the independent Python retrospective selector and comparison in source/selector.py, with standard-library tests in tests/test_selector.py.
+
+The correction treats None, blank, whitespace-only, and '?' criterion values as missing; validates complete finite records before applying the N_estimators cap; safely handles missing CSV cells; and preserves original CSV positions. The integration fixture independently verified raw=6, valid=2, feasible=1 and original identifier 2 for the only eligible record. Both selector and baseline use that same feasible pool.
+
+The implementation applies the N_estimators <= 100 cap to both sides, uses identical complete-record eligibility, preserves original CSV identifiers, deterministically selects by MRE- then ACC+ then PRED40+ then earliest record, and samples independent random.Random instances for seeds 42 through 51. The measured dataset counts were raw=10000, valid=10000, feasible=4877. The selector was record 32 for every comparison; paired MRE- differences (baseline minus selector) had mean 0.7697643593519881, median 0.824300441826215, and 10 wins, 0 ties, 0 losses. ACC+ and PRED40+ trade-offs are reported descriptively in runtime_output_attempt1.stdout.
+
+EZR-informed adaptations were the standard-library CSV/coercion and streaming-style record processing, plus deterministic ordering inspired by the source's compact data-processing machinery. No Lua was invoked and no supplied source was modified.
+
+Command: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step10' && /usr/bin/time -p /usr/bin/python3 run_demo.py
+
+Tests passed: 4. This is a retrospective comparison from one historical dataset, not independent validation or independent LLM trials. The selector inspects all feasible outcomes while the baseline samples one record, so the result does not establish superior budgeted search or statistical superiority. The project's final “same” procedure remains pending if unavailable.

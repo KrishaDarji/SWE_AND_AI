@@ -1,0 +1,11 @@
+test_directions_ties_and_batch (test_flow.FlowTests.test_directions_ties_and_batch) ... ok
+test_empty_and_one (test_flow.FlowTests.test_empty_and_one) ... ok
+test_iterator_and_csv_integration (test_flow.FlowTests.test_iterator_and_csv_integration) ... ok
+test_missing_nonfinite_and_defensive_copy (test_flow.FlowTests.test_missing_nonfinite_and_defensive_copy) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+Final captured attempt: test_output_attempt02.txt
+Earlier shell-wrapper failure: shell_wrapper_failure_attempt01.txt

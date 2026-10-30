@@ -1,0 +1,27 @@
+test_both_directions (test_spot_screen.SpotTests) ... FAIL
+test_constant_zero_scale_and_json (test_spot_screen.SpotTests) ... ok
+test_missing_nonfinite_small_empty (test_spot_screen.SpotTests) ... ok
+test_unusual_and_ids (test_spot_screen.SpotTests) ... FAIL
+
+======================================================================
+FAIL: test_both_directions (test_spot_screen.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09/tests/test_spot_screen.py", line 20, in test_both_directions
+    self.assertEqual({x["record_id"] for x in out["flags"]}, {6,7})
+AssertionError: Items in the second set but not the first:
+6
+7
+
+======================================================================
+FAIL: test_unusual_and_ids (test_spot_screen.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step09/tests/test_spot_screen.py", line 10, in test_unusual_and_ids
+    out = screen(rows); self.assertEqual(out["unique_flagged_record_count"], 1); self.assertEqual(out["flags"][0]["record_id"], 15)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=2)

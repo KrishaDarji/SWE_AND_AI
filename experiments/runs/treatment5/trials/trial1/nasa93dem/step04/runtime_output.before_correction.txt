@@ -1,0 +1,4 @@
+Final demonstration log: runtime_output.attempt02.txt
+Preserved initial demonstration log: runtime_output.attempt01.txt
+
+The final log is the actual stdout/stderr capture from the 93-record demonstration subprocess, timed with /usr/bin/time -p.

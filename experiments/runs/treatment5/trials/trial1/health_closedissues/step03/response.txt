@@ -1,0 +1,14 @@
+Implemented and verified the independent Python certification application and tests.
+
+Artifacts:
+- Source: [certify.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step03/source/certify.py)
+- Tests: [test_certify.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step03/tests/test_certify.py)
+- Run command: [run_instructions.txt](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step03/run_instructions.txt)
+
+The final suite passed 5 tests. The first attempt had one incorrect synthetic df expectation; it was preserved and repaired. Demonstration runtime was 0.03 seconds.
+
+Measured result: reference squared_error n=3363, mean MRE-=0.6737202958; candidate absolute_error n=3302, mean=0.7508694690; candidate-reference difference=+0.0771491732 (higher MRE-, unfavorable). Welch df=6661.6898, t=15.1779, p reported as 0.0 from numerical underflow, 95% CI [0.0671848504, 0.0871134960]. No practical threshold was supplied, so practical importance is undetermined.
+
+ACC+ and PRED40+ were summarized descriptively. Configurations are independent observations; other settings may confound the comparison. This does not establish causality, repeated-run noise, equivalence, or guaranteed gains.
+
+The implementation adapts EZR-inspired grouping, filtering, summary, and ranking concepts from the authorized Lua background. Student-t inference uses a standard-library incomplete-beta continued fraction and bisection quantile approximation, checked by small/moderate/large-statistic tests and probability bounds. Missing/nonfinite values, insufficient groups, zero variance, and invalid thresholds are handled explicitly.

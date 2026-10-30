@@ -1,0 +1,23 @@
+test_empty (test_repair.RepairTests.test_empty) ... ok
+test_minimum_change_beats_large_improvement (test_repair.RepairTests.test_minimum_change_beats_large_improvement) ... ok
+test_missing_secondary_invalid_and_none (test_repair.RepairTests.test_missing_secondary_invalid_and_none) ... ok
+test_numeric_equivalence (test_repair.RepairTests.test_numeric_equivalence) ... FAIL
+test_reporting_and_worsening (test_repair.RepairTests.test_reporting_and_worsening) ... ok
+test_ties_and_tradeoffs (test_repair.RepairTests.test_ties_and_tradeoffs) ... ok
+
+======================================================================
+FAIL: test_numeric_equivalence (test_repair.RepairTests.test_numeric_equivalence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/health_closedissues/step08/tests/test_repair.py", line 13, in test_numeric_equivalence
+    def test_numeric_equivalence(self): self.assertEqual(select([r(.5), r(.4, N_estimators="10.0")])["status"], "no_improvement")
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'improvement_found' != 'no_improvement'
+- improvement_found
++ no_improvement
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

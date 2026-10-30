@@ -1,0 +1,29 @@
+Correct Treatment 5, Trial 1, NASA93, Step 1.
+
+Exact Step directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial1/nasa93dem/step01/
+
+Fix the empty-input execution failure:
+summarize() returns roles={}, while format_report() unconditionally accesses
+roles["descriptors"], roles["metadata"], and roles["outcomes"].
+
+Make the summary structure consistent for empty input, or handle it explicitly
+in the formatter. The CLI must produce a clear empty-input report without an
+unhandled traceback.
+
+Add tests exercising the complete reporting path for:
+- Empty input.
+- Header-only input.
+- Normal data.
+
+Use only current NASA93 Step 1 files, the specified NASA93 dataset,
+and the two previously authorized EZR reference files.
+Do not access previous steps, other datasets, trials, or treatments.
+
+Preserve existing artifacts and logs before modifications.
+Save this correction prompt separately; preserve the original prompt.txt.
+Run the corrected tests, an empty-input CLI check, and the real-data demonstration.
+Keep fixtures and captured outputs inside this Step 1 directory.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main log files identify the final attempts.
+Write only inside the exact Step 1 directory above.
