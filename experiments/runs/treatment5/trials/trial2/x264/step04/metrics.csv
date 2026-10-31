@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,2,video encoding,flow,49,49,1,0.04,1,"7 tests passed; /usr/bin/time -p real for demonstration; translated EZR numeric accumulation/minimum direction; CSV order is demonstration sequence; invalid outcomes skipped; one repaired shell-wrapper failure preserved"

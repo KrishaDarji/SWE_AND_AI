@@ -1,0 +1,12 @@
+Implemented the independent Python repair tool and tests in the exact Step 8 output directory.
+
+Source: [source/repair.py](source/repair.py)
+Tests: [tests/test_repair.py](tests/test_repair.py)
+
+The implementation uses descriptor-grouped 75/25 splitting with seed 42, training-only per-configuration effort means, normalized categorical descriptors, and the required repair ordering: changed-field count, predicted effort, then earliest training CSV row. It handles invalid inputs, unseen descriptors, invalid targets, incomplete proposals, insufficient data, already-feasible proposals, and no-feasible-repair cases. The demonstration uses held-out CSV row 10 (idX 9), budget 100, and selects training row 21 (idX 20): five changes, estimated effort 60.0, feasible.
+
+EZR-informed machinery: CSV row loading/coercion, whitespace-normalized symbolic values, seeded deterministic shuffling, numeric mean summaries, and deterministic sorting. No Lua or external packages are used.
+
+Tests: 5 passed. Demonstration real time: 0.02 seconds from /usr/bin/time -p. The synthetic tests cover feasibility, minimum-change priority, both tie-breakers, already-feasible and no-feasible outcomes, invalid inputs, training-only candidates, held-out outcome independence, changed fields, and identifier reporting.
+
+Assumptions and limitations: identical 22-descriptor configurations form groups; the model is a configuration mean with the training global mean for unseen proposals; idX is reported as metadata and is not assumed unique; change count is only a proxy, not cost or operational risk. Candidates are hypothetical and may not be actionable or preserve scope. Model differences are not causal improvements or guaranteed savings. The failed first test attempt is preserved in test_attempt1.txt; the corrected successful attempt is test_attempt2.txt.

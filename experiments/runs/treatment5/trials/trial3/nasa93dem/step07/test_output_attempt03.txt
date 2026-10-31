@@ -1,0 +1,11 @@
+test_budget_boundary_and_maximum (test_choose.ChooseTests) ... ok
+test_empty_and_no_feasible (test_choose.ChooseTests) ... ok
+test_invalid_budget (test_choose.ChooseTests) ... ok
+test_metadata_outcomes_separate_and_original_position_survives (test_choose.ChooseTests) ... ok
+test_missing_and_nonfinite_outcomes_are_infeasible (test_choose.ChooseTests) ... ok
+test_ties_effort_then_earliest_position (test_choose.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+OK

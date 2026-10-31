@@ -1,0 +1,9 @@
+test_evidence_labels_and_original_id_in_render (test_justify.JustifyTests.test_evidence_labels_and_original_id_in_render) ... ok
+test_medians_and_counts_ignore_invalid_per_outcome (test_justify.JustifyTests.test_medians_and_counts_ignore_invalid_per_outcome) ... ok
+test_no_eligible_records (test_justify.JustifyTests.test_no_eligible_records) ... ok
+test_selection_and_tiebreakers (test_justify.JustifyTests.test_selection_and_tiebreakers) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

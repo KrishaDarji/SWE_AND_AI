@@ -1,0 +1,11 @@
+Implemented the standalone Python justification application and tests in the required directory.
+
+Recommendation: CSV data record 71, with complete configuration retained and measured Performance- = 244.23. Lower is better. The first CSV data record is the named historical reference at 268.72, so the absolute difference is 24.49 and the percentage improvement is 9.11357546889%.
+
+The five standard-library tests pass. The implementation adapts EZR’s CSV streaming/coercion idea, finite numeric handling, and stable input-order behavior for equal candidates. It excludes missing/nonfinite outcomes and handles missing, invalid, or zero references explicitly. Associations do not establish the effect of changing a setting, and correlated settings can share explanatory information.
+
+Run from the recorded working directory with:
+python3 -m unittest discover -s tests
+/usr/bin/time -p python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Known limitations: retrospective evidence from one dataset; no guarantee of future performance or statistical superiority; no units, costs, or constraints inferred.

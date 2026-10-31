@@ -1,0 +1,12 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step04
+
+Python interpreter: /usr/bin/python3
+
+Run tests:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step04" && /usr/bin/python3 -m unittest discover -s tests -v
+
+Run demonstration:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step04" && /usr/bin/time -p /usr/bin/python3 source/estimator.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --metrics metrics.csv
+
+The estimator is independent, standard-library-only Python. CSV order is a demonstration sequence, not a verified timeline.

@@ -1,0 +1,21 @@
+Implemented the Python analyzer and tests in the exact requested directory.
+
+The primary score is η² (between-group sum of squares divided by total outcome sum of squares), ranked descending. It uses only setting columns to explain `Performance-`; lower performance is better, so positive high-minus-low means the setting's high value is associated with slower encodes. The dataset has 1,152 rows.
+
+Observed ranking:
+
+1. `ref_9`: η²=0.644502; high mean 646.236776 vs low mean 369.512007 (+276.724770).
+2. `ref_1`: η²=0.643494; high mean 277.414703 vs low mean 553.923043 (-276.508340).
+3. `no_mixed_refs`: η²=0.037692; high is 63.093116 lower.
+4. `no_fast_pskip`: η²=0.030787; high is 57.022120 higher.
+5. `no_mbtree`: η²=0.024377; high is 50.739828 higher.
+
+The remaining nonconstant settings have η² below 0.0041. `no_asm`, `rc_lookahead`, and `ref` are constant and cannot explain variation. Every setting had two observed values or was constant; no missing values occurred in this dataset. Correlated or mutually exclusive settings such as `ref_1` and `ref_9` share explanatory information, so marginal ranking is not causal and does not identify an independently responsible setting. These are observational associations, not guaranteed effects of changing a setting.
+
+EZR machinery adapted from the authorized source: CSV row streaming/coercion, column-oriented summaries, numeric mean/standard-deviation style accumulation concepts, explicit missing-value skipping, and deterministic tie ordering. No Lua or external packages are used.
+
+Tests cover known synthetic associations and direction, constants, multi-value settings, missing/nonfinite values, correlated settings, tied deterministic ordering, group counts, and summaries. The complete suite passed. Demonstration runtime was measured as `real 0.06` seconds with `/usr/bin/time -p`.
+
+Run:
+
+`cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step05' && /usr/bin/python3 source/analyzer.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'`

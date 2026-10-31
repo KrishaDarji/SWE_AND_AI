@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02
+Python interpreter: /usr/bin/python3
+Tests: /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration: /usr/bin/time -p /usr/bin/python3 run_demo.py
+All paths are absolute where external data is referenced; quote paths containing spaces.

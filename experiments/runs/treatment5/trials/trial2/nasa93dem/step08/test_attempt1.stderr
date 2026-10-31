@@ -1,0 +1,14 @@
+......E
+======================================================================
+ERROR: test_tie_breakers_effort_then_earliest_csv (test_repair.RepairTests.test_tie_breakers_effort_then_earliest_csv)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step08/tests/test_repair.py", line 27, in test_tie_breakers_effort_then_earliest_csv
+    self.assertEqual(r["candidate_id"], "earliest")
+                     ~^^^^^^^^^^^^^^^^
+KeyError: 'candidate_id'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+FAILED (errors=1)

@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration command: /usr/bin/time -p /usr/bin/python3 source/run.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --metrics metrics_detail.csv
+All paths containing spaces are quoted as shown. Logs are preserved as attempt-labeled files.

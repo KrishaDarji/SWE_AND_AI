@@ -1,0 +1,11 @@
+test_beta_and_t_known (test_certify.T) ... ok
+test_groups_direction (test_certify.T) ... ok
+test_invalid_threshold (test_certify.T) ... ok
+test_missing_insufficient_zero (test_certify.T) ... ok
+test_threshold_uncertain (test_certify.T) ... ok
+test_welch_reference (test_certify.T) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK

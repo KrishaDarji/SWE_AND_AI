@@ -1,0 +1,14 @@
+Comparison: A=tool=n versus B=tool=h; outcome=observed Effort-
+A count=83 mean=606.063855 sd=1177.939725
+B count=10 mean=776.700000 sd=720.516335
+A-B difference=-170.636145 direction=favors A (tool=n)
+Welch t=-0.651341 df=15.552581 two-sided p=0.524335
+95% CI for A-B=(-727.303097, 386.030808)
+illustrative threshold=11.760000 (10% of tool=n mean; not a client requirement)
+statistical_difference=False point_exceeds_threshold=True interval_above_threshold=False interval_below_negative_threshold=False
+Interpretation: observed effort is not verified monetary cost; this does not establish causality, savings, or equivalence.
+Limitations: effort may be skewed, groups may be imbalanced, and project scope may differ; repeated-run noise is not measured.
+real 0.07
+user 0.05
+sys 0.01
+wrapper_status=0

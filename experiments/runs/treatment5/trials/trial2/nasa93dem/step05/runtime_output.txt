@@ -1,0 +1,30 @@
+NASA93 excessive-effort association ranking
+Primary score: eta_squared = between-group effort SS / total effort SS; larger means stronger marginal association.
+Rows=93, effort_n=93, effort_median=252.000, effort_mean=624.412
+rank,descriptor,eta_squared,groups,n,highest_median_group,highest_median,lowest_median_group,lowest_median,max_abs_cliffs
+1,time,0.417943,4,93,xh,1848.500,n,156.000,0.773529
+2,rely,0.342147,4,93,vh,1709.200,n,170.000,0.738554
+3,cplx,0.191680,5,93,xh,1924.500,h,118.800,0.586364
+4,stor,0.163585,4,93,xh,648.000,n,117.600,0.527885
+5,plex,0.152537,4,93,h,651.500,n,117.600,0.590909
+6,data,0.143988,4,93,h,1181.000,l,72.000,0.602167
+7,acap,0.060616,3,93,h,420.000,n,75.000,0.505123
+8,pvol,0.057823,3,93,h,480.000,l,240.000,0.180220
+9,pcap,0.057441,3,93,vh,425.000,n,115.800,0.395640
+10,sced,0.054554,2,93,n,400.000,l,118.800,0.330010
+11,pmat,0.050721,3,93,l,501.700,n,132.000,0.350000
+12,apex,0.023126,4,93,l,648.000,n,117.600,0.543478
+13,ltex,0.004630,4,93,vl,395.000,n,162.000,0.221910
+14,tool,0.002189,2,93,h,528.500,n,215.000,0.403614
+15,docu,0.000000,1,93,n,252.000,n,252.000,0.000000
+16,flex,0.000000,1,93,h,252.000,h,252.000,0.000000
+17,pcon,0.000000,1,93,n,252.000,n,252.000,0.000000
+18,prec,0.000000,1,93,h,252.000,h,252.000,0.000000
+19,resl,0.000000,1,93,h,252.000,h,252.000,0.000000
+20,ruse,0.000000,1,93,n,252.000,n,252.000,0.000000
+21,site,0.000000,1,93,n,252.000,n,252.000,0.000000
+22,team,0.000000,1,93,vh,252.000,vh,252.000,0.000000
+Interpretation: highest-median categories are associated with higher observed effort in this sample; this is not causal or size-adjusted productivity.
+real 0.04
+user 0.03
+sys 0.01

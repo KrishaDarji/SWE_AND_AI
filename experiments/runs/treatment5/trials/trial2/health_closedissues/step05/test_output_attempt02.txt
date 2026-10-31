@@ -1,0 +1,32 @@
+test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions) ... ERROR
+test_missing_constant_all_missing_and_determinism (test_blame.TestBlame.test_missing_constant_all_missing_and_determinism) ... ERROR
+test_quantile_boundaries_are_outcome_independent (test_blame.TestBlame.test_quantile_boundaries_are_outcome_independent) ... ok
+
+======================================================================
+ERROR: test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 15, in test_known_mixed_associations_and_exclusions
+    r=blame.analyze(write(rows)); self.assertEqual(r[0]["setting"], "N_estimators"); self.assertGreater(r[0]["score"], .9); self.assertEqual(r[0]["n"],12)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/../source/blame.py", line 83, in analyze
+    groups = [labels[g] for g in gs]
+              ~~~~~~^^^
+TypeError: list indices must be integers or slices, not tuple
+
+======================================================================
+ERROR: test_missing_constant_all_missing_and_determinism (test_blame.TestBlame.test_missing_constant_all_missing_and_determinism)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 18, in test_missing_constant_all_missing_and_determinism
+    a=blame.analyze(write(rows)); b=blame.analyze(write(rows)); self.assertEqual([x["setting"] for x in a],[x["setting"] for x in b]); self.assertEqual(a[-1]["n"],0); self.assertEqual(a[1]["score"],0.0)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/../source/blame.py", line 83, in analyze
+    groups = [labels[g] for g in gs]
+              ~~~~~~^^^
+TypeError: list indices must be integers or slices, not tuple
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=2)

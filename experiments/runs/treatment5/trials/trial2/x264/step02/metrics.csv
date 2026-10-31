@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,2,video encoding,guess,81,81,1,0.06,1,"7 tests; final corrected attempt 2 logs in test_output.txt and runtime_output.txt; /usr/bin/time -p real elapsed; repaired Xᵀy/mean_target bug; earlier failed patch command counted; EZR CSV/coercion, seeded shuffle, numeric summaries, grouped holdout adapted"

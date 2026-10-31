@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,2,model configuration and quality,justify,57,57,1,0.04,2,"4 tests; /usr/bin/time -p real elapsed time; adapted EZR CSV streaming, sorting, finite filtering, and median utilities; independent implementation; repaired nonfinite median and eligibility defects; first failed attempt preserved; synthetic fixtures cover selection/ties, references, labels, IDs, invalid values, and no eligible records"

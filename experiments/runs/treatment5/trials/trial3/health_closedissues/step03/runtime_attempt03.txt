@@ -1,0 +1,15 @@
+Fixed primary comparison: absolute_error minus squared_error on MRE- (lower is better)
+reference_count: 3363
+candidate_count: 3302
+reference_mean: 0.6737202958486007
+candidate_mean: 0.7508694690284093
+difference: 0.07714917317980863
+95% CI: (0.06718492159801825, 0.087113424761599)
+df: 6661.689826828911
+t: 15.177858263293171
+p(two-sided): 0
+practical importance: undetermined
+Secondary ACC+/PRED40+ are descriptive only; configurations are distinct observations.
+real 0.06
+user 0.05
+sys 0.00

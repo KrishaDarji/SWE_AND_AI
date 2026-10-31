@@ -1,0 +1,12 @@
+test_actual_usable_group_count_and_identifiers (test_spot_anomaly.SpotTests) ... ok
+test_empty_small_constant_zero_variability (test_spot_anomaly.SpotTests) ... ok
+test_invalid_nearby_groups_do_not_satisfy_minimum (test_spot_anomaly.SpotTests) ... ok
+test_isolation_and_duplicate_group_exclusion (test_spot_anomaly.SpotTests) ... ok
+test_missing_nonfinite_and_strict_json (test_spot_anomaly.SpotTests) ... ok
+test_normal_and_anomalous (test_spot_anomaly.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.002s
+
+OK
+FINAL_ATTEMPT=02

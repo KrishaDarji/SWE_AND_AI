@@ -1,0 +1,122 @@
+{
+  "assumptions": "First row is a CSV header; cells are comma-separated; blank, ?, NA, N/A, null, and None are missing; malformed or non-finite outcomes are invalid and excluded from statistics.",
+  "columns": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9",
+    "Performance-"
+  ],
+  "invalid_values": 0,
+  "missing_values": {
+    "Performance-": 0,
+    "no_8x8dct": 0,
+    "no_asm": 0,
+    "no_cabac": 0,
+    "no_deblock": 0,
+    "no_fast_pskip": 0,
+    "no_mbtree": 0,
+    "no_mixed_refs": 0,
+    "no_weightb": 0,
+    "rc_lookahead": 0,
+    "rc_lookahead_20": 0,
+    "rc_lookahead_40": 0,
+    "rc_lookahead_60": 0,
+    "ref": 0,
+    "ref_1": 0,
+    "ref_5": 0,
+    "ref_9": 0
+  },
+  "numeric_statistics": {
+    "Performance-": {
+      "count": 1152,
+      "max": 821.963,
+      "mean": 461.7535963541667,
+      "median": 452.7785,
+      "min": 244.23,
+      "stdev": 162.56172171206987
+    }
+  },
+  "outcome": "Performance-",
+  "outcome_direction": "lower is better",
+  "record_count": 1152,
+  "setting_frequencies": {
+    "no_8x8dct": {
+      "0": 576,
+      "1": 576
+    },
+    "no_asm": {
+      "1": 1152
+    },
+    "no_cabac": {
+      "0": 576,
+      "1": 576
+    },
+    "no_deblock": {
+      "0": 576,
+      "1": 576
+    },
+    "no_fast_pskip": {
+      "0": 576,
+      "1": 576
+    },
+    "no_mbtree": {
+      "0": 576,
+      "1": 576
+    },
+    "no_mixed_refs": {
+      "0": 576,
+      "1": 576
+    },
+    "no_weightb": {
+      "0": 576,
+      "1": 576
+    },
+    "rc_lookahead": {
+      "1": 1152
+    },
+    "rc_lookahead_20": {
+      "0": 768,
+      "1": 384
+    },
+    "rc_lookahead_40": {
+      "0": 768,
+      "1": 384
+    },
+    "rc_lookahead_60": {
+      "0": 768,
+      "1": 384
+    },
+    "ref": {
+      "1": 1152
+    },
+    "ref_1": {
+      "0": 768,
+      "1": 384
+    },
+    "ref_5": {
+      "0": 768,
+      "1": 384
+    },
+    "ref_9": {
+      "0": 768,
+      "1": 384
+    }
+  }
+}
+real 0.02
+user 0.01
+sys 0.00
+demo_exit:0

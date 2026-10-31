@@ -1,0 +1,19 @@
+test_direction_and_threshold_uncertain (test_certify.TestCertify.test_direction_and_threshold_uncertain) ... FAIL
+test_missing_insufficient_zero_invalid (test_certify.TestCertify.test_missing_insufficient_zero_invalid) ... ok
+test_nonfinite_ignored_by_fixture_logic (test_certify.TestCertify.test_nonfinite_ignored_by_fixture_logic) ... ok
+test_reference_numerics (test_certify.TestCertify.test_reference_numerics) ... ok
+test_welch_arithmetic (test_certify.TestCertify.test_welch_arithmetic) ... ok
+
+======================================================================
+FAIL: test_direction_and_threshold_uncertain (test_certify.TestCertify.test_direction_and_threshold_uncertain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step03/tests/test_certify.py", line 8, in test_direction_and_threshold_uncertain
+    r=certify.compare([0,10],[6,4],5); self.assertTrue(r['point_exceeds_threshold']); self.assertFalse(r['interval_beyond_threshold'])
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+FAILED (failures=1)

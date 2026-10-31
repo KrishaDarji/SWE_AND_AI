@@ -1,0 +1,26 @@
+test_empty_short_and_invalid_effort (test_estimator.FlowTests) ... ok
+test_freeze_before_reveal_and_future_independence (test_estimator.FlowTests) ... FAIL
+test_missing_unseen_and_exclusions (test_estimator.FlowTests) ... ok
+test_prediction_precedes_current_outcome (test_estimator.FlowTests) ... ok
+test_warmup_and_arithmetic (test_estimator.FlowTests) ... FAIL
+
+======================================================================
+FAIL: test_freeze_before_reveal_and_future_independence (test_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step04/tests/test_estimator.py", line 28, in test_freeze_before_reveal_and_future_independence
+    changed[2]["Effort-"]="999"; self.assertNotEqual(assess(base)[3]["prior_training_count"], assess(changed)[3]["prior_training_count"])
+AssertionError: 3 == 3
+
+======================================================================
+FAIL: test_warmup_and_arithmetic (test_estimator.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step04/tests/test_estimator.py", line 15, in test_warmup_and_arithmetic
+    self.assertAlmostEqual(out[3]["cumulative_baseline_mae"], 10)
+AssertionError: 17.5 != 10 within 7 places (7.5 difference)
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=2)

@@ -1,0 +1,32 @@
+test_evidence_labels_and_original_id_in_render (test_justify.JustifyTests.test_evidence_labels_and_original_id_in_render) ... ok
+test_medians_and_counts_ignore_invalid_per_outcome (test_justify.JustifyTests.test_medians_and_counts_ignore_invalid_per_outcome) ... ERROR
+test_no_eligible_records (test_justify.JustifyTests.test_no_eligible_records) ... FAIL
+test_selection_and_tiebreakers (test_justify.JustifyTests.test_selection_and_tiebreakers) ... ok
+
+======================================================================
+ERROR: test_medians_and_counts_ignore_invalid_per_outcome (test_justify.JustifyTests.test_medians_and_counts_ignore_invalid_per_outcome)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step06/tests/test_justify.py", line 14, in test_medians_and_counts_ignore_invalid_per_outcome
+    got = medians(rows)
+          ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step06/source/justify.py", line 37, in medians
+    result[name] = {"median": statistics.median(values) if values else None, "valid_count": len(values)}
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/statistics.py", line 614, in median
+    data = sorted(data)
+           ^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+======================================================================
+FAIL: test_no_eligible_records (test_justify.JustifyTests.test_no_eligible_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step06/tests/test_justify.py", line 27, in test_no_eligible_records
+    self.assertIn("No eligible records", text)
+AssertionError: 'No eligible records' not found in 'Configuration justification (retrospective observed-data evidence)\nDemonstration policy: lowest observed MRE-; ties by higher ACC+, then higher PRED40+, then earliest CSV record.\nIdentifier: 1-based data-row position after the CSV header; preserved when records are excluded.\nEligibility: all three outcomes must be finite numeric values.\nReference MRE-: median=1, valid_count=1\nReference ACC+: median=inf, valid_count=2\nReference PRED40+: median=3.0, valid_count=2\nEligible records: 1 of 2\nRecommended record identifier: 2\nConfiguration: N_estimators=, criterion=, Min_sample_leaves=, Min_impurity_decrease=, Max_depth=\nMeasured MRE-: 1; equal to its finite-data median (1); valid_count=1; evidence_label=measured\nMeasured ACC+: inf; equal to its finite-data median (inf); valid_count=2; evidence_label=measured\nMeasured PRED40+: 3; equal to its finite-data median (3.0); valid_count=2; evidence_label=measured\nTrade-off: the best observed MRE- need not also have the best ACC+ or PRED40+; the stated policy resolves this by tie-breaks only.\nAssociations: settings and outcomes are jointly observed; correlated settings can share explanatory information. These global scores are not additive local contributions or causal effects.\nNo model estimates are included. This is retrospective observed-data evidence, not a guarantee of future performance or a claim of statistical superiority.\nLimitations: one dataset and observed configurations; missing/nonfinite outcomes are excluded per-outcome from reference medians and from selection eligibility; no resource costs, units, ranges, or future constraints are inferred.\n'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (failures=1, errors=1)

@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Python interpreter: /usr/bin/python3 (standard library only)
+Run tests:
+python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step08/tests' -v
+Run demonstration:
+/usr/bin/time -p python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step08/source/repair.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+The demonstration uses the earliest held-out row and budget 100. Captured output is in runtime_attempt2.txt; tests are in test_attempt2.txt. Earlier failed output is preserved in test_attempt1.txt and runtime_attempt1.txt.

@@ -1,0 +1,5 @@
+Implemented an independent Python predictor for Performance- using encoder settings only. It uses a reproducible seed-42 grouped 80/20 split, training-only mean imputation/scaling (the dataset has complete numeric settings), standardized ridge regression, held-out MAE, and a training-mean baseline. Supplied prediction configurations are schema- and finite-value validated.
+
+EZR-informed machinery: CSV row streaming/coercion, seeded shuffle, numeric mean/variance summaries, sorted/group-oriented data handling, and explicit holdout evaluation. No Lua is executed or imported.
+
+Run with the command in run_instructions.txt. Tests cover grouped reproducibility, leakage resistance, prediction validation, finite outputs, and insufficient groups. Limitations: this is a small linear model and assumes numeric encoder-setting columns; it does not claim causal or quality predictions.

@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step01
+Python interpreter: /usr/bin/python3
+Test command: (cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step01' && /usr/bin/python3 -m unittest discover -s tests -v)
+Demo command: /usr/bin/time -p /usr/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step01/source/nasa_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+The demo stdout and stderr are preserved in runtime_output_attempt01.txt and runtime_output_attempt02.txt; runtime_output.txt references the final attempt. Tests are preserved similarly.

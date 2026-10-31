@@ -1,0 +1,10 @@
+Final demonstration attempt: runtime_attempt02.stdout and runtime_attempt02.stderr
+--- stdout ---
+processed 91 scored arrivals
+csv order is a demonstration sequence, not a verified timeline
+--- stderr ---
+real 0.03
+user 0.03
+sys 0.00
+exit=0
+Earlier preserved successful attempt: runtime_attempt01.stdout and runtime_attempt01.stderr.

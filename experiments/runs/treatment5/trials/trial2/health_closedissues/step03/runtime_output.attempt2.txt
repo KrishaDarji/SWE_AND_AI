@@ -1,0 +1,36 @@
+{
+  "candidate_definition": "criterion=absolute_error",
+  "comparison": {
+    "ci95_high": 0.08711168556108938,
+    "ci95_low": 0.06718666079851655,
+    "degrees_freedom": 6661.6898268289115,
+    "difference_candidate_minus_reference": 0.07714917317980297,
+    "mean_candidate": 0.7508694690284059,
+    "mean_reference": 0.6737202958486029,
+    "n_candidate": 3302,
+    "n_reference": 3363,
+    "p_two_sided": 0,
+    "standard_error": 0.005083007881710812,
+    "status": "ok",
+    "t": 15.17785826329203,
+    "variance_candidate": 0.04166811645371595,
+    "variance_reference": 0.04445184841876376
+  },
+  "primary": "MRE-; lower is better",
+  "reference_definition": "criterion=squared_error",
+  "secondary": {
+    "absolute_error": {
+      "count": 3302,
+      "mean_ACC+": 0.47779311364779153,
+      "mean_PRED40+": 0.12667647313316605
+    },
+    "squared_error": {
+      "count": 3363,
+      "mean_ACC+": 0.5088244263981059,
+      "mean_PRED40+": 0.1801962533452275
+    }
+  }
+}
+real 0.03
+user 0.03
+sys 0.00

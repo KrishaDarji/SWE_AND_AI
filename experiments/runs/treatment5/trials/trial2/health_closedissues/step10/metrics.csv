@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,5,2,model configuration and quality,race,80,80,1,0.14,1,"21 tests; /usr/bin/time -p demonstration real=0.14s; EZR csv/sorted deterministic selection and seeded shuffle ideas adapted; cap=100; total=10000 valid=10000 feasible=4877; one repaired wrapper failure preserved in attempt1; retrospective unequal-information comparison"

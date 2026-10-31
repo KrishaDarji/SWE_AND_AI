@@ -1,0 +1,15 @@
+Implemented the independent Python NASA93 Step 5 blame analysis.
+
+Source: `source/blame.py`
+Tests: `tests/test_blame.py`
+Run: `/usr/bin/python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'`
+
+The ranking uses eta-squared (between-group effort sum of squares divided by total effort sum of squares) as the single primary score. Descriptor values are normalized categorical strings. Each result reports category counts, effort medians, highest/lowest-median direction, and maximum absolute Cliff's delta against the remaining categories. Ties are deterministic by descriptor name.
+
+The implementation translates/adapts EZR ideas from the authorized Lua source: symbolic category counting, numeric median/spread-style summaries, categorical distance/effect direction via Cliff's delta, and deterministic ranking. It does not invoke Lua or external packages.
+
+Observed top marginal associations are time, rely, cplx, stor, plex, and data. In this sample, the highest-median categories are xh for time, vh for rely, xh for cplx and stor, h for plex and data. These are associations with observed Effort-, not causal effects. Correlated descriptors can share explanatory information, and higher effort can reflect larger scope. Delivered size is excluded, so this is not size-adjusted productivity; no defect-risk or process-improvement claim is made.
+
+Known limitations: 93 observations, observational categorical comparisons, sparse/single-category descriptors, missing/nonfinite values omitted per descriptor, no adjusted multivariable model, and no causal interpretation. Synthetic tests cover known associations, excluded fields, categorical whitespace, constants, missing values, small groups, Cliff's delta, and deterministic ordering.
+
+All required artifacts and preserved attempt logs are in the exact output directory.

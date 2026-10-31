@@ -1,0 +1,17 @@
+attempt=01
+exit=0
+--- stdout ---
+Measured result (observed dataset evidence):
+- Recommended record identifier: CSV data record 71 (1-based, excluding header).
+- Measured Performance-: 244.230; lower is better.
+- Complete configuration: no_asm=1, no_8x8dct=1, no_cabac=1, no_deblock=1, no_fast_pskip=0, no_mbtree=0, no_mixed_refs=0, no_weightb=0, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=1, ref_5=0, ref_9=0.
+Historical reference (first CSV data record, identifier 1): Performance- 268.720.
+- Absolute difference: 24.490; percentage improvement: 9.114%.
+This is a retrospective recommendation based on the lowest observed finite Performance-; it does not guarantee future performance or establish statistical superiority.
+Associations between settings and Performance- are descriptive only: they do not establish the effect of changing a setting, and correlated settings can share explanatory information.
+Assumptions and limitations: CSV order defines the tie-break and historical reference; missing/nonfinite outcomes are excluded; no causal, quality, resource, or constraint claims are made.
+Input: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+--- stderr (includes timing) ---
+real 0.02
+user 0.01
+sys 0.00

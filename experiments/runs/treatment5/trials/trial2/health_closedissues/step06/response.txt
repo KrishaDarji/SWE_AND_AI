@@ -1,0 +1,11 @@
+Implemented the independent Python justification application and tests.
+
+Observed recommendation: CSV record 32, with N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5.
+Measured outcomes: MRE-=0.0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571.
+Finite-data medians: MRE-=0.8091310751104565, ACC+=0.43992310157000963, PRED40+=0.0; each has valid_count=10000.
+
+The demonstration policy is lowest observed MRE-, then higher ACC+, higher PRED40+, and earliest CSV record. This is retrospective observed-data evidence, not a guarantee or statistical-superiority claim. Settings and outcomes may be correlated; scores are not additive local contributions or causal effects. Missing/nonfinite outcomes are excluded from eligibility and per-outcome reference calculations as documented in the runtime output.
+
+EZR-informed machinery: standard-library CSV streaming, finite-value handling, sorted deterministic selection, and median/reference reporting were adapted from the authorized EZR csv/sorted/statistical utility ideas. No Lua dependency or external package is used.
+
+Run tests and the demonstration from the Step 6 directory using the command in run_instructions.txt.

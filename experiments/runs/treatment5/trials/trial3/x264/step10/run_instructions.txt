@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step10
+Python interpreter: /usr/bin/python3
+Command: /usr/bin/python3 run.py
+Tests: /usr/bin/python3 -m unittest discover -s tests -v
+All paths are absolute where required; quote paths containing spaces.

@@ -1,0 +1,11 @@
+Implemented the independent Python certification comparison.
+
+Source: source/certify.py
+Tests: tests/test_certify.py
+Run command: see run_instructions.txt
+
+The demonstration compares tool=n (A) with tool=h (B), using observed Effort-. It reports counts, means, A-minus-B difference, Welch-Satterthwaite 95% CI, and a two-sided Welch test. The illustrative threshold is 10% of A's mean.
+
+EZR adaptations: whitespace stripping and CSV coercion ideas from thing/csv, and one-pass mean/variance accumulation modeled on NUM.add/div. The statistical machinery is independently implemented with standard-library math: incomplete beta continued fraction for Student-t CDF, Welch degrees of freedom, and a documented Acklam normal approximation used for initialization/utility.
+
+Known limitations: Effort- is not verified monetary cost. Results are observational and do not establish causal process effects, guaranteed savings, or repeated-run noise behavior. Skew, imbalanced groups, and differing project scope can materially affect inference. A non-significant result is not equivalence; practical importance is reported separately, and intervals crossing a threshold leave it uncertain.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,5,3,model configuration and quality,fix,80,80,1,0.06,0,"7 unittest cases passed; runtime_seconds is /usr/bin/time -p real for the demonstration subprocess; translated EZR ideas are CSV coercion, stable source-order identifiers, numeric summaries/validation, and deterministic least-key selection; retrospective observed-data repair; change count is a proxy, not measured implementation cost; no packages or causal claims; no repairs needed."

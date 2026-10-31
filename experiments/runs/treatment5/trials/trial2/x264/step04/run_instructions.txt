@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step04
+Python interpreter: /usr/bin/python3
+Tests: /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+Demo: /usr/bin/python3 source/stream_stats.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+All paths containing spaces are quoted. The CSV order is a demonstration sequence, not a verified timeline.

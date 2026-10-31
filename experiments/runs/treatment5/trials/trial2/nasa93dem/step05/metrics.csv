@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,2,software project estimation,blame,70,70,1,0.04,3,"4 tests passed; /usr/bin/time -p real; EZR-inspired SYM counts, NUM summaries, cliffs effect direction, deterministic eta-squared ranking; whitespace/missing/small-group handling; 1 failed assertion and 2 repaired wrapper/command failures preserved in attempt logs."

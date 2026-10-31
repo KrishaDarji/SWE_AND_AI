@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,2,video encoding,blame,47,47,1,0.02,2,"4 tests; /usr/bin/time -p; final attempts 4; explicit lowest/highest groups; numeric increasing/decreasing/nonmonotonic; unordered categorical/tied means; EZR ranks/ties, medians, group summaries, missing filtering; marginal eta association; two repaired assertion failures across preserved attempts"

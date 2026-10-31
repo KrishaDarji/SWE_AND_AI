@@ -1,0 +1,10 @@
+test_arithmetic_and_known_outcomes (test_race_compare.RaceTests.test_arithmetic_and_known_outcomes) ... ok
+test_duplicates_invalid_and_budget (test_race_compare.RaceTests.test_duplicates_invalid_and_budget) ... ok
+test_equal_budget_fresh_callbacks_and_reproducible (test_race_compare.RaceTests.test_equal_budget_fresh_callbacks_and_reproducible) ... ok
+test_hidden_outcomes_do_not_change_selection (test_race_compare.RaceTests.test_hidden_outcomes_do_not_change_selection) ... ok
+test_invalid_nonfinite_filtered (test_race_compare.RaceTests.test_invalid_nonfinite_filtered) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

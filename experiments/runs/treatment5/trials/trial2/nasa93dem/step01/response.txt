@@ -1,0 +1,11 @@
+Implemented the independent Python NASA93 historical-project summarizer.
+
+Complete source code: source/nasa_summary.py
+Tests: tests/test_nasa_summary.py
+Run: see run_instructions.txt. The final suite ran 5 tests successfully, and the NASA93 demonstration completed successfully in real 0.03 seconds.
+
+The implementation reports record and column counts, inferred numeric/categorical types, missing values, numeric statistics, categorical frequencies, roles, and outcome directions. It treats X-suffix columns as metadata, identifies Kloc+ as delivered size, Effort- as effort, and Defects- as defects, without using delivered size as an automatic predictor.
+
+EZR machinery adapted from the authorized sources: header-driven column roles, numeric one-pass-style summaries (mean, sample standard deviation, min/max), symbolic frequency counting, whitespace/BOM-aware CSV coercion, missing-marker handling, and '-'/'+' optimization directions. No Lua or external package is used.
+
+Assumptions and limitations: blank cells, '?' and nonfinite numeric tokens are missing; outcome columns must contain numeric values or missing markers; malformed row widths are rejected; numeric-looking category codes remain numeric only when all observed values are numeric; an empty input has no columns and a header-only input has zero records. Descriptive statistics are not predictive modeling and units are not invented.

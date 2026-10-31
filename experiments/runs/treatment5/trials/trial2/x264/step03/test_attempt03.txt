@@ -1,0 +1,11 @@
+test_direction_and_interval (test_certify.CertifyTests.test_direction_and_interval) ... ok
+test_known_t_values_small_large (test_certify.CertifyTests.test_known_t_values_small_large) ... ok
+test_missing_and_insufficient (test_certify.CertifyTests.test_missing_and_insufficient) ... ok
+test_threshold_uncertain (test_certify.CertifyTests.test_threshold_uncertain) ... ok
+test_unequal_variance (test_certify.CertifyTests.test_unequal_variance) ... ok
+test_zero_variance (test_certify.CertifyTests.test_zero_variance) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10
+Python interpreter: /usr/bin/python3 (standard library only)
+Quoted commands:
+  python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/tests" -v
+  /usr/bin/time -p python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/source/estimator.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+Logs are preserved as test_output_attempt1.txt, test_output_attempt2.txt, runtime_output_attempt1.txt, and runtime_output_attempt2.txt; the non-suffixed files reference the final attempt.

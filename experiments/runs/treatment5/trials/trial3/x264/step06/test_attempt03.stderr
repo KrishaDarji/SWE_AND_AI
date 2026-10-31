@@ -1,0 +1,8 @@
+test_missing_nonfinite_and_zero_reference (test_justify.JustifyTests.test_missing_nonfinite_and_zero_reference) ... ok
+test_no_usable_records (test_justify.JustifyTests.test_no_usable_records) ... ok
+test_selection_tie_reference_and_complete_config (test_justify.JustifyTests.test_selection_tie_reference_and_complete_config) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

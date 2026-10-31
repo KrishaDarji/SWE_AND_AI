@@ -1,0 +1,3 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,3,model configuration and quality,flow,80,80,1,0.20,0,"5 tests passed; /usr/bin/time -p demonstration subprocess; Welford one-pass mean/sample variance, directional best-so-far, copied configurations; EZR NUM:add and NUM:div adapted; streaming CSV iterator; CSV order is demonstration sequence only; no convergence or stopping claim; no repairs."
+

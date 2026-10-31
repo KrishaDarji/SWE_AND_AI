@@ -1,0 +1,39 @@
+MRE- summary: lower is better
+Rank | setting | eta_squared | n | groups
+1 | Min_sample_leaves | 0.827849 | 10000 | 5
+  boundaries: 1..4, 4..8, 8..13, 13..16, 16..20
+  bin1: n=1 mean=0.31487482 median=0.31487482 min=0.31487482 max=0.31487482
+  bin2: n=1 mean=0.82312224 median=0.82312224 min=0.82312224 max=0.82312224
+  bin3: n=1 mean=0.15596465 median=0.15596465 min=0.15596465 max=0.15596465
+  bin4: n=1 mean=0.81119293 median=0.81119293 min=0.81119293 max=0.81119293
+  bin5: n=1 mean=0.89307806 median=0.89307806 min=0.89307806 max=0.89307806
+2 | criterion | 0.024851 | 10000 | 3
+  absolute_error: n=3302 mean=0.75086947 median=0.87746686 min=0.085272459 max=1
+  poisson: n=3335 mean=0.70340253 median=0.80648012 min=0.057437408 max=0.88571429
+  squared_error: n=3363 mean=0.6737203 median=0.80500736 min=0 max=0.87805596
+3 | Min_impurity_decrease | 0.004682 | 10000 | 5
+  boundaries: 0..2, 2..4, 4..6, 6..8, 8..10
+  bin1: n=1 mean=0.31487482 median=0.31487482 min=0.31487482 max=0.31487482
+  bin2: n=1 mean=0.82312224 median=0.82312224 min=0.82312224 max=0.82312224
+  bin3: n=1 mean=0.15596465 median=0.15596465 min=0.15596465 max=0.15596465
+  bin4: n=1 mean=0.81119293 median=0.81119293 min=0.81119293 max=0.81119293
+  bin5: n=1 mean=0.89307806 median=0.89307806 min=0.89307806 max=0.89307806
+4 | N_estimators | 0.000605 | 10000 | 5
+  boundaries: 10..50, 50..90, 90..130, 130..170, 170..200
+  bin1: n=1 mean=0.31487482 median=0.31487482 min=0.31487482 max=0.31487482
+  bin2: n=1 mean=0.82312224 median=0.82312224 min=0.82312224 max=0.82312224
+  bin3: n=1 mean=0.15596465 median=0.15596465 min=0.15596465 max=0.15596465
+  bin4: n=1 mean=0.81119293 median=0.81119293 min=0.81119293 max=0.81119293
+  bin5: n=1 mean=0.89307806 median=0.89307806 min=0.89307806 max=0.89307806
+5 | Max_depth | 0.000291 | 10000 | 5
+  boundaries: 1..5, 5..9, 9..13, 13..16, 16..20
+  bin1: n=1 mean=0.31487482 median=0.31487482 min=0.31487482 max=0.31487482
+  bin2: n=1 mean=0.82312224 median=0.82312224 min=0.82312224 max=0.82312224
+  bin3: n=1 mean=0.15596465 median=0.15596465 min=0.15596465 max=0.15596465
+  bin4: n=1 mean=0.81119293 median=0.81119293 min=0.81119293 max=0.81119293
+  bin5: n=1 mean=0.89307806 median=0.89307806 min=0.89307806 max=0.89307806
+Method: marginal eta-squared from outcome-independent groups; no adjusted model.
+Limitations: association is not causation; bins lose within-bin information; missing rows are omitted per setting; correlated settings may share information.
+real 0.06
+user 0.06
+sys 0.00

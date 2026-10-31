@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,2,software project estimation,choose,64,64,1,0.02,0,"7 tests; /usr/bin/time -p real; adapted EZR csv streaming, typed numeric validation, stable sorting/tie order; observed Kloc+ proxy; repaired none"

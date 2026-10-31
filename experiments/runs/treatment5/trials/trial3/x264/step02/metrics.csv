@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,3,video encoding,guess,90,90,1,0.05,1,"4 tests passed; /usr/bin/time -p demonstration; grouped seeded split, training-only standardization, ridge regression; EZR seeded shuffle/holdout/normalization ideas adapted; repaired one zsh wrapper-variable failure; 922 train and 230 test rows/groups; lower Performance- treated as better; standard-library only"

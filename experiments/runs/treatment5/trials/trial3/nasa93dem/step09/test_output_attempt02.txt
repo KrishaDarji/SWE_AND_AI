@@ -1,0 +1,13 @@
+E...
+======================================================================
+ERROR: test_arithmetic_and_flags (test_spot.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step09/tests/test_spot.py", line 11, in test_arithmetic_and_flags
+    expected = abs(math.log1p(10000)-out["references"]["Kloc+"]["median"]) / out["references"]["Kloc+"]["iqr"]
+ZeroDivisionError: float division by zero
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (errors=1)

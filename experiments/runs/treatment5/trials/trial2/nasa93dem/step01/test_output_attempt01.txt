@@ -1,0 +1,18 @@
+test_empty_and_header_only (test_nasa_summary.SummaryTests) ... ok
+test_invalid_outcome_is_rejected (test_nasa_summary.SummaryTests) ... FAIL
+test_numeric_and_categorical_known_results (test_nasa_summary.SummaryTests) ... ok
+test_roles_and_directions (test_nasa_summary.SummaryTests) ... ok
+test_whitespace_missing_and_nonfinite (test_nasa_summary.SummaryTests) ... ok
+
+======================================================================
+FAIL: test_invalid_outcome_is_rejected (test_nasa_summary.SummaryTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step01/tests/test_nasa_summary.py", line 29, in test_invalid_outcome_is_rejected
+    read_rows(io.StringIO("Kloc+,Effort-\nnot-a-number,2\n"))
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+FAILED (failures=1)

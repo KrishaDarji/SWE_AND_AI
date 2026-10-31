@@ -1,0 +1,8 @@
+Captured test attempt: test_attempt_01.log
+Command exited with status 0.
+Raw captured contents:
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+OK

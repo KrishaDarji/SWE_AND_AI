@@ -1,0 +1,23 @@
+test_exclusions_and_whitespace (test_estimator.Tests.test_exclusions_and_whitespace) ... ok
+test_grouped_reproducible (test_estimator.Tests.test_grouped_reproducible) ... ok
+test_insufficient_groups (test_estimator.Tests.test_insufficient_groups) ... ok
+test_missing_unseen_and_schema (test_estimator.Tests.test_missing_unseen_and_schema) ... ok
+test_outcome_independence (test_estimator.Tests.test_outcome_independence) ... ERROR
+test_proposal (test_estimator.Tests.test_proposal) ... ok
+
+======================================================================
+ERROR: test_outcome_independence (test_estimator.Tests.test_outcome_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step02/tests/test_estimator.py", line 23, in test_outcome_independence
+    self.assertEqual(a.predict_one(rows()[0]),b.predict_one(rows()[0]))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step02/tests/../source/estimator.py", line 58, in predict_one
+    if missing or extra: raise ValueError("proposal schema mismatch: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: proposal schema mismatch: missing=[] extra=['Effort-']
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (errors=1)

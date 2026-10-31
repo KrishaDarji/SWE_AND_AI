@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,2,software project estimation,flow,63,63,1,0.07,2,"5 tests; /usr/bin/time -p real elapsed demonstration timing; EZR csv streaming, trim/coercion, incremental numeric mean, categorical symbolic distance adapted independently; first run had 2 assertion failures and was repaired; assumptions: CSV order is demonstration sequence, categorical ratings use exact trimmed strings, invalid outcomes are excluded from history; no effort units, convergence, or stopping rule claimed."

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,3,software project estimation,guess,72,72,1,0.02,3,"6 tests; /usr/bin/time -p real; EZR csv cleaning, seeded sampling, grouped rows, categorical summaries and mean leaf/fallback ideas adapted; missing/unseen explicit; independent implementation; 3 repaired failures (wrapper, fixture, demo); one split is not deployment reliability"

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/run.py", line 23, in <module>
+    main()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/run.py", line 10, in main
+    result = evaluate(read_csv(args.dataset))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/estimator.py", line 107, in evaluate
+    predicted = model.predict([r for r, _ in test])
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/estimator.py", line 97, in predict
+    return [self.predict_one(row) for row in proposals]
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/estimator.py", line 97, in <listcomp>
+    return [self.predict_one(row) for row in proposals]
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/estimator.py", line 87, in predict_one
+    self._check(proposal)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step02/source/estimator.py", line 82, in _check
+    raise ValueError("proposal schema mismatch; missing=%s extra=%s" % (missing, extra))
+ValueError: proposal schema mismatch; missing=[] extra=['Defects-', 'Effort-', 'Kloc+', 'MonthsX', 'YearX', 'centerX', 'idX']
+real 0.05
+user 0.04
+sys 0.00

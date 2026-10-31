@@ -1,0 +1,17 @@
+Implemented the Python standard-library blame analysis in source/blame.py with tests in tests/test_blame.py.
+
+The implementation ranks settings using a consistent primary score: eta (sqrt between-group outcome variance / total outcome variance), with lower Performance- treated as better. It reports group counts, mean/median/min/max summaries, direction, constants, missing/nonfinite outcomes, and deterministic ties by setting name. It is marginal analysis only; correlated or mutually exclusive settings can share explanatory information, so rankings are observational associations rather than causal responsibility.
+
+EZR machinery adapted from the authorized sources: deterministic sorted ranking/tie handling inspired by EZR's ranks routine, median/group summaries, and missing-value filtering. No Lua is executed and no external packages are used.
+
+Tests cover known synthetic associations, constants, multiple values, missing/nonfinite values, correlated settings, and deterministic ordering. Final run: 2 tests passed; demonstration runtime real=0.02 seconds using /usr/bin/time -p. One initial test assertion failed because a missing outcome correctly removed its group; that preserved failure is test_attempt1.txt, and the repaired successful run is test_attempt2.txt. Error count is 1 repaired test assertion.
+
+Run from the exact output directory:
+python3 -m unittest discover -s tests -v
+ /usr/bin/time -p python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Correction applied: direction now uses setting-value order for numeric settings, explicitly reports increasing, decreasing, or nonmonotonic patterns, and reports unordered categorical groups without invented order. Every result includes lowest-mean and highest-mean groups and their means.
+
+Final corrected verification: 4 tests passed; demonstration runtime real=0.02 seconds. Final logs are test_attempt4.txt and runtime_attempt4.txt; earlier failures remain preserved. Metrics were updated to 47 implementation LOC and error_count 2 for the two repaired assertions across all attempts.
+
+Known limitations: this is unadjusted/marginal association, uses complete cases per setting, and cannot establish causal effects or isolate redundant predictors. The dataset outcome is used as provided without inventing units.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,5,3,software project estimation,certify,74,74,1,0.04,4,"6 tests; /usr/bin/time -p demonstration subprocess; EZR whitespace trimming and streaming mean/variance adapted; Welch-Satterthwaite and incomplete-beta t CDF; Acklam normal approximation; finite/nonnegative threshold; observational Effort- limitations; repaired wrapper, numerical, and test failures preserved"

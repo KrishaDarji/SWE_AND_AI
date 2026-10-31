@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,5,3,video encoding,fix,70,70,1,0.03,1,"5 tests; /usr/bin/time -p real elapsed demonstration timing; adapted EZR csv coercion, stable keyed ordering, and lower-is-better goal comparison; one initial shell-wrapper failure preserved and counted; raw-column changes are a proxy; observed improvement is not causal or a future guarantee."

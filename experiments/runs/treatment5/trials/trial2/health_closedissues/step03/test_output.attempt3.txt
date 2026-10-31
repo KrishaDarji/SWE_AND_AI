@@ -1,0 +1,33 @@
+test_direction (test_certify.TestCertify.test_direction) ... ok
+test_group (test_certify.TestCertify.test_group) ... ok
+test_insufficient_zero (test_certify.TestCertify.test_insufficient_zero) ... ok
+test_missing (test_certify.TestCertify.test_missing) ... ok
+test_numerics (test_certify.TestCertify.test_numerics) ... FAIL
+test_threshold_uncertainty (test_certify.TestCertify.test_threshold_uncertainty) ... FAIL
+test_welch (test_certify.TestCertify.test_welch) ... ok
+
+======================================================================
+FAIL: test_numerics (test_certify.TestCertify.test_numerics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 19, in test_numerics
+    eq(t_cdf(0,10),.5); eq(t_cdf(2.22813885,10),.975,1e-6); eq(t_quantile(.975,10),2.22813885,1e-6); assert 0<=ibeta(.3,2,5)<=1
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 4, in eq
+    def eq(a,b,t=1e-8): assert abs(a-b)<=t*max(1,abs(b)),(a,b)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0.9758587242927484, 0.975)
+
+======================================================================
+FAIL: test_threshold_uncertainty (test_certify.TestCertify.test_threshold_uncertainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 12, in test_threshold_uncertainty
+    r=welch([10,11,9],[8,9,10],1); assert r['point_improvement_beyond_threshold']; assert not r['entire_interval_favorable_beyond_threshold']
+                                          ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.025s
+
+FAILED (failures=2)

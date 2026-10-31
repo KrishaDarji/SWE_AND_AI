@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,5,2,software project estimation,spot,74,74,1,0.03,0,"4 tests passed; /usr/bin/time -p demonstration; median/MAD log1p screen; EZR csv coercion, median/div-style robust summaries, and JSON rendering adapted; reference includes assessed record; no repairs"

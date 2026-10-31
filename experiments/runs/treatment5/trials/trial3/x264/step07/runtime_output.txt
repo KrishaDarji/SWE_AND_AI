@@ -1,0 +1,10 @@
+Captured demonstration attempt: runtime_attempt01.txt
+
+--- captured stdout/stderr ---
+The complete captured JSON and timing output are in runtime_attempt01.txt.
+real 0.03
+user 0.02
+sys 0.00
+
+Exit status: 0.
+

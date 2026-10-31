@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,3,software project estimation,flow,96,96,1,0.03,1,"5 synthetic tests passed; /usr/bin/time -p demonstration; EZR symbolic distance, Minkowski p=2 aggregation, and revealed-history mean adapted; categorical missing/unseen handling; one repaired failed shell wrapper (read-only status variable) preserved in test_attempt01 logs; CSV order is demonstration sequence, not verified timeline."

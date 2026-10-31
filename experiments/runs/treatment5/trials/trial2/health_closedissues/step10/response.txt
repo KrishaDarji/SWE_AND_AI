@@ -1,0 +1,17 @@
+Implemented the independent Python Step 10 selector and comparison artifacts in:
+
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step10/
+
+Source: source/selector.py
+Tests: tests/test_selector.py
+Run: cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step10" && /usr/bin/python3 run_demo.py
+Tests passed: 21.
+Measured demonstration real time: 0.14 seconds via /usr/bin/time -p.
+
+Observed results: total=10000, valid=10000, feasible=4877. The deterministic selector chose original CSV record 33. Across seeds 42–51, wins=10, ties=0, losses=0; mean paired difference (baseline MRE- minus selector MRE-) = 0.76976435935198817; median = 0.82430044182621498. ACC+ and PRED40+ values are reported per seed in runtime_output.txt and metrics.csv.
+
+EZR background informed CSV streaming, copied/sorted ordering, deterministic tie handling, and independent seeded random streams. No Lua was executed or used as an application dependency.
+
+Limitations: this is a retrospective comparison on one historical dataset. The selector inspects all feasible outcomes while the baseline samples one record, so the result has an unequal search/information advantage and does not establish budgeted-search superiority or statistical superiority. It is not independent validation or independent LLM trials. The project's final “same” procedure remains pending because it was unavailable.
+
+The first wrapper attempt failed because it used the repository root instead of the specified working directory; its captured output is preserved as runtime_attempt1.log and the repaired successful output is runtime_attempt2.log/runtime_output.txt. metrics.csv records error_count=1 for that repaired non-test command failure.

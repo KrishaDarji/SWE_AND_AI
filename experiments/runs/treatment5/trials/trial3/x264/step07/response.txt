@@ -1,0 +1,20 @@
+Implemented the requested independent Python selector in the exact Trial 3 Step 7 directory.
+
+Source: source/selector.py
+Tests: tests/test_selector.py
+Run: python3 -m unittest discover -s tests -v
+Demo: /usr/bin/time -p python3 run_demo.py
+
+Results:
+- 4 tests passed.
+- Demonstration used 20 of 20 evaluations over 1,152 candidates.
+- Recommended identifier: eval-020.
+- Recommended configuration: [1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0]
+- Measured Performance-: 260.267.
+- Retrospective observed dataset minimum: 244.23; gap: 16.037.
+- Runtime real: 0.03 seconds.
+- Error count: 0.
+
+The selector uses a seeded random permutation without replacement, evaluates only through the callback, validates finite numeric results, and recommends the lowest measured Performance-. Ties use earlier evaluation order; identifiers are eval-001 through eval-020. The recommendation is frozen before the separate audit.
+
+EZR-informed machinery: seeded randomness, list iteration, copying/shuffling, sorting, and minimum selection. No predictive component was needed; consequently, no model is fit. Assumptions and limitations are recorded in the implementation and run instructions.

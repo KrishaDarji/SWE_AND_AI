@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,3,video encoding,justify,63,63,1,0.02,2,"3 synthetic tests passed; /usr/bin/time -p real for demonstration; adapted EZR csv coercion, finite filtering, sorted minimum, and stable tie ordering; first-record reference; one failed assertion in attempt 02 and one repaired shell-wrapper failure in attempt 01 preserved; no model estimates"

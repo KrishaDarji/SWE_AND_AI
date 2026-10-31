@@ -1,0 +1,13 @@
+.F..
+======================================================================
+FAIL: test_constants_missing_small_and_ties (test_blame.BlameTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step05/tests/test_blame.py", line 21, in test_constants_missing_small_and_ties
+    self.assertEqual(out[0]["score"], 0.0)
+AssertionError: 0.25 != 0.0
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)

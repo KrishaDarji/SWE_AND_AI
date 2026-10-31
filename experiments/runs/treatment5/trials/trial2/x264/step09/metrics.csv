@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,5,2,video encoding,spot,85,85,1,1.05,0,"6 unittest cases; final test_output/runtime_output are attempt 02; attempt 01 preserved; /usr/bin/time -p demonstration; finite observed values converted to null before output; selected versus usable nearest groups and identifiers reported; threshold and score formula unchanged; no failed commands or tests"

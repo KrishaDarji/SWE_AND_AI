@@ -1,0 +1,10 @@
+test_consistency_and_exclusions (test_justify_estimator.JustifyTests.test_consistency_and_exclusions) ... ok
+test_invalid_targets_and_insufficient (test_justify_estimator.JustifyTests.test_invalid_targets_and_insufficient) ... ok
+test_missing_unseen_and_selection (test_justify_estimator.JustifyTests.test_missing_unseen_and_selection) ... ok
+test_outcome_does_not_change_frozen_prediction (test_justify_estimator.JustifyTests.test_outcome_does_not_change_frozen_prediction) ... ok
+test_training_reference_and_labels (test_justify_estimator.JustifyTests.test_training_reference_and_labels) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK

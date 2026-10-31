@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,5,2,video encoding,race,96,96,1,1.38,2,"5 tests; /usr/bin/time -p demonstration real; EZR-inspired stable sorting, distance, numeric prediction, active-learning exploration/exploitation; independent standard-library implementation; initial test fixture repair preserved in attempt1 logs; lower Performance- is better; 10 seeded benchmark repeats, not independent LLM trials"

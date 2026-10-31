@@ -1,0 +1,8 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step09
+Python interpreter: /usr/bin/python3
+Quoted command:
+/usr/bin/python3 source/spot_screen.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Tests:
+/usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+The demonstration was measured with /usr/bin/time -p; captured output is in runtime_output_attempt1.txt and runtime_output.txt.
+The final successful test attempt is test_output_attempt3.txt and is copied to test_output.txt.

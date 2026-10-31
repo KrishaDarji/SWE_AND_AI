@@ -1,0 +1,14 @@
+Implemented and verified the independent Python retrospective observed-data repair.
+
+Files are in the exact requested directory. The source is [repair.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step08/source/repair.py), with tests in `tests/test_repair.py`.
+
+Run:
+`/usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step08/source/repair.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"`
+
+Result: baseline record 1; selected record 1945. Changes: `N_estimators` 40→10 and `Min_impurity_decrease` 2.75→5. Change count is 2, a proxy rather than measured implementation cost. Observed MRE- improvement is 0.04756995581737844. ACC+ changes by -0.06568407561678946 and is explicitly reported as worsened; PRED40+ is unchanged.
+
+Eight tests passed. Runtime was 0.07 seconds using `/usr/bin/time -p`.
+
+EZR-informed adaptations: CSV streaming/coercion, numeric versus symbolic field treatment, finite-value validation, and stable ordered selection inspired by the supplied `csv`, `thing`, column-role, and stable sorting machinery. No Lua was invoked or used as a dependency.
+
+This is retrospective observed-data repair, not a causal or future-quality claim. It does not infer metric formulas, units, valid ranges, or compute costs. Invalid baselines, missing/nonfinite values, empty input, ties, no improvement, numeric equivalence, trade-offs, and eligibility are handled explicitly. Candidate identifiers are original one-based CSV data-record positions; the header is not counted. Secondary differences/worsening are null when comparison is unavailable.

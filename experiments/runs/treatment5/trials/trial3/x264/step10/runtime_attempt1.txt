@@ -1,0 +1,16 @@
+dataset=1152 candidates budget=20 seeds=42..51 tolerance=1.0e-12
+seed=42 ezr=r0153 262.170000 baseline=r0004 260.267000 difference=1.903000 loss
+seed=43 ezr=r0989 492.427000 baseline=r0333 247.693000 difference=244.734000 loss
+seed=44 ezr=r0733 361.703000 baseline=r0138 262.567000 difference=99.136000 loss
+seed=45 ezr=r1127 491.697000 baseline=r0351 252.630000 difference=239.067000 loss
+seed=46 ezr=r0505 363.560000 baseline=r0185 246.200000 difference=117.360000 loss
+seed=47 ezr=r0505 363.560000 baseline=r0332 247.717000 difference=115.843000 loss
+seed=48 ezr=r0153 262.170000 baseline=r0175 251.587000 difference=10.583000 loss
+seed=49 ezr=r0293 263.363000 baseline=r0140 278.120000 difference=-14.757000 win
+seed=50 ezr=r0861 490.043000 baseline=r0344 257.450000 difference=232.593000 loss
+seed=51 ezr=r0505 363.560000 baseline=r0186 246.580000 difference=116.980000 loss
+paired arithmetic: differences are EZR minus baseline; wins=1 ties=0 losses=9 mean=116.344200
+retrospective gaps: recommendations frozen before audit; full-dataset audit pending
+real 1.84
+user 1.82
+sys 0.01

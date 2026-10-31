@@ -1,0 +1,14 @@
+Implemented the independent Python estimator and tests in this exact directory.
+
+Source: [estimator.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step02/source/estimator.py)
+Tests: [test_estimator.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step02/tests/test_estimator.py)
+
+Run with:
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 run_demo.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+The implementation excludes X, +, and - columns, treats descriptors as stripped categorical values, keeps predictor groups intact in a reproducible seed-42 split, fits only on training rows, and supports strict proposal-schema validation with explicit missing/unseen fallbacks. It reports held-out MAE against a training-mean baseline. It adapts EZR's CSV normalization, seeded random sampling, grouped row handling, categorical summaries, and mean-at-leaf/fallback ideas; no Lua is executed.
+
+Measured result: 70 train rows, 23 test rows; held-out MAE 479.339175; training-mean baseline MAE 481.485031; demo real time 0.02 seconds. All 6 tests pass. Logs and preserved attempts are in test_output.txt, runtime_output.txt, test_attempt*.log, and runtime_attempt*.log.
+
+Assumptions and limitations: Effort- is parsed as a finite numeric outcome; rows with unusable held-out outcomes are omitted from MAE; missing descriptors use an explicit token; unseen configurations use matching category means and then the training mean. One grouped split is an evaluation sample, not a reliability or deployment claim. The final all-history model is available by fitting CategoricalEstimator on all usable rows, but is distinct from the reported held-out evaluation.

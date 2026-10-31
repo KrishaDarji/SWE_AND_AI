@@ -1,0 +1,11 @@
+test_exclusions_and_whitespace (test_estimator.Tests.test_exclusions_and_whitespace) ... ok
+test_grouped_reproducible (test_estimator.Tests.test_grouped_reproducible) ... ok
+test_insufficient_groups (test_estimator.Tests.test_insufficient_groups) ... ok
+test_missing_unseen_and_schema (test_estimator.Tests.test_missing_unseen_and_schema) ... ok
+test_outcome_independence (test_estimator.Tests.test_outcome_independence) ... ok
+test_proposal (test_estimator.Tests.test_proposal) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,2,video encoding,justify,68,68,1,0.02,0,"5 tests; /usr/bin/time -p real; correction attempt 02 passed; earlier attempt 01 passed; adapted EZR CSV/coercion, finite handling, stable tie-breaking, and independent zero-reference arithmetic; retrospective data; no repairs"

@@ -1,0 +1,10 @@
+test_status=0
+test_grouping_and_exclusion (test_guess_model.Tests) ... ok
+test_missing_unseen_and_schema (test_guess_model.Tests) ... ok
+test_reproducible_and_prediction (test_guess_model.Tests) ... ok
+test_targets_and_data_rules (test_guess_model.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

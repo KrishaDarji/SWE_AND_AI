@@ -1,0 +1,15 @@
+Implemented the Python analyzer in source/analyzer.py and tests in tests/test_analyzer.py.
+
+Complete source code is in source/analyzer.py. It uses only the Python standard library, strips whitespace, recognizes missing/nonfinite values, rejects malformed row widths, handles empty/header-only input, infers numeric versus categorical columns, computes numeric count/min/max/mean/median/sample standard deviation, and reports categorical frequencies.
+
+The output distinguishes descriptors, X-suffix metadata, and outcomes. Kloc+ is delivered size and maximized; Effort- is effort and minimized; Defects- is defects and minimized. Delivered size is reported as an outcome, not automatically used as a predictor. Numeric category codes are summarized numerically only when their cells parse as numeric; categorical labels remain categorical.
+
+EZR background informed the implementation through its CSV cell coercion, NUM/SYM distinction, missing-cell treatment, NUM mid/div-style descriptive summaries, SYM frequency summaries, and column-name role conventions (+/- goals and X ignored metadata). No Lua is executed or imported.
+
+NASA93 result: 93 records, 29 columns, no missing values. Outcomes are Kloc+, Effort-, Defects-. Metadata is idX, centerX, YearX, MonthsX. Descriptor columns are the remaining non-outcome, non-X columns. The demonstration was measured with /usr/bin/time -p at real 0.03 seconds.
+
+Tests cover numeric summaries, categorical frequencies, whitespace, missing/nonfinite values, invalid numeric outcomes, role identification, optimization directions, empty input, and header-only input. All 5 tests passed.
+
+Assumptions and limitations: CSV quoting follows Python's csv module; blank/?, na, n/a, null, none, and nonfinite numeric tokens are missing; malformed row widths are errors; a column with no present values is classified categorical; inferred numeric statistics do not claim physical units; this is descriptive reporting only and does not model or predict outcomes.
+
+Run with the command in run_instructions.txt. Captured stdout/stderr and timing are preserved in runtime_attempt_01.txt and runtime_output.txt; test output is preserved in test_attempt_01.txt and test_output.txt.

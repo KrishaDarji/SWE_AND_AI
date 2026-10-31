@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/source/predictor.py", line 105, in <module>
+    m = fit_from_csv(a.csv); print(json.dumps(m.evaluate(), sort_keys=True))
+                                              ^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/source/predictor.py", line 94, in evaluate
+    p = self.predict(r)
+        ^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/source/predictor.py", line 82, in predict
+    self._validate_schema(cfg)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/source/predictor.py", line 55, in _validate_schema
+    if missing or extra: raise ValueError("configuration fields invalid: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields invalid: missing=[] extra=['PRED40+']
+real 0.08
+user 0.08
+sys 0.00

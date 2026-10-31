@@ -1,0 +1,20 @@
+test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions) ... FAIL
+test_missing_constant_all_missing_and_determinism (test_blame.TestBlame.test_missing_constant_all_missing_and_determinism) ... ok
+test_quantile_boundaries_are_outcome_independent (test_blame.TestBlame.test_quantile_boundaries_are_outcome_independent) ... ok
+
+======================================================================
+FAIL: test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 15, in test_known_mixed_associations_and_exclusions
+    r=blame.analyze(write(rows)); self.assertEqual(r[0]["setting"], "N_estimators"); self.assertGreater(r[0]["score"], .9); self.assertEqual(r[0]["n"],12)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'criterion' != 'N_estimators'
+- criterion
++ N_estimators
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=1)

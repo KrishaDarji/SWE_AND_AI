@@ -1,0 +1,67 @@
+{
+  "baseline": {
+    "outcome": "268.720 ",
+    "record_id": 1,
+    "settings": {
+      "no_8x8dct": "0",
+      "no_asm": "1",
+      "no_cabac": "0",
+      "no_deblock": "0",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    }
+  },
+  "baseline_outcome": 268.72,
+  "change_count": 1,
+  "change_count_note": "Raw-column count is a proxy; correlated or one-hot fields may represent fewer conceptual changes.",
+  "changed_settings": [
+    {
+      "new": "1",
+      "old": "0",
+      "setting": "no_8x8dct"
+    }
+  ],
+  "identifier_definition": "record_id is the 1-based data-record order after the CSV header.",
+  "improvement": 14.133000000000038,
+  "limitations": [
+    "Observed improvement is not causal and does not guarantee future performance.",
+    "Only configurations present in this dataset are considered."
+  ],
+  "repaired": true,
+  "repaired_outcome": 254.587,
+  "repaired_record": {
+    "outcome": "254.587 ",
+    "record_id": 65,
+    "settings": {
+      "no_8x8dct": "1",
+      "no_asm": "1",
+      "no_cabac": "0",
+      "no_deblock": "0",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    }
+  }
+}
+real 0.03
+user 0.02
+sys 0.00

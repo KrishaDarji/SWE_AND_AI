@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,5,2,model configuration and quality,spot,92,92,1,80.88,3,"4 tests passed; /usr/bin/time -p real for demonstration; EZR sorted-copy and sorted-value summary ideas adapted; finite median/MAD screen includes assessed record; flags are candidates; 3 interrupted demonstration commands preserved as failed attempts and repaired by attempt 4"

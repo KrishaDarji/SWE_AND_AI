@@ -1,0 +1,10 @@
+test_directions (test_analyzer.AnalyzerTests) ... ok
+test_empty_and_header_only (test_analyzer.AnalyzerTests) ... ok
+test_invalid_outcome_is_categorical (test_analyzer.AnalyzerTests) ... ok
+test_missing_nonfinite_and_whitespace (test_analyzer.AnalyzerTests) ... ok
+test_summaries_and_roles (test_analyzer.AnalyzerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

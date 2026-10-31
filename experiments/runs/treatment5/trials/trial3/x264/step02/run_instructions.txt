@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step02
+Interpreter: /usr/bin/python3
+Tests: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step02' && /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step02' && /usr/bin/time -p /usr/bin/python3 run_demo.py
+All paths containing spaces are quoted. The demonstration reads the authorized X264 dataset path in run_demo.py.

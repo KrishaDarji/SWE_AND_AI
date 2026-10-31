@@ -1,0 +1,9 @@
+Implemented and verified the independent Python certification tool.
+
+Result: A (no_8x8dct=0) n=576 mean=472.1355069444445; B (no_8x8dct=1) n=576 mean=451.3716857638889. Mean A-B=20.763821180555624. Welch t=2.1711245916071182, df=1149.2372777191688, two-sided p is approximately 0.02999. The 95% Welch interval is [1.999699018536301, 39.52794334257494].
+
+Lower Performance- is better, so B is faster by the point estimate. The difference is statistically distinguishable from zero at 0.05, and the point estimate exceeds the illustrative threshold 5.0. The interval crosses 5.0, so practical importance remains uncertain; this does not establish equivalence. Rows are different configurations, not repeated-run measurements, so configuration variation cannot establish measurement noise or causal effects.
+
+The implementation uses Python standard library only. EZR lower-is-better goal direction and summary/statistical machinery informed the translation; no Lua was executed or imported. The t CDF uses a continued-fraction regularized incomplete beta calculation and t critical values use deterministic bisection. Five tests pass, covering direction, Welch arithmetic, invalid inputs, practical-threshold uncertainty, and numerical references.
+
+Artifacts include source/certify.py, tests/test_certify.py, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt.

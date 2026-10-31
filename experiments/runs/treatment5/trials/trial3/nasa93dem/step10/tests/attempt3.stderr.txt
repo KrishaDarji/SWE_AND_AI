@@ -1,0 +1,11 @@
+test_baseline_fresh_and_outcome_independence (test_estimator.Tests.test_baseline_fresh_and_outcome_independence) ... ok
+test_exclusions_invalid_and_ids (test_estimator.Tests.test_exclusions_invalid_and_ids) ... ok
+test_insufficient_groups (test_estimator.Tests.test_insufficient_groups) ... ok
+test_mae_and_cases (test_estimator.Tests.test_mae_and_cases) ... ok
+test_reproducible_and_separate (test_estimator.Tests.test_reproducible_and_separate) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
+exit=0

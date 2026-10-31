@@ -1,0 +1,16 @@
+F...
+======================================================================
+FAIL: test_arithmetic_and_flags (test_spot.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step09/tests/test_spot.py", line 13, in test_arithmetic_and_flags
+    self.assertEqual(out["records"][2]["identifier"], "C")
+AssertionError: '2' != 'C'
+- 2
++ C
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+FAILED (failures=1)

@@ -1,0 +1,19 @@
+test_direction_and_threshold_crossing (test_certify.T) ... ok
+test_groups_and_whitespace (test_certify.T) ... ok
+test_invalid_and_insufficient (test_certify.T) ... ok
+test_reference_t (test_certify.T) ... FAIL
+test_unequal_welch (test_certify.T) ... ok
+test_zero_missing_nonfinite (test_certify.T) ... ok
+
+======================================================================
+FAIL: test_reference_t (test_certify.T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step03/tests/test_certify.py", line 15, in test_reference_t
+    def test_reference_t(self): self.assertAlmostEqual(t_cdf(0,5),.5,places=12); self.assertAlmostEqual(t_cdf(2.570582,5),.975,places=5)
+AssertionError: 1.0 != 0.5 within 12 places (0.5 difference)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

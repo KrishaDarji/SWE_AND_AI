@@ -1,0 +1,31 @@
+test_already_feasible_and_none (test_repair.RepairTests.test_already_feasible_and_none) ... ok
+test_feasibility_and_minimum_change (test_repair.RepairTests.test_feasibility_and_minimum_change) ... FAIL
+test_invalid_inputs (test_repair.RepairTests.test_invalid_inputs) ... ok
+test_tie_breakers_predicted_then_csv (test_repair.RepairTests.test_tie_breakers_predicted_then_csv) ... ok
+test_training_only_identifiers_and_heldout_target (test_repair.RepairTests.test_training_only_identifiers_and_heldout_target) ... ERROR
+
+======================================================================
+ERROR: test_training_only_identifiers_and_heldout_target (test_repair.RepairTests.test_training_only_identifiers_and_heldout_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step08/tests/test_repair.py", line 47, in test_training_only_identifiers_and_heldout_target
+    r1 = repair.repair(self.model, proposal(test), 100)
+                                   ^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step08/tests/test_repair.py", line 12, in proposal
+    return {key: values[i] for i, key in enumerate(repair.DESCRIPTORS)}
+                 ~~~~~~^^^
+KeyError: 0
+
+======================================================================
+FAIL: test_feasibility_and_minimum_change (test_repair.RepairTests.test_feasibility_and_minimum_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step08/tests/test_repair.py", line 26, in test_feasibility_and_minimum_change
+    self.assertEqual(r["candidate"], proposal(self.b))
+AssertionError: {'prec': 'c', 'flex': 'c', 'resl': 'c', 'team': 'c'[230 chars] 'c'} != {'prec': 'b', 'flex': 'b', 'resl': 'b', 'team': 'b'[230 chars] 'b'}
+Diff is 1364 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.006s
+
+FAILED (failures=1, errors=1)

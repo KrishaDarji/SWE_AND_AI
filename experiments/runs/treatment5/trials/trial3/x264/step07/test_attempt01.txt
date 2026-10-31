@@ -1,0 +1,12 @@
+test_budget_reproducibility_and_membership (test_selector.SelectorTests.test_budget_reproducibility_and_membership) ... ok
+test_duplicate_prevention_and_excess_budget (test_selector.SelectorTests.test_duplicate_prevention_and_excess_budget) ... ok
+test_hidden_outcomes_only_reached_by_callback (test_selector.SelectorTests.test_hidden_outcomes_only_reached_by_callback) ... ok
+test_invalid_inputs (test_selector.SelectorTests.test_invalid_inputs) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+real 0.08
+user 0.02
+sys 0.01

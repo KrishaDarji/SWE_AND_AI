@@ -1,0 +1,1 @@
+Final test log is preserved verbatim in test_output_attempt05.txt. Earlier failed attempts are preserved in test_output_attempt01.txt through test_output_attempt04.txt.

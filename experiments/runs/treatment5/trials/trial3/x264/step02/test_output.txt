@@ -1,0 +1,9 @@
+test_grouped_reproducible_and_nonempty (test_predictor.Tests) ... ok
+test_insufficient_groups_and_outcome_invariance (test_predictor.Tests) ... ok
+test_prediction_and_validation (test_predictor.Tests) ... ok
+test_training_only_preprocessing (test_predictor.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

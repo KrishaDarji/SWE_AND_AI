@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step06
+Python interpreter: python3 (standard library only)
+Test command: python3 -m unittest discover -s tests
+Demonstration command: /usr/bin/time -p python3 source/justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+All paths are valid when run from the working directory above.

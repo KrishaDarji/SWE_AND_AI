@@ -1,0 +1,5 @@
+Test command: /usr/bin/python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step07/tests' -p 'test_*.py'
+Attempt log stdout: test_attempt01.stdout
+Attempt log stderr: test_attempt01.stderr
+
+The preserved attempt logs contain the complete stdout and stderr captured directly from the test command.

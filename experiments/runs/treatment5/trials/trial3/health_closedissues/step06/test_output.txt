@@ -1,0 +1,54 @@
+attempt01 stdout:
+attempt01 stderr:
+test_all_outcome_medians (test_justify.JustifyTests.test_all_outcome_medians) ... ok
+test_missing_and_nonfinite (test_justify.JustifyTests.test_missing_and_nonfinite) ... ERROR
+test_no_eligible (test_justify.JustifyTests.test_no_eligible) ... ok
+test_policy_and_ties (test_justify.JustifyTests.test_policy_and_ties) ... ERROR
+test_references_and_original_id (test_justify.JustifyTests.test_references_and_original_id) ... ERROR
+
+======================================================================
+ERROR: test_missing_and_nonfinite (test_justify.JustifyTests.test_missing_and_nonfinite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/tests/test_justify.py", line 19, in test_missing_and_nonfinite
+    self.assertEqual(result["eligible_count"], 1); self.assertEqual(result["winner"][0]["record_id"], 11)
+                                                                    ~~~~~~~~~~~~~~~~^^^
+KeyError: 0
+
+======================================================================
+ERROR: test_policy_and_ties (test_justify.JustifyTests.test_policy_and_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/tests/test_justify.py", line 12, in test_policy_and_ties
+    self.assertEqual(result["winner"][0]["record_id"], 3)
+                     ~~~~~~~~~~~~~~~~^^^
+KeyError: 0
+
+======================================================================
+ERROR: test_references_and_original_id (test_justify.JustifyTests.test_references_and_original_id)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/tests/test_justify.py", line 16, in test_references_and_original_id
+    self.assertIn("record identifier: 7", render(result))
+                                          ^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/tests/../source/justify.py", line 44, in render
+    row, values = result["winner"]
+    ^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (errors=3)
+attempt02 stdout:
+attempt02 stderr:
+test_all_outcome_medians (test_justify.JustifyTests.test_all_outcome_medians) ... ok
+test_missing_and_nonfinite (test_justify.JustifyTests.test_missing_and_nonfinite) ... ok
+test_no_eligible (test_justify.JustifyTests.test_no_eligible) ... ok
+test_policy_and_ties (test_justify.JustifyTests.test_policy_and_ties) ... ok
+test_references_and_original_id (test_justify.JustifyTests.test_references_and_original_id) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

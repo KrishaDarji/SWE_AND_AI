@@ -1,0 +1,10 @@
+test_empty_short_and_invalid_effort (test_estimator.FlowTests) ... ok
+test_freeze_before_reveal_and_future_independence (test_estimator.FlowTests) ... ok
+test_missing_unseen_and_exclusions (test_estimator.FlowTests) ... ok
+test_prediction_precedes_current_outcome (test_estimator.FlowTests) ... ok
+test_warmup_and_arithmetic (test_estimator.FlowTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

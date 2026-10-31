@@ -1,0 +1,10 @@
+test_constants_missing_small_and_nonfinite (test_blame.BlameTests.test_constants_missing_small_and_nonfinite) ... ok
+test_deterministic_order (test_blame.BlameTests.test_deterministic_order) ... ok
+test_excluded_and_categorical (test_blame.BlameTests.test_excluded_and_categorical) ... ok
+test_known_association_and_tie_order (test_blame.BlameTests.test_known_association_and_tie_order) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK
+test_exit=0

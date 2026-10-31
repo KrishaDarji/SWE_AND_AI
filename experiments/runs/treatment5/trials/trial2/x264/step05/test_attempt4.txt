@@ -1,0 +1,9 @@
+test_known_constant_multivalue_missing_and_order (test_blame.TestBlame.test_known_constant_multivalue_missing_and_order) ... ok
+test_nonfinite (test_blame.TestBlame.test_nonfinite) ... ok
+test_numeric_directions_and_nonmonotonic (test_blame.TestBlame.test_numeric_directions_and_nonmonotonic) ... ok
+test_unordered_categories_and_tied_means (test_blame.TestBlame.test_unordered_categories_and_tied_means) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK

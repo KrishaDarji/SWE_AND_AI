@@ -1,0 +1,11 @@
+test_direction_and_threshold_crossing (test_certify.T) ... ok
+test_groups_and_whitespace (test_certify.T) ... ok
+test_invalid_and_insufficient (test_certify.T) ... ok
+test_reference_t (test_certify.T) ... ok
+test_unequal_welch (test_certify.T) ... ok
+test_zero_missing_nonfinite (test_certify.T) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

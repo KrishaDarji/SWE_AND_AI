@@ -1,0 +1,16 @@
+Implemented the Health Step 9 robust model-quality screen in Python.
+
+Artifacts are in this exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step09/
+
+The implementation screens MRE-, ACC+, and PRED40+ using median/MAD modified robust scores with threshold 3.5. Reference statistics include the assessed record. Missing/nonfinite values and nonzero deviations with zero robust scale receive JSON null scores with explicit reasons. Record identifiers are 1-based CSV data-row identifiers. Flags are investigation candidates, and the screen is marginal rather than configuration-conditioned.
+
+EZR machinery adapted: deterministic sorted-copy median/order-statistic behavior informed by ezr-lib.lua's sorted helper and sorted-value summaries in ezr.lua. No Lua or third-party packages are used.
+
+Tests: 4 passed. The real dataset demonstration completed successfully in 80.88 seconds real time. The complete stdout/stderr captures and preserved earlier attempts are referenced by runtime_output.txt; test captures are referenced by test_output.txt.
+
+Run:
+/usr/bin/python3 -m unittest discover -s tests -v
+/usr/bin/time -p /usr/bin/python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Known limitations: this is an univariate marginal screen, legitimate configuration differences may be flagged, and no detection accuracy is claimed without verified labels. The reference includes the assessed record, so extreme values can influence their own reference summary.

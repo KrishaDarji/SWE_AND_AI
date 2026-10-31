@@ -1,0 +1,8 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step09
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration command: /usr/bin/time -p /usr/bin/python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+The dataset path is quoted because it is an absolute path under a directory containing spaces.
+The demonstration stdout/stderr and time output are captured in attempt-labeled files and referenced by runtime_output.txt.
+Method: for each outcome, compute median, MAD, and 1.4826*MAD over all finite observations (including the assessed record); score is absolute deviation divided by scale; threshold is 3.5. Zero scale gives score 0 only for the median, and undefined otherwise.
+EZR adaptations: deterministic sorted median/order-statistic handling and copy-before-sort style separation, informed by ezr-lib.lua's sorted helper and ezr.lua's sorted-value summaries. No Lua is executed.

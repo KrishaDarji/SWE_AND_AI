@@ -1,0 +1,19 @@
+test_beta_and_t_known (test_certify.T) ... ok
+test_groups_direction (test_certify.T) ... ok
+test_invalid_threshold (test_certify.T) ... ok
+test_missing_insufficient_zero (test_certify.T) ... ok
+test_threshold_uncertain (test_certify.T) ... ok
+test_welch_reference (test_certify.T) ... FAIL
+
+======================================================================
+FAIL: test_welch_reference (test_certify.T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 8, in test_welch_reference
+    w=certify.welch([1,2,3],[4,5,6]); self.assertAlmostEqual(w['df'],4,12); self.assertAlmostEqual(w['ci'][0],.223304,5)
+AssertionError: 0.7330420644724769 != 0.223304 within 5 places (0.5097380644724769 difference)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+FAILED (failures=1)

@@ -1,0 +1,10 @@
+TRAIN_ROWS 75
+TEST_ROWS 18
+HELD_OUT_ID 20
+ESTIMATE 168.0
+REFERENCE 192.0
+EXPLANATION 5-nearest categorical neighbors ['17', '18', '10', '11', '12']
+AUDIT_OBSERVED_EFFORT 60.0
+real 0.02
+user 0.01
+sys 0.00

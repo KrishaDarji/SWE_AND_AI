@@ -1,0 +1,38 @@
+Retrospective observed-outcome selection
+Budget: 100.0
+Feasible records: 31
+Total records: 93
+Selection rule: maximize observed Kloc+; tie-break by lower observed Effort-; then earliest CSV record.
+Selection uses observed outcomes, not predictions for unseen proposals.
+Original CSV record position: 78
+Original record identifier (idX; not assumed unique): 78
+Descriptor settings (metadata and outcomes are separate):
+  prec: h
+  flex: h
+  resl: h
+  team: vh
+  pmat: l
+  rely: h
+  data: n
+  cplx: vh
+  ruse: n
+  docu: n
+  time: n
+  stor: vh
+  pvol: l
+  acap: h
+  pcap: h
+  pcon: n
+  apex: h
+  plex: h
+  ltex: h
+  tool: n
+  site: n
+  sced: l
+Observed effort: 97.0
+Delivered-size proxy, observed Kloc+: 165.0
+Kloc+ is an explicitly labeled delivered-size proxy, not business value, cost, or productivity.
+This observed selection does not claim settings cause outcomes or guarantee future feasibility.
+real 0.04
+user 0.03
+sys 0.00

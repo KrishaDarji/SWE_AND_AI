@@ -1,0 +1,27 @@
+test_baseline_fresh_and_outcome_independence (test_estimator.Tests.test_baseline_fresh_and_outcome_independence) ... FAIL
+test_exclusions_invalid_and_ids (test_estimator.Tests.test_exclusions_invalid_and_ids) ... ok
+test_insufficient_groups (test_estimator.Tests.test_insufficient_groups) ... ok
+test_mae_and_cases (test_estimator.Tests.test_mae_and_cases) ... ok
+test_reproducible_and_separate (test_estimator.Tests.test_reproducible_and_separate) ... ok
+
+======================================================================
+FAIL: test_baseline_fresh_and_outcome_independence (test_estimator.Tests.test_baseline_fresh_and_outcome_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step10/tests/test_estimator.py", line 16, in test_baseline_fresh_and_outcome_independence
+    rows=[row(i, str(i), i+1) for i in range(8)]; ti,vi=split_groups(rows,42); m=Estimator().fit([rows[i] for i in ti]); p=m.predict([rows[i] for i in vi]); changed=[dict(x, **{TARGET:'999999'}) for x in rows]; m2=Estimator().fit([changed[i] for i in ti]); self.assertEqual(p,m2.predict([rows[i] for i in vi])); self.assertAlmostEqual(m.mean, sum(i+1 for i in ti)/len(ti))
+                                                                                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [3.625, 5.375] != [999999.0, 999999.0]
+
+First differing element 0:
+3.625
+999999.0
+
+- [3.625, 5.375]
++ [999999.0, 999999.0]
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=1)
+exit=1

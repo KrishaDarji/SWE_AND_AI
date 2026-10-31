@@ -1,0 +1,160 @@
+You are running Treatment 5, Trial 3, Dataset 1, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: No
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: race
+- Current requirement: Compare our tuner against a baseline search strategy.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step10/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Implement this skill independently from scratch.
+Implement any tuner needed for this comparison within Step 10.
+Do not read, copy, import, or extend previous steps, including Step 7.
+Using the explicitly supplied EZR source as reference is permitted.
+
+You may read only:
+- The specified X264 dataset.
+- The two authorized EZR source files.
+- Files created in the current Trial 3 X264 Step 10 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+previous steps, other trials, other datasets, other treatments,
+root-level implementations, Git history, or previous chats.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Independently implement and disclose an EZR-informed tuner and compare it
+  against uniform random search without replacement.
+- Fix both strategies and their settings before inspecting comparative outcomes.
+- Use budget 20 for each strategy and seeds 42 through 51.
+- Give each strategy a fresh counted evaluation callback for every seed.
+- Keep candidate order, deduplication rules, available information, and budgets equal.
+- Interpret budget as distinct benchmark evaluations, not money or runtime.
+- Permit selection access only to settings and outcomes revealed by callback calls.
+- Fit any predictive components only on already evaluated data.
+- Prevent repeated evaluations of identical configurations.
+- Recommend the lowest measured Performance- among each strategy's evaluated candidates.
+- Freeze recommendations before any retrospective full-dataset audit.
+- Report each seed, evaluation order, budget used, recommended identifier,
+  full configuration, measured Performance-, and optional retrospective gap.
+- Clearly define record identifiers and deterministic tie-breaking.
+- Define difference as tuner Performance- minus baseline Performance-.
+  Negative beyond tolerance means tuner win; positive means tuner loss.
+- Fix tie tolerance before examining results and report paired arithmetic,
+  descriptive wins/ties/losses, and summary differences.
+- If the strategies are equivalent, disclose that fact.
+  Identical results are valid; do not manufacture a winner.
+- Do not claim statistical superiority or invent the project's final "same"
+  procedure. Mark that analysis pending if unavailable.
+- These seeded repetitions are benchmark repeats, not independent LLM trials.
+- Handle invalid budgets, insufficient candidates, duplicates,
+  and invalid/nonfinite evaluations explicitly.
+- Treat lower Performance- as better; do not invent units or quality measures.
+- State assumptions and limitations.
+- Do not implement or preserve earlier skill interfaces.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation, including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test equal budgets, fresh callbacks, reproducibility, hidden-outcome isolation,
+duplicate prevention, paired arithmetic, known win/loss/tie cases,
+and invalid inputs.
+Verify changing unevaluated outcomes cannot affect a strategy's selection.
+Allow equivalent strategies to return identical results.
+Keep synthetic fixtures inside this Trial 3 X264 Step 10 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Trial 3 X264 Step 10 output directory.
+
+Run tests and the implementation. Record actual measured results.
+Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 10
+- treatment: 5
+- trial: 3
+- domain: video encoding
+- skill: race
+- total_loc: implementation Python lines, including any translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and the supplied Lua reference files.
+- new_loc: equal to total_loc because this implementation is independent.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, EZR adaptations, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the exact Trial 3 X264 Step 10 output directory specified above.

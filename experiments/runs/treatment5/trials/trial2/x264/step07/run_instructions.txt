@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step07
+Python interpreter: /usr/bin/python3
+Tests: /usr/bin/python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step07/tests" -v
+Demonstration: /usr/bin/time -p /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step07/source/selector.py"
+All paths are absolute and quoted where they contain spaces.

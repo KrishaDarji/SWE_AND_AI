@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,2,model configuration and quality,guess,92,92,1,11.69,17,"5 tests; /usr/bin/time -p real; EZR CSV iteration, grouped holdout, normalization, numeric summary, categorical handling, and distance machinery adapted independently; invalid targets skipped, zero targets preserved, missing numeric values imputed to normalized midpoint, unseen criterion encoded as all-zero; 4 repaired failed shell attempts and 13 unexpected assertion/error events preserved in attempt logs."

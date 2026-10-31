@@ -1,0 +1,12 @@
+test_exit=0
+test_all_tie_breakers (test_choose.ChooseTests.test_all_tie_breakers) ... ok
+test_boundary_and_best (test_choose.ChooseTests.test_boundary_and_best) ... ok
+test_empty_and_none (test_choose.ChooseTests.test_empty_and_none) ... ok
+test_invalid_caps (test_choose.ChooseTests.test_invalid_caps) ... ok
+test_invalid_values_and_identifier (test_choose.ChooseTests.test_invalid_values_and_identifier) ... ok
+test_missing_configuration (test_choose.ChooseTests.test_missing_configuration) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK

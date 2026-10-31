@@ -1,0 +1,25 @@
+Correct Treatment 5, Trial 2, X264, Step 6.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step06/
+
+Fix reference arithmetic when the first record's outcome is zero.
+
+- For any finite reference, including zero, calculate:
+  absolute_difference = reference - recommendation.
+- When reference is zero, percentage improvement remains unavailable with
+  an explicit zero-denominator reason.
+- For missing/invalid references, both comparisons remain unavailable.
+- Update rendering to show the available absolute difference independently
+  of percentage availability.
+
+Add a regression test using reference 0 and recommendation -1:
+absolute difference must be 1, percentage must be unavailable,
+and the rendered report must reflect both correctly.
+
+Keep valid-data selection and tie-breaking unchanged.
+Use only current Step 6 files and previously authorized inputs.
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run tests and the real-data demonstration, capture new attempt logs,
+and update actual metrics including earlier failures.
+Write only inside the exact directory above.

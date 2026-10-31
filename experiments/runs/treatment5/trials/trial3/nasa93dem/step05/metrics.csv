@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,3,software project estimation,blame,78,78,1,0.02,3,"4 tests; /usr/bin/time -p demonstration; EZR summaries, entropy-aware categorical treatment, deterministic stable ordering adapted; missing/nonfinite and small-group assumptions; 2 failed test attempts repaired plus 1 failed shell wrapper"

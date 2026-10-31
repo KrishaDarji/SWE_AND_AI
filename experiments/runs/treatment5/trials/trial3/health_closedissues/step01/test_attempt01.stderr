@@ -1,0 +1,8 @@
+test_complete_path_and_roles (test_analyzer.AnalyzerTests) ... ok
+test_empty_and_header_only (test_analyzer.AnalyzerTests) ... ok
+test_whitespace_and_repeated_configuration (test_analyzer.AnalyzerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.015s
+
+OK

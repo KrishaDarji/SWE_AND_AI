@@ -1,0 +1,26 @@
+test_constants_missing_small_and_nonfinite (test_blame.BlameTests.test_constants_missing_small_and_nonfinite) ... FAIL
+test_deterministic_order (test_blame.BlameTests.test_deterministic_order) ... ok
+test_excluded_and_categorical (test_blame.BlameTests.test_excluded_and_categorical) ... ok
+test_known_association_and_tie_order (test_blame.BlameTests.test_known_association_and_tie_order) ... FAIL
+
+======================================================================
+FAIL: test_constants_missing_small_and_nonfinite (test_blame.BlameTests.test_constants_missing_small_and_nonfinite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step05/tests/test_blame.py", line 29, in test_constants_missing_small_and_nonfinite
+    self.assertEqual(association(rows, "A")["overall"]["n"], 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_known_association_and_tie_order (test_blame.BlameTests.test_known_association_and_tie_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step05/tests/test_blame.py", line 12, in test_known_association_and_tie_order
+    self.assertAlmostEqual(r["score"], 0.96, places=12)
+AssertionError: 0.9411764705882353 != 0.96 within 12 places (0.018823529411764683 difference)
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=2)
+test_exit=1

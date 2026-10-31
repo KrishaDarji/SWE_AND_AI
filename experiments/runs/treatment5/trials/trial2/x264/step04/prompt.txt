@@ -1,0 +1,147 @@
+You are running Treatment 5, Trial 2, Dataset 1, Step 4 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: No
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: flow
+- Current requirement: Evaluate configurations as benchmark results arrive one at a time.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step04/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Implement this skill independently from scratch.
+Do not read, copy, import, or extend previous implementations.
+Using the explicitly supplied EZR source as reference is permitted.
+
+You may read only:
+- The specified X264 dataset.
+- The two authorized EZR source files.
+- Files created in the current Trial 2 X264 Step 4 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+previous steps, Trial 1 or other trials, other datasets, other treatments,
+root-level implementations, Git history, or previous chats.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Process CSV records incrementally in their existing order.
+- Translate or adapt relevant EZR machinery where applicable.
+- After each arriving result, update count, mean, sample variance,
+  and lowest observed Performance- with its full encoder configuration.
+- Retain a clearly defined record identifier for the best result.
+- Use incremental statistics rather than recomputing over all previous rows.
+- Read input records through an iterator; do not buffer all CSV inputs first.
+  Retaining output snapshots is acceptable.
+- Each update must depend only on records received so far.
+- Define behavior for empty input, first observation, ties,
+  and missing/nonfinite outcomes.
+- Preserve earlier snapshots when later records arrive or input dictionaries mutate.
+- Treat lower Performance- as better; do not invent units or quality measures.
+- State that CSV order is a demonstration sequence, not a verified timeline.
+- Do not claim convergence, sufficient evidence, or an automatic stopping rule.
+- State assumptions and limitations.
+- Do not implement or preserve earlier skill interfaces.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation, including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test each prefix against independently calculated batch statistics.
+Cover empty input, one observation, ties, missing/nonfinite values,
+full configuration retention, and defensive snapshot copying.
+Add a CSV integration test and verify processing occurs before requesting
+the next input record.
+Keep synthetic fixtures inside this Trial 2 X264 Step 4 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Trial 2 X264 Step 4 output directory.
+
+Run tests and the implementation. Record actual measured results.
+Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 4
+- treatment: 5
+- trial: 2
+- domain: video encoding
+- skill: flow
+- total_loc: implementation Python lines, including any translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and the supplied Lua reference files.
+- new_loc: equal to total_loc because this implementation is independent.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, EZR adaptations, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the exact Trial 2 X264 Step 4 output directory specified above.

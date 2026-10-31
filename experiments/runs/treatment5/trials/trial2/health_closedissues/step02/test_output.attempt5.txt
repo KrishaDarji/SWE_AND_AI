@@ -1,0 +1,10 @@
+test_groups_repro_and_exclusion (test_predictor.T.test_groups_repro_and_exclusion) ... ok
+test_invalid_and_insufficient (test_predictor.T.test_invalid_and_insufficient) ... ok
+test_missing_unseen_and_zero (test_predictor.T.test_missing_unseen_and_zero) ... ok
+test_outcome_changes_do_not_fit (test_predictor.T.test_outcome_changes_do_not_fit) ... ok
+test_prediction_and_schema (test_predictor.T.test_prediction_and_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

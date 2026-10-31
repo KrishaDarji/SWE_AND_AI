@@ -1,0 +1,4 @@
+{"ACC+_difference": -0.06568407561678946, "ACC+_worsened": true, "MRE-_improvement": 0.04756995581737844, "PRED40+_difference": 0.0, "PRED40+_worsened": false, "baseline_configuration": {"Max_depth": 10, "Min_impurity_decrease": 2.75, "Min_sample_leaves": 3, "N_estimators": 40, "criterion": "squared_error"}, "baseline_identifier": 1, "baseline_outcomes": {"ACC+": 0.7276513937840435, "MRE-": 0.3148748159057436, "PRED40+": 0.5714285714285714}, "candidate_configuration": {"Max_depth": 10, "Min_impurity_decrease": 5, "Min_sample_leaves": 3, "N_estimators": 10, "criterion": "squared_error"}, "candidate_identifier": 1945, "candidate_outcomes": {"ACC+": 0.6619673181672541, "MRE-": 0.2673048600883652, "PRED40+": 0.5714285714285714}, "change_count": 2, "change_count_is_proxy": true, "changes": [{"field": "N_estimators", "new": 10, "old": 40}, {"field": "Min_impurity_decrease", "new": 5, "old": 2.75}], "status": "improvement"}
+real 0.07
+user 0.06
+sys 0.00

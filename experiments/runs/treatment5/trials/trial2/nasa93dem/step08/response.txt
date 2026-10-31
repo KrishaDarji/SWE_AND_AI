@@ -1,0 +1,18 @@
+Implemented the independent Python repair tool and tests in the exact Step 8 directory.
+
+Files:
+- source/repair.py
+- tests/test_repair.py
+- prompt.txt
+- test_output.txt and attempt-labeled test logs
+- runtime_output.txt and attempt-labeled runtime logs
+- metrics.csv
+- run_instructions.txt
+
+Verification: 7 tests passed. The NASA93 demonstration ran in 0.02 seconds with 70 training rows and 23 held-out rows. The held-out proposal (idX 88, CSV row 89) was estimated at 3951.9 effort against budget 100. The selected hypothetical training configuration (idX 20, CSV row 21) was estimated at 60.0 and changed 8 descriptors.
+
+The implementation adapts EZR's column-role separation, whitespace-trimmed CSV coercion, categorical symbol handling, stable deterministic ordering, and streaming-style summaries. It uses a training-only categorical nearest-configuration estimator, exact training-configuration means where available, and the required change-count/effort/earliest-row ranking.
+
+Tests cover feasibility, minimum-change priority, both tie-breakers, already-feasible proposals, no feasible repair, invalid inputs, training-only candidates, held-out-outcome independence, identifiers, and changed fields. Duplicate idX values are preserved rather than treated as unique.
+
+Limitations: descriptor changes are hypothetical and may not be actionable; observed combinations may not preserve project scope; change count is only a proxy, not monetary cost or operational risk; model differences are not causal improvements or guaranteed savings; unseen proposal categories are handled by nearest categorical configurations and are not extrapolated with a causal model.

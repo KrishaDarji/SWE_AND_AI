@@ -1,0 +1,13 @@
+test_all_tiebreakers (test_repair.RepairTests) ... ok
+test_changes_and_tradeoff (test_repair.RepairTests) ... ok
+test_empty (test_repair.RepairTests) ... ok
+test_invalid_and_no_improvement (test_repair.RepairTests) ... ok
+test_min_change_beats_big_improvement (test_repair.RepairTests) ... ok
+test_missing_secondary (test_repair.RepairTests) ... ok
+test_numeric_equivalence (test_repair.RepairTests) ... ok
+test_ties (test_repair.RepairTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK

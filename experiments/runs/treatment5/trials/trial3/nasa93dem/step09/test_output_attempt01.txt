@@ -1,0 +1,21 @@
+E.F.
+======================================================================
+ERROR: test_arithmetic_and_flags (test_spot.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step09/tests/test_spot.py", line 11, in test_arithmetic_and_flags
+    self.assertAlmostEqual(out["records"][2]["flags"][0]["score"], abs(math.log1p(10000)-math.log1p(11)) / (math.log1p(11)-math.log1p(10)), places=12)
+IndexError: list index out of range
+
+======================================================================
+FAIL: test_small_empty_and_constant (test_spot.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step09/tests/test_spot.py", line 23, in test_small_empty_and_constant
+    self.assertTrue(all(x["flags"] for x in out["records"]))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=1, errors=1)

@@ -1,0 +1,11 @@
+Implemented the independent Python certification tool and tests in the exact requested directory.
+
+Source: source/certify.py
+Tests: tests/test_certify.py (8 tests, all pass)
+Run: /usr/bin/python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --threshold 11.76
+
+Measured demonstration: tool=n n=83 mean Effort-=606.063855; tool=h n=10 mean=776.700000; A-B=-170.636145, favoring A in point estimate. Welch t=-0.651341, df=15.552581, p=0.524335; 95% CI=(-727.303097, 386.030808). The illustrative threshold is 11.76 (10% of tool=n mean), not a client requirement. The point estimate exceeds it, but the interval crosses both practical boundaries and zero; no statistically detected difference, and no equivalence conclusion.
+
+EZR machinery adapted: consistent trimming/coercion, header-driven column selection, and one-pass numerical mean/second-moment summaries. Welch-Satterthwaite inference uses standard-library math, an incomplete-beta continued fraction, and bisection for t critical values; tests check known reference values.
+
+Limitations: Effort- is observed effort, not verified monetary cost. Skew, imbalanced groups, differing project scope, and unmeasured repeated-run noise limit interpretation; causal effects and guaranteed savings are not claimed. Missing/nonfinite outcomes, insufficient groups, zero variance, and invalid thresholds are handled explicitly.

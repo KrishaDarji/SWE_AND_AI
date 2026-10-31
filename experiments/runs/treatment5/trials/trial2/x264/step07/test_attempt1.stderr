@@ -1,0 +1,11 @@
+test_budget_and_membership (test_selector.SelectorTests) ... ok
+test_budget_exceeds_candidates (test_selector.SelectorTests) ... ok
+test_duplicate_prevention (test_selector.SelectorTests) ... ok
+test_hidden_outcomes_only_callback (test_selector.SelectorTests) ... ok
+test_invalid_inputs (test_selector.SelectorTests) ... ok
+test_reproducibility (test_selector.SelectorTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK

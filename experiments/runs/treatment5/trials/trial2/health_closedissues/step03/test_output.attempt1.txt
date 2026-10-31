@@ -1,0 +1,21 @@
+test_certify (unittest.loader._FailedTest.test_certify) ... ERROR
+
+======================================================================
+ERROR: test_certify (unittest.loader._FailedTest.test_certify)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_certify
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 3, in <module>
+    from certify import *
+ModuleNotFoundError: No module named 'certify'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

@@ -1,0 +1,14 @@
+Implemented and measured the independent Python solution.
+
+Files:
+- source/blame.py — complete standard-library implementation.
+- tests/test_blame.py — 3 synthetic test cases covering associations, exclusions, mixed types, constants, missing/all-missing values, boundaries, and deterministic ordering.
+- metrics.csv, run_instructions.txt, prompt.txt, and captured logs are in this exact output directory.
+
+Method: each setting receives the same primary score, eta-squared, computed from outcome-independent groups. Criterion uses observed categorical levels. Numeric settings use up to five equal-frequency groups based only on the setting values; boundaries and information loss are reported. Lower MRE- is better, but the score is association strength, not a causal effect or a direction by itself. Missing/nonfinite pairs are omitted per setting, constants receive zero score, and ties use the requested setting order.
+
+EZR machinery adapted: finite/type-safe parsing inspired by thing(), streaming-style numeric summaries (mean, median, spread), sorted deterministic handling, and grouped summaries/ranking ideas from the supplied NUM/SYM, sorted, keysort, and ranking-related code. No Lua is invoked and no prior implementation is used.
+
+Observed ranking: Min_sample_leaves, criterion, Min_impurity_decrease, N_estimators, Max_depth. Primary scores are 0.827849, 0.024851, 0.004682, 0.000605, and 0.000291 respectively, with n=10000 for each. This is marginal association only; correlated settings can share explanatory information, and grouped numeric analysis loses within-bin detail. No adjusted model was used.
+
+Verification: final suite passed 3 tests; demonstration exited successfully. /usr/bin/time -p recorded real 0.07 seconds. Failed repaired attempts remain preserved and are counted in metrics.csv.

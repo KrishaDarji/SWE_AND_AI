@@ -1,0 +1,8 @@
+Implemented and verified the independent Python certifier in [source/certify.py](source/certify.py), with 7 passing tests.
+
+Real dataset result: squared_error MRE- mean = 0.6737203 (n=3363); absolute_error mean = 0.7508695 (n=3302). Candidate-minus-reference = +0.0771492, 95% Welch CI [0.0671867, 0.0871117], df=6661.69, two-sided p < 1e-50. Since lower MRE- is better, the candidate is worse on this sample; the apparent change is statistically detectable, not a quality improvement. No practical threshold was supplied, so practical importance is undetermined.
+
+The implementation adapts EZR's NUM one-pass mean/variance summaries and lower-is-better goal convention. It uses standard-library Welch–Satterthwaite inference, regularized-beta/t calculations, and a large-df normal-tail approximation. It handles missing/nonfinite values, invalid thresholds, insufficient groups, and zero variance explicitly. ACC+ and PRED40+ are descriptive only. Configurations are independent observations; this does not estimate repeated-run noise, establish causality, or guarantee gains.
+
+Run from the step directory with: python3 run_tests.py
+The timed demonstration command and preserved logs are in run_instructions.txt, test_output.txt, and runtime_output.txt.

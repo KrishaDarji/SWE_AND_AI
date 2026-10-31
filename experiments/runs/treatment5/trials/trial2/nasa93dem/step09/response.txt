@@ -1,0 +1,7 @@
+Implemented the independent Python spot screen in source/spot.py and tests in tests/test_spot.py.
+
+Run: python3 source/spot.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Method: log1p-transform each nonnegative outcome, then score absolute deviation from the median divided by 1.4826*MAD; flag scores greater than 3. Reference statistics include the assessed record. Invalid, negative, missing, nonfinite, empty, constant, and zero-scale cases are handled explicitly with JSON null where undefined. The real dataset produced 0 unique flagged records and 0 flags for each outcome; these are investigation results, not confirmed errors. Large projects may legitimately have large effort or defect counts.
+
+The implementation adapts EZR's CSV/coercion, numeric summary/diversity-oriented machinery, and deterministic rendering ideas, but does not invoke Lua. It makes no scope-adjusted, accuracy, causal, or prediction-uncertainty claims. See test_output.txt, runtime_output.txt, and metrics.csv for captured results.

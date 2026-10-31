@@ -1,0 +1,2 @@
+Final runtime attempt: runtime_attempt2.stdout, runtime_attempt2.stderr, runtime_attempt2.status
+The complete captured demonstration output, including timing, is stored in those attempt-labeled files.

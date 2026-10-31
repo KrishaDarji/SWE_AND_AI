@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/run_demo.py", line 5, in <module>
+    model = fit_csv(path)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 72, in fit_csv
+    def fit_csv(path, seed=42): return GuessModel(load_rows(path), seed)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 44, in __init__
+    for row in usable: groups.setdefault(normalize_config(row), []).append(row)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+real 0.05
+user 0.04
+sys 0.00

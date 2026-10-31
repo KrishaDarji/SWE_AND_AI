@@ -1,0 +1,15 @@
+Implemented the independent Python certification in source/certify.py, with tests in tests/test_certify.py. Corrected both-zero-variance handling: Welch inference now returns an explicit undefined status and reason, with no p-value, significance result, or interval. Descriptive means, differences, and threshold point comparison remain available. One constant group with one varying group remains valid.
+
+Final measured result:
+- Fixed comparison: A = no_8x8dct=0, B = no_8x8dct=1.
+- n_A = 576, n_B = 576.
+- mean_A = 472.135507; mean_B = 451.371686.
+- Mean difference A−B = 20.763821. Lower Performance- is better.
+- Welch two-sided p = 0.030125862; 95% interval for A−B = (1.999699, 39.527943).
+- The point estimate exceeds the illustrative practical threshold 5.0, but the interval crosses that threshold, so practical importance is uncertain. This is evidence of a difference from zero, not evidence of equivalence.
+
+The implementation adapts EZR’s numeric summaries and minimization/lower-is-better framing. Welch inference, Student-t tails, and Welch–Satterthwaite degrees of freedom were implemented independently with the standard library. The incomplete-beta continued fraction is checked against t(1) and t(10) reference values and a large-statistic normal-limit check.
+
+Tests cover direction, unequal variances, interval arithmetic, missing/nonfinite values, insufficient groups, equal and unequal constant groups, one constant plus one varying group, invalid thresholds, threshold-crossing interpretation, and the complete undefined-inference CLI path. All 8 tests pass. Demonstration timing was real 0.02 seconds using /usr/bin/time -p. Final captures are test_attempt04.txt and runtime_attempt04.txt; earlier failed attempts remain preserved.
+
+Limitations: rows are different configurations, not repeated-run measurements; configuration variation cannot establish measurement noise or causal effects. No units are invented. Invalid rows are skipped and reported; inference requires at least two finite observations per group. A zero-variance pair is handled explicitly. The fixed threshold is illustrative, and the analysis does not establish equivalence.

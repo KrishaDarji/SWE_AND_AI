@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step01
+Python interpreter: /usr/bin/python3
+Test command: (cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step01" && /usr/bin/python3 -m unittest discover -s tests -v)
+Run command: /usr/bin/time -p /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step01/source/report.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+The run command's stdout/stderr is preserved in runtime_output_attempt02.txt; tests are in test_output_attempt02.txt. The final aliases test_output.txt and runtime_output.txt point to those contents.

@@ -1,0 +1,16 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step04
+
+Interpreter: /usr/bin/python3
+
+Test command (quoted paths):
+/usr/bin/python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step04/tests" -p 'test_*.py'
+
+Demonstration command and timing method:
+/usr/bin/time -p /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step04/run_demo.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+The CSV is consumed in existing order. This order is a demonstration sequence,
+not a verified timeline. Lower Performance- is better. Empty or invalid outcomes
+do not enter the statistics or best-result comparison; ties keep the first valid
+best result. No convergence claim, evidence sufficiency claim, or automatic
+stopping rule is made.

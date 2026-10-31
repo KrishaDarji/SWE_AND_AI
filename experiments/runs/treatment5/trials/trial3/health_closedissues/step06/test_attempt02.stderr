@@ -1,0 +1,10 @@
+test_all_outcome_medians (test_justify.JustifyTests.test_all_outcome_medians) ... ok
+test_missing_and_nonfinite (test_justify.JustifyTests.test_missing_and_nonfinite) ... ok
+test_no_eligible (test_justify.JustifyTests.test_no_eligible) ... ok
+test_policy_and_ties (test_justify.JustifyTests.test_policy_and_ties) ... ok
+test_references_and_original_id (test_justify.JustifyTests.test_references_and_original_id) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

@@ -1,0 +1,10 @@
+observations_received=1152
+valid_observations=1152
+mean=461.7535963541664
+sample_variance=26426.313365992526
+best_record_id=71
+best_value=244.23
+best_configuration={'no_asm': '1', 'no_8x8dct': '1', 'no_cabac': '1', 'no_deblock': '1', 'no_fast_pskip': '0', 'no_mbtree': '0', 'no_mixed_refs': '0', 'no_weightb': '0', 'rc_lookahead': '1', 'rc_lookahead_20': '1', 'rc_lookahead_40': '0', 'rc_lookahead_60': '0', 'ref': '1', 'ref_1': '1', 'ref_5': '0', 'ref_9': '0', 'Performance-': '244.230 '}
+real 0.06
+user 0.05
+sys 0.00

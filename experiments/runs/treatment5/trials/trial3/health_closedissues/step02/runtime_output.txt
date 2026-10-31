@@ -1,0 +1,5 @@
+{"metrics": {"ACC+": {"baseline_mae": 0.09007118811959788, "heldout_mae": 0.09007118811959788}, "MRE-": {"baseline_mae": 0.16604018269382803, "heldout_mae": 0.16604018269382803}}, "predictors": ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"], "split": "seed=42; shuffle normalized groups; approximately 80/20", "test_groups": 2000, "test_rows": 2000, "train_groups": 8000, "train_rows": 8000}
+{"Max_depth": 8, "Min_impurity_decrease": 1.0, "Min_sample_leaves": 2, "N_estimators": 100, "criterion": "squared_error", "prediction": {"ACC+": 0.4956358138425484, "MRE-": 0.7091220176718517}}
+real 0.08
+user 0.07
+sys 0.00

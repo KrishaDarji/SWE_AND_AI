@@ -1,0 +1,19 @@
+test_direction_and_threshold_crossing (test_certify.T) ... FAIL
+test_groups_and_whitespace (test_certify.T) ... ok
+test_invalid_and_insufficient (test_certify.T) ... ok
+test_reference_t (test_certify.T) ... ok
+test_unequal_welch (test_certify.T) ... ok
+test_zero_missing_nonfinite (test_certify.T) ... ok
+
+======================================================================
+FAIL: test_direction_and_threshold_crossing (test_certify.T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step03/tests/test_certify.py", line 7, in test_direction_and_threshold_crossing
+    r=compare([10,11,12,13],[20,21,22,23],2); self.assertLess(r['difference'],0); self.assertTrue(r['magnitude_exceeds']); self.assertFalse(r['entirely_practical'])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)

@@ -1,0 +1,7 @@
+Implemented and verified the independent Python certifier in `source/certify.py`.
+
+Result: absolute_error minus squared_error for MRE- is +0.0771491732 (candidate worse because lower MRE- is better). Reference n=3363, mean=0.6737202958; candidate n=3302, mean=0.7508694690. Welch 95% CI: [0.0683464666, 0.0859518798], df=6661.6898, t=15.1779, two-sided p reported as 0 by bounded floating-point calculation. No practical threshold was supplied, so practical importance is undetermined.
+
+The implementation adapts EZR’s minimization/goal orientation and summary/statistical aggregation concepts, but is written independently in Python. It uses only the standard library, filters missing/nonfinite values, handles insufficient and zero-variance groups, and implements Welch-Satterthwaite inference with incomplete-beta and t numerical routines. ACC+ and PRED40+ remain descriptive secondary outcomes. Configurations are distinct observations; this does not estimate repeated-run noise, establish causality, or guarantee gains.
+
+Six tests pass. See `test_output.txt`, `runtime_output.txt`, `metrics.csv`, and `run_instructions.txt`.

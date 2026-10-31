@@ -1,0 +1,12 @@
+test_direction (test_certify.TestCertify.test_direction) ... ok
+test_group (test_certify.TestCertify.test_group) ... ok
+test_insufficient_zero (test_certify.TestCertify.test_insufficient_zero) ... ok
+test_missing (test_certify.TestCertify.test_missing) ... ok
+test_numerics (test_certify.TestCertify.test_numerics) ... ok
+test_threshold_uncertainty (test_certify.TestCertify.test_threshold_uncertainty) ... ok
+test_welch (test_certify.TestCertify.test_welch) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.025s
+
+OK

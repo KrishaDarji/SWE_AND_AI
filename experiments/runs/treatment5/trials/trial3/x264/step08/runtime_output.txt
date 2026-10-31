@@ -1,0 +1,4 @@
+Final demonstration attempt: runtime_attempt_1.log
+Captured stdout, stderr, and /usr/bin/time -p output are preserved in runtime_attempt_1.log. The demonstration exited successfully.
+
+The measured real elapsed time was copied from the captured log: real 0.03 seconds.

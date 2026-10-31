@@ -1,0 +1,15 @@
+....F
+======================================================================
+FAIL: test_unusual_ordinary_and_identifiers (test_spot_screen.ScreenTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step09/tests/test_spot_screen.py", line 23, in test_unusual_ordinary_and_identifiers
+    self.assertEqual({x["record_id"] for x in flags}, {"data_row_4"})
+AssertionError: Items in the second set but not the first:
+'data_row_4'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (failures=1)
+test_exit_status=1

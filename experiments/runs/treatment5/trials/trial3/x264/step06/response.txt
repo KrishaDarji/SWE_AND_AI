@@ -1,0 +1,12 @@
+Implemented the requested independent Python solution in the exact Trial 3 X264 Step 6 directory.
+
+Recommendation: CSV data record 71 (1-based, excluding the header), with the complete observed configuration:
+no_asm=1, no_8x8dct=1, no_cabac=1, no_deblock=1, no_fast_pskip=0, no_mbtree=0, no_mixed_refs=0, no_weightb=0, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=1, ref_5=0, ref_9=0.
+
+Measured Performance- is 244.230; lower is better. The named historical reference is the first CSV data record, whose measured Performance- is 268.720. The absolute difference is 24.490, or 9.112% improvement relative to that reference.
+
+The implementation uses only Python’s standard library. EZR machinery adapted from the authorized Lua source includes CSV row streaming/coercion, finite numeric filtering, copied-record retention, sorted minimum selection, and stable earliest-record tie-breaking. No model estimates are produced. Associations are descriptive and do not establish the effect of changing a setting; correlated settings can share explanatory information.
+
+Tests cover selection, tie-breaking, arithmetic, complete configuration retention, evidence labels, missing/nonfinite outcomes, zero reference outcomes, and no usable records. All 3 tests passed. Demonstration timing was captured with /usr/bin/time -p and reported real 0.02 seconds. One repaired shell-wrapper failure is preserved in the attempt-labeled logs and counted in metrics.
+
+Known limitations: this is retrospective dataset evidence, not a guarantee of future performance or a claim of statistical superiority; CSV order defines the tie-break and historical reference; missing/nonfinite outcomes are excluded; no units, quality measures, resource costs, constraints, or causal conclusions are inferred.

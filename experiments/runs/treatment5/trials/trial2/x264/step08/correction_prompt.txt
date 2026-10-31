@@ -1,0 +1,22 @@
+Correct Treatment 5, Trial 2, X264, Step 8.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step08/
+
+Replace the hardcoded baseline_identifier with the supplied baseline's
+actual original record position (_order).
+
+Validate that the baseline has an original identifier, or accept one explicitly.
+Do not silently label an arbitrary baseline as record 1.
+Retain baseline identity in no-improvement results as well.
+
+Add tests using a baseline whose _order is not 1, covering both:
+- A successful repair.
+- No improving candidate.
+
+Keep selection, change counting, and outcome calculations unchanged.
+Use only current Step 8 files and previously authorized inputs.
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run tests and the real-data demonstration, capture new attempt logs,
+and update actual metrics including earlier failures.
+Write only inside the exact directory above.

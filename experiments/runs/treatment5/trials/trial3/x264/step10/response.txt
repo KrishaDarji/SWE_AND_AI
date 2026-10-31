@@ -1,0 +1,11 @@
+Implemented and verified the independent Python comparison in the exact Step 10 directory.
+
+Source: source/tuner.py (73 nonblank, non-comment implementation lines). Tests: tests/test_tuner.py. Runner: run.py. Command: /usr/bin/python3 run.py; tests use /usr/bin/python3 -m unittest discover -s tests -v.
+
+EZR-informed machinery: deterministic seeded shuffling and no-replacement candidate pools, labeled-row outcome access through callbacks, Hamming/Minkowski-like normalized distance over configuration columns, nearest labeled outcomes as a simple acquisition estimate, and deterministic best-first/lowest-measured selection. The baseline uses the same pool, callback, budget, and seeds with uniform random no-replacement order.
+
+Measured run: 1.81 seconds real. Ten seeds (42–51), budget 20 each. Differences are tuner Performance- minus baseline Performance-. Results: 1 win, 0 ties, 9 losses; mean paired difference 116.344200. Recommendations and measured orders are in metrics_detail.csv, with full selected configurations. Retrospective full-dataset audit is pending and was not used for selection.
+
+All six tests passed. The first failed fixture attempt is preserved in test_attempt1.txt; the repaired successful run is test_attempt2.txt and test_output.txt. Runtime attempts are preserved similarly.
+
+Assumptions and limitations: lower Performance- is better; identifiers are zero-based CSV row identifiers r0000...; ties use Performance- then identifier; tolerance is 1e-12; candidates are unique by configuration row/order and callback evaluations are unique by identifier; the EZR adaptation is intentionally lightweight and not a claim of statistical superiority. Seed repetitions are benchmark repeats, not independent LLM trials. Invalid budgets, empty selections, malformed/nonfinite input, and duplicate evaluations are rejected or reported.

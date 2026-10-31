@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,5,3,software project estimation,race,92,92,1,0.11,2,"5 tests passed; /usr/bin/time -p real; EZR-inspired typed columns, whitespace normalization, numeric scaling, categorical distance, and nearest-neighbor holdout comparison; 75/25 grouped splits seeds 42-51; repeated splits overlap; no deployment or statistical superiority claim; one failed shell-wrapper and one repaired test assertion preserved"

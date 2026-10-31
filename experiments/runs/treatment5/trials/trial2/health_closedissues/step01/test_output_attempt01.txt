@@ -1,0 +1,19 @@
+test_complete_path (test_report.TestReport) ... ok
+test_empty_and_header_only (test_report.TestReport) ... ok
+test_nonfinite_and_roles (test_report.TestReport) ... FAIL
+
+======================================================================
+FAIL: test_nonfinite_and_roles (test_report.TestReport)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step01/tests/test_report.py", line 22, in test_nonfinite_and_roles
+    self.assertEqual(x["missing_or_invalid"]["MRE-"], 1); self.assertEqual(x["roles"]["criterion"], "other")
+AssertionError: 'configuration' != 'other'
+- configuration
++ other
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=1)

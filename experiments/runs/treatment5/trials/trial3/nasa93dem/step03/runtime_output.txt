@@ -1,0 +1,20 @@
+A: tool=n (observed Effort-); B: tool=h (observed Effort-)
+n_a=83
+n_b=10
+mean_a=606.0638554216868
+mean_b=776.7
+difference=-170.6361445783133
+df=15.552580855698572
+se=261.97662553325733
+ci_low=-727.3030968829634
+ci_high=386.0308077263368
+p_value=0.5243346705603098
+threshold=60.60638554216869
+statistical_difference=False
+magnitude_exceeds=True
+entirely_practical=False
+Interpretation: positive A-minus-B favors B; negative favors A. Effort- is not verified monetary cost.
+Illustrative threshold is 10% of tool=n mean; scope, skew, imbalance, and non-causal observational limits apply.
+real 0.04
+user 0.03
+sys 0.00

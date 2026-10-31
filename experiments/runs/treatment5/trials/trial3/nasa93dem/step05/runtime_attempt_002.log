@@ -1,0 +1,86 @@
+descriptor,eta_squared,usable_n,groups,high_effort_group,low_effort_group,direction
+time,0.417943,93,4,xh,n,higher effort in xh
+  group=h n=13 mean=734.076923 median=458.000000 sd=737.306976 min=90.000000 max=2460.000000
+  group=n n=54 mean=334.388889 median=156.000000 sd=504.191197 min=8.400000 max=2400.000000
+  group=vh n=18 mean=375.344444 median=215.500000 sd=371.086898 min=12.000000 max=1248.000000
+  group=xh n=8 mean=2964.262500 median=1848.500000 sd=2584.536051 min=72.000000 max=8211.000000
+rely,0.342147,93,4,vh,n,higher effort in vh
+  group=h n=42 mean=483.547619 median=326.400000 sd=621.869840 min=8.400000 max=2460.000000
+  group=l n=2 mean=1296.000000 median=1296.000000 sd=1561.291773 min=192.000000 max=2400.000000
+  group=n n=39 mean=269.158974 median=170.000000 sd=300.129569 min=24.000000 max=1368.000000
+  group=vh n=10 mean=2467.210000 median=1709.200000 sd=2502.841001 min=107.000000 max=8211.000000
+cplx,0.191680,93,5,xh,h,higher effort in xh
+  group=h n=58 mean=315.244828 median=118.800000 sd=464.985975 min=8.400000 max=2400.000000
+  group=l n=3 mean=844.333333 median=973.000000 sd=598.464981 min=192.000000 max=1368.000000
+  group=n n=10 mean=494.200000 median=320.000000 sd=692.614660 min=48.000000 max=2400.000000
+  group=vh n=17 mean=1341.270588 median=648.000000 sd=2029.690245 min=12.000000 max=8211.000000
+  group=xh n=5 mean=1901.900000 median=1924.500000 sd=1780.729850 min=107.000000 max=4560.000000
+stor,0.163585,93,4,xh,n,higher effort in xh
+  group=h n=10 mean=887.700000 median=580.500000 sd=807.533838 min=107.000000 max=2460.000000
+  group=n n=49 mean=323.248980 median=117.600000 sd=517.160653 min=8.400000 max=2400.000000
+  group=vh n=21 mean=555.190476 median=240.000000 sd=980.506635 min=12.000000 max=4560.000000
+  group=xh n=13 mean=1668.853846 median=648.000000 sd=2261.206048 min=60.000000 max=8211.000000
+plex,0.152537,93,4,vl,l,higher effort in vl
+  group=h n=22 mean=1285.686364 median=651.500000 sd=1818.461348 min=72.000000 max=8211.000000
+  group=l n=14 mean=346.857143 median=203.500000 sd=426.606981 min=12.000000 max=1350.000000
+  group=n n=53 mean=352.683019 median=117.600000 sd=567.753594 min=8.400000 max=2400.000000
+  group=vl n=4 mean=1559.250000 median=623.500000 sd=2002.678436 min=430.000000 max=4560.000000
+data,0.143988,93,4,h,vh,higher effort in h
+  group=h n=17 mean=1522.194118 median=1181.000000 sd=1986.159864 min=98.800000 max=8211.000000
+  group=l n=37 mean=370.162162 median=72.000000 sd=821.236105 min=8.400000 max=4560.000000
+  group=n n=31 mean=502.451613 median=300.000000 sd=652.049530 min=12.000000 max=2460.000000
+  group=vh n=8 mean=365.125000 median=181.000000 sd=457.611637 min=62.000000 max=1350.000000
+acap,0.060616,93,3,h,n,higher effort in h
+  group=h n=51 mean=876.123529 median=420.000000 sd=1414.703040 min=24.000000 max=8211.000000
+  group=n n=32 mean=301.343750 median=75.000000 sd=575.097658 min=8.400000 max=2400.000000
+  group=vh n=10 mean=374.500000 median=215.500000 sd=364.037925 min=62.000000 max=1181.000000
+pvol,0.057823,93,3,n,l,higher effort in n
+  group=h n=9 mean=557.444444 median=480.000000 sd=526.856980 min=12.000000 max=1368.000000
+  group=l n=65 mean=477.538462 median=240.000000 sd=767.105943 min=8.400000 max=4560.000000
+  group=n n=19 mean=1158.594737 median=252.000000 sd=1999.512002 min=42.000000 max=8211.000000
+pcap,0.057441,93,3,h,n,higher effort in h
+  group=h n=39 mean=921.623077 median=400.000000 sd=1581.863152 min=24.000000 max=8211.000000
+  group=n n=44 mean=348.704545 median=115.800000 sd=543.388695 min=8.400000 max=2460.000000
+  group=vh n=10 mean=678.400000 median=425.000000 sd=675.610045 min=72.000000 max=2400.000000
+sced,0.054554,93,2,n,l,higher effort in n
+  group=l n=34 mean=276.794118 median=118.800000 sd=347.058425 min=8.400000 max=1248.000000
+  group=n n=59 mean=824.733898 median=400.000000 sd=1366.215890 min=12.000000 max=8211.000000
+pmat,0.050721,93,3,l,n,higher effort in l
+  group=h n=43 mean=791.583721 median=278.000000 sd=1444.556789 min=8.400000 max=8211.000000
+  group=l n=20 mean=817.660000 median=501.700000 sd=1083.605310 min=72.000000 max=4560.000000
+  group=n n=30 mean=255.966667 median=132.000000 sd=307.177191 min=12.000000 max=1350.000000
+apex,0.023126,93,4,h,n,higher effort in h
+  group=h n=46 mean=774.702174 median=276.000000 sd=1380.166253 min=48.000000 max=8211.000000
+  group=l n=1 mean=648.000000 median=648.000000 sd=0.000000 min=648.000000 max=648.000000
+  group=n n=34 mean=402.470588 median=117.600000 sd=616.986716 min=8.400000 max=2460.000000
+  group=vh n=12 mean=675.166667 median=342.000000 sd=1267.943993 min=24.000000 max=4560.000000
+ltex,0.004630,93,4,h,vl,higher effort in h
+  group=h n=69 mean=662.033333 median=252.000000 sd=1261.187986 min=8.400000 max=8211.000000
+  group=l n=6 mean=427.333333 median=259.000000 sd=525.358037 min=12.000000 max=1350.000000
+  group=n n=14 mean=587.285714 median=162.000000 sd=810.704862 min=42.000000 max=2400.000000
+  group=vl n=4 mean=401.000000 median=395.000000 sd=159.501306 min=215.000000 max=599.000000
+tool,0.002189,93,2,h,n,higher effort in h
+  group=h n=10 mean=776.700000 median=528.500000 sd=720.516335 min=72.000000 max=2460.000000
+  group=n n=83 mean=606.063855 median=215.000000 sd=1177.939725 min=8.400000 max=8211.000000
+docu,0.000000,93,1,n,n,none
+  group=n n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+flex,0.000000,93,1,h,h,none
+  group=h n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+pcon,0.000000,93,1,n,n,none
+  group=n n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+prec,0.000000,93,1,h,h,none
+  group=h n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+resl,0.000000,93,1,h,h,none
+  group=h n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+ruse,0.000000,93,1,n,n,none
+  group=n n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+site,0.000000,93,1,n,n,none
+  group=n n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+team,0.000000,93,1,vh,vh,none
+  group=vh n=93 mean=624.411828 median=252.000000 sd=1135.928065 min=8.400000 max=8211.000000
+Interpretation: eta_squared is marginal between-group effort variation / total variation.
+Higher effort is not inefficiency: scope differs; size-adjusted productivity is not measured.
+real 0.02
+user 0.02
+sys 0.00
+runtime_exit=0

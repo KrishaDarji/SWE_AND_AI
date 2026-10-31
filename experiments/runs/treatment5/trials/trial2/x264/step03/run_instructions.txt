@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step03
+Interpreter: python3 (standard library only)
+Tests: python3 -m unittest discover -s tests -v
+Demonstration: /usr/bin/time -p python3 run_demo.py
+All paths are absolute where data is external; paths containing spaces are quoted by the shell.
+The implementation reads only the authorized X264 dataset at /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv.

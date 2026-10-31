@@ -1,0 +1,20 @@
+Configuration justification (retrospective observed-data evidence)
+Demonstration policy: lowest observed MRE-; ties by higher ACC+, then higher PRED40+, then earliest CSV record.
+Identifier: 1-based data-row position after the CSV header; preserved when records are excluded.
+Eligibility: all three outcomes must be finite numeric values.
+Reference MRE-: median=0.8091310751104565, valid_count=10000
+Reference ACC+: median=0.43992310157000963, valid_count=10000
+Reference PRED40+: median=0.0, valid_count=10000
+Eligible records: 10000 of 10000
+Recommended record identifier: 32
+Configuration: N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5
+Measured MRE-: 0.0; below its finite-data median (0.8091310751104565); valid_count=10000; evidence_label=measured
+Measured ACC+: 0.7901313681512335; above its finite-data median (0.43992310157000963); valid_count=10000; evidence_label=measured
+Measured PRED40+: 0.8571428571428571; above its finite-data median (0.0); valid_count=10000; evidence_label=measured
+Trade-off: the best observed MRE- need not also have the best ACC+ or PRED40+; the stated policy resolves this by tie-breaks only.
+Associations: settings and outcomes are jointly observed; correlated settings can share explanatory information. These global scores are not additive local contributions or causal effects.
+No model estimates are included. This is retrospective observed-data evidence, not a guarantee of future performance or a claim of statistical superiority.
+Limitations: one dataset and observed configurations; missing/nonfinite outcomes are excluded per-outcome from reference medians and from selection eligibility; no resource costs, units, ranges, or future constraints are inferred.
+real 0.04
+user 0.03
+sys 0.00

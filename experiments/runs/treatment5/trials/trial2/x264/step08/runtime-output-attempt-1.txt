@@ -1,0 +1,59 @@
+{
+  "baseline": {
+    "Performance-": "268.720 ",
+    "no_8x8dct": "0",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "baseline_identifier": "record-1-demonstration-baseline",
+  "baseline_outcome": 268.72,
+  "caveat": "Observed improvements are not causal or guarantees of future performance.",
+  "change_count": 1,
+  "changed_settings": [
+    {
+      "new": "1",
+      "old": "0",
+      "setting": "no_8x8dct"
+    }
+  ],
+  "improvement": 14.133000000000038,
+  "raw_column_change_count_proxy": "correlated or one-hot fields may represent fewer conceptual changes",
+  "repaired": true,
+  "repaired_configuration": {
+    "Performance-": "254.587 ",
+    "no_8x8dct": "1",
+    "no_asm": "1",
+    "no_cabac": "0",
+    "no_deblock": "0",
+    "no_fast_pskip": "0",
+    "no_mbtree": "0",
+    "no_mixed_refs": "0",
+    "no_weightb": "0",
+    "rc_lookahead": "1",
+    "rc_lookahead_20": "1",
+    "rc_lookahead_40": "0",
+    "rc_lookahead_60": "0",
+    "ref": "1",
+    "ref_1": "1",
+    "ref_5": "0",
+    "ref_9": "0"
+  },
+  "repaired_identifier": "record-65",
+  "repaired_outcome": 254.587
+}
+real 0.02
+user 0.01
+sys 0.00

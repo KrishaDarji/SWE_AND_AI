@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step01
+Python interpreter: /usr/bin/python3
+Test command: (cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step01" && /usr/bin/python3 -m unittest discover -s tests -v)
+Demonstration command: /usr/bin/time -p /usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step01/source/analyzer.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+All paths are absolute and quoted where they contain spaces. Captured logs are test_attempt_01.txt and runtime_attempt_01.txt; summaries/reference copies are test_output.txt and runtime_output.txt.

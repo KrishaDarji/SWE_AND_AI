@@ -1,0 +1,13 @@
+.F..
+======================================================================
+FAIL: test_constant_missing_all_missing (test_analyze.TestAnalysis)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step05/tests/test_analyze.py", line 16, in test_constant_missing_all_missing
+    self.assertEqual(association(rows, "N_estimators")["score"], 0.0)
+AssertionError: 1.0 != 0.0
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=1)

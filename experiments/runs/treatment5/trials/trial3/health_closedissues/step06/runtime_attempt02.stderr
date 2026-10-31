@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/source/justify.py", line 60, in <module>
+    main(sys.argv)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/source/justify.py", line 57, in main
+    print(render(result), end="")
+          ^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step06/source/justify.py", line 44, in render
+    row, values = result["winner"]
+    ^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+real 0.04
+user 0.03
+sys 0.00

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,3,video encoding,blame,66,66,1,0.06,2,"4 tests; /usr/bin/time -p real; EZR-inspired streaming CSV/coercion, numeric summaries, missing handling, deterministic stable tie ordering; two repaired wrapper/path failures preserved"

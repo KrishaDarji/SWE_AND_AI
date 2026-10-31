@@ -1,0 +1,9 @@
+Observed selection (not a prediction for unseen proposals)
+budget=100.0, feasible/total=31/93, record_position=78, original_id='78'
+observed_effort=97.0, delivered_size=165.0
+descriptor_settings={'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'l', 'rely': 'h', 'data': 'n', 'cplx': 'vh', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'vh', 'pvol': 'l', 'acap': 'h', 'pcap': 'h', 'pcon': 'n', 'apex': 'h', 'plex': 'h', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'l'}
+selection_rule=max observed Kloc+; tie: lower observed Effort-; then earliest CSV record
+Kloc+ is a delivered-size proxy, not business value or productivity.
+real 0.02
+user 0.01
+sys 0.00

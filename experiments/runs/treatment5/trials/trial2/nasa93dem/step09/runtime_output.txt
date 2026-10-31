@@ -1,0 +1,41 @@
+{
+  "method": "log1p robust z-score using median and 1.4826*MAD",
+  "per_outcome_flag_counts": {
+    "Defects-": 0,
+    "Effort-": 0,
+    "Kloc+": 0
+  },
+  "records": [],
+  "reference_includes_assessed_record": true,
+  "references": {
+    "Defects-": {
+      "mad": 0.9957203187436896,
+      "median": 7.60489448081162,
+      "n": 93,
+      "reason": null,
+      "scale": 1.4762549445693942,
+      "threshold": 3.0
+    },
+    "Effort-": {
+      "mad": 1.088016163036614,
+      "median": 5.53338948872752,
+      "n": 93,
+      "reason": null,
+      "scale": 1.613092763318084,
+      "threshold": 3.0
+    },
+    "Kloc+": {
+      "mad": 1.0483504538872213,
+      "median": 3.8815637979434374,
+      "n": 93,
+      "reason": null,
+      "scale": 1.554284382933194,
+      "threshold": 3.0
+    }
+  },
+  "threshold_rule": "flag score > threshold; zero scale yields no score-based flags",
+  "unique_flagged_record_count": 0
+}
+real 0.03
+user 0.02
+sys 0.00

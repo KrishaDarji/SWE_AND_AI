@@ -1,0 +1,34 @@
+test_groups_repro_and_exclusion (test_predictor.T.test_groups_repro_and_exclusion) ... ERROR
+test_invalid_and_insufficient (test_predictor.T.test_invalid_and_insufficient) ... ERROR
+test_missing_unseen_and_zero (test_predictor.T.test_missing_unseen_and_zero) ... ok
+test_outcome_changes_do_not_fit (test_predictor.T.test_outcome_changes_do_not_fit) ... ok
+test_prediction_and_schema (test_predictor.T.test_prediction_and_schema) ... ok
+
+======================================================================
+ERROR: test_groups_repro_and_exclusion (test_predictor.T.test_groups_repro_and_exclusion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 14, in test_groups_repro_and_exclusion
+    self.assertNotIn("PRED40+", a.predictors)
+                                ^^^^^^^^^^^^
+AttributeError: 'ConfigPredictor' object has no attribute 'predictors'. Did you mean: 'predict'?
+
+======================================================================
+ERROR: test_invalid_and_insufficient (test_predictor.T.test_invalid_and_insufficient)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 27, in test_invalid_and_insufficient
+    self.assertEqual(ConfigPredictor(r).evaluate()["train_rows"], 11)
+                     ^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 43, in __init__
+    self._fit_preprocessing(); self._fit()
+                               ^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 78, in _fit
+    self.mean = {t: sum(y[i] for _, y in self.train)/len(self.train) for i, t in enumerate(TARGETS)}
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unsupported operand type(s) for +: 'float' and 'NoneType'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+FAILED (errors=2)

@@ -1,0 +1,15 @@
+Implemented and verified the standalone Python selector.
+
+Source: source/choose.py
+Tests: tests/test_choose.py
+Run command: see run_instructions.txt
+
+The selector validates complete finite records, uses N_estimators <= cap as an explicitly labeled compute proxy, minimizes observed MRE-, then maximizes ACC+, PRED40+, and finally chooses the earliest 1-based CSV data-record identifier. It selects among observed configurations only; it does not predict unseen settings.
+
+The implementation was informed by EZR's CSV streaming/coercion, finite numeric summaries, and stable ordering concepts, translated independently into Python. It does not invoke Lua or use third-party packages.
+
+Verified results: cap=100; feasible=4877; total=10000; original record_id=32; configuration N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5; outcomes MRE-=0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571. Tests passed and measured real elapsed time was 0.04 seconds.
+
+Assumptions and limitations: record identifiers are 1-based data-row positions after the header; blank/missing/nonfinite fields are ineligible; criterion must be nonblank; the cap is not measured runtime, memory, or monetary cost, and other settings also affect compute. Results are retrospective and do not establish causality, future feasibility, guaranteed quality, metric formulas, units, or ranges.
+
+Captured logs: test_output.txt and runtime_output.txt reference the preserved attempt-1 logs.

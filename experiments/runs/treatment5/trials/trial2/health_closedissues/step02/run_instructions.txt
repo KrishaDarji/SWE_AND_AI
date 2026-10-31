@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02
+Python interpreter: python3 (standard library only)
+Tests: python3 -m unittest discover -s tests -v
+Demonstration: /usr/bin/time -p python3 source/predictor.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Configuration prediction: python3 source/predictor.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --config '{"N_estimators":"40","criterion":"squared_error","Min_sample_leaves":"3","Min_impurity_decrease":"2.75","Max_depth":"10"}'
+All paths containing spaces are quoted.

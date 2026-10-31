@@ -1,0 +1,87 @@
+test_groups_repro_and_exclusion (test_predictor.T.test_groups_repro_and_exclusion) ... ERROR
+test_invalid_and_insufficient (test_predictor.T.test_invalid_and_insufficient) ... ERROR
+test_missing_unseen_and_zero (test_predictor.T.test_missing_unseen_and_zero) ... ERROR
+test_outcome_changes_do_not_fit (test_predictor.T.test_outcome_changes_do_not_fit) ... ERROR
+test_prediction_and_schema (test_predictor.T.test_prediction_and_schema) ... ERROR
+
+======================================================================
+ERROR: test_groups_repro_and_exclusion (test_predictor.T.test_groups_repro_and_exclusion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 13, in test_groups_repro_and_exclusion
+    a,b=ConfigPredictor(rows()),ConfigPredictor(rows()); self.assertEqual(a.test_keys,b.test_keys); self.assertEqual(a.evaluate(),b.evaluate())
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 29, in __init__
+    self.rows = list(rows); self._validate_schema(self.rows[0], require_targets=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 53, in _validate_schema
+    if missing or extra: raise ValueError("configuration fields invalid: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields invalid: missing=[] extra=['PRED40+']
+
+======================================================================
+ERROR: test_invalid_and_insufficient (test_predictor.T.test_invalid_and_insufficient)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 27, in test_invalid_and_insufficient
+    self.assertEqual(ConfigPredictor(r).evaluate()["train_rows"], 11)
+                     ^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 29, in __init__
+    self.rows = list(rows); self._validate_schema(self.rows[0], require_targets=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 53, in _validate_schema
+    if missing or extra: raise ValueError("configuration fields invalid: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields invalid: missing=[] extra=['PRED40+']
+
+======================================================================
+ERROR: test_missing_unseen_and_zero (test_predictor.T.test_missing_unseen_and_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 20, in test_missing_unseen_and_zero
+    m=ConfigPredictor(rows()); c={"N_estimators":"bad","criterion":"new","Min_sample_leaves":"", "Min_impurity_decrease":"nan","Max_depth":"4"}; self.assertTrue(math.isfinite(m.predict(c)["MRE-"]))
+      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 29, in __init__
+    self.rows = list(rows); self._validate_schema(self.rows[0], require_targets=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 53, in _validate_schema
+    if missing or extra: raise ValueError("configuration fields invalid: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields invalid: missing=[] extra=['PRED40+']
+
+======================================================================
+ERROR: test_outcome_changes_do_not_fit (test_predictor.T.test_outcome_changes_do_not_fit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 23, in test_outcome_changes_do_not_fit
+    a=ConfigPredictor(rows()); r=rows(); [r[i].update({"MRE-":"100","ACC+":"-100"}) for i in range(len(r)) if __import__('predictor')._key(r[i]) in a.test_keys]; b=ConfigPredictor(r)
+      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 29, in __init__
+    self.rows = list(rows); self._validate_schema(self.rows[0], require_targets=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 53, in _validate_schema
+    if missing or extra: raise ValueError("configuration fields invalid: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields invalid: missing=[] extra=['PRED40+']
+
+======================================================================
+ERROR: test_prediction_and_schema (test_predictor.T.test_prediction_and_schema)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/test_predictor.py", line 16, in test_prediction_and_schema
+    m=ConfigPredictor(rows()); p=m.predict(rows()[0]); self.assertEqual(set(p),{"MRE-","ACC+"}); self.assertTrue(all(math.isfinite(x) for x in p.values()))
+      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 29, in __init__
+    self.rows = list(rows); self._validate_schema(self.rows[0], require_targets=True)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step02/tests/../source/predictor.py", line 53, in _validate_schema
+    if missing or extra: raise ValueError("configuration fields invalid: missing=%s extra=%s" % (missing, extra))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields invalid: missing=[] extra=['PRED40+']
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+FAILED (errors=5)
+test_status=1
+run_status=1

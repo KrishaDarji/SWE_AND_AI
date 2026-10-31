@@ -1,0 +1,10 @@
+test_groups_reproducible_and_separated (test_estimator.T.test_groups_reproducible_and_separated) ... ok
+test_invalid_target_and_exclusions (test_estimator.T.test_invalid_target_and_exclusions) ... ok
+test_mae_and_cases (test_estimator.T.test_mae_and_cases) ... ok
+test_mean_and_fresh_fit (test_estimator.T.test_mean_and_fresh_fit) ... ok
+test_outcome_change_does_not_change_prediction (test_estimator.T.test_outcome_change_does_not_change_prediction) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

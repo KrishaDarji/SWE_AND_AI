@@ -1,0 +1,13 @@
+Implemented the Python streaming evaluator in source/flow.py, with tests in tests/test_flow.py and a demonstration runner in run_demo.py.
+
+The implementation processes CSV records incrementally, maintains separate valid counts, means, sample variances, and directional best values for MRE- (minimize), ACC+ and PRED40+ (maximize). It retains the five configuration fields and record identifier, keeps earliest ties, ignores missing/nonfinite outcomes, and defensively copies configurations and snapshots. Empty input and one-observation variance are defined.
+
+EZR machinery adapted: NUM:add became Welford’s one-pass update, NUM:div became sample variance calculation, iter became generator-based CSV consumption, and stable earliest-winner behavior follows EZR’s deterministic ordering idea. No Lua is used.
+
+Verification: 5 tests passed. The flow demonstration consumed 10,000 snapshots. Final statistics were:
+MRE-: count 10000, mean 0.7090939764346323, sample variance 0.04056030922815959, best 0.0 at record 32.
+ACC+: count 10000, mean 0.49593851329765815, sample variance 0.011481619453413293, best 1.0 at record 7556.
+PRED40+: count 10000, mean 0.14684285714285772, sample variance 0.07096876197823895, best 1.0 at record 14.
+
+The CSV order is a demonstration sequence, not a verified timeline. These summaries do not establish convergence, sufficient evidence, or an automatic stopping rule. Metric formulas, ranges, units, and compute costs are not inferred.
+

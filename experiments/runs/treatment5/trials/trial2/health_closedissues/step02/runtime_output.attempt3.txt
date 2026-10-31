@@ -1,0 +1,4 @@
+{"baseline_mae": {"ACC+": 0.08923453993112426, "MRE-": 0.1666491030885059}, "mae": {"ACC+": 0.015003966961150939, "MRE-": 0.024497619810426138}, "predictors": ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"], "test_groups": 2000, "test_rows": 2000, "train_groups": 8000, "train_rows": 8000}
+real 11.78
+user 11.67
+sys 0.05

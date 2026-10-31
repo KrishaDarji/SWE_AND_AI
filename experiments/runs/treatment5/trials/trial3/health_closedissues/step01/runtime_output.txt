@@ -1,0 +1,138 @@
+{
+  "categorical_frequencies": {
+    "criterion": {
+      "absolute_error": 3302,
+      "poisson": 3335,
+      "squared_error": 3363
+    }
+  },
+  "columns": [
+    "MRE-",
+    "ACC+",
+    "PRED40+",
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "configuration_count_distinct": 10000,
+  "configuration_fields": [
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "conventions": {
+    "duplicates": "duplicate_rows counts excess full-row occurrences; repeated configurations count excess configuration occurrences by frequency",
+    "missing": "empty string or ?; invalid/nonfinite numeric values are excluded from numeric statistics and counted",
+    "whitespace": "trim surrounding whitespace in headers and cells"
+  },
+  "data_types": {
+    "ACC+": "numeric",
+    "MRE-": "numeric",
+    "Max_depth": "numeric",
+    "Min_impurity_decrease": "numeric",
+    "Min_sample_leaves": "numeric",
+    "N_estimators": "numeric",
+    "PRED40+": "numeric",
+    "criterion": "categorical"
+  },
+  "duplicate_rows": 0,
+  "empty_input": false,
+  "header_only": false,
+  "invalid_or_nonfinite_numeric": {
+    "ACC+": 0,
+    "MRE-": 0,
+    "Max_depth": 0,
+    "Min_impurity_decrease": 0,
+    "Min_sample_leaves": 0,
+    "N_estimators": 0,
+    "PRED40+": 0
+  },
+  "missing_columns": [],
+  "missing_values": {
+    "ACC+": 0,
+    "MRE-": 0,
+    "Max_depth": 0,
+    "Min_impurity_decrease": 0,
+    "Min_sample_leaves": 0,
+    "N_estimators": 0,
+    "PRED40+": 0,
+    "criterion": 0
+  },
+  "numeric_statistics": {
+    "ACC+": {
+      "count": 10000,
+      "max": 1.0,
+      "mean": 0.49593851329765903,
+      "median": 0.43992310157000963,
+      "min": 0.0,
+      "stdev": 0.10715231893623793
+    },
+    "MRE-": {
+      "count": 10000,
+      "max": 1.0,
+      "mean": 0.70909397643463,
+      "median": 0.8091310751104565,
+      "min": 0.0,
+      "stdev": 0.2013959017163944
+    },
+    "Max_depth": {
+      "count": 10000,
+      "max": 20.0,
+      "mean": 10.523,
+      "median": 11.0,
+      "min": 1.0,
+      "stdev": 5.754492368423285
+    },
+    "Min_impurity_decrease": {
+      "count": 10000,
+      "max": 10.0,
+      "mean": 4.996175,
+      "median": 5.0,
+      "min": 0.0,
+      "stdev": 2.947214401201186
+    },
+    "Min_sample_leaves": {
+      "count": 10000,
+      "max": 20.0,
+      "mean": 10.4796,
+      "median": 11.0,
+      "min": 1.0,
+      "stdev": 5.779232110962427
+    },
+    "N_estimators": {
+      "count": 10000,
+      "max": 200.0,
+      "mean": 106.061,
+      "median": 110.0,
+      "min": 10.0,
+      "stdev": 57.132658725717526
+    },
+    "PRED40+": {
+      "count": 10000,
+      "max": 1.0,
+      "mean": 0.14684285714285714,
+      "median": 0.0,
+      "min": 0.0,
+      "stdev": 0.2663996283372757
+    }
+  },
+  "optimization_directions": {
+    "ACC+": "maximize",
+    "MRE-": "minimize",
+    "PRED40+": "maximize"
+  },
+  "outcome_fields": [
+    "MRE-",
+    "ACC+",
+    "PRED40+"
+  ],
+  "record_count": 10000,
+  "repeated_configurations": {}
+}
+real 0.32
+user 0.26
+sys 0.02

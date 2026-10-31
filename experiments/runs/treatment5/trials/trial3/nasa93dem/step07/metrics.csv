@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,3,software project estimation,choose,74,74,1,0.04,1,"6 tests; /usr/bin/time -p real elapsed time for demonstration; EZR csv streaming/coercion and stable sorted tie-break ideas adapted; X-suffix metadata separated from 22 descriptor settings; repaired one faulty synthetic expectation after attempt 02, preserved logs"

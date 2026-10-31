@@ -1,0 +1,4 @@
+Final test attempt: test_attempt2.txt
+Earlier preserved test attempt: test_attempt1.txt
+Actual final output:
+4 tests ran and passed (ordinary/unusual, missing/nonfinite strict JSON, small/empty/constants/zero scale, identifiers/reasons/counts).

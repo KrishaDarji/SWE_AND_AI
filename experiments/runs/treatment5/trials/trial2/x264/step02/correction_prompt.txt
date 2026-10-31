@@ -1,0 +1,26 @@
+Correct Treatment 5, Trial 2, X264, Step 2.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step02/
+
+Fix Model.fit() in source/predictor.py.
+
+The normal-equation matrix is XᵀX, but b is currently the raw target vector.
+Construct the right-hand side as Xᵀy, with one entry per design column,
+before solving the ridge system.
+
+Also calculate mean_target from the original training targets, not from
+the solved coefficient vector.
+
+Add independent regression tests:
+- Recover a known linear relationship on a small full-rank synthetic dataset,
+  allowing for the small ridge penalty.
+- Verify predictions do not depend on training-row order.
+- Verify mean_target equals the actual training-target mean.
+- Retain grouped splitting, input validation, and held-out isolation tests.
+
+Do not tune the model to beat the baseline. Keep the model family, split,
+seed, and ridge setting unchanged. Preserve existing artifacts and logs
+before modifications. Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Write only inside the exact directory above.

@@ -1,0 +1,9 @@
+test_correlated_settings_same_score (test_analyzer.AnalyzerTests) ... ok
+test_known_association_and_direction (test_analyzer.AnalyzerTests) ... ok
+test_multivalue_missing_and_tie_order (test_analyzer.AnalyzerTests) ... ok
+test_nonfinite_is_missing (test_analyzer.AnalyzerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

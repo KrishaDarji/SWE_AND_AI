@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,3,model configuration and quality,justify,51,51,1,0.04,5,"5 tests passed; /usr/bin/time -p real; EZR csv/sorted/keysort, finite filtering, medians, stable explicit selection adapted; standard library only; all 10000 records eligible; repaired 3 test errors, one implementation error, and one shell-wrapper failure; failed logs preserved"

@@ -1,0 +1,15 @@
+Implemented the independent Python Step 9 screen in source/spot_screen.py.
+
+Artifacts:
+- Source: source/spot_screen.py
+- Tests: tests/test_spot_screen.py
+- Run command and environment: run_instructions.txt
+- Test log: test_output.txt (final attempt: test_output_attempt3.txt)
+- Runtime log: runtime_output.txt (final demonstration attempt: runtime_output_attempt1.txt)
+- Metrics: metrics.csv
+
+The screen uses a two-sided modified robust z score: 0.6744897501960817 * (observed - median) / MAD, with threshold abs(score) >= 3.5. Reference statistics include the assessed record. Missing and nonfinite values receive JSON null scores with explicit reasons. With zero MAD, values equal to the median receive score 0; non-median values receive JSON null because their score is undefined. Record identifiers are stable data-row identifiers such as data_row_1 because the dataset has no identifier column. MRE-, ACC+, and PRED40+ directions are preserved; both high and low values can be candidates.
+
+EZR background informed the implementation through its numeric-column summary concepts, missing-value convention, and explicit numeric diversity/scale handling. The implementation is independent Python and does not invoke Lua.
+
+Measured results: 5 tests passed. The demonstration real time was 0.34 seconds. The dataset yielded 2,151 unique flagged records; per-outcome counts were MRE- 1,496, ACC+ 2,124, and PRED40+ 0. These are investigation candidates, not confirmed measurement errors. This marginal screen does not condition on configuration settings and can flag legitimate differences between configurations. No detection accuracy is claimed without verified labels. Robust statistics can be unstable with small samples, ties, or zero MAD, and the chosen threshold is an assumption rather than a validated domain cutoff.

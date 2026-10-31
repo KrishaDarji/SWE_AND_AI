@@ -1,0 +1,12 @@
+You are running Treatment 5, Trial 2, Dataset 1, Step 1 of a controlled experiment.
+Treatment: Writer LLM; Output language Python; Background professor's EZR Lua source; Reuse instructed No; Domain video encoding; Dataset X264_AllMeasurements.csv; Current skill remember; Current requirement summarize encoder settings and quality measures in historical runs.
+Repository root: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Dataset: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+Authorized background files: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua and ezr-lib.lua
+Background commit: a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+Exact output directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step01/
+Use the exact absolute output directory. Quote shell paths containing spaces. Use Python standard library only; read authorized EZR source as background; do not use Lua or packages; do not modify background files. Implement independently from scratch.
+Read only the specified dataset, two authorized EZR files, current trial directory files, and official Python documentation. Do not read other datasets, implementations, trials, treatments, history, or chats.
+Load historical runs. Summarize records, settings, outcomes, missing values, frequencies, numeric statistics. Identify Performance-; lower is better. Do not invent metrics, units, or formulas. Handle empty, header-only, missing, and invalid input explicitly. State assumptions.
+Return complete source, tests, one command, EZR explanation, assumptions and limitations. Save prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, run_instructions.txt. Use synthetic fixtures in this directory. Preserve attempt-labeled logs and failures, run tests and implementation, record actual results.
+metrics.csv columns exactly: step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes. Keep runners outside source/. Write only inside the exact output directory.

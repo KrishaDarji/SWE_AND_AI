@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step08
+Python interpreter: python3
+Command: python3 source/repair.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+Tests: python3 -m unittest discover -s tests -v
+The demonstration command reads only the authorized X264 CSV. Paths containing spaces are quoted.
+Captured attempt files: test-output-attempt-1.txt and runtime-output-attempt-1.txt. Their referenced copies are test_output.txt and runtime_output.txt.

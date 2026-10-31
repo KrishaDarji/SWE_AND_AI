@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,2,video encoding,guess,82,82,1,RUNTIME_PLACEHOLDER,0,"5 tests; /usr/bin/time -p real elapsed demonstration; EZR CSV/coercion, seeded shuffle, numeric summaries, grouped holdout adapted; numeric settings and linear-model limitations; no repairs"

@@ -1,0 +1,74 @@
+test_equal_budget_fresh_callbacks_and_no_duplicates (test_tuner.TunerTests) ... ok
+test_hidden_outcomes_isolated (test_tuner.TunerTests) ... FAIL
+test_invalid_inputs (test_tuner.TunerTests) ... ok
+test_known_win_loss_tie (test_tuner.TunerTests) ... ok
+test_paired_arithmetic_and_cases (test_tuner.TunerTests) ... ok
+test_reproducibility (test_tuner.TunerTests) ... ok
+
+======================================================================
+FAIL: test_hidden_outcomes_isolated (test_tuner.TunerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step10/tests/test_tuner.py", line 20, in test_hidden_outcomes_isolated
+    self.assertEqual(a["order"], b["order"])
+AssertionError: Lists differ: ['r00[49 chars] 'r0024', 'r0016', 'r0003', 'r0005', 'r0033', [75 chars]043'] != ['r00[49 chars] 'r0003', 'r0005', 'r0033', 'r0002', 'r0010', [75 chars]006']
+
+First differing element 6:
+'r0024'
+'r0003'
+
+  ['r0025',
+   'r0009',
+   'r0001',
+   'r0017',
+   'r0000',
+   'r0008',
+-  'r0024',
+-  'r0016',
+   'r0003',
+   'r0005',
+   'r0033',
+-  'r0035',
+?      ^^
+
++  'r0002',
+?      ^^
+
++  'r0010',
++  'r0011',
+   'r0019',
+-  'r0027',
+-  'r0049',
+-  'r0041',
+?      -
+
++  'r0018',
+?       +
+
+-  'r0032',
+-  'r0011',
+?       ^
+
++  'r0016',
+?       ^
+
+-  'r0002',
+?       ^
+
++  'r0007',
+?       ^
+
+-  'r0043']
+?      ^  ^
+
++  'r0023',
+?      ^  ^
+
++  'r0015',
++  'r0013',
++  'r0006']
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.042s
+
+FAILED (failures=1)

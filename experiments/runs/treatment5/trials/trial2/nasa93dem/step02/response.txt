@@ -1,0 +1,9 @@
+Implemented the independent Python estimator in source/estimator.py and source/run.py, with five tests in tests/test_estimator.py.
+
+The implementation predicts Effort- from the 22 non-X, non-outcome descriptors. Ratings are categorical strings; whitespace is stripped and missing values become <MISSING>. Exact predictor configurations are grouped before a seeded (42), approximately 75/25 split. The estimator uses training-only categorical prefix backoff group means with smoothing=1.0 and a training global-mean fallback. Proposal inputs must exactly match the fitted predictor schema.
+
+EZR-informed machinery: CSV coercion/whitespace normalization, column-role filtering (X metadata ignored and +/- goals separated), symbolic frequency summaries, deterministic seeded grouping, and missing-value tolerance. No Lua is executed or imported.
+
+Measured run: 5 tests passed; train_count=75, test_count=18; held_out_mae=631.982731; training-mean baseline_mae=448.000000; demonstration real time=0.05 seconds. The first demonstration attempt failed because internal full rows crossed the public proposal schema validator; that repaired failure is preserved in runtime_attempt01.txt and counted once in metrics.
+
+Assumptions and limitations: Effort- is numeric and its dataset units are not invented. One grouped split is only a diagnostic, not deployment reliability. Prefix order follows the dataset descriptor order, and simple smoothed means may underfit complex interactions. Missing targets are excluded; fewer than two predictor groups is rejected.

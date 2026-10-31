@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,3,model configuration and quality,blame,83,83,1,0.38,1,"4 tests; /usr/bin/time -p real for demonstration; translated EZR CSV coercion, streaming-style summaries, numeric/categorical summaries, deterministic ranking; numeric quintile groups are outcome-independent; repaired constant-setting guard; no causality or metric formula claims"

@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step08
+Python interpreter: /usr/bin/python3 (invoked as python3)
+Test command: python3 run_tests.py
+Demonstration command: /usr/bin/time -p python3 source/repair.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+All paths above are valid; the dataset path is quoted because it contains spaces.
+The demonstration is retrospective observed-data repair, not a causal or prospective guarantee.

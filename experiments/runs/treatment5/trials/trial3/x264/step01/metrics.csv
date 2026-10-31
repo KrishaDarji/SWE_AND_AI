@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,3,video encoding,remember,90,90,1,0.06,0,"4 unittest tests; /usr/bin/time -p real; EZR CSV/header, '-' minimization, missing markers, sorting/statistics adapted; no repairs; assumptions and limitations documented in response."

@@ -1,0 +1,57 @@
+test_direction (test_certify.TestCertify.test_direction) ... ok
+test_group (test_certify.TestCertify.test_group) ... ERROR
+test_insufficient_zero (test_certify.TestCertify.test_insufficient_zero) ... ok
+test_missing (test_certify.TestCertify.test_missing) ... ok
+test_numerics (test_certify.TestCertify.test_numerics) ... FAIL
+test_threshold_uncertainty (test_certify.TestCertify.test_threshold_uncertainty) ... FAIL
+test_welch (test_certify.TestCertify.test_welch) ... FAIL
+
+======================================================================
+ERROR: test_group (test_certify.TestCertify.test_group)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 7, in test_group
+    def test_group(self): self.assertTrue(read('../../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv')[0])
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/source/certify.py", line 55, in read
+    with open(path,newline='') as f:
+         ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+======================================================================
+FAIL: test_numerics (test_certify.TestCertify.test_numerics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 19, in test_numerics
+    eq(t_cdf(0,10),.5); eq(t_cdf(2.22813885,10),.975,1e-6); eq(t_quantile(.975,10),2.22813885,1e-6); assert 0<=ibeta(.3,2,5)<=1
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 4, in eq
+    def eq(a,b,t=1e-8): assert abs(a-b)<=t*max(1,abs(b)),(a,b)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (0.9758587242927484, 0.975)
+
+======================================================================
+FAIL: test_threshold_uncertainty (test_certify.TestCertify.test_threshold_uncertainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 12, in test_threshold_uncertainty
+    r=welch([10,11,9],[8,9,10],1); assert r['point_improvement_beyond_threshold']; assert not r['entire_interval_favorable_beyond_threshold']
+                                          ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+======================================================================
+FAIL: test_welch (test_certify.TestCertify.test_welch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 10, in test_welch
+    r=welch([1,2,3],[2,4,6]); eq(r['difference_candidate_minus_reference'],2); eq(r['degrees_freedom'],4); assert 0<r['p_two_sided']<1
+                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step03/tests/test_certify.py", line 4, in eq
+    def eq(a,b,t=1e-8): assert abs(a-b)<=t*max(1,abs(b)),(a,b)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: (2.9411764705882346, 4)
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.013s
+
+FAILED (failures=3, errors=1)

@@ -1,0 +1,15 @@
+Implemented Step 10 in the exact requested directory.
+
+Artifacts:
+- [source/estimator.py](/Users/vivek/D%20Drive/vs%20code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/source/estimator.py)
+- [tests/test_estimator.py](/Users/vivek/D%20Drive/vs%20code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/tests/test_estimator.py)
+- [metrics.csv](/Users/vivek/D%20Drive/vs%20code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/metrics.csv)
+- [test_output.txt](/Users/vivek/D%20Drive/vs%20code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/test_output.txt)
+- [runtime_output.txt](/Users/vivek/D%20Drive/vs%20code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/runtime_output.txt)
+- [run_instructions.txt](/Users/vivek/D%20Drive/vs%20code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step10/run_instructions.txt)
+
+The implementation uses a fresh mixed-type 3-nearest-neighbor estimator. EZR machinery adapted includes symbolic versus numeric descriptor handling, whitespace normalization, numeric scaling, categorical distance, deterministic seeded processing, and explicit missing/invalid-target handling. The baseline is each split’s training Effort- mean.
+
+Verification passed: 5 tests, including MAE arithmetic and win/loss/tie cases, reproducibility, group separation, fresh fitting, predictor exclusions, invalid targets, identifier preservation, and held-out outcome isolation.
+
+Measured demonstration: 0.16 seconds real time; 6 wins, 0 ties, 4 losses; mean paired difference -56.386765 and median -14.835337; 0 negative predictions. The paired differences are descriptive only. Repeated splits overlap and are not independent datasets or trials; no deployment reliability or effort-unit claim is made, and the project’s final “same” procedure remains pending if unavailable.

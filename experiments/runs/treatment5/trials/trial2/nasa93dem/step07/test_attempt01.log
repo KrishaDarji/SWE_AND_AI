@@ -1,0 +1,12 @@
+test_budget_boundary_and_maximum (test_choose.ChooseTests) ... ok
+test_empty_and_no_feasible (test_choose.ChooseTests) ... ok
+test_invalid_budget (test_choose.ChooseTests) ... ok
+test_metadata_is_not_descriptor_settings (test_choose.ChooseTests) ... ok
+test_missing_and_nonfinite_outcomes (test_choose.ChooseTests) ... ok
+test_tie_earliest_position_and_duplicate_ids (test_choose.ChooseTests) ... ok
+test_tie_lower_effort (test_choose.ChooseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK

@@ -1,0 +1,20 @@
+test_batch_stats_directions_tie_and_copy (test_flow.FlowTests) ... ok
+test_empty_and_one (test_flow.FlowTests) ... ok
+test_missing_nonfinite_and_iterator_csv (test_flow.FlowTests) ... ERROR
+
+======================================================================
+ERROR: test_missing_nonfinite_and_iterator_csv (test_flow.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step04/tests/test_flow.py", line 39, in test_missing_nonfinite_and_iterator_csv
+    e.accept(r); self.assertEqual(e.summary()["ACC+"]["count"], 0)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step04/tests/../source/flow.py", line 37, in accept
+    value = _number(row.get(name, ""))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step04/tests/../source/flow.py", line 13, in _number
+    value = float(text)
+ValueError: could not convert string to float: ''
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (errors=1)

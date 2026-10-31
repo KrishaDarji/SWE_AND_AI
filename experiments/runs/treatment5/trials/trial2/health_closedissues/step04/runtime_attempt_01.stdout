@@ -1,0 +1,4 @@
+snapshot_count 10000
+MRE- {'count': 10000, 'mean': 0.7090939764346323, 'sample_variance': 0.04056030922815959, 'best': {'value': 0.0, 'record_id': 32, 'configuration': {'N_estimators': 10, 'criterion': 'squared_error', 'Min_sample_leaves': 1, 'Min_impurity_decrease': 6.75, 'Max_depth': 5}}}
+ACC+ {'count': 10000, 'mean': 0.49593851329765815, 'sample_variance': 0.011481619453413293, 'best': {'value': 1.0, 'record_id': 7556, 'configuration': {'N_estimators': 10, 'criterion': 'squared_error', 'Min_sample_leaves': 1, 'Min_impurity_decrease': 3.0, 'Max_depth': 10}}}
+PRED40+ {'count': 10000, 'mean': 0.14684285714285772, 'sample_variance': 0.07096876197823895, 'best': {'value': 1.0, 'record_id': 14, 'configuration': {'N_estimators': 40, 'criterion': 'squared_error', 'Min_sample_leaves': 1, 'Min_impurity_decrease': 0.25, 'Max_depth': 19}}}

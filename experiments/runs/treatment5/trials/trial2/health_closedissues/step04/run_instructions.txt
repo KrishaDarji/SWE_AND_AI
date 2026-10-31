@@ -1,0 +1,6 @@
+Working directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step04'
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration command: /usr/bin/time -p /usr/bin/python3 run_demo.py
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+All commands are run from the working directory above; paths containing spaces are quoted.

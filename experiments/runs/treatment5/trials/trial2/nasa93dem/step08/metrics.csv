@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,5,2,software project estimation,fix,117,117,1,0.02,1,"7 tests; /usr/bin/time -p real; EZR-inspired streaming summaries, stable seeded grouping, categorical normalization and deterministic ranking; one repaired synthetic fixture failure preserved; descriptor changes are hypothetical proxy costs and are not causal or guaranteed savings"

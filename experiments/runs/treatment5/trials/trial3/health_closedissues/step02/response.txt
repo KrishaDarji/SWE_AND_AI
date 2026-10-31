@@ -1,0 +1,12 @@
+Implemented the independent Python standard-library predictor in source/guess_model.py, with tests in tests/test_guess_model.py.
+
+Run:
+/usr/bin/python3 -m unittest discover -s tests -v
+
+The model groups identical normalized configurations, shuffles groups with seed 42, uses an approximately 80/20 grouped split, and predicts each target from training-group means with a training-mean fallback. It reports held-out and baseline MAE and validates supplied configurations.
+
+EZR-informed machinery: CSV row handling/coercion, seeded randomization, numeric versus symbolic treatment, and summary means. No Lua or external packages are used.
+
+Final result: 4 tests passed. Demonstration real time was 0.08 seconds. The dataset produced 8,000 training rows/groups and 2,000 held-out rows/groups. Held-out/baseline MAE: MRE- 0.16604018269382803/0.16604018269382803; ACC+ 0.09007118811959788/0.09007118811959788.
+
+Assumptions and limitations: invalid-target rows are excluded; fewer than two normalized groups is invalid; missing numeric settings normalize to a sentinel; missing criteria use a sentinel; unseen criteria fall back to the training mean. This is a configuration-history grouped-mean predictor, not a fitted random forest, and makes no claims about metric ranges or costs.

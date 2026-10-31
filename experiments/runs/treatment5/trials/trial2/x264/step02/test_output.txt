@@ -1,0 +1,12 @@
+test_finite_prediction (test_predictor.Tests) ... ok
+test_grouped_and_reproducible (test_predictor.Tests) ... ok
+test_insufficient_groups (test_predictor.Tests) ... ok
+test_prediction_validation (test_predictor.Tests) ... ok
+test_recovers_linear_relationship (test_predictor.Tests) ... ok
+test_row_order_and_target_mean (test_predictor.Tests) ... ok
+test_training_only_and_outcome_invariance (test_predictor.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK

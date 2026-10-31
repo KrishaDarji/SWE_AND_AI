@@ -1,0 +1,5 @@
+cap=100.0
+feasible_count=4877 total_count=10000
+record_id=32
+configuration=N_estimators=10,criterion=squared_error,Min_sample_leaves=1,Min_impurity_decrease=6.75,Max_depth=5
+outcomes=MRE-=0,ACC+=0.7901313681512335,PRED40+=0.8571428571428571

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,5,3,video encoding,flow,86,86,1,0.06,0,"7 tests; timing via /usr/bin/time -p real; adapted EZR streamed csv, one-pass NUM.add/Welford mean+m2, lower-is-better '-' goal, and copy/deep-copy snapshot ideas; CSV order is demonstration sequence, not verified timeline; no convergence/sufficiency/stopping claim; repaired none"

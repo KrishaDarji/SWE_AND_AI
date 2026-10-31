@@ -1,0 +1,9 @@
+runtime_attempt02.txt (exit=0)
+predictors=prec,flex,resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+train_count=75 test_count=18
+split=grouped exact predictor configurations, seed=42, test_fraction=0.25
+model=categorical prefix backoff group means, smoothing=1.0, missing=<MISSING>
+held_out_mae=631.982731 baseline_mae=448.000000
+real 0.05
+user 0.04
+sys 0.00

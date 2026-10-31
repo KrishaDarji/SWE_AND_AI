@@ -1,0 +1,9 @@
+Final test attempt: test_attempt_1.log
+The initial shell-wrapper invocation failed before process creation; it is preserved as an attempt-level failure and counted in metrics. The retry ran the complete suite.
+
+Captured contents of test_attempt_1.log:
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

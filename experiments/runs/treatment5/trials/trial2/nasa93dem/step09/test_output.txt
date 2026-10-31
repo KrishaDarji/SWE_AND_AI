@@ -1,0 +1,9 @@
+test_invalid_and_original_duplicate_ids (test_spot.SpotTests.test_invalid_and_original_duplicate_ids) ... ok
+test_json_and_arithmetic (test_spot.SpotTests.test_json_and_arithmetic) ... ok
+test_small_empty_constant_zero_scale (test_spot.SpotTests.test_small_empty_constant_zero_scale) ... ok
+test_unusual_and_ordinary (test_spot.SpotTests.test_unusual_and_ordinary) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

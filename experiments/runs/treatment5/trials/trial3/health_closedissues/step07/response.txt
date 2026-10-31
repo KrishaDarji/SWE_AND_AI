@@ -1,0 +1,20 @@
+Implemented Treatment 5 / Trial 3 / Dataset 3 / Step 7 in Python using only the standard library.
+
+Source: source/choose_configuration.py
+Tests: tests/test_choose_configuration.py
+Run instructions: run_instructions.txt
+
+Measured result with cap 100:
+- 4,877 feasible records out of 10,000 nonblank CSV records.
+- Selected original CSV record 32.
+- Configuration: N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5.
+- Outcomes: MRE-=0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571.
+- Demonstration real elapsed time: 0.07 seconds, measured by /usr/bin/time -p.
+
+The selector validates a finite nonnegative cap, excludes incomplete or missing-criterion configurations, rejects nonfinite numeric settings and outcomes, and chooses among observed feasible rows by lowest MRE-, then highest ACC+, then highest PRED40+, then earliest original CSV record identifier. It does not predict outcomes for unseen configurations.
+
+EZR-informed machinery adapted independently: standard-library CSV streaming and text-to-number handling inspired by ezr-lib.lua, plus stable input-order behavior for the final tie-break. No Lua or external package is used.
+
+The estimator cap is explicitly only a compute proxy; other settings can also affect compute. The result is retrospective, depends on the supplied observed records, and does not establish causality, future feasibility, guaranteed quality, metric formulas, units, ranges, or measured compute costs.
+
+Five tests passed, covering cap boundaries, best selection, every tie-breaker, invalid caps including infinity, missing/nonfinite values, missing criterion, empty input, and no feasible records. Preserved stdout/stderr attempt logs and all required artifacts are in this Step 7 directory.

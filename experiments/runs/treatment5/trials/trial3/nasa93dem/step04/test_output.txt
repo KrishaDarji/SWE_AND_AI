@@ -1,0 +1,11 @@
+Final test attempt: test_attempt02.stdout and test_attempt02.stderr
+--- stdout ---
+PASS test_current_and_future_outcomes_do_not_change_prediction
+PASS test_empty_short_and_invalid_effort
+PASS test_missing_unseen_and_exclusions
+PASS test_prediction_is_before_reveal
+PASS test_warmup_and_arithmetic
+passed 5
+--- stderr ---
+exit=0
+Earlier preserved attempt: test_attempt01.stdout and test_attempt01.stderr (shell-wrapper failure recorded; it used the read-only zsh variable name status).

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,5,3,model configuration and quality,guess,73,73,1,0.08,9,"4 tests; /usr/bin/time -p real; EZR csv/coercion, seeded shuffle, numeric/symbol normalization and summaries adapted; invalid targets skipped, zero targets preserved; repaired schema-boundary fixture/internal-row issues; logs retain attempts 1-4"

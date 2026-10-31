@@ -1,0 +1,9 @@
+stdout: test_attempt_01.stdout
+stderr: test_attempt_01.stderr
+exit_status: 1 (shell wrapper failure: read-only variable)
+stdout: test_attempt_02.stdout
+stderr: test_attempt_02.stderr
+exit_status: 1 (test error repaired)
+stdout: test_attempt_03.stdout
+stderr: test_attempt_03.stderr
+exit_status: 0

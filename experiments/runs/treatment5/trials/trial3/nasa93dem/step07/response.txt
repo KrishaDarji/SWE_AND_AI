@@ -1,0 +1,12 @@
+Implemented the independent Python `choose` skill in the exact Step 7 directory.
+
+Files include:
+- `source/choose.py`: standard-library CSV reader and retrospective selector.
+- `tests/test_choose.py`: six tests covering boundaries, maximum selection, both tie-breakers, invalid budgets, invalid outcomes, empty/no-feasible input, metadata separation, duplicate identifiers, and original positions.
+- `prompt.txt`, captured attempt logs, `test_output.txt`, `runtime_output.txt`, `metrics.csv`, and `run_instructions.txt`.
+
+Demonstration result with budget 100: 31 feasible of 93 records; selected original CSV position 78, idX 78, observed Effort- 97.0, and observed Kloc+ 165.0. Kloc+ is reported only as a delivered-size proxy. Selection uses observed outcomes, not predictions, and does not claim causality or future feasibility.
+
+EZR background informed the implementation through its CSV streaming/coercion approach and stable sorted-selection/tie-breaking ideas. No Lua application dependency or third-party package was used.
+
+Verification: all 6 tests passed; demonstration `/usr/bin/time -p` real time was 0.04 seconds. One repaired synthetic-test expectation from an earlier attempt is preserved in the attempt logs; metrics records the resulting repair count.

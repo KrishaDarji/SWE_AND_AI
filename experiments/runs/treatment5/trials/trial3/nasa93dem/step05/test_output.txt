@@ -1,0 +1,4 @@
+Final test attempt: test_attempt_004.log
+The complete captured stdout/stderr and exit marker are preserved in that file.
+Earlier failed attempts are preserved in test_attempt_002.log and test_attempt_003.log.
+The initial shell-wrapper failure is preserved in shell_wrapper_attempt_001.log.

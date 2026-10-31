@@ -1,0 +1,11 @@
+test_equal_budget_fresh_callbacks_and_no_duplicates (test_tuner.TunerTests) ... ok
+test_hidden_outcomes_isolated (test_tuner.TunerTests) ... ok
+test_invalid_inputs (test_tuner.TunerTests) ... ok
+test_known_win_loss_tie (test_tuner.TunerTests) ... ok
+test_paired_arithmetic_and_cases (test_tuner.TunerTests) ... ok
+test_reproducibility (test_tuner.TunerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.041s
+
+OK

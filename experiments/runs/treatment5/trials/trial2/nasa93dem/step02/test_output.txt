@@ -1,0 +1,11 @@
+test_attempt02.txt (exit=0)
+test_exclusions_and_whitespace (test_estimator.Tests) ... ok
+test_group_split_and_reproducibility (test_estimator.Tests) ... ok
+test_insufficient_groups (test_estimator.Tests) ... ok
+test_missing_unseen_and_proposal_schema (test_estimator.Tests) ... ok
+test_training_only_fit_and_outcome_independence (test_estimator.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

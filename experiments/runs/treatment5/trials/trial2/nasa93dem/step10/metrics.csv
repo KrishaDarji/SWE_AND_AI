@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,5,2,software project estimation,race,63,63,1,0.16,0,"5 tests; /usr/bin/time -p real; EZR NUM/SYM treatment, normalization, seeded grouping, distance; training-mean baseline; repeated splits overlap and are not independent; no negative predictions; analysis pending for project's final same procedure; attempt 1 preserved and final report expanded with per-project details"

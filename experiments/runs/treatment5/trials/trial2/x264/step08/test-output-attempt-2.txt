@@ -1,0 +1,12 @@
+test_invalid_baseline_and_missing_nonfinite (test_repair.RepairTests.test_invalid_baseline_and_missing_nonfinite) ... ok
+test_minimum_change_beats_maximum_improvement (test_repair.RepairTests.test_minimum_change_beats_maximum_improvement) ... ok
+test_no_improvement (test_repair.RepairTests.test_no_improvement) ... ok
+test_nonone_baseline_identifier_no_improvement (test_repair.RepairTests.test_nonone_baseline_identifier_no_improvement) ... ok
+test_nonone_baseline_identifier_success (test_repair.RepairTests.test_nonone_baseline_identifier_success) ... ok
+test_numeric_equivalence_and_exact_changes (test_repair.RepairTests.test_numeric_equivalence_and_exact_changes) ... ok
+test_tie_breaking (test_repair.RepairTests.test_tie_breaking) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK

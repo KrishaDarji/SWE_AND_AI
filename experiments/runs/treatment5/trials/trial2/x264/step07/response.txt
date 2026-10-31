@@ -1,0 +1,14 @@
+Implemented the requested independent Python solution in the exact Step 7 directory.
+
+Files:
+- source/selector.py
+- tests/test_selector.py
+- prompt.txt, response.txt, test_output.txt, runtime_output.txt, metrics.csv, run_instructions.txt
+
+The selector uses a counted callback, seeded candidate shuffling (seed 42), duplicate suppression, finite-result validation, deterministic value/identifier tie-breaking, and a frozen recommendation based only on measured candidates. Budget means distinct evaluations; a budget above the candidate count evaluates each unique candidate once. The demonstration used budget 20 and selected identifier 5 with Performance- 260.267.
+
+Tests: 6 passed. The first runtime attempt failed because of a launcher path error; it is preserved in attempt-labeled logs and counted as one repaired command failure. The corrected demonstration passed; its /usr/bin/time -p real value was 0.03 seconds.
+
+EZR background influence: the implementation independently adapted the reference's small CSV/row iteration style, seeded shuffle/random selection, finite numeric validation, and deterministic sorted/minimum selection ideas. No Lua or third-party package is used.
+
+Assumptions and limitations: candidate dictionaries are hashable through sorted key/value tuples; the callback is the only source of outcomes; random sampling is not predictive optimization, so the measured recommendation can miss the global minimum. The full dataset is not used to influence selection.

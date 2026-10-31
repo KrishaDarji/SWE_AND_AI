@@ -1,0 +1,10 @@
+test_direction_and_threshold_uncertain (test_certify.TestCertify.test_direction_and_threshold_uncertain) ... ok
+test_missing_insufficient_zero_invalid (test_certify.TestCertify.test_missing_insufficient_zero_invalid) ... ok
+test_nonfinite_ignored_by_fixture_logic (test_certify.TestCertify.test_nonfinite_ignored_by_fixture_logic) ... ok
+test_reference_numerics (test_certify.TestCertify.test_reference_numerics) ... ok
+test_welch_arithmetic (test_certify.TestCertify.test_welch_arithmetic) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+OK

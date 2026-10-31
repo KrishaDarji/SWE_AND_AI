@@ -1,0 +1,18 @@
+test_status=0
+run_status=0
+--- final test log ---
+test_normal_and_anomaly (test_spot.SpotTests) ... ok
+test_outcome_isolation_and_duplicate_exclusion (test_spot.SpotTests) ... ok
+test_small_empty_constant_zero_variability (test_spot.SpotTests) ... ok
+test_strict_json_and_actual_count (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+--- timing ---
+real 1.07
+user 1.05
+sys 0.01
+--- preserved failed attempt ---
+test_output_attempt001.txt

@@ -1,0 +1,2 @@
+Final demonstration attempt: runtime_attempt_004.log
+The complete captured stdout/stderr, /usr/bin/time -p output, and exit marker are preserved in that file.

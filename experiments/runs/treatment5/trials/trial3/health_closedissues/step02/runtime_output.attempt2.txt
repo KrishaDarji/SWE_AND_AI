@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/run_demo.py", line 8, in <module>
+    "split": "seed=42; shuffle normalized groups; approximately 80/20", "metrics": model.evaluate()}, sort_keys=True))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 67, in evaluate
+    predictions = [self._predict_one(r, t) for r in self.test]
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 67, in <listcomp>
+    predictions = [self._predict_one(r, t) for r in self.test]
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 58, in _predict_one
+    key = normalize_config(config)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+real 0.07
+user 0.06
+sys 0.00

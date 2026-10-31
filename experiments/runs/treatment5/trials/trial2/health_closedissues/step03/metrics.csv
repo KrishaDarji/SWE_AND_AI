@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,5,2,model configuration and quality,certify,64,64,1,0.03,5,"7 tests; /usr/bin/time -p real; EZR NUM streaming/Welford summaries and lower-is-better goal adapted; regularized-beta/t critical routine with large-df normal-tail approximation; 5 repaired failed assertions/commands preserved in attempt logs; configurations are independent observations; no threshold supplied"

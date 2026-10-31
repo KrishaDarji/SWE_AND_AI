@@ -1,0 +1,16 @@
+Implemented the independent Python encoding-time predictor in this exact directory.
+
+Artifacts:
+- source/predictor.py
+- tests/test_predictor.py
+- run_demo.py
+- prompt.txt, response.txt, test_output.txt, runtime_output.txt
+- metrics.csv and run_instructions.txt
+
+The implementation uses a reproducible seed-42 grouped 80/20 split, training-only feature standardization, and standard-library ridge regression. It validates schemas and rejects missing, extra, nonnumeric, and nonfinite prediction inputs. The tests cover repeated configurations, reproducibility, leakage protection, prediction validation, and insufficient groups.
+
+Measured results: 4 tests passed; 922 training rows/groups and 230 held-out rows/groups; held-out MAE 26.011445571804646 versus training-mean baseline MAE 140.46365282467227. Demonstration real time was 0.05 seconds using /usr/bin/time -p. One initial zsh wrapper failure was preserved and counted as a repaired command failure.
+
+EZR components informing the design were the seeded shuffle/holdout machinery, normalization of numeric inputs, and distance/model-oriented separation of training and unseen rows. This is an independent Python implementation and does not invoke Lua.
+
+Assumptions and limitations: Performance- is treated as the available lower-is-better target; rows with invalid fields are skipped during CSV ingestion; the model is a regularized linear predictor and may not capture interactions; evaluation is one grouped split; the final fitted model is the training-only evaluation model, with no claim that it is a separately validated all-history production model.

@@ -1,0 +1,120 @@
+{
+  "record_count": 10000,
+  "columns": [
+    "MRE-",
+    "ACC+",
+    "PRED40+",
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "widest_data_row": 8,
+  "data_types": {
+    "MRE-": "numeric",
+    "ACC+": "numeric",
+    "PRED40+": "numeric",
+    "N_estimators": "numeric",
+    "criterion": "categorical",
+    "Min_sample_leaves": "numeric",
+    "Min_impurity_decrease": "numeric",
+    "Max_depth": "numeric"
+  },
+  "missing_or_invalid": {
+    "MRE-": 0,
+    "ACC+": 0,
+    "PRED40+": 0,
+    "N_estimators": 0,
+    "Min_sample_leaves": 0,
+    "Min_impurity_decrease": 0,
+    "Max_depth": 0
+  },
+  "numeric_statistics": {
+    "MRE-": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.7090939764346321,
+      "stdev": 0.20139590171639396
+    },
+    "ACC+": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.49593851329765815,
+      "stdev": 0.10715231893623878
+    },
+    "PRED40+": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.14684285714285678,
+      "stdev": 0.2663996283372885
+    },
+    "N_estimators": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 10.0,
+      "max": 200.0,
+      "mean": 106.061,
+      "stdev": 57.13265872571716
+    },
+    "Min_sample_leaves": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 1.0,
+      "max": 20.0,
+      "mean": 10.4796,
+      "stdev": 5.779232110962395
+    },
+    "Min_impurity_decrease": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 0.0,
+      "max": 10.0,
+      "mean": 4.996175,
+      "stdev": 2.947214401201212
+    },
+    "Max_depth": {
+      "count": 10000,
+      "missing_or_invalid": 0,
+      "min": 1.0,
+      "max": 20.0,
+      "mean": 10.523,
+      "stdev": 5.754492368423243
+    }
+  },
+  "categorical_frequencies": {
+    "criterion": {
+      "absolute_error": 3302,
+      "poisson": 3335,
+      "squared_error": 3363
+    }
+  },
+  "roles": {
+    "MRE-": "outcome",
+    "ACC+": "outcome",
+    "PRED40+": "outcome",
+    "N_estimators": "configuration",
+    "criterion": "configuration",
+    "Min_sample_leaves": "configuration",
+    "Min_impurity_decrease": "configuration",
+    "Max_depth": "configuration"
+  },
+  "optimization_directions": {
+    "MRE-": "minimize",
+    "ACC+": "maximize",
+    "PRED40+": "maximize"
+  },
+  "distinct_configurations": 10000,
+  "repeated_configurations": {},
+  "duplicate_rows": 0,
+  "counting_conventions": "Rows are nonblank data records; configuration identity is the exact whitespace-normalized cell tuple in the five configuration columns; duplicate rows are excess occurrences of identical full configuration tuples."
+}
+real 0.13
+user 0.11
+sys 0.01

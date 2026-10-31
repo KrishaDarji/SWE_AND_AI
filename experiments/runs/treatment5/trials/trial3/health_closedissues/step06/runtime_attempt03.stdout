@@ -1,0 +1,15 @@
+Retrospective observed-data justification
+Demonstration policy: lowest observed MRE-, ties by higher ACC+, then higher PRED40+, then earliest CSV record.
+Eligible records: 10000
+Recommended original CSV record identifier: 32
+Configuration: N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5
+Measured outcomes: MRE-=0.0, ACC+=0.7901313681512335, PRED40+=0.8571428571428571
+Per-outcome references (finite eligible values):
+  MRE-: median=0.8091310751104565 (valid count=10000); recommendation is below the reference
+  ACC+: median=0.43992310157000963 (valid count=10000); recommendation is above the reference
+  PRED40+: median=0.0 (valid count=10000); recommendation is above the reference
+Trade-off: the best MRE- need not also be the best ACC+ or PRED40+; these are reported separately, not added.
+Associations only: correlated settings can share explanatory information, so this record does not establish causal effects or independent feature contributions.
+Evidence label: measured results and medians are observed-data evidence; no model estimates are included.
+Limitations: missing/nonfinite outcomes are ineligible; original CSV identifiers are preserved; no future guarantee or statistical superiority is claimed.
+EZR-inspired machinery: CSV row streaming, finite numeric filtering, median summaries, stable ordering, and explicit best-row selection echo ezr-lib's csv/sorted/keysort patterns and ezr's ranked multi-goal selection. No Lua is executed.

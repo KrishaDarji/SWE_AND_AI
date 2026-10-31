@@ -1,0 +1,19 @@
+EFFORT ESTIMATE (frozen before audit)
+Held-out record id: 9
+Descriptor inputs: 22 categorical ratings
+Training rows: 73; held-out rows: 20
+Model estimate: 60.0
+Training-history reference (median): 240.0
+Evidence labels: model neighbor (training-only)
+  id=20 distance=5 effort=60.0
+  id=65 distance=5 effort=636.0
+  id=82 distance=5 effort=480.0
+  id=11 distance=6 effort=24.0
+  id=15 distance=6 effort=48.0
+Distances are mismatched descriptor counts; evidence is not causal contribution.
+AUDIT (revealed after estimate and explanation)
+Measured held-out effort: 72.0
+Limitations: missing/unseen ratings are normalized to empty and remain mismatches; correlated factors can duplicate signal; this is a scope-limited estimate, not a causal claim, interval, cost, or guarantee.
+real 0.03
+user 0.02
+sys 0.00

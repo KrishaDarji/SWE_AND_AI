@@ -1,0 +1,24 @@
+=== test_attempt01.stdout ===
+
+=== test_attempt01.stderr ===
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+=== command ===
+python3 -m unittest discover -s tests
+=== result ===
+exit 0
+=== test_attempt02.stdout ===
+
+=== test_attempt02.stderr ===
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+=== command ===
+python3 -m unittest discover -s tests
+=== result ===
+exit 0

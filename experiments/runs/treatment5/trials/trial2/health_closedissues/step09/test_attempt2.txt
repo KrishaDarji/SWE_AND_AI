@@ -1,0 +1,9 @@
+test_identifiers_and_counts (test_spot.SpotTests) ... ok
+test_missing_nonfinite_and_json (test_spot.SpotTests) ... ok
+test_ordinary_and_unusual (test_spot.SpotTests) ... ok
+test_small_empty_constants_zero_scale (test_spot.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

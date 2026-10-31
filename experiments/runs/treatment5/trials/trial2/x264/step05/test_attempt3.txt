@@ -1,0 +1,21 @@
+test_known_constant_multivalue_missing_and_order (test_blame.TestBlame.test_known_constant_multivalue_missing_and_order) ... FAIL
+test_nonfinite (test_blame.TestBlame.test_nonfinite) ... ok
+test_numeric_directions_and_nonmonotonic (test_blame.TestBlame.test_numeric_directions_and_nonmonotonic) ... ok
+test_unordered_categories_and_tied_means (test_blame.TestBlame.test_unordered_categories_and_tied_means) ... ok
+
+======================================================================
+FAIL: test_known_constant_multivalue_missing_and_order (test_blame.TestBlame.test_known_constant_multivalue_missing_and_order)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step05/tests/test_blame.py", line 12, in test_known_constant_multivalue_missing_and_order
+    self.assertEqual(r["rows"],5); self.assertEqual(d["constant"]["score"],0); self.assertEqual(d["multi"]["groups"],2); self.assertEqual(d["fast"]["direction"],"lower"); self.assertEqual(d["correlated"]["score"],d["fast"]["score"])
+                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'decreasing' != 'lower'
+- decreasing
++ lower
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (failures=1)

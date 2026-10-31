@@ -1,0 +1,6 @@
+PASS test_current_and_future_outcomes_do_not_change_prediction
+PASS test_empty_short_and_invalid_effort
+PASS test_missing_unseen_and_exclusions
+PASS test_prediction_is_before_reveal
+PASS test_warmup_and_arithmetic
+passed 5

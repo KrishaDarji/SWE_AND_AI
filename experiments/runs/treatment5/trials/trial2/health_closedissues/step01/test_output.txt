@@ -1,0 +1,8 @@
+test_complete_path (test_report.TestReport) ... ok
+test_empty_and_header_only (test_report.TestReport) ... ok
+test_nonfinite_and_roles (test_report.TestReport) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

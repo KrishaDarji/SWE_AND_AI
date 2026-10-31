@@ -1,0 +1,14 @@
+Implemented and verified the Step 10 comparison in the exact requested directory.
+
+Artifacts:
+- Source: `source/race_compare.py`
+- Tests: `tests/test_race_compare.py`
+- Run command and paths: `run_instructions.txt`
+- Captured logs: `test_output.txt`, `runtime_output.txt` (initial failed attempt logs are preserved)
+- Metrics: `metrics.csv`
+
+The tuner uses five seeded random exploration evaluations, then EZR-informed nearest-neighbor prediction with deterministic stable tie-breaking and without-replacement selection. The adaptation is informed by EZR's numeric summaries/normalization, distance-based reasoning, stable ordering, and active-learning acquire/cull loop. The baseline is uniform random search without replacement. Both use fresh callbacks, budget 20, seeds 42–51, and lower `Performance-` is better.
+
+Results: tuner wins 2, ties 1, loses 7. Differences (tuner minus baseline) sum to 58.405 and average 5.8405. Seed differences are 42: 0, 43: 12.574, 44: 5.603, 45: 7.273, 46: 14.180, 47: -3.414, 48: 8.253, 49: -10.267, 50: 10.403, 51: 13.800. Full evaluation orders, identifiers, configurations, measurements, recommendations, and the frozen retrospective records are in the runtime log.
+
+All five tests pass. Demonstration `/usr/bin/time -p` real time was 1.38 seconds. The two failures in the initial test attempt were fixture assertions; they are preserved and counted in `metrics.csv` as repaired test errors. These are benchmark repeats, not independent LLM trials. No statistical superiority claim is made; the project's final “same” procedure is unavailable and analysis is pending. Limitations include the finite measured candidate set, binary configuration encoding, and nearest-neighbor heuristic.

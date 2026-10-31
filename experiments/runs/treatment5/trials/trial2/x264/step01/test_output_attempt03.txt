@@ -1,0 +1,11 @@
+test_empty_input (test_summarize.SummaryTests.test_empty_input) ... ok
+test_header_only_and_all_missing (test_summarize.SummaryTests.test_header_only_and_all_missing) ... ok
+test_invalid_outcome (test_summarize.SummaryTests.test_invalid_outcome) ... ok
+test_missing_outcome_column_is_explicit (test_summarize.SummaryTests.test_missing_outcome_column_is_explicit) ... ok
+test_summary_frequency_statistics_and_missing (test_summarize.SummaryTests.test_summary_frequency_statistics_and_missing) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK
+test_exit:0

@@ -1,0 +1,19 @@
+Implemented and verified Treatment 5, Trial 2, Dataset 3, Step 1.
+
+Files:
+- source/report.py — complete Python standard-library implementation.
+- tests/test_report.py — three complete-path tests covering summaries, categorical counts, missing/nonfinite values, roles/directions, duplicates, empty input, and header-only input.
+- metrics.csv — measured metadata and runtime.
+- test_output.txt and runtime_output.txt — successful final captured logs.
+- test_output_attempt01.txt — preserved failed test attempt; attempt02 is the repaired successful run.
+- prompt.txt — verbatim supplied prompt.
+- run_instructions.txt — quoted working directory and commands.
+
+Dataset results: 10,000 records; 8 columns; all numeric fields valid and complete; criterion is categorical; 10,000 distinct configurations; 0 duplicate rows. Outcomes retain MRE- minimize, ACC+ maximize, and PRED40+ maximize. The report separates configuration fields from outcomes.
+
+EZR adaptations: header-driven roles, NUM-style one-pass mean/variance summaries, SYM-style categorical frequencies, and CSV whitespace/missing handling. No Lua or third-party package is used.
+
+Assumptions and limitations: blank cells, ?, NA, NaN, null, and nonfinite numeric values are missing/invalid; fields are UTF-8 CSV with a header; blank records are skipped; header-only and empty input are valid; configuration identity uses the exact normalized five-field tuple. No metric formulas, ranges, units, costs, or issue timelines are inferred.
+
+Run from the stated directory with:
+ /usr/bin/python3 source/report.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"

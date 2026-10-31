@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,5,2,model configuration and quality,fix,97,97,1,0.07,1,"8 tests; /usr/bin/time -p real; adapted EZR CSV coercion/streaming, numeric-vs-symbolic column handling, stable ordered selection; retrospective observed-data repair; change count is a proxy; one harmless identical-file copy wrapper failure was preserved and counted"

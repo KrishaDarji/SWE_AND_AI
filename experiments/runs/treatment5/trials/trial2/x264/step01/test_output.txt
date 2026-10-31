@@ -1,0 +1,3 @@
+Final captured test output: test_output_attempt03.txt
+Earlier failed and repaired test output: test_output_attempt01.txt
+Shell-wrapper failure output: test_output_attempt02.txt

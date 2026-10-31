@@ -1,0 +1,19 @@
+test_budget_boundary_and_maximum (test_choose.ChooseTests) ... ok
+test_empty_and_no_feasible (test_choose.ChooseTests) ... ok
+test_invalid_budget (test_choose.ChooseTests) ... ok
+test_metadata_outcomes_separate_and_original_position_survives (test_choose.ChooseTests) ... FAIL
+test_missing_and_nonfinite_outcomes_are_infeasible (test_choose.ChooseTests) ... ok
+test_ties_effort_then_earliest_position (test_choose.ChooseTests) ... ok
+
+======================================================================
+FAIL: test_metadata_outcomes_separate_and_original_position_survives (test_choose.ChooseTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step07/tests/test_choose.py", line 64, in test_metadata_outcomes_separate_and_original_position_survives
+    self.assertEqual(selected["position"], 3); self.assertEqual(selected["idX"], "same")
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+FAILED (failures=1)

@@ -1,0 +1,7 @@
+Implemented the independent Python estimator in source/justify_estimator.py with five tests.
+
+The reproducible descriptor-grouped 75/25 split (seed 42) selected earliest held-out id 20. Estimate: Effort- 168.0; training-only median reference: 192.0. Measured held-out effort 60.0 appears only in the retrospective audit after freezing the estimate and explanation.
+
+EZR-inspired adaptations are deterministic grouping, categorical distance, median summaries, nearest-neighbor selection, and training-only historical summaries. No Lua or third-party package is used. Associations are not additive contributions or causal claims.
+
+Five tests passed; demonstration real time was 0.02 seconds via /usr/bin/time -p. Limitations include data-dependent categorical neighbors, missing/unseen descriptor validation, correlated factors, small sample size, single split, and no uncertainty, cost, units, or deployment guarantee.

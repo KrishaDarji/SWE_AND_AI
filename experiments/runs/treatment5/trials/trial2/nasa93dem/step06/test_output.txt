@@ -1,0 +1,35 @@
+test_attempt1.txt exit=1
+test_excluded_inputs_and_missing_unseen (test_estimator.EstimatorTests.test_excluded_inputs_and_missing_unseen) ... ok
+test_insufficient_data (test_estimator.EstimatorTests.test_insufficient_data) ... FAIL
+test_invalid_targets_and_original_identifier (test_estimator.EstimatorTests.test_invalid_targets_and_original_identifier) ... ok
+test_outcome_change_does_not_change_pre_audit (test_estimator.EstimatorTests.test_outcome_change_does_not_change_pre_audit) ... ok
+test_prediction_and_explanation_consistency (test_estimator.EstimatorTests.test_prediction_and_explanation_consistency) ... ok
+test_training_only_reference_and_proposal_selection (test_estimator.EstimatorTests.test_training_only_reference_and_proposal_selection) ... ok
+
+======================================================================
+FAIL: test_insufficient_data (test_estimator.EstimatorTests.test_insufficient_data)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step06/tests/test_estimator.py", line 28, in test_insufficient_data
+    with self.assertRaises(ValueError): estimator.grouped_split(self.rows()[:1])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=1)
+
+--- attempt 2 ---
+test_attempt2.txt exit=0
+test_excluded_inputs_and_missing_unseen (test_estimator.EstimatorTests.test_excluded_inputs_and_missing_unseen) ... ok
+test_insufficient_data (test_estimator.EstimatorTests.test_insufficient_data) ... ok
+test_invalid_targets_and_original_identifier (test_estimator.EstimatorTests.test_invalid_targets_and_original_identifier) ... ok
+test_outcome_change_does_not_change_pre_audit (test_estimator.EstimatorTests.test_outcome_change_does_not_change_pre_audit) ... ok
+test_prediction_and_explanation_consistency (test_estimator.EstimatorTests.test_prediction_and_explanation_consistency) ... ok
+test_training_only_reference_and_proposal_selection (test_estimator.EstimatorTests.test_training_only_reference_and_proposal_selection) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

@@ -1,0 +1,27 @@
+test_direction_and_interval (test_certify.CertifyTests.test_direction_and_interval) ... ok
+test_known_t_values_small_large (test_certify.CertifyTests.test_known_t_values_small_large) ... FAIL
+test_missing_and_insufficient (test_certify.CertifyTests.test_missing_and_insufficient) ... ok
+test_threshold_uncertain (test_certify.CertifyTests.test_threshold_uncertain) ... ok
+test_unequal_variance (test_certify.CertifyTests.test_unequal_variance) ... FAIL
+test_zero_variance (test_certify.CertifyTests.test_zero_variance) ... ok
+
+======================================================================
+FAIL: test_known_t_values_small_large (test_certify.CertifyTests.test_known_t_values_small_large)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step03/tests/test_certify.py", line 38, in test_known_t_values_small_large
+    self.assertAlmostEqual(certify.student_t_cdf(1, 1), .75, places=12)
+AssertionError: 0.5207043739439454 != 0.75 within 12 places (0.22929562605605458 difference)
+
+======================================================================
+FAIL: test_unequal_variance (test_certify.CertifyTests.test_unequal_variance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step03/tests/test_certify.py", line 19, in test_unequal_variance
+    self.assertAlmostEqual(r["df"], expected, places=10)
+AssertionError: 3.0478994016574417 != 4.733990147783252 within 10 places (1.6860907461258101 difference)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+FAILED (failures=2)

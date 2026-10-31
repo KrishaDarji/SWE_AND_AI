@@ -1,0 +1,10 @@
+test_actual_group_count (test_spot_anomaly.SpotTests) ... ok
+test_empty_small_constant_zero_variability (test_spot_anomaly.SpotTests) ... ok
+test_isolation_and_duplicate_group_exclusion (test_spot_anomaly.SpotTests) ... ok
+test_missing_and_strict_json (test_spot_anomaly.SpotTests) ... ok
+test_normal_and_anomalous (test_spot_anomaly.SpotTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

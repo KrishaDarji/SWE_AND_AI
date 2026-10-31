@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,3,model configuration and quality,remember,48,48,1,0.32,0,"3 tests; /usr/bin/time -p demonstration; EZR CSV streaming/coercion, numeric Welford-style summaries conceptually adapted as standard-library summaries, categorical counts, explicit directions; whitespace trim and missing/nonfinite exclusions; no repairs"

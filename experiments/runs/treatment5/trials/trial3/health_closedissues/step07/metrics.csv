@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,3,model configuration and quality,choose,87,87,1,0.07,0,"5 tests; runtime measured with /usr/bin/time -p real elapsed demonstration subprocess; adapted EZR csv coercion/streaming and stable input-order tie handling; finite nonnegative estimator cap is a compute proxy; observed outcomes only; repaired reporting of total count before final run."

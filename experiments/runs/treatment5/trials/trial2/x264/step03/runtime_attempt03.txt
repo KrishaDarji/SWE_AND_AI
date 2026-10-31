@@ -1,0 +1,11 @@
+Fixed comparison: A=no_8x8dct=0, B=no_8x8dct=1
+Lower Performance- is better; rows are configurations, not repeated runs.
+n_A=576 n_B=576 mean_A=472.135507 mean_B=451.371686
+mean difference A-B=20.763821, Welch t=2.171125, df=1149.237278, two-sided p=0.030125862
+95% Welch interval for A-B=(1.999699, 39.527943)
+illustrative threshold=5.0; point exceeds threshold=True; entire interval beyond threshold=False
+Conclusion: statistically different from zero=True ; practical importance is uncertain.
+Skipped invalid rows=0; configuration variation cannot establish measurement noise or causality.
+real 0.02
+user 0.01
+sys 0.00

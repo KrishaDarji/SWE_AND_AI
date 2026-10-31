@@ -1,0 +1,6 @@
+attempt2 exit=0
+record_id=1151, count=1151, mean=461.595274
+record_id=1152, count=1152, mean=461.753596
+real 0.04
+user 0.03
+sys 0.00

@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step07
+Python interpreter: /usr/bin/python3
+Run tests: /usr/bin/python3 -m unittest discover -s tests -v
+Run demonstration: /usr/bin/python3 source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --budget 100
+All paths containing spaces are quoted. Captured logs are attempt-labeled; runtime_output.txt is the successful final capture.

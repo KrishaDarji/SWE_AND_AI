@@ -1,0 +1,30 @@
+Correct Treatment 5, Trial 2, X264, Step 3.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step03/
+
+Fix welch() when both groups have zero variance.
+
+For equal or unequal constant groups, report an explicit undefined-test
+status/reason, or raise a clear ValueError consistently.
+Do not manufacture a Welch p-value, significance result, or inferential interval.
+Descriptive means and differences may still be reported.
+
+Ensure the CLI handles the chosen behavior clearly.
+One constant group with one varying group should remain a valid Welch comparison.
+
+Update regression tests for:
+- Equal constant groups.
+- Unequal constant groups.
+- One constant group and one varying group.
+- The complete CLI/reporting path for undefined inference.
+
+Keep the valid-data calculations, comparison, and threshold unchanged.
+Use only current Trial 2 X264 Step 3 files and previously authorized inputs.
+Do not access Trial 1 or other experiment steps.
+
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main logs identify the final attempts.
+Write only inside the exact directory above.

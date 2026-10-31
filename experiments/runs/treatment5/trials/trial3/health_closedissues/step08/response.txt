@@ -1,0 +1,16 @@
+Implemented the standalone Python repair in [source/repair.py](source/repair.py) and its tests in [tests/test_repair.py](tests/test_repair.py).
+
+Run it with:
+
+```sh
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step08"
+python3 source/repair.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+```
+
+The suite passed all 7 tests. The demonstration selected record 1945: N_estimators 40 -> 10 and Min_impurity_decrease 2.75 -> 5.0. Observed MRE- improved by 0.04756995581737844; ACC+ changed by -0.06568407561678946 (worsened), and PRED40+ changed by 0.0 (not worsened).
+
+EZR-informed machinery: CSV streaming/coercion, numeric validation and finite-value handling, stable source-order identifiers, and deterministic ordered selection inspired by the supplied `csv`, `thing`, `least`, and stable ordering utilities. No Lua is run or required.
+
+Assumptions and limitations: this is retrospective observed-data repair. Change count is only a proxy for implementation cost. The result does not claim causality, future quality, metric formulas, units, ranges, or measured compute costs. Invalid candidates are skipped; invalid baselines, empty input, ties, missing secondary outcomes, and no-improvement cases are explicit. Missing secondary comparisons return null with an unknown-comparison reason.
+
+Artifacts include the verbatim prompt, source, tests, preserved attempt-labeled logs, copied final logs, instructions, and metrics under this exact directory.

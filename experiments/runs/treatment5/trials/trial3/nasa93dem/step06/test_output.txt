@@ -1,0 +1,3 @@
+Final test capture: test_attempt03.log
+
+5 tests ran and passed (OK). Earlier preserved captures: test_attempt01.log (shell wrapper failure) and test_attempt02.log (one assertion failure before repair).

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,5,2,software project estimation,certify,132,132,1,0.07,3,"8 tests passed; /usr/bin/time -p demonstration; EZR whitespace trimming, header-role selection, one-pass mean/M2 summary adapted; incomplete-beta continued fraction and Welch-Satterthwaite t interval; 2 repaired assertion failures plus 1 repaired zsh wrapper failure; finite nonnegative threshold; observed Effort- not monetary cost; skew, imbalance, scope, noncausality, no equivalence claim"

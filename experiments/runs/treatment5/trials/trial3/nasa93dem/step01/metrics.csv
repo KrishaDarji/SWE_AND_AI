@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,3,software project estimation,remember,89,89,1,0.03,1,"5 tests passed; /usr/bin/time -p demonstration real=0.03; adapted EZR CSV coercion, NUM/SYM summaries, column roles, missing handling, and goal directions; assumptions and limitations documented in response.txt; one unrelated git status verification command failed because the parent was not a repository"

@@ -1,0 +1,37 @@
+Historical project summary
+records: 93
+outcomes: Kloc+, Effort-, Defects-
+metadata (excluded from future modeling): idX, centerX, YearX, MonthsX
+descriptors: prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced
+idX [metadata, numeric, missing=0], count=93, min=1, max=93, mean=46.99, median=47, stdev=27
+centerX [metadata, numeric, missing=0], count=93, min=1, max=6, mean=3.28, median=2, stdev=1.683
+YearX [metadata, numeric, missing=0], count=93, min=1971, max=1987, mean=1981, median=1980, stdev=3.335
+prec [descriptor, categorical, missing=0], frequencies={'h': 93}
+flex [descriptor, categorical, missing=0], frequencies={'h': 93}
+resl [descriptor, categorical, missing=0], frequencies={'h': 93}
+team [descriptor, categorical, missing=0], frequencies={'vh': 93}
+pmat [descriptor, categorical, missing=0], frequencies={'h': 43, 'l': 20, 'n': 30}
+rely [descriptor, categorical, missing=0], frequencies={'h': 42, 'l': 2, 'n': 39, 'vh': 10}
+data [descriptor, categorical, missing=0], frequencies={'h': 17, 'l': 37, 'n': 31, 'vh': 8}
+cplx [descriptor, categorical, missing=0], frequencies={'h': 58, 'l': 3, 'n': 10, 'vh': 17, 'xh': 5}
+ruse [descriptor, categorical, missing=0], frequencies={'n': 93}
+docu [descriptor, categorical, missing=0], frequencies={'n': 93}
+time [descriptor, categorical, missing=0], frequencies={'h': 13, 'n': 54, 'vh': 18, 'xh': 8}
+stor [descriptor, categorical, missing=0], frequencies={'h': 10, 'n': 49, 'vh': 21, 'xh': 13}
+pvol [descriptor, categorical, missing=0], frequencies={'h': 9, 'l': 65, 'n': 19}
+acap [descriptor, categorical, missing=0], frequencies={'h': 51, 'n': 32, 'vh': 10}
+pcap [descriptor, categorical, missing=0], frequencies={'h': 39, 'n': 44, 'vh': 10}
+pcon [descriptor, categorical, missing=0], frequencies={'n': 93}
+apex [descriptor, categorical, missing=0], frequencies={'h': 46, 'l': 1, 'n': 34, 'vh': 12}
+plex [descriptor, categorical, missing=0], frequencies={'h': 22, 'l': 14, 'n': 53, 'vl': 4}
+ltex [descriptor, categorical, missing=0], frequencies={'h': 69, 'l': 6, 'n': 14, 'vl': 4}
+tool [descriptor, categorical, missing=0], frequencies={'h': 10, 'n': 83}
+site [descriptor, categorical, missing=0], frequencies={'n': 93}
+sced [descriptor, categorical, missing=0], frequencies={'l': 34, 'n': 59}
+Kloc+ [outcome, numeric, missing=0], direction=maximize, count=93, min=0.9, max=980, mean=94.02, median=47.5, stdev=133.6
+Effort- [outcome, numeric, missing=0], direction=minimize, count=93, min=8.4, max=8211, mean=624.4, median=252, stdev=1136
+Defects- [outcome, numeric, missing=0], direction=minimize, count=93, min=28, max=5.096e+04, mean=3762, median=2007, stdev=6145
+MonthsX [metadata, numeric, missing=0], count=93, min=4.9, max=96.4, mean=24.18, median=21.4, stdev=12.97
+real 0.03
+user 0.02
+sys 0.00

@@ -1,0 +1,9 @@
+Implemented the Python flow estimator and tests in the exact requested directory.
+
+Source: source/flow_estimator.py. Tests: tests/test_estimator.py. Demo: run_demo.py.
+
+The implementation processes nasa93dem.csv in CSV order. The first two valid efforts are warm-up and are not scored. Each later prediction is frozen before the current effort is revealed, uses only prior valid rows, and is compared with a prior-history mean baseline. It uses only the 22 categorical descriptors; X metadata and all outcomes are excluded. Missing and unseen descriptor values are handled explicitly as categorical gaps. Missing, nonnumeric, and nonfinite efforts are skipped and never enter history or metrics.
+
+EZR machinery adapted from the authorized source: symbolic equality distance, unknown-value distance, p=2 Minkowski aggregation, and mean-centered leaf/prediction behavior. No Lua or third-party package is used.
+
+Measured result: 5 synthetic tests passed; the demonstration processed 91 scored arrivals in real 0.03 seconds using /usr/bin/time -p. The CSV is a demonstration sequence, not a verified timeline. Assumptions include stable CSV headers and Effort- being numeric when valid. Limitations include a simple nearest categorical estimator, no claim of convergence or automatic stopping, and no invented effort units. Preserved attempt logs and the required metrics are included beside the source.

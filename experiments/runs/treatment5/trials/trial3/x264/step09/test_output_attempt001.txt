@@ -1,0 +1,34 @@
+test_normal_and_anomaly (test_spot.SpotTests) ... FAIL
+test_outcome_isolation_and_duplicate_exclusion (test_spot.SpotTests) ... FAIL
+test_small_empty_constant_zero_variability (test_spot.SpotTests) ... ok
+test_strict_json_and_actual_count (test_spot.SpotTests) ... ok
+
+======================================================================
+FAIL: test_normal_and_anomaly (test_spot.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step09/tests/test_spot.py", line 13, in test_normal_and_anomaly
+    self.assertEqual(out["flagged_record_ids"], [5])
+AssertionError: Lists differ: [] != [5]
+
+Second list contains 1 additional elements.
+First extra element 0:
+5
+
+- []
++ [5]
+?  +
+
+
+======================================================================
+FAIL: test_outcome_isolation_and_duplicate_exclusion (test_spot.SpotTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/x264/step09/tests/test_spot.py", line 20, in test_outcome_isolation_and_duplicate_exclusion
+    self.assertIsNone(out["records"][0]["expected_reference"])
+AssertionError: 10.0 is not None
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (failures=2)

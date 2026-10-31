@@ -1,0 +1,10 @@
+test_already_feasible_and_none (test_repair.RepairTests.test_already_feasible_and_none) ... ok
+test_feasibility_and_minimum_change (test_repair.RepairTests.test_feasibility_and_minimum_change) ... ok
+test_invalid_inputs (test_repair.RepairTests.test_invalid_inputs) ... ok
+test_tie_breakers_predicted_then_csv (test_repair.RepairTests.test_tie_breakers_predicted_then_csv) ... ok
+test_training_only_identifiers_and_heldout_target (test_repair.RepairTests.test_training_only_identifiers_and_heldout_target) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

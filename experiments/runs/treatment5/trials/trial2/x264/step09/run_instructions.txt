@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step09
+Python interpreter: /usr/bin/python3
+Test command: /usr/bin/python3 -m unittest discover -s tests -v
+Demonstration command: /usr/bin/time -p /usr/bin/python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+All paths above are absolute or valid from the stated working directory; paths containing spaces are quoted.
+The preserved earlier files are test_output_attempt01.txt and runtime_output_attempt01.txt. Final attempt 02 is in test_output_attempt02.txt and runtime_output_attempt02.txt; test_output.txt and runtime_output.txt are copies of final attempt 02 and include FINAL_ATTEMPT=02.

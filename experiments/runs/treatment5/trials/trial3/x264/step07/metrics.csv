@@ -1,0 +1,3 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,3,video encoding,choose,53,53,1,0.03,0,"4 tests; /usr/bin/time -p real for demonstration subprocess; adapted EZR seeded shuffle, iteration, sorting/minimum and explicit records; no predictive model; 1152 candidates, 20-evaluation budget; eval-N is evaluation order; no repairs"
+

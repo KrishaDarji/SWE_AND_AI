@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,5,3,video encoding,race,73,73,1,1.81,1,"6 tests; /usr/bin/time -p real; EZR adaptations: shuffle, labeled-neighbor distance, best-first acquisition, deterministic min; standard library only; one repaired fixture test, preserved attempt1 failure; retrospective audit pending"

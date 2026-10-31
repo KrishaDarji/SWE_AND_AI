@@ -1,0 +1,155 @@
+You are running Treatment 5, Trial 3, Dataset 3, Step 8 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: No
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: fix
+- Current requirement: Suggest the smallest hyperparameter change that improves error.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step08/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Implement this skill independently from scratch.
+Do not read, copy, import, or extend previous implementations.
+Using the explicitly supplied EZR source as reference is permitted.
+
+You may read only:
+- The specified Health dataset.
+- The two authorized EZR source files.
+- Files created in the current Health Step 8 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+previous steps, other datasets, other trials, other treatments,
+root-level implementations, Git history, or previous chats.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Accept an observed baseline record; use the first CSV data record for demonstration.
+- Translate or adapt relevant EZR machinery where applicable.
+- Search observed configurations for strictly lower measured MRE-.
+- Define change cost as the number of differing configuration fields:
+  N_estimators, criterion, Min_sample_leaves,
+  Min_impurity_decrease, Max_depth.
+- Compare numeric settings numerically, not by raw string formatting.
+- Among improving candidates, minimize change count, then MRE-,
+  then maximize ACC+, then PRED40+, then choose the earliest CSV record.
+- Report original identifiers, full configurations, all three measured outcomes,
+  changes with old/new values, change count, and observed MRE- improvement.
+- Explicitly report any worsening in ACC+ or PRED40+.
+- If a baseline secondary outcome is unavailable, return null for its difference
+  and worsening status with an explicit unknown-comparison reason.
+- Handle invalid baselines, missing/nonfinite values, ties, empty input,
+  and no improving candidate explicitly.
+- Require usable candidate configurations and define candidate eligibility.
+- Label change count as a proxy, not measured implementation cost.
+- This exhaustive retrospective demonstration has no compute cap.
+- Preserve original CSV identifiers when filtering invalid records.
+- Clearly define record identifiers.
+- State that this is retrospective observed-data repair.
+- Do not claim causality, guaranteed future quality, metric formulas,
+  units, ranges, or measured compute costs.
+- State assumptions and limitations.
+- Do not implement or preserve earlier skill interfaces.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. One command to run the implementation.
+4. A short explanation, including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Test minimum-change priority over maximum improvement, numeric equivalence,
+all tie-breakers, exact change reporting, secondary-outcome trade-offs,
+missing baseline secondary outcomes, invalid baselines, and no improvement.
+Verify expected results independently on synthetic fixtures.
+Keep synthetic fixtures inside this Health Step 8 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Health Step 8 output directory.
+
+Run tests and the implementation. Record actual measured results.
+Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 8
+- treatment: 5
+- trial: 3
+- domain: model configuration and quality
+- skill: fix
+- total_loc: implementation Python lines, including any translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and the supplied Lua reference files.
+- new_loc: equal to total_loc because this implementation is independent.
+- test_pass: 1 if the complete suite succeeds, otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the demonstration
+  subprocess, excluding tests. Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, EZR adaptations, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Write only inside the exact Health Step 8 output directory specified above.

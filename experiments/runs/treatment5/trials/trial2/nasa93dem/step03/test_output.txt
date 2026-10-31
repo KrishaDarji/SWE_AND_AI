@@ -1,0 +1,14 @@
+test_direction_b_and_a (test_certify.CertifyTests) ... ok
+test_group_selection_and_whitespace (test_certify.CertifyTests) ... ok
+test_insufficient_missing_nonfinite (test_certify.CertifyTests) ... ok
+test_known_t_values (test_certify.CertifyTests) ... ok
+test_threshold_below_interval_and_no_significance_requirement (test_certify.CertifyTests) ... ok
+test_threshold_point_crosses_interval (test_certify.CertifyTests) ... ok
+test_welch_unequal_variance_reference (test_certify.CertifyTests) ... ok
+test_zero_variance (test_certify.CertifyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.008s
+
+OK
+attempt-003 status=0

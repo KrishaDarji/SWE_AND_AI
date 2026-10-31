@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step05
+Python interpreter: /usr/bin/python3
+Run tests: /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+Run implementation: /usr/bin/time -p /usr/bin/python3 source/analyze.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --metrics metrics_detail.csv
+All paths containing spaces are quoted. The implementation reads only the specified dataset.

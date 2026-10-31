@@ -1,0 +1,11 @@
+Attempt 01 stdout:
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 0.002s
+
+OK
+
+Attempt 01 stderr:
+
+Exit status: 0
+

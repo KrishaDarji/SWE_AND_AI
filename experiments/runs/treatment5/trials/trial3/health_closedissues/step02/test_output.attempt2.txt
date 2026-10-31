@@ -1,0 +1,41 @@
+test_grouping_and_exclusion (test_guess_model.Tests) ... ok
+test_missing_unseen_and_schema (test_guess_model.Tests) ... ERROR
+test_reproducible_and_prediction (test_guess_model.Tests) ... ERROR
+test_targets_and_data_rules (test_guess_model.Tests) ... ok
+
+======================================================================
+ERROR: test_missing_unseen_and_schema (test_guess_model.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/test_guess_model.py", line 22, in test_missing_unseen_and_schema
+    c["criterion"]="new"; self.assertTrue(all(math.isfinite(v) for v in m.predict(c).values()))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 62, in predict
+    return {t: self._predict_one(config, t) for t in TARGETS}
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 62, in <dictcomp>
+    return {t: self._predict_one(config, t) for t in TARGETS}
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 58, in _predict_one
+    key = normalize_config(config)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+
+======================================================================
+ERROR: test_reproducible_and_prediction (test_guess_model.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/test_guess_model.py", line 18, in test_reproducible_and_prediction
+    self.assertEqual(a.train_keys,b.train_keys); self.assertEqual(a.predict(rows[0]),b.predict(rows[0]))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 62, in predict
+    return {t: self._predict_one(config, t) for t in TARGETS}
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 62, in <dictcomp>
+    return {t: self._predict_one(config, t) for t in TARGETS}
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 58, in _predict_one
+    key = normalize_config(config)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=2)

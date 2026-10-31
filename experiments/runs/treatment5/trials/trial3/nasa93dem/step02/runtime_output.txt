@@ -1,0 +1,7 @@
+predictors= prec,flex,resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced
+train_count= 70 test_count= 23
+heldout_mae=479.339175 baseline_mae=481.485031
+model_settings= exact categorical group mean; category fallback; global mean; seed=42
+real 0.02
+user 0.01
+sys 0.00

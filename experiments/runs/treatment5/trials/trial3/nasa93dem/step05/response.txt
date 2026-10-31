@@ -1,0 +1,14 @@
+Implemented and verified the standalone Python solution.
+
+Source: source/blame.py
+Tests: tests/test_blame.py
+Run: python3 -m unittest discover -s tests -v
+Demo: /usr/bin/time -p python3 source/blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+The implementation ranks the 22 categorical project descriptors by marginal eta-squared: between-group effort variation divided by total usable effort variation. It reports group counts, mean/median/standard deviation/min/max, high- and low-effort groups, and deterministic tie-breaking by descriptor name. Whitespace is normalized; missing, nonfinite, constant, and small-group cases are handled safely. Kloc+, Effort-, Defects-, and X-suffix metadata are excluded.
+
+EZR machinery adapted: symbolic-column counting and missing-value behavior, numeric one-pass summaries, mid/div-style summaries, deterministic stable ordering, and the general separation of columns from excluded goals/metadata. No Lua runtime or third-party package is used.
+
+Tests cover known associations, exclusions, categorical handling, constants, missing/nonfinite values, small groups, and deterministic ordering. Final tests pass: 4 tests. Demonstration real time from /usr/bin/time -p: 0.02 seconds. Earlier failed attempts and the repaired shell-wrapper failure are preserved in the attempt logs.
+
+Assumptions and limitations: this is a marginal association ranking, not a causal or adjusted model; correlated descriptors can share explanatory information. Higher effort does not establish inefficiency because project scope differs. Delivered size is excluded, so this is not size-adjusted productivity. Results do not establish process improvements, defect risk, monetary costs, or invented effort units.

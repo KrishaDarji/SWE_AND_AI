@@ -1,0 +1,43 @@
+test_grouping_and_exclusion (test_guess_model.Tests) ... ERROR
+test_missing_unseen_and_schema (test_guess_model.Tests) ... ERROR
+test_reproducible_and_prediction (test_guess_model.Tests) ... ERROR
+test_targets_and_data_rules (test_guess_model.Tests) ... ok
+
+======================================================================
+ERROR: test_grouping_and_exclusion (test_guess_model.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/test_guess_model.py", line 13, in test_grouping_and_exclusion
+    self.assertEqual(normalize_config(r), normalize_config(s))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+
+======================================================================
+ERROR: test_missing_unseen_and_schema (test_guess_model.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/test_guess_model.py", line 20, in test_missing_unseen_and_schema
+    rows=[row(i) for i in range(4)]; m=GuessModel(rows)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 44, in __init__
+    for row in usable: groups.setdefault(normalize_config(row), []).append(row)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+
+======================================================================
+ERROR: test_reproducible_and_prediction (test_guess_model.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/test_guess_model.py", line 17, in test_reproducible_and_prediction
+    a,b=GuessModel(rows),GuessModel(rows)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 44, in __init__
+    for row in usable: groups.setdefault(normalize_config(row), []).append(row)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step02/tests/../source/guess_model.py", line 16, in normalize_config
+    raise ValueError("configuration must contain exactly the predictor fields")
+ValueError: configuration must contain exactly the predictor fields
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=3)

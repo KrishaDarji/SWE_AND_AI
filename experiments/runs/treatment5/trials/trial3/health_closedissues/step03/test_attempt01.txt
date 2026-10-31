@@ -1,0 +1,38 @@
+test_beta_and_t_known (test_certify.T) ... FAIL
+test_groups_direction (test_certify.T) ... ok
+test_invalid_threshold (test_certify.T) ... ok
+test_missing_insufficient_zero (test_certify.T) ... ok
+test_threshold_uncertain (test_certify.T) ... FAIL
+test_welch_reference (test_certify.T) ... FAIL
+
+======================================================================
+FAIL: test_beta_and_t_known (test_certify.T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 15, in test_beta_and_t_known
+    self.assertAlmostEqual(certify.beta_cdf(.5,1,1),.5,12); self.assertAlmostEqual(certify.t_quantile(.975,4),2.776445,5); self.assertTrue(0<=certify.t_cdf(2,4)<=1)
+AssertionError: 0.75 != 0.5 within 12 places (0.25 difference)
+
+======================================================================
+FAIL: test_threshold_uncertain (test_certify.T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 10, in test_threshold_uncertain
+    a=certify.assess({'squared_error':[1,2,3],'absolute_error':[.5,1,1.5]},.6); self.assertEqual(a['practical_importance'],'not established')
+AssertionError: 'point improvement beyond threshold' != 'not established'
+- point improvement beyond threshold
++ not established
+
+
+======================================================================
+FAIL: test_welch_reference (test_certify.T)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 8, in test_welch_reference
+    w=certify.welch([1,2,3],[4,5,6]); self.assertAlmostEqual(w['df'],4,12); self.assertAlmostEqual(w['ci'][0],-5.266957,5)
+AssertionError: 1.054387213738869 != -5.266957 within 5 places (6.321344213738868 difference)
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.003s
+
+FAILED (failures=3)

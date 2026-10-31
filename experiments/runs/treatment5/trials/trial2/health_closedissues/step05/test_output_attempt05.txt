@@ -1,0 +1,8 @@
+test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions) ... ok
+test_missing_constant_all_missing_and_determinism (test_blame.TestBlame.test_missing_constant_all_missing_and_determinism) ... ok
+test_quantile_boundaries_are_outcome_independent (test_blame.TestBlame.test_quantile_boundaries_are_outcome_independent) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

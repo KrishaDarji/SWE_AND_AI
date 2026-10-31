@@ -1,0 +1,9 @@
+Implemented the independent Python estimator and tests in this directory.
+
+The model uses a deterministic seed-42 split by identical 22-descriptor groups, then predicts with the median effort of the five closest training rows under categorical Hamming distance. The explanation labels each neighbor as model evidence, reports the training median separately, and reveals the held-out measurement only in the retrospective audit. Inputs are whitespace-normalized categorical ratings; metadata and outcomes are excluded from proposal inputs.
+
+EZR-informed machinery: the implementation adapts EZR's summary-statistic median idea, categorical symbolic handling/normalization, deterministic seeded randomization, and distance-based comparison. It does not invoke Lua or reuse another implementation.
+
+Tests: 6 passed. Demonstration real time: 0.03 seconds (recorded by /usr/bin/time -p). The first test attempt failed one assertion because single-group splitting was not rejected; this was repaired and preserved in the logs. Error count is 1 repaired test assertion.
+
+Assumptions and limitations: missing or unseen ratings become normalized empty values and count as mismatches; correlated factors may duplicate signal; the estimate is scope-limited and is not a causal explanation, cost, interval, or deployment guarantee. Invalid/nonfinite targets are filtered while original CSV identifiers and positions are retained.

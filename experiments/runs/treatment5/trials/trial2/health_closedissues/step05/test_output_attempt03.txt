@@ -1,0 +1,29 @@
+test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions) ... FAIL
+test_missing_constant_all_missing_and_determinism (test_blame.TestBlame.test_missing_constant_all_missing_and_determinism) ... FAIL
+test_quantile_boundaries_are_outcome_independent (test_blame.TestBlame.test_quantile_boundaries_are_outcome_independent) ... ok
+
+======================================================================
+FAIL: test_known_mixed_associations_and_exclusions (test_blame.TestBlame.test_known_mixed_associations_and_exclusions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 15, in test_known_mixed_associations_and_exclusions
+    r=blame.analyze(write(rows)); self.assertEqual(r[0]["setting"], "N_estimators"); self.assertGreater(r[0]["score"], .9); self.assertEqual(r[0]["n"],12)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'criterion' != 'N_estimators'
+- criterion
++ N_estimators
+
+
+======================================================================
+FAIL: test_missing_constant_all_missing_and_determinism (test_blame.TestBlame.test_missing_constant_all_missing_and_determinism)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 18, in test_missing_constant_all_missing_and_determinism
+    a=blame.analyze(write(rows)); b=blame.analyze(write(rows)); self.assertEqual([x["setting"] for x in a],[x["setting"] for x in b]); self.assertEqual(a[-1]["n"],0); self.assertEqual(a[1]["score"],0.0)
+                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+FAILED (failures=2)

@@ -1,0 +1,21 @@
+Welch comparison: A=no_8x8dct=0, B=no_8x8dct=1; lower Performance- is better
+n_a: 576
+n_b: 576
+mean_a: 472.1355069444445
+mean_b: 451.3716857638889
+difference_a_minus_b: 20.763821180555624
+df: 1149.2372777191688
+t: 2.1711245916071182
+p_two_sided: 0.0301258621737599
+ci95_low: 1.999699018536301
+ci95_high: 39.52794334257494
+threshold: 5.0
+significant_zero: True
+point_exceeds_threshold: True
+interval_beyond_threshold: False
+practical_interpretation: practical importance uncertain
+skipped_nonfinite_or_invalid: 0
+better_group: B
+real 0.02
+user 0.01
+sys 0.00

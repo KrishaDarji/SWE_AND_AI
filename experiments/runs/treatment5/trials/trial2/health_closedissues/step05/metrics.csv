@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,5,2,model configuration and quality,blame,101,101,1,0.07,7,"3 tests; /usr/bin/time -p demonstration; EZR-inspired finite parsing, summaries, sorted deterministic handling, and outcome-independent grouping; eta-squared primary score; missing/constant handling; 7 repaired failed test assertions/errors across preserved attempts; no adjusted model; bins lose within-bin information."

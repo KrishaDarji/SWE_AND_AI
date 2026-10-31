@@ -1,0 +1,5 @@
+Demonstration command: /usr/bin/time -p /usr/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/health_closedissues/step07/source/choose_configuration.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' 100
+Attempt log stdout: runtime_attempt01.stdout
+Attempt log stderr: runtime_attempt01.stderr
+
+The preserved attempt logs contain the complete stdout and stderr captured directly from the demonstration command, including timing output.

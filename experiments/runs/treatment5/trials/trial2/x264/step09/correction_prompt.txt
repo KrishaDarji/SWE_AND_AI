@@ -1,0 +1,34 @@
+Correct Treatment 5, Trial 2, X264, Step 9.
+
+Exact directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/x264/step09/
+
+Fix these issues:
+
+1. Convert missing/nonfinite observed outcomes to None before constructing
+   output records. Preserve an explicit reason.
+   The complete result must serialize with json.dumps(..., allow_nan=False)
+   for inputs containing "nan", "inf", "-inf", and missing values.
+
+2. Count only reference groups contributing finite outcomes toward the
+   minimum-comparison requirement.
+   Distinguish selected nearby groups from usable comparison groups if needed.
+   Report the actual usable group identifiers and count.
+   Groups containing only invalid outcomes must not satisfy min_groups.
+   Keep reference selection based on settings, excluding the assessed group.
+
+Add regression tests:
+- Strict JSON serialization with nonfinite observed inputs.
+- Several nearby groups where only one has finite outcomes and min_groups=3.
+- Actual usable reference counts and identifiers.
+- Existing group-exclusion and score behavior.
+
+Keep the threshold and anomaly-scoring formula unchanged.
+Use only current Trial 2 X264 Step 9 files and previously authorized inputs.
+Do not access Trial 1 or other experiment steps.
+
+Preserve existing artifacts and logs; save this correction prompt separately.
+Run corrected tests and the real-data demonstration.
+Capture new attempt logs and update actual metrics, including earlier failures.
+Ensure main logs identify the final attempts.
+Write only inside the exact directory above.

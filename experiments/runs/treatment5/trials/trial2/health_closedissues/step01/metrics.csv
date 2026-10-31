@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,5,2,model configuration and quality,remember,50,50,1,0.13,1,"3 tests passed; /usr/bin/time -p demonstration; EZR header roles, NUM one-pass mean/variance, SYM frequency concepts adapted; whitespace normalization and nonfinite/missing handling; one repaired test expectation is preserved in attempt01 log"

@@ -1,0 +1,20 @@
+Implemented and corrected the independent Python anomaly spotter.
+
+Artifacts:
+- Source: source/spot_anomaly.py
+- Tests: tests/test_spot_anomaly.py
+- Prompt: prompt.txt; correction prompt: correction_prompt.txt
+- Test transcript: test_output.txt (preserved first attempt: test_output_attempt01.txt)
+- Runtime transcript: runtime_output.txt (preserved first attempt: runtime_output_attempt01.txt)
+- Metrics: metrics.csv
+- Run instructions: run_instructions.txt
+
+Run from the stated directory with:
+/usr/bin/python3 -m unittest discover -s tests -v
+/usr/bin/time -p /usr/bin/python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Method: each record is compared with the nearest feature configurations, excluding its own identical configuration. Expected Performance- is the median of outcomes in those independent groups. The score is absolute deviation divided by 1.4826 times the MAD, with threshold 3.5 defined before examining records. The result reports actual comparison-group counts and uses JSON null for undefined values. Lower Performance- is treated as better, but both unusually high and low values are candidates.
+
+EZR components adapted: column/data-table separation, one-pass finite numeric summaries conceptually matching NUM mid/div, and robust numeric normalization for a holdout-style comparison. No Lua or external packages are used.
+
+Tests cover normal/anomalous synthetic data, outcome isolation, duplicate-group exclusion, empty/small inputs, constants, zero variability, strict JSON for nan/inf/-inf/missing values, invalid nearby groups, and usable comparison identifiers. All 6 tests passed. The real dataset produced 0 flagged records in 1.05 seconds. Missing/nonfinite observations are converted to JSON null before output; selected and usable reference groups are distinguished, and only usable groups count toward min_groups. Flags are investigation candidates, not confirmed errors; there are no verified anomaly labels, and sparse/constant reference groups can make scores undefined.

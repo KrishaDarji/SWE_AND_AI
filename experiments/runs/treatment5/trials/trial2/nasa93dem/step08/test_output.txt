@@ -1,0 +1,10 @@
+Final test attempt: test_attempt2.stdout, test_attempt2.stderr, test_attempt2.status
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK
+exit=0
+
+Preserved earlier failed attempt: test_attempt1.stdout, test_attempt1.stderr, test_attempt1.status
+The first attempt had one synthetic-fixture error; it was repaired and retained.

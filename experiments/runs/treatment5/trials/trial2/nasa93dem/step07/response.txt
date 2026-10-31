@@ -1,0 +1,15 @@
+Implemented the independent Python solution in `source/choose.py` with 7 standard-library tests in `tests/test_choose.py`.
+
+Run command:
+
+```sh
+/usr/bin/python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step07/source/choose.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" 100
+```
+
+The demonstration passed: 31/93 records were feasible; the selected record was original CSV position 78, idX `78`, with observed Effort- 97 and Kloc+ 165. All 22 descriptor settings are reported separately from idX/centerX/YearX and outcomes. Duplicate idX values remain distinguishable by original CSV position.
+
+EZR-informed adaptations: CSV row streaming/field coercion, finite numeric validation, and deterministic sorted selection/tie ordering. The implementation does not invoke Lua or reuse prior code.
+
+Tests cover budget boundaries, maximum selection, both tie-breakers, invalid budgets, missing/nonfinite outcomes, empty/no-feasible input, metadata separation, filtering positions, and duplicate identifiers. Test output is in `test_attempt01.log`; runtime output is in `runtime_attempt01.log`; both exited successfully.
+
+Assumptions and limitations: Kloc+ is only an explicitly labeled delivered-size proxy, not business value or productivity. Selection uses observed outcomes from existing records, not predictions for unseen proposals. It does not claim settings cause outcomes or guarantee future feasibility. Negative effort is treated as non-feasible; malformed effort/size is an explicit error. No units, costs, or monetary value are invented.

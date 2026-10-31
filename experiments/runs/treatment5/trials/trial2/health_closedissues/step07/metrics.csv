@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,5,2,model configuration and quality,choose,50,50,1,0.04,0,"6 tests; /usr/bin/time -p real for demonstration subprocess; EZR-inspired CSV coercion, stable earliest-record tie break, and finite validation; cap is an N_estimators compute proxy only; observed-outcome selection; no repairs"

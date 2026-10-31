@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step04
+Python interpreter: python3 (standard library only)
+Run demonstration: /usr/bin/time -p python3 run_demo.py
+Run tests: python3 -c "import importlib.util; p='tests/test_estimator.py'; s=importlib.util.spec_from_file_location('tests',p); m=importlib.util.module_from_spec(s); s.loader.exec_module(m); [getattr(m,n)() for n in sorted(dir(m)) if n.startswith('test_')]"
+All paths above are absolute where applicable; quote paths containing spaces when invoking from a shell.

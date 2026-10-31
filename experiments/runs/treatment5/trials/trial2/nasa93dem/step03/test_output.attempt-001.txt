@@ -1,0 +1,29 @@
+test_direction_b_and_a (test_certify.CertifyTests) ... ok
+test_group_selection_and_whitespace (test_certify.CertifyTests) ... ok
+test_insufficient_missing_nonfinite (test_certify.CertifyTests) ... ok
+test_known_t_values (test_certify.CertifyTests) ... ok
+test_threshold_below_interval_and_no_significance_requirement (test_certify.CertifyTests) ... ok
+test_threshold_point_crosses_interval (test_certify.CertifyTests) ... FAIL
+test_welch_unequal_variance_reference (test_certify.CertifyTests) ... FAIL
+test_zero_variance (test_certify.CertifyTests) ... ok
+
+======================================================================
+FAIL: test_threshold_point_crosses_interval (test_certify.CertifyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step03/tests/test_certify.py", line 30, in test_threshold_point_crosses_interval
+    self.assertFalse(r["interval_above"])
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_welch_unequal_variance_reference (test_certify.CertifyTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial2/nasa93dem/step03/tests/test_certify.py", line 15, in test_welch_unequal_variance_reference
+    self.assertAlmostEqual(r["df"], 3.4137931034, places=8)
+AssertionError: 3.0478994016574417 != 3.4137931034 within 8 places (0.36589370174255853 difference)
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.008s
+
+FAILED (failures=2)

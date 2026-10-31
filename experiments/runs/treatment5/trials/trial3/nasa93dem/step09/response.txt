@@ -1,0 +1,10 @@
+Implemented and verified the independent Python NASA93 robust screen.
+
+Method: for each of Kloc+, Effort-, and Defects-, valid nonnegative values are transformed with log1p. The reference is the full-data median and interpolated quartiles; score is absolute distance from the median divided by IQR, with threshold 3.0. The assessed record is included in its reference statistics. Missing/nonfinite and negative inputs receive explicit reasons; empty references and zero IQR are handled without NaN or Infinity. Flags are investigation candidates, not confirmed errors.
+
+EZR machinery adapted: CSV row streaming concepts, sorted numeric summaries, percentile-style median/quartile summaries, and explicit zero-scale handling. No Lua is invoked.
+
+Tests: 4 passed. The real NASA93 run completed in 0.02 seconds using /usr/bin/time -p and produced 0 flagged records. Large projects can legitimately have large effort or defect counts; this marginal screen does not adjust for scope, establish detection accuracy, or estimate prediction uncertainty.
+
+Run:
+/usr/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment5/trials/trial3/nasa93dem/step09/source/spot.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'

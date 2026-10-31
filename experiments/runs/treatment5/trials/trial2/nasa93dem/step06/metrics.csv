@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,5,2,software project estimation,justify,112,112,1,0.03,1,"6 tests passed; /usr/bin/time -p real; EZR median, categorical normalization, seeded grouping, and distance adaptations; one repaired single-group validation assertion; training-only evidence and scope limitations"
