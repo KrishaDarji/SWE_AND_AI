@@ -1,0 +1,15 @@
+test_crossing_threshold_and_other_direction (test_nasa93_summary.CertifyTests.test_crossing_threshold_and_other_direction) ... ok
+test_missing_zero_variance_and_invalid_threshold (test_nasa93_summary.CertifyTests.test_missing_zero_variance_and_invalid_threshold) ... ok
+test_welch_whitespace_direction_and_reference_t (test_nasa93_summary.CertifyTests.test_welch_whitespace_direction_and_reference_t) ... ok
+test_excluded_columns_and_proposal_validation (test_nasa93_summary.GuessTests.test_excluded_columns_and_proposal_validation) ... ok
+test_grouped_reproducible_and_training_only (test_nasa93_summary.GuessTests.test_grouped_reproducible_and_training_only) ... ok
+test_insufficient_groups (test_nasa93_summary.GuessTests.test_insufficient_groups) ... ok
+test_missing_unseen_and_whitespace (test_nasa93_summary.GuessTests.test_missing_unseen_and_whitespace) ... ok
+test_known_statistics (test_nasa93_summary.SummaryTests.test_known_statistics) ... ok
+test_summaries_roles_and_directions (test_nasa93_summary.SummaryTests.test_summaries_roles_and_directions) ... ok
+test_whitespace_invalid_and_header_only (test_nasa93_summary.SummaryTests.test_whitespace_invalid_and_header_only) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.003s
+
+OK

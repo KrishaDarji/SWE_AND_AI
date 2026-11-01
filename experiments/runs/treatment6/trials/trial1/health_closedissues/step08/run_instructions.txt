@@ -1,0 +1,6 @@
+From the Step 8 directory, run:
+
+python3 -m unittest discover -s tests -v
+python3 source/analyzer.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+The implementation uses only the Python standard library. The first command runs all preserved and new tests; the second runs the current first-row demonstration.

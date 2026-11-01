@@ -1,0 +1,4 @@
+Final test log: test_output_attempt3.txt
+The final attempt was run with PYTHONPATH set to the current Step 9 source directory.
+Earlier preserved failed attempt log: test_output_attempt1.txt
+Repair attempt log: test_output_attempt2.txt

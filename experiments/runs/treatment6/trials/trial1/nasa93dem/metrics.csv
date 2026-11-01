@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,6,1,software project estimation,spot,458,70,1,0.04,3,"31 tests passed; runtime is /usr/bin/time -p real for spot demo; reused Step 8 source and tests; added 70 replacement lines by unified diff; EZR NUM mid/div/norm ideas adapted as median, MAD scale, and normalization; log1p handles skew; leave-one-out references; 3 repaired errors (one shell-wrapper failure, two initial test failures); invalid values and zero scale explicit; flags are candidates, not confirmed errors."

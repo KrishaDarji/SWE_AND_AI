@@ -1,0 +1,40 @@
+test_categorical_constants_missing_small_groups_and_invalid_effort (test_nasa93_summary.BlameTests.test_categorical_constants_missing_small_groups_and_invalid_effort) ... ok
+test_known_association_exclusions_and_determinism (test_nasa93_summary.BlameTests.test_known_association_exclusions_and_determinism) ... ok
+test_crossing_threshold_and_other_direction (test_nasa93_summary.CertifyTests.test_crossing_threshold_and_other_direction) ... ok
+test_missing_zero_variance_and_invalid_threshold (test_nasa93_summary.CertifyTests.test_missing_zero_variance_and_invalid_threshold) ... ok
+test_welch_whitespace_direction_and_reference_t (test_nasa93_summary.CertifyTests.test_welch_whitespace_direction_and_reference_t) ... ok
+test_boundaries_maximum_and_metadata_separation (test_nasa93_summary.ChooseTests.test_boundaries_maximum_and_metadata_separation) ... ok
+test_invalid_missing_nonfinite_empty_and_infeasible (test_nasa93_summary.ChooseTests.test_invalid_missing_nonfinite_empty_and_infeasible) ... ok
+test_tie_break_lower_effort_then_earliest_and_duplicate_ids (test_nasa93_summary.ChooseTests.test_tie_break_lower_effort_then_earliest_and_duplicate_ids) ... ok
+test_already_feasible_and_no_feasible (test_nasa93_summary.FixTests.test_already_feasible_and_no_feasible) ... ok
+test_held_out_outcome_does_not_change_repair_and_metadata_identifier (test_nasa93_summary.FixTests.test_held_out_outcome_does_not_change_repair_and_metadata_identifier) ... ok
+test_invalid_inputs_and_exact_descriptors (test_nasa93_summary.FixTests.test_invalid_inputs_and_exact_descriptors) ... ok
+test_minimum_change_and_both_tiebreakers_training_only (test_nasa93_summary.FixTests.test_minimum_change_and_both_tiebreakers_training_only) ... ok
+test_empty_and_short (test_nasa93_summary.FlowTests.test_empty_and_short) ... ok
+test_future_outcomes_do_not_change_earlier_prediction (test_nasa93_summary.FlowTests.test_future_outcomes_do_not_change_earlier_prediction) ... ok
+test_invalid_effort_not_history_and_missing_unseen (test_nasa93_summary.FlowTests.test_invalid_effort_not_history_and_missing_unseen) ... ok
+test_warmup_baseline_errors_and_exclusions (test_nasa93_summary.FlowTests.test_warmup_baseline_errors_and_exclusions) ... ok
+test_excluded_columns_and_proposal_validation (test_nasa93_summary.GuessTests.test_excluded_columns_and_proposal_validation) ... ok
+test_grouped_reproducible_and_training_only (test_nasa93_summary.GuessTests.test_grouped_reproducible_and_training_only) ... ok
+test_insufficient_groups (test_nasa93_summary.GuessTests.test_insufficient_groups) ... ok
+test_missing_unseen_and_whitespace (test_nasa93_summary.GuessTests.test_missing_unseen_and_whitespace) ... ok
+test_frozen_explanation_excludes_metadata_and_audits_later (test_nasa93_summary.JustifyTests.test_frozen_explanation_excludes_metadata_and_audits_later) ... ok
+test_future_outcome_does_not_change_frozen_report (test_nasa93_summary.JustifyTests.test_future_outcome_does_not_change_frozen_report) ... ok
+test_insufficient_finite_targets (test_nasa93_summary.JustifyTests.test_insufficient_finite_targets) ... ok
+test_invalid_targets_before_selected_and_unseen_fallback (test_nasa93_summary.JustifyTests.test_invalid_targets_before_selected_and_unseen_fallback) ... ok
+test_invalid_targets_excluded_and_insufficient_groups (test_nasa93_summary.RaceTests.test_invalid_targets_excluded_and_insufficient_groups) ... ok
+test_paired_arithmetic_and_labels (test_nasa93_summary.RaceTests.test_paired_arithmetic_and_labels) ... ok
+test_reproducible_group_separation_and_identifiers (test_nasa93_summary.RaceTests.test_reproducible_group_separation_and_identifiers) ... ok
+test_training_mean_baseline_and_fresh_outcome_independence (test_nasa93_summary.RaceTests.test_training_mean_baseline_and_fresh_outcome_independence) ... ok
+test_invalid_negative_missing_nonfinite_and_strict_json (test_nasa93_summary.SpotTests.test_invalid_negative_missing_nonfinite_and_strict_json) ... ok
+test_small_empty_constant_and_zero_scale (test_nasa93_summary.SpotTests.test_small_empty_constant_and_zero_scale) ... ok
+test_threshold_validation (test_nasa93_summary.SpotTests.test_threshold_validation) ... ok
+test_unusual_values_counts_and_duplicate_identifiers (test_nasa93_summary.SpotTests.test_unusual_values_counts_and_duplicate_identifiers) ... ok
+test_known_statistics (test_nasa93_summary.SummaryTests.test_known_statistics) ... ok
+test_summaries_roles_and_directions (test_nasa93_summary.SummaryTests.test_summaries_roles_and_directions) ... ok
+test_whitespace_invalid_and_header_only (test_nasa93_summary.SummaryTests.test_whitespace_invalid_and_header_only) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.009s
+
+OK

@@ -1,0 +1,3 @@
+Final demonstration attempt: runtime_attempt_01.log
+The complete stdout/stderr capture, including /usr/bin/time -p output, is in runtime_attempt_01.log.
+Result: budget_used=20; recommended_identifier=4; outcome=260.267; audit observed_minimum=244.23; gap=16.037000000000006; real=0.04 seconds.

@@ -1,0 +1,173 @@
+You are running Treatment 6, Trial 1, Dataset 3, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: race
+- Current requirement: Compare our configuration selector against a historical baseline.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step09/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step09/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step10/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent health_closedissues directory.
+- Write only inside the current Step 10 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 9 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement race only.
+
+Implementation:
+1. Reuse the existing choose selector with N_estimators <= 100.
+   Its selection order remains:
+   lowest MRE-, highest ACC+, highest PRED40+, then earliest original
+   CSV row position.
+
+2. Compare it with a baseline that samples one eligible historical row
+   uniformly at random.
+   Use exactly the same eligibility and compute-proxy cap for both:
+   complete configuration, finite numeric settings, nonmissing criterion,
+   nonnegative N_estimators <= 100, and three finite outcomes.
+
+3. Run baseline selections with seeds 42 through 51 inclusive.
+   Use a fresh local random.Random(seed) for each seed.
+   Preserve original row positions, including when rows are excluded.
+   The deterministic selector may return the same row for every seed.
+
+4. Report raw, valid, and feasible row counts and the selection rules.
+   For every seed, report both selected rows' original positions,
+   complete configurations, and all three outcomes.
+
+5. Define the primary paired difference as:
+   baseline MRE- minus selector MRE-.
+   Positive values favor the selector.
+   Declare a fixed finite, nonnegative tie tolerance before examining results.
+   Report per-seed difference and win/tie/loss classification, followed by
+   mean difference, median difference, and total wins, ties, and losses.
+   Report ACC+ and PRED40+ differences with explicit direction labels.
+
+6. Explain the unequal information available:
+   the selector inspects historical outcomes across feasible rows, while
+   the baseline samples one row.
+   This is retrospective benchmarking, not an equal-evaluation-budget
+   search experiment or proof of superior future performance.
+   N_estimators is a compute proxy, not measured runtime or evaluation cost.
+
+7. Explain that these seeds are repeated random baseline selections from
+   one historical dataset, not independent LLM trials or new datasets.
+   Do not invent statistical significance, confidence, or generalization
+   guarantees from the win count.
+
+8. Handle empty input, no feasible rows, invalid caps, invalid tolerance,
+   and small feasible sets explicitly.
+   Reuse existing parsing, eligibility, selection, and summary machinery
+   where appropriate; keep selector and baseline populations consistent.
+
+9. Provide a runnable demonstration using cap 100 and seeds 42–51.
+   Preserve earlier supported demonstrations.
+
+Tests:
+- Preserve and run all previous tests.
+- Verify reproducibility with local random generators.
+- Verify both methods use exactly the same eligible population and cap.
+- Test original positions and complete result retention after exclusions.
+- Test positive, negative, and tolerance-boundary classification directly.
+- Verify mean/median differences and win/tie/loss totals independently.
+- Test a single feasible row, empty/no-feasible inputs, invalid parameters,
+  and secondary-outcome direction labels.
+- Do not require every baseline seed to select a different row.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use the absolute dataset path in run instructions.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=10, treatment=6, trial=1, skill=race.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 9 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the current
+  race demonstration only, excluding tests and earlier demonstrations.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, reuse, LOC method, EZR influence,
+  assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

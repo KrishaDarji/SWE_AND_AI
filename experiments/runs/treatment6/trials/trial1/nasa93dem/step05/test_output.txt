@@ -1,0 +1,21 @@
+test_categorical_constants_missing_small_groups_and_invalid_effort (test_nasa93_summary.BlameTests) ... ok
+test_known_association_exclusions_and_determinism (test_nasa93_summary.BlameTests) ... ok
+test_crossing_threshold_and_other_direction (test_nasa93_summary.CertifyTests) ... ok
+test_missing_zero_variance_and_invalid_threshold (test_nasa93_summary.CertifyTests) ... ok
+test_welch_whitespace_direction_and_reference_t (test_nasa93_summary.CertifyTests) ... ok
+test_empty_and_short (test_nasa93_summary.FlowTests) ... ok
+test_future_outcomes_do_not_change_earlier_prediction (test_nasa93_summary.FlowTests) ... ok
+test_invalid_effort_not_history_and_missing_unseen (test_nasa93_summary.FlowTests) ... ok
+test_warmup_baseline_errors_and_exclusions (test_nasa93_summary.FlowTests) ... ok
+test_excluded_columns_and_proposal_validation (test_nasa93_summary.GuessTests) ... ok
+test_grouped_reproducible_and_training_only (test_nasa93_summary.GuessTests) ... ok
+test_insufficient_groups (test_nasa93_summary.GuessTests) ... ok
+test_missing_unseen_and_whitespace (test_nasa93_summary.GuessTests) ... ok
+test_known_statistics (test_nasa93_summary.SummaryTests) ... ok
+test_summaries_roles_and_directions (test_nasa93_summary.SummaryTests) ... ok
+test_whitespace_invalid_and_header_only (test_nasa93_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.007s
+
+OK

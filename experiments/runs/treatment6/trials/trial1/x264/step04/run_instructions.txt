@@ -1,0 +1,15 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step04
+Python interpreter: /usr/bin/python3
+All paths below are quoted because the workspace path contains spaces.
+
+Run tests:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step04"
+/usr/bin/python3 -m unittest discover -s tests -v
+
+Run Step 4 flow:
+/usr/bin/python3 source/x264_flow.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Run preserved demonstrations:
+/usr/bin/python3 source/x264_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+/usr/bin/python3 source/x264_predict.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+/usr/bin/python3 source/x264_certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"

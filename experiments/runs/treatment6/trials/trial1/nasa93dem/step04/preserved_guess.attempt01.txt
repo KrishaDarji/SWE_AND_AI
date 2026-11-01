@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04/source/nasa93_summary.py", line 228, in <module>
+    if __name__ == "__main__": main()
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04/source/nasa93_summary.py", line 225, in main
+    with open(argv[1], encoding="utf-8") as f: proposal = json.load(f)
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/nonexistent-proposal.json'

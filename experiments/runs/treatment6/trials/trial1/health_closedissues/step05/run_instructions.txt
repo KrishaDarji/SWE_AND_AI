@@ -1,0 +1,4 @@
+Run from the repository root:
+
+python3 -m unittest discover -s SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step05/tests -v
+/usr/bin/time -p python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step05/source/analyzer.py SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv

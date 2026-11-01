@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,6,1,model configuration and quality,certify,170,46,1,0.04,0,"9 tests; runtime is current demonstration only; copied Step 2 and extended; LOC counts nonblank noncomment source lines, added diff lines; EZR informed streaming/finite-value handling and mean summaries; Welch t via incomplete-beta continued fraction; ACC+ and PRED40+ descriptive only; no threshold means practical importance undetermined"

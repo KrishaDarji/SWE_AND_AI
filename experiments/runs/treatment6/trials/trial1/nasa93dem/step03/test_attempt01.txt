@@ -1,0 +1,24 @@
+test_crossing_threshold_and_other_direction (test_nasa93_summary.CertifyTests.test_crossing_threshold_and_other_direction) ... FAIL
+test_missing_zero_variance_and_invalid_threshold (test_nasa93_summary.CertifyTests.test_missing_zero_variance_and_invalid_threshold) ... ok
+test_welch_whitespace_direction_and_reference_t (test_nasa93_summary.CertifyTests.test_welch_whitespace_direction_and_reference_t) ... ok
+test_excluded_columns_and_proposal_validation (test_nasa93_summary.GuessTests.test_excluded_columns_and_proposal_validation) ... ok
+test_grouped_reproducible_and_training_only (test_nasa93_summary.GuessTests.test_grouped_reproducible_and_training_only) ... ok
+test_insufficient_groups (test_nasa93_summary.GuessTests.test_insufficient_groups) ... ok
+test_missing_unseen_and_whitespace (test_nasa93_summary.GuessTests.test_missing_unseen_and_whitespace) ... ok
+test_known_statistics (test_nasa93_summary.SummaryTests.test_known_statistics) ... ok
+test_summaries_roles_and_directions (test_nasa93_summary.SummaryTests.test_summaries_roles_and_directions) ... ok
+test_whitespace_invalid_and_header_only (test_nasa93_summary.SummaryTests.test_whitespace_invalid_and_header_only) ... ok
+
+======================================================================
+FAIL: test_crossing_threshold_and_other_direction (test_nasa93_summary.CertifyTests.test_crossing_threshold_and_other_direction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step03/tests/test_nasa93_summary.py", line 60, in test_crossing_threshold_and_other_direction
+    out=certify(p, 5); self.assertTrue(out["point_estimate_exceeds_threshold"]); self.assertFalse(out["interval_entirely_practically_below_A"])
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.004s
+
+FAILED (failures=1)

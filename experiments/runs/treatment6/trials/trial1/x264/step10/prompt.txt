@@ -1,0 +1,184 @@
+You are running Treatment 6, Trial 1, Dataset 1, Step 10 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: Yes
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: race
+- Current requirement: Compare our tuner against a baseline search strategy.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step09/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step09/tests/
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step10/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Reuse and extend the previous Treatment 6, Trial 1, X264 implementation.
+Preserve remember, guess, certify, flow, blame, justify, choose, fix, and spot
+behavior and tests while adding race.
+Reuse existing machinery where appropriate instead of rebuilding it independently.
+Copy the authorized previous source and tests into the current step,
+then extend that snapshot. Keep the current step independently runnable.
+Do not modify previous files or import application code from previous directories.
+
+You may read only:
+- The specified X264 dataset.
+- The two authorized EZR source files.
+- The previous source and tests explicitly listed above.
+- Files created in the current Treatment 6 Trial 1 X264 Step 10 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+unrelated steps, other trials, other datasets, other treatments,
+root-level implementations, Git history, or previous chats.
+In particular, do not refer to Treatment 5 implementations.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Compare the current tuner/chooser against uniform random search
+  without replacement.
+- Reuse the existing selection machinery where appropriate and disclose
+  both strategies and their settings.
+- Fix both strategies before inspecting comparative outcomes.
+- Use budget 20 for each strategy and seeds 42 through 51.
+- Give each strategy a fresh counted evaluation callback for every seed.
+- Keep candidate order, deduplication rules, available information, and budgets equal.
+- Interpret budget as distinct benchmark evaluations, not money or runtime.
+- Permit selection access only to settings and outcomes revealed by callback calls.
+- Fit any predictive components only on already evaluated data.
+- Prevent repeated evaluations of identical configurations.
+- Recommend the lowest measured Performance- among each strategy's evaluated candidates.
+- Freeze recommendations before any retrospective full-dataset audit.
+- Report each seed, evaluation order, budget used, recommended identifier,
+  full configuration, measured Performance-, and optional retrospective gap.
+- Clearly define record identifiers and deterministic tie-breaking.
+- Define difference as tuner Performance- minus baseline Performance-.
+  Negative beyond tolerance means tuner win; positive means tuner loss.
+- Fix tie tolerance before examining results and report paired arithmetic,
+  descriptive wins/ties/losses, and summary differences.
+- If the strategies are equivalent, disclose that fact.
+  Identical results are valid; do not manufacture a winner.
+- Do not claim statistical superiority or invent the project's final "same"
+  procedure. Mark that analysis pending if unavailable.
+- These seeded repetitions are benchmark repeats, not independent LLM trials.
+- Handle invalid budgets, insufficient candidates, duplicates,
+  and invalid/nonfinite evaluations explicitly.
+- Treat lower Performance- as better; do not invent units or quality measures.
+- Preserve earlier skills and their runnable demonstrations.
+- Accept the dataset path as a command-line argument.
+- State assumptions and limitations.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 10 and preserved earlier behavior.
+3. Commands to run the tests and implementations.
+4. A short explanation of what was reused, changed, and added,
+   including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Run all preserved and new tests.
+Test equal budgets, fresh callbacks, reproducibility, hidden-outcome isolation,
+duplicate prevention, paired arithmetic, known win/loss/tie cases,
+and invalid inputs.
+Verify changing unevaluated outcomes cannot affect a strategy's selection.
+Allow equivalent strategies to return identical results.
+Keep synthetic fixtures inside this Step 10 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Treatment 6 Trial 1 X264 Step 10 output directory.
+
+Run the complete test suite, Step 10 demonstration, and preserved earlier demos.
+Record actual measured results. Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 10
+- treatment: 6
+- trial: 1
+- domain: video encoding
+- skill: race
+- total_loc: all implementation Python lines in the current source snapshot,
+  including preserved functionality and translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and supplied Lua reference files.
+- new_loc: added application lines relative to the authorized Step 9 source,
+  using the same counting convention. Count added replacement lines;
+  do not use net LOC growth or count unchanged copied lines as new.
+  Document the comparison method and file mapping.
+- test_pass: 1 if the complete preserved and new test suite succeeds,
+  otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the Step 10
+  demonstration subprocess, excluding tests and earlier demonstrations.
+  Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, reused/added machinery, LOC comparison
+  method, EZR adaptations, strategy settings, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Do not modify the dataset, Step 9 files, or other repository files.
+Write only inside the exact Treatment 6 Trial 1 X264 Step 10 output directory specified above.

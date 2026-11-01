@@ -1,0 +1,29 @@
+E......................F.....
+======================================================================
+ERROR: test_x264_blame (unittest.loader._FailedTest.test_x264_blame)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_x264_blame
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step09/tests/test_x264_blame.py", line 7, in <module>
+    from x264_blame import blame
+ModuleNotFoundError: No module named 'x264_blame'
+
+
+======================================================================
+FAIL: test_normal_and_anomalous (test_x264_spot.SpotTest.test_normal_and_anomalous)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step09/tests/test_x264_spot.py", line 13, in test_normal_and_anomalous
+    self.assertEqual(result["flagged_record_count"], 1); self.assertEqual(result["records"][-1]["comparison_group_count"], 4)
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 4
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.007s
+
+FAILED (failures=1, errors=1)

@@ -1,0 +1,3 @@
+The preserved-demo shell wrapper failed after executing its commands because zsh rejected the assignment to the read-only variable `status`:
+
+zsh:1: read-only variable: status

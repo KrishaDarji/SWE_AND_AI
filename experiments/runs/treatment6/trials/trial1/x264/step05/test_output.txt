@@ -1,0 +1,4 @@
+Complete test suite result is in test_attempt02.stdout and test_attempt02.stderr.
+Preserved and new tests: 16 tests, all passed (exit status 0).
+The repaired failed attempt is preserved in test_attempt01.stdout and test_attempt01.stderr; it contained one unexpected assertion failure caused by categorical levels being treated as numeric.
+Commands included unittest discovery over tests/ with PYTHONPATH=source.

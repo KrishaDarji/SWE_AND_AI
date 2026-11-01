@@ -1,0 +1,17 @@
+Implemented Treatment 6, Trial 1, NASA93 Step 9.
+
+Files:
+- source/nasa93_summary.py: complete Python implementation, including preserved skills and new spot().
+- tests/test_nasa93_summary.py: 31 preserved and Step 9 tests.
+- test_output.txt and runtime_output.txt: final captured logs; attempt-labeled logs are retained.
+- metrics.csv, run_instructions.txt, prompt.txt, and preserved_demos-attempt-001.txt.
+
+spot screens Kloc+, Effort-, and Defects- using leave-one-out log1p values, median center, and 1.4826*MAD robust scale. Threshold defaults to 3.5. It reports observed/reference values, scores, thresholds, reasons, identifiers, CSV positions, unique flagged records, and per-outcome counts. Zero scale produces JSON null scores with an explicit reason; missing, nonfinite, and negative values are explicitly reported. Duplicate identifiers remain distinguishable by CSV position.
+
+EZR-informed adaptations: NUM mid/div/norm and streaming numeric-summary ideas informed median, robust dispersion, and normalization. No Lua or external package is used.
+
+Verification: all 31 tests passed; preserved demonstrations passed; the NASA93 spot demonstration passed with real time 0.04 seconds. Current source LOC is 458; added LOC is 70 by unified diff against Step 8. Metrics records three repaired errors: one shell-wrapper failure and two initial test-fixture failures. Flags are investigation candidates, not confirmed errors. Large projects may legitimately have large effort or defect counts; this marginal screen is not scope-adjusted, does not establish detection accuracy without labels, and is not prediction uncertainty or causal explanation.
+
+Run:
+/usr/bin/env python3 -m unittest discover -s tests -v
+/usr/bin/python3 source/nasa93_summary.py --spot "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"

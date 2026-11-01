@@ -1,0 +1,7 @@
+From the repository root, run:
+
+python3 -m unittest discover -s 'SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step10/tests' -v
+python3 'SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step10/source/analyzer.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 'SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step10/source/analyzer.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --race
+
+The final command runs cap 100 with seeds 42 through 51 inclusive. Only Python standard-library modules are used.

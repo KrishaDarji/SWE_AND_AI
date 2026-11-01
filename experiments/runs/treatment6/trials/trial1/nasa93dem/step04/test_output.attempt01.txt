@@ -1,0 +1,29 @@
+....FFF.......
+======================================================================
+FAIL: test_future_outcomes_do_not_change_earlier_prediction (test_nasa93_summary.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04/tests/test_nasa93_summary.py", line 86, in test_future_outcomes_do_not_change_earlier_prediction
+    x,y=flow(a),flow(b); self.assertEqual(x["records"][2]["prediction"],y["records"][2]["prediction"])
+AssertionError: 15.0 != 509.5
+
+======================================================================
+FAIL: test_invalid_effort_not_history_and_missing_unseen (test_nasa93_summary.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04/tests/test_nasa93_summary.py", line 82, in test_invalid_effort_not_history_and_missing_unseen
+    self.assertEqual(out["scored_count"],2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_warmup_baseline_errors_and_exclusions (test_nasa93_summary.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04/tests/test_nasa93_summary.py", line 76, in test_warmup_baseline_errors_and_exclusions
+    self.assertEqual(out["records"][2]["absolute_error"],15.0); self.assertEqual(out["records"][3]["prediction"],15.0)
+AssertionError: 20.0 != 15.0
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.005s
+
+FAILED (failures=3)

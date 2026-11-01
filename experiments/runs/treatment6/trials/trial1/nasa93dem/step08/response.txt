@@ -1,0 +1,9 @@
+Implemented Step 8 in [nasa93_summary.py](/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step08/source/nasa93_summary.py).
+
+The new `fix()` function validates complete 22-descriptor proposals and finite nonnegative budgets, fits only on the reproducible seed-42 grouped training partition, deduplicates configurations observed in training rows, predicts feasibility with the existing categorical exact-group mean model, and applies minimum changes → predicted effort → earliest training CSV record tie-breaking. It reports original/candidate descriptors, changed fields, identifiers, estimates, budget, and feasibility, including no-repair-needed and no-feasible-repair outcomes.
+
+Preserved Step 7 behavior remains runnable. The implementation adapts EZR’s categorical symbol/group summaries, seeded stable grouping, missing-value normalization, and deterministic ordering. No third-party packages or Lua runtime are used.
+
+Verification: 27 tests passed. The demonstration used the earliest held-out CSV record and budget 100; it returned `repair-suggested`, with estimated original effort 596.7185714285715, candidate effort 60.0, two changed descriptors, and candidate identifier `18`. `/usr/bin/time -p` measured `real 0.02` seconds.
+
+Artifacts, captured attempts, complete source, tests, and commands are in the exact Step 8 directory. Known limitations: candidates are hypothetical, descriptors may not be actionable, observed combinations may not preserve scope, change count is not cost or risk, and model differences are neither causal improvements nor guaranteed savings.

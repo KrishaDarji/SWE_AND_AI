@@ -1,0 +1,106 @@
+{
+  "budget": 100.0,
+  "candidate_csv_position": 18,
+  "candidate_descriptors": {
+    "acap": "h",
+    "apex": "h",
+    "cplx": "h",
+    "data": "l",
+    "docu": "n",
+    "flex": "h",
+    "ltex": "h",
+    "pcap": "h",
+    "pcon": "n",
+    "plex": "n",
+    "pmat": "n",
+    "prec": "h",
+    "pvol": "l",
+    "rely": "n",
+    "resl": "h",
+    "ruse": "n",
+    "sced": "n",
+    "site": "n",
+    "stor": "n",
+    "team": "vh",
+    "time": "n",
+    "tool": "n"
+  },
+  "candidate_estimated_effort": 60.0,
+  "candidate_record_identifier": "18",
+  "candidate_source": "distinct descriptor configurations in training rows only",
+  "change_count": 2,
+  "changed_fields": [
+    {
+      "field": "stor",
+      "new": "n",
+      "old": "xh"
+    },
+    {
+      "field": "pcap",
+      "new": "h",
+      "old": "n"
+    }
+  ],
+  "limitations": [
+    "change count is a proxy, not monetary cost or operational risk",
+    "candidates are hypothetical; descriptors may not be actionable",
+    "observed combinations may not preserve project scope",
+    "model differences are not causal improvements or guaranteed savings"
+  ],
+  "model": "training-only categorical exact-group mean; unseen groups use training mean",
+  "original_descriptors": {
+    "acap": "h",
+    "apex": "h",
+    "cplx": "h",
+    "data": "l",
+    "docu": "n",
+    "flex": "h",
+    "ltex": "h",
+    "pcap": "n",
+    "pcon": "n",
+    "plex": "n",
+    "pmat": "n",
+    "prec": "h",
+    "pvol": "l",
+    "rely": "n",
+    "resl": "h",
+    "ruse": "n",
+    "sced": "n",
+    "site": "n",
+    "stor": "xh",
+    "team": "vh",
+    "time": "n",
+    "tool": "n"
+  },
+  "original_estimated_effort": 596.7185714285715,
+  "predicted_feasible": true,
+  "predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "seed": 42,
+  "status": "repair-suggested"
+}
+real 0.02
+user 0.01
+sys 0.00

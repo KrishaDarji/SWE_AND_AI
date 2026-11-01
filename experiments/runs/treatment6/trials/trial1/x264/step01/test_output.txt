@@ -1,0 +1,4 @@
+Final test attempt (actual captured files):
+stdout: test_attempt01.stdout
+stderr: test_attempt01.stderr
+Result: 4 tests passed; exit code 0.

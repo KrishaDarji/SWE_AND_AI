@@ -1,0 +1,313 @@
+{
+  "pre_audit": {
+    "csv_position": 20,
+    "estimate": 596.7185714285715,
+    "explanation": {
+      "group_key": [
+        "h",
+        "h",
+        "h",
+        "vh",
+        "n",
+        "n",
+        "l",
+        "h",
+        "n",
+        "n",
+        "n",
+        "xh",
+        "l",
+        "h",
+        "n",
+        "n",
+        "h",
+        "n",
+        "h",
+        "n",
+        "n",
+        "n"
+      ],
+      "historical_associations_training_only": [
+        {
+          "descriptor": "time",
+          "eta_squared": 0.48811052910836267,
+          "group_means": {
+            "h": 641.1818181818181,
+            "n": 197.9268292682927,
+            "vh": 288.82,
+            "xh": 2964.2625
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "rely",
+          "eta_squared": 0.4350248792070883,
+          "group_means": {
+            "h": 400.4516129032258,
+            "l": 192.0,
+            "n": 210.70666666666665,
+            "vh": 2855.3875
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "plex",
+          "eta_squared": 0.356945926310522,
+          "group_means": {
+            "h": 1566.06875,
+            "l": 393.27272727272725,
+            "n": 186.36190476190475,
+            "vl": 4560.0
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "cplx",
+          "eta_squared": 0.32201344005093413,
+          "group_means": {
+            "h": 198.8166666666667,
+            "l": 582.5,
+            "n": 239.5,
+            "vh": 1872.2363636363634,
+            "xh": 1901.9
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "stor",
+          "eta_squared": 0.31692645580651263,
+          "group_means": {
+            "h": 798.375,
+            "n": 194.7609756097561,
+            "vh": 609.2307692307693,
+            "xh": 2434.7625
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "data",
+          "eta_squared": 0.17814928547487574,
+          "group_means": {
+            "h": 1632.0214285714285,
+            "l": 270.25,
+            "n": 437.6190476190476,
+            "vh": 309.2857142857143
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "acap",
+          "eta_squared": 0.0994246227431659,
+          "group_means": {
+            "h": 934.6575,
+            "n": 148.70833333333334,
+            "vh": 135.83333333333334
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "pcap",
+          "eta_squared": 0.08946991656550844,
+          "group_means": {
+            "h": 1036.8724137931035,
+            "n": 284.6388888888889,
+            "vh": 290.8
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "pvol",
+          "eta_squared": 0.08812303889238135,
+          "group_means": {
+            "h": 659.75,
+            "l": 379.06,
+            "n": 1261.14375
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "sced",
+          "eta_squared": 0.067691252120469,
+          "group_means": {
+            "l": 213.86206896551724,
+            "n": 867.519512195122
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "pmat",
+          "eta_squared": 0.03281377472427456,
+          "group_means": {
+            "h": 753.7805555555556,
+            "l": 732.2666666666668,
+            "n": 265.77272727272725
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "apex",
+          "eta_squared": 0.029458969580284093,
+          "group_means": {
+            "h": 796.6151515151515,
+            "n": 342.5,
+            "vh": 654.6666666666666
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "ltex",
+          "eta_squared": 0.018184671154770415,
+          "group_means": {
+            "h": 667.6368421052632,
+            "l": 693.0,
+            "n": 194.88888888888889,
+            "vl": 287.5
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "tool",
+          "eta_squared": 0.0012471333775303745,
+          "group_means": {
+            "h": 774.25,
+            "n": 585.959090909091
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "prec",
+          "eta_squared": 0.0,
+          "group_means": {
+            "h": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "flex",
+          "eta_squared": 0.0,
+          "group_means": {
+            "h": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "resl",
+          "eta_squared": 0.0,
+          "group_means": {
+            "h": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "team",
+          "eta_squared": 0.0,
+          "group_means": {
+            "vh": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "ruse",
+          "eta_squared": 0.0,
+          "group_means": {
+            "n": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "docu",
+          "eta_squared": 0.0,
+          "group_means": {
+            "n": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "pcon",
+          "eta_squared": 0.0,
+          "group_means": {
+            "n": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        },
+        {
+          "descriptor": "site",
+          "eta_squared": 0.0,
+          "group_means": {
+            "n": 596.7185714285715
+          },
+          "label": "historical association; training rows only"
+        }
+      ],
+      "label": "training mean fallback for unseen group",
+      "matched_training_evidence": []
+    },
+    "limitations": [
+      "associations are marginal and not additive local contributions or causal effects",
+      "missing or unseen descriptor groups use the training mean",
+      "correlated descriptors can share explanatory information",
+      "scope, size, and deployment behavior are not inferred; Effort- units are not invented"
+    ],
+    "predictors": [
+      "prec",
+      "flex",
+      "resl",
+      "team",
+      "pmat",
+      "rely",
+      "data",
+      "cplx",
+      "ruse",
+      "docu",
+      "time",
+      "stor",
+      "pvol",
+      "acap",
+      "pcap",
+      "pcon",
+      "apex",
+      "plex",
+      "ltex",
+      "tool",
+      "site",
+      "sced"
+    ],
+    "proposal": {
+      "acap": "h",
+      "apex": "h",
+      "cplx": "h",
+      "data": "l",
+      "docu": "n",
+      "flex": "h",
+      "ltex": "h",
+      "pcap": "n",
+      "pcon": "n",
+      "plex": "n",
+      "pmat": "n",
+      "prec": "h",
+      "pvol": "l",
+      "rely": "n",
+      "resl": "h",
+      "ruse": "n",
+      "sced": "n",
+      "site": "n",
+      "stor": "xh",
+      "team": "vh",
+      "time": "n",
+      "tool": "n"
+    },
+    "record_identifier": "20",
+    "seed": 42,
+    "test_count": 23,
+    "train_count": 70,
+    "training_reference": {
+      "label": "training mean",
+      "value": 596.7185714285715
+    }
+  },
+  "retrospective_audit": {
+    "absolute_error": 536.7185714285715,
+    "label": "retrospective audit; measured after freeze",
+    "observed_effort": 60.0
+  }
+}

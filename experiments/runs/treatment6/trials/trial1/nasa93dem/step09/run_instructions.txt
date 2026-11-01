@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step09
+Python interpreter: /usr/bin/env python3
+Test command: /usr/bin/env python3 -m unittest discover -s tests -v
+Spot command: /usr/bin/python3 source/nasa93_summary.py --spot "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+Preserved demos: see preserved_demos-attempt-001.txt; all commands use quoted absolute paths where spaces occur.
+The test and runtime logs are test_output.txt and runtime_output.txt; attempt-labeled originals are retained.

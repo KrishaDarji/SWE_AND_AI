@@ -1,0 +1,18 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04
+
+Python interpreter:
+/usr/bin/python3 (standard library only)
+
+Commands:
+/usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+/usr/bin/python3 source/nasa93_summary.py --flow '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+/usr/bin/python3 source/nasa93_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+/usr/bin/python3 source/nasa93_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' proposal.json
+/usr/bin/python3 source/nasa93_summary.py --certify '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' 10
+
+All paths containing spaces are quoted. The successful Step 4 suite and flow logs are
+test_output.txt and runtime_output.txt; attempt-labeled logs preserve earlier attempts.
+Runtime is measured with /usr/bin/time -p real for the flow subprocess only.
+LOC compares the copied Step 4 source to the authorized Step 3 source by counting
+nonblank, non-comment Python lines; added LOC counts diff-added replacement lines.

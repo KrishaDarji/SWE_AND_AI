@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,6,1,model configuration and quality,spot,442,50,1,0.12,1,"28 tests passed; runtime is current demonstration only; copied Step 8 machinery and tests; new LOC is added/replacement diff lines; median/MAD influenced by robust descriptive ideas in authorized EZR reference; one failed ancillary JSON inspection preserved, then corrected; self-inclusive marginal screen, no labeled ground truth"

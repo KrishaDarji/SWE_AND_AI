@@ -1,0 +1,23 @@
+Implemented Step 3 certification in `source/x264_certify.py`, preserving the copied Step 2 predictor and summary modules and tests.
+
+The fixed comparison is `no_8x8dct=0` (A) versus `no_8x8dct=1` (B), using `Performance-` where lower is better. On the supplied dataset:
+
+- A: n=576, mean=472.1355069444448
+- B: n=576, mean=451.3716857638889
+- A minus B: 20.763821180555908
+- Welch t=2.171124591607148, df=1149.2372777191686, two-sided p=0.03012586217372837
+- 95% Welch interval: [1.9996990185404613, 39.527943342571355]
+
+The point estimate exceeds the illustrative threshold 5.0, but the interval crosses that threshold, so practical importance is uncertain. The statistical evidence is separate from the practical-threshold interpretation. This does not establish equivalence or measurement noise: rows are different configurations, not repeated-run measurements, so configuration variation cannot establish measurement noise or causal effects.
+
+Reused Step 2 remember/guess behavior and runnable demonstrations. The EZR reference informed the one-pass Welford-style numeric summary and finite-value/missing-value handling. Step 3 adds fixed-group extraction, Welch unequal-variance inference, Satterthwaite degrees of freedom, two-sided p-values, 95% intervals, threshold interpretation, and explicit invalid-input handling. The Student-t CDF uses the regularized incomplete beta function with continued fractions; quantiles use fixed bisection. Reference checks include t(df=4) 0.975 = 2.7764451051978 and CDF(0)=0.5.
+
+Run:
+
+```text
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step03"
+python3 -m unittest discover -s tests -v
+/usr/bin/time -p python3 source/x264_certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+```
+
+The complete suite passed: 11 tests. The demonstration took real 0.02 seconds. Required artifacts are in the exact Step 3 directory, including attempt-labeled logs and metrics.csv.

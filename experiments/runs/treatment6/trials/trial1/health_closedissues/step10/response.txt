@@ -1,0 +1,9 @@
+Implemented Step 10 in the required directory.
+
+Reused the complete Step 9 analyzer and tests, copying them into the Step 10 snapshot. Added compare_baseline(), shared eligibility/cap handling, uniformly sampled historical baselines using fresh random.Random(seed), original-position retention, fixed tolerance classification, paired summary statistics, secondary-outcome direction labels, explicit empty/no-feasible/invalid-parameter handling, and the --race demonstration. The selector remains ordered by lowest MRE-, highest ACC+, highest PRED40+, then earliest original CSV position.
+
+The EZR reference informed stable tie-preserving ordering and isolated seeded randomness. No Lua or third-party package was used.
+
+Validation: 31 tests passed. The preserved demonstration and race demonstration both exited 0. The race demonstration used cap 100 and seeds 42–51; measured /usr/bin/time -p real time was 0.07 seconds. Its output and the complete test output are captured in runtime_output.txt and test_output.txt. The first failed shell capture is preserved in test_output_attempt1.txt; it was a command-wrapper error before the suite ran and is counted in metrics.csv.
+
+Commands are in run_instructions.txt. Known limitations: this is retrospective benchmarking on one historical dataset; the selector examines outcomes across feasible rows while the baseline samples one row, so it is not an equal-budget search experiment and does not prove future performance. Seeds are repeated baseline selections, not independent LLM trials or new datasets. N_estimators is only a compute proxy, not measured runtime or evaluation cost. No significance, confidence, or generalization guarantee is inferred.

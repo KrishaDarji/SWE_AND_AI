@@ -1,0 +1,6 @@
+Retrospective selection using observed outcomes (cap=100)
+{'status': 'defined', 'retrospective': True, 'position_convention': 'one-based original CSV data-row position', 'row_count': 10000, 'raw_row_count': 10000, 'valid_row_count': 10000, 'feasible_row_count': 4877, 'invalid_exclusion_count': 0, 'over_budget_exclusion_count': 5123, 'cap': 100, 'selected_proxy': 'N_estimators', 'selection_rule': ['lowest MRE-', 'highest ACC+', 'highest PRED40+', 'earliest original CSV row position'], 'feasibility': 'all five settings and three outcomes finite/complete; nonnegative N_estimators <= cap', 'recommendation': {'position': 32, 'configuration': {'N_estimators': 10.0, 'criterion': 'squared_error', 'Min_sample_leaves': 1.0, 'Min_impurity_decrease': 6.75, 'Max_depth': 5.0}, 'outcomes': {'MRE-': 0.0, 'ACC+': 0.7901313681512335, 'PRED40+': 0.8571428571428571}}, 'limitations': 'N_estimators is a configuration-based compute proxy, not measured runtime or cost; other settings may also affect computation. Selection is limited to eligible historical rows and does not guarantee performance on unseen evaluations.'}
+real 0.05
+user 0.04
+sys 0.00
+demo_exit_status=0

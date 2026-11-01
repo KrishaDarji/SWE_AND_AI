@@ -1,0 +1,11 @@
+Implemented Step 8 in the exact requested directory.
+
+Source: source/x264_fix.py. It accepts a dataset path and optional baseline record ID, uses the first CSV data record by default, validates finite outcomes, compares numeric settings numerically, searches all observed records, and selects strict improvements by raw-column change count, then Performance-, then CSV order. It reports complete baseline/repair configurations, outcomes, changed settings, improvement, identifiers, proxy-count caveat, no-repair behavior, assumptions, and noncausal limitations.
+
+Preserved Step 7 source and tests were copied into the current snapshot. The new suite adds tests for minimum-change priority, numeric equivalence, tie-breaking, no improvement, invalid baselines, missing/nonfinite values, and exact changed-setting reporting.
+
+EZR background informed finite-value handling, iterator-style record processing, deterministic sorting/tie-breaking, and compact summary/state machinery. No Lua or third-party package is used.
+
+Verification: 27 tests passed. The Step 8 demonstration on X264_AllMeasurements.csv repaired record 0 by changing no_8x8dct from 0 to 1, selecting record 64; Performance- improved from 268.720 to 254.587, a difference of 14.133, with one differing raw setting column. /usr/bin/time -p reported real 0.02 seconds.
+
+Artifacts include prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. Failed attempts were preserved in test_attempt_01.txt and test_attempt_02.txt; successful test output is test_attempt_03.txt.

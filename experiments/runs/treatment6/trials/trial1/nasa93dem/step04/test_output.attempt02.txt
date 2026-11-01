@@ -1,0 +1,13 @@
+.....F........
+======================================================================
+FAIL: test_invalid_effort_not_history_and_missing_unseen (test_nasa93_summary.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step04/tests/test_nasa93_summary.py", line 81, in test_invalid_effort_not_history_and_missing_unseen
+    self.assertEqual(out["records"][4]["prior_training_count"],2); self.assertEqual(out["records"][4]["prediction"],20.0)
+AssertionError: 30.0 != 20.0
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.006s
+
+FAILED (failures=1)

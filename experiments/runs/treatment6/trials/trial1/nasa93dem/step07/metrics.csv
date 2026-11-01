@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,6,1,software project estimation,choose,329,30,1,0.02,1,"23 tests; /usr/bin/time -p real for final Step 7 subprocess; reused Step 6 behavior; added choose and tests; zero-context diff LOC method; EZR CSV/row handling, missing values, NUM/SYM summaries, grouped comparisons; one repaired assertion failure counted; Kloc+ is a delivered-size proxy; retrospective observed selection only"

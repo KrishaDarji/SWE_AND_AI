@@ -1,0 +1,5 @@
+Working directory: "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step03"
+Python interpreter: python3 (standard library only)
+Tests: cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step03" && python3 -m unittest discover -s tests -v
+Demo: cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step03" && /usr/bin/time -p python3 source/x264_certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+The application accepts the dataset path as its sole argument. All paths containing spaces are quoted.

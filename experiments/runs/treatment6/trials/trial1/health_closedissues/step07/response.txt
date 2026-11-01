@@ -1,0 +1,15 @@
+Implemented Step 7 retrospective configuration selection in `source/analyzer.py`.
+
+Reused from Step 6: standard-library CSV parsing, `clean`/`number` finite-value handling, configuration/outcome schemas, one-based original row positions, and deterministic tuple-based tie-breaking. Added `choose(rows, cap=100)`, with validation, separate invalid and over-budget counts, exact-cap inclusion, complete selected configuration/outcomes, no-feasible handling, and explicit retrospective limitations. The CLI now demonstrates `choose` with cap 100; previous `justify`, predictor, flow, blame, and statistical demonstrations remain available through the preserved source and tests.
+
+The EZR reference informed the conservative finite/missing-value treatment and explicit deterministic reporting of observed data, but no Lua or third-party package is used.
+
+Tests: `python3 -m unittest discover -s tests -v` passes all 22 tests. The current demonstration was run with `/usr/bin/time -p`; its captured real time is 0.05 seconds. The dataset demonstration reports 10,000 raw/valid rows, 4,877 feasible rows, 5,123 over-budget exclusions, and selects original row 32 at the cap-100 proxy budget.
+
+Commands:
+```sh
+python3 -m unittest discover -s tests -v
+python3 source/analyzer.py ../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv
+```
+
+Assumptions and limitations: CSV data-row positions are one-based and exclude the header. `N_estimators` is only a configuration-based compute proxy; it is not measured runtime, monetary cost, or a limit on configurations evaluated, and other settings may affect computation. The result is retrospective and limited to eligible historical rows; it does not establish optimality or guarantee unseen performance. Failed early captures are retained as `test_output_attempt1_failed.txt` and `test_output_attempt2_failed.txt`.

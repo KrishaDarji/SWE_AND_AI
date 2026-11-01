@@ -1,0 +1,14 @@
+Implemented Step 10 in the exact output directory.
+
+Source: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+
+The copied Step 9 behavior remains intact, with a new `race` command comparing the fixed exact normalized descriptor-group effort estimator against each split's training-mean baseline. It uses fresh training-only fits, grouped approximately 75/25 splits with seeds 42–51, fixed tie tolerance 1e-12, paired differences defined as model MAE minus baseline MAE, project positions/idX, predictions, observed efforts, and negative-prediction counts.
+
+EZR-informed adaptations are the standard-library CSV reader, whitespace/missing normalization, categorical SYM-like descriptor handling, seeded shuffle, grouped table summaries, and mean/statistical summaries. No Lua or third-party package is used.
+
+Verification: 35 tests passed. The NASA93 race demonstration passed with measured `/usr/bin/time -p` real time 0.04 seconds. Results and captured logs are in runtime_output_attempt1.txt and test_output_attempt2.txt, referenced by runtime_output.txt and test_output.txt.
+
+Known limitations: repeated splits overlap and are not independent datasets or LLM trials; exact unseen held-out groups can make the estimator equal the baseline; invalid/nonfinite Effort- rows are excluded; negative predictions are reported rather than clipped; no statistical superiority, deployment reliability, invented effort units, or final “same” procedure claim is made (analysis pending).
+
+Commands are in run_instructions.txt.

@@ -1,0 +1,4 @@
+Final demonstration attempt (actual captured files):
+stdout: runtime_attempt01.stdout
+stderr: runtime_attempt01.stderr
+Result: exit code 0; /usr/bin/time -p real value 0.03 seconds.

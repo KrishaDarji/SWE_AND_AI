@@ -1,0 +1,12 @@
+Implemented Treatment 6 / Trial 1 / X264 Step 2 in the exact requested directory.
+
+Source and tests:
+- source/x264_summary.py preserves the Step 1 implementation.
+- source/x264_predict.py adds grouped, reproducible seed-42 splitting; training-only one-hot preprocessing; a standard-library ridge linear model; schema validation; configuration prediction; MAE and training-mean baseline reporting; and the retained remember demonstration.
+- tests preserve all 4 Step 1 tests and add 4 Step 2 tests covering grouping, reproducibility, invalid inputs, insufficient groups, memory, and training-only fitting.
+
+Measured result: 8 tests passed. On X264_AllMeasurements.csv, training was 921 rows / groups and held-out testing was 231 rows / groups. Held-out MAE was 466.6739595265378; the training-mean baseline MAE was 145.34006597853815. The Step 2 subprocess real time was 0.05 seconds.
+
+The implementation adapts EZR's CSV streaming, column/schema classification, and one-pass numeric summary ideas from ezr.lua and ezr-lib.lua. It uses no Lua or third-party packages. Settings and targets that are missing, nonnumeric, or nonfinite are excluded during dataset loading; supplied prediction configurations must exactly match the fitted schema and use finite numeric values.
+
+Artifacts include prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, run_instructions.txt, and attempt-labeled captured logs. The first test attempt failed due to a package import-path issue; it is preserved, repaired, and counted as one unexpected command/test error in metrics. Known limitation: the linear one-hot ridge model is a simple baseline and may extrapolate poorly; unseen categorical levels cannot be predicted.

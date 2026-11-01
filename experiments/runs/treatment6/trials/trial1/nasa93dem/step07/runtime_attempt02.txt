@@ -1,0 +1,43 @@
+{
+  "budget": 100.0,
+  "csv_position": 78,
+  "delivered_size_proxy": 165.0,
+  "descriptor_settings": {
+    "acap": "h",
+    "apex": "h",
+    "cplx": "vh",
+    "data": "n",
+    "docu": "n",
+    "flex": "h",
+    "ltex": "h",
+    "pcap": "h",
+    "pcon": "n",
+    "plex": "h",
+    "pmat": "l",
+    "prec": "h",
+    "pvol": "l",
+    "rely": "h",
+    "resl": "h",
+    "ruse": "n",
+    "sced": "l",
+    "site": "n",
+    "stor": "vh",
+    "team": "vh",
+    "time": "n",
+    "tool": "n"
+  },
+  "feasible_count": 31,
+  "limitations": [
+    "Kloc+ is a delivered-size proxy, not business value or productivity",
+    "metadata and outcomes are not descriptor settings",
+    "selection does not establish that settings caused outcomes or guarantee future feasibility"
+  ],
+  "observed_effort": 97.0,
+  "outcome_basis": "observed outcomes in the supplied records, not predictions for unseen proposals",
+  "record_identifier": "78",
+  "selection_rule": "among finite observed Effort- <= budget, maximize observed Kloc+; tie-break lower observed Effort-, then earliest CSV record",
+  "total_count": 93
+}
+real 0.02
+user 0.01
+sys 0.00

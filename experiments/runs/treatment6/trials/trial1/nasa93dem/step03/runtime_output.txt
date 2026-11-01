@@ -1,0 +1,30 @@
+{
+  "confidence_interval_95": [
+    -727.3030968829637,
+    386.0308077263371
+  ],
+  "difference_direction_favors": "A",
+  "groups": {
+    "A": {
+      "count": 83,
+      "mean_effort": 606.0638554216868,
+      "tool": "n"
+    },
+    "B": {
+      "count": 10,
+      "mean_effort": 776.7,
+      "tool": "h"
+    }
+  },
+  "interpretation": "observed Effort- is not verified monetary cost; practical importance is uncertain if the interval crosses a threshold",
+  "interval_entirely_practically_below_A": false,
+  "interval_entirely_practically_below_B": false,
+  "mean_difference_A_minus_B": -170.6361445783133,
+  "point_estimate_exceeds_threshold": true,
+  "threshold": 0.1,
+  "welch_df": 15.552580855698569,
+  "welch_two_sided_p": 0.5243346705603089
+}
+real 0.02
+user 0.01
+sys 0.00

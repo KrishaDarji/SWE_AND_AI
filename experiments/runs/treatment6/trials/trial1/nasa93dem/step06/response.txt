@@ -1,0 +1,12 @@
+Implemented Treatment 6, Trial 1, NASA93 Step 6 (`justify`).
+
+Artifacts:
+- `source/nasa93_summary.py`: complete Python standard-library implementation, preserving Step 5 behavior and adding `--justify`.
+- `tests/test_nasa93_summary.py`: 20 passing tests, including preserved behavior and Step 6 cases.
+- `prompt.txt`, `response.txt`, `test_output.txt`, `runtime_output.txt`, `metrics.csv`, and `run_instructions.txt`.
+
+The demonstration selected the earliest held-out CSV record, identifier `20`, with 70 training rows and 23 held-out rows. The frozen estimate was `596.7185714285715`, using the training reference and training-only evidence. The observed effort `60.0` appears only in the separate retrospective audit, with absolute error `536.7185714285715`.
+
+Reused machinery includes CSV parsing, whitespace/missing-value normalization, descriptor filtering, grouped deterministic splitting, exact categorical group means, historical association summaries, and the earlier `summarize`, `guess`, `certify`, `flow`, and `blame` behaviors. The EZR Lua reference informed CSV/type coercion, ignored X metadata, grouped summaries, and train/test explanatory structure; no Lua was executed.
+
+Known limitations: descriptors are categorical; unseen or missing groups fall back to the training mean; associations are marginal rather than causal or additive local contributions; correlated descriptors may share information; scope and effort units are not inferred; and the split is a deterministic demonstration rather than a deployment guarantee.

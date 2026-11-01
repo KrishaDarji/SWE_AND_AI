@@ -1,0 +1,482 @@
+{
+  "direction": "lower Performance- is better",
+  "interpretation": "marginal observational association, not causal responsibility; correlated settings can share information",
+  "overall_summary": {
+    "count": 1152,
+    "max": 821.963,
+    "mean": 461.7535963541667,
+    "median": 450.157,
+    "min": 244.23
+  },
+  "ranking": [
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 768,
+            "max": 573.757,
+            "mean": 369.5120065104167,
+            "median": 310.793,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 384,
+            "max": 821.963,
+            "mean": 646.2367760416666,
+            "median": 632.943,
+            "min": 490.043
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 1,
+      "score": 0.6445017930440722,
+      "setting": "ref_9",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 768,
+            "max": 821.963,
+            "mean": 553.92304296875,
+            "median": 521.98,
+            "min": 361.703
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 384,
+            "max": 310.793,
+            "mean": 277.414703125,
+            "median": 275.973,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 2,
+      "score": 0.643494042463734,
+      "setting": "ref_1",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 493.3001545138889,
+            "median": 495.56,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 672.6,
+            "mean": 430.2070381944444,
+            "median": 429.643,
+            "min": 244.277
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 3,
+      "score": 0.03769159718307734,
+      "setting": "no_mixed_refs",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 726.917,
+            "mean": 433.24253645833335,
+            "median": 427.493,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 490.26465625,
+            "median": 482.903,
+            "min": 249.363
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 4,
+      "score": 0.030786994902991905,
+      "setting": "no_fast_pskip",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 745.597,
+            "mean": 436.3836822916667,
+            "median": 434.97,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 487.12351041666665,
+            "median": 482.903,
+            "min": 275.387
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 5,
+      "score": 0.024376905125970384,
+      "setting": "no_mbtree",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 472.1355069444445,
+            "median": 450.157,
+            "min": 259.807
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 784.02,
+            "mean": 451.3716857638889,
+            "median": 434.97,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 6,
+      "score": 0.004082208133125656,
+      "setting": "no_8x8dct",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 465.6794930555555,
+            "median": 450.157,
+            "min": 254.013
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 809.97,
+            "mean": 457.82769965277777,
+            "median": 446.64,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 7,
+      "score": 0.0005837384643700175,
+      "setting": "no_cabac",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 768,
+            "max": 821.76,
+            "mean": 462.1546458333333,
+            "median": 450.157,
+            "min": 246.2
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 384,
+            "max": 821.963,
+            "mean": 460.9514973958333,
+            "median": 447.423,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 8,
+      "score": 1.2183343356474427e-05,
+      "setting": "rc_lookahead_20",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 768,
+            "max": 821.963,
+            "mean": 461.43096484375,
+            "median": 449.28,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 384,
+            "max": 821.76,
+            "mean": 462.39885937500003,
+            "median": 450.157,
+            "min": 247.483
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 9,
+      "score": 7.884681107353732e-06,
+      "setting": "rc_lookahead_60",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 818.04,
+            "mean": 461.602109375,
+            "median": 450.157,
+            "min": 244.303
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 461.9050833333333,
+            "median": 449.383,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 10,
+      "score": 8.691428974410203e-07,
+      "setting": "no_deblock",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 768,
+            "max": 821.963,
+            "mean": 461.6751783854167,
+            "median": 450.157,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 384,
+            "max": 821.757,
+            "mean": 461.91043229166667,
+            "median": 449.28,
+            "min": 246.2
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 11,
+      "score": 4.6580242782443254e-07,
+      "setting": "rc_lookahead_40",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 768,
+            "max": 821.963,
+            "mean": 461.82573958333336,
+            "median": 310.793,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 384,
+            "max": 573.757,
+            "mean": 461.60930989583335,
+            "median": 450.157,
+            "min": 361.703
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 12,
+      "score": 3.942409437985424e-07,
+      "setting": "ref_5",
+      "valid_count": 1152
+    },
+    {
+      "direction": "higher level mean indicates slower observed encodes",
+      "level_count": 2,
+      "levels": [
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.76,
+            "mean": 461.8417065972222,
+            "median": 450.157,
+            "min": 244.23
+          },
+          "value": "0"
+        },
+        {
+          "summary": {
+            "count": 576,
+            "max": 821.963,
+            "mean": 461.66548611111114,
+            "median": 450.13,
+            "min": 244.28
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 13,
+      "score": 2.9403117090628396e-07,
+      "setting": "no_weightb",
+      "valid_count": 1152
+    },
+    {
+      "direction": "not estimable from multiple levels",
+      "level_count": 1,
+      "levels": [
+        {
+          "summary": {
+            "count": 1152,
+            "max": 821.963,
+            "mean": 461.7535963541667,
+            "median": 450.157,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 14,
+      "score": 0.0,
+      "setting": "no_asm",
+      "valid_count": 1152
+    },
+    {
+      "direction": "not estimable from multiple levels",
+      "level_count": 1,
+      "levels": [
+        {
+          "summary": {
+            "count": 1152,
+            "max": 821.963,
+            "mean": 461.7535963541667,
+            "median": 450.157,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 15,
+      "score": 0.0,
+      "setting": "rc_lookahead",
+      "valid_count": 1152
+    },
+    {
+      "direction": "not estimable from multiple levels",
+      "level_count": 1,
+      "levels": [
+        {
+          "summary": {
+            "count": 1152,
+            "max": 821.963,
+            "mean": 461.7535963541667,
+            "median": 450.157,
+            "min": 244.23
+          },
+          "value": "1"
+        }
+      ],
+      "missing_count": 0,
+      "rank": 16,
+      "score": 0.0,
+      "setting": "ref",
+      "valid_count": 1152
+    }
+  ],
+  "rows_with_finite_outcome": 1152,
+  "score": "eta_squared = between-group sum of squares / total sum of squares",
+  "target": "Performance-"
+}

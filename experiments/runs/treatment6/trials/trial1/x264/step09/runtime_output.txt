@@ -1,0 +1,2 @@
+Final demonstration log: runtime_output_attempt1.txt
+The final Step 9 demonstration used the real X264 dataset and /usr/bin/time -p.

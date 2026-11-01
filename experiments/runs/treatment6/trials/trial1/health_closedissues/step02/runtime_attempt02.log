@@ -1,0 +1,9 @@
+Model-quality prediction
+predictors: N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth
+outcomes excluded: MRE-, ACC+, PRED40+
+MRE- {'target': 'MRE-', 'train_count': 8000, 'test_count': 2000, 'train_groups': 8000, 'test_groups': 2000, 'held_out_mae': 0.02051764578670803, 'baseline_mae': 0.16604018269382761}
+ACC+ {'target': 'ACC+', 'train_count': 8000, 'test_count': 2000, 'train_groups': 8000, 'test_groups': 2000, 'held_out_mae': 0.013046765413018904, 'baseline_mae': 0.09007118811959755}
+real 3.47
+user 3.46
+sys 0.01
+runtime_exit=0

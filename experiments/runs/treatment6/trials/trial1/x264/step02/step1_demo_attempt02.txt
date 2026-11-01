@@ -1,0 +1,113 @@
+{
+  "assumptions": [
+    "CSV header supplies column names.",
+    "Names ending in '-' are minimization outcomes; Performance- is the available measured outcome.",
+    "Blank and '?' cells are missing; non-finite or non-numeric outcomes are invalid."
+  ],
+  "invalid_outcomes": {
+    "Performance-": 0
+  },
+  "missing_values": {
+    "Performance-": 0,
+    "no_8x8dct": 0,
+    "no_asm": 0,
+    "no_cabac": 0,
+    "no_deblock": 0,
+    "no_fast_pskip": 0,
+    "no_mbtree": 0,
+    "no_mixed_refs": 0,
+    "no_weightb": 0,
+    "rc_lookahead": 0,
+    "rc_lookahead_20": 0,
+    "rc_lookahead_40": 0,
+    "rc_lookahead_60": 0,
+    "ref": 0,
+    "ref_1": 0,
+    "ref_5": 0,
+    "ref_9": 0
+  },
+  "outcome_identification": {
+    "direction": {
+      "Performance-": "lower is better"
+    },
+    "names": [
+      "Performance-"
+    ]
+  },
+  "outcomes": {
+    "Performance-": {
+      "count": 1152,
+      "max": 821.963,
+      "mean": 461.7535963541664,
+      "min": 244.23,
+      "sample_stddev": 162.5617217120701
+    }
+  },
+  "record_count": 1152,
+  "settings": {
+    "no_8x8dct": {
+      "0": 576,
+      "1": 576
+    },
+    "no_asm": {
+      "1": 1152
+    },
+    "no_cabac": {
+      "0": 576,
+      "1": 576
+    },
+    "no_deblock": {
+      "0": 576,
+      "1": 576
+    },
+    "no_fast_pskip": {
+      "0": 576,
+      "1": 576
+    },
+    "no_mbtree": {
+      "0": 576,
+      "1": 576
+    },
+    "no_mixed_refs": {
+      "0": 576,
+      "1": 576
+    },
+    "no_weightb": {
+      "0": 576,
+      "1": 576
+    },
+    "rc_lookahead": {
+      "1": 1152
+    },
+    "rc_lookahead_20": {
+      "0": 768,
+      "1": 384
+    },
+    "rc_lookahead_40": {
+      "0": 768,
+      "1": 384
+    },
+    "rc_lookahead_60": {
+      "0": 768,
+      "1": 384
+    },
+    "ref": {
+      "1": 1152
+    },
+    "ref_1": {
+      "0": 768,
+      "1": 384
+    },
+    "ref_5": {
+      "0": 768,
+      "1": 384
+    },
+    "ref_9": {
+      "0": 768,
+      "1": 384
+    }
+  }
+}
+real 0.02
+user 0.02
+sys 0.00

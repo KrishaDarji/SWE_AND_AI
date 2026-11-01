@@ -1,0 +1,1 @@
+Attempt 1 (test capture): failed before running tests. zsh error: read-only variable: status. This was a measurement-command repair, not a test failure.

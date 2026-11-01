@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,6,1,video encoding,remember,99,99,1,0.03,0,"4 tests; /usr/bin/time -p demonstration timing; EZR Col/Num/Sym, CSV coercion, one-pass Num summaries, and lower-is-better goal direction adapted; blank/? missing, invalid/non-finite outcomes rejected; no repairs required."

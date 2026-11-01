@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step01
+Python interpreter: /usr/bin/python3
+Tests: /usr/bin/python3 -m unittest discover -s tests -v
+Implementation: /usr/bin/time -p /usr/bin/python3 source/x264_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+All paths containing spaces are quoted. Test stdout/stderr are preserved in test_attempt01.stdout and test_attempt01.stderr; demonstration stdout/stderr are preserved in runtime_attempt01.stdout and runtime_attempt01.stderr.

@@ -1,0 +1,10 @@
+Implemented Treatment 6 / Trial 1 / NASA93 Step 2 in the exact requested directory.
+
+Source: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+
+The implementation preserves Step 1 CSV normalization, role detection, statistics, and summary behavior, then adds `EffortGuesser`, grouped seeded 75/25 splitting, categorical exact-group means, explicit missing/unseen fallback, proposal-schema validation, and held-out MAE versus the training-mean baseline. It excludes X-suffix metadata and all outcomes from predictors and fits only on training rows.
+
+EZR background informed finite-value parsing, symbolic-column treatment, grouped row handling, seeded randomization, and training summaries. No Lua or third-party package is used.
+
+Measured result: 7 tests passed. Runtime demonstration real time was 0.04 seconds. With seed 42, the dataset produced 70 training rows, 23 held-out rows, 55 groups, MAE 481.4850310559006, and baseline MAE 481.4850310559006. This single split is not a deployment-reliability claim. See test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt for recorded artifacts and commands.

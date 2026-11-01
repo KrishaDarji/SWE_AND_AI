@@ -1,0 +1,4 @@
+Final Step 5 demonstration stdout is in runtime_attempt02.stdout and stderr is in runtime_attempt02.stderr.
+The stderr log contains the direct /usr/bin/time -p result: real 0.02, user 0.01, sys 0.00.
+Earlier preserved attempt output is in runtime_attempt01.stdout and runtime_attempt01.stderr.
+Preserved demonstration logs: summary_attempt02.*, predict_attempt02.*, certify_attempt02.*, and flow_attempt02.*.

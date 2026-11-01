@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,6,1,model configuration and quality,flow,204,43,1,0.06,4,"12 tests passed; runtime is /usr/bin/time -p for final CSV demonstration only; copied Step 3 source/tests and preserved demonstrations; new_loc counts added/replacement source lines; EZR streaming and incremental center/goal direction informed Flow; positions are one-based data rows; missing configurations are None; four failed attempts are preserved separately."

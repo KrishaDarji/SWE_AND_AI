@@ -1,0 +1,9 @@
+Model-quality prediction
+predictors: N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth
+outcomes excluded: MRE-, ACC+, PRED40+
+fixed comparison: {'comparison': 'absolute_error - squared_error', 'outcome': 'MRE-', 'lower_is_better': True, 'groups': {'reference': {'count': 3363, 'mean': 0.6737202958486018}, 'candidate': {'count': 3302, 'mean': 0.7508694690284082}}, 'status': 'defined', 'difference': 0.07714917317980641, 'standard_error': 0.00508300788171081, 'degrees_of_freedom': 6661.6898268289115, 't': 15.177858263292713, 'p_value': 0.0, 'confidence_interval_95': [0.06718485038289562, 0.08711349597671719], 'practical': {'threshold': None, 'interpretation': 'undetermined without a threshold'}}
+secondary outcomes: ACC+ and PRED40+ are descriptive historical configurations only; no causal or guaranteed improvement claim.
+assumptions: finite MRE- values only; two-sided Welch test; 95% CI; lower MRE- is better; nonsignificance is not equivalence.
+real 0.04
+user 0.03
+sys 0.00

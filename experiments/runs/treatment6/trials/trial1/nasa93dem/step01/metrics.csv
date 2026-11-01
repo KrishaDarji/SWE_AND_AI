@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,6,1,software project estimation,remember,62,62,1,0.04,0,"3 unittest tests; /usr/bin/time -p real; EZR csv/header streaming, first-letter type idea adapted as data-driven inference, NUM Welford-style intent represented with standard-library descriptive statistics, SYM frequency counts; whitespace trimmed; ?, blank, NA-like tokens missing; nonfinite numeric values invalid; outcomes forced numeric; X suffix metadata; no prior-step reuse; no repairs."

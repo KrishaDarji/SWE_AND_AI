@@ -1,0 +1,4 @@
+Final test attempt: test_attempt_02.log
+The complete preserved and Step 7 suite output is captured verbatim in test_attempt_02.log.
+Result: 23 tests ran; OK.
+Earlier failed wrapper attempt: test_attempt_01.log (shell wrapper failure before test execution).

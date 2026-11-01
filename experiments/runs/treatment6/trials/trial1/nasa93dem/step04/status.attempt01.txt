@@ -1,0 +1,2 @@
+TEST_RC=1
+RUN_RC=0

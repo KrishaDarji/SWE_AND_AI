@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,6,1,model configuration and quality,fix,399,58,1,0.06,0,"25 tests passed; runtime is /usr/bin/time -p for current demonstration only; source LOC excludes tests/runners/comments/blanks; new LOC is added/replacement diff versus Step 7; reused Step 7 parser/validation/reporting and EZR median/rank-bin inspiration; no compute cap; retrospective observed rows, not causal or guaranteed"

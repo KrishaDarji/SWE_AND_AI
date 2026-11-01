@@ -1,0 +1,7 @@
+test_complete_reporting_path (test_analyzer.AnalyzerTests) ... ok
+test_empty_and_header_only (test_analyzer.AnalyzerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK

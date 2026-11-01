@@ -1,0 +1,4 @@
+Attempt 01 (failed, preserved): test_attempt01.txt
+Attempt 02 (successful final): test_attempt02.txt
+The final test log contains actual verbose output for all 23 tests; exit status 0.
+The first attempt had one unexpected assertion failure and was repaired; it remains unmodified.

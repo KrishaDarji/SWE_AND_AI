@@ -1,0 +1,9 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step05
+Python interpreter: /usr/bin/python3
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Test command: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step05' && /usr/bin/python3 -m unittest discover -s tests -v
+Blame command: cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step05' && /usr/bin/python3 source/nasa93_summary.py --blame '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Preserved demos: summary is the one-argument command; guess is DATASET.csv [proposal.json]; certify is --certify DATASET.csv THRESHOLD; flow is --flow DATASET.csv.
+The first test attempt and its repaired expectation are preserved in test_attempt1.log; final logs are test_attempt2.log and runtime_attempt2.log.
+LOC method: count nonblank, non-comment Python lines in current source/nasa93_summary.py. new_loc counts only added nonblank, non-comment lines in a unified diff against the authorized Step 4 source, including replacement lines and excluding unchanged copied lines.
+EZR adaptation: categorical grouped summaries, diversity/variation framing, and divide/discretize-inspired group comparison; eta-squared is the consistent primary marginal score.

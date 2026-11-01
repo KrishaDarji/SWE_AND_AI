@@ -1,0 +1,466 @@
+{
+  "baseline_rule": "one eligible historical row uniformly sampled with fresh random.Random(seed) per seed",
+  "cap": 100,
+  "feasible_row_count": 4877,
+  "interpretation": "The selector inspects historical outcomes across feasible rows; the baseline samples one row. This is retrospective benchmarking, not an equal-evaluation-budget search experiment or proof of superior future performance. N_estimators is a compute proxy, not measured runtime or evaluation cost.",
+  "invalid_exclusion_count": 0,
+  "over_budget_exclusion_count": 5123,
+  "population_rule": "both methods use complete finite configurations/outcomes and nonnegative N_estimators <= cap",
+  "primary_difference": "baseline MRE- minus selector MRE-; positive favors selector",
+  "raw_row_count": 10000,
+  "secondary_difference_rules": {
+    "ACC+": "baseline ACC+ minus selector ACC+; positive favors baseline",
+    "PRED40+": "baseline PRED40+ minus selector PRED40+; positive favors baseline"
+  },
+  "seed_interpretation": "Seeds are repeated random baseline selections from one historical dataset, not independent LLM trials or new datasets; win counts do not establish significance, confidence, or generalization guarantees.",
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "selection_rule": [
+    "lowest MRE-",
+    "highest ACC+",
+    "highest PRED40+",
+    "earliest original CSV row position"
+  ],
+  "selector": {
+    "configuration": {
+      "Max_depth": 5.0,
+      "Min_impurity_decrease": 6.75,
+      "Min_sample_leaves": 1.0,
+      "N_estimators": 10.0,
+      "criterion": "squared_error"
+    },
+    "outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    },
+    "position": 32
+  },
+  "status": "defined",
+  "summary": {
+    "losses": 0,
+    "mean_difference": 0.7697643593519882,
+    "median_difference": 0.824300441826215,
+    "ties": 0,
+    "wins": 10
+  },
+  "tie_tolerance": 1e-12,
+  "tie_tolerance_rule": "fixed absolute finite nonnegative tolerance; ties satisfy abs(difference) <= tolerance",
+  "trials": [
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 17.0,
+          "Min_impurity_decrease": 4.5,
+          "Min_sample_leaves": 13.0,
+          "N_estimators": 40.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.42934956744633124,
+          "MRE-": 0.8325478645066273,
+          "PRED40+": 0.0
+        },
+        "position": 1882
+      },
+      "classification": "win",
+      "mre_difference": 0.8325478645066273,
+      "secondary_differences": {
+        "ACC+": -0.3607818007049023,
+        "MRE-": 0.8325478645066273,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 42,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 11.0,
+          "Min_impurity_decrease": 0.0,
+          "Min_sample_leaves": 3.0,
+          "N_estimators": 70.0,
+          "criterion": "absolute_error"
+        },
+        "outcomes": {
+          "ACC+": 0.669336751,
+          "MRE-": 0.3480117820324005,
+          "PRED40+": 0.5714285714285714
+        },
+        "position": 669
+      },
+      "classification": "win",
+      "mre_difference": 0.3480117820324005,
+      "secondary_differences": {
+        "ACC+": -0.12079461715123352,
+        "MRE-": 0.3480117820324005,
+        "PRED40+": -0.2857142857142857
+      },
+      "seed": 43,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 19.0,
+          "Min_impurity_decrease": 1.75,
+          "Min_sample_leaves": 10.0,
+          "N_estimators": 10.0,
+          "criterion": "absolute_error"
+        },
+        "outcomes": {
+          "ACC+": 0.3892983018263377,
+          "MRE-": 0.9294550810014727,
+          "PRED40+": 0.0
+        },
+        "position": 6913
+      },
+      "classification": "win",
+      "mre_difference": 0.9294550810014727,
+      "secondary_differences": {
+        "ACC+": -0.40083306632489585,
+        "MRE-": 0.9294550810014727,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 44,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 13.0,
+          "Min_impurity_decrease": 1.75,
+          "Min_sample_leaves": 6.0,
+          "N_estimators": 80.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.5879525793015059,
+          "MRE-": 0.5487481590574373,
+          "PRED40+": 0.14285714285714285
+        },
+        "position": 4610
+      },
+      "classification": "win",
+      "mre_difference": 0.5487481590574373,
+      "secondary_differences": {
+        "ACC+": -0.20217878884972762,
+        "MRE-": 0.5487481590574373,
+        "PRED40+": -0.7142857142857142
+      },
+      "seed": 45,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 20.0,
+          "Min_impurity_decrease": 6.0,
+          "Min_sample_leaves": 17.0,
+          "N_estimators": 80.0,
+          "criterion": "absolute_error"
+        },
+        "outcomes": {
+          "ACC+": 0.41268824094841394,
+          "MRE-": 0.8708394698085419,
+          "PRED40+": 0.0
+        },
+        "position": 1311
+      },
+      "classification": "win",
+      "mre_difference": 0.8708394698085419,
+      "secondary_differences": {
+        "ACC+": -0.3774431272028196,
+        "MRE-": 0.8708394698085419,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 46,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 12.0,
+          "Min_impurity_decrease": 7.75,
+          "Min_sample_leaves": 16.0,
+          "N_estimators": 30.0,
+          "criterion": "absolute_error"
+        },
+        "outcomes": {
+          "ACC+": 0.40692085869913486,
+          "MRE-": 0.8849779086892489,
+          "PRED40+": 0.0
+        },
+        "position": 5957
+      },
+      "classification": "win",
+      "mre_difference": 0.8849779086892489,
+      "secondary_differences": {
+        "ACC+": -0.38321050945209867,
+        "MRE-": 0.8849779086892489,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 47,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 4.5,
+          "Min_sample_leaves": 15.0,
+          "N_estimators": 40.0,
+          "criterion": "poisson"
+        },
+        "outcomes": {
+          "ACC+": 0.4351169496956104,
+          "MRE-": 0.8197349042709866,
+          "PRED40+": 0.0
+        },
+        "position": 9227
+      },
+      "classification": "win",
+      "mre_difference": 0.8197349042709866,
+      "secondary_differences": {
+        "ACC+": -0.35501441845562315,
+        "MRE-": 0.8197349042709866,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 48,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 20.0,
+          "Min_impurity_decrease": 6.25,
+          "Min_sample_leaves": 12.0,
+          "N_estimators": 70.0,
+          "criterion": "poisson"
+        },
+        "outcomes": {
+          "ACC+": 0.4360781800704902,
+          "MRE-": 0.8173784977908689,
+          "PRED40+": 0.0
+        },
+        "position": 1156
+      },
+      "classification": "win",
+      "mre_difference": 0.8173784977908689,
+      "secondary_differences": {
+        "ACC+": -0.3540531880807433,
+        "MRE-": 0.8173784977908689,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 49,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 9.0,
+          "Min_impurity_decrease": 1.25,
+          "Min_sample_leaves": 9.0,
+          "N_estimators": 20.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.430951618,
+          "MRE-": 0.8288659793814432,
+          "PRED40+": 0.0
+        },
+        "position": 8390
+      },
+      "classification": "win",
+      "mre_difference": 0.8288659793814432,
+      "secondary_differences": {
+        "ACC+": -0.35917975015123355,
+        "MRE-": 0.8288659793814432,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 50,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    },
+    {
+      "baseline": {
+        "configuration": {
+          "Max_depth": 11.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 13.0,
+          "N_estimators": 40.0,
+          "criterion": "poisson"
+        },
+        "outcomes": {
+          "ACC+": 0.4360781800704902,
+          "MRE-": 0.8170839469808542,
+          "PRED40+": 0.0
+        },
+        "position": 4156
+      },
+      "classification": "win",
+      "mre_difference": 0.8170839469808542,
+      "secondary_differences": {
+        "ACC+": -0.3540531880807433,
+        "MRE-": 0.8170839469808542,
+        "PRED40+": -0.8571428571428571
+      },
+      "seed": 51,
+      "selector": {
+        "configuration": {
+          "Max_depth": 5.0,
+          "Min_impurity_decrease": 6.75,
+          "Min_sample_leaves": 1.0,
+          "N_estimators": 10.0,
+          "criterion": "squared_error"
+        },
+        "outcomes": {
+          "ACC+": 0.7901313681512335,
+          "MRE-": 0.0,
+          "PRED40+": 0.8571428571428571
+        },
+        "position": 32
+      }
+    }
+  ],
+  "valid_row_count": 10000
+}
+real 0.07
+user 0.06
+sys 0.00
+exit_status=0

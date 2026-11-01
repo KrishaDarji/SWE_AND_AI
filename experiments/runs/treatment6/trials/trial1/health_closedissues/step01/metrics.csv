@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,6,1,model configuration and quality,remember,65,65,1,0.08,2,"2 tests; /usr/bin/time -p real; adapted EZR csv/clean/sorted-summary ideas; whitespace trim and missing/nonfinite handling; standard-library only; no prior reuse; attempt 01 had one test syntax error and one runtime failure, repaired in attempt 02"

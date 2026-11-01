@@ -1,0 +1,155 @@
+You are running Treatment 6, Trial 1, Dataset 3, Step 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: certify
+- Current requirement: Tell us whether an apparent quality improvement is meaningful or noise.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step03/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent health_closedissues directory.
+- Write only inside the current Step 3 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 2 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement certify only; do not implement later skills.
+
+Implementation:
+1. Fix this comparison before examining outcome results:
+   - Reference: criterion == "squared_error".
+   - Candidate: criterion == "absolute_error".
+   - Primary outcome: MRE-, where lower is better.
+   Exclude other criterion families. Do not search for a more significant
+   comparison.
+
+2. Report each group's usable count and mean, and the difference:
+   candidate mean minus reference mean.
+   Negative differences favor the candidate.
+
+3. Compute a two-sided Welch test and a 95% confidence interval for that
+   difference using Welch–Satterthwaite degrees of freedom.
+   Use standard-library numerical methods. Document approximations and
+   validate numerical calculations against independently established values.
+
+4. Support an optional finite, nonnegative practical-improvement threshold,
+   in MRE units. Without a threshold, practical importance is undetermined.
+   With a threshold, distinguish the point estimate exceeding the threshold
+   from the entire confidence interval supporting that improvement.
+   A nonsignificant result does not establish equivalence.
+
+5. Treat ACC+ and PRED40+ as descriptive secondary outcomes only.
+   Explain that these are historical configurations, not controlled repeated
+   measurements of otherwise identical models. Differences may reflect
+   other hyperparameters; do not claim causation or guaranteed improvement.
+
+6. Handle missing/nonfinite outcomes, absent groups, insufficient samples,
+   and undefined inference explicitly. Zero-variance cases must not produce
+   fabricated p-values or confidence intervals.
+
+7. Provide a runnable demonstration showing the fixed comparison,
+   descriptive results, statistical results, threshold interpretation,
+   and assumptions. Preserve earlier supported demonstrations.
+
+Tests:
+- Preserve and run all previous tests.
+- Add tests for group selection, difference direction, confidence intervals,
+  practical thresholds, missing/nonfinite values, insufficient samples,
+  and zero-variance cases.
+- Check numerical inference against independent reference values, including
+  probability bounds and representative degrees of freedom.
+- Do not require the real dataset to produce significance.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=3, treatment=6, trial=1, skill=certify.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 2 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the current
+  certify demonstration only, excluding tests and earlier demonstrations.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, reuse, LOC method, EZR influence,
+  assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

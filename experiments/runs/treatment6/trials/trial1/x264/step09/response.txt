@@ -1,0 +1,9 @@
+Implemented Treatment 6, Trial 1, X264 Step 9.
+
+Added `source/x264_spot.py`, which flags unusually high or low `Performance-` values using all finite records at the smallest nonzero Hamming distance across settings. Identical configurations and the assessed record are excluded from its reference group. It reports record identifiers, observed/reference values, scores, threshold, reasons, comparison groups/counts, and unique flag counts. Threshold: 3.0; minimum references: 2; lower `Performance-` is better.
+
+Reused the complete Step 8 source and tests. EZR-informed adaptations include CSV streaming/coercion, finite-value handling, sorted summaries, robust median/MAD spread, and explicit unavailable/zero-variability cases. No packages or Lua runtime are required.
+
+Tests: 30 passed. Real-dataset demonstration: passed; `/usr/bin/time -p` real time 0.80 seconds. LOC: 696 total counted implementation lines; 75 new counted lines relative to Step 8. Error count is 2, covering repaired command/test attempts as documented in `metrics.csv`.
+
+Known limitations: flags are investigation candidates, not confirmed errors; nearest observational groups may be confounded; tiny, identical-only, missing, nonfinite, constant, or zero-variability inputs can yield undefined scores; no accuracy claim is made without verified anomaly labels.

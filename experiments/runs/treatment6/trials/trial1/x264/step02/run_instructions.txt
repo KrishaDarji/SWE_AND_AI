@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step02
+Python interpreter: /usr/bin/python3
+Tests: cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step02" && /usr/bin/python3 -m unittest discover -s tests -v
+Step 1 demonstration: /usr/bin/python3 source/x264_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+Step 2 demonstration: /usr/bin/python3 source/x264_predict.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+Final test output: test_output_attempt03.txt; final Step 2 output: runtime_output_attempt03.txt; earlier failed attempts are preserved.

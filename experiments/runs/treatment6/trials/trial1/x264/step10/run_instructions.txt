@@ -1,0 +1,11 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step10
+Python interpreter: /usr/bin/python3
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Tests:
+PYTHONPATH='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step10/source' /usr/bin/python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step10/tests' -t '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step10'
+
+Demonstration:
+/usr/bin/time -p /usr/bin/python3 -m source.x264_race '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Captured logs: test_output.txt and runtime_output.txt. Attempt logs are retained with attempt labels.

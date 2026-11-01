@@ -1,0 +1,12 @@
+test_complete_reporting_path (test_analyzer.AnalyzerTests.test_complete_reporting_path) ... ok
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_grouped_reproducible_and_prediction (test_analyzer.PredictorTests.test_grouped_reproducible_and_prediction) ... ok
+test_invalid_zero_and_insufficient (test_analyzer.PredictorTests.test_invalid_zero_and_insufficient) ... ok
+test_preprocessing_is_training_only (test_analyzer.PredictorTests.test_preprocessing_is_training_only) ... ok
+test_schema_missing_unseen_and_excluded_outcome (test_analyzer.PredictorTests.test_schema_missing_unseen_and_excluded_outcome) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK
+test_exit=0

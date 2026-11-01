@@ -1,0 +1,2575 @@
+{
+  "categorical": {
+    "acap": {
+      "h": 51,
+      "n": 32,
+      "vh": 10
+    },
+    "apex": {
+      "h": 46,
+      "l": 1,
+      "n": 34,
+      "vh": 12
+    },
+    "cplx": {
+      "h": 58,
+      "l": 3,
+      "n": 10,
+      "vh": 17,
+      "xh": 5
+    },
+    "data": {
+      "h": 17,
+      "l": 37,
+      "n": 31,
+      "vh": 8
+    },
+    "docu": {
+      "n": 93
+    },
+    "flex": {
+      "h": 93
+    },
+    "ltex": {
+      "h": 69,
+      "l": 6,
+      "n": 14,
+      "vl": 4
+    },
+    "pcap": {
+      "h": 39,
+      "n": 44,
+      "vh": 10
+    },
+    "pcon": {
+      "n": 93
+    },
+    "plex": {
+      "h": 22,
+      "l": 14,
+      "n": 53,
+      "vl": 4
+    },
+    "pmat": {
+      "h": 43,
+      "l": 20,
+      "n": 30
+    },
+    "prec": {
+      "h": 93
+    },
+    "pvol": {
+      "h": 9,
+      "l": 65,
+      "n": 19
+    },
+    "rely": {
+      "h": 42,
+      "l": 2,
+      "n": 39,
+      "vh": 10
+    },
+    "resl": {
+      "h": 93
+    },
+    "ruse": {
+      "n": 93
+    },
+    "sced": {
+      "l": 34,
+      "n": 59
+    },
+    "site": {
+      "n": 93
+    },
+    "stor": {
+      "h": 10,
+      "n": 49,
+      "vh": 21,
+      "xh": 13
+    },
+    "team": {
+      "vh": 93
+    },
+    "time": {
+      "h": 13,
+      "n": 54,
+      "vh": 18,
+      "xh": 8
+    },
+    "tool": {
+      "h": 10,
+      "n": 83
+    }
+  },
+  "columns": [
+    "idX",
+    "centerX",
+    "YearX",
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced",
+    "Kloc+",
+    "Effort-",
+    "Defects-",
+    "MonthsX"
+  ],
+  "invalid_numeric": {
+    "Defects-": 0,
+    "Effort-": 0,
+    "Kloc+": 0,
+    "MonthsX": 0,
+    "YearX": 0,
+    "acap": 0,
+    "apex": 0,
+    "centerX": 0,
+    "cplx": 0,
+    "data": 0,
+    "docu": 0,
+    "flex": 0,
+    "idX": 0,
+    "ltex": 0,
+    "pcap": 0,
+    "pcon": 0,
+    "plex": 0,
+    "pmat": 0,
+    "prec": 0,
+    "pvol": 0,
+    "rely": 0,
+    "resl": 0,
+    "ruse": 0,
+    "sced": 0,
+    "site": 0,
+    "stor": 0,
+    "team": 0,
+    "time": 0,
+    "tool": 0
+  },
+  "missing": {
+    "Defects-": 0,
+    "Effort-": 0,
+    "Kloc+": 0,
+    "MonthsX": 0,
+    "YearX": 0,
+    "acap": 0,
+    "apex": 0,
+    "centerX": 0,
+    "cplx": 0,
+    "data": 0,
+    "docu": 0,
+    "flex": 0,
+    "idX": 0,
+    "ltex": 0,
+    "pcap": 0,
+    "pcon": 0,
+    "plex": 0,
+    "pmat": 0,
+    "prec": 0,
+    "pvol": 0,
+    "rely": 0,
+    "resl": 0,
+    "ruse": 0,
+    "sced": 0,
+    "site": 0,
+    "stor": 0,
+    "team": 0,
+    "time": 0,
+    "tool": 0
+  },
+  "model_predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "numeric": {
+    "Defects-": {
+      "count": 93,
+      "max": 50961.0,
+      "mean": 3761.7634408602153,
+      "median": 2007.0,
+      "min": 28.0,
+      "sd": 6145.055586471355
+    },
+    "Effort-": {
+      "count": 93,
+      "max": 8211.0,
+      "mean": 624.4118279569893,
+      "median": 252.0,
+      "min": 8.4,
+      "sd": 1135.9280652026785
+    },
+    "Kloc+": {
+      "count": 93,
+      "max": 980.0,
+      "mean": 94.02204301075268,
+      "median": 47.5,
+      "min": 0.9,
+      "sd": 133.5979471867733
+    },
+    "MonthsX": {
+      "count": 93,
+      "max": 96.4,
+      "mean": 24.176344086021505,
+      "median": 21.4,
+      "min": 4.9,
+      "sd": 12.967219522364363
+    },
+    "YearX": {
+      "count": 93,
+      "max": 1987.0,
+      "mean": 1980.8279569892472,
+      "median": 1980.0,
+      "min": 1971.0,
+      "sd": 3.3350042562842876
+    },
+    "centerX": {
+      "count": 93,
+      "max": 6.0,
+      "mean": 3.2795698924731185,
+      "median": 2.0,
+      "min": 1.0,
+      "sd": 1.6834591161074934
+    },
+    "idX": {
+      "count": 93,
+      "max": 93.0,
+      "mean": 46.98924731182796,
+      "median": 47.0,
+      "min": 1.0,
+      "sd": 26.997783573944794
+    }
+  },
+  "outcomes": {
+    "Defects-": {
+      "direction": "minimize",
+      "role": "outcome"
+    },
+    "Effort-": {
+      "direction": "minimize",
+      "role": "outcome"
+    },
+    "Kloc+": {
+      "direction": "maximize",
+      "role": "outcome"
+    }
+  },
+  "record_count": 93,
+  "roles": {
+    "Defects-": "outcome",
+    "Effort-": "outcome",
+    "Kloc+": "outcome",
+    "MonthsX": "metadata",
+    "YearX": "metadata",
+    "acap": "descriptor",
+    "apex": "descriptor",
+    "centerX": "metadata",
+    "cplx": "descriptor",
+    "data": "descriptor",
+    "docu": "descriptor",
+    "flex": "descriptor",
+    "idX": "metadata",
+    "ltex": "descriptor",
+    "pcap": "descriptor",
+    "pcon": "descriptor",
+    "plex": "descriptor",
+    "pmat": "descriptor",
+    "prec": "descriptor",
+    "pvol": "descriptor",
+    "rely": "descriptor",
+    "resl": "descriptor",
+    "ruse": "descriptor",
+    "sced": "descriptor",
+    "site": "descriptor",
+    "stor": "descriptor",
+    "team": "descriptor",
+    "time": "descriptor",
+    "tool": "descriptor"
+  },
+  "types": {
+    "Defects-": "numeric",
+    "Effort-": "numeric",
+    "Kloc+": "numeric",
+    "MonthsX": "numeric",
+    "YearX": "numeric",
+    "acap": "categorical",
+    "apex": "categorical",
+    "centerX": "numeric",
+    "cplx": "categorical",
+    "data": "categorical",
+    "docu": "categorical",
+    "flex": "categorical",
+    "idX": "numeric",
+    "ltex": "categorical",
+    "pcap": "categorical",
+    "pcon": "categorical",
+    "plex": "categorical",
+    "pmat": "categorical",
+    "prec": "categorical",
+    "pvol": "categorical",
+    "rely": "categorical",
+    "resl": "categorical",
+    "ruse": "categorical",
+    "sced": "categorical",
+    "site": "categorical",
+    "stor": "categorical",
+    "team": "categorical",
+    "time": "categorical",
+    "tool": "categorical"
+  }
+}
+{
+  "baseline_mae": 487.2071496701926,
+  "mae": 490.3000743674667,
+  "predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "records": [
+    {
+      "absolute_error": null,
+      "arrival": 1,
+      "baseline": null,
+      "baseline_absolute_error": null,
+      "baseline_cumulative_mae": null,
+      "cumulative_mae": null,
+      "identifier": "1",
+      "phase": "warm-up",
+      "prediction": null,
+      "prior_training_count": 0,
+      "revealed_effort": 117.6
+    },
+    {
+      "absolute_error": null,
+      "arrival": 2,
+      "baseline": null,
+      "baseline_absolute_error": null,
+      "baseline_cumulative_mae": null,
+      "cumulative_mae": null,
+      "identifier": "2",
+      "phase": "warm-up",
+      "prediction": null,
+      "prior_training_count": 1,
+      "revealed_effort": 117.6
+    },
+    {
+      "absolute_error": 86.39999999999999,
+      "arrival": 3,
+      "baseline": 117.6,
+      "baseline_absolute_error": 86.39999999999999,
+      "baseline_cumulative_mae": 86.39999999999999,
+      "cumulative_mae": 86.39999999999999,
+      "identifier": "3",
+      "phase": "scored",
+      "prediction": 117.6,
+      "prior_training_count": 2,
+      "revealed_effort": 31.2
+    },
+    {
+      "absolute_error": 52.8,
+      "arrival": 4,
+      "baseline": 88.8,
+      "baseline_absolute_error": 52.8,
+      "baseline_cumulative_mae": 69.6,
+      "cumulative_mae": 69.6,
+      "identifier": "4",
+      "phase": "scored",
+      "prediction": 88.8,
+      "prior_training_count": 3,
+      "revealed_effort": 36.0
+    },
+    {
+      "absolute_error": 50.39999999999999,
+      "arrival": 5,
+      "baseline": 75.6,
+      "baseline_absolute_error": 50.39999999999999,
+      "baseline_cumulative_mae": 63.19999999999999,
+      "cumulative_mae": 63.19999999999999,
+      "identifier": "5",
+      "phase": "scored",
+      "prediction": 75.6,
+      "prior_training_count": 4,
+      "revealed_effort": 25.2
+    },
+    {
+      "absolute_error": 57.12,
+      "arrival": 6,
+      "baseline": 65.52,
+      "baseline_absolute_error": 57.12,
+      "baseline_cumulative_mae": 61.67999999999999,
+      "cumulative_mae": 61.67999999999999,
+      "identifier": "6",
+      "phase": "scored",
+      "prediction": 65.52,
+      "prior_training_count": 5,
+      "revealed_effort": 8.4
+    },
+    {
+      "absolute_error": 45.2,
+      "arrival": 7,
+      "baseline": 56.0,
+      "baseline_absolute_error": 45.2,
+      "baseline_cumulative_mae": 58.38399999999999,
+      "cumulative_mae": 58.38399999999999,
+      "identifier": "7",
+      "phase": "scored",
+      "prediction": 56.0,
+      "prior_training_count": 6,
+      "revealed_effort": 10.8
+    },
+    {
+      "absolute_error": 303.25714285714287,
+      "arrival": 8,
+      "baseline": 49.542857142857144,
+      "baseline_absolute_error": 303.25714285714287,
+      "baseline_cumulative_mae": 99.19619047619047,
+      "cumulative_mae": 99.19619047619047,
+      "identifier": "8",
+      "phase": "scored",
+      "prediction": 49.542857142857144,
+      "prior_training_count": 7,
+      "revealed_effort": 352.8
+    },
+    {
+      "absolute_error": 15.450000000000003,
+      "arrival": 9,
+      "baseline": 87.45,
+      "baseline_absolute_error": 15.450000000000003,
+      "baseline_cumulative_mae": 87.23244897959184,
+      "cumulative_mae": 87.23244897959184,
+      "identifier": "9",
+      "phase": "scored",
+      "prediction": 87.45,
+      "prior_training_count": 8,
+      "revealed_effort": 72.0
+    },
+    {
+      "absolute_error": 13.733333333333334,
+      "arrival": 10,
+      "baseline": 85.73333333333333,
+      "baseline_absolute_error": 13.733333333333334,
+      "baseline_cumulative_mae": 78.04505952380953,
+      "cumulative_mae": 78.04505952380953,
+      "identifier": "10",
+      "phase": "scored",
+      "prediction": 85.73333333333333,
+      "prior_training_count": 9,
+      "revealed_effort": 72.0
+    },
+    {
+      "absolute_error": 60.36,
+      "arrival": 11,
+      "baseline": 84.36,
+      "baseline_absolute_error": 60.36,
+      "baseline_cumulative_mae": 76.08005291005291,
+      "cumulative_mae": 76.08005291005291,
+      "identifier": "11",
+      "phase": "scored",
+      "prediction": 84.36,
+      "prior_training_count": 10,
+      "revealed_effort": 24.0
+    },
+    {
+      "absolute_error": 288.0,
+      "arrival": 12,
+      "baseline": 78.87272727272727,
+      "baseline_absolute_error": 281.1272727272727,
+      "baseline_cumulative_mae": 96.5847748917749,
+      "cumulative_mae": 97.27204761904763,
+      "identifier": "12",
+      "phase": "scored",
+      "prediction": 72.0,
+      "prior_training_count": 11,
+      "revealed_effort": 360.0
+    },
+    {
+      "absolute_error": 66.3,
+      "arrival": 13,
+      "baseline": 102.3,
+      "baseline_absolute_error": 66.3,
+      "baseline_cumulative_mae": 93.83161353797718,
+      "cumulative_mae": 94.45640692640694,
+      "identifier": "13",
+      "phase": "scored",
+      "prediction": 102.3,
+      "prior_training_count": 12,
+      "revealed_effort": 36.0
+    },
+    {
+      "absolute_error": 117.80000000000001,
+      "arrival": 14,
+      "baseline": 97.19999999999999,
+      "baseline_absolute_error": 117.80000000000001,
+      "baseline_cumulative_mae": 95.82897907647907,
+      "cumulative_mae": 96.40170634920635,
+      "identifier": "14",
+      "phase": "scored",
+      "prediction": 97.19999999999999,
+      "prior_training_count": 13,
+      "revealed_effort": 215.0
+    },
+    {
+      "absolute_error": 24.0,
+      "arrival": 15,
+      "baseline": 105.61428571428571,
+      "baseline_absolute_error": 57.614285714285714,
+      "baseline_cumulative_mae": 92.88938727938726,
+      "cumulative_mae": 90.83234432234433,
+      "identifier": "15",
+      "phase": "scored",
+      "prediction": 24.0,
+      "prior_training_count": 14,
+      "revealed_effort": 48.0
+    },
+    {
+      "absolute_error": 258.2266666666667,
+      "arrival": 16,
+      "baseline": 101.77333333333333,
+      "baseline_absolute_error": 258.2266666666667,
+      "baseline_cumulative_mae": 104.69919294990723,
+      "cumulative_mae": 102.78908163265307,
+      "identifier": "16",
+      "phase": "scored",
+      "prediction": 101.77333333333333,
+      "prior_training_count": 15,
+      "revealed_effort": 360.0
+    },
+    {
+      "absolute_error": 206.0875,
+      "arrival": 17,
+      "baseline": 117.9125,
+      "baseline_absolute_error": 206.0875,
+      "baseline_cumulative_mae": 111.45841341991341,
+      "cumulative_mae": 109.67564285714288,
+      "identifier": "17",
+      "phase": "scored",
+      "prediction": 117.9125,
+      "prior_training_count": 16,
+      "revealed_effort": 324.0
+    },
+    {
+      "absolute_error": 70.03529411764706,
+      "arrival": 18,
+      "baseline": 130.03529411764706,
+      "baseline_absolute_error": 70.03529411764706,
+      "baseline_cumulative_mae": 108.86946846352177,
+      "cumulative_mae": 107.19812106092438,
+      "identifier": "18",
+      "phase": "scored",
+      "prediction": 130.03529411764706,
+      "prior_training_count": 17,
+      "revealed_effort": 60.0
+    },
+    {
+      "absolute_error": 12.0,
+      "arrival": 19,
+      "baseline": 126.14444444444445,
+      "baseline_absolute_error": 78.14444444444445,
+      "baseline_cumulative_mae": 107.06211410945839,
+      "cumulative_mae": 101.59823158675236,
+      "identifier": "19",
+      "phase": "scored",
+      "prediction": 36.0,
+      "prior_training_count": 18,
+      "revealed_effort": 48.0
+    },
+    {
+      "absolute_error": 62.031578947368416,
+      "arrival": 20,
+      "baseline": 122.03157894736842,
+      "baseline_absolute_error": 62.031578947368416,
+      "baseline_cumulative_mae": 104.56041771156451,
+      "cumulative_mae": 99.4000842178977,
+      "identifier": "20",
+      "phase": "scored",
+      "prediction": 122.03157894736842,
+      "prior_training_count": 19,
+      "revealed_effort": 60.0
+    },
+    {
+      "absolute_error": 27.450000000000003,
+      "arrival": 21,
+      "baseline": 118.92999999999999,
+      "baseline_absolute_error": 58.92999999999999,
+      "baseline_cumulative_mae": 102.1588167793769,
+      "cumulative_mae": 95.61323768011361,
+      "identifier": "21",
+      "phase": "scored",
+      "prediction": 87.45,
+      "prior_training_count": 20,
+      "revealed_effort": 60.0
+    },
+    {
+      "absolute_error": 215.6,
+      "arrival": 22,
+      "baseline": 116.12380952380951,
+      "baseline_absolute_error": 183.8761904761905,
+      "baseline_cumulative_mae": 106.24468546421758,
+      "cumulative_mae": 101.61257579610792,
+      "identifier": "22",
+      "phase": "scored",
+      "prediction": 84.4,
+      "prior_training_count": 21,
+      "revealed_effort": 300.0
+    },
+    {
+      "absolute_error": 14.040000000000006,
+      "arrival": 23,
+      "baseline": 124.48181818181818,
+      "baseline_absolute_error": 4.481818181818184,
+      "baseline_cumulative_mae": 101.39883464124618,
+      "cumulative_mae": 97.4424531391504,
+      "identifier": "23",
+      "phase": "scored",
+      "prediction": 105.96,
+      "prior_training_count": 22,
+      "revealed_effort": 120.0
+    },
+    {
+      "absolute_error": 34.28695652173913,
+      "arrival": 24,
+      "baseline": 124.28695652173913,
+      "baseline_absolute_error": 34.28695652173913,
+      "baseline_cumulative_mae": 98.34829472672314,
+      "cumulative_mae": 94.57174874744989,
+      "identifier": "24",
+      "phase": "scored",
+      "prediction": 124.28695652173913,
+      "prior_training_count": 23,
+      "revealed_effort": 90.0
+    },
+    {
+      "absolute_error": 87.14166666666667,
+      "arrival": 25,
+      "baseline": 122.85833333333333,
+      "baseline_absolute_error": 87.14166666666667,
+      "baseline_cumulative_mae": 97.86105002845983,
+      "cumulative_mae": 94.24870170045934,
+      "identifier": "25",
+      "phase": "scored",
+      "prediction": 122.85833333333333,
+      "prior_training_count": 24,
+      "revealed_effort": 210.0
+    },
+    {
+      "absolute_error": 78.344,
+      "arrival": 26,
+      "baseline": 126.344,
+      "baseline_absolute_error": 78.344,
+      "baseline_cumulative_mae": 97.04783961060734,
+      "cumulative_mae": 93.58600579627353,
+      "identifier": "26",
+      "phase": "scored",
+      "prediction": 126.344,
+      "prior_training_count": 25,
+      "revealed_effort": 48.0
+    },
+    {
+      "absolute_error": 53.33076923076922,
+      "arrival": 27,
+      "baseline": 123.33076923076922,
+      "baseline_absolute_error": 53.33076923076922,
+      "baseline_cumulative_mae": 95.29915679541382,
+      "cumulative_mae": 91.97579633365336,
+      "identifier": "27",
+      "phase": "scored",
+      "prediction": 123.33076923076922,
+      "prior_training_count": 26,
+      "revealed_effort": 70.0
+    },
+    {
+      "absolute_error": 169.0,
+      "arrival": 28,
+      "baseline": 121.35555555555555,
+      "baseline_absolute_error": 117.64444444444445,
+      "baseline_cumulative_mae": 96.15859093576115,
+      "cumulative_mae": 94.93826570543592,
+      "identifier": "28",
+      "phase": "scored",
+      "prediction": 70.0,
+      "prior_training_count": 27,
+      "revealed_effort": 239.0
+    },
+    {
+      "absolute_error": 72.5,
+      "arrival": 29,
+      "baseline": 125.55714285714285,
+      "baseline_absolute_error": 43.55714285714285,
+      "baseline_cumulative_mae": 94.2103891550716,
+      "cumulative_mae": 94.10721882745682,
+      "identifier": "29",
+      "phase": "scored",
+      "prediction": 154.5,
+      "prior_training_count": 28,
+      "revealed_effort": 82.0
+    },
+    {
+      "absolute_error": 68.33333333333334,
+      "arrival": 30,
+      "baseline": 124.0551724137931,
+      "baseline_absolute_error": 62.0551724137931,
+      "baseline_cumulative_mae": 93.06198855716879,
+      "cumulative_mae": 93.1867229169524,
+      "identifier": "29",
+      "phase": "scored",
+      "prediction": 130.33333333333334,
+      "prior_training_count": 29,
+      "revealed_effort": 62.0
+    },
+    {
+      "absolute_error": 56.75,
+      "arrival": 31,
+      "baseline": 121.98666666666666,
+      "baseline_absolute_error": 48.013333333333335,
+      "baseline_cumulative_mae": 91.5085866528986,
+      "cumulative_mae": 91.93028419567818,
+      "identifier": "31",
+      "phase": "scored",
+      "prediction": 113.25,
+      "prior_training_count": 30,
+      "revealed_effort": 170.0
+    },
+    {
+      "absolute_error": 67.4,
+      "arrival": 32,
+      "baseline": 123.53548387096774,
+      "baseline_absolute_error": 68.46451612903226,
+      "baseline_cumulative_mae": 90.74045096876972,
+      "cumulative_mae": 91.11260805582225,
+      "identifier": "32",
+      "phase": "scored",
+      "prediction": 124.6,
+      "prior_training_count": 31,
+      "revealed_effort": 192.0
+    },
+    {
+      "absolute_error": 89.23636363636363,
+      "arrival": 33,
+      "baseline": 125.675,
+      "baseline_absolute_error": 107.675,
+      "baseline_cumulative_mae": 91.2867267439707,
+      "cumulative_mae": 91.05208404229133,
+      "identifier": "33",
+      "phase": "scored",
+      "prediction": 107.23636363636363,
+      "prior_training_count": 32,
+      "revealed_effort": 18.0
+    },
+    {
+      "absolute_error": 49.8,
+      "arrival": 34,
+      "baseline": 122.4121212121212,
+      "baseline_absolute_error": 72.4121212121212,
+      "baseline_cumulative_mae": 90.69689532110041,
+      "cumulative_mae": 89.76295641596973,
+      "identifier": "34",
+      "phase": "scored",
+      "prediction": 99.8,
+      "prior_training_count": 33,
+      "revealed_effort": 50.0
+    },
+    {
+      "absolute_error": 35.96923076923076,
+      "arrival": 35,
+      "baseline": 120.28235294117647,
+      "baseline_absolute_error": 60.28235294117647,
+      "baseline_cumulative_mae": 89.77524252170879,
+      "cumulative_mae": 88.1328435175837,
+      "identifier": "35",
+      "phase": "scored",
+      "prediction": 95.96923076923076,
+      "prior_training_count": 34,
+      "revealed_effort": 60.0
+    },
+    {
+      "absolute_error": 76.56000000000002,
+      "arrival": 36,
+      "baseline": 118.56000000000002,
+      "baseline_absolute_error": 76.56000000000002,
+      "baseline_cumulative_mae": 89.38655891812911,
+      "cumulative_mae": 87.79246576706653,
+      "identifier": "36",
+      "phase": "scored",
+      "prediction": 118.56000000000002,
+      "prior_training_count": 35,
+      "revealed_effort": 42.0
+    },
+    {
+      "absolute_error": 56.43333333333334,
+      "arrival": 37,
+      "baseline": 116.43333333333334,
+      "baseline_absolute_error": 56.43333333333334,
+      "baseline_cumulative_mae": 88.44503818713495,
+      "cumulative_mae": 86.89649055467414,
+      "identifier": "37",
+      "phase": "scored",
+      "prediction": 116.43333333333334,
+      "prior_training_count": 36,
+      "revealed_effort": 60.0
+    },
+    {
+      "absolute_error": 329.09189189189186,
+      "arrival": 38,
+      "baseline": 114.90810810810812,
+      "baseline_absolute_error": 329.09189189189186,
+      "baseline_cumulative_mae": 95.12967301226709,
+      "cumulative_mae": 93.62414059181908,
+      "identifier": "38",
+      "phase": "scored",
+      "prediction": 114.90810810810812,
+      "prior_training_count": 37,
+      "revealed_effort": 444.0
+    },
+    {
+      "absolute_error": 18.0,
+      "arrival": 39,
+      "baseline": 123.56842105263159,
+      "baseline_absolute_error": 81.56842105263159,
+      "baseline_cumulative_mae": 94.76315268903369,
+      "cumulative_mae": 91.5802449001483,
+      "identifier": "39",
+      "phase": "scored",
+      "prediction": 60.0,
+      "prior_training_count": 38,
+      "revealed_effort": 42.0
+    },
+    {
+      "absolute_error": 7.476923076923086,
+      "arrival": 40,
+      "baseline": 121.47692307692309,
+      "baseline_absolute_error": 7.476923076923086,
+      "baseline_cumulative_mae": 92.46614664660973,
+      "cumulative_mae": 89.36699958901079,
+      "identifier": "40",
+      "phase": "scored",
+      "prediction": 121.47692307692309,
+      "prior_training_count": 39,
+      "revealed_effort": 114.0
+    },
+    {
+      "absolute_error": 1126.71,
+      "arrival": 41,
+      "baseline": 121.29,
+      "baseline_absolute_error": 1126.71,
+      "baseline_cumulative_mae": 118.98521980951718,
+      "cumulative_mae": 115.96553806108746,
+      "identifier": "41",
+      "phase": "scored",
+      "prediction": 121.29,
+      "prior_training_count": 40,
+      "revealed_effort": 1248.0
+    },
+    {
+      "absolute_error": 2251.2292682926827,
+      "arrival": 42,
+      "baseline": 148.77073170731708,
+      "baseline_absolute_error": 2251.2292682926827,
+      "baseline_cumulative_mae": 172.2913210215963,
+      "cumulative_mae": 169.34713131687732,
+      "identifier": "42",
+      "phase": "scored",
+      "prediction": 148.77073170731708,
+      "prior_training_count": 41,
+      "revealed_effort": 2400.0
+    },
+    {
+      "absolute_error": 1165.6285714285714,
+      "arrival": 43,
+      "baseline": 202.37142857142857,
+      "baseline_absolute_error": 1165.6285714285714,
+      "baseline_cumulative_mae": 196.51905883640057,
+      "cumulative_mae": 193.64667863667475,
+      "identifier": "43",
+      "phase": "scored",
+      "prediction": 202.37142857142857,
+      "prior_training_count": 42,
+      "revealed_effort": 1368.0
+    },
+    {
+      "absolute_error": 743.5209302325582,
+      "arrival": 44,
+      "baseline": 229.47906976744187,
+      "baseline_absolute_error": 743.5209302325582,
+      "baseline_cumulative_mae": 209.54291291726145,
+      "cumulative_mae": 206.738922722291,
+      "identifier": "44",
+      "phase": "scored",
+      "prediction": 229.47906976744187,
+      "prior_training_count": 43,
+      "revealed_effort": 973.0
+    },
+    {
+      "absolute_error": 153.62272727272727,
+      "arrival": 45,
+      "baseline": 246.37727272727273,
+      "baseline_absolute_error": 153.62272727272727,
+      "baseline_cumulative_mae": 208.2424434836676,
+      "cumulative_mae": 205.5036623629988,
+      "identifier": "45",
+      "phase": "scored",
+      "prediction": 246.37727272727273,
+      "prior_training_count": 44,
+      "revealed_effort": 400.0
+    },
+    {
+      "absolute_error": 2150.208888888889,
+      "arrival": 46,
+      "baseline": 249.79111111111112,
+      "baseline_absolute_error": 2150.208888888889,
+      "baseline_cumulative_mae": 252.37804451560444,
+      "cumulative_mae": 249.7015084204054,
+      "identifier": "46",
+      "phase": "scored",
+      "prediction": 249.79111111111112,
+      "prior_training_count": 45,
+      "revealed_effort": 2400.0
+    },
+    {
+      "absolute_error": 123.46521739130435,
+      "arrival": 47,
+      "baseline": 296.53478260869565,
+      "baseline_absolute_error": 123.46521739130435,
+      "baseline_cumulative_mae": 249.51331502395334,
+      "cumulative_mae": 246.89625750864758,
+      "identifier": "47",
+      "phase": "scored",
+      "prediction": 296.53478260869565,
+      "prior_training_count": 46,
+      "revealed_effort": 420.0
+    },
+    {
+      "absolute_error": 47.16170212765957,
+      "arrival": 48,
+      "baseline": 299.16170212765957,
+      "baseline_absolute_error": 47.16170212765957,
+      "baseline_cumulative_mae": 245.11436691751217,
+      "cumulative_mae": 242.55420195688697,
+      "identifier": "48",
+      "phase": "scored",
+      "prediction": 299.16170212765957,
+      "prior_training_count": 47,
+      "revealed_effort": 252.0
+    },
+    {
+      "absolute_error": 191.17916666666667,
+      "arrival": 49,
+      "baseline": 298.1791666666667,
+      "baseline_absolute_error": 191.17916666666667,
+      "baseline_cumulative_mae": 243.9668094653665,
+      "cumulative_mae": 241.46111609964825,
+      "identifier": "49",
+      "phase": "scored",
+      "prediction": 298.1791666666667,
+      "prior_training_count": 48,
+      "revealed_effort": 107.0
+    },
+    {
+      "absolute_error": 277.1224489795918,
+      "arrival": 50,
+      "baseline": 294.27755102040817,
+      "baseline_absolute_error": 277.1224489795918,
+      "baseline_cumulative_mae": 244.6575519552462,
+      "cumulative_mae": 242.20406053464706,
+      "identifier": "50",
+      "phase": "scored",
+      "prediction": 294.27755102040817,
+      "prior_training_count": 49,
+      "revealed_effort": 571.4
+    },
+    {
+      "absolute_error": 472.59999999999997,
+      "arrival": 51,
+      "baseline": 299.82,
+      "baseline_absolute_error": 201.01999999999998,
+      "baseline_cumulative_mae": 243.76698967044527,
+      "cumulative_mae": 246.90601848291956,
+      "identifier": "51",
+      "phase": "scored",
+      "prediction": 571.4,
+      "prior_training_count": 50,
+      "revealed_effort": 98.8
+    },
+    {
+      "absolute_error": 180.09999999999997,
+      "arrival": 52,
+      "baseline": 295.878431372549,
+      "baseline_absolute_error": 140.87843137254902,
+      "baseline_cumulative_mae": 241.70921850448732,
+      "cumulative_mae": 245.5698981132612,
+      "identifier": "52",
+      "phase": "scored",
+      "prediction": 335.09999999999997,
+      "prior_training_count": 51,
+      "revealed_effort": 155.0
+    },
+    {
+      "absolute_error": 456.83076923076925,
+      "arrival": 53,
+      "baseline": 293.16923076923075,
+      "baseline_absolute_error": 456.83076923076925,
+      "baseline_cumulative_mae": 245.92728812657128,
+      "cumulative_mae": 249.71226813517313,
+      "identifier": "53",
+      "phase": "scored",
+      "prediction": 293.16923076923075,
+      "prior_training_count": 52,
+      "revealed_effort": 750.0
+    },
+    {
+      "absolute_error": 1818.211320754717,
+      "arrival": 54,
+      "baseline": 301.788679245283,
+      "baseline_absolute_error": 1818.211320754717,
+      "baseline_cumulative_mae": 276.1635195232664,
+      "cumulative_mae": 279.8757114547797,
+      "identifier": "54",
+      "phase": "scored",
+      "prediction": 301.788679245283,
+      "prior_training_count": 53,
+      "revealed_effort": 2120.0
+    },
+    {
+      "absolute_error": 1750.0,
+      "arrival": 55,
+      "baseline": 335.4592592592592,
+      "baseline_absolute_error": 34.54074074074077,
+      "baseline_cumulative_mae": 271.60459916887913,
+      "cumulative_mae": 307.61390557827445,
+      "identifier": "55",
+      "phase": "scored",
+      "prediction": 2120.0,
+      "prior_training_count": 54,
+      "revealed_effort": 370.0
+    },
+    {
+      "absolute_error": 844.9127272727274,
+      "arrival": 56,
+      "baseline": 336.0872727272727,
+      "baseline_absolute_error": 844.9127272727274,
+      "baseline_cumulative_mae": 282.2214163559874,
+      "cumulative_mae": 317.5638837578013,
+      "identifier": "56",
+      "phase": "scored",
+      "prediction": 336.0872727272727,
+      "prior_training_count": 55,
+      "revealed_effort": 1181.0
+    },
+    {
+      "absolute_error": 73.17500000000001,
+      "arrival": 57,
+      "baseline": 351.175,
+      "baseline_absolute_error": 73.17500000000001,
+      "baseline_cumulative_mae": 278.4205724222422,
+      "cumulative_mae": 313.1204495076595,
+      "identifier": "57",
+      "phase": "scored",
+      "prediction": 351.175,
+      "prior_training_count": 56,
+      "revealed_effort": 278.0
+    },
+    {
+      "absolute_error": 84.99999999999999,
+      "arrival": 58,
+      "baseline": 349.89122807017543,
+      "baseline_absolute_error": 341.49122807017545,
+      "baseline_cumulative_mae": 279.546834130241,
+      "cumulative_mae": 309.04687005216556,
+      "identifier": "58",
+      "phase": "scored",
+      "prediction": 93.39999999999999,
+      "prior_training_count": 57,
+      "revealed_effort": 8.4
+    },
+    {
+      "absolute_error": 4215.996551724138,
+      "arrival": 59,
+      "baseline": 344.00344827586207,
+      "baseline_absolute_error": 4215.996551724138,
+      "baseline_cumulative_mae": 348.6073554915374,
+      "cumulative_mae": 377.5898469236037,
+      "identifier": "59",
+      "phase": "scored",
+      "prediction": 344.00344827586207,
+      "prior_training_count": 58,
+      "revealed_effort": 4560.0
+    },
+    {
+      "absolute_error": 304.53898305084743,
+      "arrival": 60,
+      "baseline": 415.46101694915257,
+      "baseline_absolute_error": 304.53898305084743,
+      "baseline_cumulative_mae": 347.84755596669794,
+      "cumulative_mae": 376.3303492706251,
+      "identifier": "60",
+      "phase": "scored",
+      "prediction": 415.46101694915257,
+      "prior_training_count": 59,
+      "revealed_effort": 720.0
+    },
+    {
+      "absolute_error": 37.46333333333331,
+      "arrival": 61,
+      "baseline": 420.5366666666667,
+      "baseline_absolute_error": 37.46333333333331,
+      "baseline_cumulative_mae": 342.5868064305392,
+      "cumulative_mae": 370.58684052592525,
+      "identifier": "61",
+      "phase": "scored",
+      "prediction": 420.5366666666667,
+      "prior_training_count": 60,
+      "revealed_effort": 458.0
+    },
+    {
+      "absolute_error": 2002.0,
+      "arrival": 62,
+      "baseline": 421.15081967213115,
+      "baseline_absolute_error": 2038.849180327869,
+      "baseline_cumulative_mae": 370.85784599549476,
+      "cumulative_mae": 397.7770598504932,
+      "identifier": "62",
+      "phase": "scored",
+      "prediction": 458.0,
+      "prior_training_count": 61,
+      "revealed_effort": 2460.0
+    },
+    {
+      "absolute_error": 292.03548387096777,
+      "arrival": 63,
+      "baseline": 454.03548387096777,
+      "baseline_absolute_error": 292.03548387096777,
+      "baseline_cumulative_mae": 369.5656761246008,
+      "cumulative_mae": 396.04359139181247,
+      "identifier": "63",
+      "phase": "scored",
+      "prediction": 454.03548387096777,
+      "prior_training_count": 62,
+      "revealed_effort": 162.0
+    },
+    {
+      "absolute_error": 12.0,
+      "arrival": 64,
+      "baseline": 449.40000000000003,
+      "baseline_absolute_error": 299.40000000000003,
+      "baseline_cumulative_mae": 368.4339716709783,
+      "cumulative_mae": 389.84933991775097,
+      "identifier": "64",
+      "phase": "scored",
+      "prediction": 162.0,
+      "prior_training_count": 63,
+      "revealed_effort": 150.0
+    },
+    {
+      "absolute_error": 191.278125,
+      "arrival": 65,
+      "baseline": 444.721875,
+      "baseline_absolute_error": 191.278125,
+      "baseline_cumulative_mae": 365.6219741047723,
+      "cumulative_mae": 386.69741587143744,
+      "identifier": "65",
+      "phase": "scored",
+      "prediction": 444.721875,
+      "prior_training_count": 64,
+      "revealed_effort": 636.0
+    },
+    {
+      "absolute_error": 434.3353846153846,
+      "arrival": 66,
+      "baseline": 447.6646153846154,
+      "baseline_absolute_error": 434.3353846153846,
+      "baseline_cumulative_mae": 366.6956211440006,
+      "cumulative_mae": 387.4417591330616,
+      "identifier": "66",
+      "phase": "scored",
+      "prediction": 447.6646153846154,
+      "prior_training_count": 65,
+      "revealed_effort": 882.0
+    },
+    {
+      "absolute_error": 10.24545454545455,
+      "arrival": 67,
+      "baseline": 454.24545454545455,
+      "baseline_absolute_error": 10.24545454545455,
+      "baseline_cumulative_mae": 361.21177242709985,
+      "cumulative_mae": 381.638739062483,
+      "identifier": "67",
+      "phase": "scored",
+      "prediction": 454.24545454545455,
+      "prior_training_count": 66,
+      "revealed_effort": 444.0
+    },
+    {
+      "absolute_error": 262.09253731343284,
+      "arrival": 68,
+      "baseline": 454.09253731343284,
+      "baseline_absolute_error": 262.09253731343284,
+      "baseline_cumulative_mae": 359.70996583446856,
+      "cumulative_mae": 379.8274329753762,
+      "identifier": "68",
+      "phase": "scored",
+      "prediction": 454.09253731343284,
+      "prior_training_count": 67,
+      "revealed_effort": 192.0
+    },
+    {
+      "absolute_error": 125.76176470588234,
+      "arrival": 69,
+      "baseline": 450.23823529411766,
+      "baseline_absolute_error": 125.76176470588234,
+      "baseline_cumulative_mae": 356.21820163851953,
+      "cumulative_mae": 376.0354080758316,
+      "identifier": "69",
+      "phase": "scored",
+      "prediction": 450.23823529411766,
+      "prior_training_count": 68,
+      "revealed_effort": 576.0
+    },
+    {
+      "absolute_error": 20.060869565217388,
+      "arrival": 70,
+      "baseline": 452.0608695652174,
+      "baseline_absolute_error": 20.060869565217388,
+      "baseline_cumulative_mae": 351.274711460971,
+      "cumulative_mae": 370.80048839185196,
+      "identifier": "70",
+      "phase": "scored",
+      "prediction": 452.0608695652174,
+      "prior_training_count": 69,
+      "revealed_effort": 432.0
+    },
+    {
+      "absolute_error": 379.7742857142857,
+      "arrival": 71,
+      "baseline": 451.7742857142857,
+      "baseline_absolute_error": 379.7742857142857,
+      "baseline_cumulative_mae": 351.68774876899005,
+      "cumulative_mae": 370.93054342551045,
+      "identifier": "71",
+      "phase": "scored",
+      "prediction": 451.7742857142857,
+      "prior_training_count": 70,
+      "revealed_effort": 72.0
+    },
+    {
+      "absolute_error": 146.42535211267608,
+      "arrival": 72,
+      "baseline": 446.4253521126761,
+      "baseline_absolute_error": 146.42535211267608,
+      "baseline_cumulative_mae": 348.75542881675705,
+      "cumulative_mae": 367.7233264067557,
+      "identifier": "72",
+      "phase": "scored",
+      "prediction": 446.4253521126761,
+      "prior_training_count": 71,
+      "revealed_effort": 300.0
+    },
+    {
+      "absolute_error": 0.0,
+      "arrival": 73,
+      "baseline": 444.39166666666665,
+      "baseline_absolute_error": 144.39166666666665,
+      "baseline_cumulative_mae": 345.87706596957264,
+      "cumulative_mae": 362.54412462637885,
+      "identifier": "73",
+      "phase": "scored",
+      "prediction": 300.0,
+      "prior_training_count": 72,
+      "revealed_effort": 300.0
+    },
+    {
+      "absolute_error": 192.0,
+      "arrival": 74,
+      "baseline": 442.413698630137,
+      "baseline_absolute_error": 202.413698630137,
+      "baseline_cumulative_mae": 343.8845192009694,
+      "cumulative_mae": 360.17545622879027,
+      "identifier": "74",
+      "phase": "scored",
+      "prediction": 432.0,
+      "prior_training_count": 73,
+      "revealed_effort": 240.0
+    },
+    {
+      "absolute_error": 264.0,
+      "arrival": 75,
+      "baseline": 439.6783783783784,
+      "baseline_absolute_error": 160.3216216216216,
+      "baseline_cumulative_mae": 341.3699589601564,
+      "cumulative_mae": 358.85798422565614,
+      "identifier": "75",
+      "phase": "scored",
+      "prediction": 336.0,
+      "prior_training_count": 74,
+      "revealed_effort": 600.0
+    },
+    {
+      "absolute_error": 314.184,
+      "arrival": 76,
+      "baseline": 441.816,
+      "baseline_absolute_error": 314.184,
+      "baseline_cumulative_mae": 341.0025811363705,
+      "cumulative_mae": 358.2542817361203,
+      "identifier": "76",
+      "phase": "scored",
+      "prediction": 441.816,
+      "prior_training_count": 75,
+      "revealed_effort": 756.0
+    },
+    {
+      "absolute_error": 754.05,
+      "arrival": 77,
+      "baseline": 445.95,
+      "baseline_absolute_error": 754.05,
+      "baseline_cumulative_mae": 346.50988005455224,
+      "cumulative_mae": 363.53155797963865,
+      "identifier": "77",
+      "phase": "scored",
+      "prediction": 445.95,
+      "prior_training_count": 76,
+      "revealed_effort": 1200.0
+    },
+    {
+      "absolute_error": 358.74285714285713,
+      "arrival": 78,
+      "baseline": 455.74285714285713,
+      "baseline_absolute_error": 358.74285714285713,
+      "baseline_cumulative_mae": 346.67084027939836,
+      "cumulative_mae": 363.46854875810203,
+      "identifier": "78",
+      "phase": "scored",
+      "prediction": 455.74285714285713,
+      "prior_training_count": 77,
+      "revealed_effort": 97.0
+    },
+    {
+      "absolute_error": 42.1435897435897,
+      "arrival": 79,
+      "baseline": 451.1435897435897,
+      "baseline_absolute_error": 42.1435897435897,
+      "baseline_cumulative_mae": 342.7159409217905,
+      "cumulative_mae": 359.2954973423292,
+      "identifier": "79",
+      "phase": "scored",
+      "prediction": 451.1435897435897,
+      "prior_training_count": 78,
+      "revealed_effort": 409.0
+    },
+    {
+      "absolute_error": 294.0,
+      "arrival": 80,
+      "baseline": 450.61012658227844,
+      "baseline_absolute_error": 252.38987341772156,
+      "baseline_cumulative_mae": 341.557914415328,
+      "cumulative_mae": 358.4583755815301,
+      "identifier": "80",
+      "phase": "scored",
+      "prediction": 409.0,
+      "prior_training_count": 79,
+      "revealed_effort": 703.0
+    },
+    {
+      "absolute_error": 896.235,
+      "arrival": 81,
+      "baseline": 453.765,
+      "baseline_absolute_error": 896.235,
+      "baseline_cumulative_mae": 348.5791433467796,
+      "cumulative_mae": 365.2656746248019,
+      "identifier": "81",
+      "phase": "scored",
+      "prediction": 453.765,
+      "prior_training_count": 80,
+      "revealed_effort": 1350.0
+    },
+    {
+      "absolute_error": 15.170370370370392,
+      "arrival": 82,
+      "baseline": 464.8296296296296,
+      "baseline_absolute_error": 15.170370370370392,
+      "baseline_cumulative_mae": 344.41153368457447,
+      "cumulative_mae": 360.88948332162147,
+      "identifier": "82",
+      "phase": "scored",
+      "prediction": 464.8296296296296,
+      "prior_training_count": 81,
+      "revealed_effort": 480.0
+    },
+    {
+      "absolute_error": 133.98536585365855,
+      "arrival": 83,
+      "baseline": 465.01463414634145,
+      "baseline_absolute_error": 133.98536585365855,
+      "baseline_cumulative_mae": 341.813679760736,
+      "cumulative_mae": 358.0881979207825,
+      "identifier": "83",
+      "phase": "scored",
+      "prediction": 465.01463414634145,
+      "prior_training_count": 82,
+      "revealed_effort": 599.0
+    },
+    {
+      "absolute_error": 169.0,
+      "arrival": 84,
+      "baseline": 466.62891566265057,
+      "baseline_absolute_error": 36.62891566265057,
+      "baseline_cumulative_mae": 338.0919143449057,
+      "cumulative_mae": 355.78224428760217,
+      "identifier": "84",
+      "phase": "scored",
+      "prediction": 599.0,
+      "prior_training_count": 83,
+      "revealed_effort": 430.0
+    },
+    {
+      "absolute_error": 3712.0071428571428,
+      "arrival": 85,
+      "baseline": 466.1928571428571,
+      "baseline_absolute_error": 3712.0071428571428,
+      "baseline_cumulative_mae": 378.7414954113182,
+      "cumulative_mae": 396.218688848681,
+      "identifier": "85",
+      "phase": "scored",
+      "prediction": 466.1928571428571,
+      "prior_training_count": 84,
+      "revealed_effort": 4178.2
+    },
+    {
+      "absolute_error": 2405.7,
+      "arrival": 86,
+      "baseline": 509.8635294117647,
+      "baseline_absolute_error": 1262.6364705882352,
+      "baseline_cumulative_mae": 389.26405463961487,
+      "cumulative_mae": 420.14108541000616,
+      "identifier": "86",
+      "phase": "scored",
+      "prediction": 4178.2,
+      "prior_training_count": 85,
+      "revealed_effort": 1772.5
+    },
+    {
+      "absolute_error": 1329.4499999999998,
+      "arrival": 87,
+      "baseline": 524.5453488372093,
+      "baseline_absolute_error": 1121.3546511627908,
+      "baseline_cumulative_mae": 397.8768851869464,
+      "cumulative_mae": 430.838837346359,
+      "identifier": "87",
+      "phase": "scored",
+      "prediction": 2975.35,
+      "prior_training_count": 86,
+      "revealed_effort": 1645.9
+    },
+    {
+      "absolute_error": 1387.0655172413794,
+      "arrival": 88,
+      "baseline": 537.4344827586207,
+      "baseline_absolute_error": 1387.0655172413794,
+      "baseline_cumulative_mae": 409.37907858292823,
+      "cumulative_mae": 441.9577522288593,
+      "identifier": "88",
+      "phase": "scored",
+      "prediction": 537.4344827586207,
+      "prior_training_count": 87,
+      "revealed_effort": 1924.5
+    },
+    {
+      "absolute_error": 94.8034090909091,
+      "arrival": 89,
+      "baseline": 553.1965909090909,
+      "baseline_absolute_error": 94.8034090909091,
+      "baseline_cumulative_mae": 405.7632662899165,
+      "cumulative_mae": 437.96747242267594,
+      "identifier": "89",
+      "phase": "scored",
+      "prediction": 553.1965909090909,
+      "prior_training_count": 88,
+      "revealed_effort": 648.0
+    },
+    {
+      "absolute_error": 5678.799999999999,
+      "arrival": 90,
+      "baseline": 554.261797752809,
+      "baseline_absolute_error": 7656.738202247191,
+      "baseline_cumulative_mae": 488.16070874397644,
+      "cumulative_mae": 497.52238750878183,
+      "identifier": "90",
+      "phase": "scored",
+      "prediction": 2532.2000000000003,
+      "prior_training_count": 89,
+      "revealed_effort": 8211.0
+    },
+    {
+      "absolute_error": 159.3366666666667,
+      "arrival": 91,
+      "baseline": 639.3366666666667,
+      "baseline_absolute_error": 159.3366666666667,
+      "baseline_cumulative_mae": 484.46605658580444,
+      "cumulative_mae": 493.72254794875806,
+      "identifier": "91",
+      "phase": "scored",
+      "prediction": 639.3366666666667,
+      "prior_training_count": 90,
+      "revealed_effort": 480.0
+    },
+    {
+      "absolute_error": 468.0,
+      "arrival": 92,
+      "baseline": 637.5857142857143,
+      "baseline_absolute_error": 625.5857142857143,
+      "baseline_cumulative_mae": 486.0340527824701,
+      "cumulative_mae": 493.43674186043853,
+      "identifier": "92",
+      "phase": "scored",
+      "prediction": 480.0,
+      "prior_training_count": 91,
+      "revealed_effort": 12.0
+    },
+    {
+      "absolute_error": 208.0,
+      "arrival": 93,
+      "baseline": 630.7858695652175,
+      "baseline_absolute_error": 592.7858695652175,
+      "baseline_cumulative_mae": 487.2071496701926,
+      "cumulative_mae": 490.3000743674667,
+      "identifier": "93",
+      "phase": "scored",
+      "prediction": 246.0,
+      "prior_training_count": 92,
+      "revealed_effort": 38.0
+    }
+  ],
+  "scored_count": 91,
+  "sequence": "CSV order; demonstration sequence, not a verified timeline",
+  "warmup": 2
+}
+{
+  "association_type": "marginal; correlated descriptors can share explanatory information",
+  "limitations": [
+    "higher effort alone does not establish inefficiency because scope differs",
+    "delivered size is excluded; this is not size-adjusted productivity",
+    "no causal, defect-risk, process-improvement, or monetary claim"
+  ],
+  "overall_effort": {
+    "count": 93,
+    "max": 8211.0,
+    "mean": 624.4118279569893,
+    "median": 252.0,
+    "min": 8.4,
+    "sd": 1135.9280652026785
+  },
+  "predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "ranking": [
+    {
+      "descriptor": "time",
+      "direction": "higher in xh; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 13,
+          "effort": {
+            "count": 13,
+            "max": 2460.0,
+            "mean": 734.0769230769231,
+            "median": 458.0,
+            "min": 90.0,
+            "sd": 737.3069760439521
+          },
+          "mean": 734.0769230769231
+        },
+        "n": {
+          "count": 54,
+          "effort": {
+            "count": 54,
+            "max": 2400.0,
+            "mean": 334.3888888888889,
+            "median": 156.0,
+            "min": 8.4,
+            "sd": 504.19119676277745
+          },
+          "mean": 334.3888888888889
+        },
+        "vh": {
+          "count": 18,
+          "effort": {
+            "count": 18,
+            "max": 1248.0,
+            "mean": 375.34444444444443,
+            "median": 215.5,
+            "min": 12.0,
+            "sd": 371.0868983725926
+          },
+          "mean": 375.34444444444443
+        },
+        "xh": {
+          "count": 8,
+          "effort": {
+            "count": 8,
+            "max": 8211.0,
+            "mean": 2964.2625,
+            "median": 1848.5,
+            "min": 72.0,
+            "sd": 2584.5360511746453
+          },
+          "mean": 2964.2625
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.4179432592506268,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "rely",
+      "direction": "higher in vh; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 42,
+          "effort": {
+            "count": 42,
+            "max": 2460.0,
+            "mean": 483.54761904761904,
+            "median": 326.4,
+            "min": 8.4,
+            "sd": 621.8698398194912
+          },
+          "mean": 483.54761904761904
+        },
+        "l": {
+          "count": 2,
+          "effort": {
+            "count": 2,
+            "max": 2400.0,
+            "mean": 1296.0,
+            "median": 1296.0,
+            "min": 192.0,
+            "sd": 1561.291772859897
+          },
+          "mean": 1296.0
+        },
+        "n": {
+          "count": 39,
+          "effort": {
+            "count": 39,
+            "max": 1368.0,
+            "mean": 269.1589743589744,
+            "median": 170.0,
+            "min": 24.0,
+            "sd": 300.12956914073726
+          },
+          "mean": 269.1589743589744
+        },
+        "vh": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 8211.0,
+            "mean": 2467.21,
+            "median": 1709.2,
+            "min": 107.0,
+            "sd": 2502.8410014976535
+          },
+          "mean": 2467.21
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.34214709628686046,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "cplx",
+      "direction": "higher in xh; lower in h",
+      "group_count": 5,
+      "groups": {
+        "h": {
+          "count": 58,
+          "effort": {
+            "count": 58,
+            "max": 2400.0,
+            "mean": 315.2448275862069,
+            "median": 118.8,
+            "min": 8.4,
+            "sd": 464.98597457528126
+          },
+          "mean": 315.2448275862069
+        },
+        "l": {
+          "count": 3,
+          "effort": {
+            "count": 3,
+            "max": 1368.0,
+            "mean": 844.3333333333334,
+            "median": 973.0,
+            "min": 192.0,
+            "sd": 598.4649808746818
+          },
+          "mean": 844.3333333333334
+        },
+        "n": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2400.0,
+            "mean": 494.2,
+            "median": 320.0,
+            "min": 48.0,
+            "sd": 692.614659581117
+          },
+          "mean": 494.2
+        },
+        "vh": {
+          "count": 17,
+          "effort": {
+            "count": 17,
+            "max": 8211.0,
+            "mean": 1341.270588235294,
+            "median": 648.0,
+            "min": 12.0,
+            "sd": 2029.6902450758053
+          },
+          "mean": 1341.270588235294
+        },
+        "xh": {
+          "count": 5,
+          "effort": {
+            "count": 5,
+            "max": 4560.0,
+            "mean": 1901.9,
+            "median": 1924.5,
+            "min": 107.0,
+            "sd": 1780.7298503703475
+          },
+          "mean": 1901.9
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.191680306780018,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "stor",
+      "direction": "higher in xh; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2460.0,
+            "mean": 887.7,
+            "median": 580.5,
+            "min": 107.0,
+            "sd": 807.5338383002907
+          },
+          "mean": 887.7
+        },
+        "n": {
+          "count": 49,
+          "effort": {
+            "count": 49,
+            "max": 2400.0,
+            "mean": 323.24897959183676,
+            "median": 117.6,
+            "min": 8.4,
+            "sd": 517.1606528771825
+          },
+          "mean": 323.24897959183676
+        },
+        "vh": {
+          "count": 21,
+          "effort": {
+            "count": 21,
+            "max": 4560.0,
+            "mean": 555.1904761904761,
+            "median": 240.0,
+            "min": 12.0,
+            "sd": 980.5066353190895
+          },
+          "mean": 555.1904761904761
+        },
+        "xh": {
+          "count": 13,
+          "effort": {
+            "count": 13,
+            "max": 8211.0,
+            "mean": 1668.853846153846,
+            "median": 648.0,
+            "min": 60.0,
+            "sd": 2261.20604752397
+          },
+          "mean": 1668.853846153846
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.163584830645342,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "plex",
+      "direction": "higher in vl; lower in l",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 22,
+          "effort": {
+            "count": 22,
+            "max": 8211.0,
+            "mean": 1285.6863636363635,
+            "median": 651.5,
+            "min": 72.0,
+            "sd": 1818.4613483710564
+          },
+          "mean": 1285.6863636363635
+        },
+        "l": {
+          "count": 14,
+          "effort": {
+            "count": 14,
+            "max": 1350.0,
+            "mean": 346.85714285714283,
+            "median": 203.5,
+            "min": 12.0,
+            "sd": 426.6069812878318
+          },
+          "mean": 346.85714285714283
+        },
+        "n": {
+          "count": 53,
+          "effort": {
+            "count": 53,
+            "max": 2400.0,
+            "mean": 352.68301886792455,
+            "median": 117.6,
+            "min": 8.4,
+            "sd": 567.753594215446
+          },
+          "mean": 352.68301886792455
+        },
+        "vl": {
+          "count": 4,
+          "effort": {
+            "count": 4,
+            "max": 4560.0,
+            "mean": 1559.25,
+            "median": 623.5,
+            "min": 430.0,
+            "sd": 2002.6784356622675
+          },
+          "mean": 1559.25
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.15253724439705918,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "data",
+      "direction": "higher in h; lower in vh",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 17,
+          "effort": {
+            "count": 17,
+            "max": 8211.0,
+            "mean": 1522.1941176470589,
+            "median": 1181.0,
+            "min": 98.8,
+            "sd": 1986.1598643710015
+          },
+          "mean": 1522.1941176470589
+        },
+        "l": {
+          "count": 37,
+          "effort": {
+            "count": 37,
+            "max": 4560.0,
+            "mean": 370.1621621621622,
+            "median": 72.0,
+            "min": 8.4,
+            "sd": 821.2361046858812
+          },
+          "mean": 370.1621621621622
+        },
+        "n": {
+          "count": 31,
+          "effort": {
+            "count": 31,
+            "max": 2460.0,
+            "mean": 502.4516129032258,
+            "median": 300.0,
+            "min": 12.0,
+            "sd": 652.0495297500887
+          },
+          "mean": 502.4516129032258
+        },
+        "vh": {
+          "count": 8,
+          "effort": {
+            "count": 8,
+            "max": 1350.0,
+            "mean": 365.125,
+            "median": 181.0,
+            "min": 62.0,
+            "sd": 457.6116374331904
+          },
+          "mean": 365.125
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.14398840212923386,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "acap",
+      "direction": "higher in h; lower in n",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 51,
+          "effort": {
+            "count": 51,
+            "max": 8211.0,
+            "mean": 876.1235294117647,
+            "median": 420.0,
+            "min": 24.0,
+            "sd": 1414.70304001769
+          },
+          "mean": 876.1235294117647
+        },
+        "n": {
+          "count": 32,
+          "effort": {
+            "count": 32,
+            "max": 2400.0,
+            "mean": 301.34375,
+            "median": 75.0,
+            "min": 8.4,
+            "sd": 575.0976584319145
+          },
+          "mean": 301.34375
+        },
+        "vh": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 1181.0,
+            "mean": 374.5,
+            "median": 215.5,
+            "min": 62.0,
+            "sd": 364.03792537469377
+          },
+          "mean": 374.5
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.06061626094121256,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pvol",
+      "direction": "higher in n; lower in l",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 9,
+          "effort": {
+            "count": 9,
+            "max": 1368.0,
+            "mean": 557.4444444444445,
+            "median": 480.0,
+            "min": 12.0,
+            "sd": 526.8569803825112
+          },
+          "mean": 557.4444444444445
+        },
+        "l": {
+          "count": 65,
+          "effort": {
+            "count": 65,
+            "max": 4560.0,
+            "mean": 477.53846153846155,
+            "median": 240.0,
+            "min": 8.4,
+            "sd": 767.1059427509646
+          },
+          "mean": 477.53846153846155
+        },
+        "n": {
+          "count": 19,
+          "effort": {
+            "count": 19,
+            "max": 8211.0,
+            "mean": 1158.5947368421052,
+            "median": 252.0,
+            "min": 42.0,
+            "sd": 1999.5120019849521
+          },
+          "mean": 1158.5947368421052
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0578230097475758,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pcap",
+      "direction": "higher in h; lower in n",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 39,
+          "effort": {
+            "count": 39,
+            "max": 8211.0,
+            "mean": 921.623076923077,
+            "median": 400.0,
+            "min": 24.0,
+            "sd": 1581.8631520526237
+          },
+          "mean": 921.623076923077
+        },
+        "n": {
+          "count": 44,
+          "effort": {
+            "count": 44,
+            "max": 2460.0,
+            "mean": 348.70454545454544,
+            "median": 115.8,
+            "min": 8.4,
+            "sd": 543.3886946442946
+          },
+          "mean": 348.70454545454544
+        },
+        "vh": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2400.0,
+            "mean": 678.4,
+            "median": 425.0,
+            "min": 72.0,
+            "sd": 675.61004531707
+          },
+          "mean": 678.4
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.05744080323725276,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "sced",
+      "direction": "higher in n; lower in l",
+      "group_count": 2,
+      "groups": {
+        "l": {
+          "count": 34,
+          "effort": {
+            "count": 34,
+            "max": 1248.0,
+            "mean": 276.79411764705884,
+            "median": 118.8,
+            "min": 8.4,
+            "sd": 347.0584248615493
+          },
+          "mean": 276.79411764705884
+        },
+        "n": {
+          "count": 59,
+          "effort": {
+            "count": 59,
+            "max": 8211.0,
+            "mean": 824.7338983050848,
+            "median": 400.0,
+            "min": 12.0,
+            "sd": 1366.2158900193767
+          },
+          "mean": 824.7338983050848
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.05455369312943366,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pmat",
+      "direction": "higher in l; lower in n",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 43,
+          "effort": {
+            "count": 43,
+            "max": 8211.0,
+            "mean": 791.5837209302325,
+            "median": 278.0,
+            "min": 8.4,
+            "sd": 1444.5567889956574
+          },
+          "mean": 791.5837209302325
+        },
+        "l": {
+          "count": 20,
+          "effort": {
+            "count": 20,
+            "max": 4560.0,
+            "mean": 817.6600000000001,
+            "median": 501.7,
+            "min": 72.0,
+            "sd": 1083.605309967367
+          },
+          "mean": 817.6600000000001
+        },
+        "n": {
+          "count": 30,
+          "effort": {
+            "count": 30,
+            "max": 1350.0,
+            "mean": 255.96666666666667,
+            "median": 132.0,
+            "min": 12.0,
+            "sd": 307.1771906193258
+          },
+          "mean": 255.96666666666667
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.05072124483813193,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "apex",
+      "direction": "higher in h; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 46,
+          "effort": {
+            "count": 46,
+            "max": 8211.0,
+            "mean": 774.7021739130436,
+            "median": 276.0,
+            "min": 48.0,
+            "sd": 1380.1662530272101
+          },
+          "mean": 774.7021739130436
+        },
+        "l": {
+          "count": 1,
+          "effort": {
+            "count": 1,
+            "max": 648.0,
+            "mean": 648.0,
+            "median": 648.0,
+            "min": 648.0,
+            "sd": 0.0
+          },
+          "mean": 648.0
+        },
+        "n": {
+          "count": 34,
+          "effort": {
+            "count": 34,
+            "max": 2460.0,
+            "mean": 402.47058823529414,
+            "median": 117.6,
+            "min": 8.4,
+            "sd": 616.9867163883218
+          },
+          "mean": 402.47058823529414
+        },
+        "vh": {
+          "count": 12,
+          "effort": {
+            "count": 12,
+            "max": 4560.0,
+            "mean": 675.1666666666666,
+            "median": 342.0,
+            "min": 24.0,
+            "sd": 1267.943993123107
+          },
+          "mean": 675.1666666666666
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.023125557900776195,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "ltex",
+      "direction": "higher in h; lower in vl",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 69,
+          "effort": {
+            "count": 69,
+            "max": 8211.0,
+            "mean": 662.0333333333334,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1261.1879861355123
+          },
+          "mean": 662.0333333333334
+        },
+        "l": {
+          "count": 6,
+          "effort": {
+            "count": 6,
+            "max": 1350.0,
+            "mean": 427.3333333333333,
+            "median": 259.0,
+            "min": 12.0,
+            "sd": 525.3580366442172
+          },
+          "mean": 427.3333333333333
+        },
+        "n": {
+          "count": 14,
+          "effort": {
+            "count": 14,
+            "max": 2400.0,
+            "mean": 587.2857142857143,
+            "median": 162.0,
+            "min": 42.0,
+            "sd": 810.7048622195217
+          },
+          "mean": 587.2857142857143
+        },
+        "vl": {
+          "count": 4,
+          "effort": {
+            "count": 4,
+            "max": 599.0,
+            "mean": 401.0,
+            "median": 395.0,
+            "min": 215.0,
+            "sd": 159.50130615975115
+          },
+          "mean": 401.0
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0046301588059940646,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "tool",
+      "direction": "higher in h; lower in n",
+      "group_count": 2,
+      "groups": {
+        "h": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2460.0,
+            "mean": 776.7,
+            "median": 528.5,
+            "min": 72.0,
+            "sd": 720.5163349216233
+          },
+          "mean": 776.7
+        },
+        "n": {
+          "count": 83,
+          "effort": {
+            "count": 83,
+            "max": 8211.0,
+            "mean": 606.0638554216868,
+            "median": 215.0,
+            "min": 8.4,
+            "sd": 1177.9397248004684
+          },
+          "mean": 606.0638554216868
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0021890098555123858,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "prec",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "h": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "flex",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "h": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "resl",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "h": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "team",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "vh": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "ruse",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "docu",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pcon",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "site",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    }
+  ],
+  "score": "eta_squared_between_over_total",
+  "target": "Effort-",
+  "usable_effort_count": 93
+}
+{
+  "confidence_interval_95": [
+    -727.3030968829637,
+    386.0308077263371
+  ],
+  "difference_direction_favors": "A",
+  "groups": {
+    "A": {
+      "count": 83,
+      "mean_effort": 606.0638554216868,
+      "tool": "n"
+    },
+    "B": {
+      "count": 10,
+      "mean_effort": 776.7,
+      "tool": "h"
+    }
+  },
+  "interpretation": "observed Effort- is not verified monetary cost; practical importance is uncertain if the interval crosses a threshold",
+  "interval_entirely_practically_below_A": false,
+  "interval_entirely_practically_below_B": false,
+  "mean_difference_A_minus_B": -170.6361445783133,
+  "point_estimate_exceeds_threshold": true,
+  "threshold": 1.0,
+  "welch_df": 15.552580855698569,
+  "welch_two_sided_p": 0.5243346705603089
+}

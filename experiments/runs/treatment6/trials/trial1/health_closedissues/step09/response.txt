@@ -1,0 +1,7 @@
+Implemented Step 9 spot screening in source/analyzer.py.
+
+Reused the Step 8 parser, normalization, schema, configuration retention, and all prior demonstrations/tests. Added self-inclusive median/MAD modified-z screening for MRE-, ACC+, and PRED40+, with threshold 3.5, minimum sample size 3, independent finite reference populations, explicit missing/nonfinite counts, undefined short/zero-MAD scores, original row positions, all five configuration fields, reference details, per-outcome counts, and unique flagged-row counts. JSON output rejects NaN/Infinity. The authorized EZR reference informed the robust descriptive/statistical style; no Lua or third-party package was used.
+
+Tests: all 28 preserved and new tests pass. Demonstration runtime: 0.12 seconds real time. Run commands are in run_instructions.txt.
+
+Known limitations: this is marginal outcome screening, not configuration-conditioned anomaly detection or a validated measurement-error classifier. Unusual results—including very good results—warrant investigation but do not prove measurement error. Self-inclusion makes the reference descriptive rather than leave-one-out. Small samples and non-center values with zero MAD receive undefined scores. The dataset demonstration output is captured in runtime_output.txt.

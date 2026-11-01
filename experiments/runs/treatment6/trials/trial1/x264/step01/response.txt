@@ -1,0 +1,11 @@
+Implemented the reusable Python summarizer in [source/x264_summary.py](source/x264_summary.py) and tests in [tests/test_x264_summary.py](tests/test_x264_summary.py).
+
+The implementation loads CSV records, identifies `Performance-` as the available minimization outcome, reports setting frequencies, missing values, invalid outcomes, and one-pass numeric count/mean/sample standard deviation/minimum/maximum. It explicitly handles empty input, header-only input, entirely missing outcomes, and invalid/non-finite values. It uses only Python’s standard library and accepts the dataset path as its sole command-line argument.
+
+EZR components adapted from the authorized sources are the header-driven column-role idea (`Cols`), symbolic frequency accumulation (`SYM:add`), one-pass numeric accumulation (`NUM:add`/`NUM:div`), CSV cell handling (`csv`/`thing`), and the trailing `-` minimization convention. No Lua is invoked.
+
+Tests: 4 passed. Demonstration: exit 0, `/usr/bin/time -p` real time 0.03 seconds. Exact captured logs are in `test_attempt01.stdout`, `test_attempt01.stderr`, `runtime_attempt01.stdout`, and `runtime_attempt01.stderr`; references are recorded in `test_output.txt` and `runtime_output.txt`.
+
+Known limitations: CSV headers are assumed to define roles; only names ending in `-` are treated as numeric outcomes, with `Performance-` being the available dataset outcome; settings remain strings; blank and `?` are missing; invalid outcome cells are counted rather than imputed; the implementation does a second CSV pass to obtain min/max while retaining one-pass mean/variance accumulation.
+
+Run from the stated working directory using the commands in [run_instructions.txt](run_instructions.txt). Complete source code is in `source/x264_summary.py`.

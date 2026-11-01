@@ -1,0 +1,18 @@
+.......F....
+======================================================================
+FAIL: test_prefixes_and_ties (test_analyzer.FlowTests.test_prefixes_and_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step04/tests/test_analyzer.py", line 72, in test_prefixes_and_ties
+    self.assertIsNone(snapshots[1]["best"]["MRE-"]["configuration"]["Min_sample_leaves"])
+AssertionError: '2' is not None
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.006s
+
+FAILED (failures=1)
+real 0.04
+user 0.03
+sys 0.00
+
+exit_status=1

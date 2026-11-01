@@ -1,0 +1,184 @@
+You are running Treatment 6, Trial 1, Dataset 2, Step 8 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua source, supplied as reference
+- Reuse instructed: Yes
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: fix
+- Current requirement: Suggest a repair for a proposal likely to exceed its effort budget.
+
+Repository root:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+
+Dataset:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Authorized background files:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua
+
+Background commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Allowed previous source:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step07/source/
+
+Allowed previous tests:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step07/tests/
+
+Exact output directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step08/
+
+Use the exact absolute output directory above for every generated artifact.
+Do not resolve it relative to the initial working directory.
+Do not write to /Users/vivek/D Drive/vs code/SWEAI_Project/experiments/.
+Before writing, verify the resolved output path matches the exact path above.
+Quote shell paths containing spaces.
+
+Generate the application and tests in Python using only the standard library.
+Read the authorized Lua EZR source as background and translate or adapt
+relevant machinery into Python.
+Explain which EZR components informed the implementation.
+Do not generate a Lua application or invoke Lua as an application dependency.
+Do not install packages or use scikit-learn, NumPy, SciPy, or pandas.
+Do not modify the supplied background files.
+
+Reuse and extend the previous Treatment 6, Trial 1, NASA93 implementation.
+Preserve remember, guess, certify, flow, blame, justify, and choose behavior
+and tests while adding fix.
+Reuse existing machinery where appropriate instead of rebuilding it independently.
+Copy the authorized previous source and tests into the current step,
+then extend that snapshot. Keep the current step independently runnable.
+Do not modify previous files or import application code from previous directories.
+Do not implement future skills in advance.
+
+You may read only:
+- The specified NASA93 dataset.
+- The two authorized EZR source files.
+- The previous source and tests explicitly listed above.
+- Files created in the current Treatment 6 Trial 1 NASA93 Step 8 directory.
+- Official Python documentation.
+
+Do not read other background files, examples, tutorials, bundled datasets,
+unrelated steps, other trials, other datasets, other treatments,
+root-level implementations, Git history, or previous chats.
+In particular, do not refer to X264 or Treatment 5 implementations.
+Do not use remembered solutions from earlier experiment runs.
+
+If an authorized input is missing, report its exact path without searching elsewhere.
+
+Implementation:
+- Translate or adapt relevant EZR machinery where applicable.
+- Use a reproducible approximately 75/25 descriptor-grouped train/test split
+  with seed 42 and a training-only effort estimator.
+- Keep identical predictor configurations together.
+- Accept a complete proposal containing the 22 descriptors and an effort budget.
+- For the demonstration, use the earliest CSV record in the held-out set
+  as the proposal and use budget 100.
+- Exclude all X-suffix metadata and Kloc+, Effort-, and Defects- from proposal inputs.
+- Treat descriptor ratings as categorical; normalize whitespace consistently.
+- Search distinct descriptor configurations observed in training rows only.
+- Predict candidate effort using the same training-fitted model.
+- If the proposal already satisfies the budget, return no-repair-needed.
+- Otherwise, among candidates predicted feasible, minimize changed descriptor
+  count, then predicted effort, then earliest training CSV record.
+- If no candidate is predicted feasible, return no-feasible-repair explicitly.
+- Report original/candidate descriptors, changed fields with old/new values,
+  change count, estimated efforts, budget, and predicted feasibility.
+- Treat change count as a proxy, not monetary cost or operational risk.
+- Explain that candidates are hypothetical: descriptors may not be actionable,
+  and observed combinations may not preserve project scope.
+- Do not interpret model differences as causal improvements or guaranteed savings.
+- Do not use held-out outcomes to choose proposals, repairs, or explanations.
+- Handle invalid budgets, incomplete proposals, missing/unseen descriptors,
+  invalid/nonfinite targets, and insufficient training data explicitly.
+- Preserve original CSV identifiers when filtering invalid targets.
+- Clearly define identifiers; do not assume idX is unique.
+- Preserve earlier skills and their runnable demonstrations.
+- Accept the dataset path as a command-line argument.
+- State assumptions and limitations.
+
+Return:
+1. Complete updated source code.
+2. Tests for Step 8 and preserved earlier behavior.
+3. Commands to run the tests and implementations.
+4. A short explanation of what was reused, changed, and added,
+   including the EZR machinery translated or adapted.
+5. Known assumptions and limitations.
+
+Create the exact output directory automatically and save:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Run all preserved and new tests.
+Test predicted feasibility, minimum-change priority, both tie-breakers,
+already-feasible proposals, no feasible repair, and invalid inputs.
+Verify candidates come only from training rows.
+Verify changing held-out outcomes leaves repair selection unchanged.
+Verify changed fields and original identifiers are reported correctly.
+Do not require a repair in the real demonstration for tests to pass.
+Use independently known synthetic results.
+Keep synthetic fixtures inside this Step 8 directory.
+
+Artifact recording:
+- Save this entire user message verbatim in prompt.txt before implementation.
+  Do not shorten or paraphrase it.
+- Save your final assistant response verbatim in response.txt.
+- Capture stdout and stderr directly into attempt-labeled files from the first run.
+- Preserve failed and successful outputs; never overwrite earlier attempts.
+- Capture shell-wrapper failures as well as test and implementation failures.
+- Reference final attempt files from test_output.txt and runtime_output.txt,
+  or include their actual captured contents there.
+- Do not substitute summaries for logs or reconstruct missing output.
+- Specify the working directory, Python interpreter, and valid quoted paths
+  in run_instructions.txt.
+- Ensure commands resolve correctly from the stated working directory.
+- Before finishing, verify all required artifacts exist inside the exact
+  absolute Treatment 6 Trial 1 NASA93 Step 8 output directory.
+
+Run the complete test suite, Step 8 demonstration, and preserved earlier demos.
+Record actual measured results. Do not fabricate results.
+
+metrics.csv must have exactly these columns:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metrics:
+- step: 8
+- treatment: 6
+- trial: 1
+- domain: software project estimation
+- skill: fix
+- total_loc: all implementation Python lines in the current source snapshot,
+  including preserved functionality and translated EZR machinery.
+  Exclude blank lines, comment-only lines, tests, measurement runners,
+  and supplied Lua reference files.
+- new_loc: added application lines relative to the authorized Step 7 source,
+  using the same counting convention. Count added replacement lines;
+  do not use net LOC growth or count unchanged copied lines as new.
+  Document the comparison method and file mapping.
+- test_pass: 1 if the complete preserved and new test suite succeeds,
+  otherwise 0.
+- runtime_seconds: /usr/bin/time -p real elapsed time for the Step 8
+  demonstration subprocess, excluding tests and earlier demonstrations.
+  Copy the actual saved real value.
+- error_count: count each unexpected failed test assertion or test error,
+  plus each failed non-test command execution, including repaired failures.
+  Do not additionally count a failed suite's exit status.
+  Exclude expected negative-test cases.
+- notes: test count, timing method, reused/added machinery, LOC comparison
+  method, EZR adaptations, assumptions, and repairs.
+  Ensure metrics agree with source and preserved logs.
+
+Keep measurement runners outside source/.
+Do not include model-name or reasoning-setting metadata.
+Do not modify the dataset, Step 7 files, or other repository files.
+Write only inside the exact Treatment 6 Trial 1 NASA93 Step 8 output directory specified above.

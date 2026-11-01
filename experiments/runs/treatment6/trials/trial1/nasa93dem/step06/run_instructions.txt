@@ -1,0 +1,18 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (standard library only)
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Output directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step06'
+
+Run tests:
+python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step06/tests' -p 'test_*.py'
+
+Run Step 6:
+python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step06/source/nasa93_summary.py' --justify '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+Preserved demonstrations:
+python3 .../source/nasa93_summary.py DATASET.csv
+python3 .../source/nasa93_summary.py --flow DATASET.csv
+python3 .../source/nasa93_summary.py --blame DATASET.csv
+python3 .../source/nasa93_summary.py --certify DATASET.csv 1
+
+The test and runtime stdout/stderr are preserved in test-output-attempt-002.txt and runtime-output-attempt-001.txt; test_output.txt and runtime_output.txt reference those successful captures.

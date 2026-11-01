@@ -1,0 +1,7 @@
+Run preserved and new tests:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run the real-dataset flow demonstration:
+python3 source/analyzer.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+From the repository root, use the absolute dataset path from prompt.txt if the relative path is inconvenient.

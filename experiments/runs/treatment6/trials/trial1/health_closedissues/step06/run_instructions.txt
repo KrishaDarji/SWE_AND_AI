@@ -1,0 +1,7 @@
+Run the preserved and new test suite:
+python3 -m unittest discover -s tests -v
+
+Run the current justify demonstration:
+python3 source/analyzer.py ../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+From the repository root, use the dataset path shown in prompt.txt if the relative path is inconvenient. The implementation uses only the Python standard library.

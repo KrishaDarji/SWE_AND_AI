@@ -1,0 +1,13 @@
+.F..............
+======================================================================
+FAIL: test_missing_nonfinite_small_groups_and_summaries (test_x264_blame.BlameTests.test_missing_nonfinite_small_groups_and_summaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step05/tests/test_x264_blame.py", line 37, in test_missing_nonfinite_small_groups_and_summaries
+    self.assertEqual(by["multi"]["level_count"], 3)
+AssertionError: 0 != 3
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.005s
+
+FAILED (failures=1)

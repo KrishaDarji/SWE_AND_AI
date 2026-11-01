@@ -1,0 +1,7 @@
+Run tests:
+python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step09/tests" -v
+
+Run the current demonstration:
+python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step09/source/analyzer.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+The implementation uses only the Python standard library. The captured test and runtime logs include the commands' timing and exit status.

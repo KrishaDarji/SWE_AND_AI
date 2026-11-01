@@ -1,0 +1,15 @@
+Implemented Treatment 6, Trial 1, NASA93 Step 3 in the exact requested directory.
+
+Artifacts:
+- source/nasa93_summary.py — preserved summarize/remember/guess behavior plus certify.
+- tests/test_nasa93_summary.py — 10 preserved and new tests.
+- test_output.txt and runtime_output.txt — final captured logs; attempt01 logs preserve the repaired first run.
+- metrics.csv, run_instructions.txt, prompt.txt.
+
+The certification compares observed Effort- for tool=n (A) versus tool=h (B), strips whitespace, reports counts, means, A-minus-B difference, a Welch–Satterthwaite 95% interval, and a two-sided Welch test. It separately reports statistical evidence, point-estimate threshold comparison, and whether the complete interval exceeds a practical threshold. The demonstration threshold is illustrative: 10% of the tool=n mean.
+
+Final NASA93 demonstration: A n=83 mean=606.0638554216868; B h=10 mean=776.7; difference=-170.6361445783133, favoring A by the stated direction convention; 95% CI [-727.3030968829637, 386.0308077263371]; Welch df=15.552580855698569; two-sided p=0.5243346705603089. The interval crosses zero and practical thresholds, so this does not establish a reliable difference or equivalence.
+
+EZR background informed reuse of the existing descriptive/group machinery and its random/statistical comparison conventions. The new numerical work uses standard-library math: an incomplete-beta continued fraction, binary-search Student-t quantiles, and Welch–Satterthwaite arithmetic; the t quantile is checked against t(.975,10)=2.22813885. No packages or Lua runtime are used.
+
+Limitations: Effort- is observed effort, not verified monetary cost. Skew, imbalanced groups, missing/nonfinite values, zero variance, and project-scope differences can affect interpretation. This is observational and does not claim causal process effects, repeated-run noise, invented units, or guaranteed savings. A non-significant result is not equivalence; a threshold-crossing interval leaves practical importance uncertain.

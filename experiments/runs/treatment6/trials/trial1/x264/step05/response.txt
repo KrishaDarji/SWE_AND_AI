@@ -1,0 +1,19 @@
+Implemented Treatment 6 / Trial 1 / X264 / Step 5 in the exact requested directory.
+
+Source and tests:
+- [source](source/), including the new [x264_blame.py](source/x264_blame.py)
+- [tests](tests/), including [test_x264_blame.py](tests/test_x264_blame.py)
+- The Step 4 predict, summary, flow, certify modules and tests were copied into this independent snapshot and remain runnable.
+
+Blame ranks each encoder setting by eta-squared: between-setting sum of squares divided by total outcome sum of squares. Lower Performance- is better. Each setting reports score, rank, valid/missing counts, level count, and per-level count/mean/median/min/max. Constant and single-level settings receive zero; missing/nonfinite cells are excluded per setting; categorical levels are supported; ties are deterministic by setting name. Results are marginal observational associations, not causal responsibility. Correlated or mutually exclusive settings can share explanatory information, so a low score does not prove irrelevance.
+
+EZR machinery adapted from the authorized ezr.lua and ezr-lib.lua includes CSV-row streaming, finite-value handling, incremental summary statistics, sorted deterministic keys, and variance/diversity-based group comparison. No Lua runtime or third-party package is used.
+
+Verification:
+- Complete suite: 16 tests passed.
+- Step 5 demonstration: exit 0; /usr/bin/time -p real 0.02 seconds.
+- Preserved summary, predictor, certify, and flow demonstrations: all exit 0.
+- One failed first test attempt was preserved and repaired; error_count is therefore 1.
+- Source LOC: 393; added LOC relative to Step 4: 87, counting nonblank/non-comment Python lines.
+
+Artifacts include prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, run_instructions.txt, and immutable attempt-labeled stdout/stderr logs.

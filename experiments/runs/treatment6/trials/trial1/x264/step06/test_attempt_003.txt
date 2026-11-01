@@ -1,0 +1,24 @@
+test_known_association_and_deterministic_tie (test_x264_blame.BlameTests.test_known_association_and_deterministic_tie) ... ok
+test_missing_nonfinite_small_groups_and_summaries (test_x264_blame.BlameTests.test_missing_nonfinite_small_groups_and_summaries) ... ok
+test_direction_and_threshold_uncertainty (test_x264_certify.CertifyTests.test_direction_and_threshold_uncertainty) ... ok
+test_invalid_missing_insufficient_zero_and_threshold (test_x264_certify.CertifyTests.test_invalid_missing_insufficient_zero_and_threshold) ... ok
+test_welch_reference_and_large_statistic (test_x264_certify.CertifyTests.test_welch_reference_and_large_statistic) ... ok
+test_empty_one_tie_missing_nonfinite_and_configuration (test_x264_flow.FlowTests.test_empty_one_tie_missing_nonfinite_and_configuration) ... ok
+test_iterator_requests_next_record_after_processing (test_x264_flow.FlowTests.test_iterator_requests_next_record_after_processing) ... ok
+test_prefixes_match_batch_statistics (test_x264_flow.FlowTests.test_prefixes_match_batch_statistics) ... ok
+test_missing_nonfinite_invalid_and_zero_reference (test_x264_justify.JustifyTests.test_missing_nonfinite_invalid_and_zero_reference) ... ok
+test_no_usable_records_and_missing_reference_outcome (test_x264_justify.JustifyTests.test_no_usable_records_and_missing_reference_outcome) ... ok
+test_selection_tie_reference_and_complete_configuration (test_x264_justify.JustifyTests.test_selection_tie_reference_and_complete_configuration) ... ok
+test_grouped_reproducible_and_evaluated (test_x264_predict.PredictTests.test_grouped_reproducible_and_evaluated) ... ok
+test_insufficient_groups_and_memory (test_x264_predict.PredictTests.test_insufficient_groups_and_memory) ... ok
+test_schema_and_bad_inputs (test_x264_predict.PredictTests.test_schema_and_bad_inputs) ... ok
+test_training_only_fit_and_outcome_change (test_x264_predict.PredictTests.test_training_only_fit_and_outcome_change) ... ok
+test_empty_and_header_only (test_x264_summary.SummaryTests.test_empty_and_header_only) ... ok
+test_entirely_missing_outcome (test_x264_summary.SummaryTests.test_entirely_missing_outcome) ... ok
+test_outcome_identification_and_invalid_values (test_x264_summary.SummaryTests.test_outcome_identification_and_invalid_values) ... ok
+test_summary_frequencies_statistics_and_missing (test_x264_summary.SummaryTests.test_summary_frequencies_statistics_and_missing) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.006s
+
+OK

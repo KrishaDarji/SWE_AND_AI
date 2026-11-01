@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,6,1,model configuration and quality,justify,317,66,1,0.12,3,"18 tests passed; runtime is /usr/bin/time -p real for justify demonstration only; copied Step 5 machinery and added justify; new_loc counts added/replacement source lines, not net growth; EZR informed median/rank-based descriptive treatment; retrospective observed-row recommendation; no compute constraint; repaired two test errors and one shell capture error"

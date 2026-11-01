@@ -1,0 +1,15 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step10
+
+Python interpreter: python3 (standard library only)
+
+Run the complete preserved and Step 10 suite:
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+Run the Step 10 demonstration (quote the dataset path because its parent path contains spaces):
+/usr/bin/time -p python3 source/nasa93_summary.py --race '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+Run the preserved summary demonstration:
+python3 source/nasa93_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+
+The implementation accepts the dataset path as its command-line argument. The race uses fixed seeds 42 through 51, a fixed 1e-12 tie tolerance, normalized categorical descriptor groups, fresh training-only fits, and a training-mean baseline.

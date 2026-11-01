@@ -1,0 +1,67 @@
+--- /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step05/source/nasa93_summary.py	2026-10-31 19:41:37
++++ /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step06/source/nasa93_summary.py	2026-10-31 19:43:26
+@@ -258,11 +258,63 @@
+             "limitations": ["higher effort alone does not establish inefficiency because scope differs",
+                             "delivered size is excluded; this is not size-adjusted productivity",
+                             "no causal, defect-risk, process-improvement, or monetary claim"], "ranking": ranked}
++
++def justify(path, seed=42):
++    """Freeze a sponsor-facing estimate and evidence before an outcome audit.
++
++    The selected demonstration is the earliest CSV-order member of the grouped
++    held-out partition.  All model fitting and association summaries use train
++    rows only; the retrospective value is attached only after the frozen report.
++    """
++    header, rows, _ = read_dataset(path)
++    predictors = [n for n in header if not n.endswith("X") and n not in OUTCOMES]
++    usable = [(i, r) for i, r in enumerate(rows) if _number(r.get("Effort-", "")) is not None]
++    if len(usable) < 2: raise ValueError("at least two rows with finite Effort- targets are required")
++    clean = [r for _, r in usable]
++    train, test = grouped_split(clean, predictors, seed)
++    model = EffortGuesser(predictors, seed=seed).fit(train)
++    selected = min(test, key=lambda r: usable[[x[1] for x in usable].index(r)][0])
++    prediction = model.predict([selected])[0]
++    key = _group_key(selected, predictors)
++    matched = [r for r in train if _group_key(r, predictors) == key]
++    source = "exact training descriptor group" if matched else "training mean fallback for unseen group"
++    evidence = [{"label": "training matched row", "identifier": r.get("idX", "").strip() or str(train.index(r)+1),
++                 "effort": _number(r.get("Effort-", ""))} for r in matched]
++    associations = blame_rows(train, predictors)
++    frozen = {"record_identifier": selected.get("idX", "").strip() or selected.get("id", "").strip() or str(rows.index(selected)+1),
++              "csv_position": rows.index(selected)+1, "predictors": predictors,
++              "proposal": {p: selected.get(p, "").strip() for p in predictors},
++              "train_count": len(train), "test_count": len(test), "seed": seed,
++              "estimate": prediction, "training_reference": {"label": "training mean", "value": model.mean},
++              "explanation": {"label": source, "group_key": key, "matched_training_evidence": evidence,
++                              "historical_associations_training_only": associations},
++              "limitations": ["associations are marginal and not additive local contributions or causal effects",
++                              "missing or unseen descriptor groups use the training mean",
++                              "correlated descriptors can share explanatory information",
++                              "scope, size, and deployment behavior are not inferred; Effort- units are not invented"]}
++    audit = {"label": "retrospective audit; measured after freeze", "observed_effort": _number(selected.get("Effort-", "")),
++             "absolute_error": abs(prediction - _number(selected.get("Effort-", ""))) if _number(selected.get("Effort-", "")) is not None else None}
++    return {"pre_audit": frozen, "retrospective_audit": audit}
+ 
++def blame_rows(rows, predictors):
++    finite = [_number(r.get("Effort-", "")) for r in rows]
++    finite = [x for x in finite if x is not None]
++    overall = statistics.fmean(finite) if finite else None
++    result = []
++    for name in predictors:
++        groups = _effort_groups(rows, name)
++        means = {k: statistics.fmean(v) for k, v in groups.items() if v}
++        ss = sum((y-overall)**2 for y in finite) if overall is not None else 0
++        between = sum(len(v)*(means[k]-overall)**2 for k,v in groups.items()) if overall is not None else 0
++        result.append({"descriptor": name, "label": "historical association; training rows only",
++                       "eta_squared": between/ss if ss else 0.0, "group_means": dict(sorted(means.items()))})
++    return sorted(result, key=lambda x: (-x["eta_squared"], predictors.index(x["descriptor"])))
++
+ def main(argv=None):
+     argv = sys.argv[1:] if argv is None else argv
+     if len(argv) not in (1, 2, 3): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --certify DATASET.csv THRESHOLD")
+-    if len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
++    if len(argv) == 2 and argv[0] == "--justify": print(json.dumps(justify(argv[1]), indent=2, sort_keys=True))
++    elif len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
+     elif len(argv) == 2 and argv[0] == "--blame": print(json.dumps(blame(argv[1]), indent=2, sort_keys=True))
+     elif len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
+     elif len(argv) == 1: print(json.dumps(summarize(argv[0]), indent=2, sort_keys=True))

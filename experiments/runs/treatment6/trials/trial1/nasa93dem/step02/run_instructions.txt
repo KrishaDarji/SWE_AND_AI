@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step02
+Python interpreter: /usr/bin/python3
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Tests: /usr/bin/python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step02/tests' -v
+Summary: /usr/bin/python3 'source/nasa93_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Proposal mode: provide a JSON object with exactly the 22 predictor names as the second argument.
+All paths above are absolute or quoted where spaces occur.

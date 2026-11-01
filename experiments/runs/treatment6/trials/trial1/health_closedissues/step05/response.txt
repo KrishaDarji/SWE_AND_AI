@@ -1,0 +1,13 @@
+Implemented Step 5 blame analysis.
+
+Reused the authorized Step 4 source and tests, preserving all prior demonstrations. Added `blame`, which ranks the five configuration fields by marginal eta-squared against finite MRE- values. Criterion is categorical; numeric fields use deterministic rank bins (at most four bins), with boundaries reported. Missing and nonfinite values are excluded per field, and group counts, means, reference means, sums of squares, status, and deterministic rankings are reported. The demonstration excludes ACC+ and PRED40+ as predictors.
+
+The EZR reference informed the streaming/statistical style and defensive handling of empty or constant summaries; no Lua or third-party package was used.
+
+Tests: 15 passed. Demonstration: 0.07 seconds real time. Source LOC: 252 nonblank, noncomment lines; new/replacement LOC: 54 by corresponding-file diff.
+
+Commands:
+`python3 -m unittest discover -s SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step05/tests -v`
+`/usr/bin/time -p python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step05/source/analyzer.py SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv`
+
+Limitations: these are marginal historical associations, not causal or independent importance. Grouping loses within-bin numeric detail; unequal group sizes, correlated settings, and other configuration differences can affect the ranking.

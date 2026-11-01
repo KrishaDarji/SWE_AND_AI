@@ -1,0 +1,39 @@
+test_complete_reporting_path (test_analyzer.AnalyzerTests.test_complete_reporting_path) ... ok
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_constant_empty_and_ties (test_analyzer.BlameTests.test_constant_empty_and_ties) ... ok
+test_known_eta_direction_and_outcome_exclusion (test_analyzer.BlameTests.test_known_eta_direction_and_outcome_exclusion) ... ok
+test_missing_nonfinite_and_per_field_population (test_analyzer.BlameTests.test_missing_nonfinite_and_per_field_population) ... ok
+test_fixed_selection_direction_and_ci (test_analyzer.CertifyTests.test_fixed_selection_direction_and_ci) ... ok
+test_threshold_missing_and_insufficient (test_analyzer.CertifyTests.test_threshold_missing_and_insufficient) ... ok
+test_zero_variance_and_threshold_validation (test_analyzer.CertifyTests.test_zero_variance_and_threshold_validation) ... ok
+test_cap_counts_and_complete_retention (test_analyzer.ChooseTests.test_cap_counts_and_complete_retention) ... ok
+test_invalid_caps_empty_and_no_feasible (test_analyzer.ChooseTests.test_invalid_caps_empty_and_no_feasible) ... ok
+test_over_budget_excellent_row_cannot_win (test_analyzer.ChooseTests.test_over_budget_excellent_row_cannot_win) ... ok
+test_tie_breakers_independently (test_analyzer.ChooseTests.test_tie_breakers_independently) ... ok
+test_minimum_changes_beats_magnitude_and_reports (test_analyzer.FixTests.test_minimum_changes_beats_magnitude_and_reports) ... ok
+test_statuses_exclusions_secondary_worsening_and_no_cap (test_analyzer.FixTests.test_statuses_exclusions_secondary_worsening_and_no_cap) ... ok
+test_tiebreakers_independent_and_numeric_normalization (test_analyzer.FixTests.test_tiebreakers_independent_and_numeric_normalization) ... ok
+test_csv_integration (test_analyzer.FlowTests.test_csv_integration) ... ok
+test_empty_single_and_iterator_once (test_analyzer.FlowTests.test_empty_single_and_iterator_once) ... ok
+test_prefixes_and_ties (test_analyzer.FlowTests.test_prefixes_and_ties) ... ok
+test_all_tiebreakers_and_full_retention (test_analyzer.JustifyTests.test_all_tiebreakers_and_full_retention) ... ok
+test_eligibility_positions_medians_and_directions (test_analyzer.JustifyTests.test_eligibility_positions_medians_and_directions) ... ok
+test_empty_and_no_eligible (test_analyzer.JustifyTests.test_empty_and_no_eligible) ... ok
+test_grouped_reproducible_and_prediction (test_analyzer.PredictorTests.test_grouped_reproducible_and_prediction) ... ok
+test_invalid_zero_and_insufficient (test_analyzer.PredictorTests.test_invalid_zero_and_insufficient) ... ok
+test_preprocessing_is_training_only (test_analyzer.PredictorTests.test_preprocessing_is_training_only) ... ok
+test_schema_missing_unseen_and_excluded_outcome (test_analyzer.PredictorTests.test_schema_missing_unseen_and_excluded_outcome) ... ok
+test_classification_and_summary (test_analyzer.RaceTests.test_classification_and_summary) ... ok
+test_empty_small_and_invalid_parameters (test_analyzer.RaceTests.test_empty_small_and_invalid_parameters) ... ok
+test_same_population_reproducible_and_retains_positions (test_analyzer.RaceTests.test_same_population_reproducible_and_retains_positions) ... ok
+test_empty_constant_and_validation (test_analyzer.SpotTests.test_empty_constant_and_validation) ... ok
+test_flags_and_retention (test_analyzer.SpotTests.test_flags_and_retention) ... ok
+test_independent_missing_and_undefined (test_analyzer.SpotTests.test_independent_missing_and_undefined) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.006s
+
+OK
+real 0.08
+user 0.03
+sys 0.01

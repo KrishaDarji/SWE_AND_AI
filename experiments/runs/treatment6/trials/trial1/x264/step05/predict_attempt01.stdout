@@ -1,0 +1,29 @@
+{
+  "baseline_mae": 145.3400659785383,
+  "mae": 466.67395952653794,
+  "predictors": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9"
+  ],
+  "ridge": 1e-06,
+  "seed": 42,
+  "split": "shuffle unique configurations, 80% groups train",
+  "test_groups": 231,
+  "test_rows": 231,
+  "train_groups": 921,
+  "train_rows": 921
+}

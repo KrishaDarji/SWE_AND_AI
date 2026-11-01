@@ -1,0 +1,11 @@
+Implemented Step 8 in source/analyzer.py and tests/test_analyzer.py.
+
+Reused: the Step 7 CSV cleaning, finite-number validation, schema constants, position-preserving row processing, reporting machinery, predictor, flow, blame, justify, and capped choose tests. The new recommend_fix function evaluates the first CSV row as the immutable baseline, requires complete finite settings/outcomes, compares only observed rows with strictly lower MRE-, and ranks by changed-field count, MRE-, ACC+, PRED40+, then original position. Numeric settings are compared numerically and criterion categorically. The old choose API and its compute-cap tests remain preserved; Step 8 does not apply that cap.
+
+The EZR reference informed deterministic rank-based comparison/reporting and explicit missing-data handling. This is retrospective comparison between observed rows: changed-field count is only a simplicity proxy, historical differences do not establish causation, and future improvement is not guaranteed.
+
+Validation: all 25 tests passed. The demonstration succeeded with the first dataset row as baseline (position 1) and selected observed row 1945. Baseline MRE- 0.3148748159057436; candidate MRE- 0.2673048600883652; absolute improvement 0.04756995581737844. Two fields changed: N_estimators 40.0 to 10.0 and Min_impurity_decrease 2.75 to 5.0. ACC+ changed by -0.06568407561678946; PRED40+ changed by 0.0. There were 736 improving candidates, 9999 candidates examined, and 0 exclusions.
+
+Commands are in run_instructions.txt. Full source and tests are saved in source/ and tests/. Actual test and runtime captures are saved in test_output.txt and runtime_output.txt; the initial successful test capture is also preserved as test_attempt_01.txt.
+
+Known limitations: the selector can only recommend configurations present in the dataset; outcome comparisons are observational; missing/nonfinite rows are excluded as candidates, while an invalid first row produces invalid_baseline rather than substituting a later row.

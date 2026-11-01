@@ -1,0 +1,26 @@
+{
+  "fields": [
+    "Kloc+",
+    "Effort-",
+    "Defects-"
+  ],
+  "flags": [],
+  "limitations": [
+    "large projects may legitimately have large effort or defect counts",
+    "marginal screen is not scope-adjusted and has no labels for accuracy",
+    "scores are not prediction uncertainty or causal explanations",
+    "duplicate identifiers remain distinguishable by csv_position"
+  ],
+  "method": "leave-one-out log1p robust univariate screen",
+  "per_outcome_flag_counts": {
+    "Defects-": 0,
+    "Effort-": 0,
+    "Kloc+": 0
+  },
+  "threshold": 3.5,
+  "unique_flagged_record_count": 0
+}
+real 0.04
+user 0.03
+sys 0.00
+exit_status=0

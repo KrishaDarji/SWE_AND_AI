@@ -1,0 +1,16 @@
+Implemented Treatment 6, Trial 1, X264 Step 7 in the exact requested directory.
+
+Source and tests:
+- source/: complete current Python snapshot
+- source/x264_choose.py: budgeted chooser
+- tests/: preserved and new tests
+
+The chooser uses seeded random candidate order (seed 42), evaluates at most 20 distinct configurations through a callback, rejects invalid/nonfinite results, recommends the lowest measured Performance- with deterministic identifier tie-breaking, and records evaluation order, observations, budget usage, identifier, and full configuration. The recommendation is frozen before the separate retrospective audit.
+
+Reused: the complete Step 6 source and test snapshot, preserving remember, guess/predict, certify, flow, blame, and justify behavior. EZR-informed adaptations are seeded randomization/Fisher–Yates-style sampling, callback-based budgeted acquisition, and one-pass numeric validation/statistics concepts. No Lua or third-party package is used.
+
+Verification: 23 tests passed. The demonstration used 20 evaluations and selected identifier 4 with Performance- 260.267. The retrospective observed minimum was identifier 70 at 244.23, gap 16.037000000000006. Measured demonstration real time was 0.04 seconds.
+
+Known limitations: random exploration can miss unevaluated better configurations; the audit is retrospective and cannot improve selection; measurements are treated as finite scalar Performance- outcomes and no units or causal claims are inferred.
+
+Artifacts include prompt.txt, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt.

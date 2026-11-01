@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,6,1,model configuration and quality,race,500,60,1,0.07,1,"31 tests passed; runtime is /usr/bin/time -p real time for current race demo only; reused Step 9 source/tests; new_loc is added diff lines, not net growth; EZR stable ordering/randomness informed deterministic tie ordering and fresh local RNGs; shared eligible population, cap 100, seeds 42-51; one repaired shell capture attempt failed before test execution because status was a read-only shell variable"

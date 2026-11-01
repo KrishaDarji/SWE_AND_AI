@@ -1,0 +1,4 @@
+python3 -m unittest discover -s SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step05/tests -v
+exit_status=0
+Ran 15 tests in 0.006s
+OK

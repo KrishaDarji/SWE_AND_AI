@@ -1,0 +1,33 @@
+test_grouped_reproducible_and_evaluated (test_x264_predict.PredictTests) ... ERROR
+test_insufficient_groups_and_memory (test_x264_predict.PredictTests) ... ok
+test_schema_and_bad_inputs (test_x264_predict.PredictTests) ... ok
+test_training_only_fit_and_outcome_change (test_x264_predict.PredictTests) ... ERROR
+test_empty_and_header_only (test_x264_summary.SummaryTests) ... ok
+test_entirely_missing_outcome (test_x264_summary.SummaryTests) ... ok
+test_outcome_identification_and_invalid_values (test_x264_summary.SummaryTests) ... ok
+test_summary_frequencies_statistics_and_missing (test_x264_summary.SummaryTests) ... ok
+
+======================================================================
+ERROR: test_grouped_reproducible_and_evaluated (test_x264_predict.PredictTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step02/tests/test_x264_predict.py", line 13, in test_grouped_reproducible_and_evaluated
+    self.assertEqual(model.predict({"a":"0","b":"0"}), model.predict({"a":0,"b":0}))
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step02/source/x264_predict.py", line 85, in predict
+    raise ValueError("configuration settings must be finite numeric values")
+ValueError: configuration settings must be finite numeric values
+
+======================================================================
+ERROR: test_training_only_fit_and_outcome_change (test_x264_predict.PredictTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step02/tests/test_x264_predict.py", line 19, in test_training_only_fit_and_outcome_change
+    path=self.fixture(self.rows()); model, _=fit_evaluate(path); before=model.predict({"a":0,"b":0})
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step02/source/x264_predict.py", line 85, in predict
+    raise ValueError("configuration settings must be finite numeric values")
+ValueError: configuration settings must be finite numeric values
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+FAILED (errors=2)

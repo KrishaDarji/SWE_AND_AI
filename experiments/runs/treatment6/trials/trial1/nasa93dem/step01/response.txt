@@ -1,0 +1,18 @@
+Implemented Treatment 6, Trial 1, NASA93 Dataset 2, Step 1.
+
+Artifacts:
+- Complete source: source/nasa93_summary.py
+- Tests: tests/test_nasa93_summary.py
+- Test command: python3 run_tests.py
+- Demonstration command: /usr/bin/time -p python3 run_demo.py
+- Captured logs: test_output.attempt01.txt and runtime_output.attempt01.txt, referenced by test_output.txt and runtime_output.txt
+- Instructions: run_instructions.txt
+- Metrics: metrics.csv
+
+Measured results: 3 tests passed; the demonstration processed 93 records and 29 columns; /usr/bin/time -p reported real 0.04 seconds; error_count is 0.
+
+The implementation parses CSV headers and rows, trims whitespace, handles empty/?, NA-like, and nonfinite values, infers numeric versus categorical fields, reports missing values, numeric descriptive statistics, categorical frequencies, and invalid numeric values. It distinguishes descriptors, X-suffix metadata, and outcomes. Kloc+ is maximize; Effort- and Defects- are minimize; outcomes are not model predictors, and delivered size is not automatically a predictor.
+
+EZR machinery adapted from the authorized sources includes csv-style header-first streaming, column type/role organization, NUM-style descriptive accumulation, SYM-style frequency/mode-oriented summaries, and missing-value skipping. No Lua is executed and no packages are required.
+
+Assumptions and limitations: the dataset has one header row; rows are comma-separated; short rows are padded and extra cells ignored; numeric inference is based on finite parseable nonmissing values except named outcomes, which are forced numeric so invalid values are reported. Numeric category codes are not interpreted as continuous unless the column is finite numeric data. The summary is descriptive only and does not model or optimize projects.

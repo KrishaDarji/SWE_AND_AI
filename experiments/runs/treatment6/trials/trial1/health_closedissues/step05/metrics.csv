@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,6,1,model configuration and quality,blame,252,54,1,0.07,0,"15 tests passed; runtime is /usr/bin/time real for blame demonstration only; copied Step 4 source/tests; new LOC is replacement diff; EZR informed defensive summaries and grouping style; numeric rank bins lose within-bin detail; marginal associations only; no failed attempts"

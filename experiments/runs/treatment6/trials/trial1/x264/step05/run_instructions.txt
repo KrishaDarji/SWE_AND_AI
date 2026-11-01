@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step05
+Python interpreter: python3 (standard library only)
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+Test command: PYTHONPATH='.../step05/source' python3 -m unittest discover -s '.../step05/tests' -p 'test_*.py'
+Step 5 command: /usr/bin/time -p python3 '.../step05/source/x264_blame.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+Preserved demos: python3 source/x264_summary.py DATASET; python3 source/x264_predict.py DATASET; python3 source/x264_certify.py DATASET; python3 source/x264_flow.py DATASET
+Replace the ellipsis with the exact working directory above when copying commands; quoted paths containing spaces are required.

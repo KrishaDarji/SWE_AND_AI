@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step01
+Python interpreter: /usr/bin/env python3 (Python 3 standard library only)
+Tests: python3 run_tests.py
+Demonstration: /usr/bin/time -p python3 run_demo.py
+Dataset path: "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+All paths containing spaces are quoted. Raw captured attempts are test_output.attempt01.txt and runtime_output.attempt01.txt.

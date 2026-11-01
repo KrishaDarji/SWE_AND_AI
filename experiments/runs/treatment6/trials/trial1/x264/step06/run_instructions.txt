@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step06
+Python interpreter: /usr/bin/python3 (Python 3 standard library only)
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+Test command: (cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step06' && PYTHONPATH='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step06/source:/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step06' /usr/bin/python3 -m unittest discover -s tests -v)
+Step 6 command: /usr/bin/time -p /usr/bin/python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step06/source/x264_justify.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+Preserved demos: run source/x264_summary.py, x264_flow.py, x264_blame.py, x264_certify.py, and x264_predict.py with the quoted dataset path from this directory.
+All generated artifacts are under this exact Step 6 directory.

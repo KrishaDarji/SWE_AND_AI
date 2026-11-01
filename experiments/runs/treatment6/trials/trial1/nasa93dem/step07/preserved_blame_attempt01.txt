@@ -1,0 +1,949 @@
+{
+  "association_type": "marginal; correlated descriptors can share explanatory information",
+  "limitations": [
+    "higher effort alone does not establish inefficiency because scope differs",
+    "delivered size is excluded; this is not size-adjusted productivity",
+    "no causal, defect-risk, process-improvement, or monetary claim"
+  ],
+  "overall_effort": {
+    "count": 93,
+    "max": 8211.0,
+    "mean": 624.4118279569893,
+    "median": 252.0,
+    "min": 8.4,
+    "sd": 1135.9280652026785
+  },
+  "predictors": [
+    "prec",
+    "flex",
+    "resl",
+    "team",
+    "pmat",
+    "rely",
+    "data",
+    "cplx",
+    "ruse",
+    "docu",
+    "time",
+    "stor",
+    "pvol",
+    "acap",
+    "pcap",
+    "pcon",
+    "apex",
+    "plex",
+    "ltex",
+    "tool",
+    "site",
+    "sced"
+  ],
+  "ranking": [
+    {
+      "descriptor": "time",
+      "direction": "higher in xh; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 13,
+          "effort": {
+            "count": 13,
+            "max": 2460.0,
+            "mean": 734.0769230769231,
+            "median": 458.0,
+            "min": 90.0,
+            "sd": 737.3069760439521
+          },
+          "mean": 734.0769230769231
+        },
+        "n": {
+          "count": 54,
+          "effort": {
+            "count": 54,
+            "max": 2400.0,
+            "mean": 334.3888888888889,
+            "median": 156.0,
+            "min": 8.4,
+            "sd": 504.19119676277745
+          },
+          "mean": 334.3888888888889
+        },
+        "vh": {
+          "count": 18,
+          "effort": {
+            "count": 18,
+            "max": 1248.0,
+            "mean": 375.34444444444443,
+            "median": 215.5,
+            "min": 12.0,
+            "sd": 371.0868983725926
+          },
+          "mean": 375.34444444444443
+        },
+        "xh": {
+          "count": 8,
+          "effort": {
+            "count": 8,
+            "max": 8211.0,
+            "mean": 2964.2625,
+            "median": 1848.5,
+            "min": 72.0,
+            "sd": 2584.5360511746453
+          },
+          "mean": 2964.2625
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.4179432592506268,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "rely",
+      "direction": "higher in vh; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 42,
+          "effort": {
+            "count": 42,
+            "max": 2460.0,
+            "mean": 483.54761904761904,
+            "median": 326.4,
+            "min": 8.4,
+            "sd": 621.8698398194912
+          },
+          "mean": 483.54761904761904
+        },
+        "l": {
+          "count": 2,
+          "effort": {
+            "count": 2,
+            "max": 2400.0,
+            "mean": 1296.0,
+            "median": 1296.0,
+            "min": 192.0,
+            "sd": 1561.291772859897
+          },
+          "mean": 1296.0
+        },
+        "n": {
+          "count": 39,
+          "effort": {
+            "count": 39,
+            "max": 1368.0,
+            "mean": 269.1589743589744,
+            "median": 170.0,
+            "min": 24.0,
+            "sd": 300.12956914073726
+          },
+          "mean": 269.1589743589744
+        },
+        "vh": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 8211.0,
+            "mean": 2467.21,
+            "median": 1709.2,
+            "min": 107.0,
+            "sd": 2502.8410014976535
+          },
+          "mean": 2467.21
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.34214709628686046,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "cplx",
+      "direction": "higher in xh; lower in h",
+      "group_count": 5,
+      "groups": {
+        "h": {
+          "count": 58,
+          "effort": {
+            "count": 58,
+            "max": 2400.0,
+            "mean": 315.2448275862069,
+            "median": 118.8,
+            "min": 8.4,
+            "sd": 464.98597457528126
+          },
+          "mean": 315.2448275862069
+        },
+        "l": {
+          "count": 3,
+          "effort": {
+            "count": 3,
+            "max": 1368.0,
+            "mean": 844.3333333333334,
+            "median": 973.0,
+            "min": 192.0,
+            "sd": 598.4649808746818
+          },
+          "mean": 844.3333333333334
+        },
+        "n": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2400.0,
+            "mean": 494.2,
+            "median": 320.0,
+            "min": 48.0,
+            "sd": 692.614659581117
+          },
+          "mean": 494.2
+        },
+        "vh": {
+          "count": 17,
+          "effort": {
+            "count": 17,
+            "max": 8211.0,
+            "mean": 1341.270588235294,
+            "median": 648.0,
+            "min": 12.0,
+            "sd": 2029.6902450758053
+          },
+          "mean": 1341.270588235294
+        },
+        "xh": {
+          "count": 5,
+          "effort": {
+            "count": 5,
+            "max": 4560.0,
+            "mean": 1901.9,
+            "median": 1924.5,
+            "min": 107.0,
+            "sd": 1780.7298503703475
+          },
+          "mean": 1901.9
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.191680306780018,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "stor",
+      "direction": "higher in xh; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2460.0,
+            "mean": 887.7,
+            "median": 580.5,
+            "min": 107.0,
+            "sd": 807.5338383002907
+          },
+          "mean": 887.7
+        },
+        "n": {
+          "count": 49,
+          "effort": {
+            "count": 49,
+            "max": 2400.0,
+            "mean": 323.24897959183676,
+            "median": 117.6,
+            "min": 8.4,
+            "sd": 517.1606528771825
+          },
+          "mean": 323.24897959183676
+        },
+        "vh": {
+          "count": 21,
+          "effort": {
+            "count": 21,
+            "max": 4560.0,
+            "mean": 555.1904761904761,
+            "median": 240.0,
+            "min": 12.0,
+            "sd": 980.5066353190895
+          },
+          "mean": 555.1904761904761
+        },
+        "xh": {
+          "count": 13,
+          "effort": {
+            "count": 13,
+            "max": 8211.0,
+            "mean": 1668.853846153846,
+            "median": 648.0,
+            "min": 60.0,
+            "sd": 2261.20604752397
+          },
+          "mean": 1668.853846153846
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.163584830645342,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "plex",
+      "direction": "higher in vl; lower in l",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 22,
+          "effort": {
+            "count": 22,
+            "max": 8211.0,
+            "mean": 1285.6863636363635,
+            "median": 651.5,
+            "min": 72.0,
+            "sd": 1818.4613483710564
+          },
+          "mean": 1285.6863636363635
+        },
+        "l": {
+          "count": 14,
+          "effort": {
+            "count": 14,
+            "max": 1350.0,
+            "mean": 346.85714285714283,
+            "median": 203.5,
+            "min": 12.0,
+            "sd": 426.6069812878318
+          },
+          "mean": 346.85714285714283
+        },
+        "n": {
+          "count": 53,
+          "effort": {
+            "count": 53,
+            "max": 2400.0,
+            "mean": 352.68301886792455,
+            "median": 117.6,
+            "min": 8.4,
+            "sd": 567.753594215446
+          },
+          "mean": 352.68301886792455
+        },
+        "vl": {
+          "count": 4,
+          "effort": {
+            "count": 4,
+            "max": 4560.0,
+            "mean": 1559.25,
+            "median": 623.5,
+            "min": 430.0,
+            "sd": 2002.6784356622675
+          },
+          "mean": 1559.25
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.15253724439705918,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "data",
+      "direction": "higher in h; lower in vh",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 17,
+          "effort": {
+            "count": 17,
+            "max": 8211.0,
+            "mean": 1522.1941176470589,
+            "median": 1181.0,
+            "min": 98.8,
+            "sd": 1986.1598643710015
+          },
+          "mean": 1522.1941176470589
+        },
+        "l": {
+          "count": 37,
+          "effort": {
+            "count": 37,
+            "max": 4560.0,
+            "mean": 370.1621621621622,
+            "median": 72.0,
+            "min": 8.4,
+            "sd": 821.2361046858812
+          },
+          "mean": 370.1621621621622
+        },
+        "n": {
+          "count": 31,
+          "effort": {
+            "count": 31,
+            "max": 2460.0,
+            "mean": 502.4516129032258,
+            "median": 300.0,
+            "min": 12.0,
+            "sd": 652.0495297500887
+          },
+          "mean": 502.4516129032258
+        },
+        "vh": {
+          "count": 8,
+          "effort": {
+            "count": 8,
+            "max": 1350.0,
+            "mean": 365.125,
+            "median": 181.0,
+            "min": 62.0,
+            "sd": 457.6116374331904
+          },
+          "mean": 365.125
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.14398840212923386,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "acap",
+      "direction": "higher in h; lower in n",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 51,
+          "effort": {
+            "count": 51,
+            "max": 8211.0,
+            "mean": 876.1235294117647,
+            "median": 420.0,
+            "min": 24.0,
+            "sd": 1414.70304001769
+          },
+          "mean": 876.1235294117647
+        },
+        "n": {
+          "count": 32,
+          "effort": {
+            "count": 32,
+            "max": 2400.0,
+            "mean": 301.34375,
+            "median": 75.0,
+            "min": 8.4,
+            "sd": 575.0976584319145
+          },
+          "mean": 301.34375
+        },
+        "vh": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 1181.0,
+            "mean": 374.5,
+            "median": 215.5,
+            "min": 62.0,
+            "sd": 364.03792537469377
+          },
+          "mean": 374.5
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.06061626094121256,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pvol",
+      "direction": "higher in n; lower in l",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 9,
+          "effort": {
+            "count": 9,
+            "max": 1368.0,
+            "mean": 557.4444444444445,
+            "median": 480.0,
+            "min": 12.0,
+            "sd": 526.8569803825112
+          },
+          "mean": 557.4444444444445
+        },
+        "l": {
+          "count": 65,
+          "effort": {
+            "count": 65,
+            "max": 4560.0,
+            "mean": 477.53846153846155,
+            "median": 240.0,
+            "min": 8.4,
+            "sd": 767.1059427509646
+          },
+          "mean": 477.53846153846155
+        },
+        "n": {
+          "count": 19,
+          "effort": {
+            "count": 19,
+            "max": 8211.0,
+            "mean": 1158.5947368421052,
+            "median": 252.0,
+            "min": 42.0,
+            "sd": 1999.5120019849521
+          },
+          "mean": 1158.5947368421052
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0578230097475758,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pcap",
+      "direction": "higher in h; lower in n",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 39,
+          "effort": {
+            "count": 39,
+            "max": 8211.0,
+            "mean": 921.623076923077,
+            "median": 400.0,
+            "min": 24.0,
+            "sd": 1581.8631520526237
+          },
+          "mean": 921.623076923077
+        },
+        "n": {
+          "count": 44,
+          "effort": {
+            "count": 44,
+            "max": 2460.0,
+            "mean": 348.70454545454544,
+            "median": 115.8,
+            "min": 8.4,
+            "sd": 543.3886946442946
+          },
+          "mean": 348.70454545454544
+        },
+        "vh": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2400.0,
+            "mean": 678.4,
+            "median": 425.0,
+            "min": 72.0,
+            "sd": 675.61004531707
+          },
+          "mean": 678.4
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.05744080323725276,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "sced",
+      "direction": "higher in n; lower in l",
+      "group_count": 2,
+      "groups": {
+        "l": {
+          "count": 34,
+          "effort": {
+            "count": 34,
+            "max": 1248.0,
+            "mean": 276.79411764705884,
+            "median": 118.8,
+            "min": 8.4,
+            "sd": 347.0584248615493
+          },
+          "mean": 276.79411764705884
+        },
+        "n": {
+          "count": 59,
+          "effort": {
+            "count": 59,
+            "max": 8211.0,
+            "mean": 824.7338983050848,
+            "median": 400.0,
+            "min": 12.0,
+            "sd": 1366.2158900193767
+          },
+          "mean": 824.7338983050848
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.05455369312943366,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pmat",
+      "direction": "higher in l; lower in n",
+      "group_count": 3,
+      "groups": {
+        "h": {
+          "count": 43,
+          "effort": {
+            "count": 43,
+            "max": 8211.0,
+            "mean": 791.5837209302325,
+            "median": 278.0,
+            "min": 8.4,
+            "sd": 1444.5567889956574
+          },
+          "mean": 791.5837209302325
+        },
+        "l": {
+          "count": 20,
+          "effort": {
+            "count": 20,
+            "max": 4560.0,
+            "mean": 817.6600000000001,
+            "median": 501.7,
+            "min": 72.0,
+            "sd": 1083.605309967367
+          },
+          "mean": 817.6600000000001
+        },
+        "n": {
+          "count": 30,
+          "effort": {
+            "count": 30,
+            "max": 1350.0,
+            "mean": 255.96666666666667,
+            "median": 132.0,
+            "min": 12.0,
+            "sd": 307.1771906193258
+          },
+          "mean": 255.96666666666667
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.05072124483813193,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "apex",
+      "direction": "higher in h; lower in n",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 46,
+          "effort": {
+            "count": 46,
+            "max": 8211.0,
+            "mean": 774.7021739130436,
+            "median": 276.0,
+            "min": 48.0,
+            "sd": 1380.1662530272101
+          },
+          "mean": 774.7021739130436
+        },
+        "l": {
+          "count": 1,
+          "effort": {
+            "count": 1,
+            "max": 648.0,
+            "mean": 648.0,
+            "median": 648.0,
+            "min": 648.0,
+            "sd": 0.0
+          },
+          "mean": 648.0
+        },
+        "n": {
+          "count": 34,
+          "effort": {
+            "count": 34,
+            "max": 2460.0,
+            "mean": 402.47058823529414,
+            "median": 117.6,
+            "min": 8.4,
+            "sd": 616.9867163883218
+          },
+          "mean": 402.47058823529414
+        },
+        "vh": {
+          "count": 12,
+          "effort": {
+            "count": 12,
+            "max": 4560.0,
+            "mean": 675.1666666666666,
+            "median": 342.0,
+            "min": 24.0,
+            "sd": 1267.943993123107
+          },
+          "mean": 675.1666666666666
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.023125557900776195,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "ltex",
+      "direction": "higher in h; lower in vl",
+      "group_count": 4,
+      "groups": {
+        "h": {
+          "count": 69,
+          "effort": {
+            "count": 69,
+            "max": 8211.0,
+            "mean": 662.0333333333334,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1261.1879861355123
+          },
+          "mean": 662.0333333333334
+        },
+        "l": {
+          "count": 6,
+          "effort": {
+            "count": 6,
+            "max": 1350.0,
+            "mean": 427.3333333333333,
+            "median": 259.0,
+            "min": 12.0,
+            "sd": 525.3580366442172
+          },
+          "mean": 427.3333333333333
+        },
+        "n": {
+          "count": 14,
+          "effort": {
+            "count": 14,
+            "max": 2400.0,
+            "mean": 587.2857142857143,
+            "median": 162.0,
+            "min": 42.0,
+            "sd": 810.7048622195217
+          },
+          "mean": 587.2857142857143
+        },
+        "vl": {
+          "count": 4,
+          "effort": {
+            "count": 4,
+            "max": 599.0,
+            "mean": 401.0,
+            "median": 395.0,
+            "min": 215.0,
+            "sd": 159.50130615975115
+          },
+          "mean": 401.0
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0046301588059940646,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "tool",
+      "direction": "higher in h; lower in n",
+      "group_count": 2,
+      "groups": {
+        "h": {
+          "count": 10,
+          "effort": {
+            "count": 10,
+            "max": 2460.0,
+            "mean": 776.7,
+            "median": 528.5,
+            "min": 72.0,
+            "sd": 720.5163349216233
+          },
+          "mean": 776.7
+        },
+        "n": {
+          "count": 83,
+          "effort": {
+            "count": 83,
+            "max": 8211.0,
+            "mean": 606.0638554216868,
+            "median": 215.0,
+            "min": 8.4,
+            "sd": 1177.9397248004684
+          },
+          "mean": 606.0638554216868
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0021890098555123858,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "prec",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "h": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "flex",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "h": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "resl",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "h": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "team",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "vh": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "ruse",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "docu",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "pcon",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    },
+    {
+      "descriptor": "site",
+      "direction": "no directional contrast",
+      "group_count": 1,
+      "groups": {
+        "n": {
+          "count": 93,
+          "effort": {
+            "count": 93,
+            "max": 8211.0,
+            "mean": 624.4118279569893,
+            "median": 252.0,
+            "min": 8.4,
+            "sd": 1135.9280652026785
+          },
+          "mean": 624.4118279569893
+        }
+      },
+      "note": "marginal categorical association; groups with fewer than 2 observations are retained",
+      "score": 0.0,
+      "usable_count": 93
+    }
+  ],
+  "score": "eta_squared_between_over_total",
+  "target": "Effort-",
+  "usable_effort_count": 93
+}

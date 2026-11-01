@@ -1,0 +1,19 @@
+Implemented Step 5 in the exact requested directory:
+
+`/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step05/`
+
+Added `blame`, which ranks eligible categorical descriptors by eta-squared (between-group effort variation / total effort variation), with deterministic ties, group counts, effort summaries, directions, missing-value handling, and limitations. Existing `summarize`, `guess`, `certify`, and `flow` behavior was copied from Step 4 and preserved.
+
+EZR-inspired adaptations include grouped summaries, diversity/variation framing, and divide/discretize-style categorical group comparisons. No third-party packages or Lua runtime are used.
+
+Artifacts include source, tests, prompt, response, logs, metrics, and run instructions. The final suite passed all 16 tests. The first failed attempt is preserved; it exposed and repaired only an overly strict synthetic expected score. Final demonstration runtime was 0.03 seconds real time.
+
+Run:
+
+```sh
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step05'
+/usr/bin/python3 -m unittest discover -s tests -v
+/usr/bin/python3 source/nasa93_summary.py --blame '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+```
+
+Known limitations: associations are marginal and may overlap across correlated descriptors; higher effort is not proof of inefficiency; delivered size is excluded, so this is not size-adjusted productivity; findings are not causal, defect-risk, process-improvement, or monetary claims.

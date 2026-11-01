@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step07
+Python interpreter: python3 (standard library only)
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Run tests: python3 -m unittest discover -s tests -v
+Run Step 7: python3 source/nasa93_summary.py --choose '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' 100
+LOC comparison: total_loc counts nonblank, non-comment Python lines; new_loc counts zero-context diff additions against Step 6, including replacement additions.

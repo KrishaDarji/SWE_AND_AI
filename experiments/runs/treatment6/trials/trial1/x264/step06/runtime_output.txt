@@ -1,0 +1,70 @@
+runtime_attempt_001.txt exit=0
+{
+  "assumptions": [
+    "The CSV header defines the complete configuration.",
+    "Blank, '?', nonnumeric, and nonfinite outcomes are unusable.",
+    "Ties retain the earliest CSV record."
+  ],
+  "comparison": {
+    "absolute_difference": 24.490000000000038,
+    "percentage_improvement": 9.113575468889563,
+    "status": "computed"
+  },
+  "direction": "lower Performance- is better",
+  "evidence_label": "retrospective measured dataset evidence",
+  "historical_reference": {
+    "configuration": {
+      "no_8x8dct": "0",
+      "no_asm": "1",
+      "no_cabac": "0",
+      "no_deblock": "0",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    },
+    "outcome": 268.72,
+    "record_id": 0
+  },
+  "limitations": [
+    "Associations do not establish the effect of changing a setting.",
+    "Correlated settings can share explanatory information.",
+    "This recommendation does not guarantee future performance or statistical superiority."
+  ],
+  "recommendation": {
+    "configuration": {
+      "no_8x8dct": "1",
+      "no_asm": "1",
+      "no_cabac": "1",
+      "no_deblock": "1",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0"
+    },
+    "outcome": 244.23,
+    "record_id": 70
+  },
+  "record_identifier": "zero-based CSV data-row index",
+  "target": "Performance-",
+  "usable_record_count": 1152
+}
+real 0.02
+user 0.01
+sys 0.00

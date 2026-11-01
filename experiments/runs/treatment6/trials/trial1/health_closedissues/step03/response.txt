@@ -1,0 +1,10 @@
+Implemented and verified Treatment 6, Trial 1, Dataset 3, Step 3.
+
+The fixed comparison is absolute_error minus squared_error on MRE-; lower is better. On the supplied dataset, squared_error had n=3363 and mean=0.6737202958, while absolute_error had n=3302 and mean=0.7508694690. The difference was +0.0771491732, favoring the reference. Welch's two-sided test gave t=15.1778583, df=6661.6898, p approximately 0 (below floating-point resolution), and 95% CI [0.0671848504, 0.0871134960]. Without a practical threshold, practical importance is undetermined.
+
+The implementation preserves the Step 2 predictor, summary functions, tests, and demonstration support, and adds welch_comparison, finite-value filtering, exact criterion-family selection, Welch-Satterthwaite inference, continued-fraction incomplete-beta numerical methods, confidence intervals, threshold interpretation, and explicit undefined cases. ACC+ and PRED40+ remain descriptive only because these are historical configurations rather than controlled repeated measurements of otherwise identical models.
+
+Tests: python3 -m unittest discover -s tests -v — 9 tests passed. Demonstration: python3 source/analyzer.py "<dataset path>". Actual captures are in test_output.txt and runtime_output.txt; runtime measurement for the current demonstration was 0.04 seconds. metrics.csv records 170 total source LOC and 46 added/replacement LOC relative to Step 2.
+
+Assumptions and limitations: Welch inference assumes independent observations within groups and is approximate for small or unusual samples; the Student-t CDF and quantile use standard-library incomplete-beta continued fractions and bisection; zero variance, absent groups, and insufficient samples return undefined inference rather than fabricated values; nonsignificance does not establish equivalence; no causal or guaranteed improvement claim is made.
+

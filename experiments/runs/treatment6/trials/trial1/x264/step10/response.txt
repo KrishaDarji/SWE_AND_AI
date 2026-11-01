@@ -1,0 +1,9 @@
+Implemented Treatment 6, Trial 1, Dataset 1, Step 10 in the exact requested output directory.
+
+Updated source is in source/x264_race.py, with the authorized Step 9 source snapshot preserved alongside it. Tests are in tests/, including test_x264_race.py. The race compares the existing seeded callback-only tuner with uniform random search without replacement, using budget 20 and seeds 42 through 51. Both strategies use equal candidate order, deduplication, information access, and tie-breaking. Recommendations are frozen before retrospective audits.
+
+EZR adaptations: seeded random stream behavior, shuffle/sample without replacement, counted acquisition budget, seen-set duplicate prevention, and lowest-loss ordering. The comparison is explicitly equivalent under these settings: the measured result is 10 ties, 0 wins, and 0 losses. Statistical superiority is pending.
+
+Verification: all 33 tests pass. The Step 10 demonstration completed with /usr/bin/time -p real elapsed time 0.28 seconds. Logs and attempt-labeled failures are preserved in test_output*.txt and runtime_output*.txt. See run_instructions.txt for exact quoted commands and metrics.csv for recorded metrics.
+
+Known limitations: this is a seeded benchmark comparison, not independent LLM trials; retrospective gaps depend on the supplied dataset; only finite callback outcomes are valid; no causal or statistical-superiority claim is made.

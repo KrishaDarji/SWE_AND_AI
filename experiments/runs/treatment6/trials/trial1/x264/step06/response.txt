@@ -1,0 +1,9 @@
+Implemented Step 6 in `/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/x264/step06`.
+
+Added `source/x264_justify.py`, which preserves all complete configuration fields, selects the lowest finite `Performance-` with earliest-record tie-breaking, identifies records by zero-based CSV data-row index, and compares the recommendation with the first CSV data record. It explicitly handles missing/nonfinite outcomes, no usable records, invalid references, and zero reference outcomes. It labels the result as retrospective measured dataset evidence and separates measured evidence from limitations: associations do not establish effects, correlated settings can share explanatory information, and future performance is not guaranteed.
+
+Reused the copied Step 5 source and tests without importing previous-step code. The implementation adapts EZR's CSV iteration, finite numeric coercion, streaming accumulation, copying of complete row state, and deterministic best/sorted selection concepts from the authorized Lua references. It remains Python standard-library only.
+
+Validation: all 19 tests passed (16 preserved and 3 new). The real demonstration selected record 70, Performance- 244.23, versus historical reference record 0, Performance- 268.72: absolute difference 24.490000000000038 and percentage improvement 9.113575468889563%. The measured `/usr/bin/time -p` real time was 0.02 seconds. The complete JSON evidence is in `runtime_attempt_001.txt`, and preserved failed and successful test attempts are referenced in `test_output.txt`.
+
+Run the commands in `run_instructions.txt`. Known limitations: this is observational, retrospective evidence; no causal or statistical-superiority claim is made; settings are interpreted from the CSV header; invalid outcome rows are excluded; and percentage improvement is unavailable when the reference is missing, invalid, or zero.

@@ -1,0 +1,15 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (standard library only)
+Dataset path: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+Output directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step08/'
+
+Run tests:
+python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step08/tests' -v
+
+Run Step 8 demonstration:
+/usr/bin/time -p python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step08/source/nasa93_summary.py' --fix '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/nasa93dem/step08/demo_proposal.json' 100
+
+Preserved demonstrations use the same source with summary, proposal guess,
+flow, blame, justify, choose, and certify command forms. Captured outputs are
+in attempt-002-preserved.txt. The failed first wrapper is preserved in
+attempt-001-preserved-wrapper.txt and is included in error_count.

@@ -1,0 +1,6 @@
+From this step directory:
+
+python3 -m unittest discover -s tests -v
+python3 source/analyzer.py ../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+The second command runs the cap-100 demonstration. The source uses only the Python standard library.

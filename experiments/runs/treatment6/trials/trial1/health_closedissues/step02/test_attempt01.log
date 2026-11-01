@@ -1,0 +1,54 @@
+test_complete_reporting_path (test_analyzer.AnalyzerTests.test_complete_reporting_path) ... ok
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_grouped_reproducible_and_prediction (test_analyzer.PredictorTests.test_grouped_reproducible_and_prediction) ... ERROR
+test_invalid_zero_and_insufficient (test_analyzer.PredictorTests.test_invalid_zero_and_insufficient) ... FAIL
+test_preprocessing_is_training_only (test_analyzer.PredictorTests.test_preprocessing_is_training_only) ... ERROR
+test_schema_missing_unseen_and_excluded_outcome (test_analyzer.PredictorTests.test_schema_missing_unseen_and_excluded_outcome) ... ERROR
+
+======================================================================
+ERROR: test_grouped_reproducible_and_prediction (test_analyzer.PredictorTests.test_grouped_reproducible_and_prediction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/test_analyzer.py", line 29, in test_grouped_reproducible_and_prediction
+    self.assertEqual(ea, eb); self.assertEqual(a.predict(self.rows()[0], "MRE-"), b.predict(self.rows()[0], "MRE-")); self.assertGreater(ea["test_count"], 0)
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/../source/analyzer.py", line 126, in predict
+    if set(configuration) != set(CONFIG): raise ValueError("configuration fields must exactly match predictor schema")
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields must exactly match predictor schema
+
+======================================================================
+ERROR: test_preprocessing_is_training_only (test_analyzer.PredictorTests.test_preprocessing_is_training_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/test_analyzer.py", line 44, in test_preprocessing_is_training_only
+    b=ConfigurationPredictor(); b.fit(q,"MRE-"); self.assertEqual(p, a.preprocessing); self.assertNotEqual(a.predict(r[0],"MRE-"), b.predict(r[0],"MRE-"))
+                                                                                                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/../source/analyzer.py", line 126, in predict
+    if set(configuration) != set(CONFIG): raise ValueError("configuration fields must exactly match predictor schema")
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: configuration fields must exactly match predictor schema
+
+======================================================================
+ERROR: test_schema_missing_unseen_and_excluded_outcome (test_analyzer.PredictorTests.test_schema_missing_unseen_and_excluded_outcome)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/test_analyzer.py", line 33, in test_schema_missing_unseen_and_excluded_outcome
+    self.assertTrue(math.isfinite(a.predict(q, "ACC+")))
+                    ^^^^
+NameError: name 'math' is not defined. Did you forget to import 'math'
+
+======================================================================
+FAIL: test_invalid_zero_and_insufficient (test_analyzer.PredictorTests.test_invalid_zero_and_insufficient)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial1/health_closedissues/step02/tests/test_analyzer.py", line 41, in test_invalid_zero_and_insufficient
+    with self.assertRaises(ValueError): ConfigurationPredictor().fit(r,"MRE-")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.018s
+
+FAILED (failures=1, errors=3)
+test_exit=1

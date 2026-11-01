@@ -1,0 +1,12 @@
+Implemented Treatment 6, Trial 1, NASA93 Dataset 2, Step 4 in Python.
+
+Source: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+
+Reused remember/guess/certify behavior and tests from Step 3. Added flow(), which processes CSV arrivals sequentially, uses two valid warm-up observations, fits only on revealed finite outcomes, freezes predictions before revealing the current outcome, reports a prior-history mean baseline, cumulative MAEs, identifiers, and explicit missing/unseen handling. Predictors are the 22 non-X, non-outcome descriptors with normalized categorical values. Invalid outcomes are excluded from history and metrics.
+
+EZR background adaptations: CSV streaming/row handling, column-role separation, categorical SYM-style exact grouping, incremental add/history state, mean/mid summaries, finite-value handling, and seeded grouped machinery already present in the Step 3 snapshot. No Lua is executed and no packages are required.
+
+Verification: 14 tests pass. The NASA93 flow demonstration passes. Runtime real elapsed time is recorded in runtime_output.txt. Earlier summary, guess, and certify demonstrations were also run and preserved in attempt-labeled logs.
+
+Commands and working directory are in run_instructions.txt. Assumptions and limitations: CSV order is a demonstration sequence, not a verified timeline; effort units are not invented; no convergence or automatic stopping rule is claimed; exact categorical matching backs off to the prior-history mean for unseen/missing combinations; empty or short inputs produce no scored rows.
