@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Tests: python3 -m unittest discover -s SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step03/tests -v
+Certify: /usr/bin/time -p python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step03/run_demo.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --mode certify --threshold 5
+Summary: python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step03/run_demo.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --mode summary
+Prediction: python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step03/run_demo.py SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --mode prediction
+All commands use Python standard library only. Captures: test_output.txt, runtime_output.txt, runtime_timing.txt, summary_output.txt, prediction_output.txt, command_status.txt.

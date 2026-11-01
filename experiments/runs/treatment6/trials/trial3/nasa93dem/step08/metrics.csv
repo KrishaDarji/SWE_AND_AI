@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,6,3,software project estimation,fix,365,48,1,0.03,4,"28 tests passed; successful current fix timing only; training-only complete normalized candidates; cap=100 baseline=392 recommendation=60 improvement=332 audit=72; Step 7 model/split and demonstrations reused; EZR symbolic distance and train/held-out separation; LOC excludes tests/runners/Lua; repaired attempts retained; historical noncausal suggestion"

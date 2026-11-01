@@ -1,0 +1,65 @@
+{
+  "baseline": {
+    "configuration": {
+      "Max_depth": 10.0,
+      "Min_impurity_decrease": 2.75,
+      "Min_sample_leaves": 3.0,
+      "N_estimators": 40.0,
+      "criterion": "squared_error"
+    },
+    "original_position": 2,
+    "outcomes": {
+      "ACC+": 0.7276513937840435,
+      "MRE-": 0.3148748159057436,
+      "PRED40+": 0.5714285714285714
+    }
+  },
+  "candidate": {
+    "absolute_mre_improvement": 0.04756995581737844,
+    "change_count": 2,
+    "changed_fields": {
+      "Min_impurity_decrease": {
+        "new": 5.0,
+        "old": 2.75
+      },
+      "N_estimators": {
+        "new": 10.0,
+        "old": 40.0
+      }
+    },
+    "configuration": {
+      "Max_depth": 10.0,
+      "Min_impurity_decrease": 5.0,
+      "Min_sample_leaves": 3.0,
+      "N_estimators": 10.0,
+      "criterion": "squared_error"
+    },
+    "original_position": 1946,
+    "outcomes": {
+      "ACC+": 0.6619673181672541,
+      "MRE-": 0.2673048600883652,
+      "PRED40+": 0.5714285714285714
+    },
+    "secondary_outcome_differences": {
+      "ACC+": -0.06568407561678946,
+      "PRED40+": 0.0
+    },
+    "secondary_outcome_worsening": {
+      "ACC+": true,
+      "PRED40+": false
+    }
+  },
+  "candidate_count": 736,
+  "eligible_candidate_rows": 9999,
+  "excluded_candidate_rows": 0,
+  "interpretation": "Retrospective comparison between observed rows. Change count is a simplicity proxy; historical differences do not prove causation or guarantee future improvement.",
+  "selection_rule": [
+    "fewest changed configuration fields",
+    "lowest MRE-",
+    "highest ACC+",
+    "highest PRED40+",
+    "earliest original CSV position"
+  ],
+  "status": "ok"
+}
+STATUS:0

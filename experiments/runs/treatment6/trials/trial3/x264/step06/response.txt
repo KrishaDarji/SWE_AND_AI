@@ -1,0 +1,20 @@
+Implemented Step 6 justify in the required snapshot.
+
+Updated source: source/summary.py
+Preserved tests and added tests: tests/
+
+The recommendation is retrospective selection from measured runs, not a prediction for an unevaluated configuration. Using one-based supplied data-row positions, the lowest finite eligible Performance- is position 71:
+
+no_8x8dct=1, no_asm=1, no_cabac=1, no_deblock=1, no_fast_pskip=0, no_mbtree=0, no_mixed_refs=0, no_weightb=0, rc_lookahead=1, rc_lookahead_20=1, rc_lookahead_40=0, rc_lookahead_60=0, ref=1, ref_1=1, ref_5=0, ref_9=0
+
+Observed Performance-: 244.23.
+
+Historical reference: median finite observed Performance- = 452.7785 from 1,152 observations. Absolute reduction is 208.5485; percentage reduction is 46.059717941554204%.
+
+The implementation requires every encoder setting to be present and binary, excludes missing/nonfinite outcomes and invalid/incomplete settings with original positions recorded, resolves equal winners by earliest position, and handles empty/no-eligible input and unavailable references. It reuses Step 5 summary, prediction, certify, flow, and marginal-association machinery. Associations are explicitly marginal historical associations, not causal effects or local feature contributions. The result is best only among eligible measured historical configurations and does not guarantee future performance.
+
+EZR informed the descriptive lower-is-better summaries and association grouping, without running Lua or using third-party packages.
+
+Verification: 25 tests passed. The successful current justify demonstration took 0.04 seconds real time. A failed JSON serialization attempt from the preserved prediction CLI was repaired and retained as a separate attempt log; the final prediction demonstration also passes.
+
+Commands are in run_instructions.txt. Captured outputs include test_output.txt, runtime_output.txt, and the individual demonstration logs.

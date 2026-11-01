@@ -1,0 +1,11 @@
+Implemented Step 3 certification in source/summary.py and preserved the Step 2 summary and prediction functionality.
+
+The certify comparison is fixed to no_8x8dct=0 versus 1, with Performance- (lower is better). It reports usable counts, means, sample variances, candidate-minus-reference difference, Welch standard error, t statistic, Welch–Satterthwaite degrees of freedom, two-sided p-value, and a 95% confidence interval. It also distinguishes statistical significance, point-estimate practical improvement, and confidence-interval support for a threshold. Missing/nonfinite values, absent groups, insufficient samples, and zero standard error are explicit.
+
+For the real dataset with threshold 5: reference n=576, mean=472.1355069444445, sample variance=27019.924475732125; candidate n=576, mean=451.3716857638889, sample variance=25662.718025993257; difference=-20.763821180555624. Welch p=0.03012586217406643, df=1149.2372777191688, and 95% CI=(-39.52794334257601,-1.9996990185352423). The difference is statistically significant and the point estimate meets the threshold, but the entire interval does not support at least 5 units of improvement. This is observational: historical configurations differ in other settings, so no_8x8dct causation or future improvement is not established.
+
+Reused: copied Step 2 source/tests without imports from the prior step. Added certify calculations, standard-library numerical integration/bisection, CLI demonstration, and independent tests. The authorized EZR reference informed compact summary/statistical treatment; no Lua was run. Tests include independent t references, direction, variance, standard error, confidence intervals, degrees of freedom, bounds, thresholds, invalid data, absent groups, insufficient samples, and zero-standard-error behavior.
+
+Run commands are in run_instructions.txt. The complete suite passed: 13 tests. Captures and statuses are saved in the required step directory.
+
+Known limitations: numerical t integration is an approximation; very large degrees of freedom use the normal approximation. The threshold has no invented units, and without a threshold practical importance is reported as undetermined.

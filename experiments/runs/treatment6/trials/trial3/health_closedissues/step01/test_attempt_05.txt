@@ -1,0 +1,14 @@
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_invalid_missing_all_missing_and_positions (test_analyzer.AnalyzerTests.test_invalid_missing_all_missing_and_positions) ... ok
+test_repeats_vs_exact_duplicates_numeric_equivalence (test_analyzer.AnalyzerTests.test_repeats_vs_exact_duplicates_numeric_equivalence) ... ok
+test_roles_frequencies_medians_dispersion (test_analyzer.AnalyzerTests.test_roles_frequencies_medians_dispersion) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+OK
+real 0.10
+user 0.03
+sys 0.02
+
+EXIT_STATUS=0

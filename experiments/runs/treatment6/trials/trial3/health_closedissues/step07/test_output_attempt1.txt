@@ -1,0 +1,13 @@
+.........F................
+======================================================================
+FAIL: test_cap_and_counts (test_choose.ChooseTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step07/tests/test_choose.py", line 16, in test_cap_and_counts
+    self.assertEqual(x["recommendation"]["original_position"],2); self.assertEqual(x["over_budget_count"],1); self.assertEqual(x["invalid_count"],2)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.013s
+
+FAILED (failures=1)

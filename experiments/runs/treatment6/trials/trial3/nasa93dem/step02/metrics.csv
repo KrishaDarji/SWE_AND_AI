@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,6,3,software project estimation,guess,163,59,1,0.04,1,"8 tests; timing is successful prediction demonstration only; heldout MAE=272.9; baseline MAE=489.98401709401713; grouped categorical KNN; reused Step 1; EZR symbolic distance influence; new_loc is changed/additional nonblank noncomment source lines by corresponding path; one repaired failed prediction attempt preserved; no effort units inferred"

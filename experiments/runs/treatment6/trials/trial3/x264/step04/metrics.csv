@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,6,3,video encoding,flow,326,62,1,0.03,2,"16 tests; timing is successful current flow demo only; copied Step 3 source/tests; new_loc counts nonblank noncomment added/replacement source lines; Welford incremental stats and earliest lower-value tie; one failed shell capture and one verification typo were repaired/preserved; standard library only; EZR streaming/missing-value and lower-is-better conventions informed design."

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,6,3,video encoding,race,719,66,1,0.19,1,"41 tests passed; paired seeds 42-51: 0 wins, 10 ties, 0 losses, 10 comparable; selector and baseline algorithmically equivalent; reused Step 9 machinery; EZR informed lower-is-better flow and retrospective audit separation; total/new LOC counted as specified; one repaired wrapper capture failure; timing is race demo only; historical replays, no significance or future claim."

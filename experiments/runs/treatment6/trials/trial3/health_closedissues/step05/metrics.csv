@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,6,3,model configuration and quality,blame,223,48,1,0.14,"16 tests passed; eta-squared marginal score; categorical exact groups; numeric up to four equal-frequency midpoint bins; copied Step 4 source/tests; EZR-informed parsing and summaries; total_loc excludes tests/runners; new_loc is changed analyzer lines; one repaired non-test invocation failure and one repaired assertion attempt preserved; associations are historical and non-causal"

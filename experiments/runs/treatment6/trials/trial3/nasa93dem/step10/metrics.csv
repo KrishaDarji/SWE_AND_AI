@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,6,3,software project estimation,race,485,68,1,0.06,3,"36 tests passed; race 10 comparable overlapping grouped splits; estimator wins/ties/losses=6/0/4; mean paired difference=72.81266071376119; successful race timing only; LOC counts nonblank noncomment source lines and diff insertions; reused Step 9 estimator/split/evaluation and EZR-inspired symbolic distance/grouped randomness; no units or significance claims; 3 repaired/failed attempts retained"

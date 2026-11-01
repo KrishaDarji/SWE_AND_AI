@@ -1,0 +1,8 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step04
+Python interpreter: python3 (standard library only)
+
+Run suite: python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step04/tests" -p 'test_*.py'
+Run summary: python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step04/source/nasa_summary.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+Run estimate/certify by adding --estimate or --certify. Run flow with /usr/bin/time -p and --flow.
+Captured outputs: test_output.txt, summary_output.txt, estimate_output.txt, certify_output.txt, runtime_output.txt.
+The first test capture attempt had a zsh read-only-variable error; successful capture is test_output_attempt02.txt and test_output.txt.

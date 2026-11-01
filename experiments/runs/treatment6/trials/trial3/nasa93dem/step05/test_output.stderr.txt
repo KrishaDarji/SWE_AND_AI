@@ -1,0 +1,22 @@
+test_exact_predictors (test_nasa_summary.TestBlame.test_exact_predictors) ... ok
+test_missing_invalid_constant_and_ties (test_nasa_summary.TestBlame.test_missing_invalid_constant_and_ties) ... ok
+test_scores_means_ss_and_directions (test_nasa_summary.TestBlame.test_scores_means_ss_and_directions) ... ok
+test_edge_cases (test_nasa_summary.TestCertify.test_edge_cases) ... ok
+test_t_reference_values_and_invalid_threshold (test_nasa_summary.TestCertify.test_t_reference_values_and_invalid_threshold) ... ok
+test_welch_direction_variance_and_threshold (test_nasa_summary.TestCertify.test_welch_direction_variance_and_threshold) ... ok
+test_current_and_future_outcomes_do_not_change_prediction_or_snapshot (test_nasa_summary.TestFlow.test_current_and_future_outcomes_do_not_change_prediction_or_snapshot) ... ok
+test_invalid_zero_unseen_missing_duplicate_position (test_nasa_summary.TestFlow.test_invalid_zero_unseen_missing_duplicate_position) ... ok
+test_prefix_order_and_matched_errors (test_nasa_summary.TestFlow.test_prefix_order_and_matched_errors) ... ok
+test_group_split_and_reproducible (test_nasa_summary.TestGuess.test_group_split_and_reproducible) ... ok
+test_insufficient_groups (test_nasa_summary.TestGuess.test_insufficient_groups) ... ok
+test_nonfinite_excluded_and_whitespace (test_nasa_summary.TestGuess.test_nonfinite_excluded_and_whitespace) ... ok
+test_schema_zero_and_mean (test_nasa_summary.TestGuess.test_schema_zero_and_mean) ... ok
+test_empty_header_malformed_blank (test_nasa_summary.TestSummary.test_empty_header_malformed_blank) ... ok
+test_median_even_odd (test_nasa_summary.TestSummary.test_median_even_odd) ... ok
+test_missing_nonfinite_invalid_and_all_missing (test_nasa_summary.TestSummary.test_missing_nonfinite_invalid_and_all_missing) ... ok
+test_roles_frequencies_summaries (test_nasa_summary.TestSummary.test_roles_frequencies_summaries) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.103s
+
+OK

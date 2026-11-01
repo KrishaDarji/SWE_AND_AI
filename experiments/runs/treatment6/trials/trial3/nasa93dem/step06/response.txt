@@ -1,0 +1,7 @@
+Implemented Treatment 6, Trial 3, Dataset 2, Step 6 (justify).
+
+Reused the Step 5 standard-library implementation, including seed-42 grouped splitting, categorical Hamming-distance effort model, normalization, summaries, flow, certify, and blame. Added training-only neighbor evidence with original positions and duplicate-safe identifiers, exact 22-descriptor validation, baseline reporting, training-only marginal associations, retrospective audit labeling, and a runnable --justify demonstration. The EZR background informed the symbolic categorical-distance and summary/statistical style; Lua was not run.
+
+Verification: 20 tests passed. The current demonstration reports query position 10, idX 9, prediction 392.0, training baseline 663.9782051282052, and three tied nearest training neighbors. A deliberately invalid --summary invocation was preserved as summary_output.txt; the corrected default summary is summary_success_output.txt. Runtime for the successful justify demonstration was real 0.10 seconds.
+
+Limitations are documented in the demonstration: observational data, missing/unseen categories, invalid-target exclusion, model uncertainty, insufficient groups, unavailable estimates, and no invented effort units.

@@ -1,0 +1,24 @@
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_invalid_missing_all_missing_and_positions (test_analyzer.AnalyzerTests.test_invalid_missing_all_missing_and_positions) ... ok
+test_repeats_vs_exact_duplicates_numeric_equivalence (test_analyzer.AnalyzerTests.test_repeats_vs_exact_duplicates_numeric_equivalence) ... ok
+test_roles_frequencies_medians_dispersion (test_analyzer.AnalyzerTests.test_roles_frequencies_medians_dispersion) ... ok
+test_fixed_groups_direction_and_welch (test_certify.CertifyTests.test_fixed_groups_direction_and_welch) ... ok
+test_missing_absent_insufficient_and_zero (test_certify.CertifyTests.test_missing_absent_insufficient_and_zero) ... ok
+test_tail_and_threshold_and_secondary_independence (test_certify.CertifyTests.test_tail_and_threshold_and_secondary_independence) ... FAIL
+test_constant_numeric_and_whitespace_normalize (test_prediction.PredictionTests.test_constant_numeric_and_whitespace_normalize) ... ok
+test_grouped_reproducible_and_outcomes_excluded (test_prediction.PredictionTests.test_grouped_reproducible_and_outcomes_excluded) ... ok
+test_zero_invalid_and_schema (test_prediction.PredictionTests.test_zero_invalid_and_schema) ... ok
+
+======================================================================
+FAIL: test_tail_and_threshold_and_secondary_independence (test_certify.CertifyTests.test_tail_and_threshold_and_secondary_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 10, in test_tail_and_threshold_and_secondary_independence
+    self.assertAlmostEqual(t_cdf(0,5),.5); self.assertAlmostEqual(t_critical(1),12.7062047,5); self.assertTrue(0<=t_cdf(100,10)<=1)
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 12.732459834899032 != 12.7062047 within 5 places (0.026255134899031418 difference)
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.007s
+
+FAILED (failures=1)

@@ -1,0 +1,9 @@
+Implemented Step 5 blame analysis in Python using only the standard library.
+
+Reused the complete Step 4 source and tests, adding `blame()` and `run_blame.py`. The analysis ranks exactly N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, and Max_depth against MRE- using marginal eta-squared (between-group SS / total SS). Criterion uses exact categorical groups; numeric settings use up to four equal-frequency bins with midpoint boundaries determined before outcome inspection. Results include eligible/excluded counts, group counts, means, boundaries, sums of squares, directional group means, and deterministic tie handling. Undefined scores are reported for empty, insufficient, constant, or single-group data.
+
+The EZR reference informed the conservative parsing, missing-value handling, summaries, and explicit lower-is-better treatment, but no Lua was run. Associations are marginal historical associations only; they do not establish causation, significance, independent importance, or guaranteed improvement.
+
+Tests: 16 passed. Demonstrations: summary, prediction, certify, flow, and blame passed. The blame demonstration took 0.14 seconds real time. The initial root-directory test invocation failed because `source` was not importable from that working directory; its capture is preserved as `test_output_failed_attempt1.txt`, and the final run from the step directory passed.
+
+Known limitation: grouping numeric settings loses within-bin variation and can make unequal group sizes or tied values affect the score. Correlated settings and other configuration differences can affect rankings.

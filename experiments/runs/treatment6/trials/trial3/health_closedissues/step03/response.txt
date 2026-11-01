@@ -1,0 +1,9 @@
+Implemented Step 3 certification in source/certify.py and source/run_certify.py. The authorized Step 2 analyzer, summary runner, prediction runner, and tests were copied unchanged and preserved.
+
+The fixed comparison is criterion squared_error (reference) versus absolute_error (candidate), outcome MRE-, with lower better. The real dataset produced reference n=3363, mean=0.6737202958, sample variance=0.0444518484; candidate n=3302, mean=0.7508694690, sample variance=0.0416681165; difference candidate-reference=0.0771491732. Welch inference: SE=0.0050830079, df=6661.6898, t=15.1779, two-sided p rounded to 0 by the computed precision, and 95% CI [0.0716892730, 0.0826090734]. Thus the candidate is not a meaningful improvement for MRE-; it is worse under the fixed comparison. With threshold 0.05, neither the point estimate nor the complete CI supports a candidate improvement. Without a threshold, practical importance is undetermined.
+
+ACC+ and PRED40+ are reported separately as descriptive maximize outcomes only. Missing/nonfinite data, absent groups, insufficient samples, and zero Welch standard error are handled explicitly. The implementation uses only the Python standard library, Welch-Satterthwaite degrees of freedom, an incomplete-beta continued fraction, and bisection for t critical values; representative t-distribution checks are in test_certify.py. EZR was used only as authorized background for statistical conventions.
+
+Limitations: these are historical configurations, not controlled repeated evaluations of otherwise identical models. Other hyperparameters may differ, so the result does not establish causation, guaranteed improvement, metric ranges, or an invented metric formula.
+
+All required source and test files are in this step directory. The full suite passed 10 tests. Runtime for the successful certify demonstration was 0.09 seconds real time.

@@ -1,0 +1,11 @@
+Implemented Step 7 choose in source/summary.py and preserved the Step 6 source and tests.
+
+The chooser builds a pool of complete valid binary configurations, normalizes numeric binary spellings, shuffles candidates with local seed 42, and reveals outcomes only through evaluations. Budget counts attempted oracle calls, including missing or invalid outcomes. Duplicate configurations share one candidate and use the first original position, even when that outcome is invalid. Winners are selected by lowest finite Performance-, then earliest original position.
+
+Added choose_rows and choose, CLI flags --choose, --budget, and --seed, explicit handling for invalid/zero/oversized budgets, empty pools, and no successful evaluations, evaluation history, complete settings, positions, and usage counts. Added a separate retrospective historical replay audit that cannot affect the winner and is explicitly not newly measured encoding or a future-performance guarantee.
+
+The EZR reference informed the streaming/lower-is-better summary style, deterministic ordering, and explicit missing/invalid accounting. No Lua or third-party package was used.
+
+Verification: 29 tests pass. The current choose demonstration passes with budget 20 and seed 42; its measured /usr/bin/time -p real time is recorded in runtime_output.txt and metrics.csv. Preserved demonstrations were run and captured in preserved_demonstrations.txt. A failed shell capture attempt and a repaired test expectation are retained in failed_attempt_01.log and test_output.txt history context.
+
+Known limitations: the search is a seeded random permutation, not an adaptive optimizer; the first-duplicate policy can retain an invalid historical outcome; retrospective audit sees all historical rows only after search; results are historical observations and do not guarantee future encoding performance.

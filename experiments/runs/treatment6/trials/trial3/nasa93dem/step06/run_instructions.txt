@@ -1,0 +1,14 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step06
+Python interpreter: /usr/bin/python3 (Python standard library only)
+
+Run full tests:
+python3 -m unittest discover -s tests -v
+
+Run demonstrations:
+python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --justify
+python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --estimate
+python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --certify
+python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --flow
+python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --blame
+
+Captured outputs: test_output.txt, runtime_output.txt, summary_success_output.txt, estimate_output.txt, certify_output.txt, flow_output.txt, blame_output.txt, justify_timed_output.txt, justify_timing.txt, and failed summary_output.txt.

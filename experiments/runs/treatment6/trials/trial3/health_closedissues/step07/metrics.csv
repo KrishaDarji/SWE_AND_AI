@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,6,3,model configuration and quality,choose,333,37,1,0.14,1,"26 tests passed; choose timing only; cap 100 demo; finite complete eligibility; negative/nonfinite invalid; valid over-cap separate; copied Step 6 machinery; EZR informed explicit missing/finite conventions and deterministic ties; LOC excludes tests/runners/Lua; one repaired failed test attempt preserved"

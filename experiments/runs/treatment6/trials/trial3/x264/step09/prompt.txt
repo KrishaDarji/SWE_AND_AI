@@ -1,0 +1,172 @@
+You are running Treatment 6, Trial 3, Dataset 1, Step 9 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: spot
+- Current requirement: Spot an unusual encoding measurement or possible measurement error.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step08/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step08/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step09/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent x264 directory.
+- Write only inside the current Step 9 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 8 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not refer to Trials 1–2 or Treatment 5 implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement spot only; do not implement later skills.
+
+Implementation:
+1. Screen finite Performance- measurements for unusually high or low
+   values relative to similar encoder configurations.
+   Use normalized complete binary settings and a documented configuration
+   distance, such as Hamming distance.
+
+2. Define the neighborhood rule, minimum reference size, robust score,
+   threshold, and zero-scale policy before inspecting real flags.
+   Exclude the observation itself from its reference neighborhood.
+   Explain how duplicate configurations and equal-distance neighbors
+   are handled. State whether neighborhood size counts rows or distinct
+   configurations.
+
+3. Use robust local reference summaries, such as median and median
+   absolute deviation. Compute deviations around the stated center.
+   Distinguish undefined scores from valid scores below threshold.
+   Do not silently replace a zero robust scale with another statistic.
+
+4. Handle missing/nonfinite outcomes and missing, nonfinite, or nonbinary
+   settings explicitly. Preserve original nonblank data-row positions.
+   Report exclusion counts and rows lacking adequate reference data.
+
+5. For flagged measurements, report:
+   - Original row position and complete configuration.
+   - Observed Performance-.
+   - Neighbor/reference count and distance rule.
+   - Reference center and scale.
+   - Score, threshold, and an accurate reason for the flag.
+   Report total flagged count and clear no-flag results.
+
+6. Explain that unusual measurements warrant investigation and are not
+   proven errors. Both unusually good and unusually poor results can flag.
+   Do not invent units, quality measures, detector accuracy, or guarantees.
+
+7. Reuse suitable existing binary parsing, representation, and descriptive
+   machinery. Provide a runnable spot demonstration with summary counts
+   and a manageable number of examples.
+   If producing JSON, use null for undefined values and reject NaN/Infinity.
+
+8. Preserve summary, prediction, certify, flow, blame, justify, choose,
+   and fix demonstrations.
+   Current-step runners may call preserved functions without reading
+   unauthorized runners from previous directories.
+
+Tests:
+- Preserve and run all previous tests.
+- Use independently calculated distances, neighborhood membership,
+  centers, scales, scores, and expected flags.
+- Verify self-exclusion, high/low anomalies, ties, duplicate handling,
+  and the stated minimum-reference policy.
+- Test threshold boundaries, zero scale, constant outcomes, empty/short
+  data, invalid settings, and missing/nonfinite outcomes.
+- Verify original positions, full configurations, exclusion counts,
+  and separation of undefined scores from ordinary nonflags.
+- Preserve environment variables required by copied tests.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=9, treatment=6, trial=3, domain=video encoding, skill=spot.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 8 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current spot demonstration only, excluding tests and earlier demos.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, neighborhood/scoring conventions,
+  reuse, LOC method, EZR influence, assumptions, and failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

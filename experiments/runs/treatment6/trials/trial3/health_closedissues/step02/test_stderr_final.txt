@@ -1,0 +1,12 @@
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_invalid_missing_all_missing_and_positions (test_analyzer.AnalyzerTests.test_invalid_missing_all_missing_and_positions) ... ok
+test_repeats_vs_exact_duplicates_numeric_equivalence (test_analyzer.AnalyzerTests.test_repeats_vs_exact_duplicates_numeric_equivalence) ... ok
+test_roles_frequencies_medians_dispersion (test_analyzer.AnalyzerTests.test_roles_frequencies_medians_dispersion) ... ok
+test_constant_numeric_and_whitespace_normalize (test_prediction.PredictionTests.test_constant_numeric_and_whitespace_normalize) ... ok
+test_grouped_reproducible_and_outcomes_excluded (test_prediction.PredictionTests.test_grouped_reproducible_and_outcomes_excluded) ... ok
+test_zero_invalid_and_schema (test_prediction.PredictionTests.test_zero_invalid_and_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.005s
+
+OK

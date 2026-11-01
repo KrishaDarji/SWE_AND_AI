@@ -1,0 +1,182 @@
+You are running Treatment 6, Trial 3, Dataset 3, Step 8 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: fix
+- Current requirement: Suggest the smallest hyperparameter change that improves error.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step07/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step07/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent health_closedissues directory.
+- Write only inside the current Step 8 directory.
+
+Allowed references:
+- The Health dataset and the two EZR files listed above.
+- The listed Step 7 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not reuse X264, NASA93, or other trials' implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and demonstration functionality.
+  Current-step runners may call preserved functions without reading
+  unauthorized runners from previous directories.
+- Add fix separately; do not replace existing skills or tests.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement fix only; do not implement later skills.
+
+Implementation:
+1. Use the first original CSV data row as the baseline.
+   Do not silently replace an invalid baseline with a later row.
+   State how blank/malformed first rows are handled.
+
+2. Search observed historical configurations for strictly lower MRE-
+   than the baseline. Rank improving candidates by:
+   - Fewest changed configuration fields.
+   - Lowest MRE-.
+   - Highest ACC+.
+   - Highest PRED40+.
+   - Earliest original CSV position.
+
+3. Count changes across exactly:
+   N_estimators, criterion, Min_sample_leaves,
+   Min_impurity_decrease, Max_depth.
+   Compare numeric settings numerically, so "10" and "10.0" are equal.
+   Compare criterion as a normalized categorical value.
+   Count changed fields rather than numerical distance.
+
+4. Require complete settings, finite numeric settings, a nonmissing
+   criterion, and finite MRE-, ACC+, and PRED40+ for baseline and candidates.
+   Handle missing/nonfinite values explicitly.
+   Do not carry over Step 7's compute cap: this step has no compute constraint.
+
+5. Report:
+   - Baseline and selected candidate original positions.
+   - Complete configurations and all three outcomes.
+   - Changed fields with old/new values and their count.
+   - Absolute MRE improvement.
+   - Secondary-outcome differences, including any worsening.
+   - Selection rule and candidate/exclusion counts.
+
+6. Distinguish empty input, invalid baseline, no improving candidate,
+   and successful recommendation.
+   If the baseline cannot be evaluated, report unavailable comparisons
+   with a reason; do not substitute zero or invent changes.
+
+7. Reuse suitable existing parsing, validation, and comparison machinery.
+   Explain that this is retrospective comparison between observed rows.
+   Change count is a simplicity proxy; historical differences do not prove
+   that the changes caused improvement.
+   Do not invent unobserved outcomes, metric units, ranges, resource costs,
+   or guarantees about future evaluations.
+
+8. Provide a runnable fix demonstration.
+   Preserve summary, prediction, certify, flow, blame, justify, and choose
+   demonstrations.
+
+Tests:
+- Preserve and run all previous tests.
+- Verify minimum change count takes priority over improvement magnitude.
+- Test each remaining tie-breaker with independent expected winners.
+- Test numeric normalization, categorical changes, full configurations,
+  and complete old/new reports.
+- Verify original positions survive exclusions.
+- Test strict improvement, equal MRE, empty input, invalid baseline,
+  malformed first row, missing/nonfinite candidate values, and no improvement.
+- Verify secondary worsening is reported.
+- Verify the previous compute cap is not applied.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use quoted absolute paths and state the working directory and Python
+interpreter in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=8, treatment=6, trial=3, domain=model configuration and quality,
+  skill=fix.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 7 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current fix demonstration only, excluding tests and earlier demos.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, baseline/change-count policies, reuse,
+  LOC method, EZR influence, assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

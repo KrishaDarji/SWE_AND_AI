@@ -1,0 +1,171 @@
+You are running Treatment 6, Trial 3, Dataset 1, Step 7 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: choose
+- Current requirement: Choose an encoder configuration under a limited evaluation budget.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step06/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step06/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step07/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent x264 directory.
+- Write only inside the current Step 7 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 6 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not refer to Trials 1–2 or Treatment 5 implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement choose only; do not implement later skills.
+
+Implementation:
+1. Choose a configuration while revealing at most a supplied number of
+   historical Performance- outcomes.
+   Use budget 20 and seed 42 in the demonstration.
+   Budget counts outcome evaluations, not elapsed time or monetary cost.
+
+2. Separate the searchable configuration pool from an outcome oracle.
+   The search procedure may inspect complete valid binary configurations
+   but must receive outcomes only when it evaluates a selected configuration.
+   Do not rank candidates or fit models using unrevealed outcomes.
+   Use a reproducible strategy, explain it, and use local seeded randomness.
+
+3. Normalize equivalent binary values consistently.
+   Do not evaluate the same normalized configuration more than once.
+   Define a deterministic historical outcome policy for duplicate
+   configurations, including duplicates with differing or invalid outcomes.
+   Preserve the original position corresponding to the selected measurement.
+
+4. Reuse suitable existing parsing, representation, validation, and
+   comparison machinery.
+   The procedure must respect the budget even when an evaluated outcome
+   is missing or invalid. Report attempted and successful evaluations.
+
+5. Select the lowest finite Performance- among evaluated configurations.
+   Define deterministic tie handling.
+   Report the winner's original position, complete settings, observed
+   Performance-, evaluation history, strategy, seed, and budget usage.
+
+6. Handle invalid budgets, zero budget, empty candidate pools, budgets
+   exceeding the number of distinct configurations, and no successful
+   evaluations explicitly. Do not silently exceed the budget.
+
+7. After search ends, an explicitly separate audit may inspect all outcomes
+   to report the best eligible historical value and the winner's gap.
+   Audit information must not influence the search or chosen winner.
+   Label this as retrospective historical replay, not newly measured
+   encoding or a guarantee about future performance.
+   Do not invent units or extra quality measures.
+
+8. Provide a runnable choose demonstration.
+   Preserve summary, prediction, certify, flow, blame, and justify demos.
+   Current-step runners may call preserved functions without reading
+   unauthorized runners from previous directories.
+
+Tests:
+- Preserve and run all previous tests.
+- Verify oracle calls never exceed the budget, including invalid outcomes.
+- Verify unrevealed outcomes cannot influence candidate selection.
+- Test reproducibility, normalized duplicates, and the declared duplicate
+  outcome/position policy.
+- Verify winner selection, ties, full settings, and evaluation history.
+- Test invalid/zero/oversized budgets, empty pools, and no finite outcomes.
+- Verify the audit cannot affect the winner.
+- Preserve environment variables required by copied tests.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=7, treatment=6, trial=3, domain=video encoding, skill=choose.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 6 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current choose demonstration only, excluding tests and earlier demos.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, budget usage, reuse, LOC method,
+  EZR influence, assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

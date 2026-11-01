@@ -1,0 +1,5 @@
+NASA93 marginal historical Effort- anomaly screen
+policy=log1p nonnegative Effort-; leave-one-out median/MAD; scale=1.4826*MAD; zero MAD undefined; score=abs(x-center)/scale
+threshold=3.5 min_reference=3 valid=93 excluded=0 flagged=0 ordinary_nonflag=93 undefined=0
+convention=position is the physical CSV line (header is line 1); malformed rows are excluded by load and reported separately; idX is not assumed unique
+limitation=large projects can legitimately require more effort; this marginal screen does not adjust for size or all descriptors; unusual results warrant investigation and do not prove measurement error; both low and high effort may be unusual

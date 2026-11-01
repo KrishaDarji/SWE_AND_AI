@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,6,3,software project estimation,flow,217,30,1,0.04,1,"14 tests passed; warm-up=1; evaluated=92; model_mae=521.1004766127592; baseline_mae=481.9114197824729; timing successful flow demo only; Step 3 model reused; EZR update/copy ideas; LOC excludes tests/runners/Lua; one repaired shell capture attempt"

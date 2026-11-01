@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step08
+Python interpreter: python3
+
+Tests: python3 -m unittest discover -s tests -v
+Fix: python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --fix
+Preserved demos: run the same command with no flag, --estimate, --certify, --flow, --blame, --justify, and --choose.
+All commands use Python standard library only. Captures are runtime_*.txt, runtime_output.txt, and test_output.txt.

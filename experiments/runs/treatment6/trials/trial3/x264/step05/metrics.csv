@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,6,3,video encoding,blame,368,70,1,0.06,5,"20 tests passed; current blame /usr/bin/time real capture; LOC excludes tests/runners/comments; copied Step 4 machinery and added blame; EZR ranks informed deterministic ordering; marginal eta-squared, lower Performance- is better; correlated/one-hot settings are not causal; 5 repaired/failed-attempt errors counted (2 assertions + 1 assertion + 2 failed commands); failed captures retained."

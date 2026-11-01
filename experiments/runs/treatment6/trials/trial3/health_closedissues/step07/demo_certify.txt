@@ -1,0 +1,67 @@
+{
+  "candidate": {
+    "finite_count": 3302,
+    "mean": 0.7508694690284082,
+    "sample_variance": 0.04166811645371595
+  },
+  "comparison": {
+    "candidate": "absolute_error",
+    "difference_candidate_minus_reference": 0.07714917317980641,
+    "direction": "minimize",
+    "outcome": "MRE-",
+    "reference": "squared_error"
+  },
+  "inference": {
+    "confidence_interval_95": [
+      0.07168927297172728,
+      0.08260907338788553
+    ],
+    "degrees_of_freedom": 6661.689826828911,
+    "method": "Welch t test; Welch-Satterthwaite df; incomplete-beta continued fraction and bisection",
+    "standard_error": 0.005083007881710809,
+    "status": "defined",
+    "t_statistic": 15.177858263292716,
+    "two_sided_p": 0
+  },
+  "limitations": "Historical configurations are not controlled repeated evaluations; other hyperparameters may differ, so this does not establish causation or guaranteed improvement.",
+  "malformed_rows": [],
+  "reference": {
+    "finite_count": 3363,
+    "mean": 0.6737202958486018,
+    "sample_variance": 0.044451848418763686
+  },
+  "secondary": {
+    "ACC+": {
+      "absolute_error": {
+        "direction": "maximize",
+        "finite_count": 3302,
+        "mean": 0.47779311364779153,
+        "sample_variance": 0.011660284464236309
+      },
+      "squared_error": {
+        "direction": "maximize",
+        "finite_count": 3363,
+        "mean": 0.5088244263981059,
+        "sample_variance": 0.011378846573970612
+      }
+    },
+    "PRED40+": {
+      "absolute_error": {
+        "direction": "maximize",
+        "finite_count": 3302,
+        "mean": 0.12667647313316605,
+        "sample_variance": 0.05542933190723052
+      },
+      "squared_error": {
+        "direction": "maximize",
+        "finite_count": 3363,
+        "mean": 0.1801962533452275,
+        "sample_variance": 0.09125552363854614
+      }
+    }
+  },
+  "threshold": null,
+  "threshold_interpretation": "practical importance undetermined without a threshold"
+}
+
+exit_status=0

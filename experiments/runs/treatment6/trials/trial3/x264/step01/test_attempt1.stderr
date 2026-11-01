@@ -1,0 +1,11 @@
+test_empty_input (test_summary.SummaryTests) ... ok
+test_entirely_missing_outcomes (test_summary.SummaryTests) ... ok
+test_header_only (test_summary.SummaryTests) ... ok
+test_invalid_outcomes (test_summary.SummaryTests) ... ok
+test_missing_outcome_header_is_explicit (test_summary.SummaryTests) ... ok
+test_summary_frequencies_statistics_and_missing (test_summary.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

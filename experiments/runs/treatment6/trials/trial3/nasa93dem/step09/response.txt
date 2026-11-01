@@ -1,0 +1,15 @@
+Implemented Treatment 6, Trial 3, Dataset 2, Step 9 in this directory.
+
+Reused the complete authorized Step 8 source and tests, copied into this snapshot without imports from the prior step. Added `spot` and `--spot` only. The detector uses nonnegative `log1p(Effort-)`, leave-one-out reference populations, median/MAD scoring with scale `1.4826 * MAD`, threshold 3.5, minimum reference size 3, and an explicit zero-MAD undefined policy. Missing, invalid, nonfinite, and negative outcomes are reported separately; positions and duplicate idX values are retained.
+
+The Step 8 demonstrations remain available. New tests independently cover high/low anomalies, self-exclusion, threshold behavior, duplicates, constant values, zero MAD, short samples, valid zero, invalid outcomes, positions, and count reconciliation.
+
+Run:
+`python3 -m unittest discover -s tests -v`
+
+Current demonstration:
+`python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --spot`
+
+The full suite passed: 31 tests. The NASA93 demonstration reported 93 valid, 0 excluded, 0 flagged, 93 ordinary nonflag, and 0 undefined; measured spot-demo real time was 0.04 seconds. Failed/repaired attempts are retained in separately labeled capture files.
+
+EZR informed the reuse of compact standard-library parsing and descriptive robust-statistic machinery; no Lua was run and no third-party package was used. Limitations: this is marginal historical effort screening, not size adjustment or a causal detector. Large projects can legitimately require more effort; unusual high or low results warrant investigation and do not prove measurement error. Malformed CSV rows are excluded by the existing loader and reported separately; positions are physical CSV lines with header line 1.

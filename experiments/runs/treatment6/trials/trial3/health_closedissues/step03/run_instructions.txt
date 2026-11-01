@@ -1,0 +1,12 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (Python 3.12)
+
+Run full suite:
+PYTHONPATH="$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03" python3 -m unittest discover -s "SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/tests" -v
+
+Run preserved demonstrations:
+PYTHONPATH="$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03" python3 "SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/run_summary.py" "$PWD/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+PYTHONPATH="$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03" python3 "SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/run_prediction.py" "$PWD/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Run certify:
+/usr/bin/time -p env PYTHONPATH="$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03" python3 "SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/run_certify.py" "$PWD/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" --threshold 0.05

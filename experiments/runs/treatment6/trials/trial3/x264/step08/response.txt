@@ -1,0 +1,24 @@
+Implemented Step 8 in the isolated output directory.
+
+Updated source: source/summary.py
+Added tests: tests/test_fix.py; all Step 7 tests are preserved.
+
+The new fix() / fix_rows() implementation:
+- Uses the first nonblank CSV data row as the baseline.
+- Reuses read_runs(), _finite(), _binary_setting(), and normalized binary configuration machinery.
+- Excludes invalid/incomplete settings and missing/nonfinite outcomes with original positions.
+- Searches only observed complete binary configurations with strictly lower Performance-.
+- Ranks by fewest changed fields, lowest measured Performance-, then earliest position.
+- Reports old/new fields, reductions, percentages, counts, and retrospective limitations.
+- Preserves summary, prediction, certify, flow, blame, justify, and choose demonstrations.
+
+Verification:
+- Full suite: 34 tests passed.
+- Current fix demonstration: passed; /usr/bin/time -p real = 0.05 seconds.
+- Preserved demonstrations were executed successfully.
+- Captures: test_output.txt, runtime_output.txt, and runtime_*_attempt3.txt.
+- Failed attempts remain separately labeled and were not overwritten.
+
+The EZR reference informed the existing streaming/statistical and validation style; no Lua or third-party package was used. Change count is only a simplicity proxy: historical differences do not establish causation or future guarantees, and no units or separate quality measure are inferred.
+
+Known limitations: positions are one-based nonblank data-row positions as parsed by csv.DictReader; recommendations are limited to measured rows; percentage reduction is undefined for a zero baseline.

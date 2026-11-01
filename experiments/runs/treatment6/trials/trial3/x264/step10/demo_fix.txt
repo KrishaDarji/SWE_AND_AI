@@ -1,0 +1,68 @@
+{
+  "baseline": {
+    "position": 1,
+    "settings": {
+      "no_8x8dct": 0,
+      "no_asm": 1,
+      "no_cabac": 0,
+      "no_deblock": 0,
+      "no_fast_pskip": 0,
+      "no_mbtree": 0,
+      "no_mixed_refs": 0,
+      "no_weightb": 0,
+      "rc_lookahead": 1,
+      "rc_lookahead_20": 1,
+      "rc_lookahead_40": 0,
+      "rc_lookahead_60": 0,
+      "ref": 1,
+      "ref_1": 1,
+      "ref_5": 0,
+      "ref_9": 0
+    },
+    "value": 268.72
+  },
+  "candidate_count": 138,
+  "comparison": {
+    "absolute_reduction": 14.133000000000038,
+    "baseline_nonzero": true,
+    "percentage_reduction": 5.259377791009243
+  },
+  "excluded": [],
+  "excluded_count": 0,
+  "note": "retrospective comparison between measured configurations; change count is a simplicity proxy; historical differences do not prove causation",
+  "recommendation": {
+    "changed_field_count": 1,
+    "changed_fields": [
+      {
+        "field": "no_8x8dct",
+        "new": 1,
+        "old": 0
+      }
+    ],
+    "position": 65,
+    "settings": {
+      "no_8x8dct": 1,
+      "no_asm": 1,
+      "no_cabac": 0,
+      "no_deblock": 0,
+      "no_fast_pskip": 0,
+      "no_mbtree": 0,
+      "no_mixed_refs": 0,
+      "no_weightb": 0,
+      "rc_lookahead": 1,
+      "rc_lookahead_20": 1,
+      "rc_lookahead_40": 0,
+      "rc_lookahead_60": 0,
+      "ref": 1,
+      "ref_1": 1,
+      "ref_5": 0,
+      "ref_9": 0
+    },
+    "value": 254.587
+  },
+  "selection_rule": "fewest changed fields, lowest Performance-, earliest original position",
+  "status": "ok",
+  "warnings": []
+}
+
+COMMAND_EXIT_STATUS=0

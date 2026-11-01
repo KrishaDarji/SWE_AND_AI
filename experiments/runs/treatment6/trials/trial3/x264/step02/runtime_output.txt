@@ -1,0 +1,33 @@
+{
+  "baseline_mae": 136.291053748939,
+  "excluded_invalid_targets": 0,
+  "held_out_mae": 18.386911304347827,
+  "settings": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9"
+  ],
+  "test_groups": 230,
+  "test_rows": 230,
+  "train_groups": 922,
+  "train_rows": 922,
+  "training_mean": 462.6258351409979
+}
+{"configuration_fields": ["no_asm", "no_8x8dct", "no_cabac", "no_deblock", "no_fast_pskip", "no_mbtree", "no_mixed_refs", "no_weightb", "rc_lookahead", "rc_lookahead_20", "rc_lookahead_40", "rc_lookahead_60", "ref", "ref_1", "ref_5", "ref_9"], "supplied_configuration_prediction": 268.37600000000003}
+exit_status=0
+real 0.75
+user 0.74
+sys 0.01

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,6,3,software project estimation,justify,286,41,1,0.10,1,"20 tests passed; successful justify timing only; training-only tied neighbors and baseline; retrospective audit labeled post-explanation; Step 5 behavior preserved; EZR-inspired symbolic categorical distance and summaries; LOC excludes tests/runners/Lua; new_loc counts changed source lines; one repaired invalid --summary command captured separately; observational data and model limitations documented."

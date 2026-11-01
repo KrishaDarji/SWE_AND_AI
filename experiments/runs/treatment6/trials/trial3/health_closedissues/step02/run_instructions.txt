@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step02
+Python interpreter: python3
+
+python3 -m unittest discover -s tests -v
+python3 source/run_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+python3 source/run_prediction.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv

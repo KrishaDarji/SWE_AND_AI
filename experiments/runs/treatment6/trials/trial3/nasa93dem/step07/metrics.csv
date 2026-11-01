@@ -1,0 +1,3 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,6,3,software project estimation,choose,318,33,1,0.03,3,"24 tests passed; timing is /usr/bin/time -p for choose only; cap is observed Effort- <= 100 with complete finite data and nonnegative effort; reused Step 6 loader/normalization/representations and preserved demos; EZR informed deterministic filtering/sorting and missing-value discipline; total_loc excludes tests/runners/Lua; new_loc counts diff additions/replacements; error_count includes two failed command attempts and one failed relative-path measurement attempt; NASA93 is retrospective and descriptive, not causal or predictive."
+

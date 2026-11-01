@@ -1,0 +1,14 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step09
+Python interpreter: /usr/bin/python3 (Python standard library only)
+Dataset: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+
+Run the complete suite:
+python3 -m unittest discover -s tests -v
+
+Run the current demonstration:
+python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --spot
+
+Preserved demonstrations:
+python3 source/nasa_summary.py DATASET [--estimate|--certify|--flow|--blame|--justify|--choose|--fix]
+
+The saved captures are test_output.txt, runtime_output.txt, and demo_*.txt. Failed attempts are retained as test_output_attempt01.txt and test_output_attempt02.txt; the final successful suite is test_output_attempt03.txt.

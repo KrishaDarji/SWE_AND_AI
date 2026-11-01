@@ -1,0 +1,164 @@
+You are running Treatment 6, Trial 3, Dataset 1, Step 5 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: blame
+- Current requirement: Explain which encoder settings are associated with poor encoding performance.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step04/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step04/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step05/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent x264 directory.
+- Write only inside the current Step 5 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 4 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not refer to Trials 1–2 or Treatment 5 implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement blame only; do not implement later skills.
+
+Implementation:
+1. Rank encoder settings by their marginal association with Performance-.
+   Lower Performance- is better. Exclude the outcome from predictor fields.
+   Do not invent units or separate quality measures.
+
+2. Use a clearly defined comparable association score, such as eta-squared:
+   between-group sum of squares divided by total sum of squares.
+   Treat the dataset's binary setting values as groups.
+   Define normalization so equivalent numeric settings group consistently.
+
+3. For each setting, report:
+   - Eligible and excluded row counts.
+   - Group values, counts, and mean Performance-.
+   - Reference mean, between-group and total sums of squares.
+   - Association score and deterministic rank.
+   - Which observed groups have higher and lower mean Performance-.
+
+4. Handle missing/invalid settings and missing/nonfinite outcomes explicitly.
+   Calculate each setting's reference mean and sums of squares from exactly
+   the same eligible rows used for that setting's groups.
+   Handle constant settings, constant outcomes, empty input, and insufficient
+   data without division by zero or misleading defined scores.
+   State conventions for undefined and constant cases.
+
+5. Explain that these are marginal historical associations.
+   Correlated or one-hot settings may reflect the same underlying choice.
+   Scores are not independent causal contributions, and changing a setting
+   is not guaranteed to improve performance.
+   Do not claim statistical significance from association magnitude alone.
+
+6. Reuse suitable parsing, grouping, and descriptive machinery.
+   Provide a runnable demonstration of ranked settings and directional
+   group summaries, with assumptions and limitations.
+
+7. Preserve the summary, prediction, certify, and flow demonstrations.
+   Current-step runners may call preserved functions without reading
+   unauthorized runners from previous directories.
+
+Tests:
+- Preserve and run all previous tests.
+- Use independently calculated examples with known association scores.
+- Test directional group means, deterministic ties, constant settings,
+  constant outcomes, empty input, and insufficient data.
+- Test numeric normalization and missing/nonfinite values.
+- Verify per-setting reference populations, sums of squares, and counts.
+- Verify Performance- cannot appear among ranked settings.
+- Preserve environment variables required by copied tests.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=5, treatment=6, trial=3, domain=video encoding, skill=blame.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 4 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current blame demonstration only, excluding tests and earlier demos.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, reuse, LOC method, EZR influence,
+  assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

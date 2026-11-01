@@ -1,0 +1,4 @@
+zsh:1: read-only variable: status
+real 0.14
+user 0.12
+sys 0.01

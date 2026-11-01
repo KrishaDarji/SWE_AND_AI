@@ -1,0 +1,10 @@
+certify comparison: reference tool=n, candidate tool=h, outcome=Effort- (lower is better)
+reference={'count': 83, 'min': 8.4, 'max': 8211.0, 'mean': 606.0638554216868, 'median': 215.0, 'sample_variance': 1387541.9952630033} candidate={'count': 10, 'min': 72.0, 'max': 2460.0, 'mean': 776.7, 'median': 528.5, 'sample_variance': 519143.7888888889}
+difference(candidate-reference)=170.6361445783133 test=0.5243346705603091 df=15.552580855698569 ci95=(-386.0308077263387, 727.3030968829653) threshold_formula=10% of reference mean Effort- threshold=60.60638554216868
+interpretation=statistical evidence, point-estimate improvement, and whole-interval support are separate; nonsignificance is not equivalence.
+caveat=historical projects differ in size and other characteristics; this comparison does not establish causal tool effects, productivity improvement, or future performance; effort units are not invented.
+real 0.06
+user 0.05
+sys 0.00
+
+EXIT_STATUS=0

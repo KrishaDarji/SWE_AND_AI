@@ -1,0 +1,27 @@
+NASA93 marginal blame: Effort- (lower observed mean is better)
+score=eta_squared=between_group_sum_of_squares/total_sum_of_squares; undefined when no eligible rows or total SS is zero
+interpretation=marginal historical association, not causation, independent importance, significance, productivity effect, or guaranteed improvement; size, correlation, and unequal category sizes can affect ranking; effort units are not invented
+rank=1 descriptor=time eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=49614293.557384536 total_ss=118710596.37698925 eta_squared=0.4179432592506268 higher=['h', 'xh'] lower=['n', 'vh'] categories=h:13:734.077;n:54:334.389;vh:18:375.344;xh:8:2964.26
+rank=2 descriptor=rely eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=40616485.84886837 total_ss=118710596.37698925 eta_squared=0.34214709628686046 higher=['l', 'vh'] lower=['h', 'n'] categories=h:42:483.548;l:2:1296;n:39:269.159;vh:10:2467.21
+rank=3 descriptor=cplx eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=22754483.531580187 total_ss=118710596.37698925 eta_squared=0.19168030678001796 higher=['l', 'vh', 'xh'] lower=['h', 'n'] categories=h:58:315.245;l:3:844.333;n:10:494.2;vh:17:1341.27;xh:5:1901.9
+rank=4 descriptor=stor eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=19419252.804137334 total_ss=118710596.37698925 eta_squared=0.163584830645342 higher=['h', 'xh'] lower=['n', 'vh'] categories=h:10:887.7;n:49:323.249;vh:21:555.19;xh:13:1668.85
+rank=5 descriptor=plex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=18107787.252077453 total_ss=118710596.37698925 eta_squared=0.15253724439705915 higher=['h', 'vl'] lower=['l', 'n'] categories=h:22:1285.69;l:14:346.857;n:53:352.683;vl:4:1559.25
+rank=6 descriptor=data eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=17092949.0881311 total_ss=118710596.37698925 eta_squared=0.14398840212923386 higher=['h'] lower=['l', 'n', 'vh'] categories=h:17:1522.19;l:37:370.162;n:31:502.452;vh:8:365.125
+rank=7 descriptor=acap eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=7195792.486474542 total_ss=118710596.37698925 eta_squared=0.06061626094121256 higher=['h'] lower=['n', 'vh'] categories=h:51:876.124;n:32:301.344;vh:10:374.5
+rank=8 descriptor=pvol eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6864203.971447187 total_ss=118710596.37698925 eta_squared=0.05782300974757581 higher=['n'] lower=['h', 'l'] categories=h:9:557.444;l:65:477.538;n:19:1158.59
+rank=9 descriptor=pcap eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6818832.00866757 total_ss=118710596.37698925 eta_squared=0.05744080323725276 higher=['h', 'vh'] lower=['n'] categories=h:39:921.623;n:44:348.705;vh:10:678.4
+rank=10 descriptor=sced eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6476101.44596233 total_ss=118710596.37698925 eta_squared=0.05455369312943366 higher=['n'] lower=['l'] categories=l:34:276.794;n:59:824.734
+rank=11 descriptor=pmat eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6021149.22371793 total_ss=118710596.37698925 eta_squared=0.05072124483813194 higher=['h', 'l'] lower=['n'] categories=h:43:791.584;l:20:817.66;n:30:255.967
+rank=12 descriptor=apex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=2745248.7699517375 total_ss=118710596.37698925 eta_squared=0.023125557900776195 higher=['h', 'l', 'vh'] lower=['n'] categories=h:46:774.702;l:1:648;n:34:402.471;vh:12:675.167
+rank=13 descriptor=ltex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=549648.9131797239 total_ss=118710596.37698925 eta_squared=0.0046301588059940646 higher=['h'] lower=['l', 'n', 'vl'] categories=h:69:662.033;l:6:427.333;n:14:587.286;vl:4:401
+rank=14 descriptor=tool eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=259858.66542298236 total_ss=118710596.37698925 eta_squared=0.0021890098555123858 higher=['h'] lower=['n'] categories=h:10:776.7;n:83:606.064
+rank=15 descriptor=docu eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=n:93:624.412
+rank=16 descriptor=flex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=h:93:624.412
+rank=17 descriptor=pcon eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=n:93:624.412
+rank=18 descriptor=prec eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=h:93:624.412
+rank=19 descriptor=resl eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=h:93:624.412
+rank=20 descriptor=ruse eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=n:93:624.412
+rank=21 descriptor=site eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=n:93:624.412
+rank=22 descriptor=team eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0 higher=[] lower=[] categories=vh:93:624.412
+
+EXIT_STATUS=0

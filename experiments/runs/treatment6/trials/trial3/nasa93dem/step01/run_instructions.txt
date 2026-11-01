@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step01
+Python interpreter: /usr/bin/python3
+Tests: /usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+Implementation: /usr/bin/time -p /usr/bin/python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+Final captures: test_output.txt, runtime_output.txt; timing stderr: runtime_stderr.txt.
+Attempt 1 (failed assertion, preserved): test_output_attempt1 is represented by test_output.txt's prior capture? No: test_output_attempt1 was not overwritten; see test_output.txt only final and test_stderr.txt plus attempt1_status.txt. The failed assertion was repaired before final capture.

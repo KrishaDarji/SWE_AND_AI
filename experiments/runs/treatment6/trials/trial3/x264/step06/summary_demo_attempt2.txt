@@ -1,0 +1,9 @@
+COMMAND: /usr/bin/time -p python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step06/source/summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv 
+WORKING_DIRECTORY: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step06
+usage: summary.py [-h] [--blame] [--justify] [--predict] [--certify] [--flow]
+                  dataset
+summary.py: error: unrecognized arguments: 
+real 0.03
+user 0.02
+sys 0.00
+EXIT_STATUS=2

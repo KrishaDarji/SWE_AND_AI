@@ -1,0 +1,4 @@
+FAILED ATTEMPT 01: shell variable collision while capturing tests
+command: /usr/bin/python3 -m unittest discover -s tests -p test_*.py
+stderr: zsh:5: read-only variable: status
+exit_status=1

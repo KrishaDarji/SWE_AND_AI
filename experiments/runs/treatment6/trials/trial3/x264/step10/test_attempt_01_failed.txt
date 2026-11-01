@@ -1,0 +1,1 @@
+FAILED ATTEMPT: zsh reserved variable prevented capture wrapper before test execution.

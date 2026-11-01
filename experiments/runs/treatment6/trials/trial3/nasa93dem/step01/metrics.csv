@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,6,3,software project estimation,remember,83,83,1,0.06,1,"4 unittest cases passed; /usr/bin/time -p successful summary; adapted EZR CSV streaming, column roles, SYM frequency counting, NUM running/descriptive summaries and conventional median/sample variance; stdlib CSV assumptions and explicit missing/nonfinite/malformed handling; one repaired test expectation was counted"

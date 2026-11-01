@@ -1,0 +1,9 @@
+Implemented Treatment 6, Trial 3, Dataset 1, Step 10 in the required Step 10 directory.
+
+Reused the Step 9 source and all nine Step 9 test files, preserving summary, prediction, certify, flow, blame, justify, choose, fix, and spot. Added race_rows/race, paired-difference classification and summaries, CLI --race support, and test_race.py. The selector remains its existing seeded uniform permutation strategy; the baseline uses the same normalized distinct pool, first-duplicate policy, eligibility rules, and outcome charging, so the comparison is honestly reported as algorithmically equivalent. Audits are retrospective and run after selection.
+
+The full suite passed: 41 tests. The race demonstration used budget 20 and seeds 42 through 51. It produced 10 comparable pairs, mean and median paired differences of 0.0, and 0 wins, 10 ties, 0 losses. These are repeated historical replays, not independent LLM trials or new datasets, and do not establish significance or future superiority.
+
+Required artifacts are present: prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. Preserved demonstration captures are in demo_*.txt. One wrapper-only failed capture was preserved in test_attempt_01_failed.txt; the repaired capture passed.
+
+Known limitations: the baseline is intentionally equivalent to the existing selector, outcomes are historical CSV observations rather than new encoding runs, and no causal or future-performance claim is made. Only Python standard-library functionality is used.

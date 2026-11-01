@@ -1,0 +1,19 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step07
+Python interpreter: /usr/bin/python3 (invoked as python3)
+
+Run complete tests:
+python3 -m unittest discover -s tests -v
+
+Run current demonstration:
+python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --choose --effort-cap 100
+
+Run preserved demonstrations:
+python3 source/nasa_summary.py DATASET
+python3 source/nasa_summary.py DATASET --estimate
+python3 source/nasa_summary.py DATASET --certify
+python3 source/nasa_summary.py DATASET --flow
+python3 source/nasa_summary.py DATASET --blame
+python3 source/nasa_summary.py DATASET --justify
+
+Captured files: test_output.txt, runtime_output.txt, runtime_choose_timing.txt, runtime_summary_output.txt, runtime_estimate_output.txt, runtime_certify_output.txt, runtime_flow_output.txt, runtime_blame_output.txt, runtime_justify_output.txt. failed_attempt_01_capture.txt and failed_attempt_01_test_output.txt preserve the failed first test-capture attempt.
+

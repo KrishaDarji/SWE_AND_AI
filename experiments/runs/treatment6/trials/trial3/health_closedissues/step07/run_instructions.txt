@@ -1,0 +1,16 @@
+Working directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step07'
+Python interpreter: /usr/bin/python3
+
+Run the complete suite:
+/usr/bin/python3 -m unittest discover -s tests -p 'test*.py'
+
+Run the current demonstration:
+/usr/bin/time -p /usr/bin/python3 source/run_choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --cap 100
+
+Run preserved demonstrations:
+/usr/bin/python3 source/run_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+/usr/bin/python3 source/run_prediction.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+/usr/bin/python3 source/run_certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+/usr/bin/python3 source/run_flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+/usr/bin/python3 source/run_blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+/usr/bin/python3 source/run_justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'

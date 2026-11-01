@@ -1,0 +1,18 @@
+..............F...................
+======================================================================
+FAIL: test_minimum_change_then_value_then_position_and_normalization (test_fix.FixTests.test_minimum_change_then_value_then_position_and_normalization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step08/tests/test_fix.py", line 17, in test_minimum_change_then_value_then_position_and_normalization
+    self.assertEqual(result["recommendation"]["position"], 3)
+AssertionError: 2 != 3
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.020s
+
+FAILED (failures=1)
+real 0.07
+user 0.05
+sys 0.01
+
+EXIT_STATUS=1

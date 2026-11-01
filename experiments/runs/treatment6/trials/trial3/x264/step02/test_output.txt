@@ -1,0 +1,15 @@
+test_split_groups_and_metrics_are_independent_of_held_out_targets (test_guess.GuessTests.test_split_groups_and_metrics_are_independent_of_held_out_targets) ... ok
+test_validation_constant_unseen_and_exact_fields (test_guess.GuessTests.test_validation_constant_unseen_and_exact_fields) ... ok
+test_zero_target_and_insufficient_groups (test_guess.GuessTests.test_zero_target_and_insufficient_groups) ... ok
+test_empty_input (test_summary.SummaryTests.test_empty_input) ... ok
+test_entirely_missing_outcomes (test_summary.SummaryTests.test_entirely_missing_outcomes) ... ok
+test_header_only (test_summary.SummaryTests.test_header_only) ... ok
+test_invalid_outcomes (test_summary.SummaryTests.test_invalid_outcomes) ... ok
+test_missing_outcome_header_is_explicit (test_summary.SummaryTests.test_missing_outcome_header_is_explicit) ... ok
+test_summary_frequencies_statistics_and_missing (test_summary.SummaryTests.test_summary_frequencies_statistics_and_missing) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK
+exit_status=0

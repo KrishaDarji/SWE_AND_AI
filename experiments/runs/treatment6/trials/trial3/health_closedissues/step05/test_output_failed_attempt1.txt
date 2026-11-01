@@ -1,0 +1,68 @@
+EEEE
+======================================================================
+ERROR: test_analyzer (unittest.loader._FailedTest.test_analyzer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_analyzer
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step05/tests/test_analyzer.py", line 2, in <module>
+    from source.analyzer import analyze, blame
+ModuleNotFoundError: No module named 'source'
+
+
+======================================================================
+ERROR: test_certify (unittest.loader._FailedTest.test_certify)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_certify
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step05/tests/test_certify.py", line 2, in <module>
+    from source.certify import certify,t_cdf,t_critical
+ModuleNotFoundError: No module named 'source'
+
+
+======================================================================
+ERROR: test_flow (unittest.loader._FailedTest.test_flow)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_flow
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step05/tests/test_flow.py", line 2, in <module>
+    from source.analyzer import flow,FlowEvaluator
+ModuleNotFoundError: No module named 'source'
+
+
+======================================================================
+ERROR: test_prediction (unittest.loader._FailedTest.test_prediction)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_prediction
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step05/tests/test_prediction.py", line 2, in <module>
+    from source.analyzer import predict_dataset, analyze, _Tree, predict_configuration
+ModuleNotFoundError: No module named 'source'
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+FAILED (errors=4)
+real 0.12
+user 0.06
+sys 0.02

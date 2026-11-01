@@ -1,0 +1,9 @@
+Implemented the Step 2 `guess` predictor in `source/summary.py` and preserved the Step 1 summary behavior and tests.
+
+The predictor uses a deterministic approximately 80/20 split by normalized configuration group with seed 42, train-only numeric ranges/categories, normalized mixed-type distance, and a nearest-neighbor mean. This follows EZR’s normalized distance and mean-at-leaf prediction ideas without running Lua or using third-party packages. Missing/invalid settings and exact field mismatches are rejected; constant numeric settings contribute zero distance; unseen categorical values are treated as mismatches.
+
+Results on X264_AllMeasurements.csv: 1,152 rows/configuration groups; 922 train and 230 held-out test rows/groups; held-out MAE 18.386911304347827; training-mean baseline MAE 136.291053748939; 0 invalid/missing targets excluded. The supplied demonstration configuration predicts 268.37600000000003. Held-out evaluation is distinct from the all-history supplied-configuration demonstration.
+
+The complete suite has 9 passing tests. Tests cover independent MAE/baseline calculation, grouped reproducible splitting, outcome exclusion, held-out-target isolation, train-only preprocessing, constants, unseen values, validation, zero targets, and insufficient data. Successful and failed command captures are retained in the step directory. The successful guess demonstration took 0.75 seconds real time.
+
+Known limitations: nearest-neighbor mean is a simple interpretable baseline, not guaranteed to beat the baseline; numeric-looking settings are treated as numeric only when every training value is finite; invalid/missing target rows are excluded from evaluation; at least two configuration groups and finite targets in both partitions are required.

@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08
+Python interpreter: python3 (standard library only)
+
+Run the complete suite:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08" && PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08/source" python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08/tests" -p 'test_*.py'
+
+Run the fix demonstration:
+PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08/source" python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step08/source/run_fix.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Preserved demonstrations use source/run_summary.py, run_prediction.py, run_certify.py, run_flow.py, run_blame.py, run_justify.py, and run_choose.py with the same dataset and PYTHONPATH.

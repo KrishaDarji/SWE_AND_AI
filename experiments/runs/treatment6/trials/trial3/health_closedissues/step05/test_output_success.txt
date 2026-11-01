@@ -1,0 +1,38 @@
+.F..............
+======================================================================
+FAIL: test_blame_score_direction_and_eligible_population (test_analyzer.AnalyzerTests.test_blame_score_direction_and_eligible_population)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step05/tests/test_analyzer.py", line 28, in test_blame_score_direction_and_eligible_population
+    x=blame(p); self.assertEqual([z["field"] for z in x["ranking"]], list(x["fields"]))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: ['Max_depth', 'N_estimators', 'criterion', [40 chars]ase'] != ['N_estimators', 'criterion', 'Min_sample_l[40 chars]pth']
+
+First differing element 0:
+'Max_depth'
+'N_estimators'
+
+- ['Max_depth',
+-  'N_estimators',
+? ^
+
++ ['N_estimators',
+? ^
+
+   'criterion',
+   'Min_sample_leaves',
+-  'Min_impurity_decrease']
+?                         ^
+
++  'Min_impurity_decrease',
+?                         ^
+
++  'Max_depth']
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.012s
+
+FAILED (failures=1)
+real 0.22
+user 0.06
+sys 0.02

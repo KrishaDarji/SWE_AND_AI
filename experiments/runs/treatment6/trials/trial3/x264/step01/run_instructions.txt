@@ -1,0 +1,5 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step01
+Python interpreter: /usr/bin/python3
+Tests: /usr/bin/python3 -m unittest discover -s '.../step01/tests' -v
+Implementation: /usr/bin/python3 '.../step01/source/summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+Use the full absolute paths above (quoted where spaces occur); the ellipsis is explanatory only and must be replaced by the exact absolute step01 path.

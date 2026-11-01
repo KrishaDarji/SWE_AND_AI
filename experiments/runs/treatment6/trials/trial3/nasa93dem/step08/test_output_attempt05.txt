@@ -1,0 +1,38 @@
+test_missing_invalid_constant_and_ties (test_nasa_summary.TestBlame.test_missing_invalid_constant_and_ties) ... ok
+test_scores_means_ss_and_directions (test_nasa_summary.TestBlame.test_scores_means_ss_and_directions) ... ok
+test_edge_cases (test_nasa_summary.TestCertify.test_edge_cases) ... ok
+test_t_reference_values_and_invalid_threshold (test_nasa_summary.TestCertify.test_t_reference_values_and_invalid_threshold) ... ok
+test_welch_direction_variance_and_threshold (test_nasa_summary.TestCertify.test_welch_direction_variance_and_threshold) ... ok
+test_cap_invalid_negative_nonfinite_and_counts (test_nasa_summary.TestChoose.test_cap_invalid_negative_nonfinite_and_counts) ... ok
+test_empty_and_no_feasible (test_nasa_summary.TestChoose.test_empty_and_no_feasible) ... ok
+test_invalid_outcomes_missing_descriptor_and_over_budget (test_nasa_summary.TestChoose.test_invalid_outcomes_missing_descriptor_and_over_budget) ... ok
+test_max_and_ties_and_complete_retention (test_nasa_summary.TestChoose.test_max_and_ties_and_complete_retention) ... ok
+test_already_feasible_and_no_improvement (test_nasa_summary.TestFix.test_already_feasible_and_no_improvement) ... ok
+test_invalid_cap_baseline_missing_and_insufficient (test_nasa_summary.TestFix.test_invalid_cap_baseline_missing_and_insufficient) ... ok
+test_minimum_change_and_tiebreakers_training_only (test_nasa_summary.TestFix.test_minimum_change_and_tiebreakers_training_only) ... ok
+test_training_only_and_exact_cap (test_nasa_summary.TestFix.test_training_only_and_exact_cap) ... ok
+test_current_and_future_outcomes_do_not_change_prediction_or_snapshot (test_nasa_summary.TestFlow.test_current_and_future_outcomes_do_not_change_prediction_or_snapshot) ... ok
+test_invalid_zero_unseen_missing_duplicate_position (test_nasa_summary.TestFlow.test_invalid_zero_unseen_missing_duplicate_position) ... ok
+test_prefix_order_and_matched_errors (test_nasa_summary.TestFlow.test_prefix_order_and_matched_errors) ... ok
+test_group_split_and_reproducible (test_nasa_summary.TestGuess.test_group_split_and_reproducible) ... ok
+test_insufficient_groups (test_nasa_summary.TestGuess.test_insufficient_groups) ... ok
+test_nonfinite_excluded_and_whitespace (test_nasa_summary.TestGuess.test_nonfinite_excluded_and_whitespace) ... ok
+test_schema_zero_and_mean (test_nasa_summary.TestGuess.test_schema_zero_and_mean) ... ok
+test_audit_mutation_does_not_change_prediction_or_explanation (test_nasa_summary.TestJustify.test_audit_mutation_does_not_change_prediction_or_explanation) ... ok
+test_exact_predictors (test_nasa_summary.TestJustify.test_exact_predictors) ... ok
+test_invalid_target_and_schema_are_explicit (test_nasa_summary.TestJustify.test_invalid_target_and_schema_are_explicit) ... ok
+test_training_only_tied_evidence_and_baseline (test_nasa_summary.TestJustify.test_training_only_tied_evidence_and_baseline) ... ok
+test_empty_header_malformed_blank (test_nasa_summary.TestSummary.test_empty_header_malformed_blank) ... ok
+test_median_even_odd (test_nasa_summary.TestSummary.test_median_even_odd) ... ok
+test_missing_nonfinite_invalid_and_all_missing (test_nasa_summary.TestSummary.test_missing_nonfinite_invalid_and_all_missing) ... ok
+test_roles_frequencies_summaries (test_nasa_summary.TestSummary.test_roles_frequencies_summaries) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.108s
+
+OK
+real 0.18
+user 0.15
+sys 0.01
+
+EXIT_STATUS=0

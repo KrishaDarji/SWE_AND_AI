@@ -1,0 +1,40 @@
+{
+  "direction": "lower is better",
+  "eligible_count": 1152,
+  "excluded": [],
+  "excluded_count": 0,
+  "flagged_count": 0,
+  "flags": [],
+  "outcome": "Performance-",
+  "policy": {
+    "distance": "Hamming on normalized complete binary settings; all equal-distance neighbors included",
+    "interpretation": "flags warrant investigation and do not prove measurement errors; unusually good and poor results can flag",
+    "minimum_reference": 3,
+    "radius": 1,
+    "reference_count": "rows; duplicate configurations remain separate",
+    "threshold": 3.5,
+    "zero_scale": "undefined unless deviation is zero"
+  },
+  "rows_lacking_reference": [],
+  "settings": [
+    "no_asm",
+    "no_8x8dct",
+    "no_cabac",
+    "no_deblock",
+    "no_fast_pskip",
+    "no_mbtree",
+    "no_mixed_refs",
+    "no_weightb",
+    "rc_lookahead",
+    "rc_lookahead_20",
+    "rc_lookahead_40",
+    "rc_lookahead_60",
+    "ref",
+    "ref_1",
+    "ref_5",
+    "ref_9"
+  ],
+  "status": "ok",
+  "warnings": []
+}
+exit_status=0

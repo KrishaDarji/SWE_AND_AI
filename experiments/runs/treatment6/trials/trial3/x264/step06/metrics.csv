@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+6,6,3,video encoding,justify,445,78,1,0.04,1,"25 tests passed; runtime is successful current justify demonstration only; reused Step 5 machinery and tests; new LOC counts additions/replacements rather than net growth; EZR informed descriptive summaries, lower-is-better direction, and marginal grouping; one repaired JSON CLI failure is preserved; no invalid rows in dataset; binary settings required; retrospective historical limitation"

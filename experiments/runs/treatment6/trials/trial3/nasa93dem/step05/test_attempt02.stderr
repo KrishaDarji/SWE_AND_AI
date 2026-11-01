@@ -1,0 +1,40 @@
+test_exact_predictors (test_nasa_summary.TestBlame.test_exact_predictors) ... ok
+test_missing_invalid_constant_and_ties (test_nasa_summary.TestBlame.test_missing_invalid_constant_and_ties) ... FAIL
+test_scores_means_ss_and_directions (test_nasa_summary.TestBlame.test_scores_means_ss_and_directions) ... FAIL
+test_edge_cases (test_nasa_summary.TestCertify.test_edge_cases) ... ok
+test_t_reference_values_and_invalid_threshold (test_nasa_summary.TestCertify.test_t_reference_values_and_invalid_threshold) ... ok
+test_welch_direction_variance_and_threshold (test_nasa_summary.TestCertify.test_welch_direction_variance_and_threshold) ... ok
+test_current_and_future_outcomes_do_not_change_prediction_or_snapshot (test_nasa_summary.TestFlow.test_current_and_future_outcomes_do_not_change_prediction_or_snapshot) ... ok
+test_invalid_zero_unseen_missing_duplicate_position (test_nasa_summary.TestFlow.test_invalid_zero_unseen_missing_duplicate_position) ... ok
+test_prefix_order_and_matched_errors (test_nasa_summary.TestFlow.test_prefix_order_and_matched_errors) ... ok
+test_group_split_and_reproducible (test_nasa_summary.TestGuess.test_group_split_and_reproducible) ... ok
+test_insufficient_groups (test_nasa_summary.TestGuess.test_insufficient_groups) ... ok
+test_nonfinite_excluded_and_whitespace (test_nasa_summary.TestGuess.test_nonfinite_excluded_and_whitespace) ... ok
+test_schema_zero_and_mean (test_nasa_summary.TestGuess.test_schema_zero_and_mean) ... ok
+test_empty_header_malformed_blank (test_nasa_summary.TestSummary.test_empty_header_malformed_blank) ... ok
+test_median_even_odd (test_nasa_summary.TestSummary.test_median_even_odd) ... ok
+test_missing_nonfinite_invalid_and_all_missing (test_nasa_summary.TestSummary.test_missing_nonfinite_invalid_and_all_missing) ... ok
+test_roles_frequencies_summaries (test_nasa_summary.TestSummary.test_roles_frequencies_summaries) ... ok
+
+======================================================================
+FAIL: test_missing_invalid_constant_and_ties (test_nasa_summary.TestBlame.test_missing_invalid_constant_and_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step05/tests/test_nasa_summary.py", line 88, in test_missing_invalid_constant_and_ties
+    self.assertEqual(got["prec"]["eligible_count"], 3); self.assertEqual(got["prec"]["excluded_count"], 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 3
+
+======================================================================
+FAIL: test_scores_means_ss_and_directions (test_nasa_summary.TestBlame.test_scores_means_ss_and_directions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step05/tests/test_nasa_summary.py", line 82, in test_scores_means_ss_and_directions
+    self.assertAlmostEqual(x["between_ss"], 32/3); self.assertAlmostEqual(x["total_ss"], 104/3)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 32.66666666666667 != 10.666666666666666 within 7 places (22.000000000000007 difference)
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.101s
+
+FAILED (failures=2)

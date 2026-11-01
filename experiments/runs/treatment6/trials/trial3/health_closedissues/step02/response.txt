@@ -1,0 +1,5 @@
+Implemented Step 2 in source/analyzer.py and source/run_prediction.py using only Python’s standard library. The Step 1 analyzer and summary demonstration were copied and preserved. Prediction uses normalized configuration groups, seed-42 approximately 80/20 group splitting, target-specific held-out models, explicit numeric/categorical missing handling, and held-out MAE versus training-mean baselines. EZR informed deterministic seeded sampling and equality/threshold split semantics.
+
+Tests: 7 passed. Prediction demonstration completed successfully in 0.17 seconds. Dataset result: 8,000 training rows/800 groups and 2,000 test rows/200 groups; MRE- held-out MAE 0.09081883843003224 versus baseline 0.09081883843003224; ACC+ held-out MAE 0.16904973170195345 versus baseline 0.16904973170195345.
+
+Known limitations: the compact tree uses conservative depth/leaf limits and falls back to a leaf mean for large histories; this is a transparent standard-library predictor, not a guarantee of improvement. Invalid/nonfinite targets are excluded from target evaluation, zero is valid, and no all-history model is fitted.

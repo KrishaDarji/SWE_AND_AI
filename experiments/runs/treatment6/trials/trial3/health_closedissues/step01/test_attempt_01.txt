@@ -1,0 +1,25 @@
+test_analyzer (unittest.loader._FailedTest.test_analyzer) ... ERROR
+
+======================================================================
+ERROR: test_analyzer (unittest.loader._FailedTest.test_analyzer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_analyzer
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step01/tests/test_analyzer.py", line 24
+    self.assertEqual(analyze(fixture("a,b\n")["record_count"],0)
+                    ^
+SyntaxError: '(' was never closed
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
+real 0.07
+user 0.02
+sys 0.01

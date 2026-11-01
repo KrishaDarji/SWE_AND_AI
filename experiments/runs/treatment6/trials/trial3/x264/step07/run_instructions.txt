@@ -1,0 +1,18 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step07
+
+Run the complete suite:
+/usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run the current demonstration:
+/usr/bin/time -p /usr/bin/python3 source/summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --choose --budget 20 --seed 42
+
+Run preserved demonstrations:
+/usr/bin/python3 source/summary.py DATASET
+/usr/bin/python3 source/summary.py DATASET --flow
+/usr/bin/python3 source/summary.py DATASET --blame
+/usr/bin/python3 source/summary.py DATASET --justify
+/usr/bin/python3 source/summary.py DATASET --predict
+/usr/bin/python3 source/summary.py DATASET --certify
+
+All commands use only the Python standard library. Captures are in test_output.txt, runtime_output.txt, and preserved_demonstrations.txt.

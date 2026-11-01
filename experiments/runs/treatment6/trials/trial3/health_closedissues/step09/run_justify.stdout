@@ -1,0 +1,194 @@
+{
+  "association_context": {
+    "grouping_conventions": {
+      "association": "marginal historical association; not causation or significance",
+      "intervals": "left-closed, right-open except final group",
+      "numeric_groups": "up to four equal-frequency bins; ties may reduce groups",
+      "ties": "descending score, then field declaration order"
+    },
+    "label": "global marginal historical associations, not row-level contributions or causal effects",
+    "outcome": "MRE-",
+    "ranking": [
+      {
+        "between_group_ss": 10.07876537426333,
+        "boundaries": [],
+        "eligible_count": 10000,
+        "eta_squared": 0.024851322742382987,
+        "excluded_count": 0,
+        "field": "criterion",
+        "group_count": 3,
+        "groups": [
+          {
+            "count": 3302,
+            "group": "absolute_error",
+            "mean_mre": 0.7508694690284082
+          },
+          {
+            "count": 3335,
+            "group": "poisson",
+            "mean_mre": 0.7034025255399244
+          },
+          {
+            "count": 3363,
+            "group": "squared_error",
+            "mean_mre": 0.6737202958486018
+          }
+        ],
+        "kind": "categorical",
+        "reference_mean": 0.70909397643463,
+        "status": "ok",
+        "total_ss": 405.56253197236776
+      },
+      {
+        "between_group_ss": 0.0,
+        "boundaries": [],
+        "eligible_count": 10000,
+        "eta_squared": null,
+        "excluded_count": 0,
+        "field": "N_estimators",
+        "group_count": 1,
+        "groups": [
+          {
+            "count": 10000,
+            "group": "[10.0, 200.0]",
+            "mean_mre": 0.70909397643463
+          }
+        ],
+        "kind": "numeric",
+        "reference_mean": 0.70909397643463,
+        "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups",
+        "total_ss": 405.56253197236776
+      },
+      {
+        "between_group_ss": 0.0,
+        "boundaries": [],
+        "eligible_count": 10000,
+        "eta_squared": null,
+        "excluded_count": 0,
+        "field": "Min_sample_leaves",
+        "group_count": 1,
+        "groups": [
+          {
+            "count": 10000,
+            "group": "[1.0, 20.0]",
+            "mean_mre": 0.70909397643463
+          }
+        ],
+        "kind": "numeric",
+        "reference_mean": 0.70909397643463,
+        "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups",
+        "total_ss": 405.56253197236776
+      },
+      {
+        "between_group_ss": 0.0,
+        "boundaries": [],
+        "eligible_count": 10000,
+        "eta_squared": null,
+        "excluded_count": 0,
+        "field": "Min_impurity_decrease",
+        "group_count": 1,
+        "groups": [
+          {
+            "count": 10000,
+            "group": "[0.0, 10.0]",
+            "mean_mre": 0.70909397643463
+          }
+        ],
+        "kind": "numeric",
+        "reference_mean": 0.70909397643463,
+        "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups",
+        "total_ss": 405.56253197236776
+      },
+      {
+        "between_group_ss": 0.0,
+        "boundaries": [],
+        "eligible_count": 10000,
+        "eta_squared": null,
+        "excluded_count": 0,
+        "field": "Max_depth",
+        "group_count": 1,
+        "groups": [
+          {
+            "count": 10000,
+            "group": "[1.0, 20.0]",
+            "mean_mre": 0.70909397643463
+          }
+        ],
+        "kind": "numeric",
+        "reference_mean": 0.70909397643463,
+        "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups",
+        "total_ss": 405.56253197236776
+      }
+    ]
+  },
+  "comparisons": {
+    "ACC+": {
+      "better_than_median": true,
+      "difference": 0.3502082665812239,
+      "direction": "maximize",
+      "recommendation": 0.7901313681512335,
+      "reference_median": 0.43992310157000963
+    },
+    "MRE-": {
+      "better_than_median": true,
+      "difference": -0.8091310751104565,
+      "direction": "minimize",
+      "recommendation": 0.0,
+      "reference_median": 0.8091310751104565
+    },
+    "PRED40+": {
+      "better_than_median": true,
+      "difference": 0.8571428571428571,
+      "direction": "maximize",
+      "recommendation": 0.8571428571428571,
+      "reference_median": 0.0
+    }
+  },
+  "dataset_rows": 10000,
+  "direction": {
+    "ACC+": "maximize",
+    "MRE-": "minimize",
+    "PRED40+": "maximize"
+  },
+  "eligibility": "a row needs finite values for all five settings and all three outcomes; criterion is categorical and other settings are numeric",
+  "interpretation": "This is a retrospective recommendation from observed complete rows, not a prediction for an unevaluated configuration. Differences describe the selected row relative to each independently populated historical median; secondary outcomes can trade off against the primary MRE- rule. Global association scores provide context only and do not guarantee benefit.",
+  "malformed_row_positions": [],
+  "position_convention": "original physical CSV row; header is position 1; blank rows are ignored and malformed rows are excluded without renumbering",
+  "recommendation": {
+    "configuration": {
+      "Max_depth": 5.0,
+      "Min_impurity_decrease": 6.75,
+      "Min_sample_leaves": 1.0,
+      "N_estimators": 10.0,
+      "criterion": "squared_error"
+    },
+    "original_position": 33,
+    "outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    }
+  },
+  "reference_convention": "each outcome median uses all finite historical values for that outcome independently; count is reported",
+  "references": {
+    "ACC+": {
+      "finite_count": 10000,
+      "median": 0.43992310157000963
+    },
+    "MRE-": {
+      "finite_count": 10000,
+      "median": 0.8091310751104565
+    },
+    "PRED40+": {
+      "finite_count": 10000,
+      "median": 0.0
+    }
+  },
+  "selection_rule": [
+    "lowest finite MRE-",
+    "highest finite ACC+ for ties",
+    "highest finite PRED40+ for remaining ties",
+    "earliest original CSV position for remaining ties"
+  ],
+  "status": "ok"
+}

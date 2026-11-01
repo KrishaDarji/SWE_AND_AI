@@ -1,0 +1,14 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step10
+
+Run the complete suite:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run the current race demonstration:
+python3 source/summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --race --budget 20
+
+Run a preserved demonstration (replace --summary with --blame, --justify, --predict,
+--certify, --flow, --choose, --fix, or --spot):
+python3 source/summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --summary
+
+Captured outputs: test_output.txt, runtime_output.txt, and demo_*.txt. The race timing
+is /usr/bin/time -p real time for the current race command only.

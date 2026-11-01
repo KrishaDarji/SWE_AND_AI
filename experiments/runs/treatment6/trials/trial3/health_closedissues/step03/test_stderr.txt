@@ -1,0 +1,49 @@
+test_empty_and_header_only (test_analyzer.AnalyzerTests.test_empty_and_header_only) ... ok
+test_invalid_missing_all_missing_and_positions (test_analyzer.AnalyzerTests.test_invalid_missing_all_missing_and_positions) ... ok
+test_repeats_vs_exact_duplicates_numeric_equivalence (test_analyzer.AnalyzerTests.test_repeats_vs_exact_duplicates_numeric_equivalence) ... ok
+test_roles_frequencies_medians_dispersion (test_analyzer.AnalyzerTests.test_roles_frequencies_medians_dispersion) ... ok
+test_fixed_groups_direction_and_welch (test_certify.CertifyTests.test_fixed_groups_direction_and_welch) ... FAIL
+test_missing_absent_insufficient_and_zero (test_certify.CertifyTests.test_missing_absent_insufficient_and_zero) ... ok
+test_tail_and_threshold_and_secondary_independence (test_certify.CertifyTests.test_tail_and_threshold_and_secondary_independence) ... ERROR
+test_constant_numeric_and_whitespace_normalize (test_prediction.PredictionTests.test_constant_numeric_and_whitespace_normalize) ... ok
+test_grouped_reproducible_and_outcomes_excluded (test_prediction.PredictionTests.test_grouped_reproducible_and_outcomes_excluded) ... ok
+test_zero_invalid_and_schema (test_prediction.PredictionTests.test_zero_invalid_and_schema) ... ok
+
+======================================================================
+ERROR: test_tail_and_threshold_and_secondary_independence (test_certify.CertifyTests.test_tail_and_threshold_and_secondary_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 10, in test_tail_and_threshold_and_secondary_independence
+    self.assertAlmostEqual(t_cdf(0,5),.5); self.assertAlmostEqual(t_critical(1),12.7062047,5); self.assertTrue(0<=t_cdf(100,10)<=1)
+                                                                  ^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/certify.py", line 23, in t_critical
+    while t_cdf(hi,df)<.975: hi*=2
+          ^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/certify.py", line 20, in t_cdf
+    p=.5*_ibeta(df/2,.5,df/(df+t*t)); return 1-p if t>0 else p
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/certify.py", line 16, in _ibeta
+    return bt*_betacf(a,b,x)/a if x<(a+1)/(a+b+2) else 1-_ibeta(b,a,1-x)
+                                                         ^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/certify.py", line 16, in _ibeta
+    return bt*_betacf(a,b,x)/a if x<(a+1)/(a+b+2) else 1-_ibeta(b,a,1-x)
+                                                         ^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/source/certify.py", line 16, in _ibeta
+    return bt*_betacf(a,b,x)/a if x<(a+1)/(a+b+2) else 1-_ibeta(b,a,1-x)
+                                                         ^^^^^^^^^^^^^^^
+  [Previous line repeated 979 more times]
+RecursionError: maximum recursion depth exceeded
+
+======================================================================
+FAIL: test_fixed_groups_direction_and_welch (test_certify.CertifyTests.test_fixed_groups_direction_and_welch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step03/tests/test_certify.py", line 8, in test_fixed_groups_direction_and_welch
+    p=make("1,2,3,1,squared_error,1,0,1\n3,4,5,2,squared_error,1,0,1\n2,8,9,3,absolute_error,1,0,1\n6,7,8,4,absolute_error,1,0,1\n"); self.addCleanup(lambda:os.unlink(p)); x=certify(p); self.assertEqual(x["comparison"]["candidate"],"absolute_error"); self.assertEqual(x["comparison"]["difference_candidate_minus_reference"],2); self.assertAlmostEqual(x["reference"]["sample_variance"],2); self.assertGreater(x["inference"]["degrees_of_freedom"],2)
+                                                                                                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1.4705882352941178 not greater than 2
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.064s
+
+FAILED (failures=1, errors=1)

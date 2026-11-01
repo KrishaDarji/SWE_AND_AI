@@ -1,0 +1,37 @@
+F..F................
+======================================================================
+FAIL: test_constant_empty_and_insufficient (test_blame.BlameTests.test_constant_empty_and_insufficient)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step05/tests/test_blame.py", line 31, in test_constant_empty_and_insufficient
+    self.assertEqual(insufficient["status"], "insufficient_data")
+AssertionError: 'constant_outcome_or_setting' != 'insufficient_data'
+- constant_outcome_or_setting
++ insufficient_data
+
+
+======================================================================
+FAIL: test_numeric_normalization_and_per_setting_population (test_blame.BlameTests.test_numeric_normalization_and_per_setting_population)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step05/tests/test_blame.py", line 22, in test_numeric_normalization_and_per_setting_population
+    self.assertEqual([(g["value"], g["count"]) for g in item["groups"]], [(1.0, 2), (2.0, 1)])
+AssertionError: Lists differ: [(1.0, 2), (2.0, 1), ('nan', 1)] != [(1.0, 2), (2.0, 1)]
+
+First list contains 1 additional elements.
+First extra element 2:
+('nan', 1)
+
+- [(1.0, 2), (2.0, 1), ('nan', 1)]
+?                  ------------
+
++ [(1.0, 2), (2.0, 1)]
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.022s
+
+FAILED (failures=2)
+real 0.07
+user 0.05
+sys 0.01
+exit_status=1

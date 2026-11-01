@@ -1,0 +1,18 @@
+Implemented Step 10 race in `source/nasa_summary.py` and preserved the authorized Step 9 source, tests, and demonstrations.
+
+Race result on nasa93dem.csv:
+- 10 comparable grouped splits (seeds 42–51), using a fixed tie tolerance of 1e-9.
+- Estimator mean MAE: 646.0751587300326.
+- Training-mean baseline mean MAE: 718.8878194437939.
+- Mean paired difference (baseline MAE minus estimator MAE): 72.81266071376119.
+- Median paired difference: 108.63100919745659.
+- Wins/ties/losses: 6/0/4.
+- Every split evaluated finite held-out Effort- targets; no target exclusions occurred in this dataset.
+
+The implementation adds `race`, `classify_difference`, `render_race`, and the `--race` CLI option. It reuses the Step 9 categorical nearest-neighbor estimator, exact 22-descriptor schema, grouped split, parsing, and evaluation conventions. The EZR reference informed the symbolic categorical-distance and seeded grouped-sampling style; Lua was not run and no third-party packages were used.
+
+Tests: 36 passed. The full preserved and new suite is in `tests/`. Commands and absolute paths are in `run_instructions.txt`. All required artifacts were verified in this Step 10 directory.
+
+These are repeated overlapping splits of one historical dataset, not independent LLM trials or independent datasets. The win count does not establish statistical significance, causation, or future superiority, and the estimator is not required to beat the baseline. Effort units are not inferred.
+
+Known limitations: the baseline and estimator are evaluated on this historical sample only; split test rows vary because descriptor groups have different sizes; the fixed tolerance is a comparison convention; invalid or missing targets are excluded and reported; no effort units or future-performance claims are made.

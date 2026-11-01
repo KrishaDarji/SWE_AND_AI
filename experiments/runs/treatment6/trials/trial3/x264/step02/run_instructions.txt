@@ -1,0 +1,12 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+
+Run the preserved and new suite:
+python3 -m unittest discover -s /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step02/tests -v
+
+Run the preserved summary demonstration:
+python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step02/source/summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+Run the current guess demonstration:
+/usr/bin/time -p python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step02/demo.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+
+All commands use only the Python standard library. Captures are test_output.txt, runtime_output_summary.txt, and runtime_output.txt; failed attempts are separately labeled.

@@ -1,0 +1,13 @@
+..F.
+======================================================================
+FAIL: test_missing_nonfinite_invalid_and_all_missing (test_nasa_summary.TestSummary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step01/tests/test_nasa_summary.py", line 16, in test_missing_nonfinite_invalid_and_all_missing
+    s=n.summarize(n.load(p)); self.assertEqual(s["outcomes"]["Kloc+"]["count"],0); self.assertEqual(s["invalid_numeric"]["Effort-"],2); self.assertEqual(s["missing"]["Defects-"],2); self.assertEqual(s["categorical_frequencies"]["prec"],{"h":1,"l":1})
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.002s
+
+FAILED (failures=1)

@@ -1,0 +1,19 @@
+Working directory:
+/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step05
+
+Python interpreter:
+/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+
+Run the complete suite:
+python3 -m unittest discover -s tests
+
+Run preserved demonstrations:
+python3 source/run_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+python3 source/run_prediction.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+python3 source/run_certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+python3 source/run_flow.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Run the current demonstration:
+/usr/bin/time -p python3 source/run_blame.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+The dataset and all paths are absolute in the commands where they are external inputs. No third-party packages are required.

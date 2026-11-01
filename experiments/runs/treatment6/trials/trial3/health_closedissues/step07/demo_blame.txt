@@ -1,0 +1,132 @@
+{
+  "outcome": "MRE-",
+  "score": "eta_squared = between-group SS / total SS",
+  "lower_mre_is_better": true,
+  "fields": [
+    "N_estimators",
+    "criterion",
+    "Min_sample_leaves",
+    "Min_impurity_decrease",
+    "Max_depth"
+  ],
+  "ranking": [
+    {
+      "field": "criterion",
+      "kind": "categorical",
+      "eligible_count": 10000,
+      "excluded_count": 0,
+      "group_count": 3,
+      "boundaries": [],
+      "reference_mean": 0.70909397643463,
+      "total_ss": 405.5625319723657,
+      "between_group_ss": 10.07876537426333,
+      "eta_squared": 0.024851322742383112,
+      "groups": [
+        {
+          "group": "absolute_error",
+          "count": 3302,
+          "mean_mre": 0.7508694690284082
+        },
+        {
+          "group": "poisson",
+          "count": 3335,
+          "mean_mre": 0.7034025255399244
+        },
+        {
+          "group": "squared_error",
+          "count": 3363,
+          "mean_mre": 0.6737202958486018
+        }
+      ],
+      "status": "ok"
+    },
+    {
+      "field": "N_estimators",
+      "kind": "numeric",
+      "eligible_count": 10000,
+      "excluded_count": 0,
+      "group_count": 1,
+      "boundaries": [],
+      "reference_mean": 0.70909397643463,
+      "total_ss": 405.5625319723657,
+      "between_group_ss": 0.0,
+      "eta_squared": null,
+      "groups": [
+        {
+          "group": "[10.0, 200.0]",
+          "count": 10000,
+          "mean_mre": 0.70909397643463
+        }
+      ],
+      "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups"
+    },
+    {
+      "field": "Min_sample_leaves",
+      "kind": "numeric",
+      "eligible_count": 10000,
+      "excluded_count": 0,
+      "group_count": 1,
+      "boundaries": [],
+      "reference_mean": 0.70909397643463,
+      "total_ss": 405.5625319723657,
+      "between_group_ss": 0.0,
+      "eta_squared": null,
+      "groups": [
+        {
+          "group": "[1.0, 20.0]",
+          "count": 10000,
+          "mean_mre": 0.70909397643463
+        }
+      ],
+      "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups"
+    },
+    {
+      "field": "Min_impurity_decrease",
+      "kind": "numeric",
+      "eligible_count": 10000,
+      "excluded_count": 0,
+      "group_count": 1,
+      "boundaries": [],
+      "reference_mean": 0.70909397643463,
+      "total_ss": 405.5625319723657,
+      "between_group_ss": 0.0,
+      "eta_squared": null,
+      "groups": [
+        {
+          "group": "[0.0, 10.0]",
+          "count": 10000,
+          "mean_mre": 0.70909397643463
+        }
+      ],
+      "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups"
+    },
+    {
+      "field": "Max_depth",
+      "kind": "numeric",
+      "eligible_count": 10000,
+      "excluded_count": 0,
+      "group_count": 1,
+      "boundaries": [],
+      "reference_mean": 0.70909397643463,
+      "total_ss": 405.5625319723657,
+      "between_group_ss": 0.0,
+      "eta_squared": null,
+      "groups": [
+        {
+          "group": "[1.0, 20.0]",
+          "count": 10000,
+          "mean_mre": 0.70909397643463
+        }
+      ],
+      "status": "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups"
+    }
+  ],
+  "conventions": {
+    "numeric_groups": "up to four equal-frequency bins; ties may reduce groups",
+    "intervals": "left-closed, right-open except final group",
+    "ties": "descending score, then field declaration order",
+    "association": "marginal historical association; not causation or significance"
+  }
+}
+
+exit_status=0

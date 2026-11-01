@@ -1,0 +1,15 @@
+Complete source code is in source/analyzer.py and source/run_summary.py. Tests are in tests/test_analyzer.py.
+
+The implementation reads CSV records with original physical row positions, skips blank rows, records malformed rows, and treats empty input and header-only input as zero records. Missing tokens are empty, ?, NA, N/A, null, None, nan, and NaN. Invalid and nonfinite numeric settings/outcomes are reported and excluded from finite summaries. Criterion is categorical after surrounding whitespace is trimmed; the other four requested settings are numeric. Numeric summaries include finite count, minimum, maximum, mean, median, sample standard deviation (n-1), and inclusive-quartile IQR. With fewer than two observations, dispersion is null. Missing/invalid configuration fields normalize to null. Numeric equivalents normalize through float conversion. Repeated normalized configurations and exact duplicate raw rows are reported separately.
+
+The three outcomes are reported only as MRE- minimize, ACC+ maximize, and PRED40+ maximize. The output describes model-configuration quality measurements; it does not interpret the file as an issue-closure timeline.
+
+EZR-inspired machinery: standard-library CSV streaming and trimming/coercion follow the authorized ezr-lib csv/thing ideas; role-aware symbolic versus numeric treatment and center/dispersion reporting follow the authorized EZR column and NUM/SYM conventions. No Lua or third-party package was run.
+
+Run tests with:
+python3 -m unittest discover -s tests -v
+
+Run the demonstration with:
+python3 source/run_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Known limitations: CSV rows with the wrong field count are not analyzed beyond their recorded position; CSV quoting is delegated to Python's standard csv module; exact duplicate comparison uses raw cell text while normalized repetition uses typed settings only; no additional model metadata or outcome formulas are inferred.

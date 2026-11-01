@@ -1,0 +1,11 @@
+Implemented Treatment 6 / Trial 3 / Dataset 3 / Step 9 in the required Step 9 directory.
+
+Reused the authorized Step 8 source and tests, preserving summary, prediction, certify, flow, blame, justify, choose, and fix. Added `spot()` and `run_spot.py` using the self-inclusive modified median/MAD score `0.6744897501960817 * (value - median) / MAD`, threshold 3.5, strict `abs(score) > threshold`, minimum finite sample 3, independent outcome references, and an explicit zero-MAD undefined policy. Missing/nonfinite values, undefined scores, nonflags, and flags are counted separately. Original CSV positions and all five configuration fields are retained for flags. The implementation reports that flags are investigation prompts, not proven errors or a validated classifier.
+
+The EZR reference informed the descriptive, explicit missing-value, finite-value, and edge-case conventions; no Lua or third-party package was used.
+
+Results on the Health dataset: MRE- flagged 1,496; ACC+ flagged 2,124; PRED40+ flagged 0 because its reference MAD is zero and all scores are undefined; unique flagged rows 2,151. The demonstration shows the first ten examples while the Python function retains the full list.
+
+Verification: all 33 preserved and new tests pass; all eight preserved demonstrations and the spot demonstration exit 0. Spot timing was 0.08 seconds real time, measured separately from tests and preserved demonstrations.
+
+Artifacts include complete updated source under `source/`, preserved and new tests under `tests/`, `prompt.txt`, `test_output.txt`, `runtime_output.txt`, `metrics.csv`, `run_instructions.txt`, and labeled attempt captures. Known limitations: this is marginal screening rather than configuration-conditioned anomaly detection; self-inclusion can slightly affect scores; zero MAD yields undefined scores rather than a standard-deviation substitute; unusual results do not establish measurement error.

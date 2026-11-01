@@ -1,0 +1,8 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step08
+Run complete tests:
+  /usr/bin/time -p python3 -m unittest discover -s tests -p 'test_*.py'
+Run current demonstration:
+  /usr/bin/time -p python3 source/summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" --fix
+Run preserved demonstrations:
+  python3 source/summary.py DATASET [--flow|--blame|--justify|--certify|--choose|--predict]
+The captured successful outputs are in test_output.txt, runtime_output.txt, and runtime_*_attempt3.txt. Failed captures are retained as *_attempt1.txt and *_attempt2.txt.

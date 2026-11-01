@@ -1,0 +1,19 @@
+Implemented Step 6 `justify` in the self-contained Step 6 snapshot.
+
+Updated source and tests:
+- `source/analyzer.py`: added retrospective observed-row selection, complete finite eligibility, deterministic tie-breaks, independent outcome medians, direction-aware comparisons, explicit statuses/conventions, and global association context.
+- `source/run_justify.py`: runnable JSON demonstration.
+- `tests/test_justify.py`: tie-breaks, original positions, configuration retention, finite eligibility, medians, directions, empty/no-eligible cases, and association labeling.
+- Preserved all Step 5 source, tests, and demonstrations.
+
+Validation:
+- 21 tests passed.
+- Summary, prediction, certify, flow, blame, and justify demonstrations completed successfully.
+- justify demonstration `/usr/bin/time -p` real time: 0.430000 seconds.
+- One initial test expectation failure was repaired; the final suite is green.
+
+The implementation treats this as a retrospective recommendation from observed complete rows, not a prediction for an unevaluated configuration. It selects lowest MRE-, then highest ACC+, then highest PRED40+, then earliest original CSV position. Each historical median is independently computed from all finite values for that outcome. Missing/nonfinite settings make a row ineligible; missing/nonfinite outcomes also make it ineligible for recommendation. Blank rows are ignored, malformed rows are excluded without renumbering, and original physical CSV positions are retained.
+
+EZR informed the descriptive-summary and marginal-association style: explicit finite/missing conventions, simple robust summaries, and association results labeled as global historical context rather than causal or row-level effects. No units, metric ranges, runtime claims, resource costs, prediction guarantees, or compute budget were introduced.
+
+Artifacts are in this Step 6 directory, including `prompt.txt`, `response.txt`, `source/`, `tests/`, `test_output.txt`, `runtime_output.txt`, `metrics.csv`, and `run_instructions.txt`.

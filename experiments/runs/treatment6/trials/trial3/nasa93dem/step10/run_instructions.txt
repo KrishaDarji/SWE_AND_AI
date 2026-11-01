@@ -1,0 +1,11 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step10
+Python interpreter: python3 (standard library only)
+
+Run the complete preserved and new test suite:
+python3 -m unittest discover -s /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step10/tests -p 'test*.py'
+
+Run the new race demonstration:
+python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step10/source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --race
+
+Preserved demonstrations use the same source and dataset with --estimate, --certify, --flow, --blame, --justify, --choose, --fix, --spot, or no option. The race tie tolerance is fixed at 1e-9 unless --tie-tolerance is supplied.
+Captured successful logs are demo_*.stdout/.stderr/.exit, runtime_output.txt, race_timing.txt, test_output.txt, test_output.stderr, and test_output.exit. Failed attempts are retained as test_attempt_01.* (shell setup failure), test_attempt_02.* (one failed test), and demo_summary.* (incorrect positional invocation).

@@ -1,0 +1,14 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step04
+
+Run the complete suite:
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+Run the current flow demonstration:
+/usr/bin/time -p python3 flow_demo.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+
+Run preserved demonstrations:
+python3 -c 'import sys; sys.path.insert(0,"source"); import summary; print(summary.summarize("/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"))'
+python3 -c 'import sys; sys.path.insert(0,"source"); import summary; print(summary.evaluate("/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"))'
+python3 -c 'import sys; sys.path.insert(0,"source"); import summary; print(summary.certify("/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"))'
+
+CSV conventions: position 1 is the first data row after the header; blank CSV fields and recognized null words are missing. Settings are all columns except Performance-, and missing settings are retained as their parsed blank/null text without affecting a valid outcome.

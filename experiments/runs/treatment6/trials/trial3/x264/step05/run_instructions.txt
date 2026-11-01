@@ -1,0 +1,12 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step05
+
+Run the complete suite:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run the preserved summary, prediction, certify, and flow demonstrations plus blame:
+python3 run_demos.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Run the current blame demonstration:
+PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step05/source" python3 -m summary --blame "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+All commands use Python standard library only. Captures are test_output.txt, runtime_output.txt, blame_output.txt and their corresponding *_error files. test_output_attempt1.txt and test_error_attempt1.txt preserve the repaired failed attempt.

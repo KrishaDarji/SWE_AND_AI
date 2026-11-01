@@ -1,0 +1,9 @@
+Implemented Step 4 flow in source/nasa_summary.py and preserved Step 3 implementation/tests.
+
+Reused the CSV loader, physical positions, missing normalization, 22-descriptor schema, categorical nearest-row effort model, summary, estimate, certify behavior, and prior tests. Added prefix-only arrival replay: prediction is recorded before current effort reveal, then valid finite outcomes update history. The prior-history mean is evaluated on the same arrivals. Invalid/nonfinite outcomes are excluded; zero is valid. Missing descriptors remain usable as the existing normalized '?' category. Records retain arrival, position, idX, and deep-copied snapshots.
+
+EZR informed incremental update and copy/clone state handling. No Lua or third-party package was used.
+
+Results: 14 tests passed; all demonstrations exited successfully. Flow: warm-up 1, evaluated 92, invalid outcomes 0, model MAE 521.1004766127592, baseline MAE 481.9114197824729, measured real time 0.04 seconds.
+
+Limitations: CSV order is arrival order, not chronology; first project has no prediction; Hamming categorical distance and mean ties are inherited from Step 3; results imply no units, convergence, causality, or future accuracy. One initial test capture command failed because zsh rejected a read-only variable name; the successful rerun is retained.

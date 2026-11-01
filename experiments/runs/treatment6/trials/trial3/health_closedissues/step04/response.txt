@@ -1,0 +1,11 @@
+Implemented Step 4 flow evaluation in source/analyzer.py and added source/run_flow.py.
+
+Complete updated source code is in source/. Preserved tests remain in tests/test_analyzer.py, tests/test_prediction.py, and tests/test_certify.py; new flow coverage is in tests/test_flow.py.
+
+The implementation consumes validation rows lazily in CSV order, maintains total arrivals, independent finite counts, Welford running means and sample variances, and best-so-far results for MRE- (minimum), ACC+ (maximum), and PRED40+ (maximum). Best results retain physical CSV position and all five normalized configuration fields, including null for missing or invalid settings. Equal values retain the earliest row. Blank and malformed rows are skipped and do not count as arrivals. Snapshots are detached dictionaries and depend only on consumed rows.
+
+The authorized Step 3 source and tests were copied and preserved. Flow was added separately. The EZR reference informed the one-pass stream and best-so-far direction conventions; no Lua or third-party package was used.
+
+Verification: 14 tests pass. The real dataset flow consumed 10,000 rows; the successful current flow demonstration measured 0.09 seconds real time. Summary, prediction, certification, and flow demonstrations all exited successfully. Logs and commands are in run_instructions.txt and the captured output files.
+
+Known limitations: CSV malformed records are skipped rather than surfaced in the flow snapshot; flow_dataset returns only the final snapshot, while flow() returns all prefix snapshots for callers that need them. This is descriptive streaming evaluation and makes no claim about chronology, convergence, causation, or stopping guarantees.

@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step03
+Python interpreter: python3
+Tests: python3 -m unittest discover -s tests -v
+Summary demonstration: python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+Prediction demonstration: python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --estimate
+Certify demonstration: python3 source/nasa_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --certify
+Captured outputs: test_output.txt, summary_output.txt, prediction_output.txt, runtime_output.txt. Status captures identify exit statuses; timing uses /usr/bin/time -p.

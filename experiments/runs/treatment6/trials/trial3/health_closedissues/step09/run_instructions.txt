@@ -1,0 +1,20 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step09
+Python interpreter: python3 (standard library only)
+
+Run the complete suite:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run preserved demonstrations:
+python3 source/run_summary.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_prediction.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_blame.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_justify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/run_fix.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+Run the current demonstration:
+python3 source/run_spot.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+The saved successful spot timing is in spot_attempt2.stderr and runtime_output.txt is its stdout. The runner displays ten interpretable examples while analyzer.spot() retains all flagged rows.

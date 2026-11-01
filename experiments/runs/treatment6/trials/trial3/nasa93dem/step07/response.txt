@@ -1,0 +1,10 @@
+Implemented Step 7 choose in the self-contained Step 7 snapshot.
+
+Reused the authorized Step 6 loader, descriptor normalization, validation helpers, project representation, comparison machinery, and all prior demonstrations/tests. Added finite nonnegative effort-cap validation, complete 22-descriptor eligibility, finite Kloc+/Effort-/Defects- checks, observed-effort feasibility, deterministic Kloc+/Effort-/original-position tie-breaking, duplicate-id preservation, exclusion counts, malformed-row reporting, and --choose.
+
+The EZR reference informed explicit missing-value handling and stable, deterministic selection over retained rows; no Lua or third-party package was used.
+
+The full suite passed: 24 tests. The current demonstration selected original CSV position 79, idX 78, Kloc+ 165, Effort- 97, Defects- 7867, with cap 100. It reported 93 raw/parsed, 93 valid, 31 feasible, 0 invalid-data exclusions, 62 over-budget exclusions, and 0 malformed rows.
+
+Commands and captured outputs are in run_instructions.txt and the runtime/test artifacts. Known limitations: selection is retrospective among observed NASA93 projects; maximizing Kloc+ is the task convention and does not establish productivity, causation, suitability, or future-budget guarantees.
+

@@ -1,0 +1,37 @@
+{
+  "candidate": {
+    "count": 576,
+    "mean": 451.3716857638889,
+    "sample_variance": 25662.718025993257
+  },
+  "difference": -20.763821180555624,
+  "direction": "lower is better",
+  "excluded_count": 0,
+  "inference": {
+    "confidence_interval_95": [
+      -39.52794334257601,
+      -1.9996990185352423
+    ],
+    "defined": true,
+    "degrees_of_freedom": 1149.2372777191688,
+    "interval_supports_practical_improvement": null,
+    "note": "Welch-Satterthwaite; Simpson integration for the t CDF and bisection quantiles.",
+    "p_two_sided": 0.03012586217406643,
+    "point_meets_practical_threshold": null,
+    "standard_error": 9.563624888604734,
+    "statistically_significant": true,
+    "t": -2.1711245916071182
+  },
+  "outcome": "Performance-",
+  "reference": {
+    "count": 576,
+    "mean": 472.1355069444445,
+    "sample_variance": 27019.924475732125
+  },
+  "threshold": null
+}
+real 0.03
+user 0.02
+sys 0.00
+
+EXIT_STATUS=0

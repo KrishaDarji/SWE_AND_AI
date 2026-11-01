@@ -1,0 +1,169 @@
+You are running Treatment 6, Trial 3, Dataset 2, Step 4 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: flow
+- Current requirement: Update project-effort estimates as completed project results arrive.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step03/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step03/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step04/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent nasa93dem directory.
+- Write only inside the current Step 4 directory.
+
+Allowed references:
+- The NASA93 dataset and the two EZR files listed above.
+- The listed Step 3 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not reuse X264 code or other trials' implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing the existing categorical effort model
+  and suitable parsing/data machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement flow only; do not implement later skills.
+
+Implementation:
+1. Replay projects in their existing CSV order.
+   Treat this as an arrival simulation, not proof of historical chronology.
+   Use only previously revealed finite Effort- outcomes as training history.
+
+2. For each arriving project:
+   - Obtain its 22 categorical descriptors.
+   - Predict its effort using the existing model trained on prior history.
+   - Record the prediction before revealing the current actual effort.
+   - Reveal its effort, evaluate the prediction if possible, then update
+     history for the next arrival.
+   Do not use current or future outcomes to fit or choose the prediction.
+
+3. Use these descriptors only:
+   prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu,
+   time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced.
+   Exclude metadata and measured outcomes from features.
+
+4. Define a warm-up policy for insufficient prior history.
+   Report unavailable predictions explicitly during warm-up.
+   Compare evaluable predictions with a baseline using the prior-history
+   mean effort. Both methods must be evaluated on the same arrivals.
+
+5. Maintain cumulative evaluable counts, model MAE, and baseline MAE.
+   Missing, invalid, and nonfinite effort must not enter training history
+   or error calculations. Zero effort is valid.
+   Define whether projects with missing descriptor cells can be used,
+   consistently with the existing model.
+
+6. Retain original project positions and idX values in arrival records.
+   idX is not unique. Preserve positions when excluding malformed rows.
+   Expose independent snapshots; later updates must not mutate earlier ones.
+
+7. Report warm-up, evaluated, and invalid-outcome counts, final errors,
+   and representative arrival records.
+   Do not invent effort units, convergence guarantees, or future accuracy.
+
+8. Provide a runnable flow demonstration.
+   Preserve summary, prediction, and certify demonstrations.
+
+Tests:
+- Preserve and run all previous tests.
+- Verify prediction occurs before current-outcome reveal/update.
+- Verify changing a current outcome cannot change its own prediction.
+- Verify future outcomes cannot affect earlier predictions or snapshots.
+- Independently calculate prefix history means and cumulative MAE.
+- Test warm-up, empty/short input, missing/nonfinite outcomes, valid zero,
+  unseen/missing descriptors, duplicate identifiers, and original positions.
+- Verify both methods use the same evaluable arrivals.
+- Verify snapshot independence.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory and Python interpreter
+in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=4, treatment=6, trial=3, domain=software project estimation, skill=flow.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 3 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current flow demonstration only, excluding tests and earlier demos.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, warm-up/evaluation policy, MAEs, reuse,
+  LOC method, EZR influence, assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

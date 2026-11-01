@@ -1,0 +1,4 @@
+FAILED ATTEMPT 02
+Command: final artifact verification using find -printf on the workspace host.
+Output: find: -printf: unknown primary or operator
+The required-file verification was rerun successfully using portable shell tests.

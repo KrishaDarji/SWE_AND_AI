@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,6,3,model configuration and quality,guess,90,77,1,0.17,1,"7 tests passed; prediction timing only; MRE- MAE=0.09081883843003224 baseline=0.09081883843003224; ACC+ MAE=0.16904973170195345 baseline=0.16904973170195345; reused Step 1; LOC counts exclude tests/runners; EZR seeded grouping and split semantics; one repaired prediction attempt preserved"

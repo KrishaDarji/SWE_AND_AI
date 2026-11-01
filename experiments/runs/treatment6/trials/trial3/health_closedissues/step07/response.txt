@@ -1,0 +1,16 @@
+Implemented Step 7 choose in source/analyzer.py with source/run_choose.py.
+
+Reused the authorized Step 6 parser, normalization, configuration schema, outcome handling, and preserved all prior source files/tests/demonstrations. Added retrospective historical selection under a finite nonnegative N_estimators cap, default/demo cap 100, with MRE- → ACC+ → PRED40+ → original-position tie breaking. Counts distinguish malformed, invalid, over-budget, and feasible rows; no-feasible and invalid-cap cases are explicit. The implementation uses only Python’s standard library. The EZR references informed deterministic row handling, finite-value conventions, and transparent summary reporting; Lua was not run.
+
+Artifacts:
+- Complete source: source/
+- Preserved and new tests: tests/
+- Test capture: test_output.txt
+- Choose capture and timing: runtime_output.txt and runtime_timing.txt
+- Preserved demonstration captures: demo_summary.txt, demo_prediction.txt, demo_certify.txt, demo_flow.txt, demo_blame.txt, demo_justify.txt
+- Instructions: run_instructions.txt
+- Metrics: metrics.csv
+
+Verification: 26 tests passed; choose and all preserved demonstrations exited successfully. The choose demonstration selected original CSV position 33 with N_estimators 10.0 under cap 100; 4,877 rows were feasible and 5,123 valid rows exceeded the cap. Measured choose runtime was 0.14 seconds real time.
+
+Limitations: this is retrospective selection among eligible observed historical rows, not a guarantee for unseen evaluations. Other settings may affect computation. N_estimators is only a configurable compute proxy; runtime, cost, resource usage, and metric units are not inferred.

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,6,3,model configuration and quality,race,510,47,1,0.10,1,"38 tests passed; race capture real time only; 4877 feasible rows; paired results 10 wins 0 ties 0 losses; unequal retrospective information and no significance/generalization claims; Step 9 reused; EZR informed deterministic ranking and finite transparent summaries; one repaired zsh measurement-command failure preserved in attempt captures; LOC excludes tests/runners/Lua"

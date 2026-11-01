@@ -1,0 +1,16 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step04
+Python interpreter: /usr/bin/python3 (python3)
+
+Run the complete suite:
+python3 -m unittest discover -s tests -v
+
+Run the demonstrations:
+python3 source/run_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+python3 source/run_prediction.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+python3 source/run_certify.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+/usr/bin/time -p python3 source/run_flow.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Captured artifacts are test_output.txt, summary_output.txt, prediction_output.txt,
+certify_output.txt, and runtime_output.txt. The current flow path uses
+validation_rows(), which yields one valid CSV record at a time in physical CSV
+order; blank and malformed records are skipped.

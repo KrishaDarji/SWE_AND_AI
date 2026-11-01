@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,6,3,video encoding,fix,590,83,1,0.05,2,"34 tests; successful fix demonstration timing only; reused Step 7 source/tests; new LOC is added diff lines, not net growth; EZR informed streaming/validation and explicit exclusion handling; one failed capture command and one repaired failed test attempt retained; measured historical comparison only"

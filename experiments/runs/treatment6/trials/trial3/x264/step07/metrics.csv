@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,6,3,video encoding,choose,514,72,1,0.07,3,"29 tests; budget 20 seed 42; current choose timing only; copied Step 6 source/tests; new oracle search and retrospective audit; total LOC excludes comments/tests/runners; new LOC is diff additions; one repaired test expectation and one failed capture shell command preserved; EZR informed streaming/lower-is-better deterministic summaries; duplicate policy is first original position; Python standard library only"

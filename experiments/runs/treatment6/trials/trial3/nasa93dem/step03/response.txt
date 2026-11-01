@@ -1,0 +1,11 @@
+Implemented Step 3 certify in source/nasa_summary.py and preserved the Step 2 summary and prediction demonstrations.
+
+The fixed comparison uses tool n as reference, tool h as candidate, and Effort- as the lower-is-better outcome. It normalizes categorical whitespace, excludes other tools and invalid/nonfinite outcomes, reports counts, means, sample variances, candidate-minus-reference difference, Welch two-sided p-value, Welch–Satterthwaite degrees of freedom, and a 95% interval. The demonstration threshold is 10% of the reference mean Effort-.
+
+The implementation uses only the Python standard library. Its t distribution CDF uses direct numerical Simpson integration of the t density, with bisection for the 97.5% critical value; tests check representative degrees of freedom and probability behavior. The design was informed by the authorized EZR reference's compact statistical/descriptive conventions and categorical handling, without running Lua.
+
+Observed certify result: reference n count 83, mean 606.0638554216868, sample variance 1387541.9952630033; candidate h count 10, mean 776.7, sample variance 519143.7888888889; difference 170.6361445783133; p=0.6482126338315717; df=15.552580855698569; 95% CI=(-256.4877953397502, 597.7600844963767); threshold=60.60638554216868. The point estimate does not meet the improvement threshold, and the interval does not support it. Nonsignificance is not equivalence.
+
+All 11 preserved and new tests pass. Summary, prediction, and certify demonstrations exit successfully. Historical projects differ in size and other characteristics, so this marginal comparison does not establish a causal tool effect, productivity improvement, or future performance; no effort units are inferred. Welch inference requires at least two usable observations per group and positive standard error; undefined cases are reported without fabricated p-values or intervals. The finite threshold must be nonnegative.
+
+Commands and captured logs are in run_instructions.txt, test_output.txt, runtime_output.txt, summary_output.txt, and prediction_output.txt. The initial repaired test run is documented in the notes and was not used as the successful capture.

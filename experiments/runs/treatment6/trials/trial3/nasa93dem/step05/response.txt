@@ -1,0 +1,9 @@
+Implemented Step 5 blame in source/nasa_summary.py.
+
+Reused the authorized Step 4 parser, normalization, descriptive summaries, prediction, certify, flow, CLI, and prior tests. Added blame() and --blame. It ranks exactly the 22 requested categorical descriptors by eta-squared, using descriptor-specific eligible rows, normalized values, finite Effort-, between-group SS, total SS, and deterministic alphabetical ties. Each result includes counts, category means, reference mean, SS values, score, rank, and directional categories.
+
+The complete suite passes: 17 tests. The current blame demonstration passes and took 0.03 seconds real time. All preserved demonstrations were run. Captures are in test_output.txt, runtime_output.txt, and separately labeled attempt files. Commands are in run_instructions.txt.
+
+The implementation is standard-library-only. The EZR reference informed descriptive center/group-summary conventions; no Lua was run. Results are marginal historical associations, not causal effects, independent importance, statistical significance, productivity effects, or guaranteed improvement. Size, correlated descriptors, unequal category sizes, and other characteristics may affect ranking. Effort units are not invented.
+
+Assumptions: surrounding whitespace is stripped; missing descriptor values and invalid/nonfinite Effort- are excluded per descriptor; undefined scores are None when no eligible rows or total variation exists.

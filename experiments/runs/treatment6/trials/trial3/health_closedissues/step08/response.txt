@@ -1,0 +1,9 @@
+Implemented Treatment 6 / Trial 3 / Dataset 3 / Step 8.
+
+Updated source is in source/, with the prior implementation copied unchanged and a separate source/fix.py plus source/run_fix.py added. The fix uses the first original CSV data row as the baseline, preserves its physical position, rejects a malformed or incomplete first row without substitution, and compares only complete finite observed rows. It selects strictly lower MRE- using the required lexicographic rule: fewest changed fields, lowest MRE-, highest ACC+, highest PRED40+, earliest original position. Numeric settings are normalized numerically and criterion categorically. It reports configurations, outcomes, changed old/new values, count, absolute MRE improvement, secondary differences and worsening, exclusions, and status distinctions.
+
+The observed dataset result is baseline position 2 and candidate position 1946. The candidate changes N_estimators 40 to 10 and Min_impurity_decrease 2.75 to 5.0, for two changed fields and absolute MRE improvement 0.04756995581737844. The implementation is retrospective comparison between observed rows; change count is a simplicity proxy and historical differences do not establish causation or guarantee future performance. No compute cap is applied by fix.py.
+
+EZR informed the conservative observed-data framing, explicit missing/nonfinite handling, normalization, and direction-aware comparison, while no Lua was run and only Python standard-library modules were used.
+
+All preserved and new tests pass: 29 tests. The current demonstration passes with /usr/bin/time real time 0.10 seconds. Preserved demonstrations for summary, prediction, certify, flow, blame, justify, and choose were also run and captured as demo_*.txt. Known limitation: this is not an experiment on an unobserved configuration and does not estimate causal effects or resource costs.

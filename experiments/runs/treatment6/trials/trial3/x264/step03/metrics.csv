@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,6,3,video encoding,certify,258,78,1,0.05,1,"13 tests passed; runtime is successful certify demo only; copied Step 2 source/tests and added certify; new_loc is changed/additional source lines by corresponding path; EZR summary/statistical ideas informed explicit summaries; standard-library Simpson t CDF and bisection quantiles; observational historical configurations; one repaired shell capture attempt (read-only variable) and earlier repaired numerical/test attempts"

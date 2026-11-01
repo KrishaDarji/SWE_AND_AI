@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/nasa93dem/step05
+Python interpreter: python3
+
+Run tests: python3 -m unittest discover -s tests -v
+Run blame: /usr/bin/time -p python3 source/nasa_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv" --blame
+Run preserved demos with the same dataset and no flag, --estimate, --certify, and --flow.
+Successful captures: test_output.txt and runtime_output.txt; timing is in runtime_output.stderr.txt. Failed and repaired attempts are separately labeled.

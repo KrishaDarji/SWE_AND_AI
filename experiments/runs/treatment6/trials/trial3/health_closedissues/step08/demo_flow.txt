@@ -1,0 +1,63 @@
+{
+  "best": {
+    "ACC+": {
+      "configuration": {
+        "Max_depth": 10.0,
+        "Min_impurity_decrease": 3.0,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 10.0,
+        "criterion": "squared_error"
+      },
+      "position": 7557,
+      "value": 1.0
+    },
+    "MRE-": {
+      "configuration": {
+        "Max_depth": 5.0,
+        "Min_impurity_decrease": 6.75,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 10.0,
+        "criterion": "squared_error"
+      },
+      "position": 33,
+      "value": 0.0
+    },
+    "PRED40+": {
+      "configuration": {
+        "Max_depth": 19.0,
+        "Min_impurity_decrease": 0.25,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 40.0,
+        "criterion": "squared_error"
+      },
+      "position": 15,
+      "value": 1.0
+    }
+  },
+  "conventions": {
+    "blank_rows": "ignored and do not increment total_rows_seen",
+    "malformed_rows": "ignored and do not increment total_rows_seen",
+    "missing_configuration": "retained as null; invalid numeric settings are null",
+    "missing_or_nonfinite_outcome": "excluded only from that outcome's count and statistics",
+    "position": "physical CSV row, header is 1",
+    "ties": "earliest row retained"
+  },
+  "outcomes": {
+    "ACC+": {
+      "finite_count": 10000,
+      "mean": 0.49593851329765815,
+      "sample_variance": 0.011481619453413293
+    },
+    "MRE-": {
+      "finite_count": 10000,
+      "mean": 0.7090939764346323,
+      "sample_variance": 0.04056030922815959
+    },
+    "PRED40+": {
+      "finite_count": 10000,
+      "mean": 0.14684285714285772,
+      "sample_variance": 0.07096876197823895
+    }
+  },
+  "total_rows_seen": 10000
+}

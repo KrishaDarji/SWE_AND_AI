@@ -1,0 +1,11 @@
+NASA93 retrospective selection among historical projects
+raw_parsed_count=93 valid_count=93 feasible_count=31
+invalid_data_exclusion_count=0 over_budget_exclusion_count=62 malformed_row_count=0
+cap=100.0 feasibility=complete descriptors and finite nonnegative Effort-, Kloc+, Defects-, with Effort- <= cap
+selection_rule=highest Kloc+, then lowest Effort-, then earliest original CSV position; Defects- descriptive only
+winner_position=79 winner_idX=78
+winner_descriptors={'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'l', 'rely': 'h', 'data': 'n', 'cplx': 'vh', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'vh', 'pvol': 'l', 'acap': 'h', 'pcap': 'h', 'pcon': 'n', 'apex': 'h', 'plex': 'h', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'l'}
+winner_Kloc+=165.0 winner_Effort-=97.0 winner_Defects-=7867.0
+goal_note=Maximizing Kloc+ is this task's convention; it does not establish productivity, causation, suitability, or a guaranteed future budget.
+
+EXIT_STATUS=0

@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step01
+Python interpreter: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 (Python 3.12)
+
+Run tests:
+python3 -m unittest discover -s tests -v
+
+Run the implementation:
+python3 source/run_summary.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+The complete test stdout/stderr and exit status are in test_output.txt. The successful timed demonstration capture is in runtime_output.txt. Earlier failed attempts are preserved as test_attempt_01.txt through test_attempt_04.txt; test_attempt_05.txt is the successful test capture.

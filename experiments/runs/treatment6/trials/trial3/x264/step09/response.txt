@@ -1,0 +1,9 @@
+Implemented Step 9 spot detection in source/summary.py and preserved the Step 8 source, tests, APIs, and demonstrations.
+
+The new spot_rows/spot functions normalize complete binary settings, use Hamming distance <= 1, count reference rows (including duplicates), exclude the observation itself, require at least 3 reference rows, and compute median plus MAD around that median. Scores are absolute deviation/MAD with threshold 3.5. A zero MAD produces an undefined score unless deviation is zero. Missing/nonfinite outcomes and invalid/nonbinary settings are excluded with original one-based positions; rows without adequate reference data are reported separately. Both unusually high and low results may flag, and a flag warrants investigation rather than proving an error.
+
+The authorized Step 8 implementation was copied into this snapshot and extended without imports from earlier directories. The EZR references informed the compact CSV/row normalization and descriptive-statistics style; no Lua or third-party package was run.
+
+Verification: 38 tests pass. The real X264 dataset demonstration completed successfully: 1152 eligible rows, 0 exclusions, 0 flags, real time 0.73 seconds. Preserved demonstrations were also run and their direct captures are saved in this directory. The first failed test attempt and repaired attempts remain separately labeled.
+
+Known limitations: Hamming radius, minimum reference size, and threshold are fixed defaults for this step; local references can be sparse; duplicate rows are not collapsed; undefined zero-scale scores are not flags; and results depend on the supplied measurements and binary-field interpretation.

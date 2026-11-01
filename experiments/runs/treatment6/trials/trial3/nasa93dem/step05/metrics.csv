@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,6,3,software project estimation,blame,277,39,1,0.03,3,"17 tests pass; successful current blame demonstration timing only; eta-squared marginal ranking with alphabetical ties; Step 4 machinery and demos preserved; new LOC is added nonblank noncomment diff lines; EZR informed descriptive group summaries; missing/invalid/nonfinite values excluded; no causal or unit claims; two failed assertions and one failed runner command occurred in repaired attempts"

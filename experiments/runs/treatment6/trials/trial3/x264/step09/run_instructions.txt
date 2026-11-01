@@ -1,0 +1,9 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step09
+
+Run the complete suite:
+python3 -m unittest discover -s /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step09/tests -p 'test_*.py'
+
+Run the current demonstration:
+/usr/bin/time -p python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step09/source/summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv --spot
+
+Preserved demonstrations were run with --summary/default, --flow, --certify, --predict, --blame, --justify, --choose, and --fix. Their stdout, stderr, status, and the test/demo timing captures are saved beside this file.

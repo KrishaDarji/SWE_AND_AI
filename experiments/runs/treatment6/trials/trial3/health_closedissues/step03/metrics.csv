@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,6,3,model configuration and quality,certify,144,51,1,0.09,2,"10 tests passed; runtime is successful certify demo only; fixed MRE- squared_error vs absolute_error, lower better; optional threshold; Step 2 source/tests reused; EZR informed Welch/statistical conventions; LOC counts nonblank source lines and certify additions; two repaired failed attempts retained in attempt/status files; historical configurations limit causal interpretation"

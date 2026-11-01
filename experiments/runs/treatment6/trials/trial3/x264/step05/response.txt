@@ -1,0 +1,11 @@
+Implemented Step 5 blame analysis in source/summary.py using only the Python standard library.
+
+Reused the authorized Step 4 parser, missing-value handling, streaming flow, summary, prediction, and certify machinery. Added blame_rows/blame, numeric normalization, per-setting eligible/excluded counts, group summaries, reference mean, between-group and total sums of squares, eta-squared association, deterministic ranking, and directional means. The CLI supports --blame. A runnable run_demos.py preserves summary, prediction, certify, and flow demonstrations.
+
+The association is eta-squared = between-group SS / total SS, calculated from exactly the eligible rows for each setting. Numeric spellings such as 1, 1.0, and 1e0 are one group. Missing or nonfinite settings/outcomes are excluded. Undefined scores are reported for fewer than two observed groups or zero outcome variation; constant settings are therefore not assigned a misleading score. Lower Performance- is better.
+
+On X264_AllMeasurements.csv, ref_9 ranked first (eta-squared about 0.6445; group means 369.512 for 0 and 646.237 for 1), and ref_1 ranked second (about 0.6435; means 553.923 for 0 and 277.415 for 1). These are marginal historical associations. Correlated or one-hot settings can reflect the same underlying choice; scores are not independent causal contributions, and changing a setting is not guaranteed to improve performance. Association magnitude alone is not statistical significance.
+
+The full preserved and new suite passes: 20 tests. The successful current blame demonstration took 0.06 seconds real time under /usr/bin/time -p. Required logs retain the initial failed attempts and the final captures. LOC is 368 nonblank, noncomment source lines; 70 added/replacement lines relative to Step 4.
+
+See run_instructions.txt for commands and working directory.

@@ -1,0 +1,14 @@
+NASA93 arrival flow
+warm_up=1 evaluated=92 invalid_outcomes=0
+model_mae=521.1004766127592 baseline_mae=481.9114197824729
+arrival_record={'arrival': 1, 'position': 2, 'idX': '1', 'prediction': None, 'baseline_prediction': None, 'actual_revealed': 117.6, 'evaluated': False, 'model_error': None, 'baseline_error': None, 'history_count': 0}
+arrival_record={'arrival': 2, 'position': 3, 'idX': '2', 'prediction': 117.6, 'baseline_prediction': 117.6, 'actual_revealed': 117.6, 'evaluated': True, 'model_error': 0.0, 'baseline_error': 0.0, 'history_count': 1}
+arrival_record={'arrival': 3, 'position': 4, 'idX': '3', 'prediction': 117.6, 'baseline_prediction': 117.6, 'actual_revealed': 31.2, 'evaluated': True, 'model_error': 86.39999999999999, 'baseline_error': 86.39999999999999, 'history_count': 2}
+arrival_record={'arrival': 91, 'position': 92, 'idX': '91', 'prediction': 1350.0, 'baseline_prediction': 639.3366666666667, 'actual_revealed': 480.0, 'evaluated': True, 'model_error': 870.0, 'baseline_error': 159.3366666666667, 'history_count': 90}
+arrival_record={'arrival': 92, 'position': 93, 'idX': '92', 'prediction': 480.0, 'baseline_prediction': 637.5857142857143, 'actual_revealed': 12.0, 'evaluated': True, 'model_error': 468.0, 'baseline_error': 625.5857142857143, 'history_count': 91}
+arrival_record={'arrival': 93, 'position': 94, 'idX': '93', 'prediction': 246.0, 'baseline_prediction': 630.7858695652175, 'actual_revealed': 38.0, 'evaluated': True, 'model_error': 208.0, 'baseline_error': 592.7858695652175, 'history_count': 92}
+real 0.04
+user 0.03
+sys 0.00
+
+EXIT_STATUS=0

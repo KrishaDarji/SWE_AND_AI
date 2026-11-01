@@ -1,0 +1,3 @@
+FAILED ATTEMPT 01
+COMMAND: /usr/bin/time -p python3 flow_demo.py ...
+ERROR: shell variable status is read-only in zsh

@@ -1,0 +1,12 @@
+NASA93 model-based budget fix (training configurations only)
+status=successful recommendation cap=100
+baseline={'descriptors': {'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'h', 'rely': 'h', 'data': 'l', 'cplx': 'h', 'ruse': 'n', 'docu': 'n', 'time': 'xh', 'stor': 'xh', 'pvol': 'l', 'acap': 'h', 'pcap': 'h', 'pcon': 'n', 'apex': 'h', 'plex': 'n', 'ltex': 'h', 'tool': 'h', 'site': 'n', 'sced': 'n'}, 'position': 10, 'idX': '9', 'prediction': 392.0}
+candidate_count=44 excluded_candidate_count=34
+recommendation={'descriptors': {'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'n', 'rely': 'n', 'data': 'l', 'cplx': 'h', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'xh', 'pvol': 'l', 'acap': 'h', 'pcap': 'n', 'pcon': 'n', 'apex': 'h', 'plex': 'n', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'n'}, 'old_values': {'pmat': 'h', 'rely': 'h', 'time': 'xh', 'pcap': 'h', 'tool': 'h'}, 'new_values': {'pmat': 'n', 'rely': 'n', 'time': 'n', 'pcap': 'n', 'tool': 'n'}, 'changed_field_count': 5, 'position': 21, 'idX': '20', 'prediction': 60.0, 'predicted_improvement': 332.0}
+retrospective_audit={'query_actual_effort': 72.0, 'label': 'retrospective audit; excluded from selection and prediction'}
+caveat=historical model suggestion, not a causal or actionable prescription; feasibility does not guarantee actual effort or preserve size, quality, or other requirements; effort units are not invented
+real 0.03
+user 0.02
+sys 0.00
+
+EXIT_STATUS=0

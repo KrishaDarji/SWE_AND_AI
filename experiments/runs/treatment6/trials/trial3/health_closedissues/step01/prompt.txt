@@ -1,0 +1,151 @@
+You are running Treatment 6, Trial 3, Dataset 3, Step 1 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: model configuration and quality
+- Dataset: Health-ClosedIssues0000.csv
+- Current skill: remember
+- Current requirement: Summarize the model configurations and quality measures in our historical runs.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step01/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent health_closedissues directory.
+- Write only inside the current Step 1 directory.
+
+Allowed references:
+- The Health dataset and the two EZR files listed above.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+This starts a new dataset. No previous generated implementation is authorized.
+Do not read or reuse X264 or NASA93 code, other steps, other trials,
+other treatments, repository implementations, Git history, previous chats,
+or previous response/log files.
+Do not use remembered solutions from earlier experiment runs.
+Do not browse other EZR background files, tutorials, examples, or datasets.
+If an authorized input is missing, report its exact path without searching
+elsewhere.
+
+Create a reusable implementation that later Health steps in this trial
+can extend. Factor parsing, column roles, configuration representation,
+and summaries where useful. Do not implement future skills in advance.
+
+Implementation:
+1. Load and represent historical model-evaluation runs.
+   Report record count, column names, roles, missing values,
+   and invalid/nonfinite numeric values.
+
+2. Identify exactly these five configuration fields:
+   N_estimators, criterion, Min_sample_leaves,
+   Min_impurity_decrease, Max_depth.
+   Treat criterion as categorical, even if labels look numeric.
+   Treat the other four settings as numeric.
+   Report criterion frequencies and numeric setting summaries.
+
+3. Identify measured outcomes and directions:
+   - MRE-: minimize.
+   - ACC+: maximize.
+   - PRED40+: maximize.
+   Report finite-value counts, minimum, maximum, mean, median, and
+   documented dispersion statistics.
+   Do not invent metric formulas, ranges, units, or additional outcomes.
+
+4. Report distinct normalized configurations and repeated configurations.
+   Distinguish repeated configuration settings from exact duplicate rows.
+   Normalize numeric equivalents and surrounding categorical whitespace
+   consistently. Explain treatment of missing/invalid settings.
+
+5. Preserve original row positions and define blank/malformed-row handling.
+   Handle empty input, header-only input, entirely missing columns,
+   missing outcomes, and invalid/nonfinite values explicitly.
+   Define missing tokens and insufficient-sample conventions.
+
+6. Provide a runnable demonstration accepting a dataset path.
+   Explain that these are model-configuration quality measurements;
+   do not interpret this file as an issue-closure timeline.
+
+Tests:
+- Test exact field roles, categorical frequencies, numeric summaries,
+  odd/even medians, and dispersion conventions.
+- Test missing/nonfinite/invalid numeric values and all-missing columns.
+- Verify criterion remains categorical with numeric-looking labels.
+- Test normalized repeated configurations versus exact duplicate rows.
+- Test original positions, empty/header-only input, and malformed rows.
+- Use synthetic fixtures stored inside the current step directory.
+
+Return:
+1. Complete source code.
+2. Tests.
+3. Commands to run the tests and implementation.
+4. A short explanation, including which EZR machinery was adapted.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the tests and implementation. Capture actual stdout, stderr, exit status,
+and timing. Preserve every failed and successful attempt in separately
+labeled files; do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory and Python interpreter
+in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=1, treatment=6, trial=3, domain=model configuration and quality,
+  skill=remember.
+- total_loc: all nonblank, noncomment Python source lines, including
+  translated EZR machinery; exclude tests, measurement runners, and Lua.
+- new_loc: equal to total_loc because this dataset starts independently.
+- test_pass: 1 only if the complete suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  summary demonstration only, excluding tests.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing method, EZR adaptations, parsing assumptions,
+  and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

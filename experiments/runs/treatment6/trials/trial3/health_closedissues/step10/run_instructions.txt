@@ -1,0 +1,11 @@
+Working directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step10'
+Python interpreter: python3 (/usr/bin/time -p used for measured demonstration)
+
+Tests:
+python3 -m unittest discover -s tests -p 'test*.py'
+
+Preserved demonstrations:
+for name in summary prediction certify flow blame justify choose fix spot; do python3 "source/run_${name}.py" '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'; done
+
+Race demonstration:
+python3 source/run_race.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv' --cap 100

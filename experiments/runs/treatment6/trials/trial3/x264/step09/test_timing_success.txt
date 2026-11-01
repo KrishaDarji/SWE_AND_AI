@@ -1,0 +1,16 @@
+.............................F........
+======================================================================
+FAIL: test_high_low_flags_and_independent_median_mad (test_spot.SpotTests.test_high_low_flags_and_independent_median_mad)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/x264/step09/tests/test_spot.py", line 15, in test_high_low_flags_and_independent_median_mad
+    self.assertEqual(r["flags"][0]["center"], 10)
+AssertionError: 9.5 != 10
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.021s
+
+FAILED (failures=1)
+real 0.10
+user 0.05
+sys 0.01

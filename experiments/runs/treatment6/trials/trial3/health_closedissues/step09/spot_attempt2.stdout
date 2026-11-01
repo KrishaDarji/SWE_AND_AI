@@ -1,0 +1,239 @@
+{
+  "flag_rule": "abs(score) > threshold (strict; equality is a nonflag)",
+  "flagged_examples": [
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 10.0,
+        "Min_impurity_decrease": 2.75,
+        "Min_sample_leaves": 3.0,
+        "N_estimators": 40.0,
+        "criterion": "squared_error"
+      },
+      "observed": 0.3148748159057436,
+      "outcome": "MRE-",
+      "position": 2,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -4.857484112680504,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 15.0,
+        "Min_impurity_decrease": 0.75,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 130.0,
+        "criterion": "squared_error"
+      },
+      "observed": 0.15596465390279823,
+      "outcome": "MRE-",
+      "position": 4,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -6.419231835440415,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 17.0,
+        "Min_impurity_decrease": 2.5,
+        "Min_sample_leaves": 3.0,
+        "N_estimators": 130.0,
+        "criterion": "squared_error"
+      },
+      "observed": 0.3425625920471281,
+      "outcome": "MRE-",
+      "position": 8,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -4.585372368585172,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 9.0,
+        "Min_impurity_decrease": 5.5,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 10.0,
+        "criterion": "poisson"
+      },
+      "observed": 0.4212076583210604,
+      "outcome": "MRE-",
+      "position": 13,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -3.8124592231228975,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 19.0,
+        "Min_impurity_decrease": 0.25,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 40.0,
+        "criterion": "squared_error"
+      },
+      "observed": 0.20530191458026506,
+      "outcome": "MRE-",
+      "position": 15,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -5.93435186590884,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 9.0,
+        "Min_impurity_decrease": 6.25,
+        "Min_sample_leaves": 2.0,
+        "N_estimators": 150.0,
+        "criterion": "poisson"
+      },
+      "observed": 0.35434462444771725,
+      "outcome": "MRE-",
+      "position": 17,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -4.469580137055242,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 8.0,
+        "Min_impurity_decrease": 4.5,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 160.0,
+        "criterion": "squared_error"
+      },
+      "observed": 0.21148748159057437,
+      "outcome": "MRE-",
+      "position": 20,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -5.873560944355626,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 14.0,
+        "Min_impurity_decrease": 2.75,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 190.0,
+        "criterion": "poisson"
+      },
+      "observed": 0.21089837997054492,
+      "outcome": "MRE-",
+      "position": 23,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -5.879350555932123,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 11.0,
+        "Min_impurity_decrease": 2.5,
+        "Min_sample_leaves": 2.0,
+        "N_estimators": 120.0,
+        "criterion": "absolute_error"
+      },
+      "observed": 0.3215022091310751,
+      "outcome": "MRE-",
+      "position": 30,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -4.792350982444919,
+      "threshold": 3.5
+    },
+    {
+      "center_median": 0.8091310751104565,
+      "configuration": {
+        "Max_depth": 5.0,
+        "Min_impurity_decrease": 6.75,
+        "Min_sample_leaves": 1.0,
+        "N_estimators": 10.0,
+        "criterion": "squared_error"
+      },
+      "observed": 0.0,
+      "outcome": "MRE-",
+      "position": 33,
+      "reason": "unusually low relative to self-inclusive median/MAD reference",
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "score": -7.952031500317845,
+      "threshold": 3.5
+    }
+  ],
+  "flagged_examples_note": "First 10 flagged rows shown; spot() retains the complete flagged_rows list for programmatic use.",
+  "interpretation": "Unusual marginal results warrant investigation and are not proven measurement errors. Very good results can also be unusual. This is not configuration-conditioned anomaly detection or a validated error classifier; detector accuracy is not reported without labeled ground truth.",
+  "malformed_row_positions": [],
+  "minimum_finite_sample": 3,
+  "outcomes": {
+    "ACC+": {
+      "center_median": 0.43992310157000963,
+      "direction": "maximize",
+      "flag_count": 2124,
+      "reference_count": 10000,
+      "scale_MAD": 0.030118551746235234,
+      "status_counts": {
+        "flagged": 2124,
+        "invalid_or_missing": 0,
+        "ordinary_nonflag": 7876,
+        "undefined_score": 0
+      },
+      "undefined_reason": null
+    },
+    "MRE-": {
+      "center_median": 0.8091310751104565,
+      "direction": "minimize",
+      "flag_count": 1496,
+      "reference_count": 10000,
+      "scale_MAD": 0.06863033888954351,
+      "status_counts": {
+        "flagged": 1496,
+        "invalid_or_missing": 0,
+        "ordinary_nonflag": 8504,
+        "undefined_score": 0
+      },
+      "undefined_reason": null
+    },
+    "PRED40+": {
+      "center_median": 0.0,
+      "direction": "maximize",
+      "flag_count": 0,
+      "reference_count": 10000,
+      "scale_MAD": 0.0,
+      "status_counts": {
+        "flagged": 0,
+        "invalid_or_missing": 0,
+        "ordinary_nonflag": 0,
+        "undefined_score": 10000
+      },
+      "undefined_reason": "zero_MAD_reference"
+    }
+  },
+  "position_convention": "original physical CSV row; header is position 1; blank rows are ignored; malformed rows are excluded without renumbering",
+  "reference_convention": "each finite observation contributes to its own outcome's self-inclusive reference distribution; outcomes use independent finite populations",
+  "score_definition": "0.6744897501960817 * (value - median) / MAD",
+  "status": "ok",
+  "threshold": 3.5,
+  "unique_flagged_row_count": 2151
+}

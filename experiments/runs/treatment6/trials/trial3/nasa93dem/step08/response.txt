@@ -1,0 +1,9 @@
+Implemented Step 8 in source/nasa_summary.py.
+
+Reused the authorized Step 7 grouped split, categorical effort model, normalization/validation, and all prior demonstrations/tests. Added a separate fix capability. It uses training-only complete normalized descriptor configurations and ranks feasible improvements by changed-field count, predicted effort, then original training position. Held-out actual effort is reported only in a separate retrospective audit.
+
+The EZR reference informed symbolic categorical distance and explicit training/held-out separation. Python standard library only.
+
+Verification: 28 tests passed. Fix demonstration: cap 100, baseline prediction 392, recommendation 60, five changed fields, improvement 332, retrospective actual effort 72. This is a model-based historical suggestion, not a causal prescription.
+
+See run_instructions.txt, test_output.txt, runtime_output.txt, and metrics.csv. Failed/repaired attempts remain in test_output_attempt02.txt through test_output_attempt05.txt.

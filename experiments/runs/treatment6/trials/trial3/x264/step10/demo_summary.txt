@@ -1,0 +1,7 @@
+usage: summary.py [-h] [--blame] [--justify] [--predict] [--certify] [--flow]
+                  [--choose] [--race] [--fix] [--spot] [--budget BUDGET]
+                  [--seed SEED]
+                  dataset
+summary.py: error: unrecognized arguments: --summary
+
+COMMAND_EXIT_STATUS=2

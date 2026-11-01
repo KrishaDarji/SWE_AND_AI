@@ -1,0 +1,26 @@
+.............................F.F.
+======================================================================
+FAIL: test_boundary_and_independent_reference (test_spot.SpotTests.test_boundary_and_independent_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step09/tests/test_spot.py", line 19, in test_boundary_and_independent_reference
+    x = spot(path, threshold=1.0117346252941225); self.assertEqual(x["outcomes"]["MRE-"]["flag_count"], 0); self.assertEqual(x["outcomes"]["ACC+"]["reference_count"], 4); self.assertEqual(x["outcomes"]["ACC+"]["undefined_reason"], "zero_MAD_reference")
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0
+
+======================================================================
+FAIL: test_high_low_all_outcomes_and_retention (test_spot.SpotTests.test_high_low_all_outcomes_and_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial3/health_closedissues/step09/tests/test_spot.py", line 13, in test_high_low_all_outcomes_and_retention
+    x = spot(path, threshold=1.0); self.assertEqual(x["outcomes"]["MRE-"]["flag_count"], 1); self.assertEqual(x["outcomes"]["ACC+"]["flag_count"], 2); self.assertEqual(x["outcomes"]["PRED40+"]["flag_count"], 2)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.021s
+
+FAILED (failures=2)
+real 0.13
+user 0.07
+sys 0.03

@@ -1,0 +1,9 @@
+Implemented Step 4 flow support in `source/summary.py`.
+
+Reused the authorized Step 3 implementation, including summary, prediction, certification, and all prior tests. Added a one-pass `flow_csv` iterator, `flow_rows`, `FlowState`, and `flow_final` using Welford's algorithm. Snapshots are independent, zero is valid, missing/nonfinite/invalid outcomes are excluded from statistics, and the earliest best tie retains its complete settings and one-based CSV data-row position.
+
+Added 3 flow tests; the preserved and new suite passes all 16 tests. The current flow demonstration processes 1,152 rows in 0.03 seconds real time. Preserved demonstrations were also run. EZR informed streaming, missing-value handling, and lower-is-better semantics.
+
+Commands and working directory are in `run_instructions.txt`; captured outputs are in `test_output.txt`, `runtime_output.txt`, and `preserved_demos_output.txt`. Failed attempts are preserved in `failed_attempt_01.txt` and `failed_attempt_02.txt`.
+
+Assumptions: the first CSV row is a header; position 1 is the first data row; settings are all columns except `Performance-`; blank/null setting text is retained. The implementation does not infer chronology, units, convergence, stopping guarantees, or performance improvement from arrival order.

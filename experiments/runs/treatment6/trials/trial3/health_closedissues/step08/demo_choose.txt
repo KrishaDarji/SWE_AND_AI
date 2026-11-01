@@ -1,0 +1,37 @@
+{
+  "cap": 100,
+  "eligibility": "all five settings and all three outcomes finite; criterion nonmissing categorical; N_estimators nonnegative and <= cap",
+  "feasible_count": 4877,
+  "interpretation": "Retrospective selection using observed outcomes; other settings may also affect computation. No optimality beyond eligible historical rows or guaranteed unseen performance is claimed.",
+  "invalid_count": 0,
+  "malformed_count": 0,
+  "malformed_row_positions": [],
+  "over_budget_count": 5123,
+  "parsed_count": 10000,
+  "position_convention": "original physical CSV row; header is position 1; blank rows ignored; malformed rows excluded without renumbering",
+  "raw_count": 10000,
+  "recommendation": {
+    "configuration": {
+      "Max_depth": 5.0,
+      "Min_impurity_decrease": 6.75,
+      "Min_sample_leaves": 1.0,
+      "N_estimators": 10.0,
+      "criterion": "squared_error"
+    },
+    "feasibility": "feasible: finite complete row and 0 <= N_estimators <= cap",
+    "original_position": 33,
+    "outcomes": {
+      "ACC+": 0.7901313681512335,
+      "MRE-": 0.0,
+      "PRED40+": 0.8571428571428571
+    },
+    "selected_proxy_value": 10.0
+  },
+  "selection_rule": [
+    "lowest MRE-",
+    "highest ACC+ for ties",
+    "highest PRED40+ for remaining ties",
+    "earliest original CSV position for remaining ties"
+  ],
+  "status": "ok"
+}
