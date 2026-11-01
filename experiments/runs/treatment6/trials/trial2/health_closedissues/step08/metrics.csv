@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,6,2,model configuration and quality,fix,597,61,1,0.09,9,"28 tests pass; timing is successful fix demonstration only; first original row is baseline; strict MRE improvement; change count before outcome magnitude; no compute cap; copied Step 7 source/tests and added fix.py/test_fix.py; EZR informed stdlib retrospective handling; LOC excludes tests/runners/Lua; failed test, seven bad-path demo commands, and one shell-capture attempt were repaired and preserved"

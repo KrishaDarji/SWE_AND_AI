@@ -1,0 +1,5 @@
+Spot unusual X264 measurements
+valid=1152; excluded={'missing_or_nonfinite_outcome': 0, 'missing_nonfinite_or_nonbinary_settings': 0}; flagged=0; undefined_scores=0; inadequate_reference_rows=0
+rule: Hamming distance over normalized complete binary settings; all tied nearest rows; minimum references=3; threshold=3.5; scale=1.4826 * median absolute deviation
+Unusual measurements warrant investigation; they are not proven errors. Both unusually good and poor results can flag.
+no flags

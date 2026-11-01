@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step03
+Python interpreter: /usr/bin/python3
+/usr/bin/python3 -m unittest discover -s tests -v
+/usr/bin/python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --certify
+/usr/bin/python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+/usr/bin/python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --estimate

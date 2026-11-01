@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,6,2,software project estimation,spot,438,50,1,0.02,2,"29 tests passed; log1p nonnegative Effort-, leave-one-out median/MAD, threshold 3.5, minimum reference 3, zero MAD undefined; copied Step 8 machinery and tests; EZR median/table ideas informed robust summaries; new LOC is added lines, not net growth; two repaired attempts preserved (one test assertion run and one invalid preserved-demo invocation); marginal observational screen, no causal or measurement-error claim"

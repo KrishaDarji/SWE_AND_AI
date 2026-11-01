@@ -1,0 +1,14 @@
+Implemented Step 7 choose in the required directory.
+
+Updated artifacts:
+- source/x264_summary.py: preserved Step 6 functionality and added seeded budget enforcement, normalized binary configurations, deterministic duplicate handling, tie-breaking, history, and retrospective audit.
+- tests/test_x264_summary.py: preserved tests and added budget, invalid, duplicate, normalization, reproducibility, tie, audit, empty, zero, oversized, and no-success cases.
+- prompt.txt, run_instructions.txt, metrics.csv, runtime_output.txt, test_output.txt, and labeled attempt captures.
+
+Verification: 22 tests passed. The choose demonstration used budget 20, attempted 20 evaluations, succeeded on 20, and selected original position 5 with Performance- 260.267. Choose-only /usr/bin/time -p real time was 0.04 seconds.
+
+The implementation reuses Step 6 parsing, normalization, validation, and rendering machinery. The EZR reference informed incremental state-based processing and explicit missing/invalid handling. Candidate selection receives outcomes only through selected evaluations; audit is separate retrospective historical replay and cannot affect the winner.
+
+Known limitations: the CSV is used as the outcome oracle, so this is replay rather than newly measured encoding; the first complete row represents normalized duplicates; seeded random search is reproducible but not guaranteed optimal; audit does not guarantee future performance.
+
+Commands are in run_instructions.txt; complete source and tests are in source/ and tests/.

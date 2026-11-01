@@ -1,0 +1,27 @@
+test_boundaries_missing_and_per_field_population (test_blame.BlameTests.test_boundaries_missing_and_per_field_population) ... ok
+test_constant_empty_insufficient_and_tie (test_blame.BlameTests.test_constant_empty_insufficient_and_tie) ... ok
+test_known_eta_direction_and_only_fields (test_blame.BlameTests.test_known_eta_direction_and_only_fields) ... ok
+test_fixed_groups_difference_variance_and_welch (test_certify.CertifyTests.test_fixed_groups_difference_variance_and_welch) ... ok
+test_missing_absent_insufficient_and_zero_se (test_certify.CertifyTests.test_missing_absent_insufficient_and_zero_se) ... ok
+test_t_references_and_probability_bounds (test_certify.CertifyTests.test_t_references_and_probability_bounds) ... ok
+test_threshold_validation_and_independent_secondary_counts (test_certify.CertifyTests.test_threshold_validation_and_independent_secondary_counts) ... ok
+test_empty_single_missing_zero_and_configuration_retention (test_flow.FlowTests.test_empty_single_missing_zero_and_configuration_retention) ... ok
+test_one_pass_lazy_and_csv_malformed (test_flow.FlowTests.test_one_pass_lazy_and_csv_malformed) ... ok
+test_prefixes_against_independent_calculation_and_ties (test_flow.FlowTests.test_prefixes_against_independent_calculation_and_ties) ... ok
+test_each_reference_population_and_association_label (test_justify.JustifyTests.test_each_reference_population_and_association_label) ... ok
+test_finite_eligibility_positions_and_even_medians (test_justify.JustifyTests.test_finite_eligibility_positions_and_even_medians) ... ok
+test_missing_and_empty (test_justify.JustifyTests.test_missing_and_empty) ... ok
+test_order_and_full_configuration (test_justify.JustifyTests.test_order_and_full_configuration) ... ok
+test_grouping_prediction_and_schema (test_summarize_runs.SummaryTests.test_grouping_prediction_and_schema) ... ok
+test_invalid_missing_all_missing_and_duplicates (test_summarize_runs.SummaryTests.test_invalid_missing_all_missing_and_duplicates) ... ok
+test_positions_malformed_empty_header_only (test_summarize_runs.SummaryTests.test_positions_malformed_empty_header_only) ... ok
+test_roles_stats_medians_and_categorical (test_summarize_runs.SummaryTests.test_roles_stats_medians_and_categorical) ... ok
+test_zero_invalid_and_insufficient (test_summarize_runs.SummaryTests.test_zero_invalid_and_insufficient) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.009s
+
+OK
+real 0.06
+user 0.04
+sys 0.01

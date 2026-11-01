@@ -1,0 +1,7 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (standard library only)
+Test command:
+PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step10/source" python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step10/tests" -p "test_*.py"
+Race demonstration:
+PYTHONPATH="/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step10/source" python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step10/source/race.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" 100
+Preserved demonstrations: run summarize_runs.py, flow.py, blame.py, justify.py, choose.py, fix.py, spot.py, and certify.py with the dataset path above.

@@ -1,0 +1,15 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step05
+Python interpreter: python3 (standard library only)
+
+Run the complete suite:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run preserved demonstrations:
+python3 source/summarize_runs.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+python3 source/flow.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+python3 source/certify.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Run the current demonstration:
+/usr/bin/time -p python3 source/blame.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+Captured outputs are test_output.txt, runtime_summary.txt, runtime_flow.txt, runtime_certify.txt, and runtime_blame.txt. test_output_success.txt and failed_command_attempt.txt preserve labeled earlier attempts.

@@ -1,0 +1,19 @@
+Implemented Step 9 `spot` in the copied Step 8 Python snapshot.
+
+1. Source and tests
+- Added `spot()` and `--spot`, with configurable threshold and minimum reference size.
+- Uses nonnegative `log1p(Effort-)`, leave-one-out reference populations, median center, MAD scale, and score `abs(transformed-center)/MAD`.
+- Explicitly distinguishes flagged, ordinary nonflag, undefined, and invalid/missing observations. Reports physical CSV position, idX, effort, transformed value, reference count, center, scale, score, threshold, reason, and descriptors.
+- Preserved all Step 8 source and test files and added independent tests for anomalies, self-exclusion, boundaries, duplicates, constant/zero-MAD data, short samples, zero, missing, invalid, nonfinite, and negative effort.
+
+2. Verification
+- Full suite: 29 tests passed.
+- NASA93 demonstration: passed; 93 valid, 0 excluded, 0 flagged, 93 ordinary, 0 undefined.
+- Preserved CLI demonstrations all passed after one initially invalid summary invocation was preserved.
+- Failed attempts and successful captures are saved in the Step 9 directory.
+
+3. Reuse and EZR influence
+The Step 8 parser, project identity, normalization, summary, model, CLI, and tests were copied and retained. The authorized EZR reference informed the table/median-oriented descriptive approach; no Lua was run and no third-party package was used.
+
+4. Limitations
+This is marginal historical effort screening. It does not adjust for project size or other descriptors. Both unusually low and high effort can be flagged. A flag warrants investigation but does not prove a measurement error or establish a cause. Zero MAD and insufficient leave-one-out references are intentionally undefined.

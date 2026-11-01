@@ -1,0 +1,5 @@
+cwd=/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step02
+python=/Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+Tests: python3 -m unittest discover -s tests -v
+Prediction: /usr/bin/time -p python3 run_prediction.py DATASET
+Summary: python3 source/summarize_runs.py DATASET

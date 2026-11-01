@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,6,2,video encoding,race,694,73,1,0.04,5,"32 tests passed finally; captured one shell-command failure, three initial test failures/errors, and one repaired assertion failure across attempts; paired selector/baseline are algorithmically equivalent; budget 20 seeds 42-51; retrospective audit; copied Step 9 and extended; standard library only; LOC is nonblank noncomment source and diff-added/replacement lines"

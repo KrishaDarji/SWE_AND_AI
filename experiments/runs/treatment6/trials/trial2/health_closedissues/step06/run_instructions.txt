@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (standard library only)
+
+Run the complete suite:
+python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step06/tests" -v
+
+Run the current demonstration:
+/usr/bin/time -p python3 "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step06/source/justify.py" "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+Run preserved demonstrations by replacing justify.py with summarize_runs.py, certify.py, flow.py, or blame.py in the source path above. Captures are saved as *_demo_output.txt.

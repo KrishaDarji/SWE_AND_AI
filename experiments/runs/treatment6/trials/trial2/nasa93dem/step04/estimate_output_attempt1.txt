@@ -1,0 +1,9 @@
+train_rows: 80
+test_rows: 13
+train_groups: 44
+test_groups: 11
+excluded_test_targets: 0
+test_mae: 888.696923076923
+baseline_mae: 558.0175961538462
+evaluation_records: [{'position': 57, 'idX': '56', 'actual': 1181.0, 'predicted': 115.2}, {'position': 47, 'idX': '46', 'actual': 2400.0, 'predicted': 220.8}, {'position': 83, 'idX': '82', 'actual': 480.0, 'predicted': 3546.4199999999996}, {'position': 26, 'idX': '25', 'actual': 210.0, 'predicted': 56.4}, {'position': 39, 'idX': '38', 'actual': 444.0, 'predicted': 61.2}, {'position': 44, 'idX': '43', 'actual': 1368.0, 'predicted': 299.0}, {'position': 84, 'idX': '83', 'actual': 599.0, 'predicted': 247.4}, {'position': 85, 'idX': '84', 'actual': 430.0, 'predicted': 247.4}, {'position': 90, 'idX': '89', 'actual': 648.0, 'predicted': 1105.0}, {'position': 64, 'idX': '63', 'actual': 162.0, 'predicted': 45.6}, {'position': 65, 'idX': '64', 'actual': 150.0, 'predicted': 45.6}, {'position': 43, 'idX': '42', 'actual': 2400.0, 'predicted': 14.16}, {'position': 21, 'idX': '20', 'actual': 60.0, 'predicted': 98.4}]
+exit_status=0

@@ -1,0 +1,26 @@
+....E.F.....
+======================================================================
+ERROR: test_empty_single_missing_zero_and_configuration_retention (test_flow.FlowTests.test_empty_single_missing_zero_and_configuration_retention)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step04/tests/test_flow.py", line 31, in test_empty_single_missing_zero_and_configuration_retention
+    self.assertIsNone(snap["best"]["MRE-"]["N_estimators"])
+                      ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'N_estimators'
+
+======================================================================
+FAIL: test_prefixes_against_independent_calculation_and_ties (test_flow.FlowTests.test_prefixes_against_independent_calculation_and_ties)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step04/tests/test_flow.py", line 22, in test_prefixes_against_independent_calculation_and_ties
+    self.assertEqual(snapshots[-1]["best"]["PRED40+"]["position"], 5)
+AssertionError: 4 != 5
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.008s
+
+FAILED (failures=1, errors=1)
+real 0.05
+user 0.04
+sys 0.01
+exit_status=1

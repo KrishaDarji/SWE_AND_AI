@@ -1,0 +1,9 @@
+Implemented Step 5 blame analysis in source/blame.py and preserved the authorized Step 4 source, tests, and demonstrations.
+
+The analysis ranks exactly N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, and Max_depth against MRE-. It uses marginal eta-squared (between-group SS / eligible-row total SS), treats criterion categorically, and groups numeric settings into up to three rank-balanced bins with midpoint boundaries defined from settings before outcomes are summarized. Each field reports eligible/excluded counts, groups, directional mean MRE-, reference mean, sums of squares, score, and undefined cases. Missing/nonfinite values, empty input, constant settings, constant outcomes, insufficient data, and deterministic tie ordering are handled explicitly. ACC+ and PRED40+ are excluded from blame predictors.
+
+The preserved suite plus new blame tests pass: 15 tests, 0 failures. Preserved demonstrations and the current blame demonstration were run against Health-ClosedIssues0000.csv; captures are in test_output.txt, runtime_summary.txt, runtime_flow.txt, runtime_certify.txt, and runtime_blame.txt. The blame demonstration measured 0.10 seconds real time. Earlier failed attempts remain in test_output_success.txt and failed_command_attempt.txt.
+
+EZR informed the implementation's standard-library streaming/summary conventions and ordered boundary handling. No Lua or third-party package was used.
+
+Known limitations: numeric grouping loses within-bin ordering and exact distances; eta-squared is marginal and can be affected by correlated settings, unequal group sizes, and other configuration differences. Scores do not establish causation, independent importance, statistical significance, or guaranteed improvement. Total source LOC is 393 and added/replacement LOC versus Step 4 is 80.

@@ -1,0 +1,177 @@
+import csv, os, tempfile, unittest, math
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).parents[1] / "source"))
+from x264_summary import summarize, split_groups, NearestNeighborModel, load, certify, _t_cdf, FlowAccumulator, flow, iter_measurements, blame, justify, render_justify, choose, recommend_fix, render_fix
+
+class SummaryTests(unittest.TestCase):
+    def run_case(self, text):
+        handle = tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False)
+        try:
+            handle.write(text); handle.close(); return summarize(handle.name)
+        finally:
+            os.unlink(handle.name)
+    def test_real_shape_and_stats(self):
+        result = summarize(os.environ["X264_DATASET"])
+        self.assertGreater(result["record_count"], 0); self.assertEqual(result["outcome"], "Performance-")
+        self.assertEqual(result["direction"], "lower is better"); self.assertEqual(result["invalid_outcomes"], 0)
+    def test_frequencies_statistics(self):
+        result = self.run_case("a,b,Performance-\n1,x,2\n1,y,4\n0,x,6\n")
+        self.assertEqual(result["frequencies"]["a"], {"1": 2, "0": 1})
+        self.assertEqual(result["outcome_stats"]["count"], 3); self.assertEqual(result["outcome_stats"]["median"], 4)
+    def test_missing_invalid(self):
+        result = self.run_case("a,Performance-\n?,\n1,bad\n")
+        self.assertEqual(result["missing_outcomes"], 1); self.assertEqual(result["invalid_outcomes"], 1)
+    def test_empty_header_only_and_no_outcome(self):
+        self.assertTrue(summarize(tempfile.NamedTemporaryFile(mode="w", delete=False).name)["missing_input"])
+        self.assertEqual(self.run_case("a,b\n")["record_count"], 0)
+        self.assertIsNone(self.run_case("a\n1\n")["outcome"])
+
+if __name__ == "__main__": unittest.main()
+
+class PredictionTests(unittest.TestCase):
+    def test_prediction_grouping_validation_and_zero(self):
+        text = "a,b,Performance-\n0,x,0\n0,x,2\n1,x,10\n1,y,12\n2,y,20\n"
+        handle = tempfile.NamedTemporaryFile(mode="w", delete=False)
+        try:
+            handle.write(text); handle.close(); _, rows, _ = load(handle.name)
+            train, test = split_groups(rows, ["a", "b"]); self.assertTrue(train and test)
+            model = NearestNeighborModel(["a", "b"], "Performance-").fit(train)
+            self.assertIsInstance(model.predict_one({"a": "0", "b": "x"}), float)
+            with self.assertRaises(ValueError): model.predict_one({"a": "0"})
+            self.assertEqual(model.predict_one({"a": "9", "b": "x"}), model.mean)
+        finally: os.unlink(handle.name)
+
+    def test_outcome_cannot_be_a_feature_and_zero_is_valid(self):
+        model = NearestNeighborModel(["a"], "Performance-").fit([{"a":"x", "Performance-":"0"}, {"a":"y", "Performance-":"2"}])
+        self.assertEqual(model.predict_one({"a":"x"}), 0)
+        with self.assertRaises(ValueError): model.predict_one({"a":"x", "Performance-":"9", "extra":"z"})
+
+class CertifyTests(unittest.TestCase):
+    def case(self, text, threshold=None):
+        h=tempfile.NamedTemporaryFile(mode="w", delete=False); h.write(text); h.close()
+        try: return certify(h.name, threshold)
+        finally: os.unlink(h.name)
+    def test_direction_variance_and_inference(self):
+        r=self.case("no_8x8dct,Performance-\n0,10\n0,14\n0,18\n1,4\n1,8\n1,12\n")
+        self.assertEqual(r["reference"]["variance"],16); self.assertEqual(r["candidate"]["mean"],8); self.assertLess(r["inference"]["difference"],0)
+        self.assertAlmostEqual(r["inference"]["standard_error"],math.sqrt(16/3+16/3))
+    def test_threshold_and_exclusions(self):
+        r=self.case("no_8x8dct,Performance-\n0,9\n0,11\n1,3\n1,5\n2,99\n1,bad\n",5)
+        self.assertTrue(r["practical"]["point_estimate_meets"]); self.assertEqual(r["excluded"],2)
+    def test_undefined_cases_and_probability(self):
+        r=self.case("no_8x8dct,Performance-\n0,1\n1,2\n"); self.assertIsNone(r["inference"])
+        r=self.case("no_8x8dct,Performance-\n0,1\n0,1\n1,1\n1,1\n"); self.assertIsNone(r["inference"])
+        self.assertAlmostEqual(_t_cdf(0,1),.5); self.assertGreater(_t_cdf(2,10),.9); self.assertLess(_t_cdf(-2,10),.1)
+
+class FlowTests(unittest.TestCase):
+    def case(self, text):
+        h=tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False); h.write(text); h.close()
+        self.addCleanup(lambda: os.unlink(h.name)); return h.name
+    def test_prefixes_and_edge_cases(self):
+        path=self.case("a,b,Performance-\nfirst,x,0\nsecond,y,4\nthird,z,4\nfourth,q,bad\nfifth,w,?\n")
+        acc=None; values=[]
+        for pos, header, row in iter_measurements(path):
+            acc = acc or FlowAccumulator(header); snap=acc.update(pos,row)
+            if row["Performance-"] in ("0", "4"): values.append(float(row["Performance-"]))
+            mean=sum(values)/len(values) if values else None
+            variance=sum((x-mean)**2 for x in values)/(len(values)-1) if len(values)>1 else None
+            self.assertEqual((snap["rows_seen"],snap["valid_count"],snap["mean"],snap["sample_variance"]), (pos,len(values),mean,variance))
+        self.assertEqual(snap["best"]["position"], 1); self.assertEqual(snap["best"]["configuration"], {"a":"first","b":"x"})
+        empty=FlowAccumulator().snapshot(); self.assertIsNone(empty["mean"]); self.assertIsNone(empty["sample_variance"]); self.assertIsNone(empty["best"])
+    def test_snapshot_independence(self):
+        acc=FlowAccumulator(["a", "Performance-"])
+        first=acc.update(1,{"a":"x", "Performance-":"2"}); acc.update(2,{"a":"y", "Performance-":"1"})
+        self.assertEqual(first["rows_seen"],1); self.assertEqual(first["best"]["value"],2.0)
+    def test_csv_integration(self):
+        result=flow(os.environ["X264_DATASET"]); self.assertGreater(result["rows_seen"],0); self.assertEqual(result["valid_count"],result["rows_seen"])
+
+class BlameTests(unittest.TestCase):
+    def case(self, text):
+        h=tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False); h.write(text); h.close()
+        self.addCleanup(lambda: os.unlink(h.name)); return blame(h.name)
+    def test_eta_directions_counts_and_population(self):
+        r=self.case("a,b,Performance-\n0,x,1\n0,y,3\n1,x,5\n1,y,7\n")
+        a=next(x for x in r["settings"] if x["setting"] == "a")
+        self.assertAlmostEqual(a["eta_squared"], .8); self.assertEqual(a["eligible"],4)
+        self.assertEqual(a["higher_mean_groups"],["1"]); self.assertEqual(a["lower_mean_groups"],["0"])
+        self.assertEqual([(g["value"],g["count"]) for g in a["groups"]],[('0',2),('1',2)])
+    def test_normalization_missing_nonfinite_and_per_setting_population(self):
+        r=self.case("a,b,Performance-\n0.0,x,1\n1,y,3\n?,z,5\n0,bad,NaN\n0,x,7\n")
+        a=next(x for x in r["settings"] if x["setting"] == "a"); b=next(x for x in r["settings"] if x["setting"] == "b")
+        self.assertEqual(a["eligible"],3); self.assertEqual(a["excluded"],2)
+        self.assertEqual(b["eligible"],4); self.assertEqual(b["excluded"],1)
+        self.assertEqual([g["value"] for g in a["groups"]],["0","1"])
+    def test_constant_empty_insufficient_ties_and_outcome_exclusion(self):
+        r=self.case("a,b,Performance-\n0,x,1\n0,x,1\n")
+        self.assertTrue(all(x["eta_squared"] is None for x in r["settings"]))
+        empty=self.case("a,Performance-\n"); self.assertIsNone(empty["settings"][0]["reference_mean"])
+        tied=self.case("z,a,Performance-\n0,1,1\n1,1,2\n")
+        self.assertEqual([x["setting"] for x in tied["settings"]], ["z","a"])
+        self.assertNotIn("Performance-", [x["setting"] for x in tied["settings"]])
+
+class JustifyTests(unittest.TestCase):
+    def case(self, text):
+        h=tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False); h.write(text); h.close()
+        self.addCleanup(lambda: os.unlink(h.name)); return justify(h.name)
+    def test_winner_tie_configuration_and_positions(self):
+        r=self.case("a,b,Performance-\n\n0,1,9\n2,1,0\n1,0,3\n0,0,0\n")
+        self.assertEqual(r["winner"]["position"],4); self.assertEqual(r["winner"]["configuration"], {"a":0,"b":0})
+        self.assertEqual(r["reference"], {"count":4,"median":1.5}); self.assertEqual(r["absolute_reduction"],1.5)
+    def test_exclusions_and_missing_nonfinite(self):
+        r=self.case("a,b,Performance-\n0,1,4\n?,1,2\n0,,1\n0,2,NaN\n0,1,\n")
+        self.assertEqual(r["winner"]["position"],1); self.assertEqual(r["excluded"]["invalid_settings"],2)
+        self.assertEqual(r["excluded"]["missing_outcome"],1); self.assertEqual(r["excluded"]["invalid_outcome"],1)
+    def test_zero_reference_and_empty_no_eligible(self):
+        r=self.case("a,Performance-\n0,0\n1,0\n"); self.assertIsNone(r["percentage_reduction"])
+        r=self.case("a,Performance-\n2,1\n?,0\n"); self.assertEqual(r["status"],"no eligible recommendation")
+        r=self.case(""); self.assertEqual(r["status"],"empty input")
+    def test_retrospective_and_association_language(self):
+        rendered=render_justify(self.case("a,Performance-\n0,2\n1,1\n"))
+        self.assertIn("retrospective selection from measured runs", rendered)
+        self.assertIn("global marginal associations", rendered); self.assertIn("not causal effects", rendered)
+
+class ChooseTests(unittest.TestCase):
+    def case(self, text):
+        h=tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False); h.write(text); h.close()
+        self.addCleanup(lambda: os.unlink(h.name)); return h.name
+    def test_budget_history_duplicates_and_ties(self):
+        path=self.case("a,b,Performance-\n0.0,1,5\n0,1,1\n1,0,1\n1,1,bad\n0,0,0\n")
+        r=choose(path, 3, 42, audit=True)
+        self.assertLessEqual(r["attempted_evaluations"], 3); self.assertEqual(r["candidate_count"],4)
+        self.assertEqual(len(r["evaluation_history"]), r["attempted_evaluations"])
+        self.assertTrue(r["duplicate_policy"].startswith("earliest"))
+        self.assertEqual(r["winner"]["position"], 5)
+        self.assertEqual(r["winner"]["configuration"], {"a":0,"b":0})
+    def test_reproducible_and_audit_cannot_change_winner(self):
+        path=self.case("a,Performance-\n0,9\n1,2\n0,1\n1,0\n")
+        a=choose(path, 2, 7); b=choose(path, 2, 7, audit=True)
+        self.assertEqual(a["winner"], b["winner"]); self.assertEqual(a["evaluation_history"], choose(path,2,7)["evaluation_history"])
+    def test_invalid_zero_oversized_empty_and_no_success(self):
+        path=self.case("a,Performance-\n0,missing\n1,NaN\n")
+        self.assertEqual(choose(path,0)["attempted_evaluations"],0)
+        self.assertEqual(choose(path,20)["status"], "no successful evaluations")
+        with self.assertRaises(ValueError): choose(path,-1)
+        empty=self.case("a,Performance-\n?,1\n")
+        self.assertEqual(choose(empty,20)["candidate_count"],0)
+        self.assertEqual(choose(path,20)["attempted_evaluations"],2)
+
+class FixTests(unittest.TestCase):
+    def case(self, text):
+        h=tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False); h.write(text); h.close(); self.addCleanup(lambda: os.unlink(h.name)); return recommend_fix(h.name)
+    def test_minimum_change_then_performance_then_position(self):
+        r=self.case("a,b,Performance-\n0,0,10\n1,1,1\n0,1,2\n1,0,2\n0.0,1.0,3\n")
+        self.assertEqual(r["candidate"]["position"],3); self.assertEqual(r["candidate"]["change_count"],1)
+        self.assertEqual(r["candidate"]["changed_fields"],[{"field":"b","old":0,"new":1}])
+        self.assertEqual(r["candidate"]["absolute_reduction"],8); self.assertEqual(r["candidate"]["percentage_reduction"],80)
+    def test_normalization_complete_and_exclusions_positions(self):
+        r=self.case("a,b,Performance-\n0.0,1.0,10\n?,1,1\n1,0,2\n0,1,NaN\n")
+        self.assertEqual(r["baseline"]["configuration"],{"a":0,"b":1}); self.assertEqual(r["candidate"]["position"],3)
+        self.assertEqual(r["excluded"]["invalid_or_incomplete_settings"],1); self.assertEqual(r["excluded"]["missing_or_nonfinite_outcome"],1)
+    def test_empty_invalid_zero_equal_and_none(self):
+        self.assertEqual(self.case("")["status"],"empty input")
+        self.assertEqual(self.case("a,Performance-\n?,1\n")["status"],"invalid baseline")
+        r=self.case("a,Performance-\n0,0\n1,-1\n"); self.assertEqual(r["status"],"ok"); self.assertIsNone(r["candidate"]["percentage_reduction"])
+        self.assertEqual(self.case("a,Performance-\n0,3\n1,3\n")["status"],"no improving candidate")
+    def test_render_mentions_retrospective(self):
+        self.assertIn("retrospective comparison", render_fix(self.case("a,Performance-\n0,2\n1,1\n")))

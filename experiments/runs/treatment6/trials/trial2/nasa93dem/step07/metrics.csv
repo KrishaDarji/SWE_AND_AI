@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,6,2,software project estimation,choose,406,55,1,0.02,3,"26 tests; choose timing only; cap=100 observed Effort-; all 22 descriptors and finite outcomes required; reuse Step 6 machinery/demos; EZR informed symbolic missing handling, header roles, historical summaries and explicit exclusions; standard library only; total/new LOC are source-only measures; three repaired non-test shell-command failures occurred during setup/verification"

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,6,2,video encoding,blame,334,52,1,0.03,2,"15 tests passed; blame timing only; reused Step 4 source/tests; new LOC counts nonblank noncomment source additions; EZR informed incremental means and sums of squares; standard-library only; 1 shell capture repair and 1 repaired test assertion; marginal association limitations documented"

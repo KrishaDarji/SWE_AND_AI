@@ -1,0 +1,26 @@
+.........................FF........
+======================================================================
+FAIL: test_same_population_reproducible_and_positions (test_race.RaceTests.test_same_population_reproducible_and_positions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step10/tests/test_race.py", line 14, in test_same_population_reproducible_and_positions
+    a=race(p,100,[42,43]); b=race(p,100,[42,43]); self.assertEqual(a,b); self.assertEqual(a['population']['feasible_count'],2); self.assertEqual(a['results'][0]['selector']['position'],4); self.assertEqual(a['results'][0]['baseline']['position'],4)
+                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 != 2
+
+======================================================================
+FAIL: test_secondary_directions (test_race.RaceTests.test_secondary_directions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step10/tests/test_race.py", line 24, in test_secondary_directions
+    p=self.data([row(1,1,1),row(2,3,4)]); x=race(p,seeds=[42])['results'][0]; self.assertEqual(x['acc_difference'],2); self.assertEqual(x['pred40_difference'],3)
+                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.0 != 2
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.014s
+
+FAILED (failures=2)
+real 0.10
+user 0.06
+sys 0.02

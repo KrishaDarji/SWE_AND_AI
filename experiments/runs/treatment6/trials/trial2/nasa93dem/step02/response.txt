@@ -1,0 +1,7 @@
+Implemented the Step 2 guess skill in source/nasa93_summary.py, preserving the Step 1 summary loader, demonstrations, and tests.
+
+The estimator uses exactly the 22 categorical descriptors, trims whitespace, represents missing cells as ?, keeps descriptor-identical projects in the same seeded (42) train/test split, and uses a standard-library symbolic Hamming-distance k-nearest-neighbor mean. This follows EZR's symbolic distance and leaf/mean prediction ideas without running Lua. Fitting uses training targets only; unseen categories are valid symbols. Supplied prediction configurations require exactly the 22 descriptor fields.
+
+The completed demonstration reports 80 training rows/44 groups, 13 test rows/11 groups, 0 excluded test targets, held-out MAE 888.696923076923, and training-mean baseline MAE 558.0175961538462. Timing was real 0.02 seconds for the prediction demonstration.
+
+Tests: 6 passed. The first test attempt exposed a project-object schema issue in predict; it was repaired and preserved in the attempt capture. Known limitations: categorical Hamming distance treats every descriptor mismatch equally, k=5 is fixed, and the split is group-level rather than stratified. Effort units are not inferred or invented.

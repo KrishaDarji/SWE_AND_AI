@@ -1,0 +1,69 @@
+score: eta_squared = between-group SS / total SS; undefined when no eligible rows or total SS is zero
+Marginal historical associations; lower Effort- is better. They are not causal or independent effects.
+ranked_associations:
+rank=1 descriptor=time eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=49614293.557384536 total_ss=118710596.37698925 eta_squared=0.4179432592506268
+  excluded={} categories={'h': {'count': 13, 'mean_effort': 734.0769230769231}, 'n': {'count': 54, 'mean_effort': 334.3888888888889}, 'vh': {'count': 18, 'mean_effort': 375.34444444444443}, 'xh': {'count': 8, 'mean_effort': 2964.2625}}
+  higher_mean_effort=['h', 'xh'] lower_mean_effort=['n', 'vh']
+rank=2 descriptor=rely eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=40616485.84886837 total_ss=118710596.37698925 eta_squared=0.34214709628686046
+  excluded={} categories={'h': {'count': 42, 'mean_effort': 483.54761904761904}, 'l': {'count': 2, 'mean_effort': 1296.0}, 'n': {'count': 39, 'mean_effort': 269.1589743589744}, 'vh': {'count': 10, 'mean_effort': 2467.21}}
+  higher_mean_effort=['l', 'vh'] lower_mean_effort=['h', 'n']
+rank=3 descriptor=cplx eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=22754483.53158019 total_ss=118710596.37698925 eta_squared=0.191680306780018
+  excluded={} categories={'h': {'count': 58, 'mean_effort': 315.2448275862069}, 'l': {'count': 3, 'mean_effort': 844.3333333333334}, 'n': {'count': 10, 'mean_effort': 494.2}, 'vh': {'count': 17, 'mean_effort': 1341.270588235294}, 'xh': {'count': 5, 'mean_effort': 1901.9}}
+  higher_mean_effort=['l', 'vh', 'xh'] lower_mean_effort=['h', 'n']
+rank=4 descriptor=stor eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=19419252.804137334 total_ss=118710596.37698925 eta_squared=0.163584830645342
+  excluded={} categories={'h': {'count': 10, 'mean_effort': 887.7}, 'n': {'count': 49, 'mean_effort': 323.24897959183676}, 'vh': {'count': 21, 'mean_effort': 555.1904761904761}, 'xh': {'count': 13, 'mean_effort': 1668.853846153846}}
+  higher_mean_effort=['h', 'xh'] lower_mean_effort=['n', 'vh']
+rank=5 descriptor=plex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=18107787.252077457 total_ss=118710596.37698925 eta_squared=0.15253724439705918
+  excluded={} categories={'h': {'count': 22, 'mean_effort': 1285.6863636363635}, 'l': {'count': 14, 'mean_effort': 346.85714285714283}, 'n': {'count': 53, 'mean_effort': 352.68301886792455}, 'vl': {'count': 4, 'mean_effort': 1559.25}}
+  higher_mean_effort=['h', 'vl'] lower_mean_effort=['l', 'n']
+rank=6 descriptor=data eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=17092949.0881311 total_ss=118710596.37698925 eta_squared=0.14398840212923386
+  excluded={} categories={'h': {'count': 17, 'mean_effort': 1522.1941176470589}, 'l': {'count': 37, 'mean_effort': 370.1621621621622}, 'n': {'count': 31, 'mean_effort': 502.4516129032258}, 'vh': {'count': 8, 'mean_effort': 365.125}}
+  higher_mean_effort=['h'] lower_mean_effort=['l', 'n', 'vh']
+rank=7 descriptor=acap eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=7195792.486474542 total_ss=118710596.37698925 eta_squared=0.06061626094121256
+  excluded={} categories={'h': {'count': 51, 'mean_effort': 876.1235294117647}, 'n': {'count': 32, 'mean_effort': 301.34375}, 'vh': {'count': 10, 'mean_effort': 374.5}}
+  higher_mean_effort=['h'] lower_mean_effort=['n', 'vh']
+rank=8 descriptor=pvol eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6864203.971447186 total_ss=118710596.37698925 eta_squared=0.0578230097475758
+  excluded={} categories={'h': {'count': 9, 'mean_effort': 557.4444444444445}, 'l': {'count': 65, 'mean_effort': 477.53846153846155}, 'n': {'count': 19, 'mean_effort': 1158.5947368421052}}
+  higher_mean_effort=['n'] lower_mean_effort=['h', 'l']
+rank=9 descriptor=pcap eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6818832.00866757 total_ss=118710596.37698925 eta_squared=0.05744080323725276
+  excluded={} categories={'h': {'count': 39, 'mean_effort': 921.623076923077}, 'n': {'count': 44, 'mean_effort': 348.70454545454544}, 'vh': {'count': 10, 'mean_effort': 678.4}}
+  higher_mean_effort=['h', 'vh'] lower_mean_effort=['n']
+rank=10 descriptor=sced eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6476101.44596233 total_ss=118710596.37698925 eta_squared=0.05455369312943366
+  excluded={} categories={'l': {'count': 34, 'mean_effort': 276.79411764705884}, 'n': {'count': 59, 'mean_effort': 824.7338983050848}}
+  higher_mean_effort=['n'] lower_mean_effort=['l']
+rank=11 descriptor=pmat eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=6021149.223717929 total_ss=118710596.37698925 eta_squared=0.05072124483813193
+  excluded={} categories={'h': {'count': 43, 'mean_effort': 791.5837209302325}, 'l': {'count': 20, 'mean_effort': 817.6600000000001}, 'n': {'count': 30, 'mean_effort': 255.96666666666667}}
+  higher_mean_effort=['h', 'l'] lower_mean_effort=['n']
+rank=12 descriptor=apex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=2745248.7699517375 total_ss=118710596.37698925 eta_squared=0.023125557900776195
+  excluded={} categories={'h': {'count': 46, 'mean_effort': 774.7021739130436}, 'l': {'count': 1, 'mean_effort': 648.0}, 'n': {'count': 34, 'mean_effort': 402.47058823529414}, 'vh': {'count': 12, 'mean_effort': 675.1666666666666}}
+  higher_mean_effort=['h', 'l', 'vh'] lower_mean_effort=['n']
+rank=13 descriptor=ltex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=549648.9131797239 total_ss=118710596.37698925 eta_squared=0.0046301588059940646
+  excluded={} categories={'h': {'count': 69, 'mean_effort': 662.0333333333334}, 'l': {'count': 6, 'mean_effort': 427.3333333333333}, 'n': {'count': 14, 'mean_effort': 587.2857142857143}, 'vl': {'count': 4, 'mean_effort': 401.0}}
+  higher_mean_effort=['h'] lower_mean_effort=['l', 'n', 'vl']
+rank=14 descriptor=tool eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=259858.66542298236 total_ss=118710596.37698925 eta_squared=0.0021890098555123858
+  excluded={} categories={'h': {'count': 10, 'mean_effort': 776.7}, 'n': {'count': 83, 'mean_effort': 606.0638554216868}}
+  higher_mean_effort=['h'] lower_mean_effort=['n']
+rank=15 descriptor=docu eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'n': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=16 descriptor=flex eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'h': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=17 descriptor=pcon eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'n': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=18 descriptor=prec eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'h': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=19 descriptor=resl eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'h': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=20 descriptor=ruse eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'n': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=21 descriptor=site eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'n': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]
+rank=22 descriptor=team eligible=93 excluded=0 reference_mean=624.4118279569893 between_ss=0.0 total_ss=118710596.37698925 eta_squared=0.0
+  excluded={} categories={'vh': {'count': 93, 'mean_effort': 624.4118279569893}}
+  higher_mean_effort=[] lower_mean_effort=[]

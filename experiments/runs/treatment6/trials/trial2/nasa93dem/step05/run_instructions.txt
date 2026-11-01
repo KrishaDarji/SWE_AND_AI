@@ -1,0 +1,14 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: /usr/bin/python3 (invoked as python3)
+
+Run the complete suite:
+python3 -m unittest discover -s '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/tests' -p 'test_*.py'
+
+Run demonstrations:
+python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/source/nasa93_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv'
+python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/source/nasa93_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --estimate
+python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/source/nasa93_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --certify
+python3 '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/source/nasa93_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --flow
+python3 /usr/bin/time -p '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/source/nasa93_summary.py' '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv' --blame
+
+Captured outputs are in this directory. test_output.txt and runtime_output.txt are the final successful captures; *_attempt01 files preserve the earlier failed test capture.

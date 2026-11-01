@@ -1,0 +1,9 @@
+Implemented Step 8 in source/nasa93_summary.py.
+
+Reused the authorized Step 7 implementation and demonstrations. choose now uses the seed-42 grouped split, earliest held-out baseline, training-only categorical-neighbor predictions, normalized 22-field descriptors, finite nonnegative caps, and minimum-change/prediction/position tie-breaks. It reports complete baseline/candidate descriptors, changed values, predictions, improvement, exclusions, and preserves retrospective auditing separately.
+
+The EZR references informed seeded grouping, symbolic categorical distance, and empirical summaries; no Lua or third-party package was run.
+
+Verification: 25 tests pass. NASA93 cap 100 reports baseline predicted Effort- 98.4 and recommends no change. Captures are in test_output.txt and runtime_output.txt; commands are in run_instructions.txt.
+
+Limitations: this is an observational model-based historical suggestion, not a causal prescription. Predicted feasibility does not guarantee actual effort or preserve size, quality, or other requirements; some descriptors may not be controllable. Invalid/incomplete baselines and insufficient data are distinguished, and unobserved configurations are never invented.

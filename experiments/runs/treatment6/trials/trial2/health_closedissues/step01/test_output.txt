@@ -1,0 +1,13 @@
+=== command: /usr/bin/python3 -m unittest discover -s .../tests -v ===
+=== stdout ===
+=== stderr ===
+test_invalid_missing_all_missing_and_duplicates (test_summarize_runs.SummaryTests) ... ok
+test_positions_malformed_empty_header_only (test_summarize_runs.SummaryTests) ... ok
+test_roles_stats_medians_and_categorical (test_summarize_runs.SummaryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+=== exit status ===
+0

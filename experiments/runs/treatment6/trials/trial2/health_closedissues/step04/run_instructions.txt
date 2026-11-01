@@ -1,0 +1,11 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step04
+Python interpreter: python3 (stdlib only)
+
+Run tests:
+python3 -m unittest discover -s tests -p 'test_*.py'
+Run flow demonstration:
+python3 source/flow.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Run preserved demonstrations:
+python3 source/summarize_runs.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+python3 source/certify.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Captured outputs: test_output.txt and runtime_output.txt. The failed first test capture is test_attempt_01_failed.txt.

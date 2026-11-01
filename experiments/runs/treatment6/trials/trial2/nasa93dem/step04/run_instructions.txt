@@ -1,0 +1,9 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step04
+Python interpreter: /usr/bin/python3 (invoked as python3)
+Tests: python3 -m unittest discover -s tests -v
+Summary demonstration: python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+Prediction demonstration: python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --estimate
+Certification demonstration: python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --certify
+Flow demonstration: /usr/bin/time -p python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --flow
+Successful captures: test_output.txt, summary_output_attempt1.txt, estimate_output_attempt1.txt, certify_output_attempt1.txt, runtime_output.txt; timing is in runtime_stderr_attempt1.txt.
+Failed/repaired attempt capture: test_stderr_attempt1.txt is the first test attempt's timing/stderr capture; one shell bookkeeping command failed because zsh reserves the variable name status, then the test capture was rerun successfully.

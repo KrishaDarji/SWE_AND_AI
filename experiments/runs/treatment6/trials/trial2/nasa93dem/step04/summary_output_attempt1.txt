@@ -1,0 +1,31 @@
+records: 93
+columns: idX, centerX, YearX, prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu, time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced, Kloc+, Effort-, Defects-, MonthsX
+roles: categorical=prec,flex,resl,team,pmat,rely,data,cplx,ruse,docu,time,stor,pvol,acap,pcap,pcon,apex,plex,ltex,tool,site,sced; metadata=idX,centerX,YearX,MonthsX; outcomes=Kloc+(maximize), Effort-(minimize), Defects-(minimize)
+CSV positions are 1-based physical lines including the header; blank rows are skipped. Duplicate ids: {'29': 2}
+prec frequencies: {'        h': 3, 'h': 90}
+flex frequencies: {'h': 93}
+resl frequencies: {'h': 93}
+team frequencies: {'vh': 93}
+pmat frequencies: {'h': 43, 'l': 20, 'n': 30}
+rely frequencies: {'h': 42, 'l': 2, 'n': 39, 'vh': 10}
+data frequencies: {'h': 17, 'l': 37, 'n': 31, 'vh': 8}
+cplx frequencies: {'h': 58, 'l': 3, 'n': 10, 'vh': 17, 'xh': 5}
+ruse frequencies: {'n': 93}
+docu frequencies: {'n': 93}
+time frequencies: {'h': 13, 'n': 54, 'vh': 18, 'xh': 8}
+stor frequencies: {'h': 10, 'n': 49, 'vh': 21, 'xh': 13}
+pvol frequencies: {'h': 9, 'l': 65, 'n': 19}
+acap frequencies: {'h': 51, 'n': 32, 'vh': 10}
+pcap frequencies: {'h': 39, 'n': 44, 'vh': 10}
+pcon frequencies: {'n': 93}
+apex frequencies: {'h': 46, 'l': 1, 'n': 34, 'vh': 12}
+plex frequencies: {'h': 22, 'l': 14, 'n': 53, 'vl': 4}
+ltex frequencies: {'h': 69, 'l': 6, 'n': 14, 'vl': 4}
+tool frequencies: {'h': 10, 'n': 83}
+site frequencies: {'n': 93}
+sced frequencies: {'l': 34, 'n': 59}
+Kloc+ (maximize): {'goal': 'maximize', 'count': 93, 'missing': 0, 'invalid': 0, 'nonfinite': 0, 'min': 0.9, 'max': 980.0, 'mean': 94.02204301075268, 'median': 47.5, 'sample_variance': 17848.41149251987, 'sample_stddev': 133.5979471867733}
+Effort- (minimize): {'goal': 'minimize', 'count': 93, 'missing': 0, 'invalid': 0, 'nonfinite': 0, 'min': 8.4, 'max': 8211.0, 'mean': 624.4118279569893, 'median': 252.0, 'sample_variance': 1290332.5693151006, 'sample_stddev': 1135.9280652026785}
+Defects- (minimize): {'goal': 'minimize', 'count': 93, 'missing': 0, 'invalid': 0, 'nonfinite': 0, 'min': 28.0, 'max': 50961.0, 'mean': 3761.7634408602153, 'median': 2007.0, 'sample_variance': 37761708.16082281, 'sample_stddev': 6145.055586471355}
+missing tokens: ['', '?', 'N/A', 'NA', 'None', 'null']; malformed rows are skipped and reported; categorical values are never parsed as numeric outcomes.
+exit_status=0

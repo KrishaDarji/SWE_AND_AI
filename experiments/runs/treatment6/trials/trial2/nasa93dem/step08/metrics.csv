@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,6,2,software project estimation,fix,389,62,1,0.03,1,"25 tests; timed current fix only; training-only candidates; cap 100 baseline 98.4 no change; Step 7 reuse; EZR seeded shuffle/symbolic distance/empirical summaries; LOC excludes tests/runners/Lua; one repaired attempt; observational limits"

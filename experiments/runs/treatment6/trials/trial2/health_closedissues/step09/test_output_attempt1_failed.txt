@@ -1,0 +1,14 @@
+..................F............
+======================================================================
+FAIL: test_prefixes_against_independent_calculation_and_ties (test_flow.FlowTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step09/tests/test_flow.py", line 19, in test_prefixes_against_independent_calculation_and_ties
+    self.assertEqual(snap["outcomes"][name]["sample_variance"], variance)
+AssertionError: 12.333333333333334 != 12.333333333333332
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.017s
+
+FAILED (failures=1)
+test_exit=1

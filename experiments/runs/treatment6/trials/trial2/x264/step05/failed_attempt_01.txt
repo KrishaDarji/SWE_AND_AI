@@ -1,0 +1,3 @@
+failed_attempt: combined demo capture
+exit_status=1
+reason: shell unmatched quote before execution

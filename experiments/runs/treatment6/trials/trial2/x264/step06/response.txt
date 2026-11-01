@@ -1,0 +1,11 @@
+Implemented Step 6 justify in source/x264_summary.py and preserved the Step 5 source/tests.
+
+Result on X264_AllMeasurements.csv: retrospective selection from measured runs chose original nonblank row 71, Performance- 244.23, with the complete binary encoder configuration retained. There were 1,152 eligible rows and no exclusions. The finite observed reference median was 452.7785 across 1,152 rows; absolute reduction was 208.5485 and percentage reduction was 46.059717941554204%.
+
+Added justify handling for empty input, unavailable outcomes, missing/nonfinite outcomes, invalid or incomplete binary settings, no eligible recommendation, earliest ties, original positions, zero reference percentages, and explicit exclusion counts. Reused summary and blame machinery, while labeling associations as global marginal historical associations—not causal effects or local contributions. The output states that the result is best only among eligible measured historical configurations and does not guarantee future performance.
+
+Preserved summary, prediction, certify, flow, and blame demonstrations. Added 4 justify test methods covering winner/ties/positions/configuration retention, exclusions, zero/empty/no-eligible cases, and retrospective/association wording. The full suite passed: 19 tests.
+
+The EZR reference informed the finite best-row/earliest-selection pattern and summary/grouping style; no Lua was run and no third-party packages were used. Source has 408 nonblank, noncomment Python lines; 76 added/replacement lines versus Step 5. Successful justify timing was 0.03 seconds real time.
+
+See run_instructions.txt for commands, test_output.txt and runtime_output.txt for captures, metrics.csv for measurements, and source/x264_summary.py plus tests/test_x264_summary.py for the complete implementation and tests.

@@ -1,0 +1,9 @@
+Implemented Treatment 6, Trial 2, Dataset 1, Step 4 in the required Step 4 directory.
+
+Reused the Step 3 source and tests, preserving summary, prediction, and certify demonstrations. Added a standard-library-only lazy CSV iterator and FlowAccumulator using Welford’s numerically stable mean/M2 update. Each snapshot contains rows seen, valid/missing/invalid outcomes, mean, sample variance, and an independent copy of the earliest best configuration. Zero is valid; nonfinite and invalid outcomes are excluded from statistics. Positions count nonblank data rows from 1; blank rows are ignored; missing settings are retained as empty strings.
+
+The EZR reference informed the streaming CSV/row-processing shape and incremental summary approach; no Lua was run.
+
+Verification: all 12 tests passed. The flow demonstration processed 1,152 rows, with mean 461.7535963541664, sample variance 26426.313365992526, and best value 244.23 at position 71. Its measured /usr/bin/time -p real time was 0.03 seconds. One initial shell capture command failed before running tests and is preserved; error_count is 1.
+
+See run_instructions.txt for commands and the captured logs. Known limitations: this reports historical arrival-order summaries only; it does not infer chronology, causality, convergence, stopping guarantees, or future performance.

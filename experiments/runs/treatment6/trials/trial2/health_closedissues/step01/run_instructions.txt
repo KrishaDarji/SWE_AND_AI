@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Python interpreter: /usr/bin/python3
+
+Run tests:
+/usr/bin/python3 -m unittest discover -s /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step01/tests -v
+
+Run implementation:
+/usr/bin/time -p /usr/bin/python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step01/source/summarize_runs.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv
+
+The implementation uses only Python standard-library modules. Parsing follows the authorized EZR ideas of CSV row streaming, typed cells, column-role metadata, sorted/statistical summaries, and reusable small summary functions; no Lua was run.

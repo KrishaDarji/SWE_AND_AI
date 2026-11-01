@@ -1,0 +1,50 @@
+test_boundaries_missing_and_per_field_population (test_blame.BlameTests.test_boundaries_missing_and_per_field_population) ... ok
+test_constant_empty_insufficient_and_tie (test_blame.BlameTests.test_constant_empty_insufficient_and_tie) ... ok
+test_known_eta_direction_and_only_fields (test_blame.BlameTests.test_known_eta_direction_and_only_fields) ... ok
+test_fixed_groups_difference_variance_and_welch (test_certify.CertifyTests.test_fixed_groups_difference_variance_and_welch) ... ok
+test_missing_absent_insufficient_and_zero_se (test_certify.CertifyTests.test_missing_absent_insufficient_and_zero_se) ... ok
+test_t_references_and_probability_bounds (test_certify.CertifyTests.test_t_references_and_probability_bounds) ... ok
+test_threshold_validation_and_independent_secondary_counts (test_certify.CertifyTests.test_threshold_validation_and_independent_secondary_counts) ... ok
+test_cap_and_complete_retention (test_choose.ChooseTests.test_cap_and_complete_retention) ... ok
+test_each_tiebreaker (test_choose.ChooseTests.test_each_tiebreaker) ... ok
+test_invalid_and_no_feasible (test_choose.ChooseTests.test_invalid_and_no_feasible) ... ok
+test_missing_outcome_and_malformed_counts (test_choose.ChooseTests.test_missing_outcome_and_malformed_counts) ... ok
+test_invalid_baseline_empty_and_no_improvement (test_fix.FixTests.test_invalid_baseline_empty_and_no_improvement) ... FAIL
+test_min_changes_before_magnitude_and_ties (test_fix.FixTests.test_min_changes_before_magnitude_and_ties) ... ok
+test_missing_candidate_excluded (test_fix.FixTests.test_missing_candidate_excluded) ... ok
+test_numeric_normalization_and_categorical (test_fix.FixTests.test_numeric_normalization_and_categorical) ... ok
+test_worsening_report_and_positions_after_malformed (test_fix.FixTests.test_worsening_report_and_positions_after_malformed) ... ok
+test_empty_single_missing_zero_and_configuration_retention (test_flow.FlowTests.test_empty_single_missing_zero_and_configuration_retention) ... ok
+test_one_pass_lazy_and_csv_malformed (test_flow.FlowTests.test_one_pass_lazy_and_csv_malformed) ... ok
+test_prefixes_against_independent_calculation_and_ties (test_flow.FlowTests.test_prefixes_against_independent_calculation_and_ties) ... ok
+test_each_reference_population_and_association_label (test_justify.JustifyTests.test_each_reference_population_and_association_label) ... ok
+test_finite_eligibility_positions_and_even_medians (test_justify.JustifyTests.test_finite_eligibility_positions_and_even_medians) ... ok
+test_missing_and_empty (test_justify.JustifyTests.test_missing_and_empty) ... ok
+test_order_and_full_configuration (test_justify.JustifyTests.test_order_and_full_configuration) ... ok
+test_grouping_prediction_and_schema (test_summarize_runs.SummaryTests.test_grouping_prediction_and_schema) ... ok
+test_invalid_missing_all_missing_and_duplicates (test_summarize_runs.SummaryTests.test_invalid_missing_all_missing_and_duplicates) ... ok
+test_positions_malformed_empty_header_only (test_summarize_runs.SummaryTests.test_positions_malformed_empty_header_only) ... ok
+test_roles_stats_medians_and_categorical (test_summarize_runs.SummaryTests.test_roles_stats_medians_and_categorical) ... ok
+test_zero_invalid_and_insufficient (test_summarize_runs.SummaryTests.test_zero_invalid_and_insufficient) ... ok
+
+======================================================================
+FAIL: test_invalid_baseline_empty_and_no_improvement (test_fix.FixTests.test_invalid_baseline_empty_and_no_improvement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/tests/test_fix.py", line 21, in test_invalid_baseline_empty_and_no_improvement
+    self.assertEqual(run([])["status"],"empty"); self.assertEqual(run([["bad"]])["status"],"invalid_baseline"); self.assertEqual(run([self.row(.5,.5,.5),self.row(.5,.9,.9)])["status"],"no_improvement")
+                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'empty' != 'invalid_baseline'
+- empty
++ invalid_baseline
+
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.013s
+
+FAILED (failures=1)
+real 0.06
+user 0.04
+sys 0.01
+
+EXIT_STATUS=1

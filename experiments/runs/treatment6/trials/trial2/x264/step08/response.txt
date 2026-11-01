@@ -1,0 +1,5 @@
+Implemented Step 8 in source/x264_summary.py and preserved the Step 7 source/tests in this snapshot. Added recommend_fix/render_fix and the fix CLI demonstration. The implementation compares the first nonblank row with complete measured binary configurations, normalizes 0/0.0 and 1/1.0, ranks by changed-field count, Performance-, and original position, and reports exclusions and reductions.
+
+EZR informed the explicit finite-value handling, stable row-order tracking, and retrospective/observational caveat; no Lua or third-party package was used. Known limitation: this is a historical comparison and change count is only a simplicity proxy; it does not establish causation or future performance.
+
+All 26 tests pass. The current fix demonstration selected position 65, changing no_8x8dct from 0 to 1: Performance- 268.72 to 254.587, an absolute reduction of 14.133 and 5.259377791009243%. See run_instructions.txt for commands and captured logs. Complete source and tests are in source/x264_summary.py and tests/test_x264_summary.py.

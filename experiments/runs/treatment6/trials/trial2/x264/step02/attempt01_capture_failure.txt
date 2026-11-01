@@ -1,0 +1,1 @@
+Attempt 1 failed before the requested captures: shell redirection used repository-relative step02/ paths, which do not exist. Exit statuses: tests=1, demo=1, summary=1. No required output file was overwritten.

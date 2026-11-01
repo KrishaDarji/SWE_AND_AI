@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+3,6,2,video encoding,certify,210,67,1,0.02,1,"9 tests passed; runtime is successful certify only; reused Step 2 source/tests and standard-library summary/prediction; EZR informed minimize trailing- outcome and summary conventions; LOC excludes tests/runners/Lua; one repaired fixture error preserved as failed_attempt_1; observational historical configurations, no causal guarantee"

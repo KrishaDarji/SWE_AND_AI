@@ -1,0 +1,9 @@
+Implemented the Step 4 flow in `source/flow.py` and preserved the authorized Step 3 `summarize_runs.py`, `certify.py`, and tests.
+
+Flow consumes CSV validation results one row at a time, uses Welford updates for independent MRE-/ACC+/PRED40+ statistics, retains best values with CSV positions and all five configuration fields, preserves earliest ties, and returns detached snapshots. Missing/nonfinite outcomes are excluded only from their own outcome. Malformed rows increment `rows_seen` and contribute no outcomes; header is position 1 and data starts at position 2. Missing configuration fields are retained as `None`.
+
+The full suite passes: 12 tests. The real-dataset flow demonstration saw 10,000 rows; final means/variances and best configurations are captured in `runtime_output.txt`. Preserved summary and certification demonstrations also ran successfully.
+
+EZR was used only as authorized background for the stateful streaming/statistical-summary approach. Python standard library only; no model metadata, convergence claim, or stopping guarantee was added.
+
+Known limitations: CSV rows with wrong field counts are skipped, blank/malformed conventions are explicit, and statistics describe observed arrivals rather than chronology or causal model quality. Captures, commands, metrics, and the failed repaired attempt are documented in the required files.

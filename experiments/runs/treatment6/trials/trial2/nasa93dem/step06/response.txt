@@ -1,0 +1,7 @@
+Implemented Step 6 justify in source/nasa93_summary.py.
+
+Reused the authorized Step 5 source and tests, including the seed-42 grouped split, 22 categorical descriptors, symbolic normalization, categorical Hamming-distance model, summary, estimate, certify, flow, and blame demonstrations. The EZR reference informed the explicit column roles, robust missing/nonfinite handling, grouped summaries, and transparent association reporting; no Lua or third-party package was used.
+
+Added justify(), exact training-neighbor evidence with original positions and idX values, training-only baseline and marginal associations, held-out query selection by earliest original position, optional retrospective audit, CLI support, and new tests. The current demonstration selects position 21/idX 20, reports predicted Effort- 98.4 versus training mean 594.22875, and reproduces 98.4 from neighbor efforts 60, 324, 24, 36, and 48. The actual held-out effort, 60.0, appears only in the final retrospective audit.
+
+Tests: 21 pass. A repaired first attempt is preserved in test_output_attempt01.txt and related files. See run_instructions.txt for commands and captured outputs. Source LOC is 352; added/replacement LOC versus Step 5 is 73. Runtime metric is the measured /usr/bin/time -p real time for the successful justify demonstration.

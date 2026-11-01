@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,6,2,software project estimation,flow,224,42,1,0.02,1,"13 tests passed; 1 warm-up, 92 evaluated, 0 invalid outcomes; model MAE=466.88630434782607, baseline MAE=481.9114197824729; timing is successful current flow demonstration only; copied Step 3 source/tests and added flow; new_loc is added diff lines, total_loc excludes tests; EZR categorical neighbor/grouped-distance ideas informed reuse; missing descriptors normalize to symbols; one repaired shell bookkeeping failure counted"

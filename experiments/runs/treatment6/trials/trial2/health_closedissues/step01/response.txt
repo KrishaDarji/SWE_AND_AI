@@ -1,0 +1,11 @@
+Implemented and verified the reusable Python standard-library summarizer in source/summarize_runs.py, with synthetic-fixture tests in tests/test_summarize_runs.py.
+
+It reports the requested 5 configuration fields, treats criterion as categorical, reports finite outcome statistics and minimize/maximize directions, preserves original CSV positions, separates malformed rows, distinguishes normalized repeated configurations from exact duplicate rows, and explicitly handles empty/header-only input, missing columns/values, and invalid/nonfinite numbers. Missing tokens are blank, na, n/a, nan, null, none, ?, and missing. Numeric summaries use float normalization; criterion whitespace is stripped. Dispersion is sample standard deviation and sample variance, requiring at least two finite values. Missing/invalid settings are excluded from complete configuration keys; missing outcomes are excluded only from that outcome's finite summary.
+
+The demonstration describes these as model-configuration quality measurements, not an issue-closure timeline. The authorized EZR machinery adapted was its CSV ingestion, cell coercion, column metadata, reusable accumulation, sorting/statistical summary, and key/group counting concepts; no Lua or third-party package was used.
+
+Tests: 3 tests, all passed. Demonstration: passed; /usr/bin/time -p real=0.21 seconds. No failed commands or repaired failures occurred.
+
+Known limitations: CSV rows with a field-count mismatch are reported as malformed and excluded; missing header columns are reported through the available-column roles and produce no values for absent fields; exact duplicate-row counting is based on raw CSV fields, while repeated configurations use normalized complete settings. Standard-library statistics provide descriptive summaries only; no model metadata or metric formulas are inferred.
+
+Commands and absolute paths are in run_instructions.txt. Captured outputs are in test_output.txt and runtime_output.txt.

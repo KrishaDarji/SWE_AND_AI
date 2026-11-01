@@ -1,0 +1,9 @@
+Implemented Step 8 in source/fix.py and preserved the six Step 7 source modules and their tests.
+
+The fix uses the first original CSV data row as the baseline. A blank or malformed first row is reported as invalid_baseline and is never replaced by a later row. Candidates require complete settings and finite MRE-, ACC+, and PRED40+. Numeric settings are compared by finite float value; criterion is normalized case-insensitively. There is no compute cap.
+
+Observed result on Health-ClosedIssues0000.csv: baseline position 2; selected position 1946. The selected configuration changes N_estimators 40.0 -> 10.0 and Min_impurity_decrease 2.75 -> 5.0, for 2 changed fields. MRE- changes 0.3148748159057436 -> 0.2673048600883652, an absolute improvement of 0.04756995581737844. ACC+ worsens by -0.06568407561678946; PRED40+ changes by 0.0. There were 9,999 candidate rows, 736 strict improvements, 0 excluded candidates, and 0 malformed rows.
+
+Selection is ordered by fewest changed fields, lowest MRE-, highest ACC+, highest PRED40+, then earliest original CSV position. This is a retrospective comparison of observed rows; change count is a simplicity proxy and historical differences do not prove causation or guarantee future performance. No units, ranges, costs, or unobserved outcomes are inferred.
+
+All 28 preserved and new tests pass. The EZR reference informed the conservative standard-library, explicit missing/nonfinite handling and retrospective summary style; no Lua was run and no third-party package was used. Total source LOC is 597; new/replacement LOC is 61 for fix.py. The successful current demonstration took real 0.09 seconds under /usr/bin/time -p.

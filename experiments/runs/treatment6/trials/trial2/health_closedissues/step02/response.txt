@@ -1,0 +1,11 @@
+Implemented Treatment 6 / Trial 2 / Dataset 3 / Step 2 in this snapshot.
+
+Reused the Step 1 summary source and tests, preserving its summary demonstration. Added a standard-library grouped 80/20 split with seed 42, normalized configuration grouping, separate MRE- and ACC+ evaluation, MAE and training-mean baselines, original-row-aware records, and exact five-field prediction validation. Numeric settings are normalized as finite floats; criterion is whitespace-normalized categorical equality. Missing/nonfinite settings are excluded from complete configuration groups, and unseen/missing categorical values follow the tree’s fallback branch. Outcomes are excluded from predictors.
+
+The predictor is a deterministic CART-like regression tree using numeric thresholds and categorical equality, with a training-mean leaf fallback for the large dataset. This follows the authorized EZR reference’s seeded randomness and recursive numeric/categorical split ideas without running Lua or using third-party packages.
+
+Actual demonstration metrics: MRE- held-out MAE 0.16904973170195345, baseline 0.16904973170195345; ACC+ held-out MAE 0.09081883843003224, baseline 0.09081883843003224. The successful prediction demonstration took 0.15 seconds real time.
+
+Run from the snapshot directory using the commands in run_instructions.txt. All required artifacts are present: prompt.txt, response.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt.
+
+Limitations: invalid target cells are excluded per target; insufficient complete configuration groups raise ValueError; the large-dataset fallback is intentionally conservative and is not claimed to outperform the baseline. No unseen-evaluation guarantee or resource-cost claim is made.

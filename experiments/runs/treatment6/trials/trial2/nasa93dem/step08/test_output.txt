@@ -1,0 +1,31 @@
+test_constant_outcome_undefined_and_ties_deterministic (test_blame.BlameTests.test_constant_outcome_undefined_and_ties_deterministic) ... ok
+test_exact_predictors_and_exclusions (test_blame.BlameTests.test_exact_predictors_and_exclusions) ... ok
+test_known_eta_means_ss_and_directions (test_blame.BlameTests.test_known_eta_means_ss_and_directions) ... ok
+test_missing_effort_and_descriptor_have_per_field_populations (test_blame.BlameTests.test_missing_effort_and_descriptor_have_per_field_populations) ... ok
+test_direction_stats_and_inference (test_certify.CertifyTests.test_direction_stats_and_inference) ... ok
+test_missing_absent_insufficient_zero_se (test_certify.CertifyTests.test_missing_absent_insufficient_zero_se) ... ok
+test_t_reference_values (test_certify.CertifyTests.test_t_reference_values) ... ok
+test_threshold_and_validation (test_certify.CertifyTests.test_threshold_and_validation) ... ok
+test_exact_cap_and_already_feasible (test_choose.ChooseTests.test_exact_cap_and_already_feasible) ... ok
+test_invalid_caps_and_insufficient_data (test_choose.ChooseTests.test_invalid_caps_and_insufficient_data) ... ok
+test_minimum_change_and_complete_report (test_choose.ChooseTests.test_minimum_change_and_complete_report) ... ok
+test_missing_baseline (test_choose.ChooseTests.test_missing_baseline) ... ok
+test_current_and_future_outcomes_do_not_change_earlier_prediction (test_flow.FlowTests.test_current_and_future_outcomes_do_not_change_earlier_prediction) ... ok
+test_invalid_missing_nonfinite_zero_and_positions (test_flow.FlowTests.test_invalid_missing_nonfinite_zero_and_positions) ... ok
+test_prefix_order_warmup_means_and_same_evaluable_arrivals (test_flow.FlowTests.test_prefix_order_warmup_means_and_same_evaluable_arrivals) ... ok
+test_duplicate_identifiers_and_audit_label (test_justify.JustifyTests.test_duplicate_identifiers_and_audit_label) ... ok
+test_held_out_effort_cannot_change_prediction_or_explanation (test_justify.JustifyTests.test_held_out_effort_cannot_change_prediction_or_explanation) ... ok
+test_missing_unseen_and_schema_policy (test_justify.JustifyTests.test_missing_unseen_and_schema_policy) ... ok
+test_real_query_and_evidence_reproduce_prediction (test_justify.JustifyTests.test_real_query_and_evidence_reproduce_prediction) ... ok
+test_empty_header_malformed_duplicates_positions (test_nasa93_summary.Tests.test_empty_header_malformed_duplicates_positions) ... ok
+test_exact_fields_grouping_and_reproducible_split (test_nasa93_summary.Tests.test_exact_fields_grouping_and_reproducible_split) ... ok
+test_invalid_nonfinite_and_insufficient_groups (test_nasa93_summary.Tests.test_invalid_nonfinite_and_insufficient_groups) ... ok
+test_model_schema_missing_zero_and_unseen (test_nasa93_summary.Tests.test_model_schema_missing_zero_and_unseen) ... ok
+test_real_dataset_roles_and_counts (test_nasa93_summary.Tests.test_real_dataset_roles_and_counts) ... ok
+test_stats_median_variance_missing_nonfinite_invalid (test_nasa93_summary.Tests.test_stats_median_variance_missing_nonfinite_invalid) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.013s
+
+OK
+exit_status=0

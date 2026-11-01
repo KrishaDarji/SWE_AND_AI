@@ -1,0 +1,169 @@
+You are running Treatment 6, Trial 2, Dataset 2, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: software project estimation
+- Dataset: nasa93dem.csv
+- Current skill: guess
+- Current requirement: Estimate project effort from project characteristics.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step01/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step01/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step02/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent nasa93dem directory.
+- Write only inside the current Step 2 directory.
+
+Allowed references:
+- The NASA93 dataset and the two EZR files listed above.
+- The listed Step 1 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not reuse X264 code or other trials' implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable existing machinery.
+- Preserve earlier functions, tests, and the summary demonstration.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement guess only; do not implement later skills.
+
+Implementation:
+1. Predict Effort- using exactly these 22 categorical descriptors:
+   prec, flex, resl, team, pmat, rely, data, cplx, ruse, docu,
+   time, stor, pvol, acap, pcap, pcon, apex, plex, ltex, tool, site, sced.
+
+2. Exclude idX, centerX, YearX, MonthsX, Kloc+, Effort-, and Defects-
+   from predictor features.
+   Do not assign numeric distances to alphabetical category ordering.
+   Normalize surrounding whitespace consistently.
+
+3. Use a reproducible approximately 80/20 train/test split with seed 42.
+   Keep identical normalized descriptor configurations together.
+   Require nonempty training and test groups.
+   Fit all preprocessing and prediction machinery on training data only.
+
+4. Choose and explain a standard-library prediction method informed by
+   the authorized EZR reference.
+   Define missing-descriptor and unseen-category handling consistently
+   for fitting and prediction.
+   Do not use held-out outcomes or settings to fit preprocessing.
+
+5. Report training/test row and descriptor-group counts, excluded target
+   counts, held-out MAE, and the MAE of a training-mean baseline.
+   Evaluate only finite observed Effort- values. Zero is valid.
+   Handle no usable training targets or no evaluable test targets explicitly.
+   The predictor is not required to outperform the baseline.
+   Do not invent effort units.
+
+6. Support prediction for a supplied configuration containing exactly the
+   22 descriptor fields. Validate missing and extra fields.
+   Distinguish schema errors from an explicitly supported missing cell value.
+   Distinguish the held-out model from any separately fitted all-history model.
+
+7. Preserve original project positions and idX values in evaluation records.
+   idX is not unique and must not be used as the sole project identity.
+
+8. Provide runnable prediction and preserved summary demonstrations.
+
+Tests:
+- Preserve and run all previous tests.
+- Check predictions, MAE, and baseline calculations using independent
+  expected values.
+- Verify exact predictor fields and exclusion of metadata/outcomes.
+- Test reproducible splitting and actual repeated-descriptor grouping.
+- Verify changing held-out outcomes cannot change fitted predictions,
+  preprocessing, or the training-mean baseline.
+- Verify held-out settings do not fit preprocessing.
+- Test whitespace normalization, missing cells, unseen categories,
+  exact supplied-schema validation, invalid/nonfinite targets, valid zero,
+  duplicate identifiers, and insufficient groups.
+- Preserve the copied tests' dataset-location requirements.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the prediction demonstration, and the preserved
+summary demonstration. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory and Python interpreter
+in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=2, treatment=6, trial=2, domain=software project estimation, skill=guess.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 1 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current prediction demonstration only, excluding tests and the summary.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, evaluation metrics, reuse, LOC method,
+  EZR influence, assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

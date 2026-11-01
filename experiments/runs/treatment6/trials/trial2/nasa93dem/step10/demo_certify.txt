@@ -1,0 +1,9 @@
+comparison: candidate tool=h minus reference tool=n; primary outcome=Effort- (lower is better)
+n: {'count': 83, 'mean': 606.0638554216868, 'sample_variance': 1387541.9952630033}
+h: {'count': 10, 'mean': 776.7, 'sample_variance': 519143.78888888884}
+difference: 170.6361445783133
+inference: {'status': 'defined', 'standard_error': 261.97662553325733, 'df': 15.552580855698572, 't': 0.6513411043102829, 'p_two_sided': 0.5243346705603107, 'ci95': (-386.03080772633655, 727.3030968829631)}
+threshold: 60.60638554216868
+practical: {'point_estimate_meets': False, 'entire_ci_supports': False}
+
+EXIT_STATUS=0

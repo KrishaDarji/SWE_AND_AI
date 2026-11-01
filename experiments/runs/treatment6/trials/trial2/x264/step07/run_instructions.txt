@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+
+Run tests:
+X264_DATASET="$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" python3 -m unittest discover -s "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step07/tests" -p 'test_*.py'
+
+Run choose:
+python3 "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step07/source/x264_summary.py" "$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" choose
+
+Run preserved demos by replacing DATASET with the absolute dataset path and using: summary (omit skill), predict, certify, flow, blame, or justify.
+Captures are in runtime_output.txt, test_output.txt, test_output_attempt01.txt, choose_stdout.txt, and choose_timing.txt.

@@ -1,0 +1,12 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+
+Run preserved and new tests:
+X264_DATASET="$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" python3 -m unittest discover -s "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests" -p 'test_*.py'
+
+Run demonstrations:
+python3 "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/source/x264_summary.py" "$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+python3 "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/source/x264_summary.py" "$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" predict
+python3 "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/source/x264_summary.py" "$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" certify
+/usr/bin/time -p python3 "$PWD/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/source/x264_summary.py" "$PWD/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv" flow
+
+Captured logs: test_output.txt, runtime_output.txt, and demo_summary.txt, demo_predict.txt, demo_certify.txt. Failed/repair attempts are preserved as test_output_attempt1.txt and test_output_attempt2.txt; the successful suite is test_output_attempt3.txt.

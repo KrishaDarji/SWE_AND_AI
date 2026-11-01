@@ -1,0 +1,8 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step08
+Python interpreter: /usr/bin/python3 (standard library only)
+
+Tests: python3 -m unittest discover -s tests -p 'test_*.py' -v
+Demonstrations: python3 source/nasa93_summary.py DATASET --estimate/--certify/--flow/--blame/--justify
+Fix demonstration: /usr/bin/time -p python3 source/nasa93_summary.py DATASET --choose --cap 100
+Replace DATASET with /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv.
+Captured stdout, stderr, statuses, and timing are in test_output.txt and runtime_output.txt.

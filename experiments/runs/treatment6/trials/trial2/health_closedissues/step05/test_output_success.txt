@@ -1,0 +1,18 @@
+F..............
+======================================================================
+FAIL: test_boundaries_missing_and_per_field_population (test_blame.BlameTests.test_boundaries_missing_and_per_field_population)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step05/tests/test_blame.py", line 12, in test_boundaries_missing_and_per_field_population
+    p=fixture("1,0,0,1,a,1,0,1\n2,0,0,2,a,2,0,2\n3,0,0,NA,b,3,1,3\ninf,0,0,4,b,4,1,4\n"); r=rank_associations(p); n=next(x for x in r["fields"] if x["field"]=="N_estimators"); self.assertEqual(n["eligible"],2); self.assertEqual(n["excluded"],2); self.assertTrue(n["boundaries"]); self.assertEqual(next(x for x in r["fields"] if x["field"]=="criterion")["eligible"],2); os.unlink(p)
+                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 != 2
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.009s
+
+FAILED (failures=1)
+real 0.05
+user 0.04
+sys 0.01
+TEST_EXIT_STATUS=

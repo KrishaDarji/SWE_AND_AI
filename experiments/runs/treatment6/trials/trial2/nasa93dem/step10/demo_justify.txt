@@ -1,0 +1,38 @@
+JUSTIFICATION (prediction and explanation precede any audit)
+query: {'position': 21, 'idX': '20', 'descriptors': {'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'n', 'rely': 'n', 'data': 'l', 'cplx': 'h', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'xh', 'pvol': 'l', 'acap': 'h', 'pcap': 'n', 'pcon': 'n', 'apex': 'h', 'plex': 'n', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'n'}}
+training_rows: 80 test_rows: 13 training_groups: 44 test_groups: 11
+predicted_effort: 98.4
+training_mean_baseline: 594.22875
+neighbors_selected_by_distance_then_effort:
+  {'distance': 2, 'effort': 60.0, 'position': 19, 'idX': '18'}
+  {'distance': 2, 'effort': 324.0, 'position': 18, 'idX': '17'}
+  {'distance': 3, 'effort': 24.0, 'position': 12, 'idX': '11'}
+  {'distance': 3, 'effort': 36.0, 'position': 14, 'idX': '13'}
+  {'distance': 3, 'effort': 48.0, 'position': 16, 'idX': '15'}
+estimate_reproduction: mean(selected finite training efforts) = 98.4
+GLOBAL_MARGINAL_ASSOCIATIONS (training-only context; not local contribution or causation):
+  time eta_squared=0.4754779967162901 categories={'h': {'count': 13, 'mean_effort': 734.0769230769231}, 'n': {'count': 46, 'mean_effort': 236.15217391304347}, 'vh': {'count': 13, 'mean_effort': 262.9384615384615}, 'xh': {'count': 8, 'mean_effort': 2964.2625}}
+  rely eta_squared=0.4176716059417505 categories={'h': {'count': 37, 'mean_effort': 437.56756756756755}, 'l': {'count': 1, 'mean_effort': 192.0}, 'n': {'count': 34, 'mean_effort': 244.5058823529412}, 'vh': {'count': 8, 'mean_effort': 2855.3875}}
+  stor eta_squared=0.31100393614270655 categories={'h': {'count': 10, 'mean_effort': 887.7}, 'n': {'count': 42, 'mean_effort': 207.26666666666668}, 'vh': {'count': 20, 'mean_effort': 523.9}, 'xh': {'count': 8, 'mean_effort': 2434.7625}}
+  plex eta_squared=0.3029835146895852 categories={'h': {'count': 21, 'mean_effort': 1324.0523809523809}, 'l': {'count': 14, 'mean_effort': 346.85714285714283}, 'n': {'count': 44, 'mean_effort': 234.4818181818182}, 'vl': {'count': 1, 'mean_effort': 4560.0}}
+  cplx eta_squared=0.24093708619769882 categories={'h': {'count': 52, 'mean_effort': 259.7923076923077}, 'l': {'count': 2, 'mean_effort': 582.5}, 'n': {'count': 7, 'mean_effort': 318.57142857142856}, 'vh': {'count': 14, 'mean_effort': 1508.8999999999999}, 'xh': {'count': 5, 'mean_effort': 1901.9}}
+  data eta_squared=0.1692767622523788 categories={'h': {'count': 14, 'mean_effort': 1632.0214285714285}, 'l': {'count': 32, 'mean_effort': 298.71875}, 'n': {'count': 26, 'mean_effort': 469.61538461538464}, 'vh': {'count': 8, 'mean_effort': 365.125}}
+  pvol eta_squared=0.08058552883628439 categories={'h': {'count': 7, 'mean_effort': 452.7142857142857}, 'l': {'count': 57, 'mean_effort': 424.4035087719298}, 'n': {'count': 16, 'mean_effort': 1261.14375}}
+  acap eta_squared=0.08050458365994442 categories={'h': {'count': 44, 'mean_effort': 895.7795454545455}, 'n': {'count': 29, 'mean_effort': 227.20689655172413}, 'vh': {'count': 7, 'mean_effort': 219.28571428571428}}
+  pcap eta_squared=0.07289755583168812 categories={'h': {'count': 33, 'mean_effort': 972.6454545454545}, 'n': {'count': 41, 'mean_effort': 323.5853658536585}, 'vh': {'count': 6, 'mean_effort': 362.3333333333333}}
+  sced eta_squared=0.0604742481334062 categories={'l': {'count': 33, 'mean_effort': 249.3939393939394}, 'n': {'count': 47, 'mean_effort': 836.3468085106383}}
+  pmat eta_squared=0.036018368213381814 categories={'h': {'count': 36, 'mean_effort': 753.7805555555556}, 'l': {'count': 18, 'mean_effort': 739.1777777777778}, 'n': {'count': 26, 'mean_effort': 272.96153846153845}}
+  apex eta_squared=0.03272830915667009 categories={'h': {'count': 39, 'mean_effort': 789.9051282051282}, 'n': {'count': 32, 'mean_effort': 338.75}, 'vh': {'count': 9, 'mean_effort': 654.6666666666666}}
+  ltex eta_squared=0.010336876202293673 categories={'h': {'count': 62, 'mean_effort': 658.1177419354839}, 'l': {'count': 5, 'mean_effort': 383.2}, 'n': {'count': 11, 'mean_effort': 385.8181818181818}, 'vl': {'count': 2, 'mean_effort': 287.5}}
+  tool eta_squared=0.0012354527458268607 categories={'h': {'count': 4, 'mean_effort': 774.25}, 'n': {'count': 76, 'mean_effort': 584.7539473684211}}
+  docu eta_squared=0.0 categories={'n': {'count': 80, 'mean_effort': 594.22875}}
+  flex eta_squared=0.0 categories={'h': {'count': 80, 'mean_effort': 594.22875}}
+  pcon eta_squared=0.0 categories={'n': {'count': 80, 'mean_effort': 594.22875}}
+  prec eta_squared=0.0 categories={'h': {'count': 80, 'mean_effort': 594.22875}}
+  resl eta_squared=0.0 categories={'h': {'count': 80, 'mean_effort': 594.22875}}
+  ruse eta_squared=0.0 categories={'n': {'count': 80, 'mean_effort': 594.22875}}
+  site eta_squared=0.0 categories={'n': {'count': 80, 'mean_effort': 594.22875}}
+  team eta_squared=0.0 categories={'vh': {'count': 80, 'mean_effort': 594.22875}}
+assumptions_limitations: observational historical data; missing/unseen descriptors are '?' symbols; invalid training targets are excluded; model uncertainty remains; Effort- units are not invented; at least two descriptor groups and one valid training target are required
+
+EXIT_STATUS=0

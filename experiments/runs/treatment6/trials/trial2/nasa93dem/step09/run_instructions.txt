@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python: python3 (standard library only)
+
+Run the complete suite:
+python3 -m unittest discover -s /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step09/tests -p 'test_*.py'
+
+Run the current demonstration:
+python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step09/source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --spot
+
+Preserved demonstrations are the summary, estimate, certify, flow, blame, justify, and choose CLI modes; their captured output is in preserved_demonstrations_output.txt.

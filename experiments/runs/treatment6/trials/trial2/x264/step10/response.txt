@@ -1,0 +1,18 @@
+Implemented Treatment 6, Trial 2, Dataset 1, Step 10.
+
+Reused the complete authorized Step 9 source and tests, copied into this step as a self-contained snapshot. Added `race()` and `render_race()` using only Python’s standard library. The selector and uniform-random baseline share the normalized distinct configuration pool, eligibility rules, duplicate policy, seeded uniform sampling without replacement, and evaluation charging. Invalid or missing outcomes consume budget. Retrospective audit runs only after selection.
+
+The race demonstration uses budget 20 and seeds 42–51. The methods are algorithmically equivalent, so all 10 paired comparisons tie: mean difference 0.0, median difference 0.0, wins 0, ties 10, losses 0, comparable pairs 10. Differences are baseline Performance- minus selector Performance-; positive favors the selector. These are repeated historical replays, not independent LLM trials or new datasets, and no significance or future-superiority claim is made.
+
+Added tests cover equal budgets, pool consistency, duplicates, invalid-outcome charging, local-seed reproducibility, audit independence, difference classifications and tolerance boundaries, summaries, empty/single/zero/oversized/no-success cases, and honest equivalence reporting. The full 32-test suite passes with `X264_DATASET` set to the authorized dataset.
+
+Artifacts are in this directory:
+- `source/x264_summary.py`
+- `tests/test_x264_summary.py` and `tests/test_race.py`
+- `prompt.txt`, `test_output.txt`, `runtime_output.txt`, `metrics.csv`, `run_instructions.txt`
+- `preserved_demos_output.txt`
+- `test_output_failed_attempt_1.txt` (preserved failed capture; a shell-variable collision before the successful test run)
+
+The race runtime capture reports 0.04 seconds real time. `metrics.csv` records total LOC 694, new/replacement LOC 73, test_pass 1, and error_count 1 for the repaired non-test capture command. The EZR reference informed the existing incremental/statistical and retrospective-analysis conventions; no Lua was run.
+
+Known limitations: the baseline is intentionally equivalent to the current selector, outcomes are historical observations, and invalid settings are excluded from the candidate pool while invalid outcomes remain eligible candidates and consume budget.

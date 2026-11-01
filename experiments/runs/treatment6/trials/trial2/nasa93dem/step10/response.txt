@@ -1,0 +1,9 @@
+Implemented and verified Step 10 race comparison.
+
+Reused the complete authorized Step 9 source and tests, preserving all prior commands, functions, demonstrations, and behaviors. Added `race`, `classify_difference`, a fixed tolerance of 1e-12, seeds 42–51, grouped splitting, training-only fitting and mean baseline calculation, paired MAE summaries, exclusions, classifications, and CLI options. The EZR reference informed the grouped symbolic/categorical treatment and explicit missing/invalid handling; no Lua or third-party package was used.
+
+Results on nasa93dem.csv: all 10 splits were comparable with 0 excluded held-out targets. Estimator mean MAE was 729.6350988005458 versus baseline mean MAE 732.1784891670595. Mean paired difference (baseline minus estimator) was 2.543390366513728; median was 16.05649145299151. There were 6 wins, 0 ties, and 4 losses. These are repeated overlapping splits of one historical dataset, not independent LLM trials or datasets; they do not establish statistical significance, causation, or future superiority. Effort units are not inferred.
+
+The complete suite passed: 33 tests. The successful race demonstration took 0.05 seconds real time. Preserved demonstration outputs and full captures are saved in this step, including the retained failed first capture as test_attempt_01.txt and the successful test capture as test_attempt_02.txt.
+
+Run instructions, absolute paths, interpreter, metrics, prompt, source, tests, and captured outputs are in the required Step 10 directory.

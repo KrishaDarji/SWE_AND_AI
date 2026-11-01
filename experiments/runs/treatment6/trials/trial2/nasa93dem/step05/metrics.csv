@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+5,6,2,software project estimation,blame,280,59,1,0.02,3,"17 tests; eta-squared marginal categorical association; 0.02s is successful blame /usr/bin/time real; 280 nonblank noncomment source LOC; 59 added/replacement LOC versus Step 4; reused parsing, normalization, summary, prediction, certify, and flow; EZR compact deterministic summary influence; 1 repaired assertion failure and 2 failed non-test commands preserved; no Lua or third-party packages"

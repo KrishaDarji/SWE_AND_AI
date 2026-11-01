@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+2,6,2,software project estimation,guess,124,47,1,0.02,3,"6 tests passed; 3 failed/repaired attempts recorded; prediction-only timing; grouped seed-42 split; MAE=888.696923076923; baseline=558.0175961538462; copied Step 1 summary machinery; new categorical symbolic-distance kNN; EZR distance/leaf-mean influence; new_loc counts changed/replacement source lines, not net growth; standard library only"

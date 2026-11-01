@@ -1,0 +1,34 @@
+test_constant_empty_insufficient_ties_and_outcome_exclusion (test_x264_summary.BlameTests.test_constant_empty_insufficient_ties_and_outcome_exclusion) ... ok
+test_eta_directions_counts_and_population (test_x264_summary.BlameTests.test_eta_directions_counts_and_population) ... ok
+test_normalization_missing_nonfinite_and_per_setting_population (test_x264_summary.BlameTests.test_normalization_missing_nonfinite_and_per_setting_population) ... ok
+test_direction_variance_and_inference (test_x264_summary.CertifyTests.test_direction_variance_and_inference) ... ok
+test_threshold_and_exclusions (test_x264_summary.CertifyTests.test_threshold_and_exclusions) ... ok
+test_undefined_cases_and_probability (test_x264_summary.CertifyTests.test_undefined_cases_and_probability) ... ok
+test_budget_history_duplicates_and_ties (test_x264_summary.ChooseTests.test_budget_history_duplicates_and_ties) ... ok
+test_invalid_zero_oversized_empty_and_no_success (test_x264_summary.ChooseTests.test_invalid_zero_oversized_empty_and_no_success) ... ok
+test_reproducible_and_audit_cannot_change_winner (test_x264_summary.ChooseTests.test_reproducible_and_audit_cannot_change_winner) ... ok
+test_empty_invalid_zero_equal_and_none (test_x264_summary.FixTests.test_empty_invalid_zero_equal_and_none) ... ok
+test_minimum_change_then_performance_then_position (test_x264_summary.FixTests.test_minimum_change_then_performance_then_position) ... ok
+test_normalization_complete_and_exclusions_positions (test_x264_summary.FixTests.test_normalization_complete_and_exclusions_positions) ... ok
+test_render_mentions_retrospective (test_x264_summary.FixTests.test_render_mentions_retrospective) ... ok
+test_csv_integration (test_x264_summary.FlowTests.test_csv_integration) ... ok
+test_prefixes_and_edge_cases (test_x264_summary.FlowTests.test_prefixes_and_edge_cases) ... ok
+test_snapshot_independence (test_x264_summary.FlowTests.test_snapshot_independence) ... ok
+test_exclusions_and_missing_nonfinite (test_x264_summary.JustifyTests.test_exclusions_and_missing_nonfinite) ... ok
+test_retrospective_and_association_language (test_x264_summary.JustifyTests.test_retrospective_and_association_language) ... ok
+test_winner_tie_configuration_and_positions (test_x264_summary.JustifyTests.test_winner_tie_configuration_and_positions) ... ok
+test_zero_reference_and_empty_no_eligible (test_x264_summary.JustifyTests.test_zero_reference_and_empty_no_eligible) ... ok
+test_outcome_cannot_be_a_feature_and_zero_is_valid (test_x264_summary.PredictionTests.test_outcome_cannot_be_a_feature_and_zero_is_valid) ... ok
+test_prediction_grouping_validation_and_zero (test_x264_summary.PredictionTests.test_prediction_grouping_validation_and_zero) ... ok
+test_invalid_outcomes_settings_and_positions (test_x264_summary.SpotTests.test_invalid_outcomes_settings_and_positions) ... ok
+test_minimum_threshold_zero_scale_and_undefined (test_x264_summary.SpotTests.test_minimum_threshold_zero_scale_and_undefined) ... ok
+test_tied_neighbors_duplicates_and_high_low (test_x264_summary.SpotTests.test_tied_neighbors_duplicates_and_high_low) ... ok
+test_empty_header_only_and_no_outcome (test_x264_summary.SummaryTests.test_empty_header_only_and_no_outcome) ... ok
+test_frequencies_statistics (test_x264_summary.SummaryTests.test_frequencies_statistics) ... ok
+test_missing_invalid (test_x264_summary.SummaryTests.test_missing_invalid) ... ok
+test_real_shape_and_stats (test_x264_summary.SummaryTests.test_real_shape_and_stats) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.013s
+
+OK

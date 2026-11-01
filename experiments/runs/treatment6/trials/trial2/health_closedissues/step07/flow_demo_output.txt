@@ -1,0 +1,10 @@
+Streaming validation flow
+Rows seen: 10000
+MRE-: {'count': 10000, 'mean': 0.7090939764346323, 'sample_variance': 0.04056030922815959}
+best MRE-: {'value': 0.0, 'position': 33, 'configuration': {'N_estimators': '10', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '6.75', 'Max_depth': '5'}}
+ACC+: {'count': 10000, 'mean': 0.49593851329765815, 'sample_variance': 0.011481619453413293}
+best ACC+: {'value': 1.0, 'position': 7557, 'configuration': {'N_estimators': '10', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '3', 'Max_depth': '10'}}
+PRED40+: {'count': 10000, 'mean': 0.14684285714285772, 'sample_variance': 0.07096876197823895}
+best PRED40+: {'value': 1.0, 'position': 15, 'configuration': {'N_estimators': '40', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '0.25', 'Max_depth': '19'}}
+Conventions: {'position': 'header is CSV position 1; data positions start at 2', 'blank_row': 'a blank/malformed CSV row increments rows_seen and contributes no outcomes', 'malformed_row': 'wrong field count is skipped after incrementing rows_seen', 'missing_configuration': 'missing configuration headers or fields are retained as None'}
+EXIT_STATUS=0

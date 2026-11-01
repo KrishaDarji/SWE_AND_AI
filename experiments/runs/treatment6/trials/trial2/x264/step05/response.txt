@@ -1,0 +1,12 @@
+Implemented Step 5 blame analysis.
+
+Updated source: source/x264_summary.py
+Preserved and extended tests: tests/test_x264_summary.py
+
+The implementation reuses Step 4 CSV parsing, finite-number handling, grouping, streaming summaries, prediction, certification, and flow demonstrations. It adds blame(), render_blame(), numeric normalization for 0/1 settings, per-setting eligible/excluded counts, group counts and means, reference means, between-group and total sums of squares, eta-squared ranking, direction lists, and deterministic handling of undefined scores. The EZR reference informed the reuse of incremental numeric summaries, mean-centered sums of squares, minimization direction, and descriptive group summaries; no Lua or third-party package was run.
+
+The complete preserved and new test suite passes: 15 tests. The current blame demonstration was run successfully with real time 0.03 seconds. A failed shell capture attempt and an initial incorrect test expectation are preserved in failed_attempt_01.txt and failed_attempt_02.txt.
+
+Run commands are in run_instructions.txt. Full captures are in test_output.txt, runtime_output.txt, blame_capture.txt, and blame_timing.txt.
+
+Assumptions and limitations: Performance- is minimized; missing, invalid, and nonfinite settings/outcomes are excluded separately for each setting; numeric 0, 0.0, 1, and 1.0 normalize to the same group; undefined scores are used for fewer than two groups, no eligible rows, or constant outcomes. Results are marginal historical associations, not causal effects or significance tests. Correlated and one-hot settings may represent the same underlying choice, and changing a setting is not guaranteed to improve performance.

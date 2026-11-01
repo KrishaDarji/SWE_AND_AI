@@ -1,0 +1,17 @@
+..F..............
+======================================================================
+FAIL: test_known_eta_means_ss_and_directions (test_blame.BlameTests.test_known_eta_means_ss_and_directions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step05/tests/test_blame.py", line 18, in test_known_eta_means_ss_and_directions
+    self.assertAlmostEqual(r['between_ss'], 8); self.assertAlmostEqual(r['total_ss'], 20)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 16.0 != 8 within 7 places (8.0 difference)
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.006s
+
+FAILED (failures=1)
+real 0.09
+user 0.03
+sys 0.01

@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/source/justify.py", line 72, in <module>
+    print(render(justify(sys.argv[1])))
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/source/justify.py", line 31, in justify
+    header, rows = _rows(path)
+                   ^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/source/justify.py", line 20, in _rows
+    with open(path, newline="", encoding="utf-8") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv'

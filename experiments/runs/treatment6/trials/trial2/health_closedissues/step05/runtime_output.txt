@@ -1,0 +1,63 @@
+Model-configuration quality summary
+Records: 10000
+Columns: MRE-, ACC+, PRED40+, N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth
+Roles: {'MRE-': 'outcome', 'ACC+': 'outcome', 'PRED40+': 'outcome', 'N_estimators': 'configuration', 'criterion': 'configuration', 'Min_sample_leaves': 'configuration', 'Min_impurity_decrease': 'configuration', 'Max_depth': 'configuration'}
+Malformed data rows (original CSV positions): none
+Missing tokens: ['', '?', 'missing', 'n/a', 'na', 'nan', 'none', 'null']
+Missing values: none
+Invalid/nonfinite numeric values: none
+Configuration numeric summaries:
+  N_estimators: {'finite_count': 10000, 'minimum': 10.0, 'maximum': 200.0, 'mean': 106.061, 'median': 110.0, 'sample_stddev': 57.132658725717526, 'sample_variance': 3264.140693069307}
+  Min_sample_leaves: {'finite_count': 10000, 'minimum': 1.0, 'maximum': 20.0, 'mean': 10.4796, 'median': 11.0, 'sample_stddev': 5.779232110962428, 'sample_variance': 33.399523792379235}
+  Min_impurity_decrease: {'finite_count': 10000, 'minimum': 0.0, 'maximum': 10.0, 'mean': 4.996175, 'median': 5.0, 'sample_stddev': 2.947214401201186, 'sample_variance': 8.686072726647664}
+  Max_depth: {'finite_count': 10000, 'minimum': 1.0, 'maximum': 20.0, 'mean': 10.523, 'median': 11.0, 'sample_stddev': 5.754492368423285, 'sample_variance': 33.114182418241825}
+criterion frequencies (categorical): {'squared_error': 3363, 'absolute_error': 3302, 'poisson': 3335}
+MRE- (minimize): {'finite_count': 10000, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.70909397643463, 'median': 0.8091310751104565, 'sample_stddev': 0.2013959017163944, 'sample_variance': 0.04056030922815959, 'direction': 'minimize'}
+ACC+ (maximize): {'finite_count': 10000, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.49593851329765903, 'median': 0.43992310157000963, 'sample_stddev': 0.10715231893623793, 'sample_variance': 0.011481619453413255, 'direction': 'maximize'}
+PRED40+ (maximize): {'finite_count': 10000, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.14684285714285714, 'median': 0.0, 'sample_stddev': 0.2663996283372757, 'sample_variance': 0.07096876197823863, 'direction': 'maximize'}
+Normalized distinct complete configurations: 10000
+Repeated normalized configurations: []
+Exact duplicate data rows beyond first: 0
+Normalization: numeric equivalents use float values; categorical whitespace is stripped; missing/invalid settings are excluded from configuration keys.
+Dispersion: sample standard deviation and sample variance; both are missing when fewer than two finite observations exist.
+Rows retain original CSV positions (header is position 1); malformed rows are excluded. Missing outcomes remain excluded from that outcome's finite summary.
+These are model-configuration quality measurements, not an issue-closure timeline.
+SUMMARY_EXIT_STATUS=0
+Streaming validation flow
+Rows seen: 10000
+MRE-: {'count': 10000, 'mean': 0.7090939764346323, 'sample_variance': 0.04056030922815959}
+best MRE-: {'value': 0.0, 'position': 33, 'configuration': {'N_estimators': '10', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '6.75', 'Max_depth': '5'}}
+ACC+: {'count': 10000, 'mean': 0.49593851329765815, 'sample_variance': 0.011481619453413293}
+best ACC+: {'value': 1.0, 'position': 7557, 'configuration': {'N_estimators': '10', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '3', 'Max_depth': '10'}}
+PRED40+: {'count': 10000, 'mean': 0.14684285714285772, 'sample_variance': 0.07096876197823895}
+best PRED40+: {'value': 1.0, 'position': 15, 'configuration': {'N_estimators': '40', 'criterion': 'squared_error', 'Min_sample_leaves': '1', 'Min_impurity_decrease': '0.25', 'Max_depth': '19'}}
+Conventions: {'position': 'header is CSV position 1; data positions start at 2', 'blank_row': 'a blank/malformed CSV row increments rows_seen and contributes no outcomes', 'malformed_row': 'wrong field count is skipped after incrementing rows_seen', 'missing_configuration': 'missing configuration headers or fields are retained as None'}
+FLOW_EXIT_STATUS=0
+Certification: fixed historical configuration comparison
+Comparison: absolute_error minus squared_error on MRE- (lower is better)
+Primary groups: {'candidate': 3302, 'reference': 3363}
+Primary inference: {'defined': True, 'candidate_mean': 0.7508694690284082, 'reference_mean': 0.6737202958486018, 'difference': 0.07714917317980641, 'candidate_variance': 0.04166811645371596, 'reference_variance': 0.04445184841876369, 'standard_error': 0.00508300788171081, 'df': 6661.689826828912, 't': 15.177858263292713, 'p_two_sided': 3.5325194910632086e-51, 'ci95': [0.06718485038289444, 0.08711349597671837]}
+Secondary descriptive outcomes (ACC+ and PRED40+, maximize): {'ACC+': {'direction': 'maximize', 'candidate': {'finite_count': 3302, 'minimum': 0.36334508170458185, 'maximum': 0.8974687600128163, 'mean': 0.47779311364779153, 'median': 0.4101249599487344, 'sample_stddev': 0.10798279707544303, 'sample_variance': 0.011660284464236309}, 'reference': {'finite_count': 3363, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.5088244263981059, 'median': 0.4415251521948093, 'sample_stddev': 0.10667167653117023, 'sample_variance': 0.011378846573970612}}, 'PRED40+': {'direction': 'maximize', 'candidate': {'finite_count': 3302, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.12667647313316605, 'median': 0.0, 'sample_stddev': 0.23543434733961507, 'sample_variance': 0.05542933190723051}, 'reference': {'finite_count': 3363, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.18019625334522746, 'median': 0.0, 'sample_stddev': 0.30208529199308287, 'sample_variance': 0.09125552363854614}}}
+Practical threshold interpretation: undetermined without a threshold
+Inference uses Welch's two-sided t test, Welch-Satterthwaite df, and a 95% t interval; incomplete beta continued fractions and bisection are stdlib numerical approximations.
+These are historical configurations, not controlled repeated evaluations of otherwise identical models; other hyperparameters may differ, so no causation or guaranteed improvement is claimed.
+CERTIFY_EXIT_STATUS=0
+Marginal historical associations with MRE-
+marginal eta-squared = between-group SS / eligible-row total SS
+Ranking (descending score; ties by field name):
+  Min_sample_leaves: score=0.741175, groups=[{'group': '[1.0..7.5]', 'count': 3513, 'mean_mre_minus': 0.47350421975676243}, {'group': '[7.5..14.5]', 'count': 3533, 'mean_mre_minus': 0.8349955208731159}, {'group': '[14.5..20.0]', 'count': 2954, 'mean_mre_minus': 0.8386866164847918}]
+  criterion: score=0.0248513, groups=[{'group': 'absolute_error', 'count': 3302, 'mean_mre_minus': 0.7508694690284082}, {'group': 'poisson', 'count': 3335, 'mean_mre_minus': 0.7034025255399244}, {'group': 'squared_error', 'count': 3363, 'mean_mre_minus': 0.6737202958486018}]
+  Min_impurity_decrease: score=0.00444456, groups=[{'group': '[0.0..3.375]', 'count': 3413, 'mean_mre_minus': 0.695967294762014}, {'group': '[3.375..6.875]', 'count': 3444, 'mean_mre_minus': 0.7046686816553631}, {'group': '[6.875..10.0]', 'count': 3143, 'mean_mre_minus': 0.7281974062050511}]
+  Max_depth: score=0.000209104, groups=[{'group': '[1.0..7.5]', 'count': 3474, 'mean_mre_minus': 0.7053440538287251}, {'group': '[7.5..14.5]', 'count': 3482, 'mean_mre_minus': 0.7099357605141607}, {'group': '[14.5..20.0]', 'count': 3044, 'mean_mre_minus': 0.7124107106553881}]
+  N_estimators: score=0.000176067, groups=[{'group': '[10.0..75.0]', 'count': 3374, 'mean_mre_minus': 0.7125940550289954}, {'group': '[75.0..145.0]', 'count': 3597, 'mean_mre_minus': 0.7062407185164858}, {'group': '[145.0..200.0]', 'count': 3029, 'mean_mre_minus': 0.7085835451220436}]
+N_estimators: eligible=10000, excluded=0, defined=True, groups=3, means=[{'group': '[10.0..75.0]', 'count': 3374, 'mean_mre_minus': 0.7125940550289954}, {'group': '[75.0..145.0]', 'count': 3597, 'mean_mre_minus': 0.7062407185164858}, {'group': '[145.0..200.0]', 'count': 3029, 'mean_mre_minus': 0.7085835451220436}], boundaries=[75.0, 145.0]
+criterion: eligible=10000, excluded=0, defined=True, groups=3, means=[{'group': 'absolute_error', 'count': 3302, 'mean_mre_minus': 0.7508694690284082}, {'group': 'poisson', 'count': 3335, 'mean_mre_minus': 0.7034025255399244}, {'group': 'squared_error', 'count': 3363, 'mean_mre_minus': 0.6737202958486018}], boundaries=None
+Min_sample_leaves: eligible=10000, excluded=0, defined=True, groups=3, means=[{'group': '[1.0..7.5]', 'count': 3513, 'mean_mre_minus': 0.47350421975676243}, {'group': '[7.5..14.5]', 'count': 3533, 'mean_mre_minus': 0.8349955208731159}, {'group': '[14.5..20.0]', 'count': 2954, 'mean_mre_minus': 0.8386866164847918}], boundaries=[7.5, 14.5]
+Min_impurity_decrease: eligible=10000, excluded=0, defined=True, groups=3, means=[{'group': '[0.0..3.375]', 'count': 3413, 'mean_mre_minus': 0.695967294762014}, {'group': '[3.375..6.875]', 'count': 3444, 'mean_mre_minus': 0.7046686816553631}, {'group': '[6.875..10.0]', 'count': 3143, 'mean_mre_minus': 0.7281974062050511}], boundaries=[3.375, 6.875]
+Max_depth: eligible=10000, excluded=0, defined=True, groups=3, means=[{'group': '[1.0..7.5]', 'count': 3474, 'mean_mre_minus': 0.7053440538287251}, {'group': '[7.5..14.5]', 'count': 3482, 'mean_mre_minus': 0.7099357605141607}, {'group': '[14.5..20.0]', 'count': 3044, 'mean_mre_minus': 0.7124107106553881}], boundaries=[7.5, 14.5]
+Numeric grouping loses within-bin ordering and exact distances; criterion remains categorical. Missing/nonfinite settings or MRE- are excluded per field, so reference means and sums of squares use exactly each field's eligible rows.
+These are marginal historical associations; correlated settings, unequal groups, and other configuration differences affect them. They do not establish causation, significance, independent importance, or guaranteed improvement.
+real 0.10
+user 0.09
+sys 0.00
+BLAME_EXIT_STATUS=0

@@ -1,0 +1,99 @@
+FE.FFEEE.E.F
+======================================================================
+ERROR: test_threshold_and_exclusions (test_x264_summary.CertifyTests.test_threshold_and_exclusions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 61, in test_threshold_and_exclusions
+    self.assertTrue(r["practical"]["point_estimate_meets"]); self.assertEqual(r["excluded"],2)
+                    ~^^^^^^^^^^^^^
+KeyError: 'practical'
+
+======================================================================
+ERROR: test_snapshot_independence (test_x264_summary.FlowTests.test_snapshot_independence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 85, in test_snapshot_independence
+    self.assertEqual(first["rows_seen"],1); self.assertEqual(first["best"]["value"],2.0)
+                                                             ~~~~~~~~~~~~~^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_outcome_cannot_be_a_feature_and_zero_is_valid (test_x264_summary.PredictionTests.test_outcome_cannot_be_a_feature_and_zero_is_valid)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 46, in test_outcome_cannot_be_a_feature_and_zero_is_valid
+    model = NearestNeighborModel(["a"], "Performance-").fit([{"a":"x", "Performance-":"0"}, {"a":"y", "Performance-":"2"}])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/source/x264_summary.py", line 187, in fit
+    if not valid: raise ValueError("no finite training targets")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: no finite training targets
+
+======================================================================
+ERROR: test_prediction_grouping_validation_and_zero (test_x264_summary.PredictionTests.test_prediction_grouping_validation_and_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 39, in test_prediction_grouping_validation_and_zero
+    model = NearestNeighborModel(["a", "b"], "Performance-").fit(train)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/source/x264_summary.py", line 187, in fit
+    if not valid: raise ValueError("no finite training targets")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: no finite training targets
+
+======================================================================
+ERROR: test_frequencies_statistics (test_x264_summary.SummaryTests.test_frequencies_statistics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 21, in test_frequencies_statistics
+    self.assertEqual(result["outcome_stats"]["count"], 3); self.assertEqual(result["outcome_stats"]["median"], 4)
+                     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+FAIL: test_direction_variance_and_inference (test_x264_summary.CertifyTests.test_direction_variance_and_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 57, in test_direction_variance_and_inference
+    self.assertEqual(r["reference"]["variance"],16); self.assertEqual(r["candidate"]["mean"],8); self.assertLess(r["inference"]["difference"],0)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 16
+
+======================================================================
+FAIL: test_csv_integration (test_x264_summary.FlowTests.test_csv_integration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 87, in test_csv_integration
+    result=flow(os.environ["X264_DATASET"]); self.assertGreater(result["rows_seen"],0); self.assertEqual(result["valid_count"],result["rows_seen"])
+                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1152
+
+======================================================================
+FAIL: test_prefixes_and_edge_cases (test_x264_summary.FlowTests.test_prefixes_and_edge_cases)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 79, in test_prefixes_and_edge_cases
+    self.assertEqual((snap["rows_seen"],snap["valid_count"],snap["mean"],snap["sample_variance"]), (pos,len(values),mean,variance))
+AssertionError: Tuples differ: (1, 0, None, None) != (1, 1, 0.0, None)
+
+First differing element 1:
+0
+1
+
+- (1, 0, None, None)
++ (1, 1, 0.0, None)
+
+======================================================================
+FAIL: test_real_shape_and_stats (test_x264_summary.SummaryTests.test_real_shape_and_stats)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step04/tests/test_x264_summary.py", line 17, in test_real_shape_and_stats
+    self.assertEqual(result["direction"], "lower is better"); self.assertEqual(result["invalid_outcomes"], 0)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1152 != 0
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.008s
+
+FAILED (failures=4, errors=5)
+exit_status=1

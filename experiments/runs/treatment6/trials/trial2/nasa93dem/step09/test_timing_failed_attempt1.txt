@@ -1,0 +1,26 @@
+..........................F.F
+======================================================================
+FAIL: test_independent_median_mad (test_spot.SpotTests.test_independent_median_mad)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step09/tests/test_spot.py", line 29, in test_independent_median_mad
+    self.assertAlmostEqual(row["center"], med); self.assertAlmostEqual(row["scale"], mad)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.6931471805599453 != 1.545521226679158 within 7 places (0.8523740461192127 difference)
+
+======================================================================
+FAIL: test_leave_one_out_high_low_and_counts (test_spot.SpotTests.test_leave_one_out_high_low_and_counts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step09/tests/test_spot.py", line 15, in test_leave_one_out_high_low_and_counts
+    self.assertEqual(sum(r["counts"].values()), 5)
+AssertionError: 10 != 5
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.013s
+
+FAILED (failures=2)
+real 0.09
+user 0.04
+sys 0.01
+status=1

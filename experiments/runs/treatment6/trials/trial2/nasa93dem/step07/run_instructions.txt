@@ -1,0 +1,18 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step07
+Python interpreter: python3 (standard library only)
+
+Run complete tests:
+python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run current demonstration:
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --choose --cap 100
+
+Run preserved demonstrations:
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --estimate
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --certify
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --flow
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --blame
+python3 source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --justify
+
+Captured per-demo stdout, stderr, and exit status are runtime_* files. The successful timed choose capture is runtime_output.txt; test_output.txt contains the full test stdout.

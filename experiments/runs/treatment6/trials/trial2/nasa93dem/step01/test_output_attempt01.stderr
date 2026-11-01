@@ -1,0 +1,9 @@
+test_empty_header_malformed_duplicates_positions (test_nasa93_summary.Tests.test_empty_header_malformed_duplicates_positions) ... ok
+test_real_dataset_roles_and_counts (test_nasa93_summary.Tests.test_real_dataset_roles_and_counts) ... ok
+test_stats_median_variance_missing_nonfinite_invalid (test_nasa93_summary.Tests.test_stats_median_variance_missing_nonfinite_invalid) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
+exit_status=0

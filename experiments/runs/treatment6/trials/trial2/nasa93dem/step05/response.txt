@@ -1,0 +1,19 @@
+Implemented Treatment 6, Trial 2, Dataset 2, Step 5 (blame).
+
+Updated source: source/nasa93_summary.py
+- Reused the Step 4 CSV parsing, normalization, descriptive summaries, prediction, certification, and flow machinery.
+- Added blame(), print_blame(), and the --blame CLI demonstration.
+- Ranks exactly the 22 categorical descriptors using eta-squared: between-group sum of squares divided by total sum of squares.
+- Uses the same rows for each descriptor's reference mean, sums of squares, and category groups; missing descriptor values and missing, invalid, or nonfinite Effort- are excluded explicitly.
+- Categories are whitespace-normalized and sorted deterministically. Ties rank alphabetically. Undefined scores are reported as None when there are no eligible rows or zero total variation.
+- Reports eligible/excluded counts, category counts and means, reference mean, SS values, score, rank, and higher/lower mean-effort categories.
+- Output explains that results are marginal historical associations, not causal or independent effects; lower Effort- is better, and no effort units are invented.
+
+Tests: all preserved tests plus new blame tests pass (17 tests).
+Demonstrations: summary, estimate, certify, flow, and blame all completed successfully. The successful blame timing is real 0.02 seconds.
+
+EZR influence: the implementation follows the authorized reference's compact data-processing and deterministic summary style, while using only Python standard-library facilities and an explicitly defined eta-squared association suitable for categorical groups.
+
+Known assumptions and limitations: CSV fields are treated as strings until Effort- parsing; missing tokens follow the existing Step 4 convention. Eta-squared is unadjusted and marginal, so project size, correlated descriptors, unequal category sizes, and other characteristics may affect rankings. Magnitude alone does not establish significance, productivity effects, causality, independent importance, or guaranteed improvement.
+
+Artifacts include prompt.txt, source/, tests/, test_output.txt, runtime_output.txt, metrics.csv, and run_instructions.txt. Failed attempts are preserved as separately labeled files.

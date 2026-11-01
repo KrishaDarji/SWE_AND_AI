@@ -1,0 +1,6 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step07
+Python interpreter: /usr/bin/python3 (Python standard library only)
+Run tests: python3 -m unittest discover -s tests -v
+Run choose: python3 source/choose.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+Run preserved demonstrations: python3 source/summarize_runs.py DATASET.csv; python3 source/certify.py DATASET.csv; python3 source/flow.py DATASET.csv; python3 source/blame.py DATASET.csv; python3 source/justify.py DATASET.csv
+Captured successful test output is test_output.txt; choose output is runtime_output.txt; timing is choose_timing.txt. Failed attempts are preserved in test_output.failed_attempt_02.txt and the terminal path-error attempt was not a program artifact.

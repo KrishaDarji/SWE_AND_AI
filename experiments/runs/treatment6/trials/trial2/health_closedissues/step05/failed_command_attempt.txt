@@ -1,0 +1,2 @@
+zsh:3: no such file or directory: /usrusrbin/time
+FAILED_COMMAND_EXIT_STATUS=127

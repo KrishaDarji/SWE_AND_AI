@@ -1,0 +1,20 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step10
+
+Tests:
+python3 -m unittest discover -s tests -v
+
+Preserved demonstrations:
+python3 source/x264_summary.py 
+python3 source/x264_summary.py  predict
+python3 source/x264_summary.py  certify
+python3 source/x264_summary.py  flow
+python3 source/x264_summary.py  blame
+python3 source/x264_summary.py  justify
+python3 source/x264_summary.py  choose
+python3 source/x264_summary.py  fix
+python3 source/x264_summary.py  spot
+
+Race demonstration:
+/usr/bin/time -p python3 source/x264_summary.py  race
+
+Captured outputs: test_output.txt, preserved_demos_output.txt, runtime_output.txt.

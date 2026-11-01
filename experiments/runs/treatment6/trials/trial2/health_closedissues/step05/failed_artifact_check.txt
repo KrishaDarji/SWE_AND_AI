@@ -1,0 +1,4 @@
+Failed artifact-listing attempt (preserved):
+find: -printf: unknown primary or operator
+Exit status: 1
+The required artifact checks themselves were rerun successfully with portable commands.

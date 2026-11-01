@@ -1,0 +1,25 @@
+Model-configuration quality summary
+Records: 10000
+Columns: MRE-, ACC+, PRED40+, N_estimators, criterion, Min_sample_leaves, Min_impurity_decrease, Max_depth
+Roles: {'MRE-': 'outcome', 'ACC+': 'outcome', 'PRED40+': 'outcome', 'N_estimators': 'configuration', 'criterion': 'configuration', 'Min_sample_leaves': 'configuration', 'Min_impurity_decrease': 'configuration', 'Max_depth': 'configuration'}
+Malformed data rows (original CSV positions): none
+Missing tokens: ['', '?', 'missing', 'n/a', 'na', 'nan', 'none', 'null']
+Missing values: none
+Invalid/nonfinite numeric values: none
+Configuration numeric summaries:
+  N_estimators: {'finite_count': 10000, 'minimum': 10.0, 'maximum': 200.0, 'mean': 106.061, 'median': 110.0, 'sample_stddev': 57.132658725717526, 'sample_variance': 3264.140693069307}
+  Min_sample_leaves: {'finite_count': 10000, 'minimum': 1.0, 'maximum': 20.0, 'mean': 10.4796, 'median': 11.0, 'sample_stddev': 5.779232110962428, 'sample_variance': 33.399523792379235}
+  Min_impurity_decrease: {'finite_count': 10000, 'minimum': 0.0, 'maximum': 10.0, 'mean': 4.996175, 'median': 5.0, 'sample_stddev': 2.947214401201186, 'sample_variance': 8.686072726647664}
+  Max_depth: {'finite_count': 10000, 'minimum': 1.0, 'maximum': 20.0, 'mean': 10.523, 'median': 11.0, 'sample_stddev': 5.754492368423285, 'sample_variance': 33.114182418241825}
+criterion frequencies (categorical): {'squared_error': 3363, 'absolute_error': 3302, 'poisson': 3335}
+MRE- (minimize): {'finite_count': 10000, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.70909397643463, 'median': 0.8091310751104565, 'sample_stddev': 0.2013959017163944, 'sample_variance': 0.04056030922815959, 'direction': 'minimize'}
+ACC+ (maximize): {'finite_count': 10000, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.49593851329765903, 'median': 0.43992310157000963, 'sample_stddev': 0.10715231893623793, 'sample_variance': 0.011481619453413255, 'direction': 'maximize'}
+PRED40+ (maximize): {'finite_count': 10000, 'minimum': 0.0, 'maximum': 1.0, 'mean': 0.14684285714285714, 'median': 0.0, 'sample_stddev': 0.2663996283372757, 'sample_variance': 0.07096876197823863, 'direction': 'maximize'}
+Normalized distinct complete configurations: 10000
+Repeated normalized configurations: []
+Exact duplicate data rows beyond first: 0
+Normalization: numeric equivalents use float values; categorical whitespace is stripped; missing/invalid settings are excluded from configuration keys.
+Dispersion: sample standard deviation and sample variance; both are missing when fewer than two finite observations exist.
+Rows retain original CSV positions (header is position 1); malformed rows are excluded. Missing outcomes remain excluded from that outcome's finite summary.
+These are model-configuration quality measurements, not an issue-closure timeline.
+EXIT_STATUS=0

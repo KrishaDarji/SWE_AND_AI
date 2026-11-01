@@ -1,0 +1,21 @@
+Implemented Step 3 certification in source/certify.py and preserved the Step 2 summary, prediction, source, tests, and demonstrations.
+
+Real-data result (threshold demonstration 0.05 MRE units):
+- Fixed comparison: criterion absolute_error minus squared_error; primary outcome MRE-, where lower is better.
+- Usable counts: candidate 3302; reference 3363.
+- Means: candidate 0.750869; reference 0.673720.
+- Sample variances: candidate 0.0416681; reference 0.0444518.
+- Difference candidate minus reference: +0.0771492, favoring the reference.
+- Welch two-sided test: t=15.1779, df=6661.69, p=3.53e-51.
+- 95% CI for the difference: [0.0671849, 0.0871135].
+- The candidate does not meet a 0.05 improvement threshold by point estimate or by the entire confidence interval. Without a threshold, practical importance is undetermined. Nonsignificance would not establish equivalence.
+
+Secondary descriptive results only: ACC+ means candidate 0.477793 and reference 0.508824; PRED40+ means candidate 0.126676 and reference 0.180196. Both secondary outcomes maximize. They were not used to choose the primary comparison.
+
+The implementation handles missing/nonfinite data, absent groups, insufficient samples, zero standard error, finite nonnegative thresholds, and undefined inference. It uses standard-library incomplete-beta continued fractions and bisection for t probabilities/quantiles, with direct tail computation to avoid cancellation. Tests include independent checks of group selection, direction, variance, standard error, df, intervals, t reference values, bounds, thresholds, missing values, absent groups, insufficient samples, zero-SE cases, and secondary counts.
+
+These are historical configurations, not controlled repeated evaluations of otherwise identical models. Other hyperparameters may differ, so the comparison does not establish causation or guaranteed improvement and does not invent metric formulas or ranges.
+
+EZR informed the organization of descriptive summaries, dispersion, and Welch-style inference; no Lua or third-party package was run. Total source LOC is 226 nonblank/noncomment lines; new LOC is 95 certify lines. The full suite passes 9 tests. The successful certify demonstration took 0.10 seconds real time under /usr/bin/time -p. Failed attempts are retained in separately labeled capture files.
+
+See run_instructions.txt for absolute commands and interpreter details.

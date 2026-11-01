@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+8,6,2,video encoding,fix,551,63,1,0.03,4,"26 tests passed; fix demo timing only; preserved Step 7 machinery/tests and demonstrations; new LOC is changed source lines by corresponding file comparison; EZR informed finite handling and retrospective caveats; first nonblank row baseline; historical measured comparisons only; initial capture command failed, first test run had two missing-environment errors and one expectation failure, all repaired"

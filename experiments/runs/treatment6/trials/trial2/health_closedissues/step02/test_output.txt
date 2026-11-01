@@ -1,0 +1,10 @@
+test_grouping_prediction_and_schema (test_summarize_runs.SummaryTests.test_grouping_prediction_and_schema) ... ok
+test_invalid_missing_all_missing_and_duplicates (test_summarize_runs.SummaryTests.test_invalid_missing_all_missing_and_duplicates) ... ok
+test_positions_malformed_empty_header_only (test_summarize_runs.SummaryTests.test_positions_malformed_empty_header_only) ... ok
+test_roles_stats_medians_and_categorical (test_summarize_runs.SummaryTests.test_roles_stats_medians_and_categorical) ... ok
+test_zero_invalid_and_insufficient (test_summarize_runs.SummaryTests.test_zero_invalid_and_insufficient) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.003s
+
+OK

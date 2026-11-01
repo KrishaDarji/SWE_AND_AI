@@ -1,0 +1,18 @@
+Complete source: source/nasa93_summary.py
+Tests: tests/test_nasa93_summary.py
+
+The implementation loads CSV projects while preserving 1-based physical CSV positions and idX values. It reports 93 records, all 28 columns, 22 categorical descriptor frequency tables, metadata roles (idX, centerX, YearX, MonthsX), duplicate idX {'29': 2}, and numeric summaries for Kloc+, Effort-, and Defects-. Kloc+ is labeled maximize and the two cost outcomes minimize only as the dataset goal convention; this does not claim larger projects are inherently better.
+
+Missing tokens are blank, ?, NA, N/A, null, and None. Blank rows are skipped; malformed rows are reported and skipped. Numeric missing, invalid, and nonfinite values are distinguished. Categorical values are counted as strings and never assigned ordinal distances. Empty and header-only inputs are supported.
+
+EZR machinery adapted: CSV streaming, symbolic frequency counts, one-pass/Welford numeric accumulation, and sample standard deviation (n-1 denominator). No Lua or third-party package was used.
+
+Run tests:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI'
+python3 -m unittest discover -s 'experiments/runs/treatment6/trials/trial2/nasa93dem/step01/tests' -v
+
+Run implementation:
+cd '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI'
+python3 'experiments/runs/treatment6/trials/trial2/nasa93dem/step01/source/nasa93_summary.py' 'moot/optimize/process/nasa93dem.csv'
+
+The successful test capture is test_output.txt; the successful timed demonstration capture is runtime_output.txt. The demonstration used /usr/bin/time -p and reported real 0.02 seconds. Test suite: 3 tests, all passed. Four failed shell capture wrappers were preserved in the attempt-specific files; they were capture-script syntax/naming errors, not implementation failures. The implementation assumes a UTF-8 CSV with one header row and exact expected field counts; it does not infer schema or repair malformed data.

@@ -1,0 +1,30 @@
+test_empty_header_malformed_duplicates_positions (test_nasa93_summary.Tests.test_empty_header_malformed_duplicates_positions) ... ok
+test_exact_fields_grouping_and_reproducible_split (test_nasa93_summary.Tests.test_exact_fields_grouping_and_reproducible_split) ... ok
+test_invalid_nonfinite_and_insufficient_groups (test_nasa93_summary.Tests.test_invalid_nonfinite_and_insufficient_groups) ... ok
+test_model_schema_missing_zero_and_unseen (test_nasa93_summary.Tests.test_model_schema_missing_zero_and_unseen) ... ERROR
+test_real_dataset_roles_and_counts (test_nasa93_summary.Tests.test_real_dataset_roles_and_counts) ... ok
+test_stats_median_variance_missing_nonfinite_invalid (test_nasa93_summary.Tests.test_stats_median_variance_missing_nonfinite_invalid) ... ok
+
+======================================================================
+ERROR: test_model_schema_missing_zero_and_unseen (test_nasa93_summary.Tests.test_model_schema_missing_zero_and_unseen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step02/tests/test_nasa93_summary.py", line 36, in test_model_schema_missing_zero_and_unseen
+    self.assertEqual(model.predict(rows[0]), 0)
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step02/source/nasa93_summary.py", line 109, in predict
+    def predict(self, project): return self.predict_config(project.values)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step02/source/nasa93_summary.py", line 104, in predict_config
+    raise ValueError("schema error: missing=%s extra=%s" % (sorted(set(CATEGORICAL)-set(config)), sorted(set(config)-set(CATEGORICAL))))
+ValueError: schema error: missing=[] extra=['Effort-', 'idX']
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+FAILED (errors=1)
+real 0.04
+user 0.03
+sys 0.00
+
+EXIT_STATUS=1

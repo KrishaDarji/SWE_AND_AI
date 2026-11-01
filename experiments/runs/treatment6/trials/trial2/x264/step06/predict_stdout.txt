@@ -1,0 +1,3 @@
+prediction: 463.582073
+train_rows: 922; test_rows: 230; train_groups: 922; test_groups: 230
+held_out_mae: 21.34375652173913; baseline_mae: 145.1429672639819

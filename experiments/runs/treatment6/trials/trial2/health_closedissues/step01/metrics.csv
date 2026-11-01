@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,6,2,model configuration and quality,remember,68,68,1,0.21,0,"3 tests passed; /usr/bin/time -p real time for successful summary demonstration; EZR CSV/cell/roles/statistics/grouping ideas adapted; standard-library CSV parsing; missing/invalid excluded from complete keys; no failed attempts"

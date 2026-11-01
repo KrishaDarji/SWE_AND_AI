@@ -1,0 +1,25 @@
+.E....
+======================================================================
+ERROR: test_prediction_grouping_validation_and_zero (test_x264_summary.PredictionTests.test_prediction_grouping_validation_and_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step02/tests/test_x264_summary.py", line 40, in test_prediction_grouping_validation_and_zero
+    self.assertIsInstance(model.predict_one({"a": "0", "b": "x"}), float)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step02/source/x264_summary.py", line 127, in predict_one
+    vector = self._vector(record); best = min(range(len(self.rows)), key=lambda i: sum((a-b)**2 for a,b in zip(vector, self._vector(self.rows[i]))))
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step02/source/x264_summary.py", line 123, in _vector
+    if value not in self.encoders[name]: raise ValueError("unseen setting value for %s" % name)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: unseen setting value for a
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+FAILED (errors=1)
+real 0.09
+user 0.04
+sys 0.01
+
+exit_status=1

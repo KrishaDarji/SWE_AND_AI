@@ -1,0 +1,15 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step03
+Python interpreter: /usr/bin/python3
+
+Run the complete suite:
+PYTHONPATH=/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step03/source /usr/bin/python3 -m unittest discover -s "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step03/tests" -v
+
+Run the current certification demonstration:
+cd "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step03"
+PYTHONPATH=source /usr/bin/python3 source/certify.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv" 0.05
+
+Run preserved demonstrations:
+PYTHONPATH=source /usr/bin/python3 run_demo.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+PYTHONPATH=source /usr/bin/python3 run_prediction.py "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv"
+
+The saved stdout/stderr captures are test_output.txt, runtime_output.txt, preserved_demo_output.txt, and preserved_prediction_output.txt. Failed attempts are retained with failed_ or attempt_ labels. runtime_timing.txt is the /usr/bin/time -p capture for the successful certify demo.

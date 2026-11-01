@@ -1,0 +1,11 @@
+Implemented Step 6 `justify` in the required directory.
+
+Reused the authorized Step 5 source and tests, preserving summary, prediction, certification, flow, and blame functionality. Added `justify.py` and focused tests covering all selection tie-breakers, finite eligibility, original positions, full configuration retention, independent medians, missing/empty data, direction labels, tradeoffs, and association labeling.
+
+The implementation selects an observed complete row by lowest MRE-, highest ACC+, highest PRED40+, then earliest original CSV position. It reports all settings/outcomes, independently computed finite historical medians and counts, malformed-row conventions, secondary-outcome differences, and global marginal association context. It explicitly labels the result retrospective rather than predictive and avoids causal, unit, range, runtime, or resource claims.
+
+The EZR reference informed the compact descriptive/statistical organization and explicit eligible-population handling; no Lua was run and no third-party package was used.
+
+Verification: all 19 tests pass; the current and all preserved demonstrations pass. The first failed test capture is preserved as `test_output.failed_attempt_01.txt`; it contained one incorrect expected position and was repaired. Runtime for the successful justify demonstration is 0.16 seconds (`/usr/bin/time -p`).
+
+Known limitations: the recommendation is observational and cannot establish causation or performance on an unevaluated configuration. Association scores are global marginal summaries, not local explanations. Malformed rows are excluded while valid rows retain their original CSV positions.

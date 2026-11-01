@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,6,2,model configuration and quality,spot,651,91,1,0.08,1,"31 tests pass; real timing is successful spot demo only; median/MAD 1.4826 scale, threshold 3.5, minimum n=3, self-in-reference; copied Step 8 machinery and demos; spot added and flow floating-point repair; LOC excludes tests/runners/Lua; EZR-informed explicit summaries and undefined handling; one repaired variance assertion failure preserved; no labeled ground truth"

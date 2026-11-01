@@ -1,0 +1,14 @@
+Retrospective feasible configuration selection
+Status: ok
+Counts: raw=10000, parsed=10000, valid=10000, feasible=4877
+Exclusions: {'malformed_rows': 0, 'invalid_data': 0, 'valid_over_cap': 5123}
+Cap: 100 (selected proxy: N_estimators)
+Selection rule: lowest MRE-, then highest ACC+, then highest PRED40+, then earliest original CSV position
+Feasibility: complete finite configuration and finite outcomes; 0 <= N_estimators <= cap
+Original position: 33
+Configuration: {'N_estimators': 10.0, 'criterion': 'squared_error', 'Min_sample_leaves': 1.0, 'Min_impurity_decrease': 6.75, 'Max_depth': 5.0}
+Observed outcomes: {'MRE-': 0.0, 'ACC+': 0.7901313681512335, 'PRED40+': 0.8571428571428571}
+Selected proxy value: 10.0
+Header is position 1; data positions are original CSV positions. Wrong-field-count rows are malformed and excluded; blank/missing/nonfinite fields are invalid.
+Selection uses observed historical outcomes and does not guarantee unseen performance; other settings may affect computation.
+EXIT_STATUS=0

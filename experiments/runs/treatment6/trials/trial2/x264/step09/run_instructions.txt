@@ -1,0 +1,12 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+DATA=/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv
+STEP=/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step09
+
+Run the complete suite:
+X264_DATASET="$DATA" python3 -m unittest discover -s "$STEP/tests" -v
+
+Run demonstrations:
+python3 "$STEP/source/x264_summary.py" "$DATA"
+for command in predict certify flow blame justify choose fix spot; do python3 "$STEP/source/x264_summary.py" "$DATA" "$command"; done
+
+The current spot timing was captured with /usr/bin/time -p and is in runtime_output.stderr. All commands use only the Python standard library.

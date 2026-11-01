@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+10,6,2,model configuration and quality,race,693,58,1,0.09,1,"35 tests passed; successful race timing only; 10 wins/0 ties/0 losses; paired retrospective benchmark with unequal information; copied Step 9 machinery and added race; new_loc is changed race/test-related source lines by corresponding paths, not net growth; EZR informed conservative retrospective reporting; one repaired test-capture attempt is preserved; no significance/generalization claim."

@@ -1,0 +1,10 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI
+Python interpreter: python3 (system interpreter selected by PATH)
+
+Tests:
+python3 -m unittest discover -s 'experiments/runs/treatment6/trials/trial2/nasa93dem/step01/tests' -v
+
+Implementation and timed summary:
+/usr/bin/time -p python3 'experiments/runs/treatment6/trials/trial2/nasa93dem/step01/source/nasa93_summary.py' 'moot/optimize/process/nasa93dem.csv'
+
+The final captures are test_output.txt and runtime_output.txt. Attempt-specific captures remain separately labeled. The parser expects UTF-8 CSV, one header, and exact row widths; blank rows are ignored and malformed rows are skipped with issues.

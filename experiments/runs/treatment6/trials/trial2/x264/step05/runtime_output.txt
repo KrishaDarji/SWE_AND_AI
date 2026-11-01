@@ -1,0 +1,94 @@
+Historical X264 run summary
+record_count: 1152
+outcome: Performance- (lower is better)
+outcome_stats: count=1152, min=244.23, max=821.963, mean=461.754, median=452.779, stdev=162.562
+missing_outcomes: 0; invalid_outcomes: 0
+setting_frequencies:
+  no_asm: 1=1152
+  no_8x8dct: 0=576, 1=576
+  no_cabac: 0=576, 1=576
+  no_deblock: 0=576, 1=576
+  no_fast_pskip: 0=576, 1=576
+  no_mbtree: 0=576, 1=576
+  no_mixed_refs: 0=576, 1=576
+  no_weightb: 0=576, 1=576
+  rc_lookahead: 1=1152
+  rc_lookahead_20: 0=768, 1=384
+  rc_lookahead_40: 0=768, 1=384
+  rc_lookahead_60: 0=768, 1=384
+  ref: 1=1152
+  ref_1: 0=768, 1=384
+  ref_5: 0=768, 1=384
+  ref_9: 0=768, 1=384
+
+===== predict =====
+prediction: 463.582073
+train_rows: 922; test_rows: 230; train_groups: 922; test_groups: 230
+held_out_mae: 21.34375652173913; baseline_mae: 145.1429672639819
+
+===== certify =====
+Certification: no_8x8dct=1 candidate minus no_8x8dct=0 reference
+lower Performance- is better
+reference: n=576 mean=472.1355069444445 sample_variance=27019.924475732125
+candidate: n=576 mean=451.3716857638889 sample_variance=25662.718025993257
+excluded=0
+difference=-20.7638 se=9.56362 df=1149.24 t=-2.17112 p_two_sided=0.0301259 ci95=(-39.5279,-1.9997)
+threshold=5 point_estimate_meets=True ci_entirely_supports=False
+Observational historical configurations differ in other settings; this does not prove causation or guarantee future improvement.
+
+===== flow =====
+X264 flow (one measurement at a time)
+rows_seen: 1152; valid_count: 1152; missing_outcomes: 0; invalid_outcomes: 0
+mean: 461.7535963541664; sample_variance: 26426.313365992526
+best: value=244.23; position=71; configuration={'no_asm': '1', 'no_8x8dct': '1', 'no_cabac': '1', 'no_deblock': '1', 'no_fast_pskip': '0', 'no_mbtree': '0', 'no_mixed_refs': '0', 'no_weightb': '0', 'rc_lookahead': '1', 'rc_lookahead_20': '1', 'rc_lookahead_40': '0', 'rc_lookahead_60': '0', 'ref': '1', 'ref_1': '1', 'ref_5': '0', 'ref_9': '0'}
+position counts nonblank data rows starting at 1; blank rows are ignored; missing settings are retained as empty strings
+Marginal encoder-setting blame
+outcome: Performance- (lower is better)
+Missing/invalid settings or outcomes are excluded per setting. Score is undefined for fewer than two groups, fewer than one eligible row, or constant outcome; constant settings are reported with undefined score.
+rank=1 setting=ref_9 eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=19603609.10646359 total_ss=30416686.684257306 eta_squared=0.644501793 higher=['1'] lower=['0']
+  group=0 count=768 mean=369.512007
+  group=1 count=384 mean=646.236776
+rank=2 setting=ref_1 eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=19572956.672805563 total_ss=30416686.684257306 eta_squared=0.643494042 higher=['0'] lower=['1']
+  group=0 count=768 mean=553.923043
+  group=1 count=384 mean=277.414703
+rank=3 setting=no_mixed_refs eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=1146453.5021468988 total_ss=30416686.684257306 eta_squared=0.0376915972 higher=['0'] lower=['1']
+  group=0 count=576 mean=493.300155
+  group=1 count=576 mean=430.207038
+rank=4 setting=no_fast_pskip eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=936438.3779141314 total_ss=30416686.684257306 eta_squared=0.0307869949 higher=['1'] lower=['0']
+  group=0 count=576 mean=433.242536
+  group=1 count=576 mean=490.264656
+rank=5 setting=no_mbtree eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=741464.685548507 total_ss=30416686.684257306 eta_squared=0.0243769051 higher=['1'] lower=['0']
+  group=0 count=576 mean=436.383682
+  group=1 count=576 mean=487.12351
+rank=6 setting=no_8x8dct eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=124167.24576521001 total_ss=30416686.684257306 eta_squared=0.00408220813 higher=['0'] lower=['1']
+  group=0 count=576 mean=472.135507
+  group=1 count=576 mean=451.371686
+rank=7 setting=no_cabac eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=17755.389976292317 total_ss=30416686.684257306 eta_squared=0.000583738464 higher=['0'] lower=['1']
+  group=0 count=576 mean=465.679493
+  group=1 count=576 mean=457.8277
+rank=8 setting=rc_lookahead_20 eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=370.5769376406104 total_ss=30416686.684257306 eta_squared=1.21833434e-05 higher=['0'] lower=['1']
+  group=0 count=768 mean=462.154646
+  group=1 count=384 mean=460.951497
+rank=9 setting=rc_lookahead_60 eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=239.8258748476614 total_ss=30416686.684257306 eta_squared=7.88468111e-06 higher=['1'] lower=['0']
+  group=0 count=768 mean=461.430965
+  group=1 count=384 mean=462.398859
+rank=10 setting=no_deblock eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=26.436447195311096 total_ss=30416686.684257306 eta_squared=8.69142897e-07 higher=['1'] lower=['0']
+  group=0 count=576 mean=461.602109
+  group=1 count=576 mean=461.905083
+rank=11 setting=rc_lookahead_40 eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=14.168166503902142 total_ss=30416686.684257306 eta_squared=4.65802428e-07 higher=['1'] lower=['0']
+  group=0 count=768 mean=461.675178
+  group=1 count=384 mean=461.910432
+rank=12 setting=ref_5 eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=11.991503265626159 total_ss=30416686.684257306 eta_squared=3.94240944e-07 higher=['0'] lower=['1']
+  group=0 count=768 mean=461.82574
+  group=1 count=384 mean=461.60931
+rank=13 setting=no_weightb eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=8.943454000861752 total_ss=30416686.684257306 eta_squared=2.94031171e-07 higher=['0'] lower=['1']
+  group=0 count=576 mean=461.841707
+  group=1 count=576 mean=461.665486
+rank=14 setting=no_asm eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=0.0 total_ss=30416686.684257306 eta_squared=undefined higher=[] lower=[]
+  group=1 count=1152 mean=461.753596
+rank=15 setting=rc_lookahead eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=0.0 total_ss=30416686.684257306 eta_squared=undefined higher=[] lower=[]
+  group=1 count=1152 mean=461.753596
+rank=16 setting=ref eligible=1152 excluded=0 reference_mean=461.7535963541667 between_ss=0.0 total_ss=30416686.684257306 eta_squared=undefined higher=[] lower=[]
+  group=1 count=1152 mean=461.753596
+These are marginal historical associations, not independent causal contributions or significance tests; correlated/one-hot settings can reflect the same underlying choice, and changing a setting is not guaranteed to improve performance.
+exit_status=0

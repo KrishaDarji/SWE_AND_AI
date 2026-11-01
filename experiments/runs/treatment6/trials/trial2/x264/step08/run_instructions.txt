@@ -1,0 +1,15 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step08
+
+X264_DATASET='/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv'
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 source/x264_summary.py "$X264_DATASET"
+python3 source/x264_summary.py "$X264_DATASET" fix
+python3 source/x264_summary.py "$X264_DATASET" predict
+python3 source/x264_summary.py "$X264_DATASET" certify
+python3 source/x264_summary.py "$X264_DATASET" flow
+python3 source/x264_summary.py "$X264_DATASET" blame
+python3 source/x264_summary.py "$X264_DATASET" justify
+python3 source/x264_summary.py "$X264_DATASET" choose
+
+Captured final test output: test_output.txt and test_output.stderr.
+Captured demonstrations: runtime_summary.txt, runtime_fix.txt, runtime_predict.txt, runtime_certify.txt, runtime_flow.txt, runtime_blame.txt, runtime_justify.txt, runtime_choose.txt; stderr captures have matching .stderr names. runtime_fix_timing.txt contains /usr/bin/time -p for the fix demonstration.

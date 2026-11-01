@@ -1,0 +1,14 @@
+.........F.........
+======================================================================
+FAIL: test_exclusions_and_missing_nonfinite (test_x264_summary.JustifyTests.test_exclusions_and_missing_nonfinite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step06/tests/test_x264_summary.py", line 124, in test_exclusions_and_missing_nonfinite
+    self.assertEqual(r["excluded"]["missing_outcome"],1); self.assertEqual(r["excluded"]["invalid_outcome"],1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.013s
+
+FAILED (failures=1)

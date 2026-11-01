@@ -1,0 +1,11 @@
+RETROSPECTIVE_SELECTION among historical projects
+selected_project: {'position': 79, 'idX': '78', 'descriptors': {'prec': 'h', 'flex': 'h', 'resl': 'h', 'team': 'vh', 'pmat': 'l', 'rely': 'h', 'data': 'n', 'cplx': 'vh', 'ruse': 'n', 'docu': 'n', 'time': 'n', 'stor': 'vh', 'pvol': 'l', 'acap': 'h', 'pcap': 'h', 'pcon': 'n', 'apex': 'h', 'plex': 'h', 'ltex': 'h', 'tool': 'n', 'site': 'n', 'sced': 'l'}, 'Kloc+': 165.0, 'Effort-': 97.0, 'Defects-': 7867.0}
+cap=100.0 feasible=True selection_rule=highest Kloc+; lowest Effort- for ties; earliest original CSV position for remaining ties
+counts: raw/parsed=93 valid=93 feasible=31 invalid_data_exclusions=0 over_budget_exclusions=62 malformed_rows=0
+exclusion_definitions: invalid_data requires all 22 descriptors and finite Kloc+, Effort-, Defects-, with nonnegative Effort-; over_budget is otherwise-valid Effort- > cap
+interpretation: retrospective selection among historical projects; not productivity, causation, suitability, or a future-budget guarantee
+real 0.03
+user 0.02
+sys 0.00
+
+exit_status=0

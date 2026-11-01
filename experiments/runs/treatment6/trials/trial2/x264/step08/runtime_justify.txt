@@ -1,0 +1,13 @@
+Justify recommended encoder configuration
+retrospective selection from measured runs
+position: 71; Performance-: 244.23
+configuration: {'no_asm': 1, 'no_8x8dct': 1, 'no_cabac': 1, 'no_deblock': 1, 'no_fast_pskip': 0, 'no_mbtree': 0, 'no_mixed_refs': 0, 'no_weightb': 0, 'rc_lookahead': 1, 'rc_lookahead_20': 1, 'rc_lookahead_40': 0, 'rc_lookahead_60': 0, 'ref': 1, 'ref_1': 1, 'ref_5': 0, 'ref_9': 0}
+eligible_count: 1152; excluded: {'missing_outcome': 0, 'invalid_outcome': 0, 'invalid_settings': 0, 'incomplete_settings': 0}
+historical reference: finite observed Performance- median; count=1152; median=452.7785
+absolute_reduction: 208.54850000000002
+percentage_reduction: 46.059717941554204
+Context uses global marginal associations from all eligible rows; they are not causal effects or local contributions and do not prove changing a setting will improve performance.
+Rule: choose the lowest finite Performance- among complete valid binary settings, breaking ties by earliest original nonblank row position.
+This is best only among eligible measured historical configurations and does not guarantee future performance.
+nonblank data rows start at 1; blank rows are ignored
+exit_status=0

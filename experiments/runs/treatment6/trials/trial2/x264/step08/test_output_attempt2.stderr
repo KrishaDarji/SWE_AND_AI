@@ -1,0 +1,39 @@
+.........F...E...........E
+======================================================================
+ERROR: test_csv_integration (test_x264_summary.FlowTests.test_csv_integration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step08/tests/test_x264_summary.py", line 87, in test_csv_integration
+    result=flow(os.environ["X264_DATASET"]); self.assertGreater(result["rows_seen"],0); self.assertEqual(result["valid_count"],result["rows_seen"])
+                ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'X264_DATASET'
+
+======================================================================
+ERROR: test_real_shape_and_stats (test_x264_summary.SummaryTests.test_real_shape_and_stats)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step08/tests/test_x264_summary.py", line 15, in test_real_shape_and_stats
+    result = summarize(os.environ["X264_DATASET"])
+                       ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 714, in __getitem__
+KeyError: 'X264_DATASET'
+
+======================================================================
+FAIL: test_empty_invalid_zero_equal_and_none (test_x264_summary.FixTests.test_empty_invalid_zero_equal_and_none)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step08/tests/test_x264_summary.py", line 175, in test_empty_invalid_zero_equal_and_none
+    self.assertEqual(self.case("a,Performance-\n0,3\n0,2\n")["status"],"no improving candidate")
+AssertionError: 'ok' != 'no improving candidate'
+- ok
++ no improving candidate
+
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.014s
+
+FAILED (failures=1, errors=2)
+real 0.05
+user 0.03
+sys 0.01

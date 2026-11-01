@@ -1,0 +1,13 @@
+Working directory: '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step09'
+Python interpreter: /usr/bin/python3
+
+Run complete tests:
+/usr/bin/python3 -m unittest discover -s tests -p 'test_*.py'
+
+Run current demonstration:
+/usr/bin/time -p /usr/bin/python3 source/spot.py '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'
+
+Run preserved demonstrations:
+for f in source/{summarize_runs,blame,certify,choose,fix,flow,justify}.py; do /usr/bin/python3 "$f" '/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/hpo/Health-ClosedIssues0000.csv'; done
+
+The saved captures are runtime_*.out, runtime_output.txt, runtime_timing.txt, and test_output.txt. The first repaired failed test attempt is preserved in test_output_attempt1_failed.txt.

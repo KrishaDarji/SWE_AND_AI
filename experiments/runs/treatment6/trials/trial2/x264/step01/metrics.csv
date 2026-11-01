@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+1,6,2,video encoding,remember,86,86,1,0.02,2,"4 tests passed; /usr/bin/time -p real for successful demonstration; EZR csv/header roles/Num-style summaries adapted; Performance- is minimized; missing tokens are explicit and non-finite/non-numeric outcomes are invalid; two repaired non-test command failures preserved"

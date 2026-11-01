@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/source/fix.py", line 69, in <module>
+    print(render(suggest_fix(sys.argv[1])))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/source/fix.py", line 35, in suggest_fix
+    header, rows, malformed = _read(path)
+                              ^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step08/source/fix.py", line 16, in _read
+    with open(path, newline="", encoding="utf-8") as handle:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '../../../../../../moot/optimize/hpo/Health-ClosedIssues0000.csv'
+real 0.03
+user 0.02
+sys 0.00
+
+EXIT_STATUS=1

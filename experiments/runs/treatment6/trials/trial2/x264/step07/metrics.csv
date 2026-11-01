@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+7,6,2,video encoding,choose,488,80,1,0.04,1,"22 tests passed; choose timing only; budget 20, attempted 20, successful 20; reused Step 6 source/tests; added/replacement LOC; EZR informed incremental statistics and explicit missing/invalid handling; one repaired initial test attempt preserved; binary normalization and earliest-duplicate policy; audit retrospective only"

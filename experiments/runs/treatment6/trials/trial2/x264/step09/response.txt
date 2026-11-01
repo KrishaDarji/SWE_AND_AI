@@ -1,0 +1,9 @@
+Implemented Step 9 spot detection in source/x264_summary.py and preserved the Step 8 source, tests, and demonstrations.
+
+The new spot function normalizes complete binary settings, uses Hamming distance, excludes the target row, keeps all tied nearest rows, counts duplicate configurations as distinct rows, and requires at least three reference rows. It uses the median and 1.4826 times the median absolute deviation; zero scale produces an undefined score rather than a substitute. Missing/nonfinite outcomes and invalid settings are counted and excluded, while original nonblank row positions and complete configurations are reported.
+
+The full suite passes: 29 tests. The current dataset demonstration found 0 flags, with 1152 valid rows, 0 exclusions, and 0 undefined scores. This is a no-flag result, not evidence that the measurements are error-free. Unusual measurements would warrant investigation; both unusually good and poor results can flag, but a flag does not prove an error.
+
+The successful spot demonstration took 1.42 seconds of /usr/bin/time -p real time. Outputs and stderr captures are in this directory. The EZR reference informed the reuse of descriptive, explicit finite-value handling and robust summary conventions; no Lua or third-party package was used.
+
+Known limitations: binary settings are required, nearest-neighbor references are local and observational, the threshold and minimum reference count are fixed defaults, and zero-MAD neighborhoods cannot receive a score.

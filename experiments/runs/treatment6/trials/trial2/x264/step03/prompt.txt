@@ -1,0 +1,170 @@
+You are running Treatment 6, Trial 2, Dataset 1, Step 3 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: certify
+- Current requirement: Determine whether an apparent encoding-performance difference is meaningful or noise.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step02/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step02/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step03/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent x264 directory.
+- Write only inside the current Step 3 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 2 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not refer to Trial 1 or Treatment 5 implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable parsing and data machinery.
+- Preserve earlier functions, tests, and demonstration functionality.
+  Current-step runners may call preserved functions without reading
+  unauthorized runners from previous directories.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement certify only; do not implement later skills.
+
+Implementation:
+1. Fix this comparison before examining outcome results:
+   - Reference group: no_8x8dct == 0.
+   - Candidate group: no_8x8dct == 1.
+   - Outcome: Performance-, where lower is better.
+   Compare setting values numerically and exclude other or invalid values.
+   Do not search for a more significant comparison.
+
+2. Report usable counts, means, and sample variances for both groups.
+   Define the difference as candidate mean minus reference mean.
+   Negative differences favor the candidate.
+
+3. Compute a two-sided Welch test and a 95% confidence interval for that
+   difference using Welch–Satterthwaite degrees of freedom.
+   Use standard-library numerical methods, document approximations,
+   and validate calculations against independent reference values.
+   Calculate small tail probabilities without avoidable cancellation.
+
+4. Support an optional finite, nonnegative practical-improvement threshold
+   in the outcome's unspecified units. Use 5 for the demonstration.
+   Distinguish:
+   - Statistical evidence of a difference.
+   - The point estimate meeting the practical improvement threshold.
+   - The entire confidence interval supporting that improvement.
+   Nonsignificance does not establish equivalence.
+   Without a threshold, practical importance is undetermined.
+
+5. Handle missing/nonfinite outcomes, absent groups, insufficient samples,
+   and undefined inference explicitly.
+   Do not fabricate p-values or confidence intervals for zero-standard-error
+   cases. Do not invent units or separate quality measures.
+
+6. Explain that these groups contain historical configurations differing
+   in other settings. This comparison is observational and does not prove
+   that no_8x8dct caused the difference or guarantee future improvement.
+
+7. Provide a runnable certify demonstration and preserve the earlier
+   summary and prediction demonstrations using the copied implementation.
+
+Tests:
+- Preserve and run all previous tests.
+- Add independent examples for group selection, difference direction,
+  sample variance, standard error, confidence intervals, and degrees
+  of freedom.
+- Check t-distribution calculations against independent reference values
+  at representative small and larger degrees of freedom.
+- Test probability bounds, thresholds, missing/nonfinite values, absent
+  groups, insufficient samples, and zero-standard-error cases.
+- Do not require the real dataset to produce significance.
+- Preserve environment variables required by copied tests.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and the preserved
+summary and prediction demonstrations.
+Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory in run instructions.
+Before finishing, verify every required artifact exists in this step.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=3, treatment=6, trial=2, domain=video encoding, skill=certify.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 2 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current certify demonstration only, excluding tests and earlier demos.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, reuse, LOC method, EZR influence,
+  assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

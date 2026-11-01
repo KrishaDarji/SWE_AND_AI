@@ -1,0 +1,2 @@
+{"groups": [8000, 2000], "prediction": {"ACC+": 0.49531023710451266, "MRE-": 0.7101502393213055}, "rows": [8000, 2000], "targets": {"ACC+": {"baseline_mae": 0.09081883843003224, "finite_test": 2000, "finite_training": 8000, "mae": 0.09081883843003224}, "MRE-": {"baseline_mae": 0.16904973170195345, "finite_test": 2000, "finite_training": 8000, "mae": 0.16904973170195345}}}
+exit_status=0

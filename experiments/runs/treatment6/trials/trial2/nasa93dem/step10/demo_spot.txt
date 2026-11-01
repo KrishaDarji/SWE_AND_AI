@@ -1,0 +1,6 @@
+policy: log1p nonnegative Effort-; leave-one-out median/MAD; zero MAD and short references undefined
+Marginal historical effort screening; size and other descriptors are not adjusted. Unusual results warrant investigation, not proof of measurement error; both low and high effort may be unusual.
+counts: {'total_valid': 93, 'excluded': 0, 'flagged': 0, 'ordinary_nonflag': 93, 'undefined': 0}
+positions are 1-based physical CSV lines including header; malformed rows are skipped and reported
+
+EXIT_STATUS=0

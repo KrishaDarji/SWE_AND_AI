@@ -1,0 +1,9 @@
+Certification: no_8x8dct=1 candidate minus no_8x8dct=0 reference
+lower Performance- is better
+reference: n=576 mean=472.1355069444445 sample_variance=27019.924475732125
+candidate: n=576 mean=451.3716857638889 sample_variance=25662.718025993257
+excluded=0
+difference=-20.7638 se=9.56362 df=1149.24 t=-2.17112 p_two_sided=0.0301259 ci95=(-39.5279,-1.9997)
+threshold=5 point_estimate_meets=True ci_entirely_supports=False
+Observational historical configurations differ in other settings; this does not prove causation or guarantee future improvement.
+exit_status=0

@@ -1,0 +1,9 @@
+Implemented Step 2 guess under the required directory.
+
+Reused the Step 1 parser, summary renderer, demonstrations, and tests. Added a training-only approximately 80/20 configuration-group split with seed 42, a normalized 1-nearest-neighbor predictor, exact configuration validation, training-fitted handling for missing/constant/unseen settings, finite-target filtering, held-out MAE, and training-mean baseline MAE. The EZR reference informed deterministic CSV handling, independent-column normalization, distance-based prediction, and median/summary-style statistics.
+
+Results: 922 training rows/groups and 230 held-out rows/groups; held-out MAE 21.34375652173913; baseline MAE 145.1429672639819. All 6 tests pass. The current demonstration took 0.68 seconds real time. Source LOC is 148; new/replacement LOC versus Step 1 is 73 by corresponding-file comparison.
+
+Files include prompt.txt, source/, tests/, test_output.txt, runtime_output.txt, summary_output.txt, metrics.csv, run_instructions.txt, and separately labeled failed-attempt captures. See run_instructions.txt for absolute commands and the required X264_DATASET environment variable.
+
+Known limitations: the predictor is deliberately a simple 1-NN model, unseen setting values fall back to the training mean, and invalid/missing targets are excluded from evaluation and training. The supplied all-zero demonstration configuration may therefore use that explicit unseen-value fallback.

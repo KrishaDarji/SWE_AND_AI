@@ -1,0 +1,15 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (standard library only)
+
+Run the complete suite:
+python3 -m unittest discover -s SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/tests -v
+
+Run demonstrations:
+python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/source/nasa93_summary.py SWE_AND_AI/moot/optimize/process/nasa93dem.csv
+python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/source/nasa93_summary.py SWE_AND_AI/moot/optimize/process/nasa93dem.csv --estimate
+python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/source/nasa93_summary.py SWE_AND_AI/moot/optimize/process/nasa93dem.csv --certify
+python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/source/nasa93_summary.py SWE_AND_AI/moot/optimize/process/nasa93dem.csv --flow
+python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/source/nasa93_summary.py SWE_AND_AI/moot/optimize/process/nasa93dem.csv --blame
+python3 SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step06/source/nasa93_summary.py SWE_AND_AI/moot/optimize/process/nasa93dem.csv --justify --retrospective-audit
+
+Successful captures are test_output.txt, runtime_output.txt/runtime_stderr.txt, and the named demonstration output files. The repaired failed test attempt is preserved as test_output_attempt01.txt, test_stderr_attempt01.txt, and test_status_attempt01.txt.

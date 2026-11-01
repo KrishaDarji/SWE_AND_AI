@@ -1,0 +1,160 @@
+You are running Treatment 6, Trial 2, Dataset 1, Step 2 of a controlled experiment.
+
+Treatment:
+- Writer: LLM
+- Output language: Python
+- Background: professor's EZR Lua reference
+- Reuse instructed: Yes, within this dataset and trial only
+- Domain: video encoding
+- Dataset: X264_AllMeasurements.csv
+- Current skill: guess
+- Current requirement: Predict encoding performance for a proposed encoder configuration.
+
+Use only the Python standard library. Refer to the authorized EZR Lua files
+for ideas; do not run Lua or use third-party packages.
+
+Repository:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI"
+
+Dataset:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/config/X264_AllMeasurements.csv"
+
+Authorized EZR background files:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr.lua"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/backgrounds/ezr/upstream/ezr-lib.lua"
+
+EZR reference commit:
+a73453bcfcbe9a34539b6357a4cb282abc2b3b17
+
+Authorized previous implementation:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step01/source/"
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step01/tests/"
+
+Save all outputs in exactly:
+"/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step02/"
+
+Path rules:
+- Resolve and verify the output path before writing.
+- Create the output directory and its source/ and tests/ directories yourself.
+- Quote paths containing spaces.
+- Do not write to the outer SWEAI_Project/experiments/ directory.
+- Do not save files in the parent x264 directory.
+- Write only inside the current Step 2 directory.
+
+Allowed references:
+- The dataset and the two EZR files listed above.
+- The listed Step 1 source/ and tests/ directories.
+- Files created inside the current step.
+- Official Python standard-library documentation if needed.
+
+Do not read other steps, datasets, trials, treatments, repository
+implementations, Git history, previous chats, or previous response/log files.
+Do not refer to Trial 1 or Treatment 5 implementations.
+If a required authorized input is missing, report its exact path without
+searching elsewhere.
+
+Reuse:
+- Copy the authorized previous source and tests into this step.
+- Extend that implementation, reusing suitable parsing and data machinery.
+- Preserve earlier functions, tests, and supported demonstrations.
+- Keep this snapshot self-contained: do not import from previous directories
+  or modify previous files.
+- Implement guess only; do not implement later skills.
+
+Implementation:
+1. Predict Performance- using encoder settings only.
+   Lower Performance- is better. Do not invent units or other outcomes.
+   Exclude Performance- from all predictor features.
+
+2. Use a reproducible approximately 80/20 train/test split with seed 42.
+   Keep identical normalized configurations together if duplicates exist.
+   Require nonempty training and test groups.
+   Fit all preprocessing and prediction machinery using training data only.
+
+3. Choose and explain a standard-library prediction method informed by
+   the authorized EZR reference.
+   Define how settings are represented and how missing/invalid settings,
+   constant settings, and unseen values are handled.
+   Apply the same transformations during fitting and prediction.
+
+4. Report training/test row and configuration-group counts, held-out MAE,
+   and the MAE of a baseline that always predicts the training mean.
+   Use only finite observed Performance- values for target evaluation.
+   Zero is a valid target. Explain exclusions and insufficient-data cases.
+   The predictor is not required to beat the baseline.
+
+5. Support prediction for a supplied configuration containing exactly the
+   expected encoder setting fields. Validate missing and extra fields.
+   Handle invalid setting values explicitly.
+   Clearly distinguish held-out evaluation from any all-history model.
+
+6. Provide a runnable demonstration and preserve the Step 1 summary demo.
+   Use deterministic ordering as well as local seeded randomness where
+   reproducibility depends on row or group order.
+
+Tests:
+- Preserve and run all previous tests.
+- Test prediction and independently calculated MAE/baseline results.
+- Verify outcomes cannot enter predictor features.
+- Test reproducible splitting and actual repeated-configuration grouping.
+- Verify changing held-out outcomes cannot affect fitted predictions,
+  preprocessing, or the training-mean baseline.
+- Verify held-out settings do not fit preprocessing.
+- Test constant settings, missing/invalid settings, unseen values,
+  exact supplied-configuration validation, invalid targets, valid zero
+  targets, and insufficient data.
+- Preserve any environment variables needed by the copied tests and
+  document them in runnable commands.
+
+Return:
+1. Complete updated source code.
+2. Preserved and new tests.
+3. Commands to run the tests and demonstrations.
+4. A short explanation of what was reused, changed, and added, including
+   how the EZR reference informed the implementation.
+5. Known assumptions and limitations.
+
+Required directory contents:
+- prompt.txt
+- response.txt
+- source/
+- tests/
+- test_output.txt
+- runtime_output.txt
+- metrics.csv
+- run_instructions.txt
+
+Save this entire prompt verbatim in prompt.txt before implementation.
+Save your final response verbatim in response.txt.
+
+Run the complete test suite, the current demonstration, and all preserved
+demonstrations. Capture actual stdout, stderr, exit status, and timing.
+Preserve every failed and successful attempt in separately labeled files;
+do not overwrite failed attempts or reconstruct logs afterward.
+Summary logs must identify the final captures.
+Capture full output directly from executed commands; do not replace
+actual logs with manually written summaries.
+Use absolute paths and state the working directory in run instructions.
+
+Record this header and one measured row in metrics.csv:
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+
+Metric rules:
+- step=2, treatment=6, trial=2, domain=video encoding, skill=guess.
+- total_loc: all nonblank, noncomment Python source lines in this snapshot,
+  excluding tests, measurement runners, and Lua background.
+- new_loc: added or replacement source lines compared with the authorized
+  Step 1 source, using corresponding file paths. Unchanged copied lines
+  do not count. Do not use net LOC growth as new_loc.
+- test_pass: 1 only if the full preserved and new suite passes; otherwise 0.
+- runtime_seconds: measured /usr/bin/time -p real time for the successful
+  current guess demonstration only, excluding tests and the summary demo.
+  Copy the value from that demonstration's saved timing capture.
+- error_count: unexpected failed assertions/test errors plus failed
+  non-test commands across all attempts, including repaired failures.
+  Do not double-count a test-suite exit or expected negative test cases.
+- notes: test counts, timing scope, evaluation results, reuse, LOC method,
+  EZR influence, assumptions, and any failures or repairs.
+
+Keep measurement scripts outside source/.
+Do not fabricate results or add model metadata.

@@ -1,0 +1,11 @@
+Implemented Step 7 `choose` in `source/nasa93_summary.py`.
+
+Reused the authorized Step 6 source/tests, including CSV loading, normalization, validation helpers, project representation, summaries, and all summary/estimate/certify/flow/blame/justify demonstrations. Added retrospective historical selection with configurable finite nonnegative cap, complete 22-descriptor eligibility, finite Kloc+/Effort-/Defects- checks, nonnegative observed effort, and the required Kloc+, Effort-, then original-position ordering. Defects- is reported descriptively only.
+
+The EZR reference informed explicit missing-symbol handling, header/role separation, simple historical summaries, and transparent exclusion accounting; no Lua or third-party package is used.
+
+Result for nasa93dem.csv at cap 100: position 79, idX 78, Kloc+ 165, Effort- 97, Defects- 7867; 93 raw/parsed, 93 valid, 31 feasible, 0 invalid-data exclusions, 62 over-budget exclusions, and 0 malformed rows.
+
+Verification: 26 tests pass. The timed choose demonstration completed successfully in 0.02 seconds real time. Full source, preserved/new tests, captures, metrics, prompt, and commands are in this step directory.
+
+Known limitations: this is retrospective selection among observed historical projects. It does not establish productivity, causation, new-project suitability, or a guarantee that future effort will fit the observed cap. The loader reports malformed rows but skips them.

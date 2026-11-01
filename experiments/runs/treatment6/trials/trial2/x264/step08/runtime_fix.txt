@@ -1,0 +1,11 @@
+Smallest observed encoder-setting change
+retrospective comparison between measured configurations
+status: ok
+baseline: position=1; configuration={'no_asm': 1, 'no_8x8dct': 0, 'no_cabac': 0, 'no_deblock': 0, 'no_fast_pskip': 0, 'no_mbtree': 0, 'no_mixed_refs': 0, 'no_weightb': 0, 'rc_lookahead': 1, 'rc_lookahead_20': 1, 'rc_lookahead_40': 0, 'rc_lookahead_60': 0, 'ref': 1, 'ref_1': 1, 'ref_5': 0, 'ref_9': 0}; Performance-=268.72
+candidate: position=65; configuration={'no_asm': 1, 'no_8x8dct': 1, 'no_cabac': 0, 'no_deblock': 0, 'no_fast_pskip': 0, 'no_mbtree': 0, 'no_mixed_refs': 0, 'no_weightb': 0, 'rc_lookahead': 1, 'rc_lookahead_20': 1, 'rc_lookahead_40': 0, 'rc_lookahead_60': 0, 'ref': 1, 'ref_1': 1, 'ref_5': 0, 'ref_9': 0}; Performance-=254.587
+changed_fields: [{'field': 'no_8x8dct', 'old': 0, 'new': 1}]; change_count=1
+absolute_reduction: 14.133000000000038; percentage_reduction: 5.259377791009243
+candidate_count: 138; excluded: {'invalid_baseline': 0, 'missing_or_nonfinite_outcome': 0, 'invalid_or_incomplete_settings': 0, 'not_strictly_improving': 1013}
+selection_rule: fewest changed encoder-setting fields, then lowest Performance-, then earliest original nonblank data-row position
+Change count is a simplicity proxy; historical differences do not prove causation.
+exit_status=0

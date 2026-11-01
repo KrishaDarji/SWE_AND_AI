@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+4,6,2,video encoding,flow,284,76,1,0.03,1,"12 tests passed; timing is /usr/bin/time -p for successful flow demonstration only; copied Step 3 source/tests; new LOC is added diff lines; EZR csv iterator and incremental summary ideas informed flow; nonblank positions start at 1, blank rows ignored, missing settings retained; one shell capture command failed before suite and is counted"

@@ -1,0 +1,17 @@
+.E.......
+======================================================================
+ERROR: test_threshold_and_exclusions (test_x264_summary.CertifyTests.test_threshold_and_exclusions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/x264/step03/tests/test_x264_summary.py", line 61, in test_threshold_and_exclusions
+    self.assertTrue(r["practical"]["point_estimate_meets"]); self.assertEqual(r["excluded"],2)
+                    ~^^^^^^^^^^^^^
+KeyError: 'practical'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+FAILED (errors=1)
+real 0.09
+user 0.03
+sys 0.01

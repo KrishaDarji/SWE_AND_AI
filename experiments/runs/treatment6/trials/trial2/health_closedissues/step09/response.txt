@@ -1,0 +1,15 @@
+Implemented Step 9 in the required directory.
+
+Artifacts:
+- `source/spot.py`: standard-library-only, two-sided median/MAD screening for MRE-, ACC+, and PRED40+.
+- `tests/test_spot.py`: independent flags, boundaries/short data, missing/nonfinite values, zero MAD, positions, and configuration retention.
+- Step 8 source/tests and demonstrations were preserved.
+- `prompt.txt`, `run_instructions.txt`, `metrics.csv`, logs, and the required runtime/test captures are present.
+
+Policy: score = abs(observation - median) / (1.4826 * MAD), threshold 3.5, minimum sample size 3. Each eligible observation contributes to its own metric-specific reference distribution. Zero MAD produces undefined scores, with no standard-deviation substitution. Missing/nonfinite observations, undefined scores, ordinary nonflags, and flags are counted separately. Header position is 1; original CSV data positions are retained, while malformed rows are excluded.
+
+The successful full suite ran 31 tests. The current spot demonstration completed successfully in 0.08 seconds real time. On the dataset, MRE- flagged 1,496 rows, ACC+ flagged 2,124, PRED40+ had zero MAD and 10,000 undefined scores, and 2,151 unique rows were flagged. These are unusual marginal results warranting investigation, not proven measurement errors; unusually good results may also be unusual. This is not configuration-conditioned anomaly detection or a validated error classifier, and no detector accuracy is claimed without labeled ground truth.
+
+The implementation reused the authorized Step 8 parser, field definitions, numeric handling, summaries, demonstrations, and tests. The EZR reference informed explicit, reproducible summary/statistical conventions; no Lua was run. A preserved Step 8 streaming-variance test initially exposed a floating-point representation mismatch; the source was repaired and the failed capture is preserved.
+
+Known limitations: marginal screening ignores configuration-conditioned behavior and correlation among outcomes/configuration fields; MAD-based scores are undefined for short or constant samples; malformed rows are not analyzed.

@@ -1,0 +1,11 @@
+Implemented Step 7 in the required directory.
+
+Added source/choose.py. It performs retrospective selection among observed historical rows with a configurable finite nonnegative N_estimators cap (demo cap 100), requiring all five configuration fields and finite MRE-, ACC+, and PRED40+. Ranking is MRE- ascending, ACC+ descending, PRED40+ descending, then earliest original CSV position. It reports raw/parsed/valid/feasible counts, malformed/invalid/over-cap exclusions, complete configuration, outcomes, cap, proxy value, feasibility, and limitations.
+
+Copied the authorized Step 6 source and tests, preserving summarize, prediction, certify, flow, blame, justify, and their demonstrations. Added tests/test_choose.py covering exact-cap inclusion, over-cap exclusion, negative/nonfinite estimators, invalid caps, no feasible rows, missing/nonfinite values, categorical criteria, complete configuration retention, original positions, all tie-breakers, malformed rows, counts, and over-budget winners.
+
+Verification: 23 tests passed. The current choose demonstration passed with 0.06 seconds real time. On the supplied dataset it selected original CSV position 33: N_estimators=10, criterion=squared_error, Min_sample_leaves=1, Min_impurity_decrease=6.75, Max_depth=5, with MRE-=0.0, ACC+=0.7901313681512335, and PRED40+=0.8571428571428571. At cap 100, 10,000 rows parsed, 10,000 were valid, 4,877 feasible, and 5,123 valid rows exceeded the cap.
+
+The EZR reference informed the conservative standard-library implementation’s explicit row filtering, missing/nonfinite handling, stable original-position accounting, and transparent summary conventions. No Lua was run and no third-party package was used. Selection is retrospective and limited to eligible historical rows; other settings may affect computation, and it does not guarantee unseen performance or claim measured resource cost.
+
+Run commands and captured outputs are in run_instructions.txt, test_output.txt, runtime_output.txt, and the preserved demonstration output files. Required prompt, source, tests, logs, and metrics are present in this Step 7 directory.

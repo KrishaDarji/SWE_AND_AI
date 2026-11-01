@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes
+9,6,2,video encoding,spot,623,72,1,1.42,5,"29 tests passed; Hamming nearest tied rows; minimum 3 reference rows; median and 1.4826*MAD, zero scale undefined; duplicates count as rows; copied Step 8 machinery and demonstrations; new LOC is added diff lines; EZR informed descriptive/robust summary conventions; initial repaired test attempt had 5 failures/errors"

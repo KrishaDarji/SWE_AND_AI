@@ -1,0 +1,8 @@
+--- DEMO ---
+prediction: 463.582073
+train_rows: 922; test_rows: 230; train_groups: 922; test_groups: 230
+held_out_mae: 21.34375652173913; baseline_mae: 145.1429672639819
+real 0.68
+user 0.67
+sys 0.01
+exit_status=0

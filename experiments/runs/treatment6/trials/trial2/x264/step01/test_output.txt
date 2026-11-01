@@ -1,0 +1,12 @@
+test_empty_header_only_and_no_outcome (test_x264_summary.SummaryTests.test_empty_header_only_and_no_outcome) ... ok
+test_frequencies_statistics (test_x264_summary.SummaryTests.test_frequencies_statistics) ... ok
+test_missing_invalid (test_x264_summary.SummaryTests.test_missing_invalid) ... ok
+test_real_shape_and_stats (test_x264_summary.SummaryTests.test_real_shape_and_stats) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.004s
+
+OK
+real 0.43
+user 0.03
+sys 0.01

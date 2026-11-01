@@ -1,0 +1,11 @@
+Working directory: /Users/vivek/D Drive/vs code/SWEAI_Project
+Python interpreter: python3 (standard library only)
+
+Run the complete suite:
+python3 -m unittest discover -s /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step10/tests -p 'test_*.py'
+
+Run the current race demonstration:
+/usr/bin/time -p python3 /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/nasa93dem/step10/source/nasa93_summary.py /Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/moot/optimize/process/nasa93dem.csv --race
+
+Run preserved demonstrations by replacing --race with: --estimate, --certify, --flow, --blame, --justify, --choose, --spot, or no option for summary.
+The captured outputs are in test_output.txt, runtime_output.txt, and demo_*.txt.

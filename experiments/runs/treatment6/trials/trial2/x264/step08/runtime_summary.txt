@@ -1,0 +1,23 @@
+Historical X264 run summary
+record_count: 1152
+outcome: Performance- (lower is better)
+outcome_stats: count=1152, min=244.23, max=821.963, mean=461.754, median=452.779, stdev=162.562
+missing_outcomes: 0; invalid_outcomes: 0
+setting_frequencies:
+  no_asm: 1=1152
+  no_8x8dct: 0=576, 1=576
+  no_cabac: 0=576, 1=576
+  no_deblock: 0=576, 1=576
+  no_fast_pskip: 0=576, 1=576
+  no_mbtree: 0=576, 1=576
+  no_mixed_refs: 0=576, 1=576
+  no_weightb: 0=576, 1=576
+  rc_lookahead: 1=1152
+  rc_lookahead_20: 0=768, 1=384
+  rc_lookahead_40: 0=768, 1=384
+  rc_lookahead_60: 0=768, 1=384
+  ref: 1=1152
+  ref_1: 0=768, 1=384
+  ref_5: 0=768, 1=384
+  ref_9: 0=768, 1=384
+exit_status=0

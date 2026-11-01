@@ -1,0 +1,21 @@
+Implemented Treatment 6, Trial 2, Dataset 2, Step 4 in the required Step 4 directory.
+
+Updated source: source/nasa93_summary.py
+Preserved tests: tests/test_nasa93_summary.py and tests/test_certify.py
+New tests: tests/test_flow.py
+
+What changed:
+- Reused the Step 3 categorical effort model, parser, summary, prediction, and certification demonstrations.
+- Added --flow, which replays CSV rows in order and predicts before revealing/updating the current Effort- outcome.
+- Uses only the 22 authorized categorical descriptors; prior finite Effort- values alone form history.
+- Reports explicit warm-up/unavailable predictions, cumulative model and prior-history-mean baseline MAE, invalid outcomes, positions, idX values, and independent arrival snapshots.
+- Missing descriptors are normalized as categorical symbols and remain usable; missing, invalid, and nonfinite Effort- values are excluded from training and scoring, while zero is valid.
+
+Verification:
+- Full suite: 13 tests passed.
+- Flow: warm-up=1, evaluated=92, invalid outcomes=0, model MAE=466.88630434782607, baseline MAE=481.9114197824729.
+- Successful flow timing: 0.02 seconds real time.
+
+The EZR reference informed the existing symbolic categorical-distance/neighborhood approach and summary conventions; no Lua or third-party package was run. The estimate is an online replay of CSV order, not a claim about historical chronology or future accuracy. The implementation assumes the CSV header supplies the required descriptors and treats malformed rows as parser exclusions.
+
+Run commands are in run_instructions.txt. Complete source and tests are in source/ and tests/. Captures are retained as separately labeled files; metrics.csv records the required measurement row.

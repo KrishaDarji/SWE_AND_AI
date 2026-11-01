@@ -1,0 +1,15 @@
+test_direction_stats_and_inference (test_certify.CertifyTests) ... ok
+test_missing_absent_insufficient_zero_se (test_certify.CertifyTests) ... ok
+test_t_reference_values (test_certify.CertifyTests) ... ok
+test_threshold_and_validation (test_certify.CertifyTests) ... ok
+test_empty_header_malformed_duplicates_positions (test_nasa93_summary.Tests) ... ok
+test_exact_fields_grouping_and_reproducible_split (test_nasa93_summary.Tests) ... ok
+test_invalid_nonfinite_and_insufficient_groups (test_nasa93_summary.Tests) ... ok
+test_model_schema_missing_zero_and_unseen (test_nasa93_summary.Tests) ... ok
+test_real_dataset_roles_and_counts (test_nasa93_summary.Tests) ... ok
+test_stats_median_variance_missing_nonfinite_invalid (test_nasa93_summary.Tests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.005s
+
+OK

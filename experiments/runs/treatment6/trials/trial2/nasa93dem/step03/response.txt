@@ -1,0 +1,18 @@
+Implemented and validated Step 3 certify in source/nasa93_summary.py, preserving the Step 2 summary and prediction demonstrations.
+
+The certify comparison is fixed as tool n (reference) versus tool h (candidate), using Effort- with lower values better. The NASA93 demonstration produced:
+- n: count 83, mean 606.0638554216868, sample variance 1387541.9952630033
+- h: count 10, mean 776.7, sample variance 519143.78888888884
+- difference h - n: 170.6361445783133
+- Welch standard error: 261.97662553325733; df: 15.552580855698572
+- two-sided p: 0.5243346705603098
+- 95% CI: (-386.0308077263368, 727.3030968829634)
+- demonstration threshold: 10% × reference mean = 60.60638554216868
+
+The point estimate does not meet the practical-improvement threshold, and the entire confidence interval does not support it. The result is not statistically significant. Nonsignificance is not equivalence. These are historical projects differing in size and other characteristics; this marginal comparison does not establish a causal tool effect, productivity improvement, or future performance, and no effort units are assumed.
+
+Reused the authorized Step 2 source and tests, extending the existing loader, summary, model, and demonstrations. Added standard-library Welch inference, a continued-fraction incomplete-beta calculation for the t distribution, validation/edge-case handling, and independent tests for selection, direction, variance, SE, df, CI, t reference values, thresholds, missing/nonfinite values, absent/insufficient groups, and zero standard error. The authorized EZR reference informed the statistical-summary and robust edge-case design; Lua was not run.
+
+Artifacts are in this step directory: source/nasa93_summary.py, tests/test_nasa93_summary.py, tests/test_certify.py, test_output.txt, runtime_output.txt, metrics.csv, run_instructions.txt, prompt.txt, and this response.txt. The complete suite passed 10 tests. Commands are listed in run_instructions.txt.
+
+Known limitations: the t CDF uses a standard-library continued-fraction approximation with bounded iteration; confidence intervals and p-values are undefined for insufficient samples or zero standard error; practical importance requires a supplied threshold; the demonstration threshold is valid only when the reference mean is finite and nonnegative.
