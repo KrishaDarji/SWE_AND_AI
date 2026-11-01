@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step02/run_prediction.py", line 5, in <module>
+    print(json.dumps({"rows": [r["train_rows"],r["test_rows"]], "groups": [r["train_groups"],r["test_groups"]], "targets": {k:{x:v[x] for x in ("finite_training","finite_test","mae","baseline_mae")} for k,v in r["targets"].items()}, "prediction": predict_configuration(r,{"N_estimators":40,"criterion":"squared_error","Min_sample_leaves":3,"Min_impurity_decrease":2.75,"Max_depth":10})}, sort_keys=True))
+                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step02/source/summarize_runs.py", line 146, in predict_configuration
+    def predict_configuration(model, config):
+                       ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step02/source/summarize_runs.py", line 121, in predict_one
+    node=self.root
+                   
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step02/source/summarize_runs.py", line 70, in _setting
+    v = finite_number(row.get(name, ""))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/vivek/D Drive/vs code/SWEAI_Project/SWE_AND_AI/experiments/runs/treatment6/trials/trial2/health_closedissues/step02/source/summarize_runs.py", line 12, in finite_number
+    if value is None or value.strip().lower() in MISSING: return None
+                        ^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'strip'
+real 1456.66
+user 1428.72
+sys 6.66

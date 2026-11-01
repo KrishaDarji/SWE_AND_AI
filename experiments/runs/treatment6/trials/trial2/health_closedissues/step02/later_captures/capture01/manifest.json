@@ -1,0 +1,12 @@
+{
+  "committed_original_revision": "96b51e0091c77eb1029cdcab5191c88207214033",
+  "captures": [
+    {
+      "original_path": "experiments/runs/treatment6/trials/trial2/health_closedissues/step02/runtime_timing.txt",
+      "preserved_path": "experiments/runs/treatment6/trials/trial2/health_closedissues/step02/later_captures/capture01/runtime_timing.txt",
+      "sha256": "83ada4d39426ae681e3e7d8cfe5e4781b6b17bc3b3b93ceb9a0a53871aefbf5e",
+      "bytes": 2145,
+      "previously_tracked": true
+    }
+  ]
+}
