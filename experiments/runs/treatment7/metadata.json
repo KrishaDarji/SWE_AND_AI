@@ -3,11 +3,15 @@
   "writer": "human_team",
   "background": "team_prior_skills",
   "reuse_instructed": true,
-  "status": "prepared",
+  "status": "trial1_complete",
   "domains": [
     "x264",
     "nasa93dem",
     "health_closedissues"
   ],
-  "ladder_steps": 10
+  "ladder_steps": 10,
+  "trials": 1,
+  "trial_policy": "One trial per domain. The human team cannot be reset between repeats, so further repeats would not be independent; the reset rule applies to LLM treatments only.",
+  "runner": "experiments/run_treatment7.py",
+  "loc_rule": "Non-blank, non-comment source lines; tests excluded. A shared file is new only the first time any domain needs it (domain order: x264, nasa93dem, health_closedissues)."
 }

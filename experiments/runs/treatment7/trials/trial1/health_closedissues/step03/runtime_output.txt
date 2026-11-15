@@ -1,0 +1,39 @@
+{
+  "dataset": "health_closedissues",
+  "step": 3,
+  "skill": "certify",
+  "requirement": "Tell us whether an apparent quality improvement is meaningful or noise.",
+  "result": {
+    "contrast": "criterion=squared_error (n=173) vs criterion=absolute_error (n=162)",
+    "MRE-": {
+      "effect": 0.07759814233566087,
+      "treatment_mean": -0.6741518894710173,
+      "baseline_mean": -0.7517500318066782,
+      "p_value": 0.0014992503748125937,
+      "significant": true,
+      "cliffs": 0.45343609505459215,
+      "same": false,
+      "treatment_wins": true
+    },
+    "ACC+": {
+      "effect": 0.02713392216918642,
+      "treatment_mean": 0.5053460336746967,
+      "baseline_mean": 0.47821211150551024,
+      "p_value": 0.020989505247376312,
+      "significant": true,
+      "cliffs": 0.43138514236780134,
+      "same": false,
+      "treatment_wins": true
+    },
+    "PRED40+": {
+      "effect": 0.043948986145517926,
+      "treatment_mean": 0.1709331131296449,
+      "baseline_mean": 0.12698412698412698,
+      "p_value": 0.14492753623188406,
+      "significant": false,
+      "cliffs": 0.03939199314921858,
+      "same": true,
+      "treatment_wins": false
+    }
+  }
+}

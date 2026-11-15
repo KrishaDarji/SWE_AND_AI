@@ -1,0 +1,85 @@
+{
+  "dataset": "health_closedissues",
+  "step": 9,
+  "skill": "spot",
+  "requirement": "Spot an unusual model-quality result or possible measurement error.",
+  "result": {
+    "findings": [
+      {
+        "row_index": 493,
+        "score": 2.3434823104604483,
+        "largest_deviation": 4.109551853227368,
+        "row": {
+          "MRE-": "0.16715758468335787",
+          "ACC+": "0.9311118231336111",
+          "PRED40+": "1",
+          "N_estimators": "140",
+          "criterion": "poisson",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "3.5",
+          "Max_depth": "13"
+        }
+      },
+      {
+        "row_index": 62,
+        "score": 2.2385907499365607,
+        "largest_deviation": 4.043358921237057,
+        "row": {
+          "MRE-": "0.24403534609720176",
+          "ACC+": "0.9240628",
+          "PRED40+": "0.8571428571428571",
+          "N_estimators": "10",
+          "criterion": "poisson",
+          "Min_sample_leaves": "2",
+          "Min_impurity_decrease": "3.5",
+          "Max_depth": "7"
+        }
+      },
+      {
+        "row_index": 41,
+        "score": 2.18820931640164,
+        "largest_deviation": 3.2767404597748953,
+        "row": {
+          "MRE-": "0.19175257731958764",
+          "ACC+": "0.8404357577699454",
+          "PRED40+": "1",
+          "N_estimators": "180",
+          "criterion": "squared_error",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "4.75",
+          "Max_depth": "4"
+        }
+      },
+      {
+        "row_index": 446,
+        "score": 2.147684457892272,
+        "largest_deviation": 3.2767404597748953,
+        "row": {
+          "MRE-": "0.17113402061855668",
+          "ACC+": "0.8253764818968279",
+          "PRED40+": "1",
+          "N_estimators": "180",
+          "criterion": "squared_error",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "5.25",
+          "Max_depth": "13"
+        }
+      },
+      {
+        "row_index": 465,
+        "score": 2.090479657081225,
+        "largest_deviation": 3.2767404597748953,
+        "row": {
+          "MRE-": "0.19690721649484533",
+          "ACC+": "0.7391861582826017",
+          "PRED40+": "1",
+          "N_estimators": "180",
+          "criterion": "squared_error",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "7.5",
+          "Max_depth": "20"
+        }
+      }
+    ]
+  }
+}

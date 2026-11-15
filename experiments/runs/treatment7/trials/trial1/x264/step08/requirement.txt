@@ -1,0 +1,1 @@
+Suggest the smallest setting change that improves a slow configuration.

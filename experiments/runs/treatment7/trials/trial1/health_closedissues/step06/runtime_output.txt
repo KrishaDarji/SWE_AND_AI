@@ -1,0 +1,46 @@
+{
+  "dataset": "health_closedissues",
+  "step": 6,
+  "skill": "justify",
+  "requirement": "Justify a recommended configuration to the platform team.",
+  "result": {
+    "recommendation": {
+      "MRE-": "0.16715758468335787",
+      "ACC+": "0.9311118231336111",
+      "PRED40+": "1",
+      "N_estimators": "140",
+      "criterion": "poisson",
+      "Min_sample_leaves": "1",
+      "Min_impurity_decrease": "3.5",
+      "Max_depth": "13"
+    },
+    "dataset": "health_closedissues",
+    "reasons": [
+      {
+        "feature": "Min_sample_leaves",
+        "value": "1",
+        "objective": "PRED40+",
+        "direction": "higher is better",
+        "effect": 0.254025974025974,
+        "explanation": "Min_sample_leaves=1 is one of the strongest observed separators for PRED40+; higher is better, with an oriented group difference of 0.254."
+      },
+      {
+        "feature": "Min_sample_leaves",
+        "value": "1",
+        "objective": "MRE-",
+        "direction": "lower is better",
+        "effect": 0.22680852710490584,
+        "explanation": "Min_sample_leaves=1 is one of the strongest observed separators for MRE-; lower is better, with an oriented group difference of 0.227."
+      },
+      {
+        "feature": "Min_sample_leaves",
+        "value": "1",
+        "objective": "ACC+",
+        "direction": "higher is better",
+        "effect": 0.1190733350787026,
+        "explanation": "Min_sample_leaves=1 is one of the strongest observed separators for ACC+; higher is better, with an oriented group difference of 0.119."
+      }
+    ],
+    "text": "Recommendation for the open-source project maintainer: this row was selected using the shared ranking machinery. The main evidence is Min_sample_leaves=1 is one of the strongest observed separators for PRED40+; higher is better, with an oriented group difference of 0.254. Min_sample_leaves=1 is one of the strongest observed separators for MRE-; lower is better, with an oriented group difference of 0.227. Min_sample_leaves=1 is one of the strongest observed separators for ACC+; higher is better, with an oriented group difference of 0.119."
+  }
+}

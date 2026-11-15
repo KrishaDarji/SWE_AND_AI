@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+3,7,1,video encoding,certify,366,84,1,0.46,0,"new files: src/core/certify.py, src/ladder/step03_certify.py; LOC = non-blank non-comment source lines, tests excluded",282,4,Performance-: wins=True same=False p=0.000

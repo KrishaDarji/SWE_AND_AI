@@ -1,0 +1,11 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+1,7,1,video encoding,remember,198,198,1,0.05,0,"new files: src/domains/x264/__init__.py, src/core/remember.py, src/ladder/step01_remember.py, src/__init__.py, src/core/__init__.py, src/core/schema.py, src/core/datasets.py, src/domains/__init__.py, src/ladder/__init__.py, src/cli.py; LOC = non-blank non-comment source lines, tests excluded",0,5,
+2,7,1,video encoding,guess,282,84,1,0.27,0,"new files: src/core/guess.py, src/ladder/step02_guess.py; LOC = non-blank non-comment source lines, tests excluded",198,3,Performance- MAE 28 vs mean-baseline 133
+3,7,1,video encoding,certify,366,84,1,0.46,0,"new files: src/core/certify.py, src/ladder/step03_certify.py; LOC = non-blank non-comment source lines, tests excluded",282,4,Performance-: wins=True same=False p=0.000
+4,7,1,video encoding,flow,429,63,1,0.04,0,"new files: src/core/flow.py, src/ladder/step04_flow.py; LOC = non-blank non-comment source lines, tests excluded",366,3,stopped after 35 of 500 rows
+5,7,1,video encoding,blame,481,52,1,0.05,0,"new files: src/core/blame.py, src/ladder/step05_blame.py; LOC = non-blank non-comment source lines, tests excluded",429,2,top factor ref_9 for Performance-
+6,7,1,video encoding,justify,524,43,1,0.05,0,"new files: src/core/justify.py, src/ladder/step06_justify.py; LOC = non-blank non-comment source lines, tests excluded",481,2,
+7,7,1,video encoding,choose,572,48,1,0.72,0,"new files: src/core/choose.py, src/ladder/step07_choose.py; LOC = non-blank non-comment source lines, tests excluded",524,3,"score 1.000, beats 100.0% of rows, 20 evaluations"
+8,7,1,video encoding,fix,620,48,1,0.06,0,"new files: src/core/fix.py, src/ladder/step08_fix.py; LOC = non-blank non-comment source lines, tests excluded",572,2,"ref_9: 1 -> 0, predicted gain 0.469"
+9,7,1,video encoding,spot,670,50,1,0.15,0,"new files: src/core/spot.py, src/ladder/step09_spot.py; LOC = non-blank non-comment source lines, tests excluded",620,2,most unusual row index 220 (z 1.14)
+10,7,1,video encoding,race,706,36,1,4.71,0,"new files: src/core/race.py, src/ladder/step10_race.py; LOC = non-blank non-comment source lines, tests excluded",670,3,"shared 0.997 vs random 0.990, same=False, wins=True"

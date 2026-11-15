@@ -1,0 +1,19 @@
+{
+  "dataset": "x264",
+  "step": 3,
+  "skill": "certify",
+  "requirement": "Tell us whether a faster configuration is meaningfully faster or within normal noise.",
+  "result": {
+    "contrast": "ref_1=1 (n=179) vs ref_1=0 (n=321)",
+    "Performance-": {
+      "effect": 282.28719704484945,
+      "treatment_mean": -277.5347094972067,
+      "baseline_mean": -559.8219065420561,
+      "p_value": 0.0004997501249375312,
+      "significant": true,
+      "cliffs": 1.0,
+      "same": false,
+      "treatment_wins": true
+    }
+  }
+}

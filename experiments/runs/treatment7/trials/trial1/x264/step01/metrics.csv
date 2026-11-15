@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+1,7,1,video encoding,remember,198,198,1,0.05,0,"new files: src/domains/x264/__init__.py, src/core/remember.py, src/ladder/step01_remember.py, src/__init__.py, src/core/__init__.py, src/core/schema.py, src/core/datasets.py, src/domains/__init__.py, src/ladder/__init__.py, src/cli.py; LOC = non-blank non-comment source lines, tests excluded",0,5,

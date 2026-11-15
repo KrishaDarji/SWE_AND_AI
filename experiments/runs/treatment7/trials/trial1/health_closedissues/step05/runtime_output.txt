@@ -1,0 +1,55 @@
+{
+  "dataset": "health_closedissues",
+  "step": 5,
+  "skill": "blame",
+  "requirement": "Explain which hyperparameters are associated with high model error.",
+  "result": {
+    "findings": [
+      {
+        "feature": "Min_sample_leaves",
+        "objective": "PRED40+",
+        "effect": 0.254025974025974,
+        "best_group_mean": 0.254025974025974,
+        "worst_group_mean": 0.0,
+        "best_group_size": 275,
+        "worst_group_size": 225
+      },
+      {
+        "feature": "Min_sample_leaves",
+        "objective": "MRE-",
+        "effect": 0.22680852710490584,
+        "best_group_mean": 0.609669299767187,
+        "worst_group_mean": 0.8364778268720928,
+        "best_group_size": 275,
+        "worst_group_size": 225
+      },
+      {
+        "feature": "Min_sample_leaves",
+        "objective": "ACC+",
+        "effect": 0.1190733350787026,
+        "best_group_mean": 0.5470600914612694,
+        "worst_group_mean": 0.42798675638256684,
+        "best_group_size": 275,
+        "worst_group_size": 225
+      },
+      {
+        "feature": "criterion",
+        "objective": "MRE-",
+        "effect": 0.07759814233566087,
+        "best_group_mean": 0.6741518894710173,
+        "worst_group_mean": 0.7517500318066782,
+        "best_group_size": 173,
+        "worst_group_size": 162
+      },
+      {
+        "feature": "criterion",
+        "objective": "PRED40+",
+        "effect": 0.051452593649125425,
+        "best_group_mean": 0.1709331131296449,
+        "worst_group_mean": 0.11948051948051948,
+        "best_group_size": 173,
+        "worst_group_size": 165
+      }
+    ]
+  }
+}

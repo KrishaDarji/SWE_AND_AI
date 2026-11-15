@@ -6,15 +6,14 @@ from math import sqrt
 from statistics import mean, pstdev
 from typing import Dict, List, Sequence
 
-from .datasets import DatasetSpec
+from .datasets import DatasetSpec, features
 from .remember import as_number
 
 
-def _numeric_columns(rows: Sequence[Dict[str, str]]) -> List[str]:
-    if not rows:
-        return []
+def _numeric_columns(spec: DatasetSpec, rows: Sequence[Dict[str, str]]) -> List[str]:
+    """Numeric inputs plus objectives (an odd outcome is also an anomaly)."""
     columns = []
-    for column in rows[0]:
+    for column in features(spec, rows) + spec.objectives:
         values = [row.get(column, "") for row in rows if row.get(column, "") not in ("", "?")]
         try:
             for value in values:
@@ -29,7 +28,7 @@ def _numeric_columns(rows: Sequence[Dict[str, str]]) -> List[str]:
 def spot(spec: DatasetSpec, rows: Sequence[Dict[str, str]], top_k: int = 10) -> List[Dict[str, object]]:
     """Rank rows by their combined absolute z-score across numeric columns."""
 
-    columns = _numeric_columns(rows)
+    columns = _numeric_columns(spec, rows)
     stats = {}
     for column in columns:
         values = [as_number(row[column]) for row in rows if row.get(column) not in (None, "", "?")]

@@ -1,0 +1,31 @@
+{
+  "dataset": "health_closedissues",
+  "step": 4,
+  "skill": "flow",
+  "requirement": "Evaluate configurations as validation results arrive one at a time.",
+  "result": {
+    "seen": 109,
+    "available": 500,
+    "stopped_early": true,
+    "estimate_at_stop": {
+      "MRE-": 0.6894529191533555,
+      "ACC+": 0.5078324108005373,
+      "PRED40+": 0.1730013106159895
+    },
+    "mean_of_all_rows": {
+      "MRE-": 0.7117331369643947,
+      "ACC+": 0.4934770906758532,
+      "PRED40+": 0.1397142857142857
+    },
+    "best_so_far": {
+      "MRE-": "0.19175257731958764",
+      "ACC+": "0.8404357577699454",
+      "PRED40+": "1",
+      "N_estimators": "180",
+      "criterion": "squared_error",
+      "Min_sample_leaves": "1",
+      "Min_impurity_decrease": "4.75",
+      "Max_depth": "4"
+    }
+  }
+}

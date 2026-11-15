@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+10,7,1,video encoding,race,706,36,1,4.71,0,"new files: src/core/race.py, src/ladder/step10_race.py; LOC = non-blank non-comment source lines, tests excluded",670,3,"shared 0.997 vs random 0.990, same=False, wins=True"

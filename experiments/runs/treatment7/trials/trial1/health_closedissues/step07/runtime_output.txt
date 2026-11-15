@@ -1,0 +1,25 @@
+{
+  "dataset": "health_closedissues",
+  "step": 7,
+  "skill": "choose",
+  "requirement": "Choose a configuration that minimizes error under a compute budget.",
+  "result": {
+    "dataset": "health_closedissues",
+    "budget": 20,
+    "available_rows": 500,
+    "evaluated": 20,
+    "coverage": 0.04,
+    "score": 0.8822529188728748,
+    "beats_fraction_of_all_rows": 0.994,
+    "selected": {
+      "MRE-": "0.24403534609720176",
+      "ACC+": "0.9240628",
+      "PRED40+": "0.8571428571428571",
+      "N_estimators": "10",
+      "criterion": "poisson",
+      "Min_sample_leaves": "2",
+      "Min_impurity_decrease": "3.5",
+      "Max_depth": "7"
+    }
+  }
+}

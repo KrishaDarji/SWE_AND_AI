@@ -1,0 +1,36 @@
+{
+  "dataset": "health_closedissues",
+  "step": 8,
+  "skill": "fix",
+  "requirement": "Suggest the smallest hyperparameter change that improves error.",
+  "result": {
+    "poor_candidate": {
+      "MRE-": "1",
+      "ACC+": "0.36334508170458185",
+      "PRED40+": "0",
+      "N_estimators": "10",
+      "criterion": "absolute_error",
+      "Min_sample_leaves": "12",
+      "Min_impurity_decrease": "1.25",
+      "Max_depth": "18"
+    },
+    "dataset": "health_closedissues",
+    "baseline_score": 0.0,
+    "repaired_score": 0.15348714124856597,
+    "improvement": 0.15348714124856597,
+    "changed_feature": "Min_sample_leaves",
+    "old_value": "12",
+    "new_value": "11",
+    "repaired": true,
+    "candidate": {
+      "MRE-": "0.7847422680412371",
+      "ACC+": "0.46267222044216594",
+      "PRED40+": "0.05714285714285714",
+      "N_estimators": "10",
+      "criterion": "absolute_error",
+      "Min_sample_leaves": "11",
+      "Min_impurity_decrease": "1.25",
+      "Max_depth": "18"
+    }
+  }
+}

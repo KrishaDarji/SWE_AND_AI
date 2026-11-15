@@ -1,44 +1,13 @@
-"""Dataset registry and schema inspection for the selected MOOT tasks."""
+"""Dataset loading and schema inspection shared by every domain."""
 
 from __future__ import annotations
 
 import csv
-from dataclasses import dataclass
-from pathlib import Path
-from typing import Dict, Iterable, List, Optional
+import random
+from typing import Dict, List, Optional, Sequence
 
-
-ROOT = Path(__file__).resolve().parents[2]
-
-
-@dataclass(frozen=True)
-class DatasetSpec:
-    name: str
-    client: str
-    path: Path
-    objectives: List[str]
-
-
-DATASETS: Dict[str, DatasetSpec] = {
-    "x264": DatasetSpec(
-        name="x264",
-        client="video-platform engineer",
-        path=ROOT / "moot/optimize/config/X264_AllMeasurements.csv",
-        objectives=["Performance-"],
-    ),
-    "nasa93dem": DatasetSpec(
-        name="nasa93dem",
-        client="software project planning manager",
-        path=ROOT / "moot/optimize/process/nasa93dem.csv",
-        objectives=["Effort-", "Defects-"],
-    ),
-    "health_closedissues": DatasetSpec(
-        name="health_closedissues",
-        client="open-source project maintainer",
-        path=ROOT / "moot/optimize/hpo/Health-ClosedIssues0000.csv",
-        objectives=["MRE-", "ACC+", "PRED40+"],
-    ),
-}
+from .schema import ROOT, DatasetSpec  # noqa: F401  (re-exported)
+from src.domains import DATASETS
 
 
 def get_dataset(name: str) -> DatasetSpec:
@@ -51,12 +20,8 @@ def get_dataset(name: str) -> DatasetSpec:
         raise ValueError(f"Unknown dataset {name!r}; choose from: {choices}") from exc
 
 
-def _clean_header(value: str) -> str:
-    return value.strip()
-
-
 def read_rows(spec: DatasetSpec, limit: Optional[int] = None) -> List[Dict[str, str]]:
-    """Read CSV rows without changing source values."""
+    """Read CSV rows (header and values stripped) without changing source values."""
 
     if not spec.path.exists():
         raise FileNotFoundError(f"Dataset not found: {spec.path}")
@@ -64,13 +29,29 @@ def read_rows(spec: DatasetSpec, limit: Optional[int] = None) -> List[Dict[str, 
         reader = csv.DictReader(stream)
         if reader.fieldnames is None:
             raise ValueError(f"Dataset has no header: {spec.path}")
-        reader.fieldnames = [_clean_header(field) for field in reader.fieldnames]
+        reader.fieldnames = [field.strip() for field in reader.fieldnames]
         rows: List[Dict[str, str]] = []
         for row in reader:
-            rows.append({_clean_header(k): v.strip() for k, v in row.items()})
+            rows.append({key: value.strip() for key, value in row.items()})
             if limit is not None and len(rows) >= limit:
                 break
         return rows
+
+
+def sample_rows(spec: DatasetSpec, n: Optional[int] = None, seed: int = 1) -> List[Dict[str, str]]:
+    """A reproducible random sample in random order (files are often sorted)."""
+
+    rows = read_rows(spec)
+    n = min(n or spec.max_rows, len(rows))
+    return random.Random(seed).sample(rows, n)
+
+
+def features(spec: DatasetSpec, rows: Sequence[Dict[str, str]]) -> List[str]:
+    """Input columns: not an objective, and not ignored (MOOT names ending in X)."""
+
+    if not rows:
+        return []
+    return [column for column in rows[0] if column not in spec.objectives and not column.endswith("X")]
 
 
 def schema(spec: DatasetSpec) -> Dict[str, object]:

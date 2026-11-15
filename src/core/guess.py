@@ -2,18 +2,13 @@
 
 from __future__ import annotations
 
+import random
 from math import sqrt
 from statistics import mean
 from typing import Dict, List, Sequence
 
-from .datasets import DatasetSpec
-from .remember import as_number
-
-
-def feature_columns(spec: DatasetSpec, rows: Sequence[Dict[str, str]]) -> List[str]:
-    if not rows:
-        return []
-    return [column for column in rows[0] if column not in spec.objectives]
+from .datasets import DatasetSpec, features as feature_columns
+from .remember import as_number, numeric_values
 
 
 def _distance(left: Dict[str, str], right: Dict[str, str], columns: Sequence[str], ranges: Dict[str, float]) -> float:
@@ -73,3 +68,25 @@ def leave_one_out_mae(spec: DatasetSpec, rows: Sequence[Dict[str, str]], k: int 
             if target.get(objective) not in (None, "", "?"):
                 errors[objective].append(abs(prediction[objective] - as_number(target[objective])))
     return {objective: mean(values) for objective, values in errors.items() if values}
+
+
+def holdout_mae(
+    spec: DatasetSpec, rows: Sequence[Dict[str, str]], test_fraction: float = 0.2, seed: int = 1, k: int = 5
+) -> Dict[str, object]:
+    """Predict unseen rows from the rest; compare against always guessing the training mean."""
+
+    shuffled = list(rows)
+    random.Random(seed).shuffle(shuffled)
+    cut = max(1, int(len(shuffled) * test_fraction))
+    test, train = shuffled[:cut], shuffled[cut:]
+    predictions = [predict_row(spec, train, row, k=k) for row in test]
+    errors = {}
+    for objective in spec.objectives:
+        baseline = mean(numeric_values(train, objective))
+        pairs = [(guess[objective], as_number(row[objective]))
+                 for guess, row in zip(predictions, test) if row.get(objective) not in (None, "", "?")]
+        errors[objective] = {
+            "model_mae": mean(abs(guess - actual) for guess, actual in pairs),
+            "baseline_mae": mean(abs(baseline - actual) for _, actual in pairs),
+        }
+    return {"train": len(train), "test": len(test), "k": k, "errors": errors}

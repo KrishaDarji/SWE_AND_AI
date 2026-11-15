@@ -1,0 +1,39 @@
+{
+  "dataset": "nasa93dem",
+  "step": 10,
+  "skill": "race",
+  "requirement": "Compare our estimator against a simple historical-baseline estimator.",
+  "result": {
+    "dataset": "nasa93dem",
+    "budget": 20,
+    "repeats": 10,
+    "shared_median": 1.0,
+    "baseline_median": 0.9982684668707764,
+    "shared_scores": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9974783910907278,
+      1.0,
+      1.0,
+      0.9990585426508249,
+      0.9953798625583127,
+      1.0
+    ],
+    "baseline_scores": [
+      0.9974783910907278,
+      0.9990585426508249,
+      0.994116008434539,
+      0.9953728060246148,
+      0.9960793720691177,
+      1.0,
+      0.9962028799591311,
+      1.0,
+      0.9990585426508249,
+      0.9990585426508249
+    ],
+    "same": false,
+    "shared_wins": true
+  }
+}

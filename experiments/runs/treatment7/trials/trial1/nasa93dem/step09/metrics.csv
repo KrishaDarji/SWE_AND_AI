@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+9,7,1,software project estimation,spot,674,0,1,0.12,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",674,2,most unusual row index 60 (z 6.22)

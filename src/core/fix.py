@@ -2,63 +2,49 @@
 
 from __future__ import annotations
 
-from statistics import mean, median
-from typing import Dict, List, Sequence, Tuple
+from statistics import median
+from typing import Dict, List, Sequence
 
-from .datasets import DatasetSpec
+from .datasets import DatasetSpec, features
 from .guess import predict_row
-from .remember import as_number
-
-
-def _score(spec: DatasetSpec, row: Dict[str, str], rows: Sequence[Dict[str, str]]) -> float:
-    scores = []
-    for objective in spec.objectives:
-        values = [as_number(item[objective]) for item in rows if item.get(objective) not in (None, "", "?")]
-        low, high = min(values), max(values)
-        value = as_number(row[objective])
-        normalized = 1.0 if high == low else (value - low) / (high - low)
-        scores.append(normalized if objective.endswith("+") else 1.0 - normalized)
-    return mean(scores)
+from .remember import as_number, bounds, score
 
 
 def _replacement_values(rows: Sequence[Dict[str, str]], feature: str) -> List[str]:
+    """The typical value of a feature: median if numeric, else the most common value."""
     values = [row[feature] for row in rows if row.get(feature) not in (None, "", "?")]
     if not values:
         return []
     try:
-        return [str(median(as_number(value) for value in values))]
+        return [format(median(as_number(value) for value in values), "g")]  # 0.0 -> "0"
     except ValueError:
-        counts = {value: values.count(value) for value in set(values)}
-        return [max(counts, key=counts.get)]
+        return [max(set(values), key=values.count)]
 
 
 def fix(spec: DatasetSpec, rows: Sequence[Dict[str, str]], candidate: Dict[str, str]) -> Dict[str, object]:
-    """Try one-feature changes and return the strongest improving repair."""
+    """Try one-feature changes (towards typical values) and keep the best predicted repair."""
 
-    baseline_score = _score(spec, candidate, rows)
-    best_score = baseline_score
-    best_row = dict(candidate)
-    changed_feature = None
-    features = [feature for feature in candidate if feature not in spec.objectives]
-    for feature in features:
+    limits = bounds(spec, rows)
+    baseline_score = score(spec, candidate, limits)
+    best_score, best_row, changed_feature = baseline_score, dict(candidate), None
+    for feature in features(spec, rows):
         for replacement in _replacement_values(rows, feature):
             if replacement == candidate.get(feature):
                 continue
             trial = dict(candidate)
             trial[feature] = replacement
-            predicted = predict_row(spec, rows, trial)
-            trial.update({objective: str(value) for objective, value in predicted.items()})
-            score = _score(spec, trial, rows)
-            if score > best_score:
-                best_score = score
-                best_row = trial
-                changed_feature = feature
+            trial.update({objective: str(value) for objective, value in predict_row(spec, rows, trial).items()})
+            trial_score = score(spec, trial, limits)
+            if trial_score > best_score:
+                best_score, best_row, changed_feature = trial_score, trial, feature
     return {
         "dataset": spec.name,
         "baseline_score": baseline_score,
         "repaired_score": best_score,
         "improvement": best_score - baseline_score,
         "changed_feature": changed_feature,
+        "old_value": candidate.get(changed_feature) if changed_feature else None,
+        "new_value": best_row.get(changed_feature) if changed_feature else None,
         "repaired": changed_feature is not None,
         "candidate": best_row,
     }

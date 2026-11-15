@@ -1,0 +1,1 @@
+Explain which settings are responsible for slow encodes.

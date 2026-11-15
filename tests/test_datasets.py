@@ -1,6 +1,6 @@
 import unittest
 
-from src.core.datasets import DATASETS, get_dataset, read_rows, schema
+from src.core.datasets import DATASETS, get_dataset, read_rows, sample_rows, schema
 from src.core.remember import rank_rows, summarize
 from src.core.guess import leave_one_out_mae, predict_row
 from src.core.certify import certify
@@ -100,7 +100,7 @@ class DatasetTests(unittest.TestCase):
 
     def test_step7_respects_evaluation_budget(self):
         for spec in DATASETS.values():
-            result = choose(spec, read_rows(spec), budget=7)
+            result = choose(spec, sample_rows(spec, 100), budget=7)
             self.assertEqual(result["evaluated"], 7)
             self.assertLessEqual(result["evaluated"], result["available_rows"])
             self.assertIn("selected", result)
@@ -129,10 +129,10 @@ class DatasetTests(unittest.TestCase):
 
     def test_step10_races_with_equal_budget(self):
         for spec in DATASETS.values():
-            result = race(spec, read_rows(spec), budget=7)
+            result = race(spec, sample_rows(spec, 60), budget=7, repeats=3)
             self.assertEqual(result["budget"], 7)
-            self.assertIn("shared_score", result)
-            self.assertIn("baseline_score", result)
+            self.assertEqual(len(result["shared_scores"]), 3)
+            self.assertEqual(len(result["baseline_scores"]), 3)
 
     def test_step10_rejects_invalid_budget(self):
         spec = DATASETS["x264"]

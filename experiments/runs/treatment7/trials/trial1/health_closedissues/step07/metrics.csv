@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+7,7,1,open-source project health,choose,572,0,1,0.67,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",572,3,"score 0.882, beats 99.4% of rows, 20 evaluations"

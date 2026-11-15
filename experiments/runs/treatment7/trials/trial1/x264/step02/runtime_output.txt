@@ -1,0 +1,41 @@
+{
+  "dataset": "x264",
+  "step": 2,
+  "skill": "guess",
+  "requirement": "Predict encoding time before running a new configuration.",
+  "result": {
+    "train": 400,
+    "test": 100,
+    "k": 5,
+    "errors": {
+      "Performance-": {
+        "model_mae": 27.955279999999995,
+        "baseline_mae": 133.3400979
+      }
+    },
+    "example": {
+      "row": {
+        "no_asm": "1",
+        "no_8x8dct": "0",
+        "no_cabac": "1",
+        "no_deblock": "0",
+        "no_fast_pskip": "1",
+        "no_mbtree": "1",
+        "no_mixed_refs": "0",
+        "no_weightb": "0",
+        "rc_lookahead": "1",
+        "rc_lookahead_20": "0",
+        "rc_lookahead_40": "0",
+        "rc_lookahead_60": "1",
+        "ref": "1",
+        "ref_1": "1",
+        "ref_5": "0",
+        "ref_9": "0",
+        "Performance-": "299.867"
+      },
+      "prediction": {
+        "Performance-": 291.1662
+      }
+    }
+  }
+}
