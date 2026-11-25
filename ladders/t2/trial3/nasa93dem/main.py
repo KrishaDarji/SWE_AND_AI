@@ -11,6 +11,7 @@ from project_history.portfolio import assess_proposals
 from project_history.blame import explain_excessive_effort
 from project_history.justification import justify_estimate, justification_lines
 from project_history.optimizer import maximize_delivered_value
+from project_history.risk import recommend_cheapest_risk_change
 
 
 def main() -> int:
@@ -27,6 +28,8 @@ def main() -> int:
     parser.add_argument("--justify", action="store_true", help="justify the proposed estimate to a skeptical sponsor")
     parser.add_argument("--optimize-proposals", help="JSON proposals with id, kloc, and value")
     parser.add_argument("--value-budget", type=float, help="fixed effort budget for value optimization")
+    parser.add_argument("--recommend-risk", nargs=2, metavar=("ATTRIBUTE", "CURRENT"),
+                        help="recommend the cheapest lower-risk process value")
     args = parser.parse_args()
     projects = list(CsvProjectRepository(args.csv_path).projects())
     summary = summarize_projects(projects)
@@ -87,6 +90,16 @@ def main() -> int:
         print("Numeric factors:")
         for item in explanation["numeric"]:
             print(f"{item['factor']}: Spearman {item['spearman']:.2f}")
+    if args.recommend_risk:
+        attribute, current = args.recommend_risk
+        result = recommend_cheapest_risk_change(projects, attribute, current)
+        print(f"Risk metric: median defects per KLOC; cost metric: median effort per KLOC")
+        print(f"Current process: {current}; estimated risk: {result['current_risk'] if result['current_risk'] is not None else 'unavailable'}")
+        recommendation = result["recommendation"]
+        if recommendation is None:
+            print(f"Risk-change recommendation: none ({result['reason']})")
+        else:
+            print(f"Risk-change recommendation: {recommendation['value']} at cost {recommendation['cost']:.2f}; risk {recommendation['risk']:.2f}")
     return 0
 
 
