@@ -100,6 +100,63 @@ def summarize(path: str | Path) -> dict:
     }
 
 
+def blame(path: str | Path) -> dict:
+    """Rank settings by marginal and adjusted association with Performance-.
+
+    The marginal score is eta-squared (between-level sum of squares / total
+    sum of squares).  The adjusted score is the increase in training R-squared
+    from adding one setting's one-hot columns after all other settings.  Both
+    are descriptive associations; lower Performance- is better.
+    """
+    settings, x, y = load_dataset(path)
+    overall = float(y.mean())
+    total_ss = float(np.sum((y - overall) ** 2))
+    marginal = []
+    encoded = []
+    levels_by_setting = {}
+    for i, name in enumerate(settings):
+        levels = np.unique(x[:, i])
+        levels_by_setting[name] = [float(v) for v in levels]
+        groups = []
+        between = 0.0
+        for level in levels:
+            values = y[x[:, i] == level]
+            groups.append({"value": float(level), "n": int(len(values)),
+                           "mean": float(values.mean()), "min": float(values.min()),
+                           "max": float(values.max())})
+            between += len(values) * float((values.mean() - overall) ** 2)
+        eta2 = between / total_ss if total_ss else 0.0
+        marginal.append({"setting": name, "levels": groups, "level_count": len(levels),
+                         "constant": len(levels) == 1, "eta_squared": eta2,
+                         "mean_min": min(g["mean"] for g in groups),
+                         "mean_max": max(g["mean"] for g in groups),
+                         "mean_range": max(g["mean"] for g in groups) - min(g["mean"] for g in groups)})
+        if len(levels) > 1:
+            encoded.append(np.column_stack([(x[:, i] == level).astype(float) for level in levels[1:]]))
+        else:
+            encoded.append(np.empty((len(y), 0)))
+    full_parts = [part for part in encoded if part.shape[1]]
+    full_x = np.column_stack(full_parts) if full_parts else np.empty((len(y), 0))
+    full_r2 = LinearRegression().fit(full_x, y).score(full_x, y) if full_x.shape[1] else 0.0
+    for item, part in zip(marginal, encoded):
+        other = [p for p, candidate in zip(encoded, marginal) if candidate["setting"] != item["setting"] and p.shape[1]]
+        other_x = np.column_stack(other) if other else np.empty((len(y), 0))
+        reduced_r2 = LinearRegression().fit(other_x, y).score(other_x, y) if other_x.shape[1] else 0.0
+        item["adjusted_delta_r2"] = max(0.0, float(full_r2 - reduced_r2))
+        item["interpretation"] = "constant: no within-dataset association" if item["constant"] else "marginal and adjusted association"
+    complements = []
+    for i, left in enumerate(settings):
+        for right in settings[i + 1:]:
+            if len(np.unique(x[:, i])) == 2 and np.array_equal(x[:, i] + x[:, settings.index(right)], np.ones(len(y))):
+                complements.append([left, right])
+    marginal.sort(key=lambda item: (-item["adjusted_delta_r2"], -item["eta_squared"], item["setting"]))
+    return {"measure": "Performance-", "lower_is_better": True, "runs": len(y),
+            "outcome_summary": {"mean": overall, "std": float(y.std()), "min": float(y.min()), "max": float(y.max()), "median": float(np.median(y))},
+            "ranking_method": "descending adjusted delta R-squared, then eta-squared, then setting name; eta-squared is marginal group association and adjusted delta R-squared is the full one-hot linear model increase after all other settings",
+            "settings": marginal, "mutually_exclusive_pairs": complements,
+            "full_model_r2": float(full_r2), "assumptions": ["configuration rows are observational", "associations are not causal responsibility", "one-hot encoding uses the first sorted level as reference"]}
+
+
 def fit_predictor(x: np.ndarray, y: np.ndarray) -> Pipeline:
     """Fit the reusable preprocessing/model pipeline on supplied training data."""
     return Pipeline([("scale", StandardScaler()), ("model", LinearRegression())]).fit(x, y)
@@ -205,9 +262,12 @@ def main() -> None:
     parser.add_argument("--practical-threshold", type=float, default=5.0)
     parser.add_argument("--configuration", type=str, help="JSON object of encoder settings")
     parser.add_argument("--flow", action="store_true")
+    parser.add_argument("--blame", action="store_true")
     args = parser.parse_args()
     started = perf_counter()
-    if args.flow:
+    if args.blame:
+        result = blame(args.dataset)
+    elif args.flow:
         result = {"csv_order_is_demonstration_sequence": True, "snapshots": flow(args.dataset)}
     elif args.certify:
         result = certify(args.dataset, args.practical_threshold)
