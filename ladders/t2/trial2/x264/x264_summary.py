@@ -294,6 +294,51 @@ def justify(dataset, measure=None, alpha=0.05, slow_fraction=0.10):
     }
 
 
+def choose(dataset, minimum_quality, quality_measure=None, objective_measure=None):
+    """Select the best observed configuration satisfying a quality threshold.
+
+    Quality is constrained as ``quality >= minimum_quality``.  The objective
+    defaults to the quality measure and is maximized, matching the
+    Performance- convention used by the earlier online evaluator.  Ties are
+    deterministic: lower setting tuples win.
+    """
+    quality_measure = quality_measure or dataset.measures[0]
+    objective_measure = objective_measure or quality_measure
+    for measure in (quality_measure, objective_measure):
+        if measure not in dataset.measures:
+            raise ValueError("unknown measure: " + measure)
+    try:
+        minimum_quality = float(minimum_quality)
+    except (TypeError, ValueError):
+        raise ValueError("minimum_quality must be numeric")
+    if not math.isfinite(minimum_quality):
+        raise ValueError("minimum_quality must be finite")
+    candidates = []
+    for row in dataset.rows:
+        quality = _number(row[quality_measure])
+        objective = _number(row[objective_measure])
+        if quality is None or objective is None or quality < minimum_quality:
+            continue
+        configuration = {name: int(float(row[name])) for name in dataset.settings}
+        key = tuple(configuration[name] for name in dataset.settings)
+        candidates.append((objective, key, configuration, quality))
+    if not candidates:
+        return {"decision": "no_feasible_configuration",
+                "quality_measure": quality_measure,
+                "objective_measure": objective_measure,
+                "minimum_quality": minimum_quality,
+                "feasible_count": 0, "recommendation": None}
+    objective, key, configuration, quality = min(
+        candidates, key=lambda item: (-item[0], item[1]))
+    return {"decision": "recommend", "quality_measure": quality_measure,
+            "objective_measure": objective_measure,
+            "minimum_quality": minimum_quality,
+            "feasible_count": len(candidates),
+            "recommendation": {"configuration": configuration,
+                                "quality": quality, "objective": objective,
+                                "measure": objective_measure}}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
@@ -308,9 +353,20 @@ def main(argv=None):
     parser.add_argument("--alpha", type=float, default=0.05)
     parser.add_argument("--justify", action="store_true",
                         help="justify the best observed configuration for an administrator")
+    parser.add_argument("--choose", action="store_true",
+                        help="choose the best observed configuration under a quality constraint")
+    parser.add_argument("--min-quality", type=float,
+                        help="minimum permitted quality measure value")
+    parser.add_argument("--quality-measure")
+    parser.add_argument("--objective-measure")
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
-    if args.justify:
+    if args.choose:
+        if args.min_quality is None:
+            parser.error("--choose requires --min-quality")
+        result = choose(dataset, args.min_quality, args.quality_measure,
+                        args.objective_measure)
+    elif args.justify:
         result = justify(dataset, args.measure, args.alpha, args.slow_fraction)
     elif args.blame:
         result = blame(dataset, args.measure, args.slow_fraction)
