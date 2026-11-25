@@ -376,6 +376,64 @@ def render_fix(path, effort_cap=100):
     if "audit" in result: print("retrospective_audit=" + str(result["audit"]))
     print("caveat=historical model suggestion, not a causal or actionable prescription; feasibility does not guarantee actual effort or preserve size, quality, or other requirements; effort units are not invented")
 
+def spot(rows, threshold=3.5, min_reference=3):
+    """Leave-one-out robust screening of nonnegative Effort- in log1p space.
+
+    Score is abs(x - median(reference)) / (1.4826 * MAD(reference)).  A zero
+    MAD is deliberately undefined; no alternative scale is substituted.
+    """
+    if not math.isfinite(threshold) or threshold < 0: raise ValueError("threshold must be finite and nonnegative")
+    if not isinstance(min_reference, int) or min_reference < 1: raise ValueError("min_reference must be a positive integer")
+    usable = []
+    records = []
+    for p in rows:
+        raw = p.get("values", {}).get("Effort-", "")
+        y = _effort(raw)
+        if y is None:
+            reason = "missing or invalid/nonfinite Effort-"
+            status = "invalid_or_missing"
+        elif y < 0:
+            reason = "negative Effort- is invalid for log1p transformation"
+            status = "invalid_or_missing"
+        else:
+            usable.append((p, math.log1p(y)))
+            status = None; reason = None
+        records.append({"position": p.get("position"), "idX": p.get("values", {}).get("idX", ""),
+                        "effort": y, "transformed": None if y is None or y < 0 else math.log1p(y),
+                        "reference_count": None, "center": None, "scale": None, "score": None,
+                        "threshold": threshold, "status": status, "reason": reason,
+                        "descriptors": {c: _cell(p.get("values", {}).get(c, "")) for c in PREDICTORS}})
+    for i, (p, x) in enumerate(usable):
+        ref = [z for j, (_, z) in enumerate(usable) if j != i]
+        r = records[p.get("position") and next(k for k, q in enumerate(records) if q["position"] == p.get("position")) or i]
+        r["reference_count"] = len(ref)
+        if len(ref) < min_reference:
+            r["status"] = "undefined"; r["reason"] = "insufficient leave-one-out reference observations"; continue
+        center = median(ref); mad = median([abs(z - center) for z in ref]); scale = 1.4826 * mad
+        r["center"], r["scale"] = center, scale
+        if scale == 0:
+            r["status"] = "undefined"; r["reason"] = "zero MAD reference scale; score undefined by policy"; continue
+        score = abs(x - center) / scale; r["score"] = score
+        r["status"] = "flagged" if score >= threshold else "ordinary_nonflag"
+        r["reason"] = "robust score meets threshold" if score >= threshold else "valid observation below threshold"
+    counts = {k: sum(r["status"] == k for r in records) for k in ("flagged", "ordinary_nonflag", "undefined", "invalid_or_missing")}
+    return {"records": records, "threshold": threshold, "min_reference": min_reference,
+            "valid": counts["flagged"] + counts["ordinary_nonflag"] + counts["undefined"],
+            "excluded": counts["invalid_or_missing"], "flagged": counts["flagged"],
+            "ordinary_nonflag": counts["ordinary_nonflag"], "undefined": counts["undefined"],
+            "invalid_or_missing": counts["invalid_or_missing"],
+            "policy": "log1p nonnegative Effort-; leave-one-out median/MAD; scale=1.4826*MAD; zero MAD undefined; score=abs(x-center)/scale"}
+
+def render_spot(path, threshold=3.5, min_reference=3):
+    result = spot(load(path)["projects"], threshold, min_reference)
+    print("NASA93 marginal historical Effort- anomaly screen")
+    print("policy=" + result["policy"])
+    print(f"threshold={threshold} min_reference={min_reference} valid={result['valid']} excluded={result['excluded']} flagged={result['flagged']} ordinary_nonflag={result['ordinary_nonflag']} undefined={result['undefined']}")
+    print("convention=position is the physical CSV line (header is line 1); malformed rows are excluded by load and reported separately; idX is not assumed unique")
+    print("limitation=large projects can legitimately require more effort; this marginal screen does not adjust for size or all descriptors; unusual results warrant investigation and do not prove measurement error; both low and high effort may be unusual")
+    examples = [r for r in result["records"] if r["status"] in ("flagged", "undefined", "invalid_or_missing")]
+    for r in examples[:12]: print("example=" + str(r))
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
@@ -386,9 +444,10 @@ def main(argv=None):
     ap.add_argument("--justify", action="store_true")
     ap.add_argument("--choose", action="store_true")
     ap.add_argument("--fix", action="store_true")
+    ap.add_argument("--spot", action="store_true")
     ap.add_argument("--effort-cap", type=float, default=100)
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render_fix(pathlib.Path(args.dataset), args.effort_cap) if args.fix else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render_fix(pathlib.Path(args.dataset), args.effort_cap) if args.fix else render_spot(pathlib.Path(args.dataset)) if args.spot else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
