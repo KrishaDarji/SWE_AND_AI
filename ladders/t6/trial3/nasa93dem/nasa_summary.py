@@ -224,14 +224,54 @@ def certify(path):
     threshold=.1*statistics.fmean(r) if r else None; result=welch_test(r,c,threshold) if threshold is not None else welch_test(r,c)
     print("certify comparison: reference tool=n, candidate tool=h, outcome=Effort- (lower is better)"); print(f"reference={result['reference']} candidate={result['candidate']}"); print(f"difference(candidate-reference)={result.get('difference')} test={result.get('p_two_sided')} df={result.get('df')} ci95={result.get('ci95')} threshold_formula=10% of reference mean Effort- threshold={threshold}"); print("interpretation=statistical evidence, point-estimate improvement, and whole-interval support are separate; nonsignificance is not equivalence."); print("caveat=historical projects differ in size and other characteristics; this comparison does not establish causal tool effects, productivity improvement, or future performance; effort units are not invented.")
 
+def blame(data):
+    """Rank marginal categorical associations with Effort- using eta-squared."""
+    rows = data["projects"] if isinstance(data, dict) else list(data)
+    results = []
+    for descriptor in PREDICTORS:
+        eligible, excluded = [], 0
+        for project in rows:
+            value = _cell(project["values"].get(descriptor, ""))
+            effort = _effort(project["values"].get("Effort-", ""))
+            if value == "?" or effort is None: excluded += 1
+            else: eligible.append((value, effort))
+        groups = {}
+        for value, effort in eligible: groups.setdefault(value, []).append(effort)
+        mean = statistics.fmean(y for _, y in eligible) if eligible else None
+        categories, between = [], 0.0
+        for value in sorted(groups):
+            ys = groups[value]; group_mean = statistics.fmean(ys)
+            between += len(ys) * (group_mean - mean) ** 2
+            categories.append({"value": value, "count": len(ys), "mean_effort": group_mean})
+        total = sum((y - mean) ** 2 for _, y in eligible) if eligible else None
+        score = between / total if total and total > 0 else None
+        direction = {"higher_mean": [x["value"] for x in categories if mean is not None and x["mean_effort"] > mean],
+                     "lower_mean": [x["value"] for x in categories if mean is not None and x["mean_effort"] < mean]}
+        results.append({"descriptor": descriptor, "eligible_count": len(eligible), "excluded_count": excluded,
+                        "categories": categories, "reference_mean": mean, "between_ss": between if eligible else None,
+                        "total_ss": total, "eta_squared": score, "direction": direction})
+    ranked = sorted(results, key=lambda x: (x["eta_squared"] is None, -(x["eta_squared"] or 0), x["descriptor"]))
+    for rank, result in enumerate(ranked, 1): result["rank"] = rank
+    return ranked
+
+def render_blame(data):
+    ranked = blame(data)
+    print("NASA93 marginal blame: Effort- (lower observed mean is better)")
+    print("score=eta_squared=between_group_sum_of_squares/total_sum_of_squares; undefined when no eligible rows or total SS is zero")
+    print("interpretation=marginal historical association, not causation, independent importance, significance, productivity effect, or guaranteed improvement; size, correlation, and unequal category sizes can affect ranking; effort units are not invented")
+    for item in ranked:
+        cats = ";".join(f"{x['value']}:{x['count']}:{x['mean_effort']:.6g}" for x in item["categories"])
+        print(f"rank={item['rank']} descriptor={item['descriptor']} eligible={item['eligible_count']} excluded={item['excluded_count']} reference_mean={item['reference_mean']} between_ss={item['between_ss']} total_ss={item['total_ss']} eta_squared={item['eta_squared']} higher={item['direction']['higher_mean']} lower={item['direction']['lower_mean']} categories={cats}")
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
     ap.add_argument("--estimate", action="store_true")
     ap.add_argument("--certify", action="store_true")
     ap.add_argument("--flow", action="store_true")
+    ap.add_argument("--blame", action="store_true")
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
