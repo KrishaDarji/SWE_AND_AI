@@ -72,12 +72,50 @@ def summarize_csv(path: Path) -> dict:
     }
 
 
+def predict_encoding_time(path: Path, configuration: Dict[str, str]) -> dict:
+    """Predict encoding time before running a configuration."""
+    with path.open(newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        if not reader.fieldnames or "Performance-" not in reader.fieldnames:
+            raise ValueError("CSV must contain a Performance- column")
+        settings = [name for name in reader.fieldnames if name != "Performance-"]
+        rows = list(reader)
+    if set(configuration) != set(settings):
+        raise ValueError("configuration columns do not match dataset")
+    target = {name: str(configuration[name]).strip() for name in settings}
+    candidates = []
+    for row in rows:
+        time = _number(row.get("Performance-", ""))
+        if time is None:
+            continue
+        distance = sum((row.get(name) or "").strip() != target[name] for name in settings)
+        candidates.append((distance, time))
+    if not candidates:
+        raise ValueError("dataset has no numeric Performance- values")
+    nearest_distance = min(distance for distance, _ in candidates)
+    nearest = [time for distance, time in candidates if distance == nearest_distance]
+    if nearest_distance == 0:
+        prediction, method = statistics.fmean(nearest), "exact-match"
+    else:
+        weights = [1.0 / (distance + 1) for distance, _ in candidates]
+        prediction = sum(weight * time for weight, (_, time) in zip(weights, candidates)) / sum(weights)
+        method = "inverse-hamming-weighted"
+    return {"predicted_time": prediction, "nearest_distance": nearest_distance,
+            "method": method, "rows_used": len(candidates)}
+
+
 def main(argv: Sequence[str] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--predict", nargs="*", metavar="NAME=VALUE")
     args = parser.parse_args(argv)
-    result = summarize_csv(args.csv_path)
+    if args.predict is None:
+        result = summarize_csv(args.csv_path)
+    else:
+        if any("=" not in item for item in args.predict):
+            parser.error("--predict values must use NAME=VALUE")
+        result = predict_encoding_time(args.csv_path, dict(item.split("=", 1) for item in args.predict))
     text = json.dumps(result, indent=2, sort_keys=True) + "\n"
     if args.output:
         args.output.write_text(text, encoding="utf-8")
