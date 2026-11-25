@@ -362,6 +362,55 @@ def budget_select_dataset(path: str | Path, budget: int = 20, random_state: int 
     return result
 
 
+def baseline_random_search(candidates: list[dict[str, float]], evaluator: CountedEvaluator,
+                           budget: int = 20, random_state: int = 42) -> dict:
+    """Uniform random search without replacement, with the same interface and budget."""
+    if not isinstance(budget, int) or budget < 1:
+        raise ValueError("budget must be a positive integer")
+    if not candidates:
+        raise ValueError("no candidates available")
+    count = min(budget, len(candidates))
+    order = random.Random(random_state).sample(range(len(candidates)), count)
+    observations = [{"configuration": dict(candidates[i]),
+                     "Performance-": float(evaluator.evaluate(candidates[i]))} for i in order]
+    best = min(enumerate(observations), key=lambda item: (item[1]["Performance-"], item[0]))
+    return {"strategy": "uniform random search without replacement; lowest measured Performance-, earliest evaluation breaks ties",
+            "random_state": random_state, "requested_budget": budget, "budget_used": len(observations),
+            "candidate_count": len(candidates), "evaluation_order": order, "observations": observations,
+            "recommendation": observations[best[0]], "recommendation_frozen": True}
+
+
+def compare_searches(path: str | Path, budget: int = 20,
+                     seeds: range | list[int] = range(42, 52), tie_tolerance: float = 1e-12) -> dict:
+    """Benchmark the retained selector against uniform random search."""
+    settings, candidates = load_candidates(path)
+    _, x, y = load_dataset(path)
+    outcomes = {tuple(map(float, row)): float(value) for row, value in zip(x, y)}
+    global_min = float(np.min(y))
+    runs = []
+    for seed in seeds:
+        retained = select_budget(candidates, CountedEvaluator(outcomes, settings, budget), budget, seed)
+        baseline = baseline_random_search(candidates, CountedEvaluator(outcomes, settings, budget), budget, seed)
+        runs.append({"seed": seed, "budget": budget, "retained": retained,
+                     "baseline": baseline,
+                     "retained_gap": retained["recommendation"]["Performance-"] - global_min,
+                     "baseline_gap": baseline["recommendation"]["Performance-"] - global_min})
+    differences = [r["retained"]["recommendation"]["Performance-"] - r["baseline"]["recommendation"]["Performance-"] for r in runs]
+    wins = sum(d < -tie_tolerance for d in differences)
+    losses = sum(d > tie_tolerance for d in differences)
+    ties = len(differences) - wins - losses
+    return {"measure": "Performance-", "lower_is_better": True, "budget": budget,
+            "seeds": list(seeds), "tie_tolerance": tie_tolerance,
+            "selector_disclosure": "retained Step 7 selector uses seeded random sampling without replacement",
+            "baseline": "uniform random search without replacement",
+            "runs": runs, "paired_summary": {"differences_retained_minus_baseline": differences,
+            "mean": float(np.mean(differences)), "median": float(np.median(differences)),
+            "wins": wins, "ties": ties, "losses": losses},
+            "recommendations_frozen_before_audit": True,
+            "observed_global_minimum": global_min,
+            "analysis_status": "benchmark repeats, not independent LLM trials; no statistical superiority claim; final same procedure pending if unavailable"}
+
+
 def repair(path: str | Path, baseline: dict[str, float | int] | None = None) -> dict:
     """Select the smallest observed improvement over an observed baseline.
 
@@ -498,9 +547,12 @@ def main() -> None:
     parser.add_argument("--select-budget", type=int)
     parser.add_argument("--repair", action="store_true")
     parser.add_argument("--spot", action="store_true")
+    parser.add_argument("--compare-searches", action="store_true")
     args = parser.parse_args()
     started = perf_counter()
-    if args.spot:
+    if args.compare_searches:
+        result = compare_searches(args.dataset)
+    elif args.spot:
         result = spot(args.dataset)
     elif args.repair:
         result = repair(args.dataset)
