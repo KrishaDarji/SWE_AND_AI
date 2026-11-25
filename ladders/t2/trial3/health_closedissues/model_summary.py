@@ -159,3 +159,64 @@ def certify_families(path, family_columns, quality_columns=None, confidence=0.95
                             "reliably_better": reliable_winner})
     return {"family_columns": list(family_columns), "families": family_names,
             "comparison_count": len(comparisons), "comparisons": comparisons}
+
+
+class OnlineEvaluator:
+    """Evaluate configurations incrementally as validation results arrive.
+
+    Each observation is final for that configuration.  The evaluator keeps the
+    full arrival order, updates the incumbent immediately, and never needs the
+    complete CSV in memory or a second pass over prior observations.
+    """
+
+    def __init__(self, quality_columns=None):
+        self.quality_columns = list(quality_columns or [])
+        self.observations = []
+        self._best = None
+
+    def _score(self, results):
+        names = self.quality_columns or sorted(results)
+        if not names:
+            raise ValueError("at least one validation result is required")
+        missing = [name for name in names if name not in results]
+        if missing:
+            raise ValueError("Missing validation results: " + ", ".join(missing))
+        values = {}
+        for name in names:
+            value = _number(results[name])
+            if value is None:
+                raise ValueError("Validation result must be finite: " + name)
+            values[name] = value
+        return values
+
+    def _is_better(self, candidate, incumbent):
+        wins = []
+        for name in self.quality_columns or sorted(candidate["results"]):
+            direction = -1 if name.lower().startswith("mre") else 1
+            a, b = candidate["results"][name], incumbent["results"][name]
+            wins.append(direction * (a - b))
+        return all(value >= 0 for value in wins) and any(value > 0 for value in wins)
+
+    def observe(self, configuration, validation_results):
+        if not isinstance(configuration, dict) or not isinstance(validation_results, dict):
+            raise TypeError("configuration and validation_results must be dictionaries")
+        results = self._score(validation_results)
+        record = {"configuration": dict(configuration), "results": results,
+                  "arrival_index": len(self.observations)}
+        self.observations.append(record)
+        if self._best is None or self._is_better(record, self._best):
+            self._best = record
+        return self.snapshot()
+
+    def snapshot(self):
+        return {"observations_seen": len(self.observations),
+                "incumbent": None if self._best is None else dict(self._best),
+                "history": [dict(item) for item in self.observations]}
+
+
+def evaluate_stream(records, quality_columns=None):
+    """Consume iterable records with configuration and validation_results keys."""
+    evaluator = OnlineEvaluator(quality_columns)
+    for record in records:
+        evaluator.observe(record["configuration"], record["validation_results"])
+    return evaluator.snapshot()

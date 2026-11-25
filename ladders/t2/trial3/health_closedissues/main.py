@@ -1,7 +1,7 @@
 """Command-line entry point for model summary, prediction, and certification."""
 import argparse
 import json
-from model_summary import summarize_csv, predict_quality, certify_families
+from model_summary import summarize_csv, predict_quality, certify_families, evaluate_stream
 
 def main():
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify model configurations")
@@ -10,8 +10,12 @@ def main():
     parser.add_argument("--predict-config")
     parser.add_argument("--neighbors", type=int, default=5)
     parser.add_argument("--family-column", action="append", dest="family_columns")
+    parser.add_argument("--evaluate-stream", action="store_true")
     args = parser.parse_args()
-    if args.predict_config:
+    if args.evaluate_stream:
+        records = (json.loads(line) for line in __import__("sys").stdin if line.strip())
+        result = evaluate_stream(records, args.quality_columns)
+    elif args.predict_config:
         result = predict_quality(args.csv_path, json.loads(args.predict_config), args.quality_columns, args.neighbors)
     elif args.family_columns:
         result = certify_families(args.csv_path, args.family_columns, args.quality_columns)
