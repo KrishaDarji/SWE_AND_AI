@@ -254,6 +254,47 @@ def certify(path: str | Path, practical_threshold: float = 5.0,
                         "non-detection is not equivalence"]}
 
 
+def justify(path: str | Path) -> dict:
+    """Produce a retrospective, evidence-labeled recommendation for an administrator.
+
+    The recommendation is the lowest observed Performance-; ``min`` over the
+    input order makes ties resolve to the earliest CSV record.  The first CSV
+    record is retained as a clearly named historical reference.
+    """
+    settings, x, y = load_dataset(path)
+    with Path(path).open(newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    best_index = int(np.argmin(y))
+    reference_index = 0
+    model = fit_predictor(x, y)
+
+    def record(index: int) -> dict:
+        return {"record_id": f"csv_record_{index + 1}", "csv_row": index + 2,
+                "configuration": {name: float(x[index, i]) for i, name in enumerate(settings)},
+                "measured_performance": float(y[index]),
+                "model_estimate": float(model.predict(x[index:index + 1])[0]),
+                "raw_fields": dict(rows[index])}
+
+    recommendation = record(best_index)
+    reference = record(reference_index)
+    return {
+        "measure": "Performance-", "lower_is_better": True,
+        "recommendation_basis": "lowest observed Performance-, ties resolved by earliest CSV record",
+        "recommendation": recommendation,
+        "historical_reference": {"label": "first CSV record", **reference},
+        "measured_comparison": {"recommendation_minus_reference": recommendation["measured_performance"] - reference["measured_performance"],
+                                "reference_minus_recommendation": reference["measured_performance"] - recommendation["measured_performance"]},
+        "association_evidence": blame(path),
+        "evidence_notes": [
+            "Measured results are the observed CSV values.",
+            "Model estimates are in-sample linear-model estimates and are not measured results.",
+            "Associations do not establish the effect of changing a setting.",
+            "Correlated settings can share explanatory information.",
+            "This is retrospective evidence from this dataset, not a guarantee of future performance or statistical superiority."
+        ]
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
@@ -263,9 +304,12 @@ def main() -> None:
     parser.add_argument("--configuration", type=str, help="JSON object of encoder settings")
     parser.add_argument("--flow", action="store_true")
     parser.add_argument("--blame", action="store_true")
+    parser.add_argument("--justify", action="store_true")
     args = parser.parse_args()
     started = perf_counter()
-    if args.blame:
+    if args.justify:
+        result = justify(args.dataset)
+    elif args.blame:
         result = blame(args.dataset)
     elif args.flow:
         result = {"csv_order_is_demonstration_sequence": True, "snapshots": flow(args.dataset)}
