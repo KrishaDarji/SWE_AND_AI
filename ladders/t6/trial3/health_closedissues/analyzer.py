@@ -263,6 +263,59 @@ def choose(path, cap=100):
                                 "feasibility": "feasible: finite complete row and 0 <= N_estimators <= cap"}
     return result
 
+def _valid_cap(value):
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+        raise ValueError("cap must be a finite nonnegative number")
+    return float(value)
+
+def _valid_tolerance(value):
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+        raise ValueError("tie_tolerance must be a finite nonnegative number")
+    return float(value)
+
+def _race_population(rows, cap):
+    feasible=[]; invalid=0; over_budget=0
+    for position,row in rows:
+        settings={k:(_cat(row.get(k)) if t=="categorical" else _number(row.get(k))) for k,t in CONFIGS.items()}
+        outcomes={k:_number(row.get(k)) for k in OUTCOMES}
+        if not all(v is not None for v in settings.values()) or not all(v is not None for v in outcomes.values()):
+            invalid += 1; continue
+        if settings["N_estimators"] < 0: invalid += 1; continue
+        if settings["N_estimators"] > cap: over_budget += 1; continue
+        feasible.append({"original_position":position,"configuration":settings,"outcomes":outcomes})
+    return feasible, invalid, over_budget
+
+def _race_row(row):
+    return {"original_position":row["original_position"],"configuration":dict(row["configuration"]),"outcomes":dict(row["outcomes"])}
+
+def _race_classify(difference, tolerance):
+    if difference > tolerance: return "win"
+    if difference < -tolerance: return "loss"
+    return "tie"
+
+def race(path, cap=100, seeds=range(42,52), tie_tolerance=1e-12):
+    """Retrospectively compare choose() with uniform historical-row sampling."""
+    cap=_valid_cap(cap); tolerance=_valid_tolerance(tie_tolerance)
+    header,rows,bad=_read(path)
+    feasible,invalid,over=_race_population(rows,cap)
+    out={"status":"ok" if header else "empty_data","raw_count":len(rows),"parsed_count":len(rows),
+         "valid_count":len(rows)-invalid,"feasible_count":len(feasible),"invalid_count":invalid,
+         "over_budget_count":over,"malformed_row_positions":bad,"cap":cap,"tie_tolerance":tolerance,
+         "exclusion_definitions":"invalid means incomplete configuration or nonmissing criterion, nonfinite setting/outcome, or negative N_estimators; over_budget means N_estimators > cap; feasible means complete finite configuration and three finite outcomes with 0 <= N_estimators <= cap",
+         "selection_rules":{"selector":"lowest MRE-, then highest ACC+, then highest PRED40+, then earliest original position","baseline":"one eligible historical row sampled uniformly using a fresh local random.Random(seed)"},
+         "information_limits":"The selector inspects historical outcomes across feasible rows while the baseline samples one row. This is retrospective benchmarking, not an equal-evaluation-budget search experiment or proof of superior future performance. N_estimators is a compute proxy, not measured runtime or evaluation cost.",
+         "seed_interpretation":"Seeds are repeated baseline selections from one historical dataset, not independent LLM trials or new datasets; no significance, confidence, or generalization guarantee is inferred from win counts.","results":[],"summary":None}
+    if not header: out["message"]="No header or data rows are available."; return out
+    if not feasible: out["status"]="no_feasible_rows"; out["message"]="No feasible rows remain after exclusions."; return out
+    selected=min(feasible,key=lambda x:(x["outcomes"]["MRE-"],-x["outcomes"]["ACC+"],-x["outcomes"]["PRED40+"],x["original_position"]))
+    for seed in seeds:
+        rng=random.Random(seed); baseline=_race_row(feasible[rng.randrange(len(feasible))]); selector=_race_row(selected)
+        d=baseline["outcomes"]["MRE-"]-selector["outcomes"]["MRE-"]
+        out["results"].append({"seed":seed,"selector":selector,"baseline":baseline,"differences":{"MRE- (baseline - selector)":d,"ACC+ (selector - baseline; positive favors selector)":selector["outcomes"]["ACC+"]-baseline["outcomes"]["ACC+"],"PRED40+ (selector - baseline; positive favors selector)":selector["outcomes"]["PRED40+"]-baseline["outcomes"]["PRED40+"]},"MRE_classification":_race_classify(d,tolerance)})
+    ds=[x["differences"]["MRE- (baseline - selector)"] for x in out["results"]]; wins=sum(x["MRE_classification"]=="win" for x in out["results"]); ties=sum(x["MRE_classification"]=="tie" for x in out["results"])
+    out["summary"]={"mean_MRE_difference":statistics.fmean(ds),"median_MRE_difference":statistics.median(ds),"wins":wins,"ties":ties,"losses":len(ds)-wins-ties,"primary_direction":"positive baseline MRE- minus selector MRE- favors selector","secondary_direction":"ACC+ and PRED40+ differences are selector minus baseline; positive favors selector"}
+    return out
+
 SPOT_THRESHOLD = 3.5
 SPOT_MIN_SAMPLE = 3
 
