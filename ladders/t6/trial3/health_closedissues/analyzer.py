@@ -135,3 +135,53 @@ def flow_dataset(path):
     evaluator=FlowEvaluator()
     for position,row in validation_rows(path):evaluator.update(position,row)
     return evaluator.snapshot()
+
+def blame(path):
+    """Rank marginal setting associations with lower-is-better MRE-.
+
+    Numeric settings use up to four equal-frequency bins, with boundaries
+    computed from that field's eligible finite setting values before outcomes
+    are inspected.  Groups use interval notation [lo, hi] (the final group
+    includes its upper endpoint); categorical values are exact strings.
+    """
+    _, rows, _ = _read(path)
+    result = {"outcome": "MRE-", "score": "eta_squared = between-group SS / total SS",
+              "lower_mre_is_better": True, "fields": list(CONFIGS), "ranking": [],
+              "conventions": {"numeric_groups": "up to four equal-frequency bins; ties may reduce groups",
+                               "intervals": "left-closed, right-open except final group",
+                               "ties": "descending score, then field declaration order",
+                               "association": "marginal historical association; not causation or significance"}}
+    for field, kind in CONFIGS.items():
+        eligible = []
+        for pos, row in rows:
+            y = _number(row.get("MRE-")); x = _cat(row.get(field)) if kind == "categorical" else _number(row.get(field))
+            if x is not None and y is not None: eligible.append((pos, x, y))
+        groups = []
+        boundaries = []
+        if kind == "categorical":
+            for value in sorted({x for _, x, _ in eligible}, key=repr):
+                groups.append((str(value), [y for _, x, y in eligible if x == value]))
+        else:
+            values = sorted(x for _, x, _ in eligible)
+            if values:
+                cuts = sorted({(values[j-1] + values[j]) / 2 for i in (1, 2, 3)
+                               for j in [(len(values) * i) // 4]
+                               if 0 < j < len(values) and values[j-1] != values[j]})
+                boundaries = cuts
+                for i in range(len(cuts) + 1):
+                    lo = values[0] if i == 0 else cuts[i-1]
+                    hi = values[-1] if i == len(cuts) else cuts[i]
+                    ys = [y for _, x, y in eligible if (x >= lo if i == 0 else x > lo) and (x <= hi)]
+                    if ys: groups.append(("[%s, %s]%s" % (lo, hi, "" if i == len(cuts) else " (right boundary shared)"), ys))
+        n = len(eligible); mean = statistics.fmean(y for _, _, y in eligible) if n else None
+        total = sum((y - mean) ** 2 for _, _, y in eligible) if n else 0.0
+        between = sum(len(ys) * (statistics.fmean(ys) - mean) ** 2 for _, ys in groups) if n else 0.0
+        score = between / total if n >= 2 and total > 0 and len(groups) >= 2 else None
+        detail = [{"group": label, "count": len(ys), "mean_mre": statistics.fmean(ys)} for label, ys in groups]
+        result["ranking"].append({"field": field, "kind": kind, "eligible_count": n,
+            "excluded_count": len(rows) - n, "group_count": len(groups), "boundaries": boundaries,
+            "reference_mean": mean, "total_ss": total, "between_group_ss": between,
+            "eta_squared": score, "groups": detail,
+            "status": "ok" if score is not None else "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups"})
+    result["ranking"].sort(key=lambda x: (x["eta_squared"] is None, -(x["eta_squared"] or 0), list(CONFIGS).index(x["field"])))
+    return result
