@@ -270,12 +270,64 @@ def predict(path, configurations, random_state=42):
     return [float(v) for v in values]
 
 
+def _blame_value(value):
+    """Canonical explanatory value; invalid setting cells become one level."""
+    normalized = _setting(value)
+    return MISSING_SETTING if normalized is None else normalized
+
+
+def blame(path):
+    """Rank settings by marginal eta-squared association with Performance-.
+
+    Each setting is treated as a categorical explanatory variable, so the same
+    primary score is used for binary, multi-value, and missing-value settings.
+    Scores are descriptive associations, not causal effects.
+    """
+    settings, valid, invalid_target = _read_valid_rows(path)
+    y = np.asarray([target for _, target in valid], dtype=float)
+    overall = float(np.mean(y))
+    total = float(np.sum((y - overall) ** 2))
+    ranking = []
+    for order, field in enumerate(settings):
+        groups = {}
+        for (row, target) in valid:
+            groups.setdefault(_blame_value(row.get(field, "")), []).append(target)
+        summaries = []
+        between = 0.0
+        for value, outcomes in sorted(groups.items(), key=lambda item: item[0]):
+            mean = float(np.mean(outcomes))
+            between += len(outcomes) * (mean - overall) ** 2
+            summaries.append({"value": value, "count": len(outcomes),
+                              "mean": mean, "min": float(np.min(outcomes)),
+                              "max": float(np.max(outcomes))})
+        eligible = len(summaries) >= 2 and all(item["count"] >= 2 for item in summaries)
+        if not eligible or total == 0.0:
+            score = 0.0
+            score_status = "undefined; reported as 0.0"
+        else:
+            score = between / total
+            score_status = "defined"
+        fastest = min(summaries, key=lambda item: (item["mean"], item["value"])) if summaries else None
+        slowest = max(summaries, key=lambda item: (item["mean"], item["value"])) if summaries else None
+        ranking.append({"setting": field, "primary_score": float(score),
+                        "score_name": "eta_squared_between_group",
+                        "score_status": score_status, "group_count": len(summaries),
+                        "groups": summaries, "fastest_group": fastest,
+                        "slowest_group": slowest, "input_order": order})
+    ranking.sort(key=lambda item: (-item["primary_score"], item["setting"]))
+    return {"outcome": OUTCOME, "direction": "lower is better", "record_count": len(valid),
+            "invalid_target_rows": invalid_target, "overall_mean": overall,
+            "ranking": ranking, "method": "marginal eta-squared: between-group sum of squares / total sum of squares; missing/non-finite settings are one level; groups need at least two observations; ties sort by setting name",
+            "interpretation": "These are observational marginal associations. Correlated or mutually exclusive settings can share explanatory information; a low score does not prove irrelevance, and changing a setting is not guaranteed to change the outcome."}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
     parser.add_argument("--json", type=Path)
+    parser.add_argument("--blame", action="store_true", help="rank settings by marginal association")
     args = parser.parse_args()
-    summary = summarize(args.dataset)
+    summary = blame(args.dataset) if args.blame else summarize(args.dataset)
     rendered = json.dumps(summary, indent=2, sort_keys=True)
     print(rendered)
     if args.json:
