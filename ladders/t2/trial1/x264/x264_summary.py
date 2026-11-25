@@ -11,6 +11,35 @@ from pathlib import Path
 from typing import Dict, Sequence
 
 
+class OnlineBenchmarkEvaluator:
+    """Evaluate lower-is-better benchmark results as they arrive."""
+
+    def __init__(self, settings=None):
+        self.settings = tuple(settings) if settings is not None else None
+        self.results = []
+
+    def add_result(self, configuration, performance):
+        configuration = {str(key): str(value).strip()
+                         for key, value in configuration.items()}
+        value = _number(str(performance))
+        if value is None:
+            raise ValueError("performance must be a finite number")
+        if self.settings is None:
+            self.settings = tuple(sorted(configuration))
+        if set(configuration) != set(self.settings):
+            raise ValueError("configuration columns do not match evaluator settings")
+        record = {"configuration": configuration, "performance": value,
+                  "index": len(self.results) + 1}
+        self.results.append(record)
+        return self.snapshot()
+
+    def snapshot(self):
+        ordered = sorted(self.results, key=lambda item: (item["performance"], item["index"]))
+        return {"received": len(self.results),
+                "best": ordered[0] if ordered else None,
+                "ranking": ordered}
+
+
 @dataclass
 class ColumnSummary:
     name: str
@@ -141,6 +170,21 @@ def _configuration(items):
     return dict(item.split("=", 1) for item in items)
 
 
+def evaluate_stream(records, settings=None):
+    """Consume iterable records with configuration and Performance- fields."""
+    evaluator = OnlineBenchmarkEvaluator(settings)
+    snapshot = None
+    for record in records:
+        if "configuration" in record:
+            configuration = record["configuration"]
+        else:
+            configuration = {key: value for key, value in record.items()
+                            if key != "Performance-"}
+        performance = record.get("performance", record.get("Performance-"))
+        snapshot = evaluator.add_result(configuration, performance)
+    return snapshot or evaluator.snapshot()
+
+
 def main(argv: Sequence[str] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -149,8 +193,13 @@ def main(argv: Sequence[str] = None) -> int:
     parser.add_argument("--baseline", nargs="*", metavar="NAME=VALUE")
     parser.add_argument("--candidate", nargs="*", metavar="NAME=VALUE")
     parser.add_argument("--alpha", type=float, default=0.05)
+    parser.add_argument("--stream", action="store_true",
+                        help="read one JSON benchmark result per stdin line")
     args = parser.parse_args(argv)
-    if args.baseline is not None or args.candidate is not None:
+    if args.stream:
+        records = (json.loads(line) for line in __import__("sys").stdin if line.strip())
+        result = evaluate_stream(records)
+    elif args.baseline is not None or args.candidate is not None:
         if args.baseline is None or args.candidate is None:
             parser.error("--baseline and --candidate are both required")
         result = certify_improvement(args.csv_path, _configuration(args.baseline), _configuration(args.candidate), args.alpha)
