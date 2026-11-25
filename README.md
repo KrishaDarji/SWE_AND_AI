@@ -33,4 +33,35 @@ The runner writes `experiments/runs/treatment7/trials/trial1/<domain>/stepNN/`
 trial-level `metrics.csv`. Treatment 7 is run once per domain because a human team
 cannot be reset between repeats.
 
-The seven experimental treatments and milestone plan are documented in [project.md](project.md). Results and visualization requirements are in [result.md](result.md).
+## One-command demos
+
+Each ladder step runs in one command for each domain (`<domain>` is `x264`, `nasa93dem` or `health_closedissues`):
+
+```bash
+python3 -m src.cli <domain> <step>        # e.g. python3 -m src.cli x264 3; use "all" for all ten steps
+python3 -m unittest discover -s tests -p 'test_*.py'
+```
+
+## Step tags and shrinking-code histograms
+
+Every step of every ladder is tagged on the `ladders` branch: `t<T>/trial<R>/<domain>/stepNN` for the LLM treatments 1–6, and `t7/<domain>/stepNN` for the human team. The human team's tags form one continuous ladder across the three domains, with the shared codebase accumulating.
+
+The steps were not committed one at a time while the experiment ran. `scripts/build_ladder_tags.py` reconstructs the tagged history from the per-step snapshots the experiment saved (`experiments/runs/.../stepNN/source`).
+
+```bash
+git fetch origin 'refs/tags/*:refs/tags/*'                  # get the step tags
+git diff --stat t2/trial1/x264/step02 t2/trial1/x264/step03 # new code in one step
+python3 scripts/tag_histogram.py                            # % new code per step, from the tags -> results/tag_histogram.csv
+python3 scripts/build_ladder_tags.py                        # rebuild the branch and tags from the snapshots
+```
+
+## External metrics: are the treatments any good?
+
+`evaluation/` runs every treatment's saved guess (step 2) and race (step 10) code on one shared 80/20 split, then ranks the seven treatments with `same`. It makes no new LLM calls and edits no generated code. See [evaluation/README.md](evaluation/README.md).
+
+## Documents
+
+- Requirements: [docs/requirements.md](docs/requirements.md) (three domains, twenty asks each)
+- AI disclosure notes: [docs/ai_disclosure.md](docs/ai_disclosure.md)
+- Final presentation source: `presentation/source/`
+- Plan and milestones: [project.md](project.md); results and figures plan: [result.md](result.md)

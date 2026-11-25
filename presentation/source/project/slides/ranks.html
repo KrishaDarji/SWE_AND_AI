@@ -1,0 +1,16 @@
+<section id="ranks" class="alt">
+<div class="head"><p class="eyebrow">07 · INTERNAL: SEVEN WAYS RANKED</p><h2>Reuse cuts code, but not LLM cost</h2></div>
+<table class="data tight rise" style="--i:1">
+<tr><th style="width:25%">Treatment</th><th style="width:15%;text-align:center">New LOC</th><th style="width:15%;text-align:center">Code run time</th><th style="width:15%;text-align:center">Tokens</th><th style="width:15%;text-align:center">$</th><th style="width:15%;text-align:center">LLM time</th></tr>
+<tr><td>1 · Plain</td><td style="text-align:center">5</td><td style="text-align:center">2</td><td style="text-align:center"><b>0</b></td><td style="text-align:center"><b>0</b></td><td style="text-align:center"><b>0</b></td></tr>
+<tr><td>2 · Plain + reuse</td><td style="text-align:center">2</td><td style="text-align:center">1</td><td style="text-align:center">2</td><td style="text-align:center">1</td><td style="text-align:center">1</td></tr>
+<tr><td>3 · sklearn</td><td style="text-align:center">6</td><td style="text-align:center">5</td><td style="text-align:center">2</td><td style="text-align:center">1</td><td style="text-align:center">1</td></tr>
+<tr><td>4 · sklearn + reuse</td><td style="text-align:center">3</td><td style="text-align:center">4</td><td style="text-align:center">1</td><td style="text-align:center">2</td><td style="text-align:center">3</td></tr>
+<tr><td>5 · ezr</td><td style="text-align:center">4</td><td style="text-align:center">1</td><td style="text-align:center"><b>0</b></td><td style="text-align:center"><b>0</b></td><td style="text-align:center">2</td></tr>
+<tr><td>6 · ezr + reuse</td><td style="text-align:center">1</td><td style="text-align:center"><b>0</b></td><td style="text-align:center"><b>0</b></td><td style="text-align:center"><b>0</b></td><td style="text-align:center">2</td></tr>
+<tr><td>7 · Human team</td><td style="text-align:center"><b>0</b></td><td style="text-align:center">3</td><td style="text-align:center">—</td><td style="text-align:center">—</td><td style="text-align:center">—</td></tr>
+</table>
+<p class="small">Rank 0 = best; ties share a rank. LOC and code run time: sorted by median, new rank only when <span class="mono">same</span> says different (Cohen ≤ 0.35, Cliff ≤ 0.195, KS ≤ 1.36). Tokens, $ and LLM time: ordered by the 9-run total (no per-run data for T1–T3, so no <span class="mono">same</span> test); within 10% of the one above = tie.</p>
+<div class="foot"><p class="flabel">Shrinking code at scale</p><div class="pnum"></div></div>
+<aside>~1:15. The seven ways, ranked, using the ranking from the stats lecture. On code size, every reuse arm beats its no-reuse twin, and the human team is best, because it reused its core across domains. On code run time, ezr with reuse wins. But reuse doesn’t make the LLM cheaper: plain Python with reuse needs more tokens, dollars and minutes than without, and ezr with or without reuse ties. Plain Python without reuse is cheapest on all three. scikit-learn with reuse is dearest, partly because one trial ran on the bigger gpt-6.1-sol. Caveat: the three cost columns are ordered by totals with a 10 percent tie rule, not the full same test, because we only have totals for T1 to T3.</aside>
+</section>
