@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Summarize, predict, certify, and incrementally evaluate model configurations."""
+"""Summarize, predict, certify, evaluate, and blame configuration values."""
 
 from __future__ import annotations
 
@@ -47,6 +47,15 @@ class Certification:
     confidence: float
     samples_a: int
     samples_b: int
+
+
+@dataclass(frozen=True)
+class BlameResult:
+    """Per-hyperparameter evidence for values associated with high error."""
+    error_field: str
+    high_error_threshold: float
+    overall_mean_error: float | None
+    parameters: dict[str, list[dict[str, Any]]]
 
 
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -196,14 +205,60 @@ def evaluate_file(path: str | Path) -> dict[str, Any]:
     return evaluator.report() | {"source": str(path)}
 
 
+def blame(path: str | Path, error_field: str = "MRE-", quantile: float = 0.75,
+          min_samples: int = 1) -> dict[str, Any]:
+    """Rank hyperparameter values by mean error and high-error rate.
+
+    The high-error threshold is the requested quantile of observed errors.  This
+    is an association analysis, not a causal claim; each parameter is analyzed
+    independently and sparse groups are retained only when they meet
+    ``min_samples``.
+    """
+    if not 0 < quantile <= 1 or min_samples < 1:
+        raise ValueError("quantile must be in (0, 1] and min_samples must be positive")
+    fields, rows = read_rows(path)
+    metric_fields, configuration_fields = classify_columns(fields)
+    if error_field not in metric_fields:
+        raise ValueError(f"unknown error metric: {error_field}")
+    errors = [_number(row.get(error_field, "")) for row in rows]
+    usable = [value for value in errors if value is not None]
+    if not usable:
+        raise ValueError("error metric has no numeric observations")
+    ordered = sorted(usable)
+    threshold = ordered[min(len(ordered) - 1, math.ceil(quantile * len(ordered)) - 1)]
+    overall = statistics.fmean(usable)
+    parameter_reports: dict[str, list[dict[str, Any]]] = {}
+    for field in configuration_fields:
+        groups: dict[str, list[float]] = {}
+        for row, error in zip(rows, errors):
+            if error is not None:
+                groups.setdefault(row.get(field, ""), []).append(error)
+        report = []
+        for value, group in groups.items():
+            if len(group) < min_samples:
+                continue
+            report.append({"value": value, "count": len(group),
+                           "mean_error": statistics.fmean(group),
+                           "high_error_count": sum(error >= threshold for error in group),
+                           "high_error_rate": sum(error >= threshold for error in group) / len(group),
+                           "mean_error_lift": statistics.fmean(group) - overall})
+        parameter_reports[field] = sorted(report, key=lambda item: (-item["mean_error"], item["value"]))
+    return asdict(BlameResult(error_field, threshold, overall, parameter_reports)) | {"source": str(path)}
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path); parser.add_argument("--output", type=Path)
     parser.add_argument("--predict", type=json.loads); parser.add_argument("--neighbors", type=int, default=5)
     parser.add_argument("--certify", type=json.loads); parser.add_argument("--confidence", type=float, default=0.95); parser.add_argument("--resamples", type=int, default=2000)
     parser.add_argument("--evaluate", action="store_true", help="evaluate validation rows as they arrive")
+    parser.add_argument("--blame", action="store_true", help="identify hyperparameter values associated with high error")
+    parser.add_argument("--error-field", default="MRE-")
+    parser.add_argument("--quantile", type=float, default=0.75)
+    parser.add_argument("--min-samples", type=int, default=1)
     args = parser.parse_args(argv)
-    if args.evaluate: result = evaluate_file(args.csv_path)
+    if args.blame: result = blame(args.csv_path, args.error_field, args.quantile, args.min_samples)
+    elif args.evaluate: result = evaluate_file(args.csv_path)
     elif args.certify is not None:
         spec = args.certify; result = certify(args.csv_path, spec["field"], spec["a"], spec["b"], spec.get("metrics"), args.confidence, args.resamples)
     elif args.predict is not None: result = predict(args.csv_path, args.predict, args.neighbors)
