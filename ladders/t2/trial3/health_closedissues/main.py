@@ -1,7 +1,8 @@
 """Command-line entry point for model summary, prediction, and certification."""
 import argparse
 import json
-from model_summary import summarize_csv, predict_quality, certify_families, evaluate_stream, blame_high_error
+from model_summary import (summarize_csv, predict_quality, certify_families,
+                           evaluate_stream, blame_high_error, justify_configuration)
 
 def main():
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify model configurations")
@@ -14,8 +15,13 @@ def main():
     parser.add_argument("--blame", action="store_true")
     parser.add_argument("--error-column", default="MRE-")
     parser.add_argument("--high-percentile", type=float, default=0.75)
+    parser.add_argument("--justify", action="store_true")
     args = parser.parse_args()
-    if args.blame:
+    if args.justify:
+        configuration = json.loads(args.predict_config) if args.predict_config else None
+        result = justify_configuration(args.csv_path, configuration, args.quality_columns,
+                                       args.error_column, args.high_percentile)
+    elif args.blame:
         result = blame_high_error(args.csv_path, args.error_column, args.high_percentile)
     elif args.evaluate_stream:
         records = (json.loads(line) for line in __import__("sys").stdin if line.strip())

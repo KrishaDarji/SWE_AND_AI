@@ -280,3 +280,52 @@ def evaluate_stream(records, quality_columns=None):
     for record in records:
         evaluator.observe(record["configuration"], record["validation_results"])
     return evaluator.snapshot()
+
+
+def justify_configuration(path, configuration=None, quality_columns=None,
+                          error_column="MRE-", high_percentile=0.75):
+    """Return an evidence-backed recommendation for a platform decision.
+
+    If no configuration is supplied, select the observed row with the best
+    mean min-max normalized quality rank (errors minimized, other metrics
+    maximized).  The returned evidence reuses prediction and high-error
+    association analysis; it is decision support, not a causal claim.
+    """
+    columns, rows = _read(path)
+    quality = list(quality_columns or [name for name in columns
+                                      if name.lower().startswith(DEFAULT_QUALITY_PREFIXES)])
+    if not quality:
+        raise ValueError("at least one quality column is required")
+    unknown = set(quality).difference(columns)
+    if unknown:
+        raise ValueError("Unknown quality columns: " + ", ".join(sorted(unknown)))
+    usable = []
+    for row in rows:
+        values = {name: _number(row.get(name, "")) for name in quality}
+        if all(value is not None for value in values.values()):
+            usable.append((row, values))
+    if not usable:
+        raise ValueError("no rows contain finite values for every quality column")
+    ranges = {name: (min(values[name] for _, values in usable),
+                     max(values[name] for _, values in usable)) for name in quality}
+    def rank(values):
+        scores = []
+        for name in quality:
+            low, high = ranges[name]
+            normalized = 0.5 if high == low else (values[name] - low) / (high - low)
+            scores.append(normalized if name.lower().startswith("mre") else 1.0 - normalized)
+        return statistics.fmean(scores)
+    was_selected = configuration is None
+    if was_selected:
+        row, values = min(usable, key=lambda item: (rank(item[1]),
+                                                     tuple(str(item[0].get(c, "")) for c in columns)))
+        configuration = {name: row[name] for name in columns if name not in quality}
+    prediction = predict_quality(path, configuration, quality, neighbors=5)
+    blame = blame_high_error(path, error_column, high_percentile)
+    return {"recommended_configuration": dict(configuration),
+            "selection": "best observed normalized quality rank" if was_selected else "provided",
+            "predicted_quality": prediction["predicted_quality"],
+            "neighbors_used": prediction["neighbors_used"],
+            "high_error_analysis": blame,
+            "quality_columns": quality,
+            "caveat": "Associations and nearest-neighbor predictions support review; they do not establish causation or production performance."}
