@@ -4,6 +4,7 @@ import argparse
 import csv
 import json
 import math
+import copy
 import numpy as np
 from pathlib import Path
 
@@ -20,6 +21,58 @@ from scipy import stats
 
 OUTCOME = "Performance-"
 MISSING_SETTING = "__MISSING_SETTING__"
+
+
+class IncrementalBenchmark:
+    """One-pass lower-is-better benchmark accumulator with immutable snapshots."""
+    def __init__(self, configuration_fields=None):
+        self.configuration_fields = list(configuration_fields or [])
+        self.count = 0
+        self.mean = 0.0
+        self._m2 = 0.0
+        self.best = None
+
+    def update(self, record, record_id=None):
+        """Consume one mapping; invalid or non-finite outcomes are ignored."""
+        outcome = _number(record.get(OUTCOME) if hasattr(record, "get") else None)
+        if outcome is None:
+            return self.snapshot()
+        if not self.configuration_fields:
+            self.configuration_fields = [k for k in record if k != OUTCOME]
+        identifier = self.count if record_id is None else record_id
+        configuration = {k: copy.deepcopy(record.get(k)) for k in self.configuration_fields}
+        self.count += 1
+        delta = outcome - self.mean
+        self.mean += delta / self.count
+        self._m2 += delta * (outcome - self.mean)
+        if self.best is None or outcome < self.best["outcome"]:
+            self.best = {"record_id": copy.deepcopy(identifier), "outcome": outcome,
+                         "configuration": configuration}
+        return self.snapshot()
+
+    def snapshot(self):
+        variance = self._m2 / (self.count - 1) if self.count > 1 else None
+        return copy.deepcopy({"count": self.count, "mean": self.mean if self.count else None,
+            "sample_variance": variance, "best": self.best,
+            "outcome": OUTCOME, "direction": "lower is better",
+            "invalid_outcomes_ignored": True})
+
+
+def benchmark_flow(records, configuration_fields=None):
+    """Yield a snapshot after each input record, without buffering the iterator.
+
+    CSV order is a demonstration sequence, not a verified timeline. Empty input
+    yields no snapshots; ties retain the first best record. Missing/non-finite
+    outcomes leave the accumulator unchanged but still produce a snapshot.
+    """
+    accumulator = IncrementalBenchmark(configuration_fields)
+    for record_id, record in enumerate(records):
+        yield accumulator.update(record, record_id)
+
+
+def benchmark_csv(path):
+    with Path(path).open(newline="") as handle:
+        yield from benchmark_flow(csv.DictReader(handle))
 
 
 def certify(path, threshold=None):
@@ -69,11 +122,11 @@ def certify(path, threshold=None):
 
 
 def _number(value):
-    if value is None or not value.strip():
+    if value is None:
         return None
     try:
-        number = float(value.strip())
-    except ValueError:
+        number = float(value.strip() if isinstance(value, str) else value)
+    except (TypeError, ValueError):
         return None
     return number if math.isfinite(number) else None
 
