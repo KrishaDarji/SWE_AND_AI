@@ -6,6 +6,7 @@ import csv
 import json
 import math
 import statistics
+import random
 from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Dict, Sequence
@@ -420,6 +421,63 @@ def select_best_configuration(path: Path, quality_column: str,
             "eligible_rows": len(eligible), "selection": "fastest eligible observed configuration"}
 
 
+def compare_search_strategies(path: Path, budget=32, seed=0) -> dict:
+    """Compare race-style local search with a seeded random baseline.
+
+    Both strategies query exactly ``budget`` distinct observed configurations and
+    minimize the same Performance- objective.  The race strategy starts at the
+    first observed configuration, then spends each round on untested
+    configurations one Hamming step from the best result so far.  The baseline
+    samples the same candidate pool without replacement using ``seed``.
+    """
+    if isinstance(budget, bool) or not isinstance(budget, int) or budget < 1:
+        raise ValueError("budget must be a positive integer")
+    fieldnames, rows = _read(path)
+    if "Performance-" not in fieldnames:
+        raise ValueError("CSV must contain a Performance- column")
+    settings = [name for name in fieldnames if name != "Performance-"]
+    observations = []
+    for index, row in enumerate(rows, 1):
+        performance = _number(row.get("Performance-", ""))
+        if performance is not None:
+            observations.append((index, {name: (row.get(name) or "").strip()
+                                         for name in settings}, performance))
+    if not observations:
+        raise ValueError("dataset has no numeric Performance- values")
+    budget = min(budget, len(observations))
+    by_configuration = {tuple(item[1][name] for name in settings): item
+                        for item in observations}
+    start = observations[0][1]
+    selected = []
+    remaining = set(by_configuration)
+    current = tuple(start[name] for name in settings)
+    while remaining and len(selected) < budget:
+        if current in remaining:
+            selected.append(by_configuration[current])
+            remaining.remove(current)
+        neighbors = [key for key in remaining
+                     if sum(left != right for left, right in zip(key, current)) == 1]
+        if neighbors:
+            current = min(neighbors, key=lambda key: (by_configuration[key][2], key))
+        else:
+            current = min(remaining)
+    race_best = min(selected, key=lambda item: (item[2], item[0]))
+    random_pool = list(by_configuration)
+    random.Random(seed).shuffle(random_pool)
+    baseline = [by_configuration[key] for key in random_pool[:budget]]
+    baseline_best = min(baseline, key=lambda item: (item[2], item[0]))
+
+    def result(items, best, name):
+        return {"strategy": name, "evaluations": len(items),
+                "best_objective": best[2], "best_row": best[0],
+                "best_configuration": best[1]}
+    return {"dataset": str(path), "objective": "Performance- (lower is better)",
+            "budget": budget, "seed": seed,
+            "race": result(selected, race_best, "race_local_search"),
+            "baseline": result(baseline, baseline_best, "random_without_replacement"),
+            "race_minus_baseline": race_best[2] - baseline_best[2]}
+
+
 def main(argv: Sequence[str] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -442,8 +500,14 @@ def main(argv: Sequence[str] = None) -> int:
     parser.add_argument("--anomalies", action="store_true",
                         help="detect unusual timings against one-setting neighbors")
     parser.add_argument("--anomaly-threshold", type=float, default=3.5)
+    parser.add_argument("--compare-search", action="store_true",
+                        help="compare race local search with a random baseline")
+    parser.add_argument("--budget", type=int, default=32)
+    parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args(argv)
-    if args.anomalies:
+    if args.compare_search:
+        result = compare_search_strategies(args.csv_path, args.budget, args.seed)
+    elif args.anomalies:
         result = detect_anomalies(args.csv_path, args.anomaly_threshold)
     elif args.suggest is not None:
         result = suggest_setting_change(args.csv_path, _configuration(args.suggest))
