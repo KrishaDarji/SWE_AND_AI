@@ -224,3 +224,41 @@ def justify(path):
     result["association_context"]={"label":"global marginal historical associations, not row-level contributions or causal effects","outcome":assoc["outcome"],"grouping_conventions":assoc["conventions"],"ranking":assoc["ranking"]}
     result["interpretation"]="This is a retrospective recommendation from observed complete rows, not a prediction for an unevaluated configuration. Differences describe the selected row relative to each independently populated historical median; secondary outcomes can trade off against the primary MRE- rule. Global association scores provide context only and do not guarantee benefit."
     return result
+
+def choose(path, cap=100):
+    """Retrospectively select the best observed complete row within an estimator cap."""
+    if isinstance(cap, bool) or not isinstance(cap, (int, float)) or not math.isfinite(cap) or cap < 0:
+        raise ValueError("cap must be a finite nonnegative number")
+    header, rows, bad = _read(path)
+    result = {"status": "ok", "cap": cap, "raw_count": len(rows) + len(bad),
+              "parsed_count": len(rows), "malformed_count": len(bad),
+              "invalid_count": 0, "over_budget_count": 0, "feasible_count": 0,
+              "malformed_row_positions": bad, "recommendation": None,
+              "selection_rule": ["lowest MRE-", "highest ACC+ for ties",
+                                 "highest PRED40+ for remaining ties",
+                                 "earliest original CSV position for remaining ties"],
+              "eligibility": "all five settings and all three outcomes finite; criterion nonmissing categorical; N_estimators nonnegative and <= cap",
+              "interpretation": "Retrospective selection using observed outcomes; other settings may also affect computation. No optimality beyond eligible historical rows or guaranteed unseen performance is claimed.",
+              "position_convention": "original physical CSV row; header is position 1; blank rows ignored; malformed rows excluded without renumbering"}
+    if not header:
+        result["status"] = "empty_data"; return result
+    feasible = []
+    for position, row in rows:
+        settings = {k: (_cat(row.get(k)) if t == "categorical" else _number(row.get(k))) for k, t in CONFIGS.items()}
+        outcomes = {k: _number(row.get(k)) for k in OUTCOMES}
+        complete = all(v is not None for v in settings.values()) and all(v is not None for v in outcomes.values())
+        if not complete:
+            result["invalid_count"] += 1; continue
+        if settings["N_estimators"] < 0:
+            result["invalid_count"] += 1; continue
+        if settings["N_estimators"] > cap:
+            result["over_budget_count"] += 1; continue
+        feasible.append((position, settings, outcomes))
+    result["feasible_count"] = len(feasible)
+    if not feasible:
+        result["status"] = "no_feasible_candidate"; return result
+    chosen = min(feasible, key=lambda x: (x[2]["MRE-"], -x[2]["ACC+"], -x[2]["PRED40+"], x[0]))
+    result["recommendation"] = {"original_position": chosen[0], "configuration": chosen[1],
+                                "outcomes": chosen[2], "selected_proxy_value": chosen[1]["N_estimators"],
+                                "feasibility": "feasible: finite complete row and 0 <= N_estimators <= cap"}
+    return result
