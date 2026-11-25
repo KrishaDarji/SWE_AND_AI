@@ -255,6 +255,45 @@ def evaluate_rows(dataset):
     return evaluator.snapshot()
 
 
+def justify(dataset, measure=None, alpha=0.05, slow_fraction=0.10):
+    """Build a concise, evidence-backed recommendation for an administrator.
+
+    The recommendation is the highest observed configuration in the dataset;
+    supporting certification and slow-tail evidence are included without
+    presenting observational associations as causal proof.
+    """
+    measure = measure or dataset.measures[0]
+    if measure not in dataset.measures:
+        raise ValueError("unknown measure: " + measure)
+    online = evaluate_rows(dataset)
+    best = online["best"]
+    certification = certify(dataset, measure, alpha)
+    tail = blame(dataset, measure, slow_fraction)
+    evidence = [
+        "It is the highest observed mean in the supplied benchmark data.",
+        "The result is based on {} observed configuration(s) and {} completed run(s).".format(
+            online["configurations_seen"], online["results_seen"]),
+    ]
+    if certification["credible_improvements"]:
+        evidence.append("Credible positive setting effects under the screening test: {}.".format(
+            ", ".join(certification["credible_improvements"])))
+    else:
+        evidence.append("No setting passed the configured statistical screening threshold.")
+    concerns = [
+        "Validate with representative production clips and a staged rollout.",
+        "The dataset is observational; certification and slow-tail results do not establish causality.",
+    ]
+    return {
+        "measure": measure,
+        "recommendation": best,
+        "decision": "recommend",
+        "evidence": evidence,
+        "certification": certification,
+        "slow_tail": tail,
+        "limitations": concerns,
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
@@ -267,9 +306,13 @@ def main(argv=None):
                         help="rank settings associated with the slowest rows")
     parser.add_argument("--slow-fraction", type=float, default=0.10)
     parser.add_argument("--alpha", type=float, default=0.05)
+    parser.add_argument("--justify", action="store_true",
+                        help="justify the best observed configuration for an administrator")
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
-    if args.blame:
+    if args.justify:
+        result = justify(dataset, args.measure, args.alpha, args.slow_fraction)
+    elif args.blame:
         result = blame(dataset, args.measure, args.slow_fraction)
     elif args.certify:
         result = certify(dataset, args.measure, args.alpha)
