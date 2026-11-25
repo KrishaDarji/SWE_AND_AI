@@ -352,6 +352,56 @@ class SequentialEvaluator:
         return {**self.snapshot(), "results": [dict(result) for result in self.results]}
 
 
+def suggest_hyperparameter_change(rows, baseline_configuration,
+                                 error_column="MRE-", configuration_columns=None):
+    """Suggest the smallest observed configuration change that lowers error.
+
+    Candidates are ranked first by Hamming distance from the supplied baseline,
+    then by lower error and earlier input order.  Thus the recommendation is a
+    one-parameter change whenever an improving one exists; no recommendation
+    is made when the observed data contains no improving configuration.
+    """
+    rows = list(rows)
+    if not rows:
+        raise ValueError("CSV contains no data rows")
+    columns = list(rows[0])
+    if error_column not in columns:
+        raise ValueError("Unknown error column: " + error_column)
+    configuration_columns = list(configuration_columns or
+                                 [c for c in columns if c != error_column and
+                                  c not in ("ACC+", "PRED40+")])
+    missing = [c for c in configuration_columns if c not in columns or
+               c not in baseline_configuration]
+    if missing:
+        raise ValueError("Missing configuration columns: " + ", ".join(missing))
+    baseline_rows = [(index, row) for index, row in enumerate(rows)
+                     if all(str(row[c]) == str(baseline_configuration[c])
+                            for c in configuration_columns)]
+    if not baseline_rows:
+        raise ValueError("Baseline configuration was not observed")
+    baseline_index, baseline_row = baseline_rows[0]
+    baseline_error = _number(baseline_row[error_column])
+    if baseline_error is None:
+        raise ValueError("Baseline has no usable error value")
+    candidates = []
+    for index, row in enumerate(rows):
+        error = _number(row[error_column])
+        changes = [c for c in configuration_columns
+                   if str(row[c]) != str(baseline_configuration[c])]
+        if error is not None and changes and error < baseline_error:
+            candidates.append((len(changes), error, index, row, changes))
+    if not candidates:
+        return {"recommendation": "no_improvement", "baseline": dict(baseline_configuration),
+                "baseline_error": baseline_error, "candidate": None}
+    distance, error, index, row, changes = min(candidates, key=lambda item: (item[0], item[1], item[2]))
+    changed = {column: {"from": baseline_row[column], "to": row[column]} for column in changes}
+    return {"recommendation": "change", "baseline": dict(baseline_configuration),
+            "baseline_error": baseline_error, "candidate": {
+                "configuration": {c: row[c] for c in configuration_columns},
+                "error": error, "error_reduction": baseline_error - error,
+                "distance": distance, "changed": changed, "index": index}}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -370,6 +420,8 @@ def main(argv=None):
                         help="justify a candidate configuration against the baseline")
     parser.add_argument("--choose", action="store_true",
                         help="choose a configuration balancing accuracy and prediction quality")
+    parser.add_argument("--suggest", action="store_true",
+                        help="suggest the smallest observed change that lowers error")
     parser.add_argument("--target", nargs="*", metavar="KEY=VALUE")
     parser.add_argument("--margin", type=float, default=0.0)
     parser.add_argument("--weights", nargs=3, type=float, metavar=("ERROR", "ACCURACY", "PREDICTION"),
@@ -390,6 +442,10 @@ def main(argv=None):
     if args.choose:
         result = choose_configuration(rows, args.configuration, args.error_column,
                                       args.metric, "PRED40+", tuple(args.weights))
+    elif args.suggest:
+        target = dict(item.split("=", 1) for item in (args.target or []))
+        result = suggest_hyperparameter_change(rows, target, args.error_column,
+                                               args.configuration)
     elif args.justify:
         target = dict(item.split("=", 1) for item in (args.target or []))
         result = justify_configuration(rows, target, args.quality or ["MRE-", "ACC+"],
