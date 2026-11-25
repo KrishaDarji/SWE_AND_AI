@@ -426,6 +426,63 @@ def detect_anomalies(dataset, measure=None, threshold=3.5):
             "limitations": ["An anomaly is a review signal; it does not establish a bad benchmark run."]}
 
 
+def compare_search(dataset, budget, measure=None, batch_size=8):
+    """Compare staged racing with a deterministic sequential baseline.
+
+    Each strategy evaluates rows from the supplied finite candidate stream at most
+    once.  Both consume exactly ``budget`` rows and maximize the same measure.
+    Racing evaluates equal-sized batches, retains the better half, and fills the
+    next batch from the retained candidates; the baseline evaluates the first
+    budget rows.  This is a reproducible comparison, not a claim of causality.
+    """
+    measure = measure or dataset.measures[0]
+    if measure not in dataset.measures:
+        raise ValueError("unknown measure: " + measure)
+    if not isinstance(budget, int) or budget <= 0 or budget > len(dataset.rows):
+        raise ValueError("budget must be a positive integer no greater than row count")
+    if not isinstance(batch_size, int) or batch_size <= 0:
+        raise ValueError("batch_size must be a positive integer")
+
+    def record(indices):
+        observations = [(index, _number(dataset.rows[index][measure])) for index in indices]
+        observations = [(index, value) for index, value in observations if value is not None]
+        if not observations:
+            raise ValueError("measure has no numeric observations")
+        index, value = max(observations, key=lambda item: (item[1], -item[0]))
+        row = dataset.rows[index]
+        return {"configuration": {name: int(float(row[name])) for name in dataset.settings},
+                "objective": value, "measure": measure, "evaluations": len(indices)}
+
+    baseline_indices = list(range(budget))
+    # A race is staged over the same candidate order.  At each stage, all
+    # survivors receive the next available observation; this preserves a fixed
+    # budget while making elimination explicit and deterministic.
+    remaining = list(range(len(dataset.rows)))
+    survivors = remaining[:min(batch_size, len(remaining))]
+    evaluated = []
+    while survivors and len(evaluated) < budget:
+        take = min(len(survivors), budget - len(evaluated))
+        current = survivors[:take]
+        evaluated.extend(current)
+        if len(evaluated) == budget:
+            break
+        scores = [(index, _number(dataset.rows[index][measure])) for index in current]
+        scores = [(index, value) for index, value in scores if value is not None]
+        keep = max(1, (len(scores) + 1) // 2)
+        survivors = [index for index, _ in sorted(scores, key=lambda item: (-item[1], item[0]))[:keep]]
+        used = set(evaluated) | set(survivors)
+        survivors.extend(index for index in remaining if index not in used)
+        survivors = survivors[:batch_size]
+    racing = record(evaluated)
+    baseline = record(baseline_indices)
+    return {"measure": measure, "budget": budget, "batch_size": batch_size,
+            "system": {"name": "staged_race", **racing},
+            "baseline": {"name": "sequential_prefix", **baseline},
+            "same_budget": racing["evaluations"] == baseline["evaluations"] == budget,
+            "system_gain": racing["objective"] - baseline["objective"],
+            "limitations": ["Rows are pre-recorded candidates; results measure search selection on this dataset, not live encoding cost."]}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
@@ -451,9 +508,14 @@ def main(argv=None):
     parser.add_argument("--anomalies", action="store_true",
                         help="screen for anomalous benchmark measurements")
     parser.add_argument("--threshold", type=float, default=3.5)
+    parser.add_argument("--compare-search", action="store_true")
+    parser.add_argument("--budget", type=int, default=64)
+    parser.add_argument("--batch-size", type=int, default=8)
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
-    if args.anomalies:
+    if args.compare_search:
+        result = compare_search(dataset, args.budget, args.measure, args.batch_size)
+    elif args.anomalies:
         result = detect_anomalies(dataset, args.measure, args.threshold)
     elif args.choose:
         if args.min_quality is None:
