@@ -352,6 +352,43 @@ def choose_project_settings(path, budget, max_months=None, max_defects=None):
     }
 
 
+def recommend_process_change(path, minimum_level_count=3):
+    """Recommend the cheapest observed factor-level change that lowers risk.
+
+    Risk is the historical rate of projects above the median effort/KLOC.
+    Since the CSV has no process-change prices, median effort/KLOC is the
+    comparable cost proxy.  A candidate must have lower risk than the overall
+    rate and enough observations; ties are resolved by risk, cost, factor,
+    and level for a stable recommendation.
+    """
+    analysis = analyze_effort_factors(path, minimum_level_count)
+    candidates = []
+    for factor in analysis["factors"]:
+        for level in factor["levels"]:
+            if level["excess_rate"] < analysis["overall_excess_rate"]:
+                candidates.append({
+                    "factor": factor["factor"],
+                    "recommended_level": level["level"],
+                    "count": level["count"],
+                    "estimated_risk": level["excess_rate"],
+                    "baseline_risk": analysis["overall_excess_rate"],
+                    "risk_reduction": analysis["overall_excess_rate"] - level["excess_rate"],
+                    "estimated_cost": level["median_effort_per_kloc"],
+                })
+    candidates.sort(key=lambda item: (item["estimated_cost"], item["estimated_risk"],
+                                      item["factor"], item["recommended_level"]))
+    selected = candidates[0] if candidates else None
+    return {
+        "decision": "recommend" if selected else "no_supported_change",
+        "risk_definition": analysis["definition"],
+        "cost_definition": "median historical effort per KLOC",
+        "baseline_risk": analysis["overall_excess_rate"],
+        "candidate_count": len(candidates),
+        "selected": selected,
+        "candidates": candidates,
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -373,8 +410,11 @@ def main(argv=None):
     parser.add_argument("--choose-budget", type=float)
     parser.add_argument("--choose-max-months", type=float)
     parser.add_argument("--choose-max-defects", type=float)
+    parser.add_argument("--recommend-process-change", action="store_true")
     args = parser.parse_args(argv)
-    result = (choose_project_settings(args.csv_path, args.choose_budget,
+    result = (recommend_process_change(args.csv_path, args.minimum_level_count)
+              if args.recommend_process_change else
+              choose_project_settings(args.csv_path, args.choose_budget,
                                       args.choose_max_months, args.choose_max_defects)
               if args.choose_budget is not None else
               justify_estimate(args.csv_path, args.justify_kloc, args.justify_budget)
