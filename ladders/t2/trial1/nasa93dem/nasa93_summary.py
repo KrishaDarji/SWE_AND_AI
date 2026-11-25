@@ -165,6 +165,62 @@ def compare_costs(path, group_field, group_a, group_b, samples=4000, seed=0):
             "genuinely_less_costly": observed < 0 and p_value < .05}
 
 
+def assess_proposal(path, proposal):
+    """Assess one arriving proposal using historical planning ranges.
+
+    A proposal must provide ``id`` and positive ``kloc``.  Optional ``budget``
+    and ``max_months`` constraints turn the historical estimates into a
+    portfolio decision: approve when the upper effort and expected schedule
+    fit the supplied constraints, otherwise flag it for review or reject it.
+    """
+    if not isinstance(proposal, dict):
+        raise ValueError("proposal must be a mapping")
+    proposal_id = str(proposal.get("id", "")).strip()
+    if not proposal_id:
+        raise ValueError("proposal id is required")
+    if "kloc" not in proposal:
+        raise ValueError("proposal kloc is required")
+    try:
+        kloc = float(proposal["kloc"])
+    except (TypeError, ValueError):
+        raise ValueError("proposal kloc must be numeric")
+    budget = proposal.get("budget")
+    max_months = proposal.get("max_months")
+    for name, value, minimum in (("budget", budget, 0), ("max_months", max_months, 0)):
+        if value is not None:
+            try:
+                numeric = float(value)
+            except (TypeError, ValueError):
+                raise ValueError("proposal %s must be numeric" % name)
+            if not math.isfinite(numeric) or numeric < minimum:
+                raise ValueError("proposal %s must be non-negative and finite" % name)
+    estimate = estimate_effort(path, kloc, budget)
+    projects = load_projects(path)
+    months_rates = [p["MonthsX"] / p["Kloc+"] for p in projects if p["Kloc+"] > 0]
+    defect_rates = [p["Defects-"] / p["Kloc+"] for p in projects if p["Kloc+"] > 0]
+    expected_months = kloc * statistics.median(months_rates)
+    expected_defects = kloc * statistics.median(defect_rates)
+    constraints = []
+    if budget is not None:
+        constraints.append(estimate["approval"] == "approve")
+    if max_months is not None:
+        constraints.append(expected_months <= float(max_months))
+    decision = "approve" if constraints and all(constraints) else (
+        "reject" if any(not item for item in constraints) else "needs_review")
+    return {"proposal_id": proposal_id, "decision": decision,
+            "estimate": estimate, "expected_months": expected_months,
+            "expected_defects": expected_defects,
+            "constraints_checked": {"budget": budget is not None,
+                                     "max_months": max_months is not None}}
+
+
+def assess_proposals(path, proposals):
+    """Assess proposals in arrival order, retaining each proposal's identity."""
+    if isinstance(proposals, dict) or isinstance(proposals, (str, bytes)):
+        raise ValueError("proposals must be an iterable of mappings")
+    return [assess_proposal(path, proposal) for proposal in proposals]
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -175,8 +231,17 @@ def main(argv=None):
     parser.add_argument("--process-a")
     parser.add_argument("--process-b")
     parser.add_argument("--samples", type=int, default=4000)
+    parser.add_argument("--proposal-id")
+    parser.add_argument("--proposal-kloc", type=float)
+    parser.add_argument("--proposal-budget", type=float)
+    parser.add_argument("--max-months", type=float)
     args = parser.parse_args(argv)
-    result = (compare_costs(args.csv_path, args.compare_field, args.process_a, args.process_b, args.samples)
+    result = (assess_proposal(args.csv_path, {"id": args.proposal_id,
+                                              "kloc": args.proposal_kloc,
+                                              "budget": args.proposal_budget,
+                                              "max_months": args.max_months})
+              if args.proposal_id else
+              compare_costs(args.csv_path, args.compare_field, args.process_a, args.process_b, args.samples)
               if args.compare_field else
               estimate_effort(args.csv_path, args.estimate_kloc, args.budget)
               if args.estimate_kloc is not None else summarize_projects(args.csv_path))
