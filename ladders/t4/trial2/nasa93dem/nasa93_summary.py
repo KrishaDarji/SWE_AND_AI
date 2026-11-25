@@ -514,6 +514,44 @@ def repair_demonstration(path, budget=100.0):
     return result
 
 
+def race_compare(path, tie_tolerance=1e-12):
+    """Compare the fixed estimator with a training-mean baseline over 10 splits."""
+    if not math.isfinite(float(tie_tolerance)) or tie_tolerance < 0:
+        raise ValueError("tie_tolerance must be a finite nonnegative number")
+    columns, predictors, X, y, groups = prepare_learning_data(path)
+    matrix = [[row[c] for c in predictors] for row in X]
+    rows = []
+    for seed in range(42, 52):
+        splitter = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=seed)
+        train, test = next(splitter.split(matrix, y, groups=groups))
+        model = build_model(predictors)
+        model.fit([matrix[i] for i in train], y[train])
+        predictions = model.predict([matrix[i] for i in test])
+        training_mean = float(np.mean(y[train]))
+        model_mae = float(np.mean(np.abs(y[test] - predictions)))
+        baseline_mae = float(np.mean(np.abs(y[test] - training_mean)))
+        rows.append({"split_seed": seed, "train_count": int(len(train)),
+                     "test_count": int(len(test)), "train_indices": [int(i) for i in train],
+                     "test_indices": [int(i) for i in test],
+                     "group_separation": bool(set(groups[train]).isdisjoint(set(groups[test]))),
+                     "predictions": [float(v) for v in predictions],
+                     "observed_efforts": [float(y[i]) for i in test],
+                     "training_mean": training_mean, "model_mae": model_mae,
+                     "baseline_mae": baseline_mae, "mae_difference_model_minus_baseline": model_mae - baseline_mae})
+    differences = [row["mae_difference_model_minus_baseline"] for row in rows]
+    wins = sum(value < -float(tie_tolerance) for value in differences)
+    ties = sum(abs(value) <= float(tie_tolerance) for value in differences)
+    losses = len(differences) - wins - ties
+    return {"columns": columns, "predictors": predictors, "split_count": len(rows),
+            "tie_tolerance": float(tie_tolerance), "splits": rows,
+            "paired_mae_differences": differences,
+            "summary": {"mean_difference": float(np.mean(differences)),
+                        "median_difference": float(np.median(differences)),
+                        "wins": wins, "ties": ties, "losses": losses},
+            "overlap_disclosure": "Repeated splits reuse the same projects and are not independent datasets or independent LLM trials.",
+            "final_same_procedure": "pending; no project-specific final same procedure was available."}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_path", type=Path)
@@ -526,8 +564,10 @@ def main():
     parser.add_argument("--repair", action="store_true")
     parser.add_argument("--spot", action="store_true")
     parser.add_argument("--budget", type=float, default=100.0)
+    parser.add_argument("--race", action="store_true")
     args = parser.parse_args()
-    result = (repair_demonstration(args.csv_path, args.budget) if args.repair else
+    result = (race_compare(args.csv_path) if args.race else
+              repair_demonstration(args.csv_path, args.budget) if args.repair else
               choose_settings(args.csv_path, args.budget) if args.choose else
               justify_estimate(args.csv_path) if args.justify else
               rank_effort_associations(args.csv_path) if args.rank_effort_associations else
