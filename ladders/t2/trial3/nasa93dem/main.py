@@ -8,6 +8,7 @@ from project_history.service import summarize_projects
 from project_history.estimator import estimate_effort
 from project_history.certifier import certify_less_costly
 from project_history.portfolio import assess_proposals
+from project_history.blame import explain_excessive_effort
 
 
 def main() -> int:
@@ -20,6 +21,7 @@ def main() -> int:
     parser.add_argument("--process-b", help="second process value")
     parser.add_argument("--proposals", help="JSON array or newline-delimited JSON proposal file")
     parser.add_argument("--portfolio-budget", type=float, help="maximum approved effort")
+    parser.add_argument("--blame", action="store_true", help="explain factors associated with excessive effort")
     args = parser.parse_args()
     projects = list(CsvProjectRepository(args.csv_path).projects())
     summary = summarize_projects(projects)
@@ -53,6 +55,16 @@ def main() -> int:
         for item in assessments:
             effort = "unavailable" if item.estimated_effort is None else f"{item.estimated_effort:.2f}"
             print(f"{item.proposal_id}: {item.status}; estimated effort {effort}; cumulative {item.cumulative_effort if item.cumulative_effort is not None else 'unavailable'}")
+    if args.blame:
+        explanation = explain_excessive_effort(projects)
+        print(f"Excessive-effort threshold: {explanation['threshold']:.2f}")
+        print(f"Excessive-effort projects: {explanation['excessive_count']}")
+        print("Categorical factors:")
+        for item in explanation["categorical"][:5]:
+            print(f"{item['factor']}: {item['high_value']} {item['high_rate']:.2f} vs {item['low_value']} {item['low_rate']:.2f}")
+        print("Numeric factors:")
+        for item in explanation["numeric"]:
+            print(f"{item['factor']}: Spearman {item['spearman']:.2f}")
     return 0
 
 
