@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import random
 from time import perf_counter
 from pathlib import Path
 
@@ -295,6 +296,72 @@ def justify(path: str | Path) -> dict:
     }
 
 
+class CountedEvaluator:
+    """Expose outcomes only through a finite, duplicate-free evaluation API."""
+    def __init__(self, outcomes: dict[tuple[float, ...], float], settings: list[str], budget: int):
+        if not isinstance(budget, int) or budget < 1:
+            raise ValueError("budget must be a positive integer")
+        self._outcomes, self.settings, self.budget = outcomes, list(settings), budget
+        self.evaluations: list[dict] = []
+        self._seen: set[tuple[float, ...]] = set()
+
+    def evaluate(self, configuration: dict[str, float | int]) -> float:
+        key = tuple(float(configuration[name]) for name in self.settings)
+        if key in self._seen:
+            raise ValueError("duplicate evaluation")
+        if len(self.evaluations) >= self.budget:
+            raise RuntimeError("evaluation budget exhausted")
+        if key not in self._outcomes:
+            raise KeyError("unknown configuration")
+        value = float(self._outcomes[key])
+        self._seen.add(key)
+        self.evaluations.append({"configuration": dict(configuration), "Performance-": value})
+        return value
+
+
+def select_budget(candidates: list[dict[str, float]], evaluator: CountedEvaluator,
+                  budget: int = 20, random_state: int = 42) -> dict:
+    """Randomly sample unique candidates, then recommend the best measured one."""
+    if not isinstance(budget, int) or budget < 1:
+        raise ValueError("budget must be a positive integer")
+    if not candidates:
+        raise ValueError("no candidates available")
+    count = min(budget, len(candidates))
+    order = random.Random(random_state).sample(list(range(len(candidates))), count)
+    observations = []
+    for index in order:
+        observations.append({"configuration": dict(candidates[index]),
+                             "Performance-": float(evaluator.evaluate(candidates[index]))})
+    best = min(enumerate(observations), key=lambda item: (item[1]["Performance-"], item[0]))
+    return {"strategy": "seeded random unique sample; lowest measured Performance-, earliest evaluation breaks ties",
+            "random_state": random_state, "requested_budget": budget,
+            "budget_used": len(observations), "candidate_count": len(candidates),
+            "evaluation_order": order, "observations": observations,
+            "recommendation": observations[best[0]],
+            "recommendation_frozen": True,
+            "limitations": ["Only evaluated candidates can be recommended.", "Random sampling may miss the global minimum."]}
+
+
+def load_candidates(path: str | Path) -> tuple[list[str], list[dict[str, float]]]:
+    with Path(path).open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        settings = [name for name in (reader.fieldnames or []) if name != "Performance-"]
+        return settings, [{name: float(row[name]) for name in settings} for row in reader]
+
+
+def budget_select_dataset(path: str | Path, budget: int = 20, random_state: int = 42) -> dict:
+    settings, candidates = load_candidates(path)
+    _, x, y = load_dataset(path)
+    outcomes = {tuple(map(float, row)): float(value) for row, value in zip(x, y)}
+    evaluator = CountedEvaluator(outcomes, settings, budget)
+    result = select_budget(candidates, evaluator, budget, random_state)
+    global_index = int(np.argmin(y))
+    result["retrospective_audit"] = {"observed_global_minimum": float(y[global_index]),
+        "recommendation_gap": float(result["recommendation"]["Performance-"] - y[global_index]),
+        "audit_influenced_selection": False}
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
@@ -305,9 +372,12 @@ def main() -> None:
     parser.add_argument("--flow", action="store_true")
     parser.add_argument("--blame", action="store_true")
     parser.add_argument("--justify", action="store_true")
+    parser.add_argument("--select-budget", type=int)
     args = parser.parse_args()
     started = perf_counter()
-    if args.justify:
+    if args.select_budget is not None:
+        result = budget_select_dataset(args.dataset, args.select_budget)
+    elif args.justify:
         result = justify(args.dataset)
     elif args.blame:
         result = blame(args.dataset)
