@@ -291,16 +291,69 @@ def render_certify(result):
     lines.append("Observational historical configurations differ in other settings; this does not prove causation or guarantee future improvement.")
     return "\n".join(lines)
 
+def _setting_key(raw):
+    """Normalize numeric-looking binary settings while retaining symbols."""
+    text = raw.strip()
+    if text in MISSING: return None
+    try:
+        value = float(text)
+        if not math.isfinite(value): return None
+        return str(int(value)) if value in (0.0, 1.0) else str(value)
+    except ValueError:
+        return text
+
+def blame(path, outcome="Performance-"):
+    """Rank each setting by marginal eta-squared against a finite outcome."""
+    header, records, _ = load(path)
+    settings = [name for name in header if name != outcome]
+    result = []
+    for setting in settings:
+        groups = {}; excluded = 0
+        for record in records:
+            key = _setting_key(record.get(setting, "")); y = _number(record.get(outcome, ""))
+            if key is None or y is None:
+                excluded += 1
+            else:
+                groups.setdefault(key, []).append(y)
+        eligible = sum(len(values) for values in groups.values())
+        reference = statistics.fmean([y for values in groups.values() for y in values]) if eligible else None
+        between = sum(len(values) * (statistics.fmean(values) - reference) ** 2 for values in groups.values()) if eligible else None
+        total = sum((y - reference) ** 2 for values in groups.values() for y in values) if eligible else None
+        score = between / total if total and len(groups) >= 2 else None
+        summaries = [{"value": key, "count": len(values), "mean": statistics.fmean(values)}
+                     for key, values in sorted(groups.items())]
+        means = [item["mean"] for item in summaries]
+        result.append({"setting": setting, "eligible": eligible, "excluded": excluded,
+                       "groups": summaries, "reference_mean": reference,
+                       "between_ss": between, "total_ss": total, "eta_squared": score,
+                       "higher_mean_groups": [x["value"] for x in summaries if reference is not None and x["mean"] > reference],
+                       "lower_mean_groups": [x["value"] for x in summaries if reference is not None and x["mean"] < reference]})
+    result.sort(key=lambda x: (x["eta_squared"] is None, -(x["eta_squared"] or 0.0), x["setting"]))
+    for rank, item in enumerate(result, 1): item["rank"] = rank
+    return {"outcome": outcome, "direction": "lower is better", "settings": result,
+            "conventions": "Missing/invalid settings or outcomes are excluded per setting. Score is undefined for fewer than two groups, fewer than one eligible row, or constant outcome; constant settings are reported with undefined score."}
+
+def render_blame(result):
+    lines = ["Marginal encoder-setting blame", "outcome: %s (lower is better)" % result["outcome"], result["conventions"]]
+    for item in result["settings"]:
+        score = "undefined" if item["eta_squared"] is None else "%.9g" % item["eta_squared"]
+        lines.append("rank=%d setting=%s eligible=%d excluded=%d reference_mean=%s between_ss=%s total_ss=%s eta_squared=%s higher=%s lower=%s" %
+                     (item["rank"], item["setting"], item["eligible"], item["excluded"], item["reference_mean"], item["between_ss"], item["total_ss"], score, item["higher_mean_groups"], item["lower_mean_groups"]))
+        lines.extend("  group=%s count=%d mean=%.9g" % (g["value"], g["count"], g["mean"]) for g in item["groups"])
+    lines.append("These are marginal historical associations, not independent causal contributions or significance tests; correlated/one-hot settings can reflect the same underlying choice, and changing a setting is not guaranteed to improve performance.")
+    return "\n".join(lines)
+
 def main(argv):
     if len(argv) not in (2, 3):
-        print("usage: x264_summary.py DATASET [predict|certify|flow]", file=sys.stderr); return 2
+        print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
     try:
         if len(argv) == 2: print(render(summarize(argv[1])))
         elif argv[2] == "predict":
             result = evaluate(argv[1]); config = {n: "0" for n in result["settings"]}; print(render_prediction(result, config))
         elif argv[2] == "certify": print(render_certify(certify(argv[1], 5)))
         elif argv[2] == "flow": print(render_flow(flow(argv[1])))
-        else: print("usage: x264_summary.py DATASET [predict|certify|flow]", file=sys.stderr); return 2
+        elif argv[2] == "blame": print(render_blame(blame(argv[1])))
+        else: print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
         print("error: %s" % exc, file=sys.stderr); return 1
