@@ -4,11 +4,13 @@ import csv, math, random, statistics
 CONFIGS={"N_estimators":"numeric","criterion":"categorical","Min_sample_leaves":"numeric","Min_impurity_decrease":"numeric","Max_depth":"numeric"}
 OUTCOMES={"MRE-":"minimize","ACC+":"maximize","PRED40+":"maximize"}; MISSING={"","?","NA","N/A","null","None","nan","NaN"}
 def _number(v):
-    if v is None or v.strip() in MISSING:return None
+    if v is None:return None
+    v=str(v)
+    if v.strip() in MISSING:return None
     try:
         x=float(v.strip()); return x if math.isfinite(x) else None
     except (TypeError,ValueError): return None
-def _cat(v): return None if v is None or v.strip() in MISSING else v.strip()
+def _cat(v): return None if v is None or str(v).strip() in MISSING else str(v).strip()
 def _median(x): return statistics.median(x) if x else None
 def _summary(x):
     if not x:return {"finite_count":0,"minimum":None,"maximum":None,"mean":None,"median":None,"sample_sd":None,"iqr":None,"convention":"insufficient sample: null"}
@@ -78,3 +80,58 @@ def predict_configuration(configuration,model):
     if set(configuration)!=set(CONFIGS):raise ValueError("configuration must contain exactly the five setting fields")
     return model.predict(configuration)
 def empty_result(reason):return {"record_count":0,"column_names":[],"roles":{},"missing_values":{},"invalid_nonfinite_numeric":{},"criterion_frequencies":{},"numeric_settings":{},"outcomes":{},"normalized_configurations":[],"repeated_configurations":[],"exact_duplicate_row_groups":[],"malformed_row_positions":[],"note":reason}
+
+# Flow is deliberately separate from the batch summaries above.  It follows the
+# same missing-value convention, but never materializes the future input.
+def validation_rows(path):
+    """Yield (CSV position, row) lazily; blank and malformed records are skipped."""
+    def rows():
+        with open(path,newline="",encoding="utf-8-sig") as f:
+            rd=csv.reader(f); header=next(rd,None)
+            if header is None:return
+            for position,cells in enumerate(rd,2):
+                if not cells or all(not cell.strip() for cell in cells):continue
+                if len(cells)!=len(header):continue
+                yield position,dict(zip((x.strip() for x in header),cells))
+    return rows()
+
+class _Running:
+    def __init__(self): self.n=0; self.mean=0.0; self.m2=0.0
+    def add(self,x):
+        self.n+=1; delta=x-self.mean; self.mean+=delta/self.n; self.m2+=delta*(x-self.mean)
+    def result(self):
+        return {"finite_count":self.n,"mean":self.mean if self.n else None,"sample_variance":self.m2/(self.n-1) if self.n>1 else None}
+
+def _best(current,value,position,row,direction):
+    if value is None:return current
+    if current is None or (value<current["value"] if direction=="minimize" else value>current["value"]):
+        settings={k:(_cat(row.get(k)) if t=="categorical" else _number(row.get(k))) for k,t in CONFIGS.items()}
+        return {"value":value,"position":position,"configuration":settings}
+    return current
+
+class FlowEvaluator:
+    """One-pass prefix evaluator; each snapshot is a detached value object."""
+    def __init__(self):
+        self.total_rows_seen=0; self._stats={k:_Running() for k in OUTCOMES}; self._best={k:None for k in OUTCOMES}
+    def update(self,position,row):
+        self.total_rows_seen+=1
+        for outcome,direction in OUTCOMES.items():
+            value=_number(row.get(outcome))
+            if value is not None:self._stats[outcome].add(value)
+            self._best[outcome]=_best(self._best[outcome],value,position,row,direction)
+        return self.snapshot()
+    def snapshot(self):
+        stats={k:self._stats[k].result() for k in OUTCOMES}
+        return {"total_rows_seen":self.total_rows_seen,"outcomes":stats,"best":{k:(None if v is None else {"value":v["value"],"position":v["position"],"configuration":dict(v["configuration"])}) for k,v in self._best.items()},"conventions":{"position":"physical CSV row, header is 1","blank_rows":"ignored and do not increment total_rows_seen","malformed_rows":"ignored and do not increment total_rows_seen","missing_configuration":"retained as null; invalid numeric settings are null","missing_or_nonfinite_outcome":"excluded only from that outcome's count and statistics","ties":"earliest row retained"}}
+
+def flow(rows):
+    """Consume an iterable of (position, mapping), returning independent snapshots."""
+    evaluator=FlowEvaluator(); snapshots=[]
+    for position,row in rows:snapshots.append(evaluator.update(position,row))
+    return snapshots
+
+def flow_dataset(path):
+    """Evaluate the CSV lazily and return only the final prefix snapshot."""
+    evaluator=FlowEvaluator()
+    for position,row in validation_rows(path):evaluator.update(position,row)
+    return evaluator.snapshot()
