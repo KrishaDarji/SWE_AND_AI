@@ -7,6 +7,72 @@ import statistics
 DEFAULT_QUALITY_PREFIXES = ("mre", "acc", "pred")
 
 
+def spot_quality_anomalies(path, quality_columns=None, outlier_threshold=3.5):
+    """Report unusual quality values and possible duplicate-run measurement errors.
+
+    Outliers use a robust modified z-score (median/MAD), with an IQR rule when
+    MAD is zero.  This is a screening report, not proof that a result is wrong.
+    """
+    if outlier_threshold <= 0:
+        raise ValueError("outlier_threshold must be positive")
+    columns, rows = _read(path)
+    quality = list(quality_columns or [name for name in columns
+                                      if name.lower().startswith(DEFAULT_QUALITY_PREFIXES)])
+    if not quality:
+        raise ValueError("at least one quality column is required")
+    unknown = set(quality).difference(columns)
+    if unknown:
+        raise ValueError("Unknown quality columns: " + ", ".join(sorted(unknown)))
+    anomalies = []
+    column_stats = {}
+    for name in quality:
+        values = [_number(row.get(name, "")) for row in rows]
+        finite = [value for value in values if value is not None]
+        median = statistics.median(finite) if finite else None
+        deviations = [abs(value - median) for value in finite] if finite else []
+        mad = statistics.median(deviations) if deviations else None
+        lower = upper = None
+        if finite and (mad is None or mad == 0):
+            quartiles = statistics.quantiles(finite, n=4, method="inclusive") if len(finite) > 1 else [finite[0]] * 3
+            iqr = quartiles[2] - quartiles[0]
+            lower, upper = quartiles[0] - 1.5 * iqr, quartiles[2] + 1.5 * iqr
+        column_stats[name] = {"count": len(finite), "missing_or_nonfinite": len(values) - len(finite),
+                              "median": median, "mad": mad, "lower_fence": lower, "upper_fence": upper}
+        for index, value in enumerate(values):
+            if value is None:
+                anomalies.append({"row_index": index, "quality_column": name,
+                                  "value": rows[index].get(name, ""), "reason": "missing_or_nonfinite"})
+            elif mad and mad > 0:
+                score = 0.6745 * abs(value - median) / mad
+                if score >= outlier_threshold:
+                    anomalies.append({"row_index": index, "quality_column": name, "value": value,
+                                      "reason": "robust_outlier", "modified_z_score": score})
+            elif lower is not None and (value < lower or value > upper):
+                anomalies.append({"row_index": index, "quality_column": name, "value": value,
+                                  "reason": "iqr_outlier"})
+    config_columns = [name for name in columns if name not in quality]
+    groups = {}
+    for index, row in enumerate(rows):
+        key = tuple(row.get(name, "") for name in config_columns)
+        groups.setdefault(key, []).append(index)
+    duplicate_conflicts = []
+    for key, indexes in groups.items():
+        if len(indexes) < 2:
+            continue
+        for name in quality:
+            values = [_number(rows[index].get(name, "")) for index in indexes]
+            finite = [value for value in values if value is not None]
+            if len(finite) > 1 and max(finite) != min(finite):
+                duplicate_conflicts.append({"configuration": dict(zip(config_columns, key)),
+                    "row_indices": indexes, "quality_column": name,
+                    "min": min(finite), "max": max(finite), "range": max(finite) - min(finite),
+                    "reason": "duplicate_configuration_disagreement"})
+    return {"quality_columns": quality, "row_count": len(rows), "anomalies": anomalies,
+            "duplicate_configuration_conflicts": duplicate_conflicts,
+            "column_stats": column_stats,
+            "caveat": "Flags indicate unusual measurements for review; they do not establish that a result is erroneous."}
+
+
 def blame_high_error(path, error_column="MRE-", high_percentile=0.75):
     """Rank configuration columns associated with unusually high error.
 

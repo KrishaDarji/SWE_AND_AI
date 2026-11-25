@@ -3,7 +3,8 @@ import argparse
 import json
 from model_summary import (summarize_csv, predict_quality, certify_families,
                            evaluate_stream, blame_high_error, justify_configuration,
-                           choose_configuration, suggest_smallest_change)
+                           choose_configuration, suggest_smallest_change,
+                           spot_quality_anomalies)
 
 def main():
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify model configurations")
@@ -19,9 +20,13 @@ def main():
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--choose", action="store_true")
     parser.add_argument("--suggest-smallest-change", action="store_true")
+    parser.add_argument("--spot-anomalies", action="store_true")
+    parser.add_argument("--outlier-threshold", type=float, default=3.5)
     parser.add_argument("--prediction-weight", type=float, default=0.5)
     args = parser.parse_args()
-    if args.suggest_smallest_change:
+    if args.spot_anomalies:
+        result = spot_quality_anomalies(args.csv_path, args.quality_columns, args.outlier_threshold)
+    elif args.suggest_smallest_change:
         result = suggest_smallest_change(args.csv_path, args.error_column)
     elif args.choose:
         configuration = json.loads(args.predict_config) if args.predict_config else None
