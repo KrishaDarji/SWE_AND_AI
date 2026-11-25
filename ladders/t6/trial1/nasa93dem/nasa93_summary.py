@@ -455,6 +455,72 @@ def spot(path, threshold=3.5):
                             "scores are not prediction uncertainty or causal explanations",
                             "duplicate identifiers remain distinguishable by csv_position"]}
 
+RACE_TIE_TOLERANCE = 1e-12
+
+def paired_difference(model_mae, baseline_mae, tolerance=RACE_TIE_TOLERANCE):
+    """Return model-minus-baseline MAE and its fixed-tolerance label."""
+    if not all(isinstance(x, (int, float)) and math.isfinite(x) for x in (model_mae, baseline_mae, tolerance)) or tolerance < 0:
+        raise ValueError("MAEs and tolerance must be finite and nonnegative")
+    difference = model_mae - baseline_mae
+    label = "tie" if abs(difference) <= tolerance else "win" if difference < 0 else "loss"
+    return {"difference": difference, "classification": label, "tolerance": tolerance}
+
+def race(path, seeds=range(42, 52), test_fraction=.25):
+    """Compare the exact-group estimator with a training-mean baseline.
+
+    This translates EZR's CSV normalization, SYM-style categorical handling,
+    seeded shuffle, and table/group summaries into a reproducible comparison.
+    Every split fits a fresh model on finite-target training rows only.
+    """
+    header, rows, _ = read_dataset(path)
+    predictors = [n for n in header if not n.endswith("X") and n not in OUTCOMES]
+    numbered = []
+    for position, row in enumerate(rows, 1):
+        if _number(row.get("Effort-", "")) is not None:
+            copy = dict(row); copy["__csv_position"] = position; numbered.append(copy)
+    if len({ _group_key(r, predictors) for r in numbered }) < 2:
+        raise ValueError("at least two distinct finite-target descriptor groups are required")
+    split_results = []
+    for seed in seeds:
+        train, test = grouped_split(numbered, predictors, seed, test_fraction)
+        model = EffortGuesser(predictors, seed=seed).fit(train)
+        baseline = model.mean
+        predictions = model.predict(test)
+        observed = [_number(r.get("Effort-", "")) for r in test]
+        model_mae = statistics.fmean(abs(y-p) for y, p in zip(observed, predictions))
+        baseline_mae = statistics.fmean(abs(y-baseline) for y in observed)
+        paired = paired_difference(model_mae, baseline_mae)
+        projects = []
+        for row, prediction, actual in zip(test, predictions, observed):
+            projects.append({"csv_position": row["__csv_position"], "idX": row.get("idX", ""),
+                             "prediction": prediction, "baseline_prediction": baseline,
+                             "observed_effort": actual})
+        split_results.append({"seed": seed, "train_count": len(train), "test_count": len(test),
+                              "train_groups": len({_group_key(r, predictors) for r in train}),
+                              "test_groups": len({_group_key(r, predictors) for r in test}),
+                              "group_separation": not ({_group_key(r, predictors) for r in train} &
+                                                         {_group_key(r, predictors) for r in test}),
+                              "train_csv_positions": [r["__csv_position"] for r in train],
+                              "test_csv_positions": [r["__csv_position"] for r in test],
+                              "training_mean": baseline, "projects": projects,
+                              "model_mae": model_mae, "baseline_mae": baseline_mae,
+                              "paired_difference": paired["difference"],
+                              "classification": paired["classification"],
+                              "negative_prediction_count": sum(p < 0 for p in predictions)})
+    differences = [x["paired_difference"] for x in split_results]
+    counts = Counter(x["classification"] for x in split_results)
+    return {"method": "race: exact normalized 22-descriptor group means vs training mean",
+            "predictors": predictors, "predictor_count": len(predictors),
+            "seeds": list(seeds), "test_fraction": test_fraction,
+            "tie_tolerance": RACE_TIE_TOLERANCE, "splits": split_results,
+            "paired_difference_summary": {"mean": statistics.fmean(differences),
+                                           "median": statistics.median(differences),
+                                           "wins": counts["win"], "ties": counts["tie"], "losses": counts["loss"]},
+            "limitations": ["repeated splits overlap and are not independent datasets or independent LLM trials",
+                            "identical model and baseline results are valid when held-out groups are unseen",
+                            "negative predictions are reported and are not silently clipped",
+                            "no statistical superiority or deployment reliability claim; final same procedure analysis pending"]}
+
 def blame_rows(rows, predictors):
     finite = [_number(r.get("Effort-", "")) for r in rows]
     finite = [x for x in finite if x is not None]
@@ -478,6 +544,7 @@ def main(argv=None):
     elif len(argv) == 2 and argv[0] == "--justify": print(json.dumps(justify(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--blame": print(json.dumps(blame(argv[1]), indent=2, sort_keys=True))
+    elif len(argv) == 2 and argv[0] == "--race": print(json.dumps(race(argv[1]), indent=2, sort_keys=True, allow_nan=False))
     elif len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
     elif len(argv) == 4 and argv[0] == "--fix":
         with open(argv[2], encoding="utf-8") as f: proposal = json.load(f)
