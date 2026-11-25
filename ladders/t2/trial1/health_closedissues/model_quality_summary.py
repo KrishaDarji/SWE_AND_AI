@@ -79,6 +79,18 @@ class Choice:
 
 
 @dataclass(frozen=True)
+class BaselineComparison:
+    """Compare the selector with the first historical configuration."""
+    selector: dict[str, Any]
+    historical_baseline: dict[str, Any]
+    objective: str
+    selector_score: float
+    baseline_score: float
+    score_delta: float
+    selector_wins: bool
+
+
+@dataclass(frozen=True)
 class ChangeRecommendation:
     """The smallest observed one-parameter change that lowers error."""
     configuration: dict[str, str]
@@ -417,6 +429,37 @@ def choose(path: str | Path, accuracy_weight: float = 0.5,
                                                                   "prediction_quality": prediction_weight / total}}
 
 
+def compare_baseline(path: str | Path, accuracy_weight: float = 0.5,
+                     prediction_weight: float = 0.5) -> dict[str, Any]:
+    """Compare ``choose`` with the earliest recorded historical configuration.
+
+    Both choices use the same ACC+/PRED40+ weighted objective.  The first data
+    row is a deterministic historical incumbent; no future rows are used to
+    construct that baseline.  This is an observational comparison, not a
+    time-split estimate of future performance.
+    """
+    selected = choose(path, accuracy_weight, prediction_weight)
+    fields, rows = read_rows(path)
+    if not rows:
+        raise ValueError("dataset has no historical rows")
+    accuracy, quality = _number(rows[0].get("ACC+", "")), _number(rows[0].get("PRED40+", ""))
+    if accuracy is None or quality is None:
+        raise ValueError("historical baseline has incomplete ACC+/PRED40+ metrics")
+    total = accuracy_weight + prediction_weight
+    baseline_score = (accuracy_weight * accuracy + prediction_weight * quality) / total
+    result = BaselineComparison(
+        selector={"configuration": selected["configuration"], "score": selected["score"]},
+        historical_baseline={
+            "configuration": {field: rows[0].get(field, "") for field in classify_columns(fields)[1]},
+            "score": baseline_score, "accuracy": accuracy, "prediction_quality": quality,
+        }, objective="weighted mean of ACC+ and PRED40+ (higher is better)",
+        selector_score=selected["score"], baseline_score=baseline_score,
+        score_delta=selected["score"] - baseline_score,
+        selector_wins=selected["score"] > baseline_score)
+    return asdict(result) | {"source": str(path), "weights": {
+        "accuracy": accuracy_weight / total, "prediction_quality": prediction_weight / total}}
+
+
 def suggest_change(path: str | Path, configuration: Mapping[str, Any],
                    error_field: str = "MRE-") -> dict[str, Any]:
     """Suggest the smallest observed one-hyperparameter change that reduces error.
@@ -467,6 +510,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--min-samples", type=int, default=1)
     parser.add_argument("--justify", action="store_true", help="recommend and explain a configuration")
     parser.add_argument("--choose", action="store_true", help="choose a balanced accuracy/prediction configuration")
+    parser.add_argument("--compare-baseline", action="store_true", help="compare selector with first historical configuration")
     parser.add_argument("--accuracy-weight", type=float, default=0.5)
     parser.add_argument("--prediction-weight", type=float, default=0.5)
     parser.add_argument("--suggest-change", type=json.loads, metavar="JSON",
@@ -475,6 +519,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--z-threshold", type=float, default=3.5)
     args = parser.parse_args(argv)
     if args.spot: result = spot(args.csv_path, args.z_threshold)
+    elif args.compare_baseline: result = compare_baseline(args.csv_path, args.accuracy_weight, args.prediction_weight)
     elif args.suggest_change is not None: result = suggest_change(args.csv_path, args.suggest_change, args.error_field)
     elif args.choose: result = choose(args.csv_path, args.accuracy_weight, args.prediction_weight)
     elif args.justify: result = justify(args.csv_path, args.neighbors, args.quantile, args.min_samples)
