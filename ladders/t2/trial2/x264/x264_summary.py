@@ -339,6 +339,42 @@ def choose(dataset, minimum_quality, quality_measure=None, objective_measure=Non
                                 "measure": objective_measure}}
 
 
+def improve(dataset, configuration, measure=None):
+    """Recommend the smallest (one-setting) change that improves a slow setup.
+
+    The baseline and each candidate are scored with the existing nearest-neighbor
+    predictor.  Ties are deterministic by setting order and resulting values.
+    No recommendation is made unless a one-bit flip has a strictly higher
+    predicted measure than the supplied configuration.
+    """
+    measure = measure or dataset.measures[0]
+    baseline = predict(dataset, configuration, measure)
+    candidates = []
+    target = dict(configuration)
+    for setting in dataset.settings:
+        neighbor = dict(target)
+        neighbor[setting] = 1 - int(neighbor[setting])
+        prediction = predict(dataset, neighbor, measure)
+        candidates.append({"setting": setting, "from": int(target[setting]),
+                           "to": int(neighbor[setting]),
+                           "configuration": neighbor,
+                           "prediction": prediction["prediction"],
+                           "improvement": prediction["prediction"] - baseline["prediction"],
+                           "distance": prediction["distance"],
+                           "neighbor_count": prediction["neighbor_count"]})
+    candidates.sort(key=lambda item: (-item["prediction"], item["setting"]))
+    recommendation = next((item for item in candidates
+                           if item["improvement"] > 0), None)
+    return {"measure": measure, "decision": "recommend" if recommendation else "no_improvement",
+            "baseline": {"configuration": dict(target),
+                         "prediction": baseline["prediction"],
+                         "distance": baseline["distance"],
+                         "neighbor_count": baseline["neighbor_count"]},
+            "recommendation": recommendation, "candidate_count": len(candidates),
+            "candidates": candidates,
+            "limitations": ["Predictions use observed nearest neighbors; validate the change on representative clips."]}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
@@ -357,6 +393,8 @@ def main(argv=None):
                         help="choose the best observed configuration under a quality constraint")
     parser.add_argument("--min-quality", type=float,
                         help="minimum permitted quality measure value")
+    parser.add_argument("--improve-json", metavar="JSON",
+                        help="slow configuration to improve with one setting flip")
     parser.add_argument("--quality-measure")
     parser.add_argument("--objective-measure")
     args = parser.parse_args(argv)
@@ -366,6 +404,8 @@ def main(argv=None):
             parser.error("--choose requires --min-quality")
         result = choose(dataset, args.min_quality, args.quality_measure,
                         args.objective_measure)
+    elif args.improve_json is not None:
+        result = improve(dataset, json.loads(args.improve_json), args.measure)
     elif args.justify:
         result = justify(dataset, args.measure, args.alpha, args.slow_fraction)
     elif args.blame:
