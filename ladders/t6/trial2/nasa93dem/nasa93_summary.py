@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Standard-library NASA93 loader and descriptive summary."""
-import argparse, csv, math, sys
+"""NASA93 summary and a grouped categorical effort estimator."""
+import argparse, csv, math, random, sys
 from collections import Counter
 
 CATEGORICAL = "prec flex resl team pmat rely data cplx ruse docu time stor pvol acap pcap pcon apex plex ltex tool site sced".split()
@@ -13,6 +13,10 @@ class Project:
         self.position, self.values = position, values
     @property
     def identifier(self): return self.values.get("idX", "")
+
+def norm_cell(raw):
+    value = "" if raw is None else str(raw).strip()
+    return "?" if value in MISSING else value
 
 def parse_float(raw):
     if raw.strip() in MISSING: return None, "missing"
@@ -75,10 +79,62 @@ def print_summary(data):
     print("missing tokens: " + repr(sorted(MISSING)) + "; malformed rows are skipped and reported; categorical values are never parsed as numeric outcomes.")
     for issue in data["issues"]: print("issue: " + issue)
 
+def _target(project): return parse_float(project.values.get("Effort-", ""))
+def descriptor_key(project): return tuple(norm_cell(project.values.get(n, "")) for n in CATEGORICAL)
+
+def split_groups(projects, seed=42, test_fraction=.2):
+    groups = {}
+    for p in projects: groups.setdefault(descriptor_key(p), []).append(p)
+    keys = list(groups); random.Random(seed).shuffle(keys)
+    if len(keys) < 2: raise ValueError("at least two descriptor groups are required")
+    n_test = min(max(1, round(len(keys) * test_fraction)), len(keys)-1)
+    test_keys = set(keys[:n_test])
+    return ([p for k in keys if k not in test_keys for p in groups[k]],
+            [p for k in keys if k in test_keys for p in groups[k]])
+
+class CategoricalNeighborModel:
+    """A symbolic-distance k-neighbor regressor; missing/unseen values are symbols."""
+    def __init__(self, neighbors=5): self.neighbors, self.rows, self.mean = neighbors, [], None
+    def fit(self, projects):
+        self.rows = [(descriptor_key(p), _target(p)[0]) for p in projects if _target(p)[1] == "valid"]
+        if not self.rows: raise ValueError("no usable training Effort- targets")
+        self.mean = sum(y for _, y in self.rows) / len(self.rows); return self
+    def predict_config(self, config):
+        if set(config) != set(CATEGORICAL):
+            raise ValueError("schema error: missing=%s extra=%s" % (sorted(set(CATEGORICAL)-set(config)), sorted(set(config)-set(CATEGORICAL))))
+        key = tuple(norm_cell(config[n]) for n in CATEGORICAL)
+        ranked = sorted((sum(a != b for a, b in zip(key, row)), y) for row, y in self.rows)
+        chosen = ranked[:min(self.neighbors, len(ranked))]
+        return sum(y for _, y in chosen) / len(chosen)
+    def predict(self, project): return self.predict_config({n: project.values.get(n, "") for n in CATEGORICAL})
+
+def mae(actual, predicted):
+    return None if not actual else sum(abs(a-b) for a, b in zip(actual, predicted)) / len(actual)
+
+def estimate(path, seed=42):
+    header, projects, invalid_rows, issues = load(path); train, test = split_groups(projects, seed)
+    model = CategoricalNeighborModel().fit(train); actual, predicted, records, excluded = [], [], [], 0
+    for p in test:
+        y, kind = _target(p)
+        if kind != "valid": excluded += 1; continue
+        actual.append(y); predicted.append(model.predict(p))
+        records.append({"position": p.position, "idX": p.identifier, "actual": y, "predicted": predicted[-1]})
+    return {"path": path, "train_rows": len(train), "test_rows": len(test),
+            "train_groups": len({descriptor_key(p) for p in train}), "test_groups": len({descriptor_key(p) for p in test}),
+            "excluded_test_targets": excluded, "test_mae": mae(actual, predicted),
+            "baseline_mae": mae(actual, [model.mean] * len(actual)), "records": records, "model": model,
+            "train": train, "test": test, "invalid_rows": invalid_rows, "issues": issues}
+
+def print_estimate(result):
+    for key in ("train_rows", "test_rows", "train_groups", "test_groups", "excluded_test_targets", "test_mae", "baseline_mae"):
+        print(f"{key}: {result[key]}")
+    print("evaluation_records: " + repr(result["records"]))
+
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
+    parser = argparse.ArgumentParser(description="Summarize or estimate NASA93 historical projects")
     parser.add_argument("dataset")
+    parser.add_argument("--estimate", action="store_true")
     args = parser.parse_args(argv)
-    print_summary(summary(args.dataset)); return 0
+    (print_estimate(estimate(args.dataset)) if args.estimate else print_summary(summary(args.dataset))); return 0
 
 if __name__ == "__main__": sys.exit(main())
