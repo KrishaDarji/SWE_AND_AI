@@ -385,6 +385,76 @@ def fix(path, proposal, budget, seed=42):
                 candidate_csv_position=position)
     return base
 
+def _spot_reference(values):
+    """Return robust center/scale on log1p(nonnegative) values."""
+    transformed = [math.log1p(v) for v in values]
+    center = statistics.median(transformed)
+    deviations = [abs(v - center) for v in transformed]
+    mad = statistics.median(deviations)
+    return center, 1.4826 * mad
+
+def spot(path, threshold=3.5):
+    """Screen Kloc+, Effort-, and Defects- for marginal unusual records.
+
+    Each record is scored against leave-one-out historical references. Values
+    are log1p transformed to reduce skew; the robust scale is 1.4826*MAD.
+    A zero scale makes a non-median value a candidate but its score undefined.
+    This is an investigation screen, not an error detector or size adjustment.
+    """
+    if not isinstance(threshold, (int, float)) or isinstance(threshold, bool) or not math.isfinite(threshold) or threshold < 0:
+        raise ValueError("threshold must be a finite nonnegative number")
+    header, rows, _ = read_dataset(path)
+    fields = [x for x in ("Kloc+", "Effort-", "Defects-") if x in header]
+    flags, per_field = [], {field: 0 for field in fields}
+    for position, row in enumerate(rows, 1):
+        record_flags = []
+        for field in fields:
+            observed = _number(row.get(field, ""))
+            if observed is None or observed < 0:
+                if row.get(field, "").strip().lower() not in MISSING:
+                    per_field[field] += 1
+                    record_flags.append({"field": field, "observed": None,
+                                         "reference": None, "score": None,
+                                         "threshold": threshold,
+                                         "reason": "missing, nonfinite, or negative value is not scored"})
+                continue
+            reference_values = [_number(other.get(field, "")) for i, other in enumerate(rows) if i != position - 1]
+            reference_values = [v for v in reference_values if v is not None and v >= 0]
+            if not reference_values:
+                continue
+            center, scale = _spot_reference(reference_values)
+            transformed = math.log1p(observed)
+            reference = {"transformed_median": center,
+                         "original_median": math.expm1(center),
+                         "robust_scale_transformed": scale,
+                         "reference_count": len(reference_values),
+                         "excludes_assessed_record": True}
+            if scale == 0:
+                score = None
+                unusual = transformed != center
+                reason = "zero robust scale; non-median value is a candidate" if unusual else "zero robust scale; equals reference median"
+            else:
+                score = abs(transformed - center) / scale
+                unusual = score >= threshold
+                reason = "absolute robust z-score meets threshold" if unusual else "below threshold"
+            if unusual:
+                per_field[field] += 1
+                record_flags.append({"field": field, "observed": observed, "reference": reference,
+                                     "score": score, "threshold": threshold, "reason": reason})
+        if record_flags:
+            identifier = row.get("idX", "").strip() or row.get("id", "").strip() or None
+            flags.append({"identifier": identifier, "csv_position": position,
+                          "flagged_fields": [x["field"] for x in record_flags],
+                          "flags": record_flags,
+                          "reason": "marginal unusualness candidate; investigate rather than assume error"})
+    return {"method": "leave-one-out log1p robust univariate screen",
+            "threshold": threshold, "fields": fields, "flags": flags,
+            "unique_flagged_record_count": len(flags), "per_outcome_flag_counts": per_field,
+            "limitations": ["large projects may legitimately have large effort or defect counts",
+                            "marginal screen is not scope-adjusted and has no labels for accuracy",
+                            "scores are not prediction uncertainty or causal explanations",
+                            "duplicate identifiers remain distinguishable by csv_position"]}
+
 def blame_rows(rows, predictors):
     finite = [_number(r.get("Effort-", "")) for r in rows]
     finite = [x for x in finite if x is not None]
@@ -402,7 +472,9 @@ def blame_rows(rows, predictors):
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     if len(argv) not in (1, 2, 3, 4): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --fix DATASET.csv PROPOSAL.json BUDGET")
-    if len(argv) == 3 and argv[0] == "--choose": print(json.dumps(choose(argv[1], float(argv[2])), indent=2, sort_keys=True))
+    if len(argv) == 3 and argv[0] == "--spot": print(json.dumps(spot(argv[1], float(argv[2])), indent=2, sort_keys=True, allow_nan=False))
+    elif len(argv) == 2 and argv[0] == "--spot": print(json.dumps(spot(argv[1]), indent=2, sort_keys=True, allow_nan=False))
+    elif len(argv) == 3 and argv[0] == "--choose": print(json.dumps(choose(argv[1], float(argv[2])), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--justify": print(json.dumps(justify(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--blame": print(json.dumps(blame(argv[1]), indent=2, sort_keys=True))
