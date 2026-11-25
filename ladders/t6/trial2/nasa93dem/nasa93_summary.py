@@ -130,6 +130,80 @@ def print_estimate(result):
         print(f"{key}: {result[key]}")
     print("evaluation_records: " + repr(result["records"]))
 
+def _neighbor_evidence(model, query):
+    """Return the exact ranked/selected records used by predict_config."""
+    key = descriptor_key(query)
+    ranked = sorted(((sum(a != b for a, b in zip(key, row[0])), row[1], row[2])
+                     for row in model.evidence_rows), key=lambda x: (x[0], x[1]))
+    chosen = ranked[:min(model.neighbors, len(ranked))]
+    return [{"distance": d, "effort": y, "position": p.position, "idX": p.identifier}
+            for d, y, p in chosen]
+
+def _fit_with_evidence(projects, neighbors=5):
+    model = CategoricalNeighborModel(neighbors).fit(projects)
+    model.evidence_rows = [(descriptor_key(p), _target(p)[0], p)
+                           for p in projects if _target(p)[1] == "valid"]
+    return model
+
+def marginal_associations(projects):
+    """Training-only marginal context; it is not local feature attribution."""
+    reports = []
+    for name in CATEGORICAL:
+        groups, eligible = {}, []
+        excluded = Counter()
+        for p in projects:
+            value = norm_cell(p.values.get(name, "")); effort, kind = _target(p)
+            if value == "?": excluded["missing_descriptor"] += 1
+            elif kind != "valid": excluded["invalid_or_missing_effort"] += 1
+            else: eligible.append((value, effort)); groups.setdefault(value, []).append(effort)
+        ys = [y for _, y in eligible]; n = len(ys); ref = sum(ys) / n if n else None
+        total = sum((y-ref)**2 for y in ys) if n else None
+        between = sum(len(v)*(sum(v)/len(v)-ref)**2 for v in groups.values()) if n else None
+        cats = {k: {"count": len(v), "mean_effort": sum(v)/len(v)} for k,v in sorted(groups.items())}
+        reports.append({"descriptor": name, "eligible_rows": n, "excluded_rows": sum(excluded.values()),
+                        "excluded": dict(excluded), "categories": cats, "reference_mean": ref,
+                        "between_ss": between, "total_ss": total,
+                        "eta_squared": between/total if total and total > 0 else None})
+    return sorted(reports, key=lambda r: (r["eta_squared"] is None, -(r["eta_squared"] or 0), r["descriptor"]))
+
+def justify(path, seed=42, neighbors=5, retrospective=False):
+    """Predict the earliest held-out project, explaining it without its outcome."""
+    header, projects, invalid_rows, issues = load(path)
+    train, test = split_groups(projects, seed)
+    query = min(test, key=lambda p: p.position)
+    model = _fit_with_evidence(train, neighbors)
+    config = {n: query.values.get(n, "") for n in CATEGORICAL}
+    prediction = model.predict_config(config)
+    evidence = _neighbor_evidence(model, query)
+    result = {"path": path, "query": {"position": query.position, "idX": query.identifier,
+              "descriptors": dict(config)}, "train_rows": len(train), "test_rows": len(test),
+              "train_groups": len({descriptor_key(p) for p in train}),
+              "test_groups": len({descriptor_key(p) for p in test}), "predicted_effort": prediction,
+              "training_mean_baseline": model.mean, "neighbors": evidence,
+              "associations": marginal_associations(train), "invalid_rows": invalid_rows, "issues": issues,
+              "retrospective_audit": None}
+    if retrospective:
+        actual, kind = _target(query)
+        result["retrospective_audit"] = {"actual_effort": actual if kind == "valid" else None,
+                                         "outcome_kind": kind}
+    return result
+
+def print_justify(result):
+    print("JUSTIFICATION (prediction and explanation precede any audit)")
+    print("query: " + repr(result["query"]))
+    print("training_rows: %s test_rows: %s training_groups: %s test_groups: %s" %
+          (result["train_rows"], result["test_rows"], result["train_groups"], result["test_groups"]))
+    print("predicted_effort: %r" % result["predicted_effort"])
+    print("training_mean_baseline: %r" % result["training_mean_baseline"])
+    print("neighbors_selected_by_distance_then_effort:")
+    for row in result["neighbors"]: print("  " + repr(row))
+    print("estimate_reproduction: mean(selected finite training efforts) = %r" %
+          (sum(x["effort"] for x in result["neighbors"])/len(result["neighbors"])))
+    print("GLOBAL_MARGINAL_ASSOCIATIONS (training-only context; not local contribution or causation):")
+    for r in result["associations"]: print("  %s eta_squared=%r categories=%r" % (r["descriptor"], r["eta_squared"], r["categories"]))
+    print("assumptions_limitations: observational historical data; missing/unseen descriptors are '?' symbols; invalid training targets are excluded; model uncertainty remains; Effort- units are not invented; at least two descriptor groups and one valid training target are required")
+    if result["retrospective_audit"] is not None: print("RETROSPECTIVE_AUDIT (after prediction and explanation): " + repr(result["retrospective_audit"]))
+
 def _betacf(a, b, x):
     tiny, qab, qap, qam = 1e-300, a+b, a+1, a-1
     c, d = 1.0, 1.0-qab*x/qap; d = max(tiny, abs(d)) * (1 if d >= 0 else -1); d = 1/d; h=d
@@ -293,8 +367,11 @@ def main(argv=None):
     parser.add_argument("--certify", action="store_true")
     parser.add_argument("--flow", action="store_true")
     parser.add_argument("--blame", action="store_true")
+    parser.add_argument("--justify", action="store_true")
+    parser.add_argument("--retrospective-audit", action="store_true")
     args = parser.parse_args(argv)
-    if args.blame: print_blame(blame(args.dataset))
+    if args.justify: print_justify(justify(args.dataset, retrospective=args.retrospective_audit))
+    elif args.blame: print_blame(blame(args.dataset))
     elif args.flow: print_flow(flow(args.dataset))
     elif args.certify:
         _, rows, _, _ = load(args.dataset); ref=[parse_float(p.values.get("Effort-", ""))[0] for p in rows if norm_cell(p.values.get("tool", "")).lower()=="n" and parse_float(p.values.get("Effort-", ""))[1]=="valid"]
