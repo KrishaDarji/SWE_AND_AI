@@ -305,56 +305,39 @@ def print_flow(result):
     print("arrival_records: " + repr(result["records"]))
 
 def choose(path, cap=100):
-    """Select the largest observed historical project within an effort cap."""
+    """Suggest the smallest observed training-config change for a held-out query."""
     if not isinstance(cap, (int, float)) or isinstance(cap, bool) or not math.isfinite(cap) or cap < 0:
         raise ValueError("cap must be finite and nonnegative")
     header, projects, invalid_rows, issues = load(path)
-    valid, feasible, invalid_data, over_budget = [], [], [], []
-    for project in projects:
-        missing = [name for name in CATEGORICAL if norm_cell(project.values.get(name, "")) == "?"]
-        outcomes = {}
-        bad = list(missing)
-        for name in ("Kloc+", "Effort-", "Defects-"):
-            value, kind = parse_float(project.values.get(name, ""))
-            outcomes[name] = value
-            if kind != "valid": bad.append(name + ":" + kind)
-        if outcomes["Effort-"] is not None and outcomes["Effort-"] < 0:
-            bad.append("Effort-:negative")
-        if bad:
-            invalid_data.append(project)
-            continue
-        valid.append(project)
-        if outcomes["Effort-"] <= cap:
-            feasible.append(project)
-        else:
-            over_budget.append(project)
-    if not projects:
-        raise ValueError("no parsed project rows")
-    if not valid:
-        raise ValueError("no valid projects")
-    if not feasible:
-        raise ValueError("no feasible projects within cap")
-    winner = min(feasible, key=lambda p: (-parse_float(p.values["Kloc+"])[0],
-                                           parse_float(p.values["Effort-"])[0], p.position))
-    return {"path": path, "cap": cap, "project": {"position": winner.position,
-            "idX": winner.identifier, "descriptors": {n: norm_cell(winner.values[n]) for n in CATEGORICAL},
-            "Kloc+": parse_float(winner.values["Kloc+"])[0],
-            "Effort-": parse_float(winner.values["Effort-"])[0],
-            "Defects-": parse_float(winner.values["Defects-"])[0]},
-            "feasible": True, "raw_count": len(projects), "valid_count": len(valid),
-            "feasible_count": len(feasible), "invalid_data_count": len(invalid_data),
-            "over_budget_count": len(over_budget), "invalid_rows": invalid_rows, "issues": issues,
-            "selection_rule": "highest Kloc+; lowest Effort- for ties; earliest original CSV position for remaining ties",
-            "interpretation": "retrospective selection among historical projects; not productivity, causation, suitability, or a future-budget guarantee"}
+    if not projects: raise ValueError("no parsed project rows")
+    train, test = split_groups(projects, 42)
+    query = min(test, key=lambda p: p.position)
+    old = {n: norm_cell(query.values.get(n, "")) for n in CATEGORICAL}
+    if any(v == "?" for v in old.values()):
+        return {"status": "invalid/incomplete baseline", "reason": "baseline has missing descriptors", "cap": cap, "query": {"position": query.position, "idX": query.identifier, "descriptors": old}}
+    model = _fit_with_evidence(train)
+    baseline = model.predict_config(old)
+    valid_training = [p for p in train if _target(p)[1] == "valid" and not any(norm_cell(p.values.get(n, "")) == "?" for n in CATEGORICAL)]
+    candidates, excluded = [], 0
+    for p in train:
+        config = {n: norm_cell(p.values.get(n, "")) for n in CATEGORICAL}
+        if any(v == "?" for v in config.values()) or _target(p)[1] != "valid": excluded += 1; continue
+        prediction = model.predict_config(config)
+        changes = [n for n in CATEGORICAL if old[n] != config[n]]
+        if prediction <= cap and prediction < baseline: candidates.append((len(changes), prediction, p.position, p, config, changes))
+    base_report = {"position": query.position, "idX": query.identifier, "descriptors": old, "predicted_effort": baseline}
+    common = {"path": path, "cap": cap, "baseline": base_report, "training_rows": len(train), "test_rows": len(test), "candidate_count": len(candidates), "excluded_candidate_count": excluded, "invalid_rows": invalid_rows, "issues": issues}
+    if baseline <= cap: common.update(status="already feasible", recommendation="no change")
+    elif not valid_training: common.update(status="insufficient training data", recommendation=None)
+    elif not candidates: common.update(status="no feasible improving candidate", recommendation=None)
+    else:
+        _, prediction, _, winner, config, changes = min(candidates, key=lambda x: (x[0], x[1], x[2]))
+        common.update(status="successful recommendation", recommendation={"position": winner.position, "idX": winner.identifier, "descriptors": config, "old_values": {n: old[n] for n in changes}, "new_values": {n: config[n] for n in changes}, "changed_fields": len(changes), "predicted_effort": prediction, "predicted_improvement": baseline-prediction})
+    common["interpretation"] = "model-based historical suggestion; not a causal or actionable prescription; feasibility does not guarantee actual effort or preserve size, quality, or other requirements"
+    return common
 
 def print_choose(result):
-    print("RETROSPECTIVE_SELECTION among historical projects")
-    print("selected_project: " + repr(result["project"]))
-    print("cap=%r feasible=%r selection_rule=%s" % (result["cap"], result["feasible"], result["selection_rule"]))
-    print("counts: raw/parsed=%d valid=%d feasible=%d invalid_data_exclusions=%d over_budget_exclusions=%d malformed_rows=%d" %
-          (result["raw_count"], result["valid_count"], result["feasible_count"], result["invalid_data_count"],
-           result["over_budget_count"], len(result["invalid_rows"])))
-    print("exclusion_definitions: invalid_data requires all 22 descriptors and finite Kloc+, Effort-, Defects-, with nonnegative Effort-; over_budget is otherwise-valid Effort- > cap")
+    print("BUDGET_FIX_RECOMMENDATION: " + repr(result))
     print("interpretation: " + result["interpretation"])
 
 def blame(path):
