@@ -9,7 +9,7 @@ import json
 import math
 import random
 import statistics
-from collections import Counter
+from collections import Counter, defaultdict
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
@@ -89,6 +89,78 @@ class ChangeRecommendation:
     recommended_error: float
     error_improvement: float
     change_size: float
+
+
+@dataclass(frozen=True)
+class SpotReport:
+    """Potentially unusual observations requiring measurement review."""
+    row_count: int
+    metric_fields: list[str]
+    findings: list[dict[str, Any]]
+
+
+def spot(path: str | Path, z_threshold: float = 3.5) -> dict[str, Any]:
+    """Find suspicious model-quality results without claiming they are errors.
+
+    Findings cover non-finite/out-of-range quality values, robust median/MAD
+    outliers, and repeated configurations whose recorded metrics disagree.
+    ACC+/PRED*+ values are expected in [0, 1]; other metrics are only checked
+    for finiteness.  The analysis is deliberately diagnostic, not causal.
+    """
+    if z_threshold <= 0:
+        raise ValueError("z_threshold must be positive")
+    fields, rows = read_rows(path)
+    metric_fields, configuration_fields = classify_columns(fields)
+    findings: list[dict[str, Any]] = []
+    values_by_metric: dict[str, list[float]] = {}
+    for metric in metric_fields:
+        values = []
+        for index, row in enumerate(rows, start=2):
+            raw = row.get(metric, "")
+            value = _number(raw)
+            if value is None:
+                if raw.strip():
+                    findings.append({"type": "invalid_metric", "row": index, "metric": metric, "value": raw})
+                continue
+            if (metric.endswith("+") and (metric.startswith("ACC") or metric.startswith("PRED"))
+                    and not 0 <= value <= 1):
+                findings.append({"type": "out_of_range", "row": index, "metric": metric, "value": value,
+                                 "expected": "[0, 1]"})
+            values.append(value)
+        values_by_metric[metric] = values
+    for metric, values in values_by_metric.items():
+        if len(values) < 3:
+            continue
+        median = statistics.median(values)
+        deviations = [abs(value - median) for value in values]
+        mad = statistics.median(deviations)
+        if mad == 0:
+            continue
+        for index, row in enumerate(rows, start=2):
+            value = _number(row.get(metric, ""))
+            if value is None:
+                continue
+            robust_z = 0.6745 * (value - median) / mad
+            if abs(robust_z) > z_threshold:
+                findings.append({"type": "robust_outlier", "row": index, "metric": metric,
+                                 "value": value, "median": median, "mad": mad, "robust_z": robust_z})
+    groups: dict[tuple[str, ...], list[tuple[int, dict[str, str]]]] = defaultdict(list)
+    for index, row in enumerate(rows, start=2):
+        groups[tuple(row.get(field, "") for field in configuration_fields)].append((index, row))
+    for configuration, group in groups.items():
+        if len(group) < 2:
+            continue
+        for metric in metric_fields:
+            observed = [(index, _number(row.get(metric, ""))) for index, row in group]
+            numeric = [(index, value) for index, value in observed if value is not None]
+            if len(numeric) >= 2 and len({value for _, value in numeric}) > 1:
+                findings.append({"type": "duplicate_configuration_conflict",
+                                 "rows": [index for index, _ in numeric], "metric": metric,
+                                 "configuration": dict(zip(configuration_fields, configuration)),
+                                 "values": [value for _, value in numeric]})
+    result = SpotReport(len(rows), metric_fields, findings)
+    return asdict(result) | {"source": str(path), "configuration_fields": configuration_fields,
+                             "finding_count": len(findings)}
 
 
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -399,8 +471,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--prediction-weight", type=float, default=0.5)
     parser.add_argument("--suggest-change", type=json.loads, metavar="JSON",
                         help="suggest the smallest observed one-hyperparameter error improvement")
+    parser.add_argument("--spot", action="store_true", help="spot unusual results or possible measurement errors")
+    parser.add_argument("--z-threshold", type=float, default=3.5)
     args = parser.parse_args(argv)
-    if args.suggest_change is not None: result = suggest_change(args.csv_path, args.suggest_change, args.error_field)
+    if args.spot: result = spot(args.csv_path, args.z_threshold)
+    elif args.suggest_change is not None: result = suggest_change(args.csv_path, args.suggest_change, args.error_field)
     elif args.choose: result = choose(args.csv_path, args.accuracy_weight, args.prediction_weight)
     elif args.justify: result = justify(args.csv_path, args.neighbors, args.quantile, args.min_samples)
     elif args.blame: result = blame(args.csv_path, args.error_field, args.quantile, args.min_samples)
