@@ -362,6 +362,58 @@ def budget_select_dataset(path: str | Path, budget: int = 20, random_state: int 
     return result
 
 
+def repair(path: str | Path, baseline: dict[str, float | int] | None = None) -> dict:
+    """Select the smallest observed improvement over an observed baseline.
+
+    This is retrospective observed-data repair, not a causal or deployment
+    guarantee. Raw setting-column differences are a proxy for conceptual
+    change count because correlated or one-hot fields can encode one change.
+    """
+    settings, x, y = load_dataset(path)
+    with Path(path).open(newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if baseline is None:
+        baseline_index = 0
+        baseline_configuration = {name: float(x[0, i]) for i, name in enumerate(settings)}
+    else:
+        missing = [name for name in settings if name not in baseline]
+        extra = [name for name in baseline if name not in settings]
+        if missing or extra:
+            raise ValueError(f"baseline keys mismatch; missing={missing}, extra={extra}")
+        try:
+            baseline_configuration = {name: float(baseline[name]) for name in settings}
+        except (TypeError, ValueError) as exc:
+            raise ValueError("baseline values must be numeric") from exc
+        matches = np.all(x == np.asarray([baseline_configuration[name] for name in settings]), axis=1)
+        if not np.any(matches):
+            raise ValueError("baseline configuration was not observed in the dataset")
+        baseline_index = int(np.flatnonzero(matches)[0])
+    improving = np.flatnonzero(y < y[baseline_index])
+    if not len(improving):
+        return {"status": "no_repair", "measure": "Performance-", "lower_is_better": True,
+                "baseline": {"record_id": f"csv_record_{baseline_index + 1}", "csv_row": baseline_index + 2,
+                             "configuration": baseline_configuration, "measured_performance": float(y[baseline_index])},
+                "reason": "no observed configuration has strictly lower Performance-",
+                "change_count_definition": "number of differing raw encoder-setting columns",
+                "change_count_proxy_note": "Raw-column change count is a proxy: correlated or one-hot fields may represent fewer conceptual changes."}
+    def cost(index: int) -> int:
+        return int(np.count_nonzero(x[index] != x[baseline_index]))
+    chosen = int(min(improving, key=lambda index: (cost(index), y[index], index)))
+    changed = [{"setting": name, "from": float(x[baseline_index, i]), "to": float(x[chosen, i])}
+               for i, name in enumerate(settings) if x[baseline_index, i] != x[chosen, i]]
+    return {"status": "repaired", "measure": "Performance-", "lower_is_better": True,
+            "baseline": {"record_id": f"csv_record_{baseline_index + 1}", "csv_row": baseline_index + 2,
+                         "configuration": baseline_configuration, "measured_performance": float(y[baseline_index])},
+            "repaired": {"record_id": f"csv_record_{chosen + 1}", "csv_row": chosen + 2,
+                         "configuration": {name: float(x[chosen, i]) for i, name in enumerate(settings)},
+                         "measured_performance": float(y[chosen])},
+            "changed_settings": changed, "change_cost": int(cost(chosen)),
+            "observed_improvement": float(y[baseline_index] - y[chosen]),
+            "selection_rule": "strict improvement; minimum raw-column change cost, then Performance-, then CSV record order",
+            "change_count_proxy_note": "Raw-column change count is a proxy: correlated or one-hot fields may represent fewer conceptual changes.",
+            "raw_fields": dict(rows[chosen])}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
@@ -373,9 +425,12 @@ def main() -> None:
     parser.add_argument("--blame", action="store_true")
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--select-budget", type=int)
+    parser.add_argument("--repair", action="store_true")
     args = parser.parse_args()
     started = perf_counter()
-    if args.select_budget is not None:
+    if args.repair:
+        result = repair(args.dataset)
+    elif args.select_budget is not None:
         result = budget_select_dataset(args.dataset, args.select_budget)
     elif args.justify:
         result = justify(args.dataset)
