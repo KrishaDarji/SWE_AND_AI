@@ -375,6 +375,57 @@ def improve(dataset, configuration, measure=None):
             "limitations": ["Predictions use observed nearest neighbors; validate the change on representative clips."]}
 
 
+def detect_anomalies(dataset, measure=None, threshold=3.5):
+    """Flag unusually large benchmark values using a robust MAD score.
+
+    Repeated rows with the same binary configuration are compared within that
+    configuration.  If every configuration is unique, the comparison falls
+    back to all usable observations.  A zero MAD uses a small exact-deviation
+    rule, and results are sorted by descending robust score then row number.
+    This is a screening signal, not proof of a measurement error.
+    """
+    measure = measure or dataset.measures[0]
+    if measure not in dataset.measures:
+        raise ValueError("unknown measure: " + measure)
+    try:
+        threshold = float(threshold)
+    except (TypeError, ValueError):
+        raise ValueError("threshold must be numeric")
+    if not math.isfinite(threshold) or threshold <= 0:
+        raise ValueError("threshold must be positive and finite")
+    usable = [(index, row, _number(row[measure]))
+              for index, row in enumerate(dataset.rows, 1)]
+    usable = [(index, row, value) for index, row, value in usable if value is not None]
+    if not usable:
+        raise ValueError("measure has no numeric observations")
+    grouped = {}
+    for index, row, value in usable:
+        key = tuple(int(float(row[name])) for name in dataset.settings)
+        grouped.setdefault(key, []).append((index, row, value))
+    scopes = list(grouped.values()) if any(len(group) > 1 for group in grouped.values()) else [usable]
+    flagged = []
+    for scope in scopes:
+        values = [value for _, _, value in scope]
+        median = statistics.median(values)
+        deviations = [abs(value - median) for value in values]
+        mad = statistics.median(deviations)
+        scale = 1.4826 * mad
+        for index, row, value in scope:
+            score = abs(value - median) / scale if scale else (float("inf") if value != median else 0.0)
+            if score >= threshold:
+                flagged.append({"row_number": index,
+                                "configuration": {name: int(float(row[name])) for name in dataset.settings},
+                                "value": value, "median": median, "mad": mad,
+                                "robust_z": score,
+                                "reason": "measurement differs materially from its comparison median"})
+    flagged.sort(key=lambda item: (-item["robust_z"], item["row_number"]))
+    return {"measure": measure, "threshold": threshold, "method": "median/MAD robust screen",
+            "observations": len(usable), "comparison_groups": len(scopes),
+            "anomalies": flagged, "anomaly_count": len(flagged),
+            "has_anomaly": bool(flagged),
+            "limitations": ["An anomaly is a review signal; it does not establish a bad benchmark run."]}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
@@ -397,9 +448,14 @@ def main(argv=None):
                         help="slow configuration to improve with one setting flip")
     parser.add_argument("--quality-measure")
     parser.add_argument("--objective-measure")
+    parser.add_argument("--anomalies", action="store_true",
+                        help="screen for anomalous benchmark measurements")
+    parser.add_argument("--threshold", type=float, default=3.5)
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
-    if args.choose:
+    if args.anomalies:
+        result = detect_anomalies(dataset, args.measure, args.threshold)
+    elif args.choose:
         if args.min_quality is None:
             parser.error("--choose requires --min-quality")
         result = choose(dataset, args.min_quality, args.quality_measure,
