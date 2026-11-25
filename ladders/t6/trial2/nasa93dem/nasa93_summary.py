@@ -304,6 +304,59 @@ def print_flow(result):
         print(f"{key}: {result[key]}")
     print("arrival_records: " + repr(result["records"]))
 
+def choose(path, cap=100):
+    """Select the largest observed historical project within an effort cap."""
+    if not isinstance(cap, (int, float)) or isinstance(cap, bool) or not math.isfinite(cap) or cap < 0:
+        raise ValueError("cap must be finite and nonnegative")
+    header, projects, invalid_rows, issues = load(path)
+    valid, feasible, invalid_data, over_budget = [], [], [], []
+    for project in projects:
+        missing = [name for name in CATEGORICAL if norm_cell(project.values.get(name, "")) == "?"]
+        outcomes = {}
+        bad = list(missing)
+        for name in ("Kloc+", "Effort-", "Defects-"):
+            value, kind = parse_float(project.values.get(name, ""))
+            outcomes[name] = value
+            if kind != "valid": bad.append(name + ":" + kind)
+        if outcomes["Effort-"] is not None and outcomes["Effort-"] < 0:
+            bad.append("Effort-:negative")
+        if bad:
+            invalid_data.append(project)
+            continue
+        valid.append(project)
+        if outcomes["Effort-"] <= cap:
+            feasible.append(project)
+        else:
+            over_budget.append(project)
+    if not projects:
+        raise ValueError("no parsed project rows")
+    if not valid:
+        raise ValueError("no valid projects")
+    if not feasible:
+        raise ValueError("no feasible projects within cap")
+    winner = min(feasible, key=lambda p: (-parse_float(p.values["Kloc+"])[0],
+                                           parse_float(p.values["Effort-"])[0], p.position))
+    return {"path": path, "cap": cap, "project": {"position": winner.position,
+            "idX": winner.identifier, "descriptors": {n: norm_cell(winner.values[n]) for n in CATEGORICAL},
+            "Kloc+": parse_float(winner.values["Kloc+"])[0],
+            "Effort-": parse_float(winner.values["Effort-"])[0],
+            "Defects-": parse_float(winner.values["Defects-"])[0]},
+            "feasible": True, "raw_count": len(projects), "valid_count": len(valid),
+            "feasible_count": len(feasible), "invalid_data_count": len(invalid_data),
+            "over_budget_count": len(over_budget), "invalid_rows": invalid_rows, "issues": issues,
+            "selection_rule": "highest Kloc+; lowest Effort- for ties; earliest original CSV position for remaining ties",
+            "interpretation": "retrospective selection among historical projects; not productivity, causation, suitability, or a future-budget guarantee"}
+
+def print_choose(result):
+    print("RETROSPECTIVE_SELECTION among historical projects")
+    print("selected_project: " + repr(result["project"]))
+    print("cap=%r feasible=%r selection_rule=%s" % (result["cap"], result["feasible"], result["selection_rule"]))
+    print("counts: raw/parsed=%d valid=%d feasible=%d invalid_data_exclusions=%d over_budget_exclusions=%d malformed_rows=%d" %
+          (result["raw_count"], result["valid_count"], result["feasible_count"], result["invalid_data_count"],
+           result["over_budget_count"], len(result["invalid_rows"])))
+    print("exclusion_definitions: invalid_data requires all 22 descriptors and finite Kloc+, Effort-, Defects-, with nonnegative Effort-; over_budget is otherwise-valid Effort- > cap")
+    print("interpretation: " + result["interpretation"])
+
 def blame(path):
     """Rank marginal categorical associations with valid Effort- values."""
     _, projects, invalid_rows, issues = load(path)
@@ -369,8 +422,11 @@ def main(argv=None):
     parser.add_argument("--blame", action="store_true")
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--retrospective-audit", action="store_true")
+    parser.add_argument("--choose", action="store_true")
+    parser.add_argument("--cap", type=float, default=100)
     args = parser.parse_args(argv)
-    if args.justify: print_justify(justify(args.dataset, retrospective=args.retrospective_audit))
+    if args.choose: print_choose(choose(args.dataset, args.cap))
+    elif args.justify: print_justify(justify(args.dataset, retrospective=args.retrospective_audit))
     elif args.blame: print_blame(blame(args.dataset))
     elif args.flow: print_flow(flow(args.dataset))
     elif args.certify:
