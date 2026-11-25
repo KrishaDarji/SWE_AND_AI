@@ -503,6 +503,70 @@ def render_choose(result):
     if "audit" in result: lines.append("audit: " + result["audit"]["label"] + "; result=%s" % result["audit"])
     return "\n".join(lines)
 
+def recommend_fix(path, outcome="Performance-"):
+    """Find the smallest observed binary-setting change beating the first row."""
+    header, records, _ = load(path)
+    if not header:
+        return {"status": "empty input", "label": "retrospective comparison between measured configurations"}
+    if outcome not in header:
+        return {"status": "invalid baseline", "reason": "outcome column is absent"}
+    settings = [name for name in header if name != outcome]
+    rows = list(iter_measurements(path))
+    if not rows:
+        return {"status": "empty input", "label": "retrospective comparison between measured configurations"}
+    base_position, _, base_record = rows[0]
+    base_value = _number(base_record.get(outcome, ""))
+    base_config = _binary_configuration(base_record, settings)
+    excluded = {"invalid_baseline": 0, "missing_or_nonfinite_outcome": 0,
+                "invalid_or_incomplete_settings": 0, "not_strictly_improving": 0}
+    if base_value is None or base_config is None:
+        reason = "baseline Performance- is missing or nonfinite" if base_value is None else "baseline has missing, nonfinite, or nonbinary settings"
+        return {"status": "invalid baseline", "baseline_position": base_position,
+                "baseline": {"configuration": base_config, "value": base_value},
+                "reason": reason, "excluded": excluded,
+                "label": "retrospective comparison between measured configurations"}
+    candidates = []
+    for position, _, record in rows[1:]:
+        value = _number(record.get(outcome, ""))
+        config = _binary_configuration(record, settings)
+        if value is None:
+            excluded["missing_or_nonfinite_outcome"] += 1; continue
+        if config is None:
+            excluded["invalid_or_incomplete_settings"] += 1; continue
+        if not value < base_value:
+            excluded["not_strictly_improving"] += 1; continue
+        changed = [{"field": name, "old": base_config[name], "new": config[name]}
+                   for name in settings if base_config[name] != config[name]]
+        candidates.append({"position": position, "configuration": config, "value": value,
+                           "changed_fields": changed, "change_count": len(changed),
+                           "absolute_reduction": base_value - value,
+                           "percentage_reduction": (base_value - value) / base_value * 100 if base_value != 0 else None})
+    if not candidates:
+        return {"status": "no improving candidate", "baseline_position": base_position,
+                "baseline": {"configuration": base_config, "value": base_value},
+                "candidate_count": 0, "excluded": excluded,
+                "label": "retrospective comparison between measured configurations"}
+    winner = min(candidates, key=lambda item: (item["change_count"], item["value"], item["position"]))
+    return {"status": "ok", "label": "retrospective comparison between measured configurations",
+            "baseline_position": base_position, "baseline": {"configuration": base_config, "value": base_value},
+            "candidate": winner, "candidate_count": len(candidates), "excluded": excluded,
+            "selection_rule": "fewest changed encoder-setting fields, then lowest Performance-, then earliest original nonblank data-row position",
+            "caution": "Change count is a simplicity proxy; historical differences do not prove causation."}
+
+def render_fix(result):
+    lines = ["Smallest observed encoder-setting change", result.get("label", "")]
+    lines.append("status: %s" % result["status"])
+    if result["status"] == "ok":
+        b, c = result["baseline"], result["candidate"]
+        lines += ["baseline: position=%d; configuration=%s; Performance-=%s" % (result["baseline_position"], b["configuration"], b["value"]),
+                  "candidate: position=%d; configuration=%s; Performance-=%s" % (c["position"], c["configuration"], c["value"]),
+                  "changed_fields: %s; change_count=%d" % (c["changed_fields"], c["change_count"]),
+                  "absolute_reduction: %s; percentage_reduction: %s" % (c["absolute_reduction"], c["percentage_reduction"] if c["percentage_reduction"] is not None else "undefined because baseline is zero"),
+                  "candidate_count: %d; excluded: %s" % (result["candidate_count"], result["excluded"]), "selection_rule: " + result["selection_rule"], result["caution"]]
+    else:
+        lines.append("reason: %s" % result.get("reason", "")); lines.append("excluded: %s" % result.get("excluded", {}))
+    return "\n".join(lines)
+
 def main(argv):
     if len(argv) not in (2, 3):
         print("usage: x264_summary.py DATASET [predict|certify|flow|blame|justify]", file=sys.stderr); return 2
@@ -515,6 +579,7 @@ def main(argv):
         elif argv[2] == "blame": print(render_blame(blame(argv[1])))
         elif argv[2] == "justify": print(render_justify(justify(argv[1])))
         elif argv[2] == "choose": print(render_choose(choose(argv[1], 20, 42, audit=True)))
+        elif argv[2] == "fix": print(render_fix(recommend_fix(argv[1])))
         else: print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
