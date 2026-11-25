@@ -314,6 +314,75 @@ def choose_configuration(rows, configuration_columns=None, error_column="MRE-",
             "candidate_count": len(usable), "caveat": "Validate prospectively before production deployment."}
 
 
+def compare_with_historical_baseline(rows, historical_configuration,
+                                     configuration_columns=None, error_column="MRE-",
+                                     accuracy_column="ACC+", prediction_column="PRED40+",
+                                     weights=(0.2, 0.5, 0.3)):
+    """Compare the selector's choice with a historical configuration.
+
+    Both configurations are evaluated with the exact min-max normalization and
+    weighted objective used by ``choose_configuration``.  The historical row
+    must be present in the supplied observations so its measured metrics are
+    directly comparable to the selector's observed candidate.
+    """
+    rows = list(rows)
+    if not rows:
+        raise ValueError("CSV contains no data rows")
+    required = [error_column, accuracy_column, prediction_column]
+    columns = list(rows[0])
+    configuration_columns = list(configuration_columns or
+                                 [c for c in columns if c not in required])
+    missing = [c for c in required + configuration_columns if c not in columns]
+    missing += [c for c in configuration_columns if c not in historical_configuration]
+    if missing:
+        raise ValueError("Unknown or missing columns: " + ", ".join(dict.fromkeys(missing)))
+    selected = choose_configuration(rows, configuration_columns, error_column,
+                                    accuracy_column, prediction_column, weights)
+    historical_matches = [(index, row) for index, row in enumerate(rows)
+                          if all(str(row[column]) == str(historical_configuration[column])
+                                 for column in configuration_columns)]
+    if not historical_matches:
+        raise ValueError("Historical configuration was not observed")
+    historical_index, historical_row = historical_matches[0]
+    selected_item = selected["chosen"]
+    metrics = [error_column, accuracy_column, prediction_column]
+    values = []
+    for row in rows:
+        numbers = [_number(row[column]) for column in metrics]
+        if all(value is not None for value in numbers):
+            values.append(numbers)
+    if not values:
+        raise ValueError("No rows have usable quality metrics")
+    ranges = [(min(item[position] for item in values), max(item[position] for item in values))
+              for position in range(3)]
+    total_weight = float(sum(weights))
+
+    def score(row):
+        numbers = [_number(row[column]) for column in metrics]
+        if any(value is None for value in numbers):
+            raise ValueError("Compared configurations need usable quality metrics")
+        normalized = [1.0 if high == low else (value - low) / (high - low)
+                      for value, (low, high) in zip(numbers, ranges)]
+        normalized[0] = 1.0 - normalized[0]
+        return sum(weight * value for weight, value in zip(weights, normalized)) / total_weight
+
+    selected_score = selected_item["score"]
+    historical_score = score(historical_row)
+    difference = selected_score - historical_score
+    return {"objective": "weighted normalized MRE-/ACC+/PRED40+",
+            "weights": dict(zip(metrics, weights)),
+            "selector": {"index": selected_item["index"],
+                         "configuration": selected_item["configuration"],
+                         "score": selected_score, "metrics": selected_item["metrics"]},
+            "historical_baseline": {"index": historical_index,
+                                    "configuration": {c: historical_row[c] for c in configuration_columns},
+                                    "score": historical_score,
+                                    "metrics": {c: _number(historical_row[c]) for c in metrics}},
+            "score_difference_selector_minus_historical": difference,
+            "selector_better": difference > 0,
+            "caveat": "This is retrospective comparison on observed evaluations; validate prospectively."}
+
+
 def spot_quality_anomalies(rows, quality_columns=None, z_threshold=3.5,
                            duplicate_tolerance=0.0):
     """Screen quality results for unusual values or possible measurement errors."""
@@ -493,6 +562,8 @@ def main(argv=None):
     parser.add_argument("--suggest", action="store_true",
                         help="suggest the smallest observed change that lowers error")
     parser.add_argument("--spot", action="store_true", help="spot unusual quality results")
+    parser.add_argument("--compare-baseline", action="store_true",
+                        help="compare the selector with an observed historical configuration")
     parser.add_argument("--target", nargs="*", metavar="KEY=VALUE")
     parser.add_argument("--margin", type=float, default=0.0)
     parser.add_argument("--weights", nargs=3, type=float, metavar=("ERROR", "ACCURACY", "PREDICTION"),
@@ -513,6 +584,11 @@ def main(argv=None):
     if args.choose:
         result = choose_configuration(rows, args.configuration, args.error_column,
                                       args.metric, "PRED40+", tuple(args.weights))
+    elif args.compare_baseline:
+        historical = dict(item.split("=", 1) for item in (args.target or []))
+        result = compare_with_historical_baseline(rows, historical, args.configuration,
+                                                  args.error_column, args.metric,
+                                                  "PRED40+", tuple(args.weights))
     elif args.suggest:
         target = dict(item.split("=", 1) for item in (args.target or []))
         result = suggest_hyperparameter_change(rows, target, args.error_column,
