@@ -17,6 +17,47 @@ from sklearn.preprocessing import StandardScaler
 from scipy import stats
 
 
+class IncrementalFlow:
+    """Online statistics for an ordered stream of encoder measurements."""
+
+    def __init__(self, settings: list[str]):
+        self.settings = list(settings)
+        self.count = 0
+        self.mean = 0.0
+        self._m2 = 0.0
+        self.best: dict | None = None
+
+    def update(self, row: dict[str, float | int]) -> dict:
+        if "Performance-" not in row:
+            raise ValueError("missing required measure column: Performance-")
+        value = float(row["Performance-"])
+        configuration = {name: float(row[name]) for name in self.settings}
+        self.count += 1
+        delta = value - self.mean
+        self.mean += delta / self.count
+        self._m2 += delta * (value - self.mean)
+        if self.best is None or value < self.best["value"]:
+            self.best = {"value": value, "settings": configuration}
+        return self.snapshot()
+
+    def snapshot(self) -> dict:
+        return {"count": self.count, "mean": self.mean if self.count else None,
+                "sample_variance": (self._m2 / (self.count - 1)
+                                     if self.count > 1 else None),
+                "best": self.best}
+
+
+def flow(path: str | Path) -> list[dict]:
+    """Process CSV rows in file order and return the prefix snapshots."""
+    with Path(path).open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        settings = [name for name in (reader.fieldnames or []) if name != "Performance-"]
+        if "Performance-" not in (reader.fieldnames or []):
+            raise ValueError("missing required measure column: Performance-")
+        state = IncrementalFlow(settings)
+        return [state.update(row) for row in reader]
+
+
 def load_dataset(path: str | Path) -> tuple[list[str], np.ndarray, np.ndarray]:
     with Path(path).open(newline="") as handle:
         rows = list(csv.DictReader(handle))
@@ -163,9 +204,12 @@ def main() -> None:
     parser.add_argument("--certify", action="store_true")
     parser.add_argument("--practical-threshold", type=float, default=5.0)
     parser.add_argument("--configuration", type=str, help="JSON object of encoder settings")
+    parser.add_argument("--flow", action="store_true")
     args = parser.parse_args()
     started = perf_counter()
-    if args.certify:
+    if args.flow:
+        result = {"csv_order_is_demonstration_sequence": True, "snapshots": flow(args.dataset)}
+    elif args.certify:
         result = certify(args.dataset, args.practical_threshold)
     elif args.evaluate:
         result = evaluate(args.dataset)
