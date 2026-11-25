@@ -174,10 +174,52 @@ def certify(path, threshold):
             "interval_entirely_practically_below_B": lo > threshold,
             "interpretation": "observed Effort- is not verified monetary cost; practical importance is uncertain if the interval crosses a threshold"}
 
+def flow(path, warmup=2):
+    """Evaluate arrivals in CSV order, freezing each estimate before revealing its outcome."""
+    header, rows, _ = read_dataset(path)
+    predictors = [n for n in header if not n.endswith("X") and n not in OUTCOMES]
+    if warmup < 0: raise ValueError("warmup must be nonnegative")
+    results, history, scored = [], [], []
+    cumulative_model = cumulative_baseline = 0.0
+    for index, row in enumerate(rows, 1):
+        identifier = row.get("idX", "").strip() or row.get("id", "").strip() or str(index)
+        actual = _number(row.get("Effort-", ""))
+        if len(history) < warmup:
+            prediction = baseline = None
+            phase = "warm-up"
+        elif not history:
+            prediction = baseline = None
+            phase = "no-history"
+        else:
+            model = EffortGuesser(predictors).fit(history)
+            prediction = model.predict([row])[0]
+            baseline = model.mean
+            phase = "scored"
+        row_result = {"arrival": index, "identifier": identifier,
+                      "prior_training_count": len(history), "phase": phase,
+                      "prediction": prediction, "baseline": baseline,
+                      "revealed_effort": actual, "absolute_error": None,
+                      "baseline_absolute_error": None, "cumulative_mae": None,
+                      "baseline_cumulative_mae": None}
+        if phase == "scored" and actual is not None:
+            error, base_error = abs(prediction - actual), abs(baseline - actual)
+            scored.append((error, base_error)); cumulative_model += error; cumulative_baseline += base_error
+            row_result.update(absolute_error=error, baseline_absolute_error=base_error,
+                              cumulative_mae=cumulative_model / len(scored),
+                              baseline_cumulative_mae=cumulative_baseline / len(scored))
+        results.append(row_result)
+        if actual is not None:
+            history.append(row.copy())
+    return {"predictors": predictors, "warmup": warmup, "sequence": "CSV order; demonstration sequence, not a verified timeline",
+            "records": results, "scored_count": len(scored),
+            "mae": cumulative_model / len(scored) if scored else None,
+            "baseline_mae": cumulative_baseline / len(scored) if scored else None}
+
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     if len(argv) not in (1, 2, 3): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --certify DATASET.csv THRESHOLD")
-    if len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
+    if len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
+    elif len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
     elif len(argv) == 1: print(json.dumps(summarize(argv[0]), indent=2, sort_keys=True))
     else:
         with open(argv[1], encoding="utf-8") as f: proposal = json.load(f)
