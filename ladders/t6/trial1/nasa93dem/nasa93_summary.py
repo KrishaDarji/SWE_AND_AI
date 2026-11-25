@@ -326,6 +326,65 @@ def choose(path, budget):
                             "metadata and outcomes are not descriptor settings",
                             "selection does not establish that settings caused outcomes or guarantee future feasibility"]}
 
+def fix(path, proposal, budget, seed=42):
+    """Suggest a minimum-change repair using training rows only.
+
+    This is a hypothetical descriptor change, not a causal or operational
+    recommendation.  Candidate configurations are deduplicated in CSV order.
+    """
+    if not isinstance(budget, (int, float)) or isinstance(budget, bool) or not math.isfinite(budget) or budget < 0:
+        raise ValueError("budget must be a finite nonnegative number")
+    if not isinstance(proposal, dict): raise ValueError("proposal must be an object")
+    header, rows, _ = read_dataset(path)
+    predictors = [n for n in header if not n.endswith("X") and n not in OUTCOMES]
+    if set(proposal) != set(predictors):
+        raise ValueError("proposal must contain exactly all descriptor fields")
+    normalized = {name: str(proposal[name]).strip() for name in predictors}
+    usable = [(position, row) for position, row in enumerate(rows, 1)
+              if _number(row.get("Effort-", "")) is not None]
+    if len(usable) < 2: raise ValueError("at least two finite training targets are required")
+    clean = [row for _, row in usable]
+    train, _ = grouped_split(clean, predictors, seed)
+    model = EffortGuesser(predictors, seed=seed).fit(train)
+    proposal_prediction = model.predict([normalized])[0]
+    original = dict(normalized)
+    base = {"budget": budget, "seed": seed, "predictors": predictors,
+            "original_descriptors": original, "original_estimated_effort": proposal_prediction,
+            "model": "training-only categorical exact-group mean; unseen groups use training mean",
+            "candidate_source": "distinct descriptor configurations in training rows only",
+            "limitations": ["change count is a proxy, not monetary cost or operational risk",
+                            "candidates are hypothetical; descriptors may not be actionable",
+                            "observed combinations may not preserve project scope",
+                            "model differences are not causal improvements or guaranteed savings"]}
+    if proposal_prediction <= budget:
+        base.update(status="no-repair-needed", predicted_feasible=True,
+                    candidate_descriptors=original, changed_fields=[], change_count=0,
+                    candidate_estimated_effort=proposal_prediction, candidate_record_identifier=None)
+        return base
+    seen, candidates = set(), []
+    for position, row in usable:
+        config = {name: row.get(name, "").strip() for name in predictors}
+        key = tuple(config[name] if config[name].lower() not in MISSING else "<MISSING>" for name in predictors)
+        if key in seen: continue
+        seen.add(key)
+        predicted = model.predict([config])[0]
+        if predicted <= budget:
+            changed = [{"field": name, "old": original[name], "new": config[name]}
+                       for name in predictors if original[name] != config[name]]
+            identifier = row.get("idX", "").strip() or row.get("id", "").strip() or str(position)
+            candidates.append((len(changed), predicted, position, config, changed, identifier))
+    if not candidates:
+        base.update(status="no-feasible-repair", predicted_feasible=False,
+                    candidate_descriptors=None, changed_fields=[], change_count=None,
+                    candidate_estimated_effort=None, candidate_record_identifier=None)
+        return base
+    count, predicted, position, config, changed, identifier = min(candidates, key=lambda x: (x[0], x[1], x[2]))
+    base.update(status="repair-suggested", predicted_feasible=True,
+                candidate_descriptors=config, changed_fields=changed, change_count=count,
+                candidate_estimated_effort=predicted, candidate_record_identifier=identifier,
+                candidate_csv_position=position)
+    return base
+
 def blame_rows(rows, predictors):
     finite = [_number(r.get("Effort-", "")) for r in rows]
     finite = [x for x in finite if x is not None]
@@ -342,12 +401,15 @@ def blame_rows(rows, predictors):
 
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
-    if len(argv) not in (1, 2, 3): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --certify DATASET.csv THRESHOLD")
+    if len(argv) not in (1, 2, 3, 4): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --fix DATASET.csv PROPOSAL.json BUDGET")
     if len(argv) == 3 and argv[0] == "--choose": print(json.dumps(choose(argv[1], float(argv[2])), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--justify": print(json.dumps(justify(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--blame": print(json.dumps(blame(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
+    elif len(argv) == 4 and argv[0] == "--fix":
+        with open(argv[2], encoding="utf-8") as f: proposal = json.load(f)
+        print(json.dumps(fix(argv[1], proposal, float(argv[3])), indent=2, sort_keys=True))
     elif len(argv) == 1: print(json.dumps(summarize(argv[0]), indent=2, sort_keys=True))
     else:
         with open(argv[1], encoding="utf-8") as f: proposal = json.load(f)
