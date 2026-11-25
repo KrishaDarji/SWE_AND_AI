@@ -34,15 +34,20 @@ def csv_rows(path):
 class _Running:
     def __init__(self):
         self.count = 0; self.mean = 0.0; self.m2 = 0.0
+        self.values = []
     def add(self, value):
+        self.values.append(value)
         self.count += 1
         delta = value - self.mean
         self.mean += delta / self.count
         self.m2 += delta * (value - self.mean)
     def snapshot(self):
+        # Recompute the small summary from retained values so the public
+        # result agrees exactly with the documented two-pass definition.
         return {"count": self.count,
                 "mean": self.mean if self.count else None,
-                "sample_variance": self.m2 / (self.count - 1) if self.count >= 2 else None}
+                "sample_variance": (sum((x - sum(self.values) / self.count) ** 2 for x in self.values) / (self.count - 1)
+                                    if self.count >= 2 else None)}
 
 def _config(row):
     """Retain all five raw fields; absent fields are represented as None."""
