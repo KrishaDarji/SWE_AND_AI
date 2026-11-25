@@ -9,6 +9,74 @@ import random
 
 MISSING = {"", "?", "na", "n/a", "null", "none", "missing"}
 
+class FlowState:
+    """Incremental lower-is-better statistics for arriving CSV records."""
+    def __init__(self, outcome="Performance-"):
+        self.outcome = outcome
+        self.total_rows = self.valid_count = self.missing_count = self.invalid_count = 0
+        self.mean = 0.0
+        self._m2 = 0.0
+        self.best = None
+
+    def update(self, row, position):
+        self.total_rows += 1
+        raw = row.get(self.outcome, "")
+        if is_missing(raw):
+            self.missing_count += 1
+        else:
+            try:
+                value = float(raw)
+                if not math.isfinite(value):
+                    raise ValueError
+            except (TypeError, ValueError):
+                self.invalid_count += 1
+            else:
+                self.valid_count += 1
+                delta = value - self.mean
+                self.mean += delta / self.valid_count
+                self._m2 += delta * (value - self.mean)
+                if self.best is None or value < self.best["value"]:
+                    settings = {key: val for key, val in row.items() if key != self.outcome}
+                    self.best = {"value": value, "position": position, "settings": settings}
+        return self.snapshot()
+
+    def snapshot(self):
+        return {"total_rows": self.total_rows, "valid_count": self.valid_count,
+                "missing_count": self.missing_count, "invalid_count": self.invalid_count,
+                "mean": self.mean if self.valid_count else None,
+                "sample_variance": self._m2 / (self.valid_count - 1) if self.valid_count > 1 else None,
+                "best": None if self.best is None else {
+                    "value": self.best["value"], "position": self.best["position"],
+                    "settings": dict(self.best["settings"])}}
+
+def flow_rows(rows, outcome="Performance-"):
+    """Yield independent snapshots; positions are one-based CSV data rows."""
+    state = FlowState(outcome)
+    for position, row in enumerate(rows, 1):
+        yield state.update(row, position)
+
+def flow_csv(path, outcome="Performance-"):
+    """Stream a CSV in file order; the reader and rows are never materialized."""
+    with open(path, newline="", encoding="utf-8") as stream:
+        reader = csv.DictReader(stream)
+        if reader.fieldnames is None:
+            return
+        names = [name.strip() if name else "" for name in reader.fieldnames]
+        if any(not name for name in names):
+            raise ValueError("header contains an empty column name")
+        state = FlowState(outcome)
+        for position, raw in enumerate(reader, 1):
+            if None in raw:
+                raise ValueError("row has more fields than the header")
+            row = {name: (raw.get(name) or "").strip() for name in names}
+            yield state.update(row, position)
+
+def flow_final(path, outcome="Performance-"):
+    final = None
+    for final in flow_csv(path, outcome):
+        pass
+    return final or FlowState(outcome).snapshot()
+
 def _betacf(a, b, x):
     # Numerical Recipes' continued fraction, with symmetry used by _ibeta.
     tiny, eps, max_iter = 1e-300, 3e-12, 1000
