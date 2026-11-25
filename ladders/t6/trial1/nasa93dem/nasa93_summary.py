@@ -215,10 +215,55 @@ def flow(path, warmup=2):
             "mae": cumulative_model / len(scored) if scored else None,
             "baseline_mae": cumulative_baseline / len(scored) if scored else None}
 
+def _effort_groups(rows, descriptor):
+    groups = {}
+    for row in rows:
+        y = _number(row.get("Effort-", ""))
+        value = row.get(descriptor, "").strip()
+        key = value if value.lower() not in MISSING else "<MISSING>"
+        if y is not None: groups.setdefault(key, []).append(y)
+    return groups
+
+def blame(path):
+    """Rank categorical descriptors by marginal association with observed effort.
+
+    The primary score is eta-squared: between-group sum of squares divided by
+    total sum of squares.  This is adapted from EZR's grouped summaries,
+    diversity, and discretize/divide ideas; it is descriptive, not causal.
+    """
+    header, rows, _ = read_dataset(path)
+    predictors = [n for n in header if not n.endswith("X") and n not in OUTCOMES]
+    ys = [_number(r.get("Effort-", "")) for r in rows]
+    finite = [y for y in ys if y is not None]
+    overall = statistics.fmean(finite) if finite else None
+    total_ss = sum((y - overall) ** 2 for y in finite) if overall is not None else 0.0
+    ranked = []
+    for order, name in enumerate(predictors):
+        groups = _effort_groups(rows, name)
+        n = sum(map(len, groups.values()))
+        means = {k: statistics.fmean(v) for k, v in groups.items() if v}
+        between = sum(len(v) * (means[k] - overall) ** 2 for k, v in groups.items()) if overall is not None else 0.0
+        score = between / total_ss if total_ss > 0 else 0.0
+        largest = max(means, key=lambda k: (means[k], k)) if means else None
+        smallest = min(means, key=lambda k: (means[k], k)) if means else None
+        ranked.append({"descriptor": name, "score": score, "direction":
+                      "higher in " + largest + "; lower in " + smallest if means and largest != smallest else "no directional contrast",
+                      "group_count": len(groups), "usable_count": n,
+                      "groups": {k: {"count": len(v), "effort": _stats(v), "mean": means[k]} for k, v in sorted(groups.items())},
+                      "note": "marginal categorical association; groups with fewer than 2 observations are retained"})
+    ranked.sort(key=lambda x: (-x["score"], predictors.index(x["descriptor"])))
+    return {"target": "Effort-", "predictors": predictors, "usable_effort_count": len(finite),
+            "overall_effort": _stats(finite), "score": "eta_squared_between_over_total",
+            "association_type": "marginal; correlated descriptors can share explanatory information",
+            "limitations": ["higher effort alone does not establish inefficiency because scope differs",
+                            "delivered size is excluded; this is not size-adjusted productivity",
+                            "no causal, defect-risk, process-improvement, or monetary claim"], "ranking": ranked}
+
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     if len(argv) not in (1, 2, 3): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --certify DATASET.csv THRESHOLD")
     if len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
+    elif len(argv) == 2 and argv[0] == "--blame": print(json.dumps(blame(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
     elif len(argv) == 1: print(json.dumps(summarize(argv[0]), indent=2, sort_keys=True))
     else:
