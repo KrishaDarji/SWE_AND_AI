@@ -259,9 +259,76 @@ def blame(rows, max_numeric_groups=4):
     for i, field in enumerate(result["fields"], 1): field["rank"] = i
     return result
 
+def _median(values):
+    xs = sorted(values); n = len(xs)
+    return (xs[(n - 1) // 2] + xs[n // 2]) / 2
+
+def justify(rows):
+    """Select the best observed complete row and compare it with outcome medians."""
+    rows = list(rows)
+    finite_outcomes = {outcome: [number(row.get(outcome)) for row in rows]
+                       for outcome in OUTCOMES}
+    references = {}
+    for outcome, values in finite_outcomes.items():
+        good = [value for value in values if value is not None]
+        references[outcome] = {"count": len(good), "median": _median(good) if good else None}
+    eligible = []
+    for position, row in enumerate(rows, 1):
+        settings = {}
+        valid = True
+        for field in CONFIG:
+            raw = clean(row.get(field))
+            value = raw if field == "criterion" else number(raw)
+            if value is None:
+                valid = False
+            settings[field] = value
+        outcomes = {name: number(row.get(name)) for name in OUTCOMES}
+        if valid and all(value is not None for value in outcomes.values()):
+            eligible.append((outcomes["MRE-"], -outcomes["ACC+"],
+                             -outcomes["PRED40+"], position,
+                             {"position": position, "configuration": settings,
+                              "outcomes": outcomes}))
+    result = {"status": "defined" if eligible else ("empty" if not rows else "no_eligible_row"),
+              "position_convention": "one-based position among CSV data rows, excluding the header; original positions are retained",
+              "selection_rule": ["lowest MRE-", "highest ACC+", "highest PRED40+", "earliest original CSV row position"],
+              "eligible_count": len(eligible), "row_count": len(rows),
+              "references": references, "direction_labels": DIRECTIONS}
+    if not eligible:
+        result["recommendation"] = None
+        result["context"] = {"status": "unavailable", "reason": "no complete configuration with three finite outcomes"}
+        return result
+    selected = min(eligible)[4]
+    comparisons = {}
+    for outcome, value in selected["outcomes"].items():
+        reference = references[outcome]
+        if reference["median"] is None:
+            comparisons[outcome] = {"status": "missing_reference", "selected": value, "reference": reference}
+        else:
+            delta = value - reference["median"]
+            better = delta < 0 if outcome == "MRE-" else delta > 0
+            comparisons[outcome] = {"status": "defined", "selected": value,
+                                    "reference": reference, "difference": delta,
+                                    "direction": DIRECTIONS[outcome], "favorable_vs_median": better}
+    association = blame(rows)
+    selected_associations = []
+    for field_report in association["fields"]:
+        field = field_report["field"]
+        raw = selected["configuration"][field]
+        group = raw if field == "criterion" else next((g for value, g in _quantile_groups(
+            [number(row.get(field)) for row in rows if number(row.get(field)) is not None])[0].items() if value == raw), None)
+        selected_associations.append({"field": field, "selected_value": raw,
+                                      "marginal_eta_squared": field_report["eta_squared"],
+                                      "selected_group": group})
+    result.update({"recommendation": selected, "comparisons": comparisons,
+                   "context": {"status": "defined", "interpretation": "global marginal associations describe the dataset, not causal effects or local contributions", "associations": selected_associations}})
+    return result
+
 def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    rows = list(read_rows(argv[1])[1]); report = blame(rows)
+    rows = list(read_rows(argv[1])[1]); report = justify(rows)
+    print("Retrospective recommendation (observed complete rows; not a prediction)")
+    print(report)
+    return
     print("Blame: marginal eta-squared associations with MRE- (lower MRE- is better)")
     for field in report["fields"]:
         print("%d. %s eta_squared=%s eligible=%d excluded=%d groups=%d" % (field["rank"], field["field"], field["eta_squared"], field["eligible_count"], field["excluded_count"], field["group_count"]))
