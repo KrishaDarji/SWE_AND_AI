@@ -9,6 +9,85 @@ import random
 
 MISSING = {"", "?", "na", "n/a", "null", "none", "missing"}
 
+def _betacf(a, b, x):
+    # Numerical Recipes' continued fraction, with symmetry used by _ibeta.
+    tiny, eps, max_iter = 1e-300, 3e-12, 1000
+    qab, qap, qam = a + b, a + 1.0, a - 1.0
+    c, d = 1.0, 1.0 - qab * x / qap
+    d = max(abs(d), tiny) * (1 if d >= 0 else -1); d = 1.0 / d
+    h = d
+    for m in range(1, max_iter + 1):
+        m2 = 2 * m
+        aa = m * (b - m) * x / ((qam + m2) * (a + m2))
+        d = 1.0 + aa * d; d = max(abs(d), tiny) * (1 if d >= 0 else -1); d = 1.0 / d
+        c = 1.0 + aa / c; c = max(abs(c), tiny) * (1 if c >= 0 else -1)
+        d *= c; h *= d
+        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))
+        d = 1.0 + aa * d; d = max(abs(d), tiny) * (1 if d >= 0 else -1); d = 1.0 / d
+        c = 1.0 + aa / c; c = max(abs(c), tiny) * (1 if c >= 0 else -1)
+        delta = d * c; h *= delta
+        if abs(delta - 1.0) < eps: return h
+    raise ArithmeticError("incomplete beta continued fraction did not converge")
+
+def _ibeta(x, a, b):
+    if not 0 <= x <= 1: raise ValueError("beta argument outside [0, 1]")
+    if x in (0.0, 1.0): return x
+    front = math.exp(math.lgamma(a+b)-math.lgamma(a)-math.lgamma(b) + a*math.log(x) + b*math.log1p(-x))
+    if x < (a + 1) / (a + b + 2): return front * _betacf(a,b,x) / a
+    return 1.0 - front * _betacf(b,a,1-x) / b
+
+def t_cdf(t, df):
+    if df <= 0 or not math.isfinite(t): raise ValueError("finite t and positive degrees of freedom required")
+    if t == 0: return 0.5
+    sign = 1 if t > 0 else -1; x = abs(t)
+    if df > 10000: return 0.5 * (1 + sign * math.erf(x / math.sqrt(2)))
+    norm = math.exp(math.lgamma((df+1)/2)-math.lgamma(df/2)) / math.sqrt(df*math.pi)
+    n = max(200, int(200*x)+1); n += n % 2; h=x/n
+    total = 1.0 + (1+x*x/df) ** (-(df+1)/2)
+    for i in range(1,n):
+        z=i*h; total += (4 if i%2 else 2) * (1+z*z/df) ** (-(df+1)/2)
+    area = norm * h * total / 3
+    return .5 + sign * area
+
+def t_quantile(probability, df):
+    if not 0 < probability < 1 or df <= 0: raise ValueError("invalid quantile arguments")
+    if probability == 0.5: return 0.0
+    sign = 1 if probability > .5 else -1
+    target = max(probability, 1-probability); lo, hi = 0.0, 1.0
+    while t_cdf(hi, df) < target: hi *= 2
+    for _ in range(100):
+        mid = (lo + hi) / 2
+        if t_cdf(mid, df) < target: lo = mid
+        else: hi = mid
+    return sign * (lo + hi) / 2
+
+def certify(path, threshold=None):
+    names, rows, warnings = read_runs(path)
+    setting = next((n for n in names if n.lower() == "no_8x8dct"), None)
+    outcome = next((n for n in names if n.rstrip().lower() == "performance-"), None)
+    if setting is None or outcome is None: raise ValueError("required no_8x8dct and Performance- columns are absent")
+    if threshold is not None and (not math.isfinite(float(threshold)) or float(threshold) < 0): raise ValueError("threshold must be finite and nonnegative")
+    groups = {0: [], 1: []}; excluded = 0
+    for row in rows:
+        try: g = int(row[setting]); y = float(row[outcome])
+        except (KeyError, TypeError, ValueError): excluded += 1; continue
+        if g not in groups or not math.isfinite(y): excluded += 1; continue
+        groups[g].append(y)
+    def stats(xs):
+        if not xs: return {"count":0,"mean":None,"sample_variance":None}
+        return {"count":len(xs),"mean":statistics.fmean(xs),"sample_variance":statistics.variance(xs) if len(xs)>1 else None}
+    result = {"reference":stats(groups[0]),"candidate":stats(groups[1]),"difference":None,"excluded_count":excluded,"outcome":"Performance-","direction":"lower is better","threshold":threshold,"inference":None}
+    a,b=groups[0],groups[1]
+    if len(a)<2 or len(b)<2: result["inference"]={"defined":False,"reason":"both groups require at least two usable observations"}; return result
+    va,vb=statistics.variance(a),statistics.variance(b); ma,mb=statistics.fmean(a),statistics.fmean(b); diff=mb-ma
+    se=math.sqrt(va/len(a)+vb/len(b)); result["difference"]=diff
+    if se == 0: result["inference"]={"defined":False,"reason":"standard error is zero; inference is undefined"}; return result
+    df=(va/len(a)+vb/len(b))**2/((va/len(a))**2/(len(a)-1)+(vb/len(b))**2/(len(b)-1))
+    t=diff/se; p=2*min(t_cdf(t,df),1-t_cdf(t,df)); crit=t_quantile(.975,df); lo,hi=diff-crit*se,diff+crit*se
+    practical = None if threshold is None else diff <= -float(threshold)
+    result["difference"] = diff; result["inference"]={"defined":True,"standard_error":se,"t":t,"degrees_of_freedom":df,"p_two_sided":min(1,max(0,p)),"confidence_interval_95":[lo,hi],"statistically_significant":p<.05,"point_meets_practical_threshold":practical,"interval_supports_practical_improvement":None if threshold is None else hi <= -float(threshold),"note":"Welch-Satterthwaite; Simpson integration for the t CDF and bisection quantiles."}
+    return result
+
 def is_missing(value):
     return value.strip().lower() in MISSING
 
