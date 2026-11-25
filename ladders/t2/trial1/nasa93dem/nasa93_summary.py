@@ -389,6 +389,64 @@ def recommend_process_change(path, minimum_level_count=3):
     }
 
 
+def spot_inconsistent_project(path, threshold=3.5):
+    """Spot the project least consistent with historical delivery ratios.
+
+    The comparison uses effort, defects, and months per KLOC.  For each
+    ratio, a modified z-score based on the median absolute deviation (MAD)
+    measures robust distance from the historical center.  The returned record
+    is the project with the largest maximum absolute score; ``inconsistent``
+    is true when that score reaches ``threshold``.  This is an alert for
+    review, not proof of a data error or causal explanation.
+    """
+    try:
+        threshold = float(threshold)
+    except (TypeError, ValueError):
+        raise ValueError("threshold must be a positive finite number")
+    if not math.isfinite(threshold) or threshold <= 0:
+        raise ValueError("threshold must be a positive finite number")
+    projects = load_projects(path)
+    feature_names = ("effort_per_kloc", "defects_per_kloc", "months_per_kloc")
+    features = []
+    for project in projects:
+        if project["Kloc+"] <= 0:
+            raise ValueError("Kloc+ must be positive for inconsistency analysis")
+        features.append({
+            "effort_per_kloc": project["Effort-"] / project["Kloc+"],
+            "defects_per_kloc": project["Defects-"] / project["Kloc+"],
+            "months_per_kloc": project["MonthsX"] / project["Kloc+"],
+        })
+    centers = {name: statistics.median(item[name] for item in features)
+               for name in feature_names}
+    mads = {name: statistics.median(abs(item[name] - centers[name]) for item in features)
+            for name in feature_names}
+    scores = []
+    for project, item in zip(projects, features):
+        absolute_scores = {}
+        for name in feature_names:
+            if mads[name] == 0:
+                score = 0.0 if item[name] == centers[name] else float("inf")
+            else:
+                score = 0.6745 * (item[name] - centers[name]) / mads[name]
+            absolute_scores[name] = abs(score)
+        scores.append((max(absolute_scores.values()), project["id"], project,
+                       item, absolute_scores))
+    score, _, project, ratios, absolute_scores = max(scores,
+                                                     key=lambda entry: (entry[0], str(entry[1])))
+    return {
+        "method": "maximum absolute modified z-score across per-KLOC ratios",
+        "threshold": threshold,
+        "dataset_medians": centers,
+        "dataset_mads": mads,
+        "project_count": len(projects),
+        "inconsistent": score >= threshold,
+        "score": score,
+        "project": dict(project),
+        "ratios": ratios,
+        "absolute_scores": absolute_scores,
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -411,8 +469,12 @@ def main(argv=None):
     parser.add_argument("--choose-max-months", type=float)
     parser.add_argument("--choose-max-defects", type=float)
     parser.add_argument("--recommend-process-change", action="store_true")
+    parser.add_argument("--spot-inconsistent", action="store_true")
+    parser.add_argument("--inconsistency-threshold", type=float, default=3.5)
     args = parser.parse_args(argv)
-    result = (recommend_process_change(args.csv_path, args.minimum_level_count)
+    result = (spot_inconsistent_project(args.csv_path, args.inconsistency_threshold)
+              if args.spot_inconsistent else
+              recommend_process_change(args.csv_path, args.minimum_level_count)
               if args.recommend_process_change else
               choose_project_settings(args.csv_path, args.choose_budget,
                                       args.choose_max_months, args.choose_max_defects)
