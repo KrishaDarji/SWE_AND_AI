@@ -314,6 +314,76 @@ def choose_configuration(rows, configuration_columns=None, error_column="MRE-",
             "candidate_count": len(usable), "caveat": "Validate prospectively before production deployment."}
 
 
+def spot_quality_anomalies(rows, quality_columns=None, z_threshold=3.5,
+                           duplicate_tolerance=0.0):
+    """Screen quality results for unusual values or possible measurement errors."""
+    rows = list(rows)
+    if not rows:
+        raise ValueError("CSV contains no data rows")
+    columns = list(rows[0])
+    quality_columns = list(quality_columns or [c for c in ("MRE-", "ACC+", "PRED40+") if c in columns])
+    missing = [c for c in quality_columns if c not in columns]
+    if missing:
+        raise ValueError("Unknown quality columns: " + ", ".join(missing))
+    if z_threshold <= 0 or duplicate_tolerance < 0:
+        raise ValueError("thresholds must be positive and tolerance non-negative")
+    configuration_columns = [c for c in columns if c not in quality_columns]
+    flags = []
+    indexed_values = {c: [] for c in quality_columns}
+    for index, row in enumerate(rows):
+        reasons = []
+        for column in quality_columns:
+            value = _number(row[column])
+            if value is None:
+                reasons.append(column + " is missing or non-finite")
+            else:
+                indexed_values[column].append((index, value))
+                if column != "MRE-" and not 0.0 <= value <= 1.0:
+                    reasons.append(column + " is outside [0, 1]")
+                if column == "MRE-" and value < 0:
+                    reasons.append(column + " is negative")
+        if reasons:
+            flags.append({"index": index, "reasons": reasons})
+    for column, indexed in indexed_values.items():
+        numbers = [value for _, value in indexed]
+        if len(numbers) < 3:
+            continue
+        median = statistics.median(numbers)
+        mad = statistics.median(abs(value - median) for value in numbers)
+        if mad == 0:
+            continue
+        for index, value in indexed:
+            score = 0.6744897501960817 * (value - median) / mad
+            if abs(score) > z_threshold:
+                item = next((flag for flag in flags if flag["index"] == index), None)
+                if item is None:
+                    item = {"index": index, "reasons": []}
+                    flags.append(item)
+                item["reasons"].append(column + " robust outlier (score %.3f)" % score)
+    groups = {}
+    for index, row in enumerate(rows):
+        key = tuple(str(row[c]) for c in configuration_columns)
+        groups.setdefault(key, []).append(index)
+    duplicate_groups = []
+    for key, indexes in groups.items():
+        if len(indexes) < 2:
+            continue
+        spreads = {}
+        for column in quality_columns:
+            values = [_number(rows[i][column]) for i in indexes]
+            if all(value is not None for value in values):
+                spreads[column] = max(values) - min(values)
+        if any(spread > duplicate_tolerance for spread in spreads.values()):
+            duplicate_groups.append({"indexes": indexes,
+                "configuration": dict(zip(configuration_columns, key)),
+                "quality_spreads": spreads})
+    return {"row_count": len(rows), "quality_columns": quality_columns,
+            "flagged_rows": sorted(flags, key=lambda item: item["index"]),
+            "duplicate_inconsistencies": duplicate_groups,
+            "flag_count": len(flags), "duplicate_inconsistency_count": len(duplicate_groups),
+            "caveat": "Flags are screening evidence; verify the original evaluation and metric definition."}
+
+
 class SequentialEvaluator:
     """Evaluate configurations incrementally as validation results arrive.
 
@@ -422,6 +492,7 @@ def main(argv=None):
                         help="choose a configuration balancing accuracy and prediction quality")
     parser.add_argument("--suggest", action="store_true",
                         help="suggest the smallest observed change that lowers error")
+    parser.add_argument("--spot", action="store_true", help="spot unusual quality results")
     parser.add_argument("--target", nargs="*", metavar="KEY=VALUE")
     parser.add_argument("--margin", type=float, default=0.0)
     parser.add_argument("--weights", nargs=3, type=float, metavar=("ERROR", "ACCURACY", "PREDICTION"),
@@ -446,6 +517,8 @@ def main(argv=None):
         target = dict(item.split("=", 1) for item in (args.target or []))
         result = suggest_hyperparameter_change(rows, target, args.error_column,
                                                args.configuration)
+    elif args.spot:
+        result = spot_quality_anomalies(rows, args.quality)
     elif args.justify:
         target = dict(item.split("=", 1) for item in (args.target or []))
         result = justify_configuration(rows, target, args.quality or ["MRE-", "ACC+"],
