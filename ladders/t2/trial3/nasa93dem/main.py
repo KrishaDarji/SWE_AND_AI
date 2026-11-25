@@ -12,6 +12,7 @@ from project_history.blame import explain_excessive_effort
 from project_history.justification import justify_estimate, justification_lines
 from project_history.optimizer import maximize_delivered_value
 from project_history.risk import recommend_cheapest_risk_change
+from project_history.spot import spot_inconsistent_project
 
 
 def main() -> int:
@@ -30,6 +31,8 @@ def main() -> int:
     parser.add_argument("--value-budget", type=float, help="fixed effort budget for value optimization")
     parser.add_argument("--recommend-risk", nargs=2, metavar=("ATTRIBUTE", "CURRENT"),
                         help="recommend the cheapest lower-risk process value")
+    parser.add_argument("--spot", nargs="?", const="", metavar="PROJECT_ID",
+                        help="spot the most historically inconsistent project, or inspect PROJECT_ID")
     args = parser.parse_args()
     projects = list(CsvProjectRepository(args.csv_path).projects())
     summary = summarize_projects(projects)
@@ -100,6 +103,15 @@ def main() -> int:
             print(f"Risk-change recommendation: none ({result['reason']})")
         else:
             print(f"Risk-change recommendation: {recommendation['value']} at cost {recommendation['cost']:.2f}; risk {recommendation['risk']:.2f}")
+    if args.spot is not None:
+        result = spot_inconsistent_project(projects, args.spot or None)
+        item = result["project"]
+        if item is None:
+            print(f"Inconsistent project: none ({result['reason']})")
+        else:
+            print(f"Inconsistent project candidate: {item.project_id}")
+            print(f"Productivity: {item.effort / item.kloc:.2f} effort/KLOC; historical median: {result['median_productivity']:.2f}")
+            print(f"Modified z-score: {result['score']:.2f}; inconsistent: {'yes' if result['inconsistent'] else 'no'}")
     return 0
 
 
