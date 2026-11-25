@@ -311,12 +311,86 @@ def evaluate(path, seed=42):
             "held_out_mae": mae, "baseline_mae": base_mae, "training_mean": baseline,
             "excluded_invalid_targets": len(rows)-len(valid), "train_indexes": train_i, "test_indexes": test_i}
 
+def _normalized_setting(value):
+    """Normalize numeric spellings so 1, 1.0, and 1e0 share one group."""
+    if is_missing(str(value)):
+        return None
+    number = _finite(value)
+    if number is None:
+        return None
+    return ("number", number)
+
+def _setting_key(value):
+    if is_missing(str(value)):
+        return None
+    numeric = _normalized_setting(value)
+    try:
+        parsed = float(value)
+        if not math.isfinite(parsed):
+            return None
+    except (TypeError, ValueError):
+        pass
+    return numeric if numeric is not None else ("text", str(value).strip())
+
+def blame_rows(rows, outcome="Performance-"):
+    """Rank settings by marginal eta-squared association with a lower-is-better outcome."""
+    if not rows:
+        return {"outcome": outcome, "settings": [], "assumptions": _blame_assumptions()}
+    names = list(rows[0])
+    if outcome not in names:
+        raise ValueError("required measured outcome %s is absent" % outcome)
+    results = []
+    for name in names:
+        if name == outcome:
+            continue
+        groups, excluded = {}, 0
+        for row in rows:
+            y = _finite(row.get(outcome, ""))
+            key = _setting_key(row.get(name, ""))
+            if y is None or key is None or key[1] == "":
+                excluded += 1
+                continue
+            groups.setdefault(key, []).append(y)
+        eligible = sum(len(values) for values in groups.values())
+        means = {key: statistics.fmean(values) for key, values in groups.items()}
+        reference = statistics.fmean(y for values in groups.values() for y in values) if eligible else None
+        total_ss = sum((y-reference)**2 for values in groups.values() for y in values) if eligible else None
+        between_ss = sum(len(values)*(means[key]-reference)**2 for key, values in groups.items()) if eligible else None
+        score = between_ss/total_ss if total_ss and len(groups) >= 2 else None
+        ordered = sorted(groups, key=lambda key: (means[key], repr(key)))
+        result = {"setting": name, "eligible_count": eligible, "excluded_count": excluded,
+                  "group_count": len(groups), "groups": [{"value": key[1], "count": len(groups[key]), "mean": means[key]}
+                                                           for key in sorted(groups, key=repr)],
+                  "reference_mean": reference, "between_group_ss": between_ss, "total_ss": total_ss,
+                  "association_score": score, "rank": None,
+                  "lower_mean_groups": [key[1] for key in ordered if means[key] < reference] if reference is not None else [],
+                  "higher_mean_groups": [key[1] for key in ordered if means[key] > reference] if reference is not None else [],
+                  "status": "defined" if score is not None else ("insufficient_data" if eligible < 2 or len(groups) < 2 else "constant_outcome_or_setting")}
+        results.append(result)
+    results.sort(key=lambda item: (-(item["association_score"] if item["association_score"] is not None else -1), item["setting"]))
+    for rank, item in enumerate(results, 1):
+        item["rank"] = rank
+    return {"outcome": outcome, "direction": "lower is better", "settings": results,
+            "assumptions": _blame_assumptions()}
+
+def _blame_assumptions():
+    return ["Scores are marginal historical associations, not causal contributions or significance tests.",
+            "Missing/nonfinite settings and outcomes are excluded per setting.",
+            "Numeric settings are grouped by numeric value; other values by trimmed text.",
+            "Undefined scores occur with fewer than two groups or zero total outcome variation."]
+
+def blame(path, outcome="Performance-"):
+    names, rows, _ = read_runs(path)
+    return blame_rows(rows, outcome)
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize X264 historical runs")
     parser.add_argument("dataset", help="CSV dataset path")
+    parser.add_argument("--blame", action="store_true", help="rank settings by marginal association")
     args = parser.parse_args(argv)
     try:
-        print(json.dumps(summarize(args.dataset), indent=2, sort_keys=True))
+        result = blame(args.dataset) if args.blame else summarize(args.dataset)
+        print(json.dumps(result, indent=2, sort_keys=True))
     except (OSError, ValueError, csv.Error) as error:
         print("error: %s" % error, file=sys.stderr)
         return 2
