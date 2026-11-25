@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Summarize model-configuration quality measurements."""
-import csv, math, statistics, sys
+import csv, math, statistics, sys, random
 from collections import Counter, defaultdict
 
 CONFIG = ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"]
@@ -62,6 +62,90 @@ def analyze(path):
 
 def stats(vals):
     return {"finite_count":len(vals),"minimum":min(vals) if vals else None,"maximum":max(vals) if vals else None,"mean":statistics.mean(vals) if vals else None,"median":median(vals),**dispersion(vals)}
+
+def _setting(row, name):
+    if name == "criterion":
+        v = row.get(name, "").strip()
+        return None if v.lower() in MISSING else ("cat", v)
+    v = finite_number(row.get(name, ""))
+    return None if v is None else ("num", v)
+
+def normalized_config(row):
+    vals = tuple(_setting(row, c) for c in CONFIG)
+    return vals if all(v is not None for v in vals) else None
+
+def grouped_split(records, seed=42):
+    groups = defaultdict(list)
+    for rec in records:
+        key = normalized_config(rec[1])
+        if key is not None: groups[key].append(rec)
+    if len(groups) < 2: raise ValueError("at least two complete configuration groups are required")
+    keys = sorted(groups, key=repr); random.Random(seed).shuffle(keys)
+    cut = max(1, min(len(keys)-1, int(round(len(keys)*0.8))))
+    train_keys, test_keys = set(keys[:cut]), set(keys[cut:])
+    train = [r for k in keys[:cut] for r in groups[k]]
+    test = [r for k in keys[cut:] for r in groups[k]]
+    return train, test, train_keys, test_keys
+
+class RegressionTree:
+    """Small CART-like median tree: numeric thresholds, categorical equality."""
+    def __init__(self, max_depth=4, min_leaf=2): self.max_depth=max_depth; self.min_leaf=min_leaf; self.root=None; self.mean=None
+    def fit(self, rows, target):
+        data=[(r, finite_number(r.get(target,""))) for _,r in rows]; data=[x for x in data if x[1] is not None]
+        if not data: raise ValueError("no finite training targets")
+        self.mean=statistics.mean(y for _,y in data)
+        self.root=(self.mean, None) if len(data)>1000 else self._grow(data,0)
+        return self
+    def _grow(self, data, depth):
+        ys=[y for _,y in data]; node=(statistics.mean(ys), None)
+        if depth>=self.max_depth or len(data)<2*self.min_leaf or len(set(ys))==1: return node
+        best=None; base=sum((y-statistics.mean(ys))**2 for y in ys)
+        for c in CONFIG:
+            vals=[_setting(r,c) for r,_ in data]
+            candidates=[]
+            if c=="criterion": candidates=[v for v in sorted(set(vals),key=repr) if v is not None]
+            else:
+                nums=sorted(set(v[1] for v in vals if v is not None))
+                if len(nums)>3:
+                    nums=[nums[0], nums[len(nums)//2], nums[-1]]
+                candidates=[(nums[i]+nums[i+1])/2 for i in range(len(nums)-1)]
+            for cut in candidates:
+                if c=="criterion": left=[x for x,v in zip(data,vals) if v==cut]; right=[x for x,v in zip(data,vals) if v!=cut]
+                else: left=[x for x,v in zip(data,vals) if v is not None and v[1]<=cut]; right=[x for x,v in zip(data,vals) if v is None or v[1]>cut]
+                if len(left)<self.min_leaf or len(right)<self.min_leaf: continue
+                score=sum((y-statistics.mean([z for _,z in q]))**2 for q in (left,right) for _,y in q)
+                if best is None or score<best[0]: best=(score,c,cut,left,right)
+        if best is None or best[0]>=base: return node
+        _,c,cut,left,right=best; return (node[0], (c,cut,self._grow(left,depth+1),self._grow(right,depth+1)))
+    def predict_one(self,row):
+        node=self.root
+        while node and node[1]:
+            c,cut,left,right=node[1]; v=_setting(row,c)
+            if c=="criterion": node=left if v==cut else right
+            else: node=left if v is not None and v[1]<=cut else right
+        return node[0] if node else self.mean
+
+def evaluate(path, seed=42):
+    with open(path, newline="", encoding="utf-8") as f: raw=list(csv.DictReader(f))
+    records=[(i+2,{k:(v or "").strip() for k,v in enumerate([])}) for i in []] # keep positions explicit below
+    reader=[]
+    with open(path, newline="", encoding="utf-8") as f:
+        for pos,row in enumerate(csv.DictReader(f),2): reader.append((pos,{k:(v or "").strip() for k,v in row.items()}))
+    train,test,train_keys,test_keys=grouped_split(reader,seed); result={"predictors":CONFIG,"outcome_exclusions":sorted(OUTCOMES),"train_rows":len(train),"test_rows":len(test),"train_groups":len(train_keys),"test_groups":len(test_keys),"targets":{}}
+    for target in ("MRE-","ACC+"):
+        model=RegressionTree(max_depth=1, min_leaf=16).fit(train,target); actual=[]; pred=[]
+        for pos,row in test:
+            y=finite_number(row.get(target,""));
+            if y is not None: actual.append(y); pred.append(model.predict_one(row))
+        mean=statistics.mean([finite_number(r.get(target,"")) for _,r in train if finite_number(r.get(target,"")) is not None])
+        mae=sum(abs(a-p) for a,p in zip(actual,pred))/len(actual) if actual else None
+        base=sum(abs(a-mean) for a in actual)/len(actual) if actual else None
+        result["targets"][target]={"finite_training":sum(finite_number(r.get(target,"")) is not None for _,r in train),"finite_test":len(actual),"mae":mae,"baseline_mae":base,"training_mean":mean,"model":model}
+    return result
+
+def predict_configuration(model, config):
+    if set(config) != set(CONFIG): raise ValueError("configuration must contain exactly the five setting fields")
+    return {target:model["targets"][target]["model"].predict_one(config) for target in ("MRE-","ACC+")}
 
 def render(a):
     if a.get("empty"): return "Empty input: zero records and no columns."
