@@ -444,6 +444,48 @@ def print_spot(result, examples=12):
     for row in result["reports"]:
         if row["status"] != "ordinary_nonflag": print("spot: " + repr(row))
 
+RACE_TIE_TOLERANCE = 1e-12
+
+def classify_difference(difference, tolerance=RACE_TIE_TOLERANCE):
+    if not isinstance(tolerance, (int, float)) or isinstance(tolerance, bool) or not math.isfinite(tolerance) or tolerance < 0:
+        raise ValueError("tolerance must be finite and nonnegative")
+    if difference is None or not math.isfinite(difference): return "undefined"
+    if difference > tolerance: return "win"
+    if difference < -tolerance: return "loss"
+    return "tie"
+
+def race(path, seeds=range(42, 52), tolerance=RACE_TIE_TOLERANCE, neighbors=5):
+    """Compare the existing categorical estimator with a training-mean baseline."""
+    if not isinstance(tolerance, (int, float)) or isinstance(tolerance, bool) or not math.isfinite(tolerance) or tolerance < 0:
+        raise ValueError("tolerance must be finite and nonnegative")
+    _, projects, invalid_rows, issues = load(path)
+    rows, comparisons = [], []
+    for seed in seeds:
+        train, test = split_groups(projects, seed)
+        try: model = CategoricalNeighborModel(neighbors).fit(train)
+        except ValueError as exc:
+            rows.append({"seed": seed, "status": "undefined", "error": str(exc), "train_rows": len(train), "test_rows": len(test), "train_groups": len({descriptor_key(p) for p in train}), "test_groups": len({descriptor_key(p) for p in test}), "evaluated_count": 0, "excluded_test_targets": len(test), "estimator_mae": None, "baseline_mae": None, "paired_difference": None, "classification": "undefined", "records": []})
+            continue
+        actual, predicted, records, excluded = [], [], [], Counter()
+        for p in test:
+            y, kind = _target(p)
+            if kind != "valid": excluded[kind] += 1; continue
+            actual.append(y); predicted.append(model.predict(p))
+            records.append({"position": p.position, "idX": p.identifier, "actual": y, "predicted": predicted[-1], "baseline_prediction": model.mean})
+        estimator_mae, baseline_mae = mae(actual, predicted), mae(actual, [model.mean] * len(actual))
+        difference = None if estimator_mae is None or baseline_mae is None else baseline_mae - estimator_mae
+        row = {"seed": seed, "status": "comparable" if difference is not None else "undefined", "train_rows": len(train), "test_rows": len(test), "train_groups": len({descriptor_key(p) for p in train}), "test_groups": len({descriptor_key(p) for p in test}), "evaluated_count": len(actual), "excluded_test_targets": sum(excluded.values()), "excluded_test_target_kinds": dict(excluded), "estimator_mae": estimator_mae, "baseline_mae": baseline_mae, "paired_difference": difference, "classification": classify_difference(difference, tolerance), "records": records}
+        rows.append(row)
+        if difference is not None: comparisons.append(difference)
+    result = {"path": path, "tolerance": tolerance, "seeds": list(seeds), "splits": rows, "invalid_rows": invalid_rows, "issues": issues, "summary": {"comparable_split_count": len(comparisons), "mean_paired_difference": sum(comparisons)/len(comparisons) if comparisons else None, "median_paired_difference": _median(comparisons), "estimator_mean_mae": sum(x["estimator_mae"] for x in rows if x["estimator_mae"] is not None)/len(comparisons) if comparisons else None, "baseline_mean_mae": sum(x["baseline_mae"] for x in rows if x["baseline_mae"] is not None)/len(comparisons) if comparisons else None, "wins": sum(x["classification"] == "win" for x in rows), "ties": sum(x["classification"] == "tie" for x in rows), "losses": sum(x["classification"] == "loss" for x in rows)}}
+    return result
+
+def print_race(result):
+    print("race_tie_tolerance: %r" % result["tolerance"])
+    print("interpretation: repeated overlapping grouped splits of one historical dataset; not independent LLM trials or datasets; no significance, causation, or future-superiority claim is made")
+    for row in result["splits"]: print("seed=%s %s" % (row["seed"], repr({k: v for k, v in row.items() if k != "records"})))
+    print("summary: " + repr(result["summary"]))
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize or estimate NASA93 historical projects")
     parser.add_argument("dataset")
@@ -457,9 +499,12 @@ def main(argv=None):
     parser.add_argument("--spot", action="store_true")
     parser.add_argument("--spot-threshold", type=float, default=3.5)
     parser.add_argument("--spot-min-reference", type=int, default=3)
+    parser.add_argument("--race", action="store_true")
+    parser.add_argument("--race-tolerance", type=float, default=RACE_TIE_TOLERANCE)
     parser.add_argument("--cap", type=float, default=100)
     args = parser.parse_args(argv)
-    if args.spot: print_spot(spot(args.dataset, args.spot_threshold, args.spot_min_reference))
+    if args.race: print_race(race(args.dataset, tolerance=args.race_tolerance))
+    elif args.spot: print_spot(spot(args.dataset, args.spot_threshold, args.spot_min_reference))
     elif args.choose: print_choose(choose(args.dataset, args.cap))
     elif args.justify: print_justify(justify(args.dataset, retrospective=args.retrospective_audit))
     elif args.blame: print_blame(blame(args.dataset))
