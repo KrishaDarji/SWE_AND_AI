@@ -8,6 +8,7 @@ import csv
 import json
 import math
 import statistics
+import random
 from collections import Counter
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -35,6 +36,19 @@ class Prediction:
     predicted_error: float | None
     predicted_accuracy: float | None
     predicted_metrics: dict[str, float | None]
+
+
+@dataclass(frozen=True)
+class Certification:
+    """Evidence about whether one configuration family reliably wins."""
+    family_field: str
+    family_a: str
+    family_b: str
+    metrics: dict[str, dict[str, Any]]
+    reliable_winner: str | None
+    confidence: float
+    samples_a: int
+    samples_b: int
 
 
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -133,14 +147,80 @@ def predict(path: str | Path, configuration: Mapping[str, Any], neighbors: int =
     return asdict(result) | {"configuration": dict(configuration), "source": str(path)}
 
 
+def certify(path: str | Path, family_field: str, family_a: Any, family_b: Any,
+            metrics: Sequence[str] | None = None, confidence: float = 0.95,
+            resamples: int = 2000, seed: int = 0) -> dict[str, Any]:
+    """Compare two family values using bootstrap confidence intervals.
+
+    A family is reliable only when every requested metric's interval excludes a
+    tie in the same direction.  ``+`` metrics are maximized and ``-`` metrics
+    are minimized.  The reported difference is family A minus family B after
+    converting all metrics to a higher-is-better scale.
+    """
+    if not 0 < confidence < 1 or resamples < 1:
+        raise ValueError("confidence must be between 0 and 1 and resamples must be positive")
+    fields, rows = read_rows(path)
+    if family_field not in fields:
+        raise ValueError(f"unknown family field: {family_field}")
+    a, b = str(family_a), str(family_b)
+    group_a = [row for row in rows if row.get(family_field, "") == a]
+    group_b = [row for row in rows if row.get(family_field, "") == b]
+    if not group_a or not group_b:
+        raise ValueError("both family values must occur in the dataset")
+    metric_fields, _ = classify_columns(fields)
+    selected = list(metrics) if metrics is not None else metric_fields
+    unknown = [field for field in selected if field not in metric_fields]
+    if unknown:
+        raise ValueError(f"unknown metric fields: {', '.join(unknown)}")
+    rng = random.Random(seed)
+    alpha = (1.0 - confidence) / 2.0
+    report = {}
+    winners = []
+    for metric in selected:
+        sign = 1.0 if metric.endswith("+") else -1.0
+        values_a = [sign * _number(row.get(metric, "")) for row in group_a]
+        values_b = [sign * _number(row.get(metric, "")) for row in group_b]
+        values_a = [value for value in values_a if value is not None]
+        values_b = [value for value in values_b if value is not None]
+        if not values_a or not values_b:
+            report[metric] = {"difference": None, "interval": [None, None], "winner": None}
+            continue
+        observed = statistics.fmean(values_a) - statistics.fmean(values_b)
+        differences = []
+        for _ in range(resamples):
+            sample_a = [values_a[rng.randrange(len(values_a))] for _ in values_a]
+            sample_b = [values_b[rng.randrange(len(values_b))] for _ in values_b]
+            differences.append(statistics.fmean(sample_a) - statistics.fmean(sample_b))
+        differences.sort()
+        low = differences[min(len(differences) - 1, int(alpha * len(differences)))]
+        high = differences[min(len(differences) - 1, int((1 - alpha) * len(differences)))]
+        winner = a if low > 0 else b if high < 0 else None
+        report[metric] = {"difference": observed, "interval": [low, high], "winner": winner,
+                          "direction": "higher_is_better"}
+        if winner:
+            winners.append(winner)
+    reliable = winners[0] if winners and len(winners) == len(selected) and len(set(winners)) == 1 else None
+    result = Certification(family_field, a, b, report, reliable, confidence, len(group_a), len(group_b))
+    return asdict(result) | {"source": str(path)}
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
     parser.add_argument("--output", type=Path, help="Write JSON summary to this path")
     parser.add_argument("--predict", type=json.loads, metavar="JSON", help="Predict metrics for a configuration")
     parser.add_argument("--neighbors", type=int, default=5)
+    parser.add_argument("--certify", type=json.loads, metavar="JSON",
+                        help="Certify two family values, e.g. '{\"field\":\"criterion\",\"a\":\"poisson\",\"b\":\"squared_error\"}'")
+    parser.add_argument("--confidence", type=float, default=0.95)
+    parser.add_argument("--resamples", type=int, default=2000)
     args = parser.parse_args(argv)
-    result = predict(args.csv_path, args.predict, args.neighbors) if args.predict is not None else summarize(args.csv_path)
+    if args.certify is not None:
+        spec = args.certify
+        result = certify(args.csv_path, spec["field"], spec["a"], spec["b"],
+                         spec.get("metrics"), args.confidence, args.resamples)
+    else:
+        result = predict(args.csv_path, args.predict, args.neighbors) if args.predict is not None else summarize(args.csv_path)
     rendered = json.dumps(result, indent=2, sort_keys=True)
     if args.output:
         args.output.write_text(rendered + "\n", encoding="utf-8")
