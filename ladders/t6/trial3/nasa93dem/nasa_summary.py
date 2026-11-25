@@ -328,6 +328,54 @@ def render_choose(path, effort_cap=100):
         print(f"winner_Kloc+={_number(values.get('Kloc+', ''))} winner_Effort-={_effort(values.get('Effort-', ''))} winner_Defects-={_number(values.get('Defects-', ''))}")
     print("goal_note=Maximizing Kloc+ is this task's convention; it does not establish productivity, causation, suitability, or a guaranteed future budget.")
 
+def fix(rows, effort_cap=100, seed=42):
+    """Suggest the smallest training-observed descriptor change under a model cap."""
+    if not isinstance(effort_cap, (int, float)) or isinstance(effort_cap, bool) or not math.isfinite(effort_cap) or effort_cap < 0:
+        raise ValueError("effort_cap must be finite and nonnegative")
+    train, test = split_groups(rows, seed)
+    if not train or not test:
+        return {"status": "insufficient training data", "cap": effort_cap, "train": train, "test": test}
+    query = min(test, key=lambda p: p.get("position", 0)); values = query.get("values", {})
+    baseline_config = {c: values.get(c, "") for c in PREDICTORS}
+    try: baseline_key = _validate_config(baseline_config)
+    except (TypeError, ValueError) as exc:
+        return {"status": "invalid/incomplete baseline", "cap": effort_cap, "query": query, "error": str(exc), "train": train, "test": test}
+    if "?" in baseline_key:
+        return {"status": "invalid/incomplete baseline", "cap": effort_cap, "query": query, "error": "baseline has missing descriptors", "train": train, "test": test}
+    model = CategoricalKNN(train)
+    if model.training_mean is None:
+        return {"status": "insufficient training data", "cap": effort_cap, "query": query, "train": train, "test": test}
+    baseline_prediction = model.predict(baseline_config)
+    result = {"status": "already feasible" if baseline_prediction <= effort_cap else "no feasible improving candidate", "cap": effort_cap, "query": query, "train": train, "test": test,
+              "baseline": {"descriptors": dict(zip(PREDICTORS, baseline_key)), "position": query.get("position"), "idX": values.get("idX", ""), "prediction": baseline_prediction}, "candidate_count": 0, "excluded_candidate_count": 0}
+    if baseline_prediction <= effort_cap:
+        result["recommendation"] = None; return result
+    seen, candidates = set(), []
+    for project in train:
+        v = project.get("values", {}); config = {c: v.get(c, "") for c in PREDICTORS}
+        try: key = _validate_config(config)
+        except (TypeError, ValueError): result["excluded_candidate_count"] += 1; continue
+        if "?" in key or key in seen: result["excluded_candidate_count"] += 1; continue
+        seen.add(key); result["candidate_count"] += 1; prediction = model.predict(config)
+        changed = [c for c, old, new in zip(PREDICTORS, baseline_key, key) if old != new]
+        if prediction <= effort_cap and prediction < baseline_prediction:
+            candidates.append({"descriptors": dict(zip(PREDICTORS, key)), "old_values": {c: old for c, old, new in zip(PREDICTORS, baseline_key, key) if old != new}, "new_values": {c: new for c, old, new in zip(PREDICTORS, baseline_key, key) if old != new}, "changed_field_count": len(changed), "position": project.get("position"), "idX": v.get("idX", ""), "prediction": prediction, "predicted_improvement": baseline_prediction - prediction})
+    candidates.sort(key=lambda x: (x["changed_field_count"], x["prediction"], x["position"]))
+    result["candidates"] = candidates; result["recommendation"] = candidates[0] if candidates else None
+    if candidates: result["status"] = "successful recommendation"
+    result["audit"] = {"query_actual_effort": _effort(values.get("Effort-", "")), "label": "retrospective audit; excluded from selection and prediction"}
+    return result
+
+def render_fix(path, effort_cap=100):
+    result = fix(load(path)["projects"], effort_cap)
+    print("NASA93 model-based budget fix (training configurations only)")
+    print("status=" + result["status"] + " cap=" + str(result["cap"]))
+    if "baseline" in result: print("baseline=" + str(result["baseline"]))
+    print(f"candidate_count={result.get('candidate_count', 0)} excluded_candidate_count={result.get('excluded_candidate_count', 0)}")
+    print("recommendation=" + str(result.get("recommendation")))
+    if "audit" in result: print("retrospective_audit=" + str(result["audit"]))
+    print("caveat=historical model suggestion, not a causal or actionable prescription; feasibility does not guarantee actual effort or preserve size, quality, or other requirements; effort units are not invented")
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
@@ -337,9 +385,10 @@ def main(argv=None):
     ap.add_argument("--blame", action="store_true")
     ap.add_argument("--justify", action="store_true")
     ap.add_argument("--choose", action="store_true")
+    ap.add_argument("--fix", action="store_true")
     ap.add_argument("--effort-cap", type=float, default=100)
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render_fix(pathlib.Path(args.dataset), args.effort_cap) if args.fix else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
