@@ -14,6 +14,7 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.model_selection import GroupShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from scipy import stats
 
 
 def load_dataset(path: str | Path) -> tuple[list[str], np.ndarray, np.ndarray]:
@@ -90,14 +91,83 @@ def predict(path: str | Path, configuration: dict[str, float | int]) -> float:
     return float(model.predict(np.asarray([[float(configuration[name]) for name in settings]]))[0])
 
 
+def certify(path: str | Path, practical_threshold: float = 5.0,
+            permutations: int = 10000, random_state: int = 42) -> dict:
+    """Compare predeclared no_asm groups; lower Performance- is better.
+
+    The groups are defined before outcomes are inspected: group A has
+    no_8x8dct=0 and group B has no_8x8dct=1. Rows are configurations, not
+    repeated runs.
+    """
+    settings, x, y = load_dataset(path)
+    if "no_8x8dct" not in settings:
+        raise ValueError("required comparison setting missing: no_8x8dct")
+    column = settings.index("no_8x8dct")
+    group_a = y[x[:, column] == 0]
+    group_b = y[x[:, column] == 1]
+    if len(group_a) < 2 or len(group_b) < 2:
+        raise ValueError("each comparison group needs at least two rows")
+    observed = float(group_a.mean() - group_b.mean())
+    test = stats.ttest_ind(group_a, group_b, equal_var=False)
+    variance_a = group_a.var(ddof=1) / len(group_a)
+    variance_b = group_b.var(ddof=1) / len(group_b)
+    standard_error = np.sqrt(variance_a + variance_b)
+    welch_df = (variance_a + variance_b) ** 2 / (
+        variance_a ** 2 / (len(group_a) - 1) + variance_b ** 2 / (len(group_b) - 1))
+    interval = stats.t.interval(0.95, welch_df, loc=observed, scale=standard_error)
+    rng = np.random.default_rng(random_state)
+    pooled = np.concatenate([group_a, group_b])
+    exceed = 0
+    for _ in range(permutations):
+        shuffled = rng.permutation(pooled)
+        if abs(shuffled[:len(group_a)].mean() - shuffled[len(group_a):].mean()) >= abs(observed):
+            exceed += 1
+    permutation_p = float((exceed + 1) / (permutations + 1))
+    statistically_detected = bool(test.pvalue < 0.05)
+    point_exceeds_threshold = bool(abs(observed) >= practical_threshold)
+    interval_beyond_threshold = bool(interval[0] > practical_threshold or
+                                     interval[1] < -practical_threshold)
+    return {
+        "measure": "Performance-", "lower_is_better": True,
+        "group_definition": {"A": "no_8x8dct=0", "B": "no_8x8dct=1"},
+        "group_a_n": int(len(group_a)), "group_b_n": int(len(group_b)),
+        "group_a_mean": float(group_a.mean()), "group_b_mean": float(group_b.mean()),
+        "observed_difference_a_minus_b": observed,
+        "difference_ci_95": [float(interval[0]), float(interval[1])],
+        "welch_satterthwaite_df": float(welch_df),
+        "welch_t": float(test.statistic), "welch_p_value": float(test.pvalue),
+        "permutation_p_value": permutation_p,
+        "permutations": permutations, "random_state": random_state,
+        "practical_threshold": float(practical_threshold),
+        "practical_threshold_label": "illustrative default" if practical_threshold == 5.0 else "user-supplied",
+        "statistically_detected": statistically_detected,
+        "difference_from_zero_statistically_detected": statistically_detected,
+        "point_estimate_exceeds_threshold": point_exceeds_threshold,
+        "confidence_interval_entirely_beyond_threshold": interval_beyond_threshold,
+        "practical_importance": ("supported by interval" if interval_beyond_threshold else
+                                  "uncertain: interval crosses practical threshold" if point_exceeds_threshold else
+                                  "not shown by point estimate"),
+        "conclusion": ("statistical difference detected; practical importance supported" if interval_beyond_threshold else
+                       "statistical difference detected; point estimate exceeds threshold but practical importance is uncertain" if statistically_detected and point_exceeds_threshold else
+                       "statistical difference detected, but point estimate does not exceed threshold" if statistically_detected else
+                       "no statistical difference detected; this does not establish equivalence"),
+        "assumptions": ["independent configuration rows", "Welch unequal-variance t test",
+                        "two-sided alpha=0.05", "observational association, not causation",
+                        "non-detection is not equivalence"]}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
     parser.add_argument("--evaluate", action="store_true")
+    parser.add_argument("--certify", action="store_true")
+    parser.add_argument("--practical-threshold", type=float, default=5.0)
     parser.add_argument("--configuration", type=str, help="JSON object of encoder settings")
     args = parser.parse_args()
     started = perf_counter()
-    if args.evaluate:
+    if args.certify:
+        result = certify(args.dataset, args.practical_threshold)
+    elif args.evaluate:
         result = evaluate(args.dataset)
     elif args.configuration:
         result = {"prediction": predict(args.dataset, json.loads(args.configuration))}
