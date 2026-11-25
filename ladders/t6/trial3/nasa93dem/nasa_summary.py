@@ -53,6 +53,14 @@ class CategoricalKNN:
         best = min(distances)
         return statistics.fmean(x[1] for x,d in zip(self.rows, distances) if d == best)
 
+    def evidence(self, config):
+        key = _validate_config(config)
+        if not self.rows: raise ValueError("no usable training targets")
+        distances = [sum(a != b for a,b in zip(key, x[0])) for x in self.rows]
+        best = min(distances)
+        return [{"position": p.get("position"), "idX": p["values"].get("idX", ""), "distance": d, "effort": y}
+                for (x,y,p), d in zip(self.rows, distances) if d == best]
+
 def _validate_config(config):
     if not isinstance(config, dict): raise TypeError("configuration must be a mapping")
     missing = [c for c in PREDICTORS if c not in config]
@@ -71,6 +79,31 @@ def evaluate(rows, seed=42):
     return {"model": model, "train": train, "test": test, "scored": scored, "mae": mae, "baseline_mae": bmae,
             "train_groups": len(_groups(train)), "test_groups": len(_groups(test)),
             "excluded_targets": sum(_effort(p["values"].get("Effort-", "")) is None for p in rows)}
+
+def justify(rows, seed=42):
+    train, test = split_groups(rows, seed)
+    if not train or not test: raise ValueError("both training and held-out partitions are required")
+    query = min(test, key=lambda p: p.get("position", 0))
+    model = CategoricalKNN(train)
+    config = {c: query["values"].get(c, "") for c in PREDICTORS}
+    return {"query": query, "train": train, "test": test, "prediction": model.predict(config),
+            "training_mean": model.training_mean, "neighbors": model.evidence(config),
+            "associations": blame({"projects": train}), "train_groups": len(_groups(train)),
+            "test_groups": len(_groups(test)), "actual_audit": _effort(query["values"].get("Effort-", ""))}
+
+def render_justify(path):
+    result = justify(load(path)["projects"]); q = result["query"]; v = q["values"]
+    print("NASA93 estimate justification (prediction completed before retrospective audit)")
+    print(f"query_position={q.get('position')} query_idX={v.get('idX','')} train_rows={len(result['train'])} test_rows={len(result['test'])} train_groups={result['train_groups']} test_groups={result['test_groups']}")
+    print("query_descriptors=" + str({c: v.get(c, "") for c in PREDICTORS}))
+    print(f"predicted_effort={result['prediction']} training_mean_baseline={result['training_mean']}")
+    print("neighbors=" + str(result["neighbors"]))
+    print("neighbor_rule=Hamming distance over the exact 22 categorical descriptors; all tied nearest finite-target training rows are averaged.")
+    print("global_associations_training_only=" + str(result["associations"]))
+    print("association_label=global marginal training association, not local contribution, causation, or guaranteed benefit")
+    print(f"retrospective_audit_actual_effort={result['actual_audit']}")
+    print("assumptions=observational historical data; missing/unseen descriptors are literal categories; invalid training targets are excluded; no effort units are invented.")
+    print("limitations=model uncertainty, insufficient groups, and unavailable estimates are explicit errors; duplicate idX values remain identified by original position.")
 
 def render_estimate(path):
     result = evaluate(load(path)["projects"])
@@ -270,8 +303,9 @@ def main(argv=None):
     ap.add_argument("--certify", action="store_true")
     ap.add_argument("--flow", action="store_true")
     ap.add_argument("--blame", action="store_true")
+    ap.add_argument("--justify", action="store_true")
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
