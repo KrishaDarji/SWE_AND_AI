@@ -1,5 +1,5 @@
 """NASA93 historical-project loader and descriptive summary (stdlib only)."""
-import argparse, csv, math, pathlib, statistics, sys
+import argparse, csv, math, pathlib, statistics, sys, copy
 import random
 
 CATEGORICAL = {"prec","flex","resl","team","pmat","rely","data","cplx","ruse","docu","time","stor","pvol","acap","pcap","pcon","apex","plex","ltex","tool","site","sced"}
@@ -76,6 +76,35 @@ def render_estimate(path):
     result = evaluate(load(path)["projects"])
     print(f"train_rows={len(result['train'])} test_rows={len(result['test'])} train_groups={result['train_groups']} test_groups={result['test_groups']}")
     print(f"excluded_targets={result['excluded_targets']} heldout_mae={result['mae']} training_mean_baseline_mae={result['baseline_mae']}")
+
+def flow(rows):
+    """Replay rows in input order; predictions see only earlier valid outcomes."""
+    history, records, model_errors, baseline_errors = [], [], [], []
+    for arrival, project in enumerate(rows, 1):
+        values = project["values"]; config = {c: values.get(c, "") for c in PREDICTORS}
+        model = CategoricalKNN(history) if history else None
+        prediction = model.predict(config) if model else None
+        baseline = model.training_mean if model else None
+        actual = _effort(values.get("Effort-", "")); evaluated = actual is not None and prediction is not None
+        record = {"arrival": arrival, "position": project.get("position"), "idX": values.get("idX", ""),
+                  "prediction": prediction, "baseline_prediction": baseline, "actual_revealed": actual,
+                  "evaluated": evaluated, "model_error": abs(actual-prediction) if evaluated else None,
+                  "baseline_error": abs(actual-baseline) if evaluated else None, "history_count": len(history)}
+        records.append(copy.deepcopy(record))
+        if evaluated: model_errors.append(record["model_error"]); baseline_errors.append(record["baseline_error"])
+        if actual is not None: history.append(copy.deepcopy(project))
+    return {"records": records, "warm_up_count": sum(r["prediction"] is None for r in records),
+            "evaluated_count": len(model_errors), "invalid_outcome_count": sum(_effort(p["values"].get("Effort-", "")) is None for p in rows),
+            "mae": statistics.fmean(model_errors) if model_errors else None,
+            "baseline_mae": statistics.fmean(baseline_errors) if baseline_errors else None,
+            "model_errors": model_errors, "baseline_errors": baseline_errors}
+
+def render_flow(path):
+    result = flow(load(path)["projects"])
+    print("NASA93 arrival flow")
+    print(f"warm_up={result['warm_up_count']} evaluated={result['evaluated_count']} invalid_outcomes={result['invalid_outcome_count']}")
+    print(f"model_mae={result['mae']} baseline_mae={result['baseline_mae']}")
+    for record in result["records"][:3] + result["records"][-3:]: print("arrival_record=" + str(record))
 
 def _number(value):
     try:
@@ -200,8 +229,9 @@ def main(argv=None):
     ap.add_argument("dataset", help="CSV dataset path")
     ap.add_argument("--estimate", action="store_true")
     ap.add_argument("--certify", action="store_true")
+    ap.add_argument("--flow", action="store_true")
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
