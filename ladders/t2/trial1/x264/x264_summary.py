@@ -290,6 +290,48 @@ def justify_recommendation(path: Path, configuration=None) -> dict:
             "evidence_rows": len(observations)}
 
 
+def select_best_configuration(path: Path, quality_column: str,
+                              minimum_quality=None, maximum_quality=None) -> dict:
+    """Select the fastest observed configuration satisfying a quality bound.
+
+    Quality bounds are inclusive.  Encoding performance remains the objective
+    and is minimized, while the selected row supplies the configuration.
+    """
+    if minimum_quality is None and maximum_quality is None:
+        raise ValueError("at least one quality bound is required")
+    if (minimum_quality is not None and maximum_quality is not None
+            and minimum_quality > maximum_quality):
+        raise ValueError("minimum quality cannot exceed maximum quality")
+    fieldnames, rows = _read(path)
+    if quality_column not in fieldnames:
+        raise ValueError("quality column is not present in dataset")
+    if "Performance-" not in fieldnames:
+        raise ValueError("CSV must contain a Performance- column")
+    settings = [name for name in fieldnames
+                if name not in (quality_column, "Performance-")]
+    eligible = []
+    for index, row in enumerate(rows, 1):
+        quality = _number(row.get(quality_column, ""))
+        performance = _number(row.get("Performance-", ""))
+        if quality is None or performance is None:
+            continue
+        if minimum_quality is not None and quality < minimum_quality:
+            continue
+        if maximum_quality is not None and quality > maximum_quality:
+            continue
+        configuration = {name: (row.get(name) or "").strip() for name in settings}
+        eligible.append((performance, index, quality, configuration))
+    if not eligible:
+        raise ValueError("no observed configuration satisfies the quality constraint")
+    performance, row_number, quality, configuration = min(
+        eligible, key=lambda item: (item[0], item[1]))
+    return {"dataset": str(path), "quality_column": quality_column,
+            "minimum_quality": minimum_quality, "maximum_quality": maximum_quality,
+            "recommendation": configuration, "quality": quality,
+            "performance": performance, "observed_row": row_number,
+            "eligible_rows": len(eligible), "selection": "fastest eligible observed configuration"}
+
+
 def main(argv: Sequence[str] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -305,10 +347,16 @@ def main(argv: Sequence[str] = None) -> int:
     parser.add_argument("--slow-quantile", type=float, default=0.9)
     parser.add_argument("--justify", nargs="*", metavar="NAME=VALUE",
                         help="justify a requested or fastest observed configuration")
+    parser.add_argument("--quality-column", help="numeric column constrained during selection")
+    parser.add_argument("--minimum-quality", type=float)
+    parser.add_argument("--maximum-quality", type=float)
     args = parser.parse_args(argv)
     if args.stream:
         records = (json.loads(line) for line in __import__("sys").stdin if line.strip())
         result = evaluate_stream(records)
+    elif args.quality_column is not None:
+        result = select_best_configuration(args.csv_path, args.quality_column,
+                                           args.minimum_quality, args.maximum_quality)
     elif args.justify is not None:
         result = justify_recommendation(args.csv_path,
                                         _configuration(args.justify) if args.justify else None)
