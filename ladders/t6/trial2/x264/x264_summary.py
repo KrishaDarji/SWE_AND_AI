@@ -567,6 +567,81 @@ def render_fix(result):
         lines.append("reason: %s" % result.get("reason", "")); lines.append("excluded: %s" % result.get("excluded", {}))
     return "\n".join(lines)
 
+def _hamming(left, right):
+    return sum(a != b for a, b in zip(left, right))
+
+def spot(path, threshold=3.5, min_references=3, outcome="Performance-"):
+    """Spot local high/low outcomes among complete binary configurations.
+
+    References are all valid rows at the smallest Hamming distance, excluding
+    the target row itself; ties are retained, and duplicate rows count as rows.
+    The score is abs(y - median(reference)) / (1.4826 * MAD(reference)).
+    A zero MAD makes the score undefined, never silently substituted.
+    """
+    if min_references < 1 or threshold < 0 or not math.isfinite(threshold):
+        raise ValueError("threshold must be finite and min_references positive")
+    header, records, _ = load(path)
+    if not header or outcome not in header:
+        return {"status": "unavailable", "reason": "required columns are absent"}
+    settings = [name for name in header if name != outcome]
+    rows = list(iter_measurements(path))
+    valid = []; excluded = {"missing_or_nonfinite_outcome": 0,
+                            "missing_nonfinite_or_nonbinary_settings": 0}
+    for position, _, record in rows:
+        config = _binary_configuration(record, settings)
+        value = _number(record.get(outcome, ""))
+        if config is None:
+            excluded["missing_nonfinite_or_nonbinary_settings"] += 1
+        elif value is None:
+            excluded["missing_or_nonfinite_outcome"] += 1
+        else:
+            valid.append({"position": position, "configuration": config,
+                          "key": tuple(config[name] for name in settings),
+                          "observed": value})
+    flagged = []; undefined = []; inadequate = []
+    for target in valid:
+        candidates = [row for row in valid if row is not target]
+        if not candidates:
+            inadequate.append(target["position"]); continue
+        distance = min(_hamming(target["key"], row["key"]) for row in candidates)
+        refs = [row for row in candidates if _hamming(target["key"], row["key"]) == distance]
+        if len(refs) < min_references:
+            inadequate.append(target["position"]); continue
+        values = [row["observed"] for row in refs]
+        center = statistics.median(values)
+        mad = statistics.median([abs(value - center) for value in values])
+        scale = 1.4826 * mad
+        score = None if scale == 0 else abs(target["observed"] - center) / scale
+        item = {"position": target["position"], "configuration": target["configuration"],
+                "observed": target["observed"], "reference_count": len(refs),
+                "distance": distance, "reference_center": center,
+                "reference_scale": scale if scale != 0 else 0.0,
+                "score": score, "threshold": threshold}
+        if score is None:
+            item["reason"] = "undefined score because the reference MAD is zero"
+            undefined.append(item)
+        elif score >= threshold:
+            item["reason"] = "unusually high or low relative to nearest references"
+            flagged.append(item)
+    return {"status": "ok", "settings": settings, "valid_count": len(valid),
+            "excluded": excluded, "minimum_reference_count": min_references,
+            "threshold": threshold, "scale_definition": "1.4826 * median absolute deviation",
+            "distance_rule": "Hamming distance over normalized complete binary settings; all tied nearest rows",
+            "duplicate_policy": "duplicates are distinct reference rows; target row is excluded by identity",
+            "neighborhood_size": "rows", "flagged": flagged, "undefined_scores": undefined,
+            "rows_lacking_adequate_reference": inadequate}
+
+def render_spot(result):
+    if result["status"] != "ok": return "Spot: unavailable (%s)" % result["reason"]
+    lines = ["Spot unusual X264 measurements", "valid=%d; excluded=%s; flagged=%d; undefined_scores=%d; inadequate_reference_rows=%d" %
+             (result["valid_count"], result["excluded"], len(result["flagged"]), len(result["undefined_scores"]), len(result["rows_lacking_adequate_reference"])),
+             "rule: %s; minimum references=%d; threshold=%s; scale=%s" % (result["distance_rule"], result["minimum_reference_count"], result["threshold"], result["scale_definition"]),
+             "Unusual measurements warrant investigation; they are not proven errors. Both unusually good and poor results can flag."]
+    for item in result["flagged"][:20]:
+        lines.append("flag position=%d config=%s observed=%s refs=%d distance=%d center=%s scale=%s score=%s threshold=%s reason=%s" % tuple(item[x] for x in ("position", "configuration", "observed", "reference_count", "distance", "reference_center", "reference_scale", "score", "threshold", "reason")))
+    if not result["flagged"]: lines.append("no flags")
+    return "\n".join(lines)
+
 def main(argv):
     if len(argv) not in (2, 3):
         print("usage: x264_summary.py DATASET [predict|certify|flow|blame|justify]", file=sys.stderr); return 2
@@ -580,6 +655,7 @@ def main(argv):
         elif argv[2] == "justify": print(render_justify(justify(argv[1])))
         elif argv[2] == "choose": print(render_choose(choose(argv[1], 20, 42, audit=True)))
         elif argv[2] == "fix": print(render_fix(recommend_fix(argv[1])))
+        elif argv[2] == "spot": print(render_spot(spot(argv[1])))
         else: print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
