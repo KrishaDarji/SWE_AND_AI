@@ -221,6 +221,59 @@ def assess_proposals(path, proposals):
     return [assess_proposal(path, proposal) for proposal in proposals]
 
 
+def analyze_effort_factors(path, minimum_level_count=3):
+    """Rank project factors associated with excessive effort intensity.
+
+    Excessive effort means effort/KLOC above the dataset median.  For every
+    non-outcome column, this reports levels with enough observations and their
+    excess-project rate, plus the lift over the overall excess rate.  This is
+    descriptive association, not a causal model.
+    """
+    if not isinstance(minimum_level_count, int) or minimum_level_count < 1:
+        raise ValueError("minimum_level_count must be a positive integer")
+    with Path(path).open(newline="", encoding="utf-8-sig") as handle:
+        reader = csv.DictReader(handle)
+        if not reader.fieldnames:
+            raise ValueError("CSV has no header")
+        rows = list(reader)
+    rates = []
+    for row in rows:
+        kloc, effort = _finite_number(row.get("Kloc+")), _finite_number(row.get("Effort-"))
+        if kloc is None or effort is None or kloc <= 0:
+            raise ValueError("invalid effort data")
+        rates.append(effort / kloc)
+    cutoff = statistics.median(rates)
+    overall_excess = sum(rate > cutoff for rate in rates) / len(rates)
+    excluded = set(OUTCOME_FIELDS) | {"idX"}
+    factors = []
+    for field in reader.fieldnames:
+        if field in excluded:
+            continue
+        levels = {}
+        for row, rate in zip(rows, rates):
+            value = (row.get(field) or "").strip()
+            if value:
+                levels.setdefault(value, []).append(rate)
+        level_results = []
+        for value, values in levels.items():
+            if len(values) < minimum_level_count:
+                continue
+            excess_rate = sum(item > cutoff for item in values) / len(values)
+            level_results.append({"level": value, "count": len(values),
+                                  "median_effort_per_kloc": statistics.median(values),
+                                  "excess_rate": excess_rate,
+                                  "lift": excess_rate - overall_excess})
+        if level_results:
+            level_results.sort(key=lambda item: (-abs(item["lift"]), item["level"]))
+            factors.append({"factor": field, "levels": level_results,
+                            "strongest_level": level_results[0]["level"],
+                            "strongest_lift": level_results[0]["lift"]})
+    factors.sort(key=lambda item: (-abs(item["strongest_lift"]), item["factor"]))
+    return {"definition": "effort_per_kloc above dataset median", "cutoff": cutoff,
+            "overall_excess_rate": overall_excess, "project_count": len(rows),
+            "factors": factors}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -235,8 +288,12 @@ def main(argv=None):
     parser.add_argument("--proposal-kloc", type=float)
     parser.add_argument("--proposal-budget", type=float)
     parser.add_argument("--max-months", type=float)
+    parser.add_argument("--analyze-factors", action="store_true")
+    parser.add_argument("--minimum-level-count", type=int, default=3)
     args = parser.parse_args(argv)
-    result = (assess_proposal(args.csv_path, {"id": args.proposal_id,
+    result = (analyze_effort_factors(args.csv_path, args.minimum_level_count)
+              if args.analyze_factors else
+              assess_proposal(args.csv_path, {"id": args.proposal_id,
                                               "kloc": args.proposal_kloc,
                                               "budget": args.proposal_budget,
                                               "max_months": args.max_months})
