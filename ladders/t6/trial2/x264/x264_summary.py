@@ -13,6 +13,84 @@ def _number(value):
     except ValueError:
         return None
 
+def iter_measurements(path):
+    """Yield (data_position, header, record) without reading future rows."""
+    with open(path, newline="", encoding="utf-8") as stream:
+        reader = csv.reader(stream)
+        try:
+            header = [cell.strip() for cell in next(reader)]
+        except StopIteration:
+            return
+        position = 0
+        for row in reader:
+            if not any(cell.strip() for cell in row):
+                continue
+            position += 1
+            values = (row + [""] * max(0, len(header) - len(row)))[:len(header)]
+            yield position, header, dict(zip(header, values))
+
+class FlowAccumulator:
+    """Incremental finite-outcome statistics and earliest-best tracking."""
+    def __init__(self, header=None, outcome="Performance-"):
+        self.header = list(header or [])
+        self.outcome = outcome
+        self.seen = self.valid = self.missing = self.invalid = 0
+        self.mean = 0.0
+        self.m2 = 0.0
+        self.best = None
+
+    def update(self, position, record):
+        self.seen += 1
+        if not self.header:
+            self.header = list(record)
+        raw = record.get(self.outcome, "")
+        value = _number(raw)
+        if raw.strip() in MISSING:
+            self.missing += 1
+        elif value is None:
+            self.invalid += 1
+        else:
+            self.valid += 1
+            delta = value - self.mean
+            self.mean += delta / self.valid
+            self.m2 += delta * (value - self.mean)
+            if self.best is None or value < self.best["value"]:
+                self.best = {"value": value, "position": position,
+                             "configuration": {name: record.get(name, "")
+                                                for name in self.header
+                                                if name != self.outcome}}
+        return self.snapshot()
+
+    def snapshot(self):
+        best = None if self.best is None else {
+            "value": self.best["value"], "position": self.best["position"],
+            "configuration": dict(self.best["configuration"])}
+        return {"rows_seen": self.seen, "valid_count": self.valid,
+                "missing_outcomes": self.missing, "invalid_outcomes": self.invalid,
+                "mean": self.mean if self.valid else None,
+                "sample_variance": self.m2 / (self.valid - 1) if self.valid > 1 else None,
+                "best": best}
+
+def flow(path):
+    accumulator = None
+    for position, header, record in iter_measurements(path):
+        if accumulator is None:
+            accumulator = FlowAccumulator(header)
+        snapshot = accumulator.update(position, record)
+    return accumulator.snapshot() if accumulator else FlowAccumulator().snapshot()
+
+def render_flow(result):
+    lines = ["X264 flow (one measurement at a time)",
+             "rows_seen: %d; valid_count: %d; missing_outcomes: %d; invalid_outcomes: %d" %
+             (result["rows_seen"], result["valid_count"], result["missing_outcomes"], result["invalid_outcomes"]),
+             "mean: %s; sample_variance: %s" % (result["mean"], result["sample_variance"])]
+    if result["best"] is None:
+        lines.append("best: unavailable")
+    else:
+        lines.append("best: value=%s; position=%d; configuration=%s" %
+                     (result["best"]["value"], result["best"]["position"], result["best"]["configuration"]))
+    lines.append("position counts nonblank data rows starting at 1; blank rows are ignored; missing settings are retained as empty strings")
+    return "\n".join(lines)
 def load(path):
     with open(path, newline="", encoding="utf-8") as stream:
         rows = list(csv.reader(stream))
@@ -215,13 +293,14 @@ def render_certify(result):
 
 def main(argv):
     if len(argv) not in (2, 3):
-        print("usage: x264_summary.py DATASET [predict|certify]", file=sys.stderr); return 2
+        print("usage: x264_summary.py DATASET [predict|certify|flow]", file=sys.stderr); return 2
     try:
         if len(argv) == 2: print(render(summarize(argv[1])))
         elif argv[2] == "predict":
             result = evaluate(argv[1]); config = {n: "0" for n in result["settings"]}; print(render_prediction(result, config))
         elif argv[2] == "certify": print(render_certify(certify(argv[1], 5)))
-        else: print("usage: x264_summary.py DATASET [predict|certify]", file=sys.stderr); return 2
+        elif argv[2] == "flow": print(render_flow(flow(argv[1])))
+        else: print("usage: x264_summary.py DATASET [predict|certify|flow]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
         print("error: %s" % exc, file=sys.stderr); return 1
