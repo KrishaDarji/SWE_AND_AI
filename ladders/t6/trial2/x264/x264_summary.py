@@ -419,6 +419,90 @@ def render_justify(result):
               "This is best only among eligible measured historical configurations and does not guarantee future performance.", result["position_convention"]]
     return "\n".join(lines)
 
+def _binary_configuration(record, settings):
+    parsed = {}
+    for name in settings:
+        value = _setting_key(record.get(name, ""))
+        if value not in ("0", "1"):
+            return None
+        parsed[name] = int(value)
+    return parsed
+
+def _choose_pool(path, outcome="Performance-"):
+    header, records, _ = load(path)
+    if not header:
+        return [], [], None
+    if outcome not in header:
+        raise ValueError("outcome column is absent")
+    settings = [name for name in header if name != outcome]
+    representatives = {}
+    excluded = {"incomplete_or_invalid_settings": 0, "duplicate_rows": 0}
+    for position, _header, record in iter_measurements(path):
+        configuration = _binary_configuration(record, settings)
+        if configuration is None:
+            excluded["incomplete_or_invalid_settings"] += 1
+            continue
+        key = tuple(configuration[name] for name in settings)
+        if key in representatives:
+            excluded["duplicate_rows"] += 1
+            continue
+        representatives[key] = {"position": position, "configuration": configuration,
+                                "raw_outcome": record.get(outcome, "")}
+    return settings, list(representatives.values()), excluded
+
+def historical_audit(path, outcome="Performance-"):
+    """Retrospective replay over all rows; never used by choose."""
+    settings, pool, excluded = _choose_pool(path, outcome)
+    eligible = [item for item in pool if _number(item["raw_outcome"]) is not None]
+    best = min(eligible, key=lambda item: (_number(item["raw_outcome"]), item["position"])) if eligible else None
+    return {"eligible_count": len(eligible), "best": None if best is None else {
+        "position": best["position"], "value": _number(best["raw_outcome"]),
+        "configuration": dict(best["configuration"])}, "excluded": excluded,
+        "label": "retrospective historical replay, not newly measured encoding or a guarantee about future performance"}
+
+def choose(path, budget=20, seed=42, outcome="Performance-", audit=False):
+    """Randomly evaluate distinct complete binary configurations through an oracle."""
+    if not isinstance(budget, int) or isinstance(budget, bool) or budget < 0:
+        raise ValueError("budget must be a nonnegative integer")
+    settings, pool, excluded = _choose_pool(path, outcome)
+    order = list(range(len(pool)))
+    random.Random(seed).shuffle(order)
+    selected = order[:min(budget, len(order))]
+    history = []; successful = []
+    for attempt, index in enumerate(selected, 1):
+        item = pool[index]
+        value = _number(item["raw_outcome"])
+        entry = {"attempt": attempt, "position": item["position"],
+                 "configuration": dict(item["configuration"]), "observed": value,
+                 "outcome_status": "success" if value is not None else "invalid_or_missing"}
+        history.append(entry)
+        if value is not None:
+            successful.append(entry)
+    winner = min(successful, key=lambda item: (item["observed"], item["position"])) if successful else None
+    result = {"status": "ok" if winner else "no successful evaluations", "strategy": "seeded random permutation without replacement",
+              "seed": seed, "budget": budget, "candidate_count": len(pool),
+              "attempted_evaluations": len(selected), "successful_evaluations": len(successful),
+              "settings": settings, "winner": None if winner is None else dict(winner),
+              "evaluation_history": history, "duplicate_policy": "earliest complete row represents a normalized configuration; later duplicates are not evaluated",
+              "excluded": excluded, "position_convention": "nonblank data rows start at 1; blank rows are ignored"}
+    if audit:
+        result["audit"] = historical_audit(path, outcome)
+        if winner and result["audit"]["best"]:
+            result["audit"]["winner_gap"] = winner["observed"] - result["audit"]["best"]["value"]
+    return result
+
+def render_choose(result):
+    lines = ["Budgeted X264 configuration choice", "status: %s" % result["status"],
+             "strategy: %s; seed=%s; budget=%d" % (result["strategy"], result["seed"], result["budget"]),
+             "candidate_count=%d; attempted_evaluations=%d; successful_evaluations=%d" % (result["candidate_count"], result["attempted_evaluations"], result["successful_evaluations"])]
+    if result["winner"] is None: lines.append("winner: unavailable")
+    else:
+        w = result["winner"]; lines.append("winner: position=%d; Performance-=%s; configuration=%s" % (w["position"], w["observed"], w["configuration"]))
+    lines.append("evaluation_history: %s" % result["evaluation_history"])
+    lines.append("duplicate_policy: " + result["duplicate_policy"])
+    if "audit" in result: lines.append("audit: " + result["audit"]["label"] + "; result=%s" % result["audit"])
+    return "\n".join(lines)
+
 def main(argv):
     if len(argv) not in (2, 3):
         print("usage: x264_summary.py DATASET [predict|certify|flow|blame|justify]", file=sys.stderr); return 2
@@ -430,6 +514,7 @@ def main(argv):
         elif argv[2] == "flow": print(render_flow(flow(argv[1])))
         elif argv[2] == "blame": print(render_blame(blame(argv[1])))
         elif argv[2] == "justify": print(render_justify(justify(argv[1])))
+        elif argv[2] == "choose": print(render_choose(choose(argv[1], 20, 42, audit=True)))
         else: print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
