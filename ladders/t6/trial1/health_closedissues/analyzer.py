@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Step 2 model-configuration quality predictor (standard library only)."""
-import csv, math, random, sys
+import csv, json, math, random, sys
 from collections import Counter
 
 CONFIG = ["N_estimators", "criterion", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth"]
@@ -414,9 +414,55 @@ def recommend_fix(rows):
                  "limitations": "This is a retrospective comparison between observed rows. Change count is a simplicity proxy; historical differences do not prove causation or guarantee future improvement."})
     return result
 
+def _mad(values, center):
+    return _median([abs(x - center) for x in values])
+
+def spot(rows, threshold=3.5, min_sample=3):
+    """Screen marginal outcomes using self-inclusive median/MAD modified z-scores.
+
+    Score is 0.67448975*(x-median)/MAD; flag abs(score)>threshold.
+    Each finite observation contributes to its metric's reference distribution.
+    With fewer than min_sample values, scores are undefined. With MAD zero,
+    equal-to-center values have score 0 and non-center values are undefined.
+    """
+    if not isinstance(threshold, (int, float)) or not math.isfinite(threshold) or threshold <= 0:
+        raise ValueError("threshold must be finite and positive")
+    if not isinstance(min_sample, int) or min_sample < 1: raise ValueError("min_sample must be positive")
+    rows = list(rows); reports = {}; flagged = []
+    for outcome in OUTCOMES:
+        finite = [(pos, row, number(row.get(outcome))) for pos, row in enumerate(rows, 1)]
+        finite = [(p, r, x) for p, r, x in finite if x is not None]
+        center = _median([x for _, _, x in finite]) if finite else None
+        scale = _mad([x for _, _, x in finite], center) if finite else None
+        info = {"reference_count": len(finite), "center": center, "mad": scale,
+                "threshold": threshold, "minimum_sample": min_sample,
+                "reference_includes_observation": True, "flags": [],
+                "undefined_score_count": 0, "missing_or_nonfinite_count": len(rows)-len(finite)}
+        for pos, row, value in finite:
+            score = None; reason = None
+            if len(finite) < min_sample: reason = "undefined: reference sample is shorter than minimum"
+            elif scale == 0:
+                if value == center: score = 0.0
+                else: reason = "undefined: zero MAD for non-center observation"
+            else: score = 0.67448975 * (value - center) / scale
+            if score is None:
+                info["undefined_score_count"] += 1
+            elif abs(score) > threshold:
+                item = {"position": pos, "configuration": {k: clean(row.get(k)) for k in CONFIG},
+                        "outcome": outcome, "observed": value, "score": score,
+                        "reference": {"count": len(finite), "center": center, "mad": scale,
+                                      "threshold": threshold},
+                        "reason": "absolute modified MAD score exceeds threshold"}
+                info["flags"].append(item); flagged.append(item)
+        reports[outcome] = info
+    return {"method": "self-inclusive median/MAD modified z-score", "reports": reports,
+            "per_outcome_flag_counts": {o: len(reports[o]["flags"]) for o in OUTCOMES},
+            "unique_flagged_row_count": len({x["position"] for x in flagged}),
+            "flags": flagged,
+            "interpretation": "Unusual results warrant investigation, not proof of measurement error; very good results can also be unusual. This is marginal outcome screening, not configuration-conditioned anomaly detection or a validated error classifier."}
+
 def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    rows = list(read_rows(argv[1])[1]); report = recommend_fix(rows)
-    print("Retrospective observed-row fix recommendation (no compute cap)")
-    print(report)
+    rows = list(read_rows(argv[1])[1]); report = spot(rows)
+    print(json.dumps(report, allow_nan=False, indent=2, sort_keys=True))
 if __name__ == "__main__": main(sys.argv)
