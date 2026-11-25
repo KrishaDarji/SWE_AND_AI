@@ -15,10 +15,57 @@ from sklearn.model_selection import GroupShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils.validation import check_array
+from scipy import stats
 
 
 OUTCOME = "Performance-"
 MISSING_SETTING = "__MISSING_SETTING__"
+
+
+def certify(path, threshold=None):
+    """Certify fixed A/B settings with a two-sided Welch test and interval."""
+    threshold_source = "demonstration_default" if threshold is None else "supplied"
+    threshold = 5.0 if threshold is None else threshold
+    if not isinstance(threshold, (int, float)) or isinstance(threshold, bool) or not math.isfinite(float(threshold)) or threshold < 0:
+        raise ValueError("threshold must be a finite nonnegative number")
+    settings = ["no_8x8dct"]
+    groups = {0: [], 1: []}
+    with Path(path).open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames or []
+        if any(field not in fields for field in settings + [OUTCOME]):
+            raise ValueError("missing required comparison columns")
+        for row in reader:
+            setting = _number(row.get("no_8x8dct", ""))
+            outcome = _number(row.get(OUTCOME, ""))
+            if setting in groups and outcome is not None:
+                groups[int(setting)].append(outcome)
+    a, b = groups[0], groups[1]
+    if len(a) < 2 or len(b) < 2:
+        raise ValueError("each comparison group needs at least two finite outcomes")
+    if np.var(a, ddof=1) == 0 or np.var(b, ddof=1) == 0:
+        raise ValueError("zero sample variance is not supported")
+    mean_a, mean_b = float(np.mean(a)), float(np.mean(b))
+    difference = mean_a - mean_b
+    variance_a, variance_b = float(np.var(a, ddof=1)), float(np.var(b, ddof=1))
+    standard_error = math.sqrt(variance_a / len(a) + variance_b / len(b))
+    df = (variance_a / len(a) + variance_b / len(b)) ** 2 / ((variance_a / len(a)) ** 2 / (len(a) - 1) + (variance_b / len(b)) ** 2 / (len(b) - 1))
+    t_stat = difference / standard_error
+    p_value = float(2 * stats.t.sf(abs(t_stat), df))
+    critical = float(stats.t.ppf(0.975, df))
+    interval = [difference - critical * standard_error, difference + critical * standard_error]
+    positive_supported = interval[0] > threshold
+    negative_supported = interval[1] < -threshold
+    if positive_supported:
+        favored = "B"
+        interpretation = "interval supports practical importance favoring B"
+    elif negative_supported:
+        favored = "A"
+        interpretation = "interval supports practical importance favoring A"
+    else:
+        favored = "uncertain"
+        interpretation = "practical importance is uncertain because the interval crosses zero or the practical threshold"
+    return {"comparison": {"A": {"no_8x8dct": 0, "n": len(a), "mean": mean_a}, "B": {"no_8x8dct": 1, "n": len(b), "mean": mean_b}, "outcome": OUTCOME, "lower_is_better": True}, "mean_difference_A_minus_B": difference, "welch": {"t": t_stat, "df": df, "p_value_two_sided": p_value, "confidence_level": 0.95, "interval_A_minus_B": interval}, "practical_effect": {"threshold": float(threshold), "threshold_source": threshold_source, "point_estimate_magnitude_exceeds_threshold": abs(difference) > threshold, "interval_entirely_above_positive_threshold": positive_supported, "interval_entirely_below_negative_threshold": negative_supported, "favored_group": favored, "interpretation": interpretation}, "limitations": ["Rows are different configurations, not repeated-run measurements; configuration variation cannot establish measurement noise or causal effects.", "Failure to detect a difference does not establish equivalence."]}
 
 
 def _number(value):
