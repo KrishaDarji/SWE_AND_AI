@@ -1,81 +1,80 @@
 #!/usr/bin/env python3
-"""Describe historical model configurations and their measured outcomes."""
-import csv, math, statistics
-
-CONFIGS = {"N_estimators": "numeric", "criterion": "categorical",
-           "Min_sample_leaves": "numeric", "Min_impurity_decrease": "numeric",
-           "Max_depth": "numeric"}
-OUTCOMES = {"MRE-": "minimize", "ACC+": "maximize", "PRED40+": "maximize"}
-MISSING = {"", "?", "NA", "N/A", "null", "None", "nan", "NaN"}
-
-def _number(value):
-    if value is None or value.strip() in MISSING: return None
+"""Configuration analysis and held-out prediction using only the stdlib."""
+import csv, math, random, statistics
+CONFIGS={"N_estimators":"numeric","criterion":"categorical","Min_sample_leaves":"numeric","Min_impurity_decrease":"numeric","Max_depth":"numeric"}
+OUTCOMES={"MRE-":"minimize","ACC+":"maximize","PRED40+":"maximize"}; MISSING={"","?","NA","N/A","null","None","nan","NaN"}
+def _number(v):
+    if v is None or v.strip() in MISSING:return None
     try:
-        x = float(value.strip())
-        return x if math.isfinite(x) else None
-    except (TypeError, ValueError): return None
-
-def _median(xs):
-    return statistics.median(xs) if xs else None
-
-def _summary(xs):
-    if not xs: return {"finite_count": 0, "minimum": None, "maximum": None,
-                       "mean": None, "median": None, "sample_sd": None,
-                       "iqr": None, "convention": "insufficient sample: null"}
-    sd = statistics.stdev(xs) if len(xs) > 1 else None
-    quartiles = statistics.quantiles(xs, n=4, method="inclusive") if len(xs) > 1 else []
-    q1, q3 = (quartiles[0], quartiles[2]) if quartiles else (None, None)
-    return {"finite_count": len(xs), "minimum": min(xs), "maximum": max(xs),
-            "mean": statistics.fmean(xs), "median": _median(xs), "sample_sd": sd,
-            "iqr": None if q1 is None else q3-q1,
-            "convention": "sample standard deviation (n-1); inclusive quartiles; null when n<2"}
-
+        x=float(v.strip()); return x if math.isfinite(x) else None
+    except (TypeError,ValueError): return None
+def _cat(v): return None if v is None or v.strip() in MISSING else v.strip()
+def _median(x): return statistics.median(x) if x else None
+def _summary(x):
+    if not x:return {"finite_count":0,"minimum":None,"maximum":None,"mean":None,"median":None,"sample_sd":None,"iqr":None,"convention":"insufficient sample: null"}
+    q=statistics.quantiles(x,n=4,method="inclusive") if len(x)>1 else []
+    return {"finite_count":len(x),"minimum":min(x),"maximum":max(x),"mean":statistics.fmean(x),"median":_median(x),"sample_sd":statistics.stdev(x) if len(x)>1 else None,"iqr":q[2]-q[0] if q else None,"convention":"sample standard deviation (n-1); inclusive quartiles; null when n<2"}
+def _read(path):
+    with open(path,newline="",encoding="utf-8-sig") as f:
+        rd=csv.reader(f); raw=next(rd,None)
+        if raw is None:return [],[],[]
+        h=[x.strip() for x in raw]; rows=[]; bad=[]
+        for pos,c in enumerate(rd,2):
+            if not c or all(not x.strip() for x in c):continue
+            if len(c)!=len(h):bad.append(pos);continue
+            rows.append((pos,dict(zip(h,c))))
+    return h,rows,bad
+def _key(r): return tuple(_cat(r.get(k)) if t=="categorical" else _number(r.get(k)) for k,t in CONFIGS.items())
 def analyze(path):
-    with open(path, newline="", encoding="utf-8-sig") as fh:
-        reader = csv.reader(fh); raw_header = next(reader, None)
-        if raw_header is None: return empty_result("empty input")
-        header = [x.strip() for x in raw_header]
-        rows, malformed = [], []
-        for pos, cells in enumerate(reader, 2):
-            if not cells or all(not x.strip() for x in cells): continue
-            if len(cells) != len(header): malformed.append(pos); continue
-            rows.append((pos, dict(zip(header, cells))))
-    result = empty_result("header-only input" if not rows else None)
-    result.update({"record_count": len(rows), "column_names": header,
-                   "malformed_row_positions": malformed,
-                   "roles": {**{k: "configuration ("+v+")" for k,v in CONFIGS.items()},
-                             **{k: "outcome ("+v+")" for k,v in OUTCOMES.items()}}})
-    result["missing_values"] = {k: sum(v.get(k, "").strip() in MISSING for _,v in rows) for k in header}
-    result["invalid_nonfinite_numeric"] = {k: sum(v.get(k, "").strip() not in MISSING and _number(v.get(k)) is None for _,v in rows)
-                                           for k in list(CONFIGS)+list(OUTCOMES) if k in header}
-    result["criterion_frequencies"] = {}
-    for _, row in rows:
-        c = row.get("criterion", "").strip()
-        if c not in MISSING: result["criterion_frequencies"][c] = result["criterion_frequencies"].get(c, 0)+1
-    result["numeric_settings"] = {k: _summary([_number(r.get(k)) for _,r in rows if _number(r.get(k)) is not None])
-                                   for k,v in CONFIGS.items() if v == "numeric" and k in header}
-    result["outcomes"] = {k: {"direction": d, **_summary([_number(r.get(k)) for _,r in rows if _number(r.get(k)) is not None])}
-                          for k,d in OUTCOMES.items() if k in header}
-    normalized, exact = {}, {}
-    for pos, row in rows:
-        vals = []
-        for k, typ in CONFIGS.items():
-            val = row.get(k, "").strip()
-            if typ == "categorical": val = None if val in MISSING else val
-            else:
-                n = _number(val); val = None if n is None else n
-            vals.append(val)
-        key = tuple(vals); normalized.setdefault(key, []).append(pos)
-        exact_key = tuple(row.get(k, "") for k in header); exact.setdefault(exact_key, []).append(pos)
-    result["normalized_configurations"] = [{"settings": dict(zip(CONFIGS, key)), "row_positions": ps}
-                                           for key, ps in normalized.items()]
-    result["repeated_configurations"] = [x for x in result["normalized_configurations"] if len(x["row_positions"]) > 1]
-    result["exact_duplicate_row_groups"] = [ps for ps in exact.values() if len(ps) > 1]
-    result["normalization"] = "Trim categorical whitespace; numeric equivalents use float; missing/invalid settings become null; rows remain position-addressable."
-    return result
-
-def empty_result(reason):
-    return {"record_count": 0, "column_names": [], "roles": {}, "missing_values": {},
-            "invalid_nonfinite_numeric": {}, "criterion_frequencies": {}, "numeric_settings": {},
-            "outcomes": {}, "normalized_configurations": [], "repeated_configurations": [],
-            "exact_duplicate_row_groups": [], "malformed_row_positions": [], "note": reason}
+    h,rows,bad=_read(path); z=empty_result("empty input" if not h else ("header-only input" if not rows else None)); z.update({"record_count":len(rows),"column_names":h,"malformed_row_positions":bad,"roles":{**{k:"configuration ("+v+")" for k,v in CONFIGS.items()},**{k:"outcome ("+v+")" for k,v in OUTCOMES.items()}},"missing_values":{k:sum(r.get(k,"").strip() in MISSING for _,r in rows) for k in h},"invalid_nonfinite_numeric":{k:sum(r.get(k,"").strip() not in MISSING and _number(r.get(k)) is None for _,r in rows) for k in list(CONFIGS)+list(OUTCOMES) if k in h},"criterion_frequencies":{}})
+    for _,r in rows:
+        c=_cat(r.get("criterion"));
+        if c is not None:z["criterion_frequencies"][c]=z["criterion_frequencies"].get(c,0)+1
+    z["numeric_settings"]={k:_summary([_number(r.get(k)) for _,r in rows if _number(r.get(k)) is not None]) for k,t in CONFIGS.items() if t=="numeric" and k in h}; z["outcomes"]={k:{"direction":d,**_summary([_number(r.get(k)) for _,r in rows if _number(r.get(k)) is not None])} for k,d in OUTCOMES.items() if k in h}
+    g={}; e={}
+    for p,r in rows:g.setdefault(_key(r),[]).append(p); e.setdefault(tuple(r.get(k,"") for k in h),[]).append(p)
+    z["normalized_configurations"]=[{"settings":dict(zip(CONFIGS,k)),"row_positions":v} for k,v in g.items()]; z["repeated_configurations"]=[x for x in z["normalized_configurations"] if len(x["row_positions"])>1]; z["exact_duplicate_row_groups"]=[v for v in e.values() if len(v)>1]; z["normalization"]="Trim categorical whitespace; numeric equivalents use float; missing/invalid settings become null; rows remain position-addressable."; return z
+class _Tree:
+    def __init__(self,rows,target,depth=2,leaf=500):
+        self.rows=rows; self.target=target; self.depth=depth; self.leaf=leaf
+        self.root=("leaf",self.mean(list(range(len(rows))))) if len(rows)>2000 else self.grow(list(range(len(rows))),0)
+    def y(self,i):return _number(self.rows[i].get(self.target))
+    def mean(self,a):return statistics.fmean([self.y(i) for i in a])
+    def grow(self,a,d):
+        node=("leaf",self.mean(a))
+        if d>=self.depth or len(a)<2*self.leaf:return node
+        best=(sum((self.y(i)-self.mean(a))**2 for i in a),None)
+        for f,t in CONFIGS.items():
+            v=[(_number(self.rows[i].get(f)) if t=="numeric" else _cat(self.rows[i].get(f)),i) for i in a]; u=sorted({x for x,i in v if x is not None});
+            if t=="numeric":
+                cuts=[(u[int(len(u)*j/4)]+u[min(len(u)-1,int(len(u)*j/4)+1)])/2 for j in range(1,4) if u and int(len(u)*j/4)<len(u)-1]
+            else: cuts=u
+            for c in cuts:
+                l=[i for x,i in v if x is not None and (x<c if t=="numeric" else x==c)]; r=[i for i in a if i not in l]
+                score=0
+                if len(l)>=self.leaf and len(r)>=self.leaf:
+                    for q in (l,r):
+                        mq=self.mean(q); score += sum((self.y(i)-mq)**2 for i in q)
+                else: score=best[0]
+                if score<best[0]:best=(score,(f,t,c,l,r))
+        if best[1] is None:return node
+        f,t,c,l,r=best[1]; return ("split",f,t,c,self.grow(l,d+1),self.grow(r,d+1))
+    def predict(self,row):
+        n=self.root
+        while n[0]=="split":
+            _,f,t,c,l,r=n; v=_number(row.get(f)) if t=="numeric" else _cat(row.get(f)); n=l if v is not None and (v<c if t=="numeric" else v==c) else r
+        return n[1]
+def _mae(a,p):return statistics.fmean(abs(x-y) for x,y in zip(a,p)) if a else None
+def predict_dataset(path,seed=42):
+    h,rows,bad=_read(path); g={}
+    for p,r in rows:g.setdefault(_key(r),[]).append((p,r))
+    if len(g)<2:raise ValueError("at least two normalized configuration groups are required")
+    keys=sorted(g,key=repr); random.Random(seed).shuffle(keys); cut=max(1,min(len(keys)-1,round(len(keys)*.8))); train=[x for k in keys[:cut] for x in g[k]]; test=[x for k in keys[cut:] for x in g[k]]; out={"predictors":list(CONFIGS),"outcome_exclusions":list(OUTCOMES),"train_rows":len(train),"test_rows":len(test),"train_groups":cut,"test_groups":len(keys)-cut,"seed":seed,"targets":{},"models":"held-out models fitted only on training rows; no all-history model is fitted"}
+    for target in ("MRE-","ACC+"):
+        usable=[(p,r) for p,r in train if _number(r.get(target)) is not None]; actual=[(p,r,_number(r.get(target))) for p,r in test if _number(r.get(target)) is not None]; m=_Tree([r for _,r in usable],target) if len(usable)>=2 else None; mean=statistics.fmean([_number(r.get(target)) for _,r in usable]) if usable else None; pred=[m.predict(r) for _,r,_ in actual] if m else []; a=[v for _,_,v in actual]
+        out["targets"][target]={"finite_training_targets":len(usable),"evaluated_test_targets":len(a),"excluded_training_targets":len(train)-len(usable),"excluded_test_targets":len(test)-len(a),"held_out_mae":_mae(a,pred),"baseline_training_mean":mean,"baseline_mae":_mae(a,[mean]*len(a)) if mean is not None else None,"evaluations":[{"row_position":p,"actual":v,"prediction":q} for (p,r,v),q in zip(actual,pred)]}
+    return out
+def predict_configuration(configuration,model):
+    if set(configuration)!=set(CONFIGS):raise ValueError("configuration must contain exactly the five setting fields")
+    return model.predict(configuration)
+def empty_result(reason):return {"record_count":0,"column_names":[],"roles":{},"missing_values":{},"invalid_nonfinite_numeric":{},"criterion_frequencies":{},"numeric_settings":{},"outcomes":{},"normalized_configurations":[],"repeated_configurations":[],"exact_duplicate_row_groups":[],"malformed_row_positions":[],"note":reason}
