@@ -642,9 +642,85 @@ def render_spot(result):
     if not result["flagged"]: lines.append("no flags")
     return "\n".join(lines)
 
+def _race_pool(path, outcome="Performance-"):
+    header, records, _ = load(path)
+    if not header or outcome not in header:
+        return [], [n for n in header if n != outcome], {"invalid_settings": 0, "invalid_outcomes": 0}
+    settings = [n for n in header if n != outcome]
+    pool, seen = [], set(); excluded = {"invalid_settings": 0, "invalid_outcomes": 0}
+    for position, _, record in iter_measurements(path):
+        config = _binary_configuration(record, settings)
+        if config is None:
+            excluded["invalid_settings"] += 1; continue
+        key = tuple(config[n] for n in settings)
+        if key in seen: continue
+        seen.add(key)
+        pool.append({"position": position, "configuration": config,
+                     "key": key, "outcome": record.get(outcome, "")})
+    return pool, settings, excluded
+
+def _race_method(pool, budget, seed, strategy):
+    if not isinstance(budget, int) or budget < 0: raise ValueError("budget must be a nonnegative integer")
+    rng = random.Random(seed); order = list(range(len(pool)))
+    if strategy not in ("uniform random baseline", "selector"): raise ValueError("unknown race strategy")
+    rng.shuffle(order)
+    # choose() uses this same uniform order; retaining the separate method makes equivalence explicit.
+    attempted = min(budget, len(order)); history = []; winner = None
+    for index in order[:attempted]:
+        item = pool[index]; value = _number(item["outcome"])
+        entry = {"position": item["position"], "configuration": dict(item["configuration"]), "observed": value}
+        history.append(entry)
+        if value is not None and (winner is None or value < winner["observed"]): winner = entry
+    return {"strategy": strategy, "seed": seed, "budget": budget,
+            "candidate_count": len(pool), "attempted_evaluations": attempted,
+            "successful_evaluations": sum(x["observed"] is not None for x in history),
+            "winner": winner, "evaluation_history": history,
+            "status": "ok" if winner else "no finite outcome was observed"}
+
+def _classify_difference(difference, tolerance):
+    if difference > tolerance: return "win"
+    if difference < -tolerance: return "loss"
+    return "tie"
+
+def race(path, budget=20, seeds=range(42, 52), tolerance=0.0, audit=False):
+    if not isinstance(tolerance, (int, float)) or not math.isfinite(tolerance) or tolerance < 0:
+        raise ValueError("tolerance must be finite and nonnegative")
+    pool, settings, excluded = _race_pool(path)
+    if not isinstance(budget, int) or budget < 0: raise ValueError("budget must be a nonnegative integer")
+    rows = []
+    for seed in seeds:
+        selector = _race_method(pool, budget, seed, "selector")
+        baseline = _race_method(pool, budget, seed, "uniform random baseline")
+        difference = None; classification = "uncomparable"
+        if selector["winner"] and baseline["winner"]:
+            difference = baseline["winner"]["observed"] - selector["winner"]["observed"]
+            classification = _classify_difference(difference, tolerance)
+        rows.append({"seed": seed, "selector": selector, "baseline": baseline,
+                     "difference": difference, "classification": classification})
+    comparable = [r for r in rows if r["difference"] is not None]
+    diffs = [r["difference"] for r in comparable]
+    counts = {name: sum(r["classification"] == name for r in comparable) for name in ("win", "tie", "loss")}
+    result = {"status": "ok" if pool else "empty configuration pool", "budget": budget,
+              "tolerance": tolerance, "candidate_count": len(pool), "settings": settings,
+              "excluded": excluded, "rows": rows, "comparable_pairs": len(comparable),
+              "mean_difference": statistics.fmean(diffs) if diffs else None,
+              "median_difference": statistics.median(diffs) if diffs else None,
+              "counts": counts, "equivalent_methods": True,
+              "equivalence_note": "selector and baseline use identical uniform sampling under paired seeds; this is an algorithmic equivalence, not evidence of superiority."}
+    if audit: result["audit"] = historical_audit(path)
+    return result
+
+def render_race(result):
+    lines = ["X264 selector race", "status: %s; budget=%d; tolerance=%s; distinct_candidates=%d" % (result["status"], result["budget"], result["tolerance"], result["candidate_count"]), result["equivalence_note"]]
+    for row in result["rows"]:
+        lines.append("seed %d: selector attempts=%d successful=%d winner=%s; baseline attempts=%d successful=%d winner=%s; difference=%s classification=%s" % (row["seed"], row["selector"]["attempted_evaluations"], row["selector"]["successful_evaluations"], row["selector"]["winner"], row["baseline"]["attempted_evaluations"], row["baseline"]["successful_evaluations"], row["baseline"]["winner"], row["difference"], row["classification"]))
+    lines.append("summary: mean_difference=%s; median_difference=%s; comparable_pairs=%d; wins=%d ties=%d losses=%d" % (result["mean_difference"], result["median_difference"], result["comparable_pairs"], result["counts"]["win"], result["counts"]["tie"], result["counts"]["loss"]))
+    lines.append("Differences are baseline Performance- minus selector Performance-; positive favors the selector. Seeds are repeated historical replays, not independent LLM trials or new datasets. Any audit is retrospective and does not influence selection.")
+    return "\n".join(lines)
+
 def main(argv):
     if len(argv) not in (2, 3):
-        print("usage: x264_summary.py DATASET [predict|certify|flow|blame|justify]", file=sys.stderr); return 2
+        print("usage: x264_summary.py DATASET [predict|certify|flow|blame|justify|choose|fix|spot|race]", file=sys.stderr); return 2
     try:
         if len(argv) == 2: print(render(summarize(argv[1])))
         elif argv[2] == "predict":
@@ -656,6 +732,7 @@ def main(argv):
         elif argv[2] == "choose": print(render_choose(choose(argv[1], 20, 42, audit=True)))
         elif argv[2] == "fix": print(render_fix(recommend_fix(argv[1])))
         elif argv[2] == "spot": print(render_spot(spot(argv[1])))
+        elif argv[2] == "race": print(render_race(race(argv[1], 20, range(42, 52), 0.0, audit=True)))
         else: print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
