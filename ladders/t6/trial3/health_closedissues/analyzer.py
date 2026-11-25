@@ -262,3 +262,63 @@ def choose(path, cap=100):
                                 "outcomes": chosen[2], "selected_proxy_value": chosen[1]["N_estimators"],
                                 "feasibility": "feasible: finite complete row and 0 <= N_estimators <= cap"}
     return result
+
+SPOT_THRESHOLD = 3.5
+SPOT_MIN_SAMPLE = 3
+
+def _mad(values, center):
+    return statistics.median([abs(v - center) for v in values]) if values else None
+
+def spot(path, threshold=SPOT_THRESHOLD, min_sample=SPOT_MIN_SAMPLE):
+    """Screen marginal outcomes with self-inclusive median/MAD modified scores.
+
+    score = 0.6744897501960817 * (value - median) / MAD.  A score's
+    magnitude must be strictly greater than threshold.  Each finite outcome
+    contributes to its own independent reference distribution.  With fewer
+    than min_sample finite values, or with MAD == 0, scores are undefined;
+    no standard-deviation substitute is used and no rows are flagged.
+    """
+    if not isinstance(threshold, (int, float)) or isinstance(threshold, bool) or not math.isfinite(threshold) or threshold < 0:
+        raise ValueError("threshold must be a finite nonnegative number")
+    if not isinstance(min_sample, int) or isinstance(min_sample, bool) or min_sample < 1:
+        raise ValueError("min_sample must be a positive integer")
+    header, rows, bad = _read(path)
+    out = {"status": "ok" if header else "empty_data", "threshold": threshold,
+           "minimum_finite_sample": min_sample, "score_definition": "0.6744897501960817 * (value - median) / MAD",
+           "flag_rule": "abs(score) > threshold (strict; equality is a nonflag)",
+           "reference_convention": "each finite observation contributes to its own outcome's self-inclusive reference distribution; outcomes use independent finite populations",
+           "position_convention": "original physical CSV row; header is position 1; blank rows are ignored; malformed rows are excluded without renumbering",
+           "malformed_row_positions": bad, "outcomes": {}, "flagged_rows": [], "unique_flagged_row_count": 0,
+           "interpretation": "Unusual marginal results warrant investigation and are not proven measurement errors. Very good results can also be unusual. This is not configuration-conditioned anomaly detection or a validated error classifier; detector accuracy is not reported without labeled ground truth."}
+    for name in OUTCOMES:
+        finite = [(p, r, _number(r.get(name))) for p, r in rows if _number(r.get(name)) is not None]
+        invalid = len(rows) - len(finite)
+        values = [v for _, _, v in finite]
+        center = statistics.median(values) if values else None
+        scale = _mad(values, center) if values else None
+        reference_count = len(values)
+        undefined_reason = None
+        if reference_count < min_sample: undefined_reason = "insufficient_finite_reference"
+        elif scale == 0: undefined_reason = "zero_MAD_reference"
+        flags = []
+        statuses = {"invalid_or_missing": invalid, "undefined_score": 0, "ordinary_nonflag": 0, "flagged": 0}
+        for position, row, value in finite:
+            score = None if undefined_reason else 0.6744897501960817 * (value - center) / scale
+            if score is None:
+                statuses["undefined_score"] += 1
+            elif abs(score) > threshold:
+                direction = "high" if score > 0 else "low"
+                settings = {k: (_cat(row.get(k)) if t == "categorical" else _number(row.get(k))) for k, t in CONFIGS.items()}
+                flags.append({"position": position, "configuration": settings, "outcome": name, "observed": value,
+                              "score": score, "reference_count": reference_count, "center_median": center,
+                              "scale_MAD": scale, "threshold": threshold,
+                              "reason": "unusually %s relative to self-inclusive median/MAD reference" % direction})
+                statuses["flagged"] += 1
+            else:
+                statuses["ordinary_nonflag"] += 1
+        out["outcomes"][name] = {"direction": OUTCOMES[name], "reference_count": reference_count,
+            "center_median": center, "scale_MAD": scale, "undefined_reason": undefined_reason,
+            "status_counts": statuses, "flag_count": len(flags)}
+        out["flagged_rows"].extend(flags)
+    out["unique_flagged_row_count"] = len({x["position"] for x in out["flagged_rows"]})
+    return out
