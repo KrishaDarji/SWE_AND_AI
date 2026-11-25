@@ -396,6 +396,54 @@ def print_blame(result):
         print("  excluded=" + repr(r["excluded"]) + " categories=" + repr(r["categories"]))
         print("  higher_mean_effort=" + repr(r["higher_mean_effort"]) + " lower_mean_effort=" + repr(r["lower_mean_effort"]))
 
+def _median(values):
+    ordered = sorted(values); n = len(ordered)
+    return None if not n else ordered[n // 2] if n % 2 else (ordered[n // 2 - 1] + ordered[n // 2]) / 2
+
+def spot(path, threshold=3.5, min_reference=3):
+    """Leave-one-out robust screening of log1p(Effort-), marginally."""
+    if not math.isfinite(threshold) or threshold < 0: raise ValueError("threshold must be finite and nonnegative")
+    if not isinstance(min_reference, int) or min_reference < 0: raise ValueError("min_reference must be a nonnegative integer")
+    _, projects, invalid_rows, issues = load(path); valid = []
+    for p in projects:
+        effort, kind = _target(p)
+        if kind == "valid" and effort >= 0: valid.append((p, effort, math.log1p(effort)))
+    reports = []
+    for p in projects:
+        effort, kind = _target(p); base = {"position": p.position, "idX": p.identifier,
+            "observed_effort": effort if kind in ("valid", "nonfinite") else None,
+            "transformed": None, "reference_count": 0, "center": None, "scale": None,
+            "score": None, "threshold": threshold, "descriptor": {n: norm_cell(p.values.get(n, "")) for n in CATEGORICAL}}
+        if kind != "valid": base.update(status="invalid_or_missing", reason="missing, invalid, or nonfinite Effort- outcome")
+        elif effort < 0: base.update(status="invalid_or_missing", reason="negative Effort- cannot be transformed by log1p")
+        else:
+            transformed = math.log1p(effort); refs = [x[2] for x in valid if x[0] is not p]
+            base["transformed"] = transformed; base["reference_count"] = len(refs)
+            if len(refs) < min_reference: base.update(status="undefined", reason="insufficient leave-one-out references")
+            else:
+                center = _median(refs); deviations = [abs(x-center) for x in refs]; scale = _median(deviations)
+                base.update(center=center, scale=scale)
+                if scale == 0: base.update(status="undefined", reason="zero MAD; score is not defined")
+                else:
+                    score = abs(transformed-center) / scale; base["score"] = score
+                    base.update(status="flagged" if score >= threshold else "ordinary_nonflag",
+                                reason="robust score meets threshold" if score >= threshold else "valid observation below threshold")
+        reports.append(base)
+    counts = Counter(r["status"] for r in reports)
+    return {"path": path, "threshold": threshold, "min_reference": min_reference, "reports": reports,
+            "counts": {"total_valid": sum(r["status"] != "invalid_or_missing" for r in reports),
+                       "excluded": counts["invalid_or_missing"], "flagged": counts["flagged"],
+                       "ordinary_nonflag": counts["ordinary_nonflag"], "undefined": counts["undefined"]},
+            "invalid_rows": invalid_rows, "issues": issues,
+            "policy": "log1p nonnegative Effort-; leave-one-out median/MAD; zero MAD and short references undefined",
+            "interpretation": "Marginal historical effort screening; size and other descriptors are not adjusted. Unusual results warrant investigation, not proof of measurement error; both low and high effort may be unusual."}
+
+def print_spot(result, examples=12):
+    print("policy: " + result["policy"]); print(result["interpretation"])
+    print("counts: " + repr(result["counts"])); print("positions are 1-based physical CSV lines including header; malformed rows are skipped and reported")
+    for row in result["reports"]:
+        if row["status"] != "ordinary_nonflag": print("spot: " + repr(row))
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize or estimate NASA93 historical projects")
     parser.add_argument("dataset")
@@ -406,9 +454,13 @@ def main(argv=None):
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--retrospective-audit", action="store_true")
     parser.add_argument("--choose", action="store_true")
+    parser.add_argument("--spot", action="store_true")
+    parser.add_argument("--spot-threshold", type=float, default=3.5)
+    parser.add_argument("--spot-min-reference", type=int, default=3)
     parser.add_argument("--cap", type=float, default=100)
     args = parser.parse_args(argv)
-    if args.choose: print_choose(choose(args.dataset, args.cap))
+    if args.spot: print_spot(spot(args.dataset, args.spot_threshold, args.spot_min_reference))
+    elif args.choose: print_choose(choose(args.dataset, args.cap))
     elif args.justify: print_justify(justify(args.dataset, retrospective=args.retrospective_audit))
     elif args.blame: print_blame(blame(args.dataset))
     elif args.flow: print_flow(flow(args.dataset))
