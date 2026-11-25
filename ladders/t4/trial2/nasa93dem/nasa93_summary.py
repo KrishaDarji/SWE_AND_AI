@@ -14,6 +14,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GroupShuffleSplit
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
+from scipy import stats
 
 
 MISSING = {"", "?", "na", "n/a", "none", "null"}
@@ -151,11 +152,48 @@ def predict_proposal(model, predictors, proposal):
     return float(model.predict([row])[0])
 
 
+def compare_tools(path, practical_threshold=None, tool_a="n", tool_b="h"):
+    """Compare observed Effort- for two tool groups using Welch's method."""
+    if practical_threshold is not None and practical_threshold < 0:
+        raise ValueError("practical_threshold must be nonnegative")
+    columns, rows = load_csv(path)
+    if "tool" not in columns or "Effort-" not in columns:
+        raise ValueError("CSV must contain tool and Effort-")
+    groups = {}
+    for label in (tool_a, tool_b):
+        groups[label] = finite_numbers([r["Effort-"] for r in rows if r["tool"] == label])
+        if groups[label].size < 2:
+            raise ValueError("each tool group needs at least two finite Effort- outcomes")
+    a, b = groups[tool_a], groups[tool_b]
+    if np.var(a, ddof=1) == 0 or np.var(b, ddof=1) == 0:
+        raise ValueError("Welch comparison requires nonzero variance in both groups")
+    mean_a, mean_b = float(np.mean(a)), float(np.mean(b))
+    difference = mean_a - mean_b
+    var_a, var_b = np.var(a, ddof=1), np.var(b, ddof=1)
+    se2 = var_a / a.size + var_b / b.size
+    df = se2 ** 2 / ((var_a / a.size) ** 2 / (a.size - 1) + (var_b / b.size) ** 2 / (b.size - 1))
+    critical = float(stats.t.ppf(0.975, df))
+    margin = critical * math.sqrt(se2)
+    interval = (float(difference - margin), float(difference + margin))
+    p_value = float(2 * stats.t.sf(abs(difference / math.sqrt(se2)), df))
+    threshold = float(practical_threshold) if practical_threshold is not None else None
+    return {"groups": {tool_a: {"n": int(a.size), "mean": mean_a}, tool_b: {"n": int(b.size), "mean": mean_b}},
+            "difference_mean_a_minus_mean_b": float(difference), "confidence_level": 0.95,
+            "confidence_interval": interval, "welch_df": float(df), "welch_t": float(difference / math.sqrt(se2)),
+            "two_sided_p_value": p_value, "practical_threshold": threshold,
+            "point_estimate_exceeds_threshold": None if threshold is None else abs(difference) > threshold,
+            "entire_interval_exceeds_threshold": None if threshold is None else (interval[0] > threshold or interval[1] < -threshold),
+            "interpretation": "Effort- is observed effort, not verified monetary cost; this observational comparison does not establish a causal process effect."}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_path", type=Path)
+    parser.add_argument("--compare-tools", action="store_true")
+    parser.add_argument("--threshold", type=float)
     args = parser.parse_args()
-    print(json.dumps(summarize(args.csv_path), indent=2, sort_keys=False))
+    result = compare_tools(args.csv_path, args.threshold) if args.compare_tools else summarize(args.csv_path)
+    print(json.dumps(result, indent=2, sort_keys=False))
 
 
 if __name__ == "__main__":
