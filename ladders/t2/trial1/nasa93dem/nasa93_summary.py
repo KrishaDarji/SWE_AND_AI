@@ -274,6 +274,42 @@ def analyze_effort_factors(path, minimum_level_count=3):
             "factors": factors}
 
 
+def justify_estimate(path, kloc, budget=None):
+    """Build an evidence-backed explanation suitable for a skeptical sponsor.
+
+    The calculation reuses :func:`estimate_effort` and adds transparent
+    historical evidence, uncertainty, decision logic, and limitations.  It
+    does not imply that the historical association is causal.
+    """
+    estimate = estimate_effort(path, kloc, budget)
+    projects = load_projects(path)
+    rates = [p["Effort-"] / p["Kloc+"] for p in projects if p["Kloc+"] > 0]
+    median_rate = statistics.median(rates)
+    low_rate, high_rate = _percentile(rates, .25), _percentile(rates, .75)
+    return {
+        "recommendation": estimate["approval"],
+        "estimate": estimate,
+        "evidence": {
+            "historical_projects": len(projects),
+            "historical_effort_per_kloc_median": median_rate,
+            "historical_effort_per_kloc_planning_low": low_rate,
+            "historical_effort_per_kloc_planning_high": high_rate,
+            "planning_range_covers_middle": "25th_to_75th_percentile",
+        },
+        "sponsor_message": (
+            "The point estimate is based on the median effort per KLOC from "
+            "%d historical projects. The planning range uses the middle 50%% "
+            "of observed effort intensity; approval is recommended only when "
+            "the stated budget covers its upper bound."
+        ) % len(projects),
+        "risks_and_limitations": [
+            "Historical projects may differ from the proposed project's scope, team, or technology.",
+            "The range describes observed effort intensity and is not a confidence interval.",
+            "No schedule, staffing, requirements volatility, or contingency adjustment is modeled.",
+        ],
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -290,8 +326,12 @@ def main(argv=None):
     parser.add_argument("--max-months", type=float)
     parser.add_argument("--analyze-factors", action="store_true")
     parser.add_argument("--minimum-level-count", type=int, default=3)
+    parser.add_argument("--justify-kloc", type=float)
+    parser.add_argument("--justify-budget", type=float)
     args = parser.parse_args(argv)
-    result = (analyze_effort_factors(args.csv_path, args.minimum_level_count)
+    result = (justify_estimate(args.csv_path, args.justify_kloc, args.justify_budget)
+              if args.justify_kloc is not None else
+              analyze_effort_factors(args.csv_path, args.minimum_level_count)
               if args.analyze_factors else
               assess_proposal(args.csv_path, {"id": args.proposal_id,
                                               "kloc": args.proposal_kloc,
