@@ -100,6 +100,54 @@ def descriptor_columns(columns):
     return [c for c in columns if not c.endswith("X") and c not in OUTCOMES]
 
 
+def rank_effort_associations(path):
+    """Rank categorical descriptors by marginal eta-squared against Effort-."""
+    columns, rows = load_csv(path)
+    if "Effort-" not in columns:
+        raise ValueError("CSV must contain Effort-")
+    descriptors = descriptor_columns(columns)
+    valid = [(row, float(row["Effort-"])) for row in rows
+             if row["Effort-"] is not None and math.isfinite(float(row["Effort-"]))]
+    if not valid:
+        raise ValueError("Effort- has no finite observations")
+    y = np.asarray([item[1] for item in valid], dtype=float)
+    overall = float(np.mean(y))
+    results = []
+    for descriptor in descriptors:
+        groups = {}
+        for row, effort in valid:
+            label = "<MISSING>" if row[descriptor] is None else str(row[descriptor])
+            groups.setdefault(label, []).append(effort)
+        summaries = []
+        between = 0.0
+        for label in sorted(groups):
+            values = np.asarray(groups[label], dtype=float)
+            mean = float(np.mean(values))
+            between += len(values) * (mean - overall) ** 2
+            summaries.append({"level": label, "n": int(len(values)),
+                              "mean_effort": mean,
+                              "median_effort": float(np.median(values)),
+                              "min_effort": float(np.min(values)),
+                              "max_effort": float(np.max(values))})
+        total = float(np.sum((y - overall) ** 2))
+        score = between / total if total > 0 else 0.0
+        ordered = sorted(summaries, key=lambda item: (-item["mean_effort"], item["level"]))
+        results.append({"descriptor": descriptor, "score_eta_squared": float(score),
+                        "group_count": len(summaries), "groups": summaries,
+                        "highest_mean_level": ordered[0]["level"],
+                        "lowest_mean_level": ordered[-1]["level"],
+                        "direction": "higher Effort- at highest-mean level" if len(ordered) > 1 and ordered[0]["mean_effort"] > ordered[-1]["mean_effort"] else "no directional contrast"})
+    results.sort(key=lambda item: (-item["score_eta_squared"], item["descriptor"]))
+    for rank, result in enumerate(results, 1):
+        result["rank"] = rank
+        result["method_note"] = "Marginal categorical eta-squared; no adjustment for other descriptors."
+    return {"outcome": "Effort-", "observation_count": len(y), "overall_mean_effort": overall,
+            "overall_median_effort": float(np.median(y)), "predictors": descriptors,
+            "ranking": results,
+            "interpretation": "Higher effort alone does not establish inefficiency; project scope differs. Correlated descriptors can share explanatory information. Associations are not causal effects or guaranteed process changes.",
+            "limitations": ["Delivered size Kloc+ and all X-suffix metadata are excluded, so this is not size-adjusted productivity.", "Small groups and missingness can make marginal scores unstable.", "Constant descriptors have score zero and are deterministically ordered by name."]}
+
+
 def build_model(predictors):
     prep = ColumnTransformer([("categorical", Pipeline([
         ("onehot", OneHotEncoder(handle_unknown="ignore")),
@@ -244,8 +292,10 @@ def main():
     parser.add_argument("--compare-tools", action="store_true")
     parser.add_argument("--threshold", type=float)
     parser.add_argument("--assess-arrivals", action="store_true")
+    parser.add_argument("--rank-effort-associations", action="store_true")
     args = parser.parse_args()
-    result = (assess_arrivals(args.csv_path) if args.assess_arrivals else
+    result = (rank_effort_associations(args.csv_path) if args.rank_effort_associations else
+              assess_arrivals(args.csv_path) if args.assess_arrivals else
               compare_tools(args.csv_path, args.threshold) if args.compare_tools else
               summarize(args.csv_path))
     print(json.dumps(result, indent=2, sort_keys=False))
