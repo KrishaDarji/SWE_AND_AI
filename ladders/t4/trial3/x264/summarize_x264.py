@@ -487,14 +487,84 @@ def repair(path, baseline=None):
             "limitations": ["Observed improvements are not causal or future-performance guarantees."]}
 
 
+def spot(path, threshold=3.0, min_comparisons=2):
+    """Screen records for unusually high/low outcomes against other groups.
+
+    Threshold and minimum comparison count are fixed before reading records.  An
+    assessed configuration group is wholly excluded from its reference, so a
+    duplicate observation cannot help predict itself.  References are the
+    nearest groups by Hamming distance, with ties retained.
+    """
+    if isinstance(threshold, bool) or not isinstance(threshold, (int, float)) or not math.isfinite(float(threshold)) or threshold < 0:
+        raise ValueError("threshold must be a finite nonnegative number")
+    if isinstance(min_comparisons, bool) or not isinstance(min_comparisons, int) or min_comparisons < 1:
+        raise ValueError("min_comparisons must be a positive integer")
+    with Path(path).open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames or []
+        if OUTCOME not in fields:
+            raise ValueError(f"missing target column {OUTCOME!r}")
+        settings = [field for field in fields if field != OUTCOME]
+        valid, invalid_target = [], 0
+        for record_id, row in enumerate(reader):
+            outcome = _number(row.get(OUTCOME, ""))
+            if outcome is None:
+                invalid_target += 1
+            else:
+                valid.append((record_id, row, outcome))
+    if not valid:
+        return {"outcome": OUTCOME, "direction": "lower is better", "method": "nearest configuration groups; leave-one-group-out reference mean and sample standard deviation", "threshold": float(threshold), "minimum_comparison_groups": min_comparisons, "records": [], "flagged_records": [], "flagged_record_count": 0, "unique_flagged_record_count": 0, "valid_record_count": 0, "invalid_target_rows": invalid_target, "limitations": ["Flags are investigation candidates, not confirmed measurement errors.", "No verified anomaly labels are available, so detection accuracy is not claimed.", "A zero reference variance or absent independent reference makes the score undefined."]}
+    groups = {}
+    for record_id, row, outcome in valid:
+        key = tuple(_setting(row.get(field, "")) or MISSING_SETTING for field in settings)
+        groups.setdefault(key, []).append((record_id, row, outcome))
+    results, flags = [], []
+    for key, members in groups.items():
+        other = [(other_key, values) for other_key, values in groups.items() if other_key != key]
+        if other:
+            distances = [sum(a != b for a, b in zip(key, other_key)) for other_key, _ in other]
+            nearest_distance = min(distances)
+            reference_groups = [(k, v) for (k, v), d in zip(other, distances) if d == nearest_distance]
+        else:
+            nearest_distance, reference_groups = None, []
+        reference_values = [outcome for _, values in reference_groups for _, _, outcome in values]
+        expected = float(np.mean(reference_values)) if reference_values else None
+        std = float(np.std(reference_values, ddof=1)) if len(reference_values) > 1 else None
+        comparisons = len(reference_groups)
+        for record_id, row, observed in members:
+            score = None if expected is None or std is None or std == 0 else (observed - expected) / std
+            if score is None:
+                reason = "independent reference unavailable" if not reference_values else "zero reference variability" if std == 0 else "score undefined"
+            elif comparisons < min_comparisons:
+                reason = "fewer than minimum comparison groups"
+            elif abs(score) >= float(threshold):
+                reason = "flagged"
+            else:
+                reason = "below threshold"
+            item = {"record_id": record_id, "configuration": {field: row.get(field, "") for field in settings},
+                    "observed": observed, "expected": expected, "reference_std": std,
+                    "score": score, "threshold": float(threshold), "comparison_group_count": comparisons,
+                    "comparison_groups": [{field: value for field, value in zip(settings, group_key)} for group_key, _ in reference_groups],
+                    "nearest_distance": nearest_distance, "flag": reason == "flagged", "reason": reason}
+            results.append(item)
+            if item["flag"]: flags.append(item)
+    results.sort(key=lambda item: item["record_id"])
+    return {"outcome": OUTCOME, "direction": "lower is better", "method": "nearest configuration groups; leave-one-group-out reference mean and sample standard deviation",
+            "threshold": float(threshold), "minimum_comparison_groups": min_comparisons, "records": results,
+            "flagged_records": flags, "flagged_record_count": len(flags), "unique_flagged_record_count": len({x["record_id"] for x in flags}),
+            "valid_record_count": len(valid), "invalid_target_rows": invalid_target,
+            "limitations": ["Flags are investigation candidates, not confirmed measurement errors.", "No verified anomaly labels are available, so detection accuracy is not claimed.", "A zero reference variance or absent independent reference makes the score undefined."]}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
     parser.add_argument("--json", type=Path)
     parser.add_argument("--blame", action="store_true", help="rank settings by marginal association")
     parser.add_argument("--justify", action="store_true", help="justify the best observed configuration")
+    parser.add_argument("--spot", action="store_true", help="screen for anomalous outcomes")
     args = parser.parse_args()
-    summary = justify(args.dataset) if args.justify else (blame(args.dataset) if args.blame else summarize(args.dataset))
+    summary = spot(args.dataset) if args.spot else (justify(args.dataset) if args.justify else (blame(args.dataset) if args.blame else summarize(args.dataset)))
     rendered = json.dumps(summary, indent=2, sort_keys=True)
     print(rendered)
     if args.json:
