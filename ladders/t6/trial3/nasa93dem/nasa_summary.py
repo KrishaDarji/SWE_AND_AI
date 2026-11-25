@@ -1,10 +1,81 @@
 """NASA93 historical-project loader and descriptive summary (stdlib only)."""
 import argparse, csv, math, pathlib, statistics, sys
+import random
 
 CATEGORICAL = {"prec","flex","resl","team","pmat","rely","data","cplx","ruse","docu","time","stor","pvol","acap","pcap","pcon","apex","plex","ltex","tool","site","sced"}
 METADATA = {"idX","centerX","YearX","MonthsX"}
 OUTCOMES = {"Kloc+":"maximize", "Effort-":"minimize", "Defects-":"minimize"}
 MISSING = {"", "?", "NA", "N/A", "null", "NULL", "None"}
+
+PREDICTORS = ("prec","flex","resl","team","pmat","rely","data","cplx","ruse","docu","time","stor","pvol","acap","pcap","pcon","apex","plex","ltex","tool","site","sced")
+
+def _cell(value):
+    value = "" if value is None else str(value).strip()
+    return "?" if value in MISSING else value
+
+def _effort(value):
+    try:
+        x = float(str(value).strip())
+        return x if math.isfinite(x) else None
+    except (AttributeError, ValueError):
+        return None
+
+def _groups(projects):
+    out = {}
+    for p in projects:
+        key = tuple(_cell(p["values"].get(c, "")) for c in PREDICTORS)
+        out.setdefault(key, []).append(p)
+    return out
+
+def split_groups(projects, seed=42, fraction=.8):
+    groups = list(_groups(projects).values())
+    if len(groups) < 2: raise ValueError("at least two descriptor groups are required")
+    random.Random(seed).shuffle(groups)
+    cut = max(1, min(len(groups)-1, round(len(groups)*fraction)))
+    return [p for g in groups[:cut] for p in g], [p for g in groups[cut:] for p in g]
+
+class CategoricalKNN:
+    """EZR-inspired symbolic distance; nearest training row, mean tie prediction."""
+    def __init__(self, rows):
+        self.rows = []
+        self.training_mean = None
+        ys = []
+        for p in rows:
+            y = _effort(p["values"].get("Effort-", ""))
+            if y is not None:
+                ys.append(y); self.rows.append((tuple(_cell(p["values"].get(c,"")) for c in PREDICTORS), y, p))
+        if ys: self.training_mean = statistics.fmean(ys)
+    def predict(self, config):
+        if self.training_mean is None: raise ValueError("no usable training targets")
+        key = _validate_config(config)
+        if not self.rows: return self.training_mean
+        distances = [sum(a != b for a,b in zip(key, x[0])) for x in self.rows]
+        best = min(distances)
+        return statistics.fmean(x[1] for x,d in zip(self.rows, distances) if d == best)
+
+def _validate_config(config):
+    if not isinstance(config, dict): raise TypeError("configuration must be a mapping")
+    missing = [c for c in PREDICTORS if c not in config]
+    extra = sorted(set(config) - set(PREDICTORS))
+    if missing or extra: raise ValueError(f"schema error: missing={missing}, extra={extra}")
+    return tuple(_cell(config[c]) for c in PREDICTORS)
+
+def evaluate(rows, seed=42):
+    train, test = split_groups(rows, seed)
+    model = CategoricalKNN(train)
+    scored = [(p, _effort(p["values"].get("Effort-", ""))) for p in test]
+    scored = [(p,y,model.predict({c: p["values"].get(c, "") for c in PREDICTORS})) for p,y in scored if y is not None]
+    baseline = model.training_mean
+    mae = (statistics.fmean(abs(y-pred) for _,y,pred in scored) if scored else None)
+    bmae = (statistics.fmean(abs(y-baseline) for _,y,_ in scored) if scored and baseline is not None else None)
+    return {"model": model, "train": train, "test": test, "scored": scored, "mae": mae, "baseline_mae": bmae,
+            "train_groups": len(_groups(train)), "test_groups": len(_groups(test)),
+            "excluded_targets": sum(_effort(p["values"].get("Effort-", "")) is None for p in rows)}
+
+def render_estimate(path):
+    result = evaluate(load(path)["projects"])
+    print(f"train_rows={len(result['train'])} test_rows={len(result['test'])} train_groups={result['train_groups']} test_groups={result['test_groups']}")
+    print(f"excluded_targets={result['excluded_targets']} heldout_mae={result['mae']} training_mean_baseline_mae={result['baseline_mae']}")
 
 def _number(value):
     try:
@@ -84,8 +155,9 @@ def render(data):
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
+    ap.add_argument("--estimate", action="store_true")
     args = ap.parse_args(argv)
-    try: render(load(pathlib.Path(args.dataset)))
+    try: render_estimate(pathlib.Path(args.dataset)) if args.estimate else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
