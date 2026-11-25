@@ -352,6 +352,47 @@ def rank_effort_associations_training(path, training_indices):
             "note": "Training rows only; marginal association is not a local contribution."}
 
 
+def choose_settings(path, budget=100.0):
+    """Select the best observed feasible record by delivered-size proxy."""
+    if not isinstance(budget, (int, float, np.number)) or not math.isfinite(float(budget)) or float(budget) < 0:
+        raise ValueError("budget must be a finite nonnegative number")
+    columns, rows = load_csv(path)
+    required = {"Effort-", "Kloc+"}
+    missing = sorted(required - set(columns))
+    if missing:
+        raise ValueError("CSV missing required outcomes: " + ", ".join(missing))
+    descriptors = descriptor_columns(columns)
+    feasible = []
+    for index, row in enumerate(rows):
+        effort, size = row["Effort-"], row["Kloc+"]
+        if effort is None or size is None:
+            continue
+        try:
+            effort, size = float(effort), float(size)
+        except (TypeError, ValueError):
+            continue
+        if math.isfinite(effort) and math.isfinite(size) and effort <= float(budget):
+            feasible.append((index, row, effort, size))
+    selected = max(feasible, key=lambda item: (item[3], -item[2], -item[0])) if feasible else None
+    result = {"budget": float(budget), "feasible_count": len(feasible), "total_count": len(rows),
+              "selection_rule": "Among observed records with Effort- <= budget, maximize Kloc+; break ties by lower Effort-, then earliest CSV record.",
+              "value_proxy": "Kloc+ (delivered-size proxy; not business value or productivity)",
+              "observed_outcomes_note": "Selection uses observed historical outcomes, not predictions for an unseen proposal.",
+              "limitations": ["Settings are not claimed to cause the observed outcomes.", "Historical feasibility and performance are not guaranteed for future proposals.", "X-suffix metadata and outcome columns are excluded from descriptor settings."],
+              "descriptor_columns": descriptors}
+    if selected is None:
+        result["selected"] = None
+        result["status"] = "no feasible records"
+        return result
+    index, row, effort, size = selected
+    identifier = row.get("idX") if row.get("idX") is not None else index
+    result["status"] = "selected"
+    result["selected"] = {"record_identifier": identifier, "csv_record_index": index,
+                           "descriptors": {column: row[column] for column in descriptors},
+                           "observed_effort": effort, "delivered_size": size}
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_path", type=Path)
@@ -360,8 +401,11 @@ def main():
     parser.add_argument("--assess-arrivals", action="store_true")
     parser.add_argument("--rank-effort-associations", action="store_true")
     parser.add_argument("--justify", action="store_true")
+    parser.add_argument("--choose", action="store_true")
+    parser.add_argument("--budget", type=float, default=100.0)
     args = parser.parse_args()
-    result = (justify_estimate(args.csv_path) if args.justify else
+    result = (choose_settings(args.csv_path, args.budget) if args.choose else
+              justify_estimate(args.csv_path) if args.justify else
               rank_effort_associations(args.csv_path) if args.rank_effort_associations else
               assess_arrivals(args.csv_path) if args.assess_arrivals else
               compare_tools(args.csv_path, args.threshold) if args.compare_tools else
