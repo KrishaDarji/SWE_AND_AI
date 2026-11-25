@@ -145,14 +145,83 @@ def evaluate(path, seed=42):
 def render_prediction(result, configuration):
     return "prediction: %.6f\ntrain_rows: %d; test_rows: %d; train_groups: %d; test_groups: %d\nheld_out_mae: %s; baseline_mae: %s" % (result["model"].predict_one(configuration), result["train_rows"], result["test_rows"], result["train_groups"], result["test_groups"], result["mae"], result["baseline_mae"])
 
+def _betacf(a, b, x):
+    qab, qap, qam = a + b, a + 1.0, a - 1.0
+    c, d = 1.0, 1.0 - qab*x/qap; d = max(1e-300, d); d = 1.0/d; h = d
+    for m in range(1, 201):
+        m2 = 2*m; aa = m*(b-m)*x/((qam+m2)*(a+m2))
+        d = 1.0 + aa*d; d = max(1e-300, d); c = 1.0 + aa/c; c = max(1e-300, c); d = 1.0/d; h *= d*c
+        aa = -(a+m)*(qab+m)*x/((a+m2)*(qap+m2)); d = 1.0 + aa*d; d = max(1e-300, d); c = 1.0 + aa/c; c = max(1e-300, c); d = 1.0/d
+        delta = d*c; h *= delta
+        if abs(delta-1.0) < 3e-14: break
+    return h
+
+def _ibeta(a, b, x):
+    if not 0 <= x <= 1: raise ValueError("beta argument outside [0,1]")
+    if x in (0, 1): return x
+    front = math.exp(math.lgamma(a+b)-math.lgamma(a)-math.lgamma(b)+a*math.log(x)+b*math.log1p(-x))
+    return front*_betacf(a,b,x)/a if x < (a+1)/(a+b+2) else 1-front*_betacf(b,a,1-x)/b
+
+def _t_cdf(t, df):
+    if df <= 0: raise ValueError("degrees of freedom must be positive")
+    if t == 0: return 0.5
+    x = df/(df+t*t); tail = 0.5*_ibeta(df/2, 0.5, x)
+    return 1-tail if t > 0 else tail
+
+def _t_quantile(p, df):
+    if not 0 < p < 1: raise ValueError("probability must be inside (0,1)")
+    lo, hi = -1.0, 1.0
+    while _t_cdf(lo, df) > p: lo *= 2
+    while _t_cdf(hi, df) < p: hi *= 2
+    for _ in range(100):
+        mid = (lo+hi)/2
+        if _t_cdf(mid, df) < p: lo = mid
+        else: hi = mid
+    return (lo+hi)/2
+
+def certify(path, threshold=None):
+    header, records, _ = load(path); setting = "no_8x8dct"; outcome = "Performance-"
+    if setting not in header or outcome not in header: raise ValueError("required columns are absent")
+    groups = {0: [], 1: []}; excluded = 0
+    for r in records:
+        raw = r.get(setting, '').strip(); y = _number(r.get(outcome, ''))
+        try: key = float(raw)
+        except ValueError: key = None
+        if key in (0.0, 1.0) and y is not None: groups[int(key)].append(y)
+        else: excluded += 1
+    result = {"reference": _sample_stats(groups[0]), "candidate": _sample_stats(groups[1]), "excluded": excluded, "threshold": threshold}
+    a,b = groups[0], groups[1]
+    if len(a) < 2 or len(b) < 2: result["inference"] = None; return result
+    diff = statistics.fmean(b)-statistics.fmean(a); va, vb = statistics.variance(a), statistics.variance(b); se = math.sqrt(va/len(a)+vb/len(b))
+    if se == 0: result["inference"] = None; return result
+    df = (va/len(a)+vb/len(b))**2/((va/len(a))**2/(len(a)-1)+(vb/len(b))**2/(len(b)-1)); t = diff/se; p = 2*min(_t_cdf(t,df), 1-_t_cdf(t,df)); crit = _t_quantile(.975,df)
+    result["inference"] = {"difference": diff, "standard_error": se, "df": df, "t": t, "p_two_sided": p, "ci95": (diff-crit*se, diff+crit*se), "statistically_significant": p < .05}
+    if threshold is not None:
+        result["practical"] = {"point_estimate_meets": diff <= -threshold, "ci_entirely_supports": result["inference"]["ci95"][1] <= -threshold}
+    return result
+
+def _sample_stats(values):
+    return {"n": len(values), "mean": statistics.fmean(values) if values else None, "variance": statistics.variance(values) if len(values)>1 else None}
+
+def render_certify(result):
+    lines = ["Certification: no_8x8dct=1 candidate minus no_8x8dct=0 reference", "lower Performance- is better"]
+    for name in ("reference", "candidate"): lines.append("%s: n=%s mean=%s sample_variance=%s" % (name, result[name]["n"], result[name]["mean"], result[name]["variance"]))
+    inf = result.get("inference"); lines.append("excluded=%d" % result["excluded"])
+    if inf is None: lines.append("inference: undefined (insufficient samples or zero standard error)")
+    else: lines.append("difference=%g se=%g df=%g t=%g p_two_sided=%g ci95=(%g,%g)" % (inf["difference"],inf["standard_error"],inf["df"],inf["t"],inf["p_two_sided"],*inf["ci95"]))
+    if result.get("threshold") is not None and inf is not None: lines.append("threshold=%g point_estimate_meets=%s ci_entirely_supports=%s" % (result["threshold"],result["practical"]["point_estimate_meets"],result["practical"]["ci_entirely_supports"]))
+    lines.append("Observational historical configurations differ in other settings; this does not prove causation or guarantee future improvement.")
+    return "\n".join(lines)
+
 def main(argv):
-    if len(argv) != 2:
-        print("usage: x264_summary.py DATASET", file=sys.stderr); return 2
+    if len(argv) not in (2, 3):
+        print("usage: x264_summary.py DATASET [predict|certify]", file=sys.stderr); return 2
     try:
         if len(argv) == 2: print(render(summarize(argv[1])))
-        else:
-            result = evaluate(argv[1]); config = {n: "0" for n in result["settings"]}
-            print(render_prediction(result, config))
+        elif argv[2] == "predict":
+            result = evaluate(argv[1]); config = {n: "0" for n in result["settings"]}; print(render_prediction(result, config))
+        elif argv[2] == "certify": print(render_certify(certify(argv[1], 5)))
+        else: print("usage: x264_summary.py DATASET [predict|certify]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
         print("error: %s" % exc, file=sys.stderr); return 1
