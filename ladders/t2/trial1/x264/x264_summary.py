@@ -185,6 +185,58 @@ def evaluate_stream(records, settings=None):
     return snapshot or evaluator.snapshot()
 
 
+def blame_slow_encodes(path: Path, slow_quantile=0.9) -> dict:
+    """Rank binary settings associated with the slowest observed encodes.
+
+    A setting's penalty is mean(time | setting=1) - mean(time | setting=0).
+    Slow-tail enrichment compares the fraction of its 1-valued rows in the
+    slow tail with the overall fraction.  These are associations, not causal
+    effects; the ranking exposes both signals for interpretation.
+    """
+    if not 0 < slow_quantile <= 1:
+        raise ValueError("slow_quantile must be in (0, 1]")
+    fieldnames, rows = _read(path)
+    if "Performance-" not in fieldnames:
+        raise ValueError("CSV must contain a Performance- column")
+    usable = []
+    for row in rows:
+        performance = _number(row.get("Performance-", ""))
+        if performance is not None:
+            usable.append((row, performance))
+    if not usable:
+        raise ValueError("dataset has no numeric Performance- values")
+    count = max(1, math.ceil(len(usable) * (1 - slow_quantile)))
+    cutoff = sorted(value for _, value in usable)[-count]
+    slow_rows = [(row, value) for row, value in usable if value >= cutoff]
+    results = []
+    for setting in fieldnames:
+        if setting == "Performance-":
+            continue
+        values = [(row.get(setting) or "").strip() for row, _ in usable]
+        if set(values) != {"0", "1"}:
+            continue
+        groups = {value: [time for (row, time), actual in zip(usable, values)
+                          if actual == value] for value in ("0", "1")}
+        slow_groups = {value: sum((row.get(setting) or "").strip() == value
+                                  for row, _ in slow_rows) for value in ("0", "1")}
+        overall_one = len(groups["1"]) / len(usable)
+        slow_one = slow_groups["1"] / len(slow_rows)
+        mean_zero = statistics.fmean(groups["0"])
+        mean_one = statistics.fmean(groups["1"])
+        results.append({"setting": setting, "mean_time_0": mean_zero,
+                        "mean_time_1": mean_one,
+                        "mean_penalty_1_minus_0": mean_one - mean_zero,
+                        "overall_fraction_1": overall_one,
+                        "slow_fraction_1": slow_one,
+                        "slow_tail_enrichment": slow_one - overall_one,
+                        "count_0": len(groups["0"]), "count_1": len(groups["1"])})
+    results.sort(key=lambda item: (item["slow_tail_enrichment"],
+                                   item["mean_penalty_1_minus_0"]), reverse=True)
+    return {"dataset": str(path), "rows_used": len(usable),
+            "slow_quantile": slow_quantile, "slow_rows": len(slow_rows),
+            "slow_cutoff": cutoff, "settings": results}
+
+
 def main(argv: Sequence[str] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -195,10 +247,15 @@ def main(argv: Sequence[str] = None) -> int:
     parser.add_argument("--alpha", type=float, default=0.05)
     parser.add_argument("--stream", action="store_true",
                         help="read one JSON benchmark result per stdin line")
+    parser.add_argument("--blame", action="store_true",
+                        help="rank settings associated with slow encodes")
+    parser.add_argument("--slow-quantile", type=float, default=0.9)
     args = parser.parse_args(argv)
     if args.stream:
         records = (json.loads(line) for line in __import__("sys").stdin if line.strip())
         result = evaluate_stream(records)
+    elif args.blame:
+        result = blame_slow_encodes(args.csv_path, args.slow_quantile)
     elif args.baseline is not None or args.candidate is not None:
         if args.baseline is None or args.candidate is None:
             parser.error("--baseline and --candidate are both required")
