@@ -310,6 +310,48 @@ def justify_estimate(path, kloc, budget=None):
     }
 
 
+def choose_project_settings(path, budget, max_months=None, max_defects=None):
+    """Choose the highest-value historical setting that fits a fixed budget.
+
+    Each NASA93 row is treated as an observed project setting.  Delivered
+    value is KLOC, budget consumption is Effort, and optional schedule and
+    quality limits filter candidates.  Ties prefer lower effort, then the
+    stable source-row order.
+    """
+    def non_negative(name, value):
+        try:
+            number = float(value)
+        except (TypeError, ValueError):
+            raise ValueError("%s must be numeric" % name)
+        if not math.isfinite(number) or number < 0:
+            raise ValueError("%s must be non-negative and finite" % name)
+        return number
+
+    budget = non_negative("budget", budget)
+    limits = {
+        "max_months": None if max_months is None else non_negative("max_months", max_months),
+        "max_defects": None if max_defects is None else non_negative("max_defects", max_defects),
+    }
+    candidates = []
+    for index, project in enumerate(load_projects(path)):
+        if project["Effort-"] > budget:
+            continue
+        if limits["max_months"] is not None and project["MonthsX"] > limits["max_months"]:
+            continue
+        if limits["max_defects"] is not None and project["Defects-"] > limits["max_defects"]:
+            continue
+        candidates.append((project["Kloc+"], -project["Effort-"], -index, project))
+    selected = max(candidates)[3] if candidates else None
+    return {
+        "budget": budget,
+        "constraints": limits,
+        "objective": "maximize Kloc+ subject to Effort- <= budget",
+        "candidate_count": len(candidates),
+        "selected": None if selected is None else dict(selected),
+        "decision": "select" if selected is not None else "no_feasible_setting",
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -328,8 +370,14 @@ def main(argv=None):
     parser.add_argument("--minimum-level-count", type=int, default=3)
     parser.add_argument("--justify-kloc", type=float)
     parser.add_argument("--justify-budget", type=float)
+    parser.add_argument("--choose-budget", type=float)
+    parser.add_argument("--choose-max-months", type=float)
+    parser.add_argument("--choose-max-defects", type=float)
     args = parser.parse_args(argv)
-    result = (justify_estimate(args.csv_path, args.justify_kloc, args.justify_budget)
+    result = (choose_project_settings(args.csv_path, args.choose_budget,
+                                      args.choose_max_months, args.choose_max_defects)
+              if args.choose_budget is not None else
+              justify_estimate(args.csv_path, args.justify_kloc, args.justify_budget)
               if args.justify_kloc is not None else
               analyze_effort_factors(args.csv_path, args.minimum_level_count)
               if args.analyze_factors else
