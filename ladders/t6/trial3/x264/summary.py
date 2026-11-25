@@ -453,6 +453,77 @@ def justify(path, outcome="Performance-"):
     result["warnings"] = warnings
     return result
 
+def _configuration_from_row(row, settings):
+    values = [_binary_setting(row.get(name, "")) for name in settings]
+    return None if any(value is None for value in values) else tuple(values)
+
+def _choose_pool(rows, outcome="Performance-"):
+    if not rows:
+        return [], {}, []
+    names = list(rows[0])
+    if outcome not in names:
+        raise ValueError("required measured outcome %s is absent" % outcome)
+    settings = [name for name in names if name != outcome]
+    first_by_config = {}
+    positions_by_config = {}
+    for position, row in enumerate(rows, 1):
+        config = _configuration_from_row(row, settings)
+        if config is None:
+            continue
+        positions_by_config.setdefault(config, []).append(position)
+        # Duplicate policy: first original position wins, even if its outcome is
+        # missing/invalid; later duplicates cannot silently repair that result.
+        first_by_config.setdefault(config, (position, row.get(outcome, "")))
+    return settings, first_by_config, positions_by_config
+
+def choose_rows(rows, budget, seed=42, outcome="Performance-", audit=True):
+    """Search complete binary configurations through a budgeted outcome oracle."""
+    if isinstance(budget, bool) or not isinstance(budget, int) or budget < 0:
+        raise ValueError("budget must be a nonnegative integer")
+    settings, first_by_config, positions_by_config = _choose_pool(rows, outcome)
+    pool = sorted(first_by_config)
+    random.Random(seed).shuffle(pool)
+    history, seen = [], set()
+    winner = None
+    for config in pool[:budget]:
+        if config in seen:
+            continue
+        seen.add(config)
+        position, raw = first_by_config[config]
+        value = _finite(raw)
+        record = {"evaluation": len(history) + 1, "position": position,
+                  "settings": dict(zip(settings, config)), "configuration": list(config),
+                  "raw_outcome": raw, "observed": value is not None, "value": value}
+        history.append(record)
+        if value is not None and (winner is None or (value, position) < (winner["value"], winner["position"])):
+            winner = {"position": position, "settings": dict(zip(settings, config)), "value": value}
+    result = {"status": "ok" if winner else ("zero_budget" if budget == 0 else "no_successful_evaluations"),
+              "winner": winner, "settings": settings, "pool_size": len(pool),
+              "distinct_configurations": len(pool), "attempted_evaluations": len(history),
+              "successful_evaluations": sum(item["observed"] for item in history),
+              "budget": budget, "seed": seed,
+              "strategy": "seeded random permutation of normalized complete binary configurations; first duplicate position is the oracle record; lower finite Performance- wins, then earliest position",
+              "evaluation_history": history,
+              "duplicate_policy": "normalized duplicates share one candidate and use the first original position, including when its outcome is invalid; later duplicates are not evaluated",
+              "position_convention": "one-based original data-row positions"}
+    if audit:
+        eligible = []
+        for position, row in enumerate(rows, 1):
+            config = _configuration_from_row(row, settings)
+            value = _finite(row.get(outcome, ""))
+            if config is not None and value is not None:
+                eligible.append((value, position, config))
+        best = min(eligible) if eligible else None
+        result["retrospective_historical_replay"] = {"best_eligible": None if best is None else {
+            "value": best[0], "position": best[1], "settings": dict(zip(settings, best[2]))},
+            "winner_gap": None if best is None or winner is None else winner["value"] - best[0],
+            "note": "Audit only; it did not influence search or winner and is not newly measured encoding or a guarantee about future performance."}
+    return result
+
+def choose(path, budget=20, seed=42):
+    names, rows, _ = read_runs(path)
+    return choose_rows(rows, budget, seed)
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize X264 historical runs")
     parser.add_argument("dataset", help="CSV dataset path")
@@ -461,9 +532,13 @@ def main(argv=None):
     parser.add_argument("--predict", action="store_true", help="run preserved held-out evaluation")
     parser.add_argument("--certify", action="store_true", help="run preserved group comparison")
     parser.add_argument("--flow", action="store_true", help="run preserved streaming summary")
+    parser.add_argument("--choose", action="store_true", help="choose through a budgeted outcome oracle")
+    parser.add_argument("--budget", type=int, default=20)
+    parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args(argv)
     try:
-        if args.justify: result = justify(args.dataset)
+        if args.choose: result = choose(args.dataset, args.budget, args.seed)
+        elif args.justify: result = justify(args.dataset)
         elif args.blame: result = blame(args.dataset)
         elif args.predict:
             result = evaluate(args.dataset)
