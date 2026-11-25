@@ -152,6 +152,58 @@ def predict_proposal(model, predictors, proposal):
     return float(model.predict([row])[0])
 
 
+def assess_arrivals(path):
+    """Assess CSV-order arrivals using only outcomes revealed earlier.
+
+    The first two valid rows are labeled warm-up and produce no predictions.
+    Empty input returns an empty result; fewer than two valid rows returns no
+    scored rows. A missing/non-finite Effort- raises ValueError because the
+    arrival cannot be revealed and added to history.
+    """
+    columns, rows = load_csv(path)
+    if "Effort-" not in columns:
+        raise ValueError("CSV must contain Effort-")
+    predictors = descriptor_columns(columns)
+    valid = []
+    for index, row in enumerate(rows):
+        effort = row["Effort-"]
+        if effort is None or not math.isfinite(float(effort)):
+            raise ValueError(f"missing or non-finite Effort- at arrival {index}")
+        valid.append((index, row, float(effort)))
+    history = []
+    scored = []
+    cumulative_model_error = 0.0
+    cumulative_baseline_error = 0.0
+    for position, (index, row, effort) in enumerate(valid):
+        if position < 2:
+            history.append((row, effort))
+            continue
+        prior_rows = [item[0] for item in history]
+        prior_effort = np.asarray([item[1] for item in history], dtype=float)
+        model = build_model(predictors)
+        matrix = [["<MISSING>" if prior[c] is None else str(prior[c]) for c in predictors]
+                  for prior in prior_rows]
+        model.fit(matrix, prior_effort)
+        current = {c: row[c] for c in predictors}
+        prediction = predict_proposal(model, predictors, current)
+        baseline = float(np.mean(prior_effort))
+        model_error = abs(prediction - effort)
+        baseline_error = abs(baseline - effort)
+        cumulative_model_error += model_error
+        cumulative_baseline_error += baseline_error
+        identifier = row.get("idX") if row.get("idX") is not None else index
+        scored.append({"arrival_identifier": identifier, "prior_training_count": len(history),
+                       "prediction": prediction, "baseline_prediction": baseline,
+                       "revealed_effort": effort, "absolute_error": model_error,
+                       "baseline_absolute_error": baseline_error,
+                       "cumulative_mae": cumulative_model_error / len(scored + [None]),
+                       "baseline_cumulative_mae": cumulative_baseline_error / len(scored + [None])})
+        history.append((row, effort))
+    return {"columns": columns, "predictors": predictors, "warm_up_count": min(2, len(valid)),
+            "rows": scored, "sequence_note": "CSV order is a demonstration sequence, not a verified timeline.",
+            "stopping_rule": "none; this process does not claim convergence or use an automatic stopping rule."}
+
+
 def compare_tools(path, practical_threshold=None, tool_a="n", tool_b="h"):
     """Compare observed Effort- for two tool groups using Welch's method."""
     if practical_threshold is not None and practical_threshold < 0:
@@ -191,8 +243,11 @@ def main():
     parser.add_argument("csv_path", type=Path)
     parser.add_argument("--compare-tools", action="store_true")
     parser.add_argument("--threshold", type=float)
+    parser.add_argument("--assess-arrivals", action="store_true")
     args = parser.parse_args()
-    result = compare_tools(args.csv_path, args.threshold) if args.compare_tools else summarize(args.csv_path)
+    result = (assess_arrivals(args.csv_path) if args.assess_arrivals else
+              compare_tools(args.csv_path, args.threshold) if args.compare_tools else
+              summarize(args.csv_path))
     print(json.dumps(result, indent=2, sort_keys=False))
 
 
