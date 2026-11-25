@@ -9,6 +9,7 @@ from project_history.estimator import estimate_effort
 from project_history.certifier import certify_less_costly
 from project_history.portfolio import assess_proposals
 from project_history.blame import explain_excessive_effort
+from project_history.justification import justify_estimate, justification_lines
 
 
 def main() -> int:
@@ -22,6 +23,7 @@ def main() -> int:
     parser.add_argument("--proposals", help="JSON array or newline-delimited JSON proposal file")
     parser.add_argument("--portfolio-budget", type=float, help="maximum approved effort")
     parser.add_argument("--blame", action="store_true", help="explain factors associated with excessive effort")
+    parser.add_argument("--justify", action="store_true", help="justify the proposed estimate to a skeptical sponsor")
     args = parser.parse_args()
     projects = list(CsvProjectRepository(args.csv_path).projects())
     summary = summarize_projects(projects)
@@ -36,6 +38,11 @@ def main() -> int:
             print(f"Estimated effort: {estimate:.2f} person-months")
             approved = args.max_effort is None or estimate <= args.max_effort
             print(f"Approval: {'approved' if approved else 'not approved'}")
+        if args.justify:
+            print("Sponsor justification:")
+            print("\n".join(justification_lines(justify_estimate(projects, args.kloc))))
+    elif args.justify:
+        parser.error("--justify requires --kloc")
     if any(value is not None for value in (args.compare_attribute, args.process_a, args.process_b)):
         if not all(value is not None for value in (args.compare_attribute, args.process_a, args.process_b)):
             parser.error("comparison requires --compare-attribute, --process-a, and --process-b")
