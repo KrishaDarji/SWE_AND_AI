@@ -67,6 +67,17 @@ class Justification:
     caveats: list[str]
 
 
+@dataclass(frozen=True)
+class Choice:
+    """A configuration selected by balancing accuracy and prediction quality."""
+    configuration: dict[str, str]
+    score: float
+    accuracy: float
+    prediction_quality: float
+    error: float | None
+    candidates: int
+
+
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
     with Path(path).open(newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
@@ -287,6 +298,40 @@ def justify(path: str | Path, neighbors: int = 5, quantile: float = 0.75,
     }
 
 
+def choose(path: str | Path, accuracy_weight: float = 0.5,
+           prediction_weight: float = 0.5) -> dict[str, Any]:
+    """Choose the observed configuration with balanced ACC+ and PRED40+ quality.
+
+    Both metrics are expected on a common higher-is-better scale (normally
+    [0, 1]). Missing or non-numeric candidates are ignored. MRE- breaks ties.
+    """
+    if accuracy_weight < 0 or prediction_weight < 0 or accuracy_weight + prediction_weight <= 0:
+        raise ValueError("weights must be non-negative and have a positive total")
+    fields, rows = read_rows(path)
+    required = ["ACC+", "PRED40+"]
+    missing = [field for field in required if field not in fields]
+    if missing:
+        raise ValueError("dataset is missing required metric fields: " + ", ".join(missing))
+    _, configuration_fields = classify_columns(fields)
+    total = accuracy_weight + prediction_weight
+    candidates = []
+    for row in rows:
+        accuracy, quality = _number(row.get("ACC+", "")), _number(row.get("PRED40+", ""))
+        if accuracy is None or quality is None:
+            continue
+        error = _number(row.get("MRE-", ""))
+        score = (accuracy_weight * accuracy + prediction_weight * quality) / total
+        candidates.append((score, error, row, accuracy, quality))
+    if not candidates:
+        raise ValueError("dataset has no complete ACC+/PRED40+ candidates")
+    best = min(candidates, key=lambda item: (-item[0], item[1] is None, item[1] if item[1] is not None else math.inf))
+    score, error, row, accuracy, quality = best
+    result = Choice({field: row.get(field, "") for field in configuration_fields}, score,
+                    accuracy, quality, error, len(candidates))
+    return asdict(result) | {"source": str(path), "weights": {"accuracy": accuracy_weight / total,
+                                                                  "prediction_quality": prediction_weight / total}}
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path); parser.add_argument("--output", type=Path)
@@ -298,8 +343,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--quantile", type=float, default=0.75)
     parser.add_argument("--min-samples", type=int, default=1)
     parser.add_argument("--justify", action="store_true", help="recommend and explain a configuration")
+    parser.add_argument("--choose", action="store_true", help="choose a balanced accuracy/prediction configuration")
+    parser.add_argument("--accuracy-weight", type=float, default=0.5)
+    parser.add_argument("--prediction-weight", type=float, default=0.5)
     args = parser.parse_args(argv)
-    if args.justify: result = justify(args.csv_path, args.neighbors, args.quantile, args.min_samples)
+    if args.choose: result = choose(args.csv_path, args.accuracy_weight, args.prediction_weight)
+    elif args.justify: result = justify(args.csv_path, args.neighbors, args.quantile, args.min_samples)
     elif args.blame: result = blame(args.csv_path, args.error_field, args.quantile, args.min_samples)
     elif args.evaluate: result = evaluate_file(args.csv_path)
     elif args.certify is not None:
