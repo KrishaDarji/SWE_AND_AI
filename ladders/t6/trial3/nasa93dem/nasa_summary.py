@@ -296,6 +296,38 @@ def render_blame(data):
         cats = ";".join(f"{x['value']}:{x['count']}:{x['mean_effort']:.6g}" for x in item["categories"])
         print(f"rank={item['rank']} descriptor={item['descriptor']} eligible={item['eligible_count']} excluded={item['excluded_count']} reference_mean={item['reference_mean']} between_ss={item['between_ss']} total_ss={item['total_ss']} eta_squared={item['eta_squared']} higher={item['direction']['higher_mean']} lower={item['direction']['lower_mean']} categories={cats}")
 
+def choose(data, effort_cap=100):
+    """Retrospectively select the largest observed project within an effort cap."""
+    if not isinstance(effort_cap, (int, float)) or isinstance(effort_cap, bool) or not math.isfinite(effort_cap) or effort_cap < 0:
+        raise ValueError("effort_cap must be finite and nonnegative")
+    projects = data.get("projects", []) if isinstance(data, dict) else list(data)
+    valid, feasible, invalid, over_budget = [], [], [], []
+    for project in projects:
+        values = project.get("values", {})
+        descriptors_ok = all(_cell(values.get(c, "")) != "?" for c in PREDICTORS)
+        kloc = _number(values.get("Kloc+", "")); effort = _effort(values.get("Effort-", "")); defects = _number(values.get("Defects-", ""))
+        if not descriptors_ok or kloc is None or effort is None or defects is None or effort < 0:
+            invalid.append(project); continue
+        valid.append(project)
+        (feasible if effort <= effort_cap else over_budget).append(project)
+    winner = min(feasible, key=lambda p: (-_number(p["values"]["Kloc+"]), _effort(p["values"]["Effort-"]), p.get("position", 0))) if feasible else None
+    return {"winner": winner, "cap": effort_cap, "raw_count": len(projects), "valid_count": len(valid), "feasible_count": len(feasible), "invalid_data_count": len(invalid), "over_budget_count": len(over_budget), "malformed_row_count": len(data.get("errors", [])) if isinstance(data, dict) else 0, "selection_rule": "highest Kloc+, then lowest Effort-, then earliest original CSV position; Defects- descriptive only"}
+
+def render_choose(path, effort_cap=100):
+    data = load(path); result = choose(data, effort_cap); winner = result["winner"]
+    print("NASA93 retrospective selection among historical projects")
+    print(f"raw_parsed_count={result['raw_count']} valid_count={result['valid_count']} feasible_count={result['feasible_count']}")
+    print(f"invalid_data_exclusion_count={result['invalid_data_count']} over_budget_exclusion_count={result['over_budget_count']} malformed_row_count={result['malformed_row_count']}")
+    print(f"cap={result['cap']} feasibility=complete descriptors and finite nonnegative Effort-, Kloc+, Defects-, with Effort- <= cap")
+    print(f"selection_rule={result['selection_rule']}")
+    if winner is None: print("winner=None")
+    else:
+        values = winner["values"]
+        print(f"winner_position={winner.get('position')} winner_idX={values.get('idX', '')}")
+        print("winner_descriptors=" + str({c: _cell(values.get(c, "")) for c in PREDICTORS}))
+        print(f"winner_Kloc+={_number(values.get('Kloc+', ''))} winner_Effort-={_effort(values.get('Effort-', ''))} winner_Defects-={_number(values.get('Defects-', ''))}")
+    print("goal_note=Maximizing Kloc+ is this task's convention; it does not establish productivity, causation, suitability, or a guaranteed future budget.")
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
@@ -304,8 +336,10 @@ def main(argv=None):
     ap.add_argument("--flow", action="store_true")
     ap.add_argument("--blame", action="store_true")
     ap.add_argument("--justify", action="store_true")
+    ap.add_argument("--choose", action="store_true")
+    ap.add_argument("--effort-cap", type=float, default=100)
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
