@@ -132,12 +132,88 @@ def certify(dataset, measure=None, alpha=0.05):
             "any_credible": bool(credible)}
 
 
+class OnlineEvaluator:
+    """Evaluate completed benchmark results incrementally, one at a time.
+
+    A result is retained as a running count and mean for its binary setting
+    configuration.  The current best configuration is the highest observed
+    mean (appropriate for the Performance- measure), with deterministic
+    lexicographic tie-breaking.
+    """
+
+    def __init__(self, settings, measure="Performance-"):
+        self.settings = tuple(settings)
+        if not self.settings:
+            raise ValueError("at least one setting is required")
+        self.measure = measure
+        self._groups = {}
+        self._results_seen = 0
+
+    def _configuration_key(self, configuration):
+        missing = [name for name in self.settings if name not in configuration]
+        extra = [name for name in configuration if name not in self.settings]
+        if missing or extra:
+            raise ValueError("configuration must contain exactly the evaluator settings")
+        try:
+            values = tuple(int(configuration[name]) for name in self.settings)
+        except (TypeError, ValueError):
+            raise ValueError("setting values must be 0 or 1")
+        if any(value not in (0, 1) for value in values):
+            raise ValueError("setting values must be 0 or 1")
+        return values
+
+    def add_result(self, configuration, value):
+        """Add one completed benchmark result and return the current state."""
+        key = self._configuration_key(configuration)
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            raise ValueError("benchmark result must be numeric")
+        if not math.isfinite(value):
+            raise ValueError("benchmark result must be finite")
+        count, mean = self._groups.get(key, (0, 0.0))
+        count += 1
+        mean += (value - mean) / count
+        self._groups[key] = (count, mean)
+        self._results_seen += 1
+        return self.snapshot()
+
+    def best(self):
+        if not self._groups:
+            return None
+        key, (count, mean) = min(
+            self._groups.items(), key=lambda item: (-item[1][1], item[0]))
+        return {"configuration": dict(zip(self.settings, key)),
+                "mean": mean, "count": count, "measure": self.measure}
+
+    def snapshot(self):
+        groups = {}
+        for key in sorted(self._groups):
+            count, mean = self._groups[key]
+            groups["|".join(map(str, key))] = {"configuration": dict(zip(self.settings, key)),
+                                                "count": count, "mean": mean}
+        return {"measure": self.measure, "results_seen": self._results_seen,
+                "configurations_seen": len(self._groups), "groups": groups,
+                "best": self.best()}
+
+
+def evaluate_rows(dataset):
+    """Feed dataset rows to OnlineEvaluator in file order."""
+    evaluator = OnlineEvaluator(dataset.settings, dataset.measures[0])
+    for row in dataset.rows:
+        configuration = {name: row[name] for name in dataset.settings}
+        evaluator.add_result(configuration, row[dataset.measures[0]])
+    return evaluator.snapshot()
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
     parser.add_argument("--predict-json", metavar="JSON")
     parser.add_argument("--measure")
     parser.add_argument("--certify", action="store_true")
+    parser.add_argument("--online", action="store_true",
+                        help="evaluate rows incrementally and report current best")
     parser.add_argument("--alpha", type=float, default=0.05)
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
@@ -145,6 +221,8 @@ def main(argv=None):
         result = certify(dataset, args.measure, args.alpha)
     elif args.predict_json is not None:
         result = predict(dataset, json.loads(args.predict_json), args.measure)
+    elif args.online:
+        result = evaluate_rows(dataset)
     else:
         result = summarize(dataset)
     print(json.dumps(result, indent=2, sort_keys=True))
