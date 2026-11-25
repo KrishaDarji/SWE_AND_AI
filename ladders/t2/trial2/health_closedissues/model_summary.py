@@ -258,6 +258,62 @@ def justify_configuration(rows, target_configuration, quality_columns=("MRE-", "
             "caveat": "Validate prospectively before production deployment."}
 
 
+def choose_configuration(rows, configuration_columns=None, error_column="MRE-",
+                         accuracy_column="ACC+", prediction_column="PRED40+",
+                         weights=(0.2, 0.5, 0.3)):
+    """Choose a configuration by balancing error, accuracy, and prediction quality.
+
+    Each usable metric is min-max normalized across the observed rows. Error is
+    reversed because lower error is better; accuracy and prediction quality are
+    maximized. Ties retain the first row, making the choice deterministic.
+    """
+    rows = list(rows)
+    if not rows:
+        raise ValueError("CSV contains no data rows")
+    if len(weights) != 3 or any(weight < 0 for weight in weights) or sum(weights) <= 0:
+        raise ValueError("weights must contain three non-negative values with a positive sum")
+    required = [error_column, accuracy_column, prediction_column]
+    missing = [column for column in required if column not in rows[0]]
+    if missing:
+        raise ValueError("Unknown quality columns: " + ", ".join(missing))
+    configuration_columns = list(configuration_columns or
+                                 [column for column in rows[0] if column not in required])
+    missing = [column for column in configuration_columns if column not in rows[0]]
+    if missing:
+        raise ValueError("Unknown columns: " + ", ".join(missing))
+    usable = []
+    for index, row in enumerate(rows):
+        values = [_number(row[column]) for column in required]
+        if all(value is not None for value in values):
+            usable.append((index, row, values))
+    if not usable:
+        raise ValueError("No rows have usable quality metrics")
+    ranges = []
+    for position in range(3):
+        values = [item[2][position] for item in usable]
+        ranges.append((min(values), max(values)))
+    total_weight = float(sum(weights))
+    best = None
+    ranked = []
+    for index, row, values in usable:
+        normalized = []
+        for position, value in enumerate(values):
+            low, high = ranges[position]
+            normalized.append(1.0 if high == low else (value - low) / (high - low))
+        normalized[0] = 1.0 - normalized[0]
+        score = sum(weight * value for weight, value in zip(weights, normalized)) / total_weight
+        item = {"index": index, "configuration": {column: row[column]
+                for column in configuration_columns}, "score": score,
+                "metrics": dict(zip(required, values)),
+                "normalized": dict(zip(required, normalized))}
+        ranked.append(item)
+        if best is None or score > best["score"]:
+            best = item
+    ranked.sort(key=lambda item: (-item["score"], item["index"]))
+    return {"chosen": best, "ranked": ranked, "weights": dict(zip(required, weights)),
+            "candidate_count": len(usable), "caveat": "Validate prospectively before production deployment."}
+
+
 class SequentialEvaluator:
     """Evaluate configurations incrementally as validation results arrive.
 
@@ -312,8 +368,12 @@ def main(argv=None):
     parser.add_argument("--high-quantile", type=float, default=0.75)
     parser.add_argument("--justify", action="store_true",
                         help="justify a candidate configuration against the baseline")
+    parser.add_argument("--choose", action="store_true",
+                        help="choose a configuration balancing accuracy and prediction quality")
     parser.add_argument("--target", nargs="*", metavar="KEY=VALUE")
     parser.add_argument("--margin", type=float, default=0.0)
+    parser.add_argument("--weights", nargs=3, type=float, metavar=("ERROR", "ACCURACY", "PREDICTION"),
+                        default=(0.2, 0.5, 0.3))
     parser.add_argument("--quality", nargs="+")
     parser.add_argument("--configuration", nargs="+")
     args = parser.parse_args(argv)
@@ -327,7 +387,10 @@ def main(argv=None):
         return
     with args.csv_path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    if args.justify:
+    if args.choose:
+        result = choose_configuration(rows, args.configuration, args.error_column,
+                                      args.metric, "PRED40+", tuple(args.weights))
+    elif args.justify:
         target = dict(item.split("=", 1) for item in (args.target or []))
         result = justify_configuration(rows, target, args.quality or ["MRE-", "ACC+"],
                                        args.configuration, args.error_column, args.metric,
