@@ -447,6 +447,54 @@ def spot_inconsistent_project(path, threshold=3.5):
     }
 
 
+def compare_estimators(path):
+    """Compare the size-adjusted estimator with a simple historical baseline.
+
+    Each project is held out in turn.  The estimator uses the training-set
+    median effort/KLOC and multiplies it by the held-out project's KLOC.  The
+    baseline predicts the training-set median total effort for every project.
+    Both are scored with mean absolute error (MAE) on exactly the same folds.
+    """
+    projects = load_projects(path)
+    if len(projects) < 3:
+        raise ValueError("at least three projects are required")
+    estimator_errors = []
+    baseline_errors = []
+    rows = []
+    for index, held_out in enumerate(projects):
+        training = projects[:index] + projects[index + 1:]
+        rates = [item["Effort-"] / item["Kloc+"] for item in training
+                 if item["Kloc+"] > 0]
+        if not rates:
+            raise ValueError("training data must contain positive Kloc+")
+        adjusted = held_out["Kloc+"] * statistics.median(rates)
+        historical = statistics.median(item["Effort-"] for item in training)
+        actual = held_out["Effort-"]
+        adjusted_error = abs(adjusted - actual)
+        baseline_error = abs(historical - actual)
+        estimator_errors.append(adjusted_error)
+        baseline_errors.append(baseline_error)
+        rows.append({"id": held_out["id"], "actual_effort": actual,
+                     "estimator_prediction": adjusted,
+                     "baseline_prediction": historical,
+                     "estimator_absolute_error": adjusted_error,
+                     "baseline_absolute_error": baseline_error})
+    estimator_mae = statistics.fmean(estimator_errors)
+    baseline_mae = statistics.fmean(baseline_errors)
+    return {
+        "protocol": "leave-one-out cross-validation",
+        "metric": "mean absolute error",
+        "project_count": len(projects),
+        "estimator": "median historical effort/KLOC multiplied by project KLOC",
+        "baseline": "median historical total effort",
+        "estimator_mae": estimator_mae,
+        "baseline_mae": baseline_mae,
+        "mae_difference_estimator_minus_baseline": estimator_mae - baseline_mae,
+        "estimator_better": estimator_mae < baseline_mae,
+        "folds": rows,
+    }
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -471,9 +519,12 @@ def main(argv=None):
     parser.add_argument("--recommend-process-change", action="store_true")
     parser.add_argument("--spot-inconsistent", action="store_true")
     parser.add_argument("--inconsistency-threshold", type=float, default=3.5)
+    parser.add_argument("--compare-estimators", action="store_true")
     args = parser.parse_args(argv)
     result = (spot_inconsistent_project(args.csv_path, args.inconsistency_threshold)
               if args.spot_inconsistent else
+              compare_estimators(args.csv_path)
+              if args.compare_estimators else
               recommend_process_change(args.csv_path, args.minimum_level_count)
               if args.recommend_process_change else
               choose_project_settings(args.csv_path, args.choose_budget,
