@@ -2,7 +2,8 @@
 import argparse
 import json
 from model_summary import (summarize_csv, predict_quality, certify_families,
-                           evaluate_stream, blame_high_error, justify_configuration)
+                           evaluate_stream, blame_high_error, justify_configuration,
+                           choose_configuration)
 
 def main():
     parser = argparse.ArgumentParser(description="Summarize, predict, or certify model configurations")
@@ -16,8 +17,14 @@ def main():
     parser.add_argument("--error-column", default="MRE-")
     parser.add_argument("--high-percentile", type=float, default=0.75)
     parser.add_argument("--justify", action="store_true")
+    parser.add_argument("--choose", action="store_true")
+    parser.add_argument("--prediction-weight", type=float, default=0.5)
     args = parser.parse_args()
-    if args.justify:
+    if args.choose:
+        configuration = json.loads(args.predict_config) if args.predict_config else None
+        result = choose_configuration(args.csv_path, configuration, args.quality_columns,
+                                      args.neighbors, args.prediction_weight)
+    elif args.justify:
         configuration = json.loads(args.predict_config) if args.predict_config else None
         result = justify_configuration(args.csv_path, configuration, args.quality_columns,
                                        args.error_column, args.high_percentile)

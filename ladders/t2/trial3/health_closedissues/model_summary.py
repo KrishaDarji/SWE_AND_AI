@@ -329,3 +329,83 @@ def justify_configuration(path, configuration=None, quality_columns=None,
             "high_error_analysis": blame,
             "quality_columns": quality,
             "caveat": "Associations and nearest-neighbor predictions support review; they do not establish causation or production performance."}
+
+
+def choose_configuration(path, configuration=None, quality_columns=None,
+                         neighbors=5, prediction_weight=0.5):
+    """Choose a configuration using observed quality and predicted quality.
+
+    Candidate rows are scored on min-max normalized quality (errors minimized,
+    other metrics maximized).  The score blends that observed score with the
+    same score computed from nearest-neighbor predictions, making the tradeoff
+    explicit while retaining the earlier evidence in ``justify_configuration``.
+    """
+    if not 0 <= prediction_weight <= 1:
+        raise ValueError("prediction_weight must be between 0 and 1")
+    columns, rows = _read(path)
+    quality = list(quality_columns or [name for name in columns
+                                      if name.lower().startswith(DEFAULT_QUALITY_PREFIXES)])
+    if not quality:
+        raise ValueError("at least one quality column is required")
+    unknown = set(quality).difference(columns)
+    if unknown:
+        raise ValueError("Unknown quality columns: " + ", ".join(sorted(unknown)))
+    config_columns = [name for name in columns if name not in quality]
+    candidates = []
+    for row in rows:
+        values = {name: _number(row.get(name, "")) for name in quality}
+        if all(value is not None for value in values.values()):
+            candidates.append(({name: row[name] for name in config_columns}, values))
+    if not candidates:
+        raise ValueError("no rows contain finite values for every quality column")
+    if configuration is not None:
+        unknown_config = set(configuration).difference(config_columns)
+        if unknown_config:
+            raise ValueError("Unknown configuration columns: " + ", ".join(sorted(unknown_config)))
+        candidates = [(dict(configuration), {})]
+    observed_values = [values for _, values in candidates if values]
+    if not observed_values:
+        observed_values = [{name: _number(row.get(name, "")) for name in quality}
+                           for row in rows]
+        observed_values = [values for values in observed_values
+                           if all(value is not None for value in values.values())]
+    ranges = {name: (min(v[name] for v in observed_values), max(v[name] for v in observed_values))
+              for name in quality}
+
+    def score(values):
+        parts = []
+        for name in quality:
+            low, high = ranges[name]
+            normalized = 0.5 if high == low else (values[name] - low) / (high - low)
+            parts.append(normalized if name.lower().startswith("mre") else 1.0 - normalized)
+        return statistics.fmean(parts)
+
+    if configuration is None and len(candidates) > 25:
+        # Prediction is the expensive step; retain a broad, quality-ranked
+        # shortlist before applying nearest-neighbor evidence.
+        candidates.sort(key=lambda item: (score(item[1]),
+                                          tuple(str(item[0].get(c, "")) for c in config_columns)))
+        candidates = candidates[:25]
+
+    scored = []
+    for candidate, observed in candidates:
+        prediction = predict_quality(path, candidate, quality, neighbors=neighbors)["predicted_quality"]
+        predicted = {name: prediction[name] for name in quality}
+        if any(value is None for value in predicted.values()):
+            predicted_score = None
+            combined = score(observed) if observed else None
+        else:
+            predicted_score = score(predicted)
+            observed_score = score(observed) if observed else predicted_score
+            combined = ((1 - prediction_weight) * observed_score +
+                        prediction_weight * predicted_score)
+        scored.append({"configuration": dict(candidate), "observed_quality": observed,
+                       "predicted_quality": predicted, "observed_score": score(observed) if observed else None,
+                       "predicted_score": predicted_score, "combined_score": combined})
+    chosen = min(scored, key=lambda item: (item["combined_score"],
+                                            tuple(str(item["configuration"].get(c, "")) for c in config_columns)))
+    return {"recommended_configuration": chosen["configuration"],
+            "selection": "balanced observed and predicted quality",
+            "prediction_weight": prediction_weight, "quality_columns": quality,
+            "candidates_considered": len(scored), "candidate_scores": scored,
+            "predicted_quality": chosen["predicted_quality"]}
