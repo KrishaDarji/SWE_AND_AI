@@ -10,6 +10,7 @@ from project_history.certifier import certify_less_costly
 from project_history.portfolio import assess_proposals
 from project_history.blame import explain_excessive_effort
 from project_history.justification import justify_estimate, justification_lines
+from project_history.optimizer import maximize_delivered_value
 
 
 def main() -> int:
@@ -24,6 +25,8 @@ def main() -> int:
     parser.add_argument("--portfolio-budget", type=float, help="maximum approved effort")
     parser.add_argument("--blame", action="store_true", help="explain factors associated with excessive effort")
     parser.add_argument("--justify", action="store_true", help="justify the proposed estimate to a skeptical sponsor")
+    parser.add_argument("--optimize-proposals", help="JSON proposals with id, kloc, and value")
+    parser.add_argument("--value-budget", type=float, help="fixed effort budget for value optimization")
     args = parser.parse_args()
     projects = list(CsvProjectRepository(args.csv_path).projects())
     summary = summarize_projects(projects)
@@ -62,6 +65,18 @@ def main() -> int:
         for item in assessments:
             effort = "unavailable" if item.estimated_effort is None else f"{item.estimated_effort:.2f}"
             print(f"{item.proposal_id}: {item.status}; estimated effort {effort}; cumulative {item.cumulative_effort if item.cumulative_effort is not None else 'unavailable'}")
+    if args.optimize_proposals:
+        if args.value_budget is None:
+            parser.error("--optimize-proposals requires --value-budget")
+        with open(args.optimize_proposals, encoding="utf-8") as handle:
+            raw = handle.read()
+        decoded = json.loads(raw) if raw.lstrip().startswith("[") else [json.loads(line) for line in raw.splitlines() if line.strip()]
+        plan = maximize_delivered_value(projects, decoded, args.value_budget)
+        print("Value-maximizing plan:")
+        print(f"Selected proposals: {', '.join(plan.selected_ids) if plan.selected_ids else 'none'}")
+        print(f"Delivered value: {plan.total_value:.2f}")
+        print(f"Reserved effort: {plan.total_effort:.2f} / {args.value_budget:.2f}")
+        print(f"Not selected: {', '.join(plan.rejected_ids) if plan.rejected_ids else 'none'}")
     if args.blame:
         explanation = explain_excessive_effort(projects)
         print(f"Excessive-effort threshold: {explanation['threshold']:.2f}")
