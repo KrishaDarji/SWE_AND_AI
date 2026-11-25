@@ -230,14 +230,72 @@ def print_flow(result):
         print(f"{key}: {result[key]}")
     print("arrival_records: " + repr(result["records"]))
 
+def blame(path):
+    """Rank marginal categorical associations with valid Effort- values."""
+    _, projects, invalid_rows, issues = load(path)
+    reports = []
+    for name in CATEGORICAL:
+        groups = {}
+        excluded = Counter()
+        eligible_rows = []
+        for p in projects:
+            raw = p.values.get(name, "")
+            value = norm_cell(raw)
+            effort, kind = _target(p)
+            if value == "?":
+                excluded["missing_descriptor"] += 1
+            elif kind != "valid":
+                excluded["invalid_or_missing_effort"] += 1
+            else:
+                eligible_rows.append((value, effort))
+                groups.setdefault(value, []).append(effort)
+        ys = [y for _, y in eligible_rows]
+        n = len(ys)
+        reference = sum(ys) / n if n else None
+        total = sum((y - reference) ** 2 for y in ys) if n else None
+        between = sum(len(v) * (sum(v) / len(v) - reference) ** 2 for v in groups.values()) if n else None
+        score = (between / total) if total and total > 0 else None
+        categories = {}
+        for category in sorted(groups):
+            values = groups[category]
+            categories[category] = {"count": len(values), "mean_effort": sum(values) / len(values)}
+        if reference is None:
+            higher, lower = [], []
+        else:
+            higher = [k for k, v in categories.items() if v["mean_effort"] > reference]
+            lower = [k for k, v in categories.items() if v["mean_effort"] < reference]
+        reports.append({"descriptor": name, "eligible_rows": n,
+                        "excluded_rows": sum(excluded.values()), "excluded": dict(excluded),
+                        "categories": categories, "reference_mean": reference,
+                        "between_ss": between, "total_ss": total, "eta_squared": score,
+                        "higher_mean_effort": higher, "lower_mean_effort": lower})
+    ranked = sorted(reports, key=lambda r: (r["eta_squared"] is None,
+                                             -(r["eta_squared"] or 0), r["descriptor"]))
+    for rank, report in enumerate(ranked, 1): report["rank"] = rank
+    return {"path": path, "reports": ranked, "invalid_rows": invalid_rows, "issues": issues,
+            "score": "eta_squared = between-group SS / total SS; undefined when no eligible rows or total SS is zero",
+            "interpretation": "Marginal historical associations; lower Effort- is better. They are not causal or independent effects."}
+
+def print_blame(result):
+    print("score: " + result["score"])
+    print(result["interpretation"])
+    print("ranked_associations:")
+    for r in result["reports"]:
+        print(f"rank={r['rank']} descriptor={r['descriptor']} eligible={r['eligible_rows']} excluded={r['excluded_rows']} "
+              f"reference_mean={r['reference_mean']} between_ss={r['between_ss']} total_ss={r['total_ss']} eta_squared={r['eta_squared']}")
+        print("  excluded=" + repr(r["excluded"]) + " categories=" + repr(r["categories"]))
+        print("  higher_mean_effort=" + repr(r["higher_mean_effort"]) + " lower_mean_effort=" + repr(r["lower_mean_effort"]))
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize or estimate NASA93 historical projects")
     parser.add_argument("dataset")
     parser.add_argument("--estimate", action="store_true")
     parser.add_argument("--certify", action="store_true")
     parser.add_argument("--flow", action="store_true")
+    parser.add_argument("--blame", action="store_true")
     args = parser.parse_args(argv)
-    if args.flow: print_flow(flow(args.dataset))
+    if args.blame: print_blame(blame(args.dataset))
+    elif args.flow: print_flow(flow(args.dataset))
     elif args.certify:
         _, rows, _, _ = load(args.dataset); ref=[parse_float(p.values.get("Effort-", ""))[0] for p in rows if norm_cell(p.values.get("tool", "")).lower()=="n" and parse_float(p.values.get("Effort-", ""))[1]=="valid"]
         threshold=0.10*(sum(ref)/len(ref)) if ref else None; print_certify(certify(rows, threshold))
