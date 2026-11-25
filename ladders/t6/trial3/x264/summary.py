@@ -457,6 +457,86 @@ def _configuration_from_row(row, settings):
     values = [_binary_setting(row.get(name, "")) for name in settings]
     return None if any(value is None for value in values) else tuple(values)
 
+def fix_rows(rows, outcome="Performance-"):
+    """Recommend the smallest observed binary-setting change below the baseline."""
+    if not rows:
+        return {"status": "empty_input", "recommendation": None,
+                "baseline": None, "candidate_count": 0, "excluded_count": 0,
+                "excluded": [], "selection_rule": "fewest changed fields, lowest Performance-, earliest original position"}
+    names = list(rows[0])
+    if outcome not in names:
+        raise ValueError("required measured outcome %s is absent" % outcome)
+    settings = [name for name in names if name != outcome]
+
+    def record(position, row, config, value):
+        return {"position": position, "settings": dict(zip(settings, config)),
+                "value": value}
+
+    excluded = []
+    valid = []
+    for position, row in enumerate(rows, 1):
+        config = _configuration_from_row(row, settings)
+        bad_fields = [name for name in settings if _binary_setting(row.get(name, "")) is None]
+        value = _finite(row.get(outcome, ""))
+        if config is None:
+            excluded.append({"position": position, "reason": "invalid or incomplete binary settings",
+                             "fields": bad_fields})
+            continue
+        if value is None:
+            excluded.append({"position": position,
+                             "reason": "missing or nonfinite outcome" if is_missing(str(row.get(outcome, "")))
+                             else "invalid or nonfinite outcome"})
+            continue
+        valid.append((position, row, config, value))
+
+    first = rows[0]
+    baseline_config = _configuration_from_row(first, settings)
+    baseline_value = _finite(first.get(outcome, ""))
+    if baseline_config is None or baseline_value is None:
+        reasons = []
+        if baseline_config is None:
+            reasons.append("baseline has invalid or incomplete binary settings")
+        if baseline_value is None:
+            reasons.append("baseline Performance- is missing or nonfinite")
+        return {"status": "invalid_baseline", "baseline": {"position": 1,
+                "settings": None if baseline_config is None else dict(zip(settings, baseline_config)),
+                "value": baseline_value}, "baseline_reason": "; ".join(reasons),
+                "recommendation": None, "candidate_count": 0,
+                "excluded_count": len(excluded), "excluded": excluded,
+                "selection_rule": "fewest changed fields, lowest Performance-, earliest original position",
+                "comparison": None, "note": "retrospective comparison between measured configurations"}
+
+    candidates = []
+    for position, row, config, value in valid:
+        if position == 1 or not value < baseline_value:
+            continue
+        changed = [{"field": name, "old": old, "new": new}
+                   for name, old, new in zip(settings, baseline_config, config) if old != new]
+        candidates.append((len(changed), value, position, record(position, row, config, value), changed))
+    candidates.sort(key=lambda item: item[:3])
+    baseline = record(1, first, baseline_config, baseline_value)
+    result = {"status": "ok" if candidates else "no_improving_candidate",
+              "baseline": baseline, "candidate_count": len(candidates),
+              "excluded_count": len(excluded), "excluded": excluded,
+              "selection_rule": "fewest changed fields, lowest Performance-, earliest original position",
+              "note": "retrospective comparison between measured configurations; change count is a simplicity proxy; historical differences do not prove causation"}
+    if not candidates:
+        result.update({"recommendation": None, "comparison": None})
+        return result
+    count, value, position, candidate, changed = candidates[0]
+    reduction = baseline_value - value
+    result["recommendation"] = dict(candidate, changed_fields=changed, changed_field_count=count)
+    result["comparison"] = {"absolute_reduction": reduction,
+                             "percentage_reduction": None if baseline_value == 0 else reduction / baseline_value * 100,
+                             "baseline_nonzero": baseline_value != 0}
+    return result
+
+def fix(path, outcome="Performance-"):
+    names, rows, warnings = read_runs(path)
+    result = fix_rows(rows, outcome)
+    result["warnings"] = warnings
+    return result
+
 def _choose_pool(rows, outcome="Performance-"):
     if not rows:
         return [], {}, []
@@ -533,11 +613,13 @@ def main(argv=None):
     parser.add_argument("--certify", action="store_true", help="run preserved group comparison")
     parser.add_argument("--flow", action="store_true", help="run preserved streaming summary")
     parser.add_argument("--choose", action="store_true", help="choose through a budgeted outcome oracle")
+    parser.add_argument("--fix", action="store_true", help="recommend the smallest observed improving setting change")
     parser.add_argument("--budget", type=int, default=20)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args(argv)
     try:
-        if args.choose: result = choose(args.dataset, args.budget, args.seed)
+        if args.fix: result = fix(args.dataset)
+        elif args.choose: result = choose(args.dataset, args.budget, args.seed)
         elif args.justify: result = justify(args.dataset)
         elif args.blame: result = blame(args.dataset)
         elif args.predict:
