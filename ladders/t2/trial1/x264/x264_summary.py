@@ -237,6 +237,59 @@ def blame_slow_encodes(path: Path, slow_quantile=0.9) -> dict:
             "slow_cutoff": cutoff, "settings": results}
 
 
+def justify_recommendation(path: Path, configuration=None) -> dict:
+    """Build an administrator-facing justification for a lower-time configuration.
+
+    With no configuration, the fastest observed configuration is recommended.
+    The recommendation is evidence-based but observational: it reports the
+    measured row, comparison to the dataset mean, and important limitations.
+    """
+    fieldnames, rows = _read(path)
+    if "Performance-" not in fieldnames:
+        raise ValueError("CSV must contain a Performance- column")
+    settings = [name for name in fieldnames if name != "Performance-"]
+    observations = []
+    for index, row in enumerate(rows, 1):
+        performance = _number(row.get("Performance-", ""))
+        if performance is not None:
+            observations.append((performance, index, {name: (row.get(name) or "").strip()
+                                                       for name in settings}))
+    if not observations:
+        raise ValueError("dataset has no numeric Performance- values")
+    mean_time = statistics.fmean(item[0] for item in observations)
+    if configuration is None:
+        performance, row_number, selected = min(observations, key=lambda item: (item[0], item[1]))
+        selection = "fastest observed configuration"
+    else:
+        if set(configuration) != set(settings):
+            raise ValueError("configuration columns do not match dataset")
+        selected = {name: str(configuration[name]).strip() for name in settings}
+        matches = [(time, index) for time, index, row in observations if row == selected]
+        if not matches:
+            prediction = predict_encoding_time(path, selected)
+            performance, row_number = prediction["predicted_time"], None
+            selection = "requested configuration with predicted performance"
+        else:
+            performance, row_number = min(matches)
+            selection = "requested configuration with observed performance"
+    improvement = mean_time - performance
+    percent = (improvement / mean_time * 100.0) if mean_time else 0.0
+    rationale = ("Recommend this configuration because it has the lowest observed encoding time "
+                 "in the supplied benchmark data. It is estimated to be "
+                 f"{improvement:.3f} time units ({percent:.2f}%) faster than the dataset mean. "
+                 "Validate on representative production clips before rollout.")
+    return {"dataset": str(path), "recommendation": selected,
+            "selection": selection, "observed_row": row_number,
+            "performance": performance, "dataset_mean": mean_time,
+            "improvement_vs_mean": improvement,
+            "improvement_percent_vs_mean": percent,
+            "rationale": rationale,
+            "limitations": ["Benchmark associations are not causal.",
+                            "The dataset may not represent production content.",
+                            "A single fastest row may need repeat measurements."],
+            "evidence_rows": len(observations)}
+
+
 def main(argv: Sequence[str] = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -250,10 +303,15 @@ def main(argv: Sequence[str] = None) -> int:
     parser.add_argument("--blame", action="store_true",
                         help="rank settings associated with slow encodes")
     parser.add_argument("--slow-quantile", type=float, default=0.9)
+    parser.add_argument("--justify", nargs="*", metavar="NAME=VALUE",
+                        help="justify a requested or fastest observed configuration")
     args = parser.parse_args(argv)
     if args.stream:
         records = (json.loads(line) for line in __import__("sys").stdin if line.strip())
         result = evaluate_stream(records)
+    elif args.justify is not None:
+        result = justify_recommendation(args.csv_path,
+                                        _configuration(args.justify) if args.justify else None)
     elif args.blame:
         result = blame_slow_encodes(args.csv_path, args.slow_quantile)
     elif args.baseline is not None or args.candidate is not None:
