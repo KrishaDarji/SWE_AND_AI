@@ -421,6 +421,72 @@ def audit_observed_minimum(records):
             "audit_only": True}
 
 
+def repair(path, baseline=None):
+    """Choose the least-changing observed configuration that improves baseline.
+
+    Numeric setting cells compare by numeric value, while reported values retain
+    their raw CSV spelling. This is retrospective evidence, not a causal claim.
+    """
+    path = Path(path)
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames or []
+        if OUTCOME not in fields:
+            raise ValueError(f"missing target column {OUTCOME!r}")
+        settings = [field for field in fields if field != OUTCOME]
+        rows = list(reader)
+    if not rows:
+        raise ValueError("dataset has no records")
+    if baseline is None:
+        baseline_id = 0
+        baseline_row = rows[0]
+    elif isinstance(baseline, int) and not isinstance(baseline, bool):
+        if baseline < 0 or baseline >= len(rows):
+            raise ValueError("baseline record id is out of range")
+        baseline_id, baseline_row = baseline, rows[baseline]
+    elif hasattr(baseline, "get"):
+        baseline_id = None
+        baseline_row = dict(baseline)
+    else:
+        raise ValueError("baseline must be omitted, a record id, or a mapping")
+    baseline_value = _number(baseline_row.get(OUTCOME, ""))
+    if baseline_value is None:
+        raise ValueError("baseline has missing or non-finite Performance-")
+    for field in settings:
+        if field not in baseline_row or _setting(baseline_row.get(field)) is None:
+            raise ValueError(f"baseline setting {field!r} is missing or non-finite")
+    candidates = []
+    for record_id, row in enumerate(rows):
+        value = _number(row.get(OUTCOME, ""))
+        if value is None:
+            continue
+        if value >= baseline_value:
+            continue
+        if any(_setting(row.get(field)) is None for field in settings):
+            continue
+        changed = [field for field in settings
+                   if _setting(row.get(field)) != _setting(baseline_row.get(field))]
+        candidates.append((len(changed), value, record_id, row, changed))
+    if not candidates:
+        return {"status": "no_repair", "baseline_record_id": baseline_id,
+                "baseline_configuration": {k: baseline_row.get(k, "") for k in settings},
+                "baseline_performance": baseline_value, "outcome": OUTCOME,
+                "direction": "lower is better",
+                "reason": "no observed configuration has strictly lower Performance-"}
+    _, value, record_id, row, changed = min(candidates, key=lambda item: item[:3])
+    changes = [{"setting": field, "old": baseline_row.get(field, ""),
+                "new": row.get(field, "")} for field in changed]
+    return {"status": "repaired", "baseline_record_id": baseline_id,
+            "repaired_record_id": record_id,
+            "baseline_configuration": {k: baseline_row.get(k, "") for k in settings},
+            "repaired_configuration": {k: row.get(k, "") for k in settings},
+            "baseline_performance": baseline_value, "repaired_performance": value,
+            "improvement": baseline_value - value, "changed_settings": changes,
+            "change_count": len(changes), "change_count_note": "raw-column proxy; correlated or one-hot fields may represent fewer conceptual changes",
+            "outcome": OUTCOME, "direction": "lower is better",
+            "limitations": ["Observed improvements are not causal or future-performance guarantees."]}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
