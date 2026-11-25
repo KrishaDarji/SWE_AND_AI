@@ -51,6 +51,50 @@ def summarize(path):
     return {"record_count": len(rows), "columns": headers, "column_details": columns, "configuration_fields": CONFIG,
             "outcome_fields": OUTCOMES, "optimization_directions": DIRECTIONS, "configuration_counts": repeats, "empty": not rows}
 
+def _betacf(a,b,x):
+    qab,qap,qam=a+b,a+1,a-1; c=1.; d=1-qab*x/qap; d=1e-300 if abs(d)<1e-300 else d; d=1/d; h=d
+    for m in range(1,201):
+        m2=2*m; aa=m*(b-m)*x/((qam+m2)*(a+m2)); d=1+aa*d; d=1e-300 if abs(d)<1e-300 else d; c=1+aa/c; c=1e-300 if abs(c)<1e-300 else c; d=1/d; h*=d*c
+        aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2)); d=1+aa*d; d=1e-300 if abs(d)<1e-300 else d; c=1+aa/c; c=1e-300 if abs(c)<1e-300 else c; d=1/d; delta=d*c; h*=delta
+        if abs(delta-1)<3e-14: break
+    return h
+def _betai(a,b,x):
+    if x<=0:return 0.
+    if x>=1:return 1.
+    f=math.exp(math.lgamma(a+b)-math.lgamma(a)-math.lgamma(b)+a*math.log(x)+b*math.log1p(-x))
+    return f*_betacf(a,b,x)/a if x<(a+1)/(a+b+2) else 1-f*_betacf(b,a,1-x)/b
+def _t_cdf(t,df):
+    z=df/(df+t*t); q=.5*_betai(df/2,.5,z); return 1-q if t>=0 else q
+def _t_quantile(p,df):
+    lo,hi=-64.,64.
+    for _ in range(100):
+        mid=(lo+hi)/2
+        if _t_cdf(mid,df)<p:lo=mid
+        else:hi=mid
+    return (lo+hi)/2
+def welch_comparison(rows, practical_threshold=None):
+    """Fixed absolute_error minus squared_error comparison for MRE-."""
+    if practical_threshold is not None and (not isinstance(practical_threshold,(int,float)) or not math.isfinite(practical_threshold) or practical_threshold<0): raise ValueError("threshold must be finite and nonnegative")
+    g={"reference":[],"candidate":[]}
+    for row in rows:
+        y=number(row.get("MRE-")); c=clean(row.get("criterion"))
+        if y is not None and c=="squared_error":g["reference"].append(y)
+        elif y is not None and c=="absolute_error":g["candidate"].append(y)
+    out={"comparison":"absolute_error - squared_error","outcome":"MRE-","lower_is_better":True,"groups":{k:{"count":len(v),"mean":sum(v)/len(v) if v else None} for k,v in g.items()}}
+    r,c=g["reference"],g["candidate"]
+    if len(r)<2 or len(c)<2: out.update(status="undefined",reason="each group needs at least two finite outcomes")
+    else:
+        mr,mc=sum(r)/len(r),sum(c)/len(c); vr=sum((x-mr)**2 for x in r)/(len(r)-1); vc=sum((x-mc)**2 for x in c)/(len(c)-1); se2=vr/len(r)+vc/len(c); d=mc-mr
+        if se2==0: out.update(status="undefined",difference=d,reason="standard error is zero; inference undefined")
+        else:
+            df=se2**2/((vr/len(r))**2/(len(r)-1)+(vc/len(c))**2/(len(c)-1)); se=math.sqrt(se2); t=d/se; p=2*(1-_t_cdf(abs(t),df)); h=_t_quantile(.975,df)*se
+            out.update(status="defined",difference=d,standard_error=se,degrees_of_freedom=df,t=t,p_value=p,confidence_interval_95=[d-h,d+h])
+    if practical_threshold is None: out["practical"]={"threshold":None,"interpretation":"undetermined without a threshold"}
+    else:
+        ci=out.get("confidence_interval_95"); point=out.get("difference") is not None and out["difference"]<=-practical_threshold; entire=ci is not None and ci[1]<=-practical_threshold
+        out["practical"]={"threshold":practical_threshold,"point_estimate_exceeds":point,"entire_interval_supports":entire,"interpretation":"point estimate exceeds threshold" if point else "point estimate does not exceed threshold"}
+    return out
+
 class _Tree:
     def __init__(self, rows, ys, rng, min_leaf, depth, max_depth):
         self.value = sum(ys) / len(ys); self.left = self.right = None; self.feature = self.cut = None
@@ -131,6 +175,7 @@ def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
     headers, rows = read_rows(argv[1]); print("Model-quality prediction")
     print("predictors:", ", ".join(CONFIG)); print("outcomes excluded:", ", ".join(OUTCOMES))
-    for target in ("MRE-", "ACC+"):
-        m=ConfigurationPredictor(); print(target, m.fit(rows, target))
+    print("fixed comparison:", welch_comparison(rows))
+    print("secondary outcomes: ACC+ and PRED40+ are descriptive historical configurations only; no causal or guaranteed improvement claim.")
+    print("assumptions: finite MRE- values only; two-sided Welch test; 95% CI; lower MRE- is better; nonsignificance is not equivalence.")
 if __name__ == "__main__": main(sys.argv)
