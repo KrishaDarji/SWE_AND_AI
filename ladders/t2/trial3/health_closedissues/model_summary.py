@@ -409,3 +409,48 @@ def choose_configuration(path, configuration=None, quality_columns=None,
             "prediction_weight": prediction_weight, "quality_columns": quality,
             "candidates_considered": len(scored), "candidate_scores": scored,
             "predicted_quality": chosen["predicted_quality"]}
+
+
+def suggest_smallest_change(path, error_column="MRE-"):
+    """Recommend the smallest observed one-hyperparameter change that lowers error.
+
+    The baseline is the first observed row (the current configuration).  A candidate is a
+    row differing from that baseline in exactly one configuration column.  The
+    recommendation minimizes the number of changed fields (therefore one),
+    then the resulting error, then the changed field and value.  This is an
+    empirical suggestion, not a causal conclusion.
+    """
+    columns, rows = _read(path)
+    if error_column not in columns:
+        raise ValueError("Unknown error column: " + error_column)
+    config_columns = [name for name in columns
+                      if name != error_column and
+                      not name.lower().startswith(DEFAULT_QUALITY_PREFIXES)]
+    usable = [(row, _number(row.get(error_column, ""))) for row in rows]
+    usable = [(row, error) for row, error in usable if error is not None]
+    if not usable:
+        raise ValueError("error column contains no finite values")
+    baseline, baseline_error = usable[0]
+    candidates = []
+    for row, error in usable:
+        changes = [name for name in config_columns
+                   if str(row.get(name, "")) != str(baseline.get(name, ""))]
+        if len(changes) == 1 and error < baseline_error:
+            changed = changes[0]
+            candidates.append((error, changed, str(row.get(changed, "")), row))
+    candidates.sort(key=lambda item: (len([item[1]]), item[0], item[1], item[2]))
+    if candidates:
+        error, changed, value, row = candidates[0]
+        return {"baseline_configuration": {name: baseline[name] for name in config_columns},
+                "baseline_error": baseline_error, "recommendation": {
+                    "hyperparameter": changed, "from": baseline.get(changed, ""),
+                    "to": row.get(changed, ""), "configuration": {
+                        name: row[name] for name in config_columns},
+                    "predicted_error": None, "observed_error": error,
+                    "improvement": baseline_error - error},
+                "change_count": 1, "candidate_count": len(candidates),
+                "selection": "smallest observed one-hyperparameter error improvement"}
+    return {"baseline_configuration": {name: baseline[name] for name in config_columns},
+            "baseline_error": baseline_error, "recommendation": None,
+            "change_count": None, "candidate_count": 0,
+            "selection": "no observed one-hyperparameter improvement"}
