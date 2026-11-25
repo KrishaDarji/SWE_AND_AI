@@ -321,13 +321,50 @@ def blame(path):
             "interpretation": "These are observational marginal associations. Correlated or mutually exclusive settings can share explanatory information; a low score does not prove irrelevance, and changing a setting is not guaranteed to change the outcome."}
 
 
+def justify(path):
+    """Return a retrospective recommendation and auditable first-record comparison."""
+    path = Path(path)
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames or []
+        if OUTCOME not in fields:
+            raise ValueError(f"missing target column {OUTCOME!r}")
+        settings = [field for field in fields if field != OUTCOME]
+        rows = list(reader)
+    valid = [(i, row, _number(row.get(OUTCOME, ""))) for i, row in enumerate(rows)]
+    valid = [(i, row, value) for i, row, value in valid if value is not None]
+    if not valid:
+        raise ValueError("no usable records with finite Performance- values")
+    best_id, best_row, best_value = min(valid, key=lambda item: (item[2], item[0]))
+    first_value = _number(rows[0].get(OUTCOME, "")) if rows else None
+    comparison = None if first_value is None else {
+        "historical_reference": "first CSV record",
+        "reference_record_id": 0,
+        "reference_performance": first_value,
+        "recommended_minus_reference": best_value - first_value,
+        "reference_minus_recommended": first_value - best_value,
+        "lower_is_better": True,
+    }
+    return {
+        "recommendation": {
+            "record_id": best_id, "configuration": {k: best_row.get(k, "") for k in settings},
+            "performance": best_value, "evidence_label": "measured observed dataset record",
+        },
+        "historical_comparison": comparison,
+        "usable_record_count": len(valid), "invalid_or_nonfinite_outcome_count": len(rows) - len(valid),
+        "outcome": {"name": OUTCOME, "direction": "lower is better"},
+        "interpretation": "Retrospective dataset evidence only; it does not guarantee future performance or establish statistical superiority. Associations do not establish the effect of changing a setting, and correlated settings can share explanatory information.",
+    }
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
     parser.add_argument("--json", type=Path)
     parser.add_argument("--blame", action="store_true", help="rank settings by marginal association")
+    parser.add_argument("--justify", action="store_true", help="justify the best observed configuration")
     args = parser.parse_args()
-    summary = blame(args.dataset) if args.blame else summarize(args.dataset)
+    summary = justify(args.dataset) if args.justify else (blame(args.dataset) if args.blame else summarize(args.dataset))
     rendered = json.dumps(summary, indent=2, sort_keys=True)
     print(rendered)
     if args.json:
