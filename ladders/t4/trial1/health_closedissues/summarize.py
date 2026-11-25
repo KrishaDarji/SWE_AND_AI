@@ -33,8 +33,8 @@ def duplicates(keys):
             'extra_record_count': sum(n - 1 for n in counts.values())}
 
 
-def summarize(dataset):
-    """Validate the schema and return a JSON-serializable descriptive report."""
+def load_rows(dataset):
+    """Validate and normalize the shared eight-column Health CSV schema."""
     rows = []
     with Path(dataset).open(encoding='utf-8-sig', newline='') as handle:
         reader = csv.reader(handle)
@@ -62,6 +62,12 @@ def summarize(dataset):
             rows.append(row)
     if not rows:
         raise ValueError('Dataset must contain at least one record')
+    return headers, rows
+
+
+def summarize(dataset):
+    """Validate the schema and return a JSON-serializable descriptive report."""
+    headers, rows = load_rows(dataset)
     columns = {}
     for name in headers:
         values = [row[name] for row in rows if row[name] is not None]
