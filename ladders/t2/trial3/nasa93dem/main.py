@@ -13,6 +13,7 @@ from project_history.justification import justify_estimate, justification_lines
 from project_history.optimizer import maximize_delivered_value
 from project_history.risk import recommend_cheapest_risk_change
 from project_history.spot import spot_inconsistent_project
+from project_history.baseline import compare_estimators
 
 
 def main() -> int:
@@ -33,6 +34,10 @@ def main() -> int:
                         help="recommend the cheapest lower-risk process value")
     parser.add_argument("--spot", nargs="?", const="", metavar="PROJECT_ID",
                         help="spot the most historically inconsistent project, or inspect PROJECT_ID")
+    parser.add_argument("--compare-baseline", action="store_true",
+                        help="compare the estimator with the median-effort historical baseline")
+    parser.add_argument("--actual-effort", type=float,
+                        help="actual effort used to score --compare-baseline")
     args = parser.parse_args()
     projects = list(CsvProjectRepository(args.csv_path).projects())
     summary = summarize_projects(projects)
@@ -52,6 +57,15 @@ def main() -> int:
             print("\n".join(justification_lines(justify_estimate(projects, args.kloc))))
     elif args.justify:
         parser.error("--justify requires --kloc")
+    if args.compare_baseline:
+        if args.kloc is None or args.actual_effort is None:
+            parser.error("--compare-baseline requires --kloc and --actual-effort")
+        comparison = compare_estimators(projects, args.kloc, args.actual_effort)
+        print("Estimator comparison:")
+        print(f"Size-aware estimate: {comparison['estimate']:.2f} person-months")
+        print(f"Historical baseline: {comparison['baseline']:.2f} person-months")
+        print(f"Size-aware absolute error: {comparison['estimate_absolute_error']:.2f}")
+        print(f"Historical baseline absolute error: {comparison['baseline_absolute_error']:.2f}")
     if any(value is not None for value in (args.compare_attribute, args.process_a, args.process_b)):
         if not all(value is not None for value in (args.compare_attribute, args.process_a, args.process_b)):
             parser.error("comparison requires --compare-attribute, --process-a, and --process-b")
