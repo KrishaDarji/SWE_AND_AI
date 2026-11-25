@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """NASA93 descriptive summary, using only the Python standard library."""
-import csv, math, statistics, sys
+import csv, math, statistics, sys, random, json
 from collections import Counter
 
 MISSING = {"", "?", "na", "n/a", "null", "none"}
@@ -63,9 +63,63 @@ def summarize(path):
             "outcomes": {k: {"direction": v, "role": "outcome"} for k, v in OUTCOMES.items() if k in header},
             "model_predictors": [n for n in header if roles[n] == "descriptor"]}
 
+def _group_key(row, predictors):
+    return tuple(row.get(n, "").strip() if row.get(n, "").strip().lower() not in MISSING else "<MISSING>" for n in predictors)
+
+class EffortGuesser:
+    def __init__(self, predictors, target="Effort-", seed=42):
+        self.predictors, self.target, self.seed = list(predictors), target, seed
+        self.groups, self.mean, self.fitted = {}, None, False
+    def fit(self, rows):
+        usable = [(r, _number(r.get(self.target, ""))) for r in rows]
+        usable = [(r, y) for r, y in usable if y is not None]
+        if not usable: raise ValueError("no finite training targets")
+        self.mean = statistics.fmean(y for _, y in usable); totals = {}
+        for row, y in usable: totals.setdefault(_group_key(row, self.predictors), []).append(y)
+        self.groups = {k: statistics.fmean(v) for k, v in totals.items()}; self.fitted = True
+        return self
+    def predict(self, rows):
+        if not self.fitted: raise ValueError("model is not fitted")
+        return [self.groups.get(_group_key(r, self.predictors), self.mean) for r in rows]
+
+def grouped_split(rows, predictors, seed=42, test_fraction=.25):
+    groups = {}
+    for row in rows: groups.setdefault(_group_key(row, predictors), []).append(row)
+    if len(groups) < 2: raise ValueError("at least two distinct predictor groups are required")
+    keys = list(groups); random.Random(seed).shuffle(keys); target = max(1, int(round(len(rows)*test_fraction)))
+    test, train = [], []
+    for key in keys:
+        bucket = groups[key]
+        if test and len(test) >= target: train.extend(bucket)
+        elif test and len(test)+len(bucket) > target: train.extend(bucket)
+        else: test.extend(bucket)
+    if not train or not test: raise ValueError("split must have nonempty train and test sets")
+    return train, test
+
+def guess(path, proposal=None, seed=42):
+    header, rows, _ = read_dataset(path)
+    predictors = [n for n in header if not n.endswith("X") and n not in OUTCOMES]
+    train, test = grouped_split(rows, predictors, seed); model = EffortGuesser(predictors).fit(train)
+    actual = [_number(r.get("Effort-", "")) for r in test]; pred = model.predict(test)
+    scored = [(a,p) for a,p in zip(actual,pred) if a is not None]
+    mae = statistics.fmean(abs(a-p) for a,p in scored) if scored else None
+    baseline = statistics.fmean(abs(a-model.mean) for a,p in scored) if scored else None
+    result = {"predictors": predictors, "train_count": len(train), "test_count": len(test),
+              "groups": len(set(_group_key(r,predictors) for r in rows)), "seed": seed,
+              "model": "categorical exact-group mean; unseen/missing groups use training mean",
+              "mae": mae, "baseline_mae": baseline, "evaluation": "held-out grouped 75/25 split"}
+    if proposal is not None:
+        extra, missing = set(proposal)-set(predictors), set(predictors)-set(proposal)
+        if extra or missing: raise ValueError("proposal fields must exactly match predictors")
+        result["proposal_prediction"] = model.predict([proposal])[0]
+    return result
+
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
-    if len(argv) != 1: raise SystemExit("usage: nasa93_summary.py DATASET.csv")
-    print(__import__("json").dumps(summarize(argv[0]), indent=2, sort_keys=True))
+    if len(argv) not in (1, 2): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json]")
+    if len(argv) == 1: print(json.dumps(summarize(argv[0]), indent=2, sort_keys=True))
+    else:
+        with open(argv[1], encoding="utf-8") as f: proposal = json.load(f)
+        print(json.dumps(guess(argv[0], proposal), indent=2, sort_keys=True))
 
 if __name__ == "__main__": main()
