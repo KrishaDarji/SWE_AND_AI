@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Suggest a one-setting fix for the slowest x264 configuration."""
+import argparse
+import csv
+import json
+import sys
+from pathlib import Path
+
+
+def load_rows(path):
+    with Path(path).open(newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if not rows:
+        raise ValueError("dataset contains no measurements")
+    if "Performance-" not in rows[0]:
+        raise ValueError("dataset must contain Performance-")
+    fields = [field for field in rows[0] if field != "Performance-"]
+    for row in rows:
+        for field in fields:
+            if row[field] not in ("0", "1"):
+                raise ValueError("setting %s is not binary" % field)
+        row["_performance"] = float(row["Performance-"])
+    return fields, rows
+
+
+def suggest(path, row_index=None):
+    fields, rows = load_rows(path)
+    if row_index is None:
+        target_index = max(range(len(rows)), key=lambda i: (rows[i]["_performance"], i))
+    else:
+        if not 0 <= row_index < len(rows):
+            raise ValueError("row index is outside the dataset")
+        target_index = row_index
+    target = rows[target_index]
+    candidates = []
+    target_bits = tuple(target[field] for field in fields)
+    for index, row in enumerate(rows):
+        bits = tuple(row[field] for field in fields)
+        distance = sum(left != right for left, right in zip(target_bits, bits))
+        if distance == 1 and row["_performance"] < target["_performance"]:
+            changed = next(field for field in fields if target[field] != row[field])
+            candidates.append((row["_performance"], changed, row, index))
+    candidates.sort(key=lambda item: (item[0], item[1], item[3]))
+    result = {
+        "dataset": str(path),
+        "target_row": target_index,
+        "target_performance": target["_performance"],
+        "setting_change": None,
+        "improved_performance": None,
+        "improvement": None,
+    }
+    if candidates:
+        performance, changed, row, index = candidates[0]
+        result.update(setting_change={"name": changed, "from": target[changed], "to": row[changed]},
+                      improved_performance=performance,
+                      improvement=target["_performance"] - performance,
+                      neighbor_row=index)
+    return result
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("dataset", type=Path)
+    parser.add_argument("--row-index", type=int, help="use this row instead of the slowest row")
+    args = parser.parse_args(argv)
+    try:
+        print(json.dumps(suggest(args.dataset, args.row_index), sort_keys=True, indent=2))
+    except (OSError, ValueError) as error:
+        print("error: %s" % error, file=sys.stderr)
+        return 2
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
