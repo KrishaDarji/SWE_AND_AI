@@ -383,13 +383,94 @@ def blame(path, outcome="Performance-"):
     names, rows, _ = read_runs(path)
     return blame_rows(rows, outcome)
 
+def _binary_setting(value):
+    """Return 0/1 for a complete binary encoder field, otherwise None."""
+    if is_missing(str(value)):
+        return None
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
+        return None
+    if not math.isfinite(number) or number not in (0.0, 1.0):
+        return None
+    return int(number)
+
+def justify_rows(rows, outcome="Performance-"):
+    """Select the best eligible measured row and compare it with the median.
+
+    Positions are one-based positions in the supplied data-row sequence.  Blank
+    physical CSV records are not emitted by csv.DictReader and are therefore
+    not counted; rows supplied directly are counted, including empty mappings.
+    """
+    if not rows:
+        return {"status": "empty_input", "eligible_count": 0, "excluded": [],
+                "recommendation": None, "reference": None,
+                "associations": blame_rows([], outcome)}
+    names = list(rows[0])
+    if outcome not in names:
+        raise ValueError("required measured outcome %s is absent" % outcome)
+    settings = [name for name in names if name != outcome]
+    finite_outcomes = []
+    eligible = []
+    excluded = []
+    for position, row in enumerate(rows, 1):
+        raw = row.get(outcome, "")
+        value = _finite(raw)
+        if value is None:
+            reason = "missing or nonfinite outcome" if is_missing(str(raw)) else "invalid or nonfinite outcome"
+            excluded.append({"position": position, "reason": reason})
+            continue
+        finite_outcomes.append(value)
+        bad = [name for name in settings if _binary_setting(row.get(name, "")) is None]
+        if bad:
+            excluded.append({"position": position, "reason": "invalid or incomplete binary settings",
+                             "fields": bad})
+            continue
+        configuration = {name: _binary_setting(row[name]) for name in settings}
+        eligible.append({"position": position, "value": value, "settings": configuration})
+    reference = None if not finite_outcomes else {"count": len(finite_outcomes),
+        "median": statistics.median(finite_outcomes)}
+    recommendation = min(eligible, key=lambda item: (item["value"], item["position"])) if eligible else None
+    comparison = None
+    if recommendation is not None and reference is not None:
+        reduction = reference["median"] - recommendation["value"]
+        comparison = {"absolute_reduction": reduction,
+                      "percentage_reduction": None if reference["median"] == 0 else reduction / reference["median"] * 100,
+                      "reference": reference}
+    status = "ok" if recommendation is not None else ("no_eligible_recommendation" if rows else "empty_input")
+    return {"status": status, "selection_basis": "retrospective selection from measured runs; not prediction for an unevaluated configuration",
+            "position_convention": "one-based supplied data-row positions; blank physical CSV records are skipped by DictReader",
+            "eligible_count": len(eligible), "excluded": excluded,
+            "recommendation": recommendation, "comparison": comparison,
+            "reference": reference, "associations": blame_rows(rows, outcome),
+            "limitations": ["Best only among eligible measured historical configurations.",
+                            "Marginal associations are not causal effects, local feature contributions, or proof that changing a setting will improve performance.",
+                            "The result does not guarantee future performance."]}
+
+def justify(path, outcome="Performance-"):
+    names, rows, warnings = read_runs(path)
+    result = justify_rows(rows, outcome)
+    result["warnings"] = warnings
+    return result
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize X264 historical runs")
     parser.add_argument("dataset", help="CSV dataset path")
     parser.add_argument("--blame", action="store_true", help="rank settings by marginal association")
+    parser.add_argument("--justify", action="store_true", help="recommend the best eligible measured configuration")
+    parser.add_argument("--predict", action="store_true", help="run preserved held-out evaluation")
+    parser.add_argument("--certify", action="store_true", help="run preserved group comparison")
+    parser.add_argument("--flow", action="store_true", help="run preserved streaming summary")
     args = parser.parse_args(argv)
     try:
-        result = blame(args.dataset) if args.blame else summarize(args.dataset)
+        if args.justify: result = justify(args.dataset)
+        elif args.blame: result = blame(args.dataset)
+        elif args.predict:
+            result = evaluate(args.dataset)
+            result.pop("model", None)  # preserved API retains it; CLI output is JSON-safe.
+        elif args.certify: result = certify(args.dataset)
+        elif args.flow: result = flow_final(args.dataset)
+        else: result = summarize(args.dataset)
         print(json.dumps(result, indent=2, sort_keys=True))
     except (OSError, ValueError, csv.Error) as error:
         print("error: %s" % error, file=sys.stderr)
