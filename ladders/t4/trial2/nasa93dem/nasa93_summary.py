@@ -393,6 +393,69 @@ def choose_settings(path, budget=100.0):
     return result
 
 
+def repair_proposal(path, proposal, budget=100.0):
+    """Suggest the least-changing observed training configuration under budget."""
+    if not isinstance(budget, (int, float, np.number)) or not math.isfinite(float(budget)) or float(budget) < 0:
+        raise ValueError("budget must be a finite nonnegative number")
+    columns, predictors, X, y, groups = prepare_learning_data(path)
+    expected = set(predictors)
+    if not isinstance(proposal, dict) or set(proposal) != expected:
+        raise ValueError("proposal must contain exactly the descriptor columns")
+    splitter = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=42)
+    train, test = next(splitter.split(X, y, groups=groups))
+    model = build_model(predictors)
+    matrix = [[row[c] for c in predictors] for row in X]
+    model.fit([matrix[i] for i in train], y[train])
+    normalized = lambda value: "<MISSING>" if value is None else str(value)
+    original = {c: normalized(proposal[c]) for c in predictors}
+    original_effort = predict_proposal(model, predictors, original)
+    result = {
+        "budget": float(budget), "predictors": predictors,
+        "training_indices": [int(i) for i in train], "held_out_indices": [int(i) for i in test],
+        "original_descriptors": original, "original_estimated_effort": original_effort,
+        "candidate_source": "distinct descriptor configurations observed in training rows only",
+        "proxy_note": "Descriptor-change count is a proxy, not monetary cost or operational risk.",
+        "limitations": ["Candidates are hypothetical alternatives; descriptors may not be actionable and observed combinations may not preserve scope.",
+                        "Model differences are not causal improvements or guaranteed savings."],
+    }
+    if original_effort <= float(budget):
+        result.update(status="no-repair-needed", feasible=True, candidate_descriptors=original,
+                      changed_fields=[], change_count=0, candidate_estimated_effort=original_effort)
+        return result
+    candidates = []
+    seen = set()
+    for index in train:
+        key = tuple(X[int(index)][c] for c in predictors)
+        if key in seen:
+            continue
+        seen.add(key)
+        candidate = dict(zip(predictors, key))
+        estimate = predict_proposal(model, predictors, candidate)
+        if estimate <= float(budget):
+            changed = [c for c in predictors if candidate[c] != original[c]]
+            candidates.append((len(changed), estimate, int(index), candidate, changed))
+    if not candidates:
+        result.update(status="no-feasible-repair", feasible=False, candidate_descriptors=None,
+                      changed_fields=[], change_count=None, candidate_estimated_effort=None)
+        return result
+    count, estimate, index, candidate, changed = min(candidates, key=lambda item: (item[0], item[1], item[2]))
+    result.update(status="repair-found", feasible=True, candidate_descriptors=candidate,
+                  changed_fields=changed, change_count=count, candidate_estimated_effort=estimate,
+                  candidate_training_csv_record_index=index)
+    return result
+
+
+def repair_demonstration(path, budget=100.0):
+    """Use the earliest held-out row as the complete demonstration proposal."""
+    columns, predictors, X, y, groups = prepare_learning_data(path)
+    splitter = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=42)
+    _, test = next(splitter.split(X, y, groups=groups))
+    held_out = int(min(test))
+    result = repair_proposal(path, {c: X[held_out][c] for c in predictors}, budget)
+    result["demonstration_held_out_csv_record_index"] = held_out
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_path", type=Path)
@@ -402,9 +465,11 @@ def main():
     parser.add_argument("--rank-effort-associations", action="store_true")
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--choose", action="store_true")
+    parser.add_argument("--repair", action="store_true")
     parser.add_argument("--budget", type=float, default=100.0)
     args = parser.parse_args()
-    result = (choose_settings(args.csv_path, args.budget) if args.choose else
+    result = (repair_demonstration(args.csv_path, args.budget) if args.repair else
+              choose_settings(args.csv_path, args.budget) if args.choose else
               justify_estimate(args.csv_path) if args.justify else
               rank_effort_associations(args.csv_path) if args.rank_effort_associations else
               assess_arrivals(args.csv_path) if args.assess_arrivals else
