@@ -11,6 +11,7 @@ from .justify import EstimateJustification, justify_estimate
 from .optimize import SettingRecommendation, OptimizationResult, choose_settings
 from .risk import ProcessChange, RiskRecommendation, recommend_process_change
 from .spot import InconsistentProject, spot_inconsistent
+from .compare import ComparisonResult, compare_estimators
 
 __all__ = ["Project", "DatasetSummary", "load_projects", "summarize_projects",
            "EffortEstimate", "estimate_effort", "CostComparison", "certify_less_costly",
@@ -19,3 +20,4 @@ __all__ = ["Project", "DatasetSummary", "load_projects", "summarize_projects",
            "SettingRecommendation", "OptimizationResult", "choose_settings"]
 __all__ += ["ProcessChange", "RiskRecommendation", "recommend_process_change"]
 __all__ += ["InconsistentProject", "spot_inconsistent"]
+__all__ += ["ComparisonResult", "compare_estimators"]
