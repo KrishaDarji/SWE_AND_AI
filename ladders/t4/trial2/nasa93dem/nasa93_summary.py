@@ -286,6 +286,72 @@ def compare_tools(path, practical_threshold=None, tool_a="n", tool_b="h"):
             "interpretation": "Effort- is observed effort, not verified monetary cost; this observational comparison does not establish a causal process effect."}
 
 
+def justify_estimate(path):
+    """Explain the earliest grouped holdout estimate without using its outcome."""
+    columns, predictors, X, y, groups = prepare_learning_data(path)
+    splitter = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=42)
+    train, test = next(splitter.split(X, y, groups=groups))
+    model = build_model(predictors)
+    matrix = [[row[c] for c in predictors] for row in X]
+    model.fit([matrix[i] for i in train], y[train])
+    held_out_index = int(min(test))
+    proposal = {c: X[held_out_index][c] for c in predictors}
+    estimate = predict_proposal(model, predictors, proposal)
+    train_effort = y[train]
+    reference = float(np.median(train_effort))
+    associations = rank_effort_associations_training(path, train)
+    return {"evidence": {
+        "estimate": {"label": "MODEL_ESTIMATE", "effort": estimate,
+                      "method": "training-only RandomForestRegressor pipeline"},
+        "training_history_reference": {"label": "TRAINING_HISTORY_REFERENCE",
+                                        "statistic": "median Effort-", "effort": reference,
+                                        "training_count": int(len(train))},
+        "historical_associations": {"label": "HISTORICAL_ASSOCIATION",
+                                     "method": "training-only marginal categorical eta-squared",
+                                     "top": associations["ranking"][:3]},
+        "audit": {"label": "MEASURED_AUDIT_VALUE", "effort": float(y[held_out_index]),
+                  "held_out_row_index": held_out_index}},
+        "proposal": {"held_out_row_index": held_out_index, "descriptors": proposal,
+                      "descriptor_count": len(proposal), "excluded_inputs":
+                      [c for c in columns if c not in predictors]},
+        "explanation": [
+            "The model estimate is generated before revealing the held-out Effort-.",
+            "The median is a training-history reference, not a guarantee or a cost.",
+            "Associations describe marginal training-row patterns; they are not additive local contributions, causal effects, or guarantees.",
+            "Missing or unseen descriptor levels are represented explicitly and ignored by one-hot encoding when unseen.",
+            "Correlated project factors may share explanatory information, so evidence should not be added together.",
+            "The measured audit value is reported separately after the pre-audit explanation."
+        ],
+        "settings": {"split": "GroupShuffleSplit(test_size=0.25, random_state=42)",
+                     "grouping": "identical descriptor configurations",
+                     "predictors": predictors}}
+
+
+def rank_effort_associations_training(path, training_indices):
+    """Reuse the association method while restricting rows to training only."""
+    columns, rows = load_csv(path)
+    subset = [rows[int(i)] for i in training_indices]
+    temporary = path
+    valid = [(row, float(row["Effort-"])) for row in subset
+             if row["Effort-"] is not None and math.isfinite(float(row["Effort-"]))]
+    y_values = np.asarray([item[1] for item in valid], dtype=float)
+    results = []
+    for descriptor in descriptor_columns(columns):
+        groups = {}
+        for row, effort in valid:
+            label = "<MISSING>" if row[descriptor] is None else str(row[descriptor])
+            groups.setdefault(label, []).append(effort)
+        overall = float(np.mean(y_values)); total = float(np.sum((y_values - overall) ** 2))
+        summaries = [{"level": label, "n": len(values), "mean_effort": float(np.mean(values))}
+                     for label, values in sorted(groups.items())]
+        between = sum(item["n"] * (item["mean_effort"] - overall) ** 2 for item in summaries)
+        results.append({"descriptor": descriptor, "score_eta_squared": between / total if total else 0.0,
+                        "groups": summaries})
+    results.sort(key=lambda item: (-item["score_eta_squared"], item["descriptor"]))
+    return {"ranking": results, "observation_count": len(y_values),
+            "note": "Training rows only; marginal association is not a local contribution."}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("csv_path", type=Path)
@@ -293,8 +359,10 @@ def main():
     parser.add_argument("--threshold", type=float)
     parser.add_argument("--assess-arrivals", action="store_true")
     parser.add_argument("--rank-effort-associations", action="store_true")
+    parser.add_argument("--justify", action="store_true")
     args = parser.parse_args()
-    result = (rank_effort_associations(args.csv_path) if args.rank_effort_associations else
+    result = (justify_estimate(args.csv_path) if args.justify else
+              rank_effort_associations(args.csv_path) if args.rank_effort_associations else
               assess_arrivals(args.csv_path) if args.assess_arrivals else
               compare_tools(args.csv_path, args.threshold) if args.compare_tools else
               summarize(args.csv_path))
