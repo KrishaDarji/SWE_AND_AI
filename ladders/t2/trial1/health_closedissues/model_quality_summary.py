@@ -78,6 +78,19 @@ class Choice:
     candidates: int
 
 
+@dataclass(frozen=True)
+class ChangeRecommendation:
+    """The smallest observed one-parameter change that lowers error."""
+    configuration: dict[str, str]
+    changed_parameter: str
+    old_value: str
+    new_value: str
+    current_error: float
+    recommended_error: float
+    error_improvement: float
+    change_size: float
+
+
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
     with Path(path).open(newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
@@ -332,6 +345,44 @@ def choose(path: str | Path, accuracy_weight: float = 0.5,
                                                                   "prediction_quality": prediction_weight / total}}
 
 
+def suggest_change(path: str | Path, configuration: Mapping[str, Any],
+                   error_field: str = "MRE-") -> dict[str, Any]:
+    """Suggest the smallest observed one-hyperparameter change that reduces error.
+
+    Candidates must match the supplied configuration in every field except one.
+    Numeric changes are ranked by absolute distance; categorical changes have
+    size one. Error reduction is the primary tie-breaker after change size.
+    """
+    fields, rows = read_rows(path)
+    metric_fields, configuration_fields = classify_columns(fields)
+    if error_field not in metric_fields:
+        raise ValueError(f"unknown error metric: {error_field}")
+    query = {field: str(configuration.get(field, "")) for field in configuration_fields}
+    current = [(row, _number(row.get(error_field, ""))) for row in rows
+               if all(row.get(field, "") == query[field] for field in configuration_fields)]
+    if not current or current[0][1] is None:
+        raise ValueError("configuration has no numeric observed error")
+    current_row, current_error = current[0]
+    candidates = []
+    for row in rows:
+        error = _number(row.get(error_field, ""))
+        changed = [field for field in configuration_fields if row.get(field, "") != query[field]]
+        if error is None or len(changed) != 1 or error >= current_error:
+            continue
+        field = changed[0]
+        old, new = query[field], row.get(field, "")
+        old_number, new_number = _number(old), _number(new)
+        size = abs(new_number - old_number) if old_number is not None and new_number is not None else 1.0
+        candidates.append((size, error, field, old, new, row))
+    if not candidates:
+        raise ValueError("no observed one-parameter change improves error")
+    size, error, field, old, new, row = min(candidates, key=lambda item: (item[0], item[1], item[2], item[4]))
+    result = ChangeRecommendation({name: row.get(name, "") for name in configuration_fields},
+                                  field, old, new, current_error, error,
+                                  current_error - error, size)
+    return asdict(result) | {"source": str(path), "error_field": error_field}
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path); parser.add_argument("--output", type=Path)
@@ -346,8 +397,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--choose", action="store_true", help="choose a balanced accuracy/prediction configuration")
     parser.add_argument("--accuracy-weight", type=float, default=0.5)
     parser.add_argument("--prediction-weight", type=float, default=0.5)
+    parser.add_argument("--suggest-change", type=json.loads, metavar="JSON",
+                        help="suggest the smallest observed one-hyperparameter error improvement")
     args = parser.parse_args(argv)
-    if args.choose: result = choose(args.csv_path, args.accuracy_weight, args.prediction_weight)
+    if args.suggest_change is not None: result = suggest_change(args.csv_path, args.suggest_change, args.error_field)
+    elif args.choose: result = choose(args.csv_path, args.accuracy_weight, args.prediction_weight)
     elif args.justify: result = justify(args.csv_path, args.neighbors, args.quantile, args.min_samples)
     elif args.blame: result = blame(args.csv_path, args.error_field, args.quantile, args.min_samples)
     elif args.evaluate: result = evaluate_file(args.csv_path)
