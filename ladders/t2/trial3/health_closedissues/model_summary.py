@@ -1,10 +1,11 @@
-"""Reusable CSV summarizer and configuration-only quality predictor."""
+"""Reusable CSV summary, configuration prediction, and family certification."""
 
 import csv
 import math
 import statistics
 
 DEFAULT_QUALITY_PREFIXES = ("mre", "acc", "pred")
+
 
 def _number(value):
     try:
@@ -13,22 +14,27 @@ def _number(value):
         return None
     return result if math.isfinite(result) else None
 
+
 def _stats(values):
     if not values:
         return {"count": 0, "min": None, "max": None, "mean": None, "median": None}
     return {"count": len(values), "min": min(values), "max": max(values),
             "mean": statistics.fmean(values), "median": statistics.median(values)}
 
-def summarize_csv(path, quality_columns=None, quality_prefixes=DEFAULT_QUALITY_PREFIXES):
-    """Return a JSON-serializable summary of model-results CSV data."""
+
+def _read(path):
     with open(path, "r", newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
-        if not reader.fieldnames:
+        columns = [name.strip() for name in (reader.fieldnames or [])]
+        if not columns:
             raise ValueError("CSV must contain a header")
-        columns = [name.strip() for name in reader.fieldnames]
         if any(not name for name in columns):
             raise ValueError("CSV contains an empty column name")
-        rows = list(reader)
+        return columns, list(reader)
+
+
+def summarize_csv(path, quality_columns=None, quality_prefixes=DEFAULT_QUALITY_PREFIXES):
+    columns, rows = _read(path)
     selected = set(quality_columns or ())
     unknown = selected.difference(columns)
     if unknown:
@@ -36,21 +42,19 @@ def summarize_csv(path, quality_columns=None, quality_prefixes=DEFAULT_QUALITY_P
     if not selected:
         selected = {name for name in columns if name.lower().startswith(
             tuple(prefix.lower() for prefix in quality_prefixes))}
-    configuration = [name for name in columns if name not in selected]
     quality = {}
     for name in columns:
         if name in selected:
-            valid = [_number(row.get(name, "")) for row in rows]
-            quality[name] = _stats([value for value in valid if value is not None])
+            quality[name] = _stats([v for v in (_number(r.get(name, "")) for r in rows)
+                                    if v is not None])
     settings = {}
-    for name in configuration:
+    for name in (column for column in columns if column not in selected):
         raw = [row.get(name, "") for row in rows]
         numeric = [_number(value) for value in raw]
         if raw and all(value is not None for value in numeric):
             settings[name] = {"type": "numeric", "count": len(raw),
                               "unique_count": len(set(numeric)),
-                              "min": min(numeric) if numeric else None,
-                              "max": max(numeric) if numeric else None,
+                              "min": min(numeric), "max": max(numeric),
                               "values": sorted(set(numeric))}
         else:
             settings[name] = {"type": "categorical", "count": len(raw),
@@ -58,21 +62,11 @@ def summarize_csv(path, quality_columns=None, quality_prefixes=DEFAULT_QUALITY_P
     return {"row_count": len(rows), "column_count": len(columns), "columns": columns,
             "quality_metrics": quality, "configuration": settings}
 
-def predict_quality(path, configuration, quality_columns=None, neighbors=5):
-    """Estimate quality using the closest historical configurations.
 
-    Numeric settings are range-normalized; categorical settings match exactly.
-    The estimate is a distance-weighted average and is intended as a quick
-    pre-evaluation forecast, not a replacement for full evaluation.
-    """
+def predict_quality(path, configuration, quality_columns=None, neighbors=5):
     if neighbors < 1:
         raise ValueError("neighbors must be positive")
-    with open(path, "r", newline="", encoding="utf-8") as handle:
-        reader = csv.DictReader(handle)
-        columns = [name.strip() for name in (reader.fieldnames or [])]
-        rows = list(reader)
-    if not columns:
-        raise ValueError("CSV must contain a header")
+    columns, rows = _read(path)
     quality = set(quality_columns or ())
     if not quality:
         quality = {name for name in columns if name.lower().startswith(DEFAULT_QUALITY_PREFIXES)}
@@ -82,14 +76,12 @@ def predict_quality(path, configuration, quality_columns=None, neighbors=5):
         raise ValueError("Unknown configuration columns: " + ", ".join(sorted(missing)))
     spans = {}
     for name in config_columns:
-        vals = [_number(row.get(name, "")) for row in rows]
-        valid = [v for v in vals if v is not None]
+        valid = [v for v in (_number(row.get(name, "")) for row in rows) if v is not None]
         spans[name] = (min(valid), max(valid)) if valid else None
     def distance(row):
         total = 0.0
         for name in config_columns:
-            target = configuration.get(name, row.get(name, ""))
-            actual = row.get(name, "")
+            target, actual = configuration.get(name, row.get(name, "")), row.get(name, "")
             target_num, actual_num = _number(target), _number(actual)
             if target_num is not None and actual_num is not None and spans[name]:
                 low, high = spans[name]
@@ -105,3 +97,65 @@ def predict_quality(path, configuration, quality_columns=None, neighbors=5):
         if weighted:
             result[name] = sum(weight * value for weight, value in weighted) / sum(weight for weight, _ in weighted)
     return {"configuration": dict(configuration), "neighbors_used": len(ranked), "predicted_quality": result}
+
+
+def certify_families(path, family_columns, quality_columns=None, confidence=0.95):
+    """Compare configuration families and flag only consistent, supported wins.
+
+    A family is a unique tuple of family-column values.  For each pair, a metric
+    is reliable when its 95% normal-approximation interval for the mean
+    difference excludes zero.  A family wins reliably only when it wins every
+    requested metric; error metrics (MRE) are minimized and other metrics are
+    maximized.
+    """
+    if not 0 < confidence < 1:
+        raise ValueError("confidence must be between 0 and 1")
+    columns, rows = _read(path)
+    unknown = set(family_columns).difference(columns)
+    if unknown:
+        raise ValueError("Unknown family columns: " + ", ".join(sorted(unknown)))
+    quality = set(quality_columns or ())
+    if not quality:
+        quality = {name for name in columns if name.lower().startswith(DEFAULT_QUALITY_PREFIXES)}
+    unknown = quality.difference(columns)
+    if unknown:
+        raise ValueError("Unknown quality columns: " + ", ".join(sorted(unknown)))
+    groups = {}
+    for row in rows:
+        key = tuple(row.get(name, "") for name in family_columns)
+        groups.setdefault(key, []).append(row)
+    if len(groups) < 2:
+        raise ValueError("at least two configuration families are required")
+    z = 1.96 if confidence == 0.95 else 1.96  # documented conservative default
+    family_names = ["|".join(key) for key in sorted(groups)]
+    comparisons = []
+    for left, right in ((family_names[i], family_names[j]) for i in range(len(family_names))
+                        for j in range(i + 1, len(family_names))):
+        left_rows, right_rows = groups[tuple(left.split("|"))], groups[tuple(right.split("|"))]
+        metrics = {}
+        winners = []
+        for name in sorted(quality):
+            a = [v for v in (_number(r.get(name, "")) for r in left_rows) if v is not None]
+            b = [v for v in (_number(r.get(name, "")) for r in right_rows) if v is not None]
+            if not a or not b:
+                metrics[name] = {"left_mean": None, "right_mean": None, "difference": None,
+                                 "reliable": False, "winner": None}
+                continue
+            direction = -1 if name.lower().startswith("mre") else 1
+            difference = direction * (statistics.fmean(a) - statistics.fmean(b))
+            variance = (statistics.pvariance(a) / len(a) if len(a) > 1 else 0.0) + \
+                       (statistics.pvariance(b) / len(b) if len(b) > 1 else 0.0)
+            margin = z * math.sqrt(variance)
+            winner = left if difference > 0 else right if difference < 0 else None
+            reliable = abs(difference) > margin and winner is not None
+            metrics[name] = {"left_mean": statistics.fmean(a), "right_mean": statistics.fmean(b),
+                             "difference_in_preferred_direction": difference,
+                             "confidence_interval": [difference - margin, difference + margin],
+                             "reliable": reliable, "winner": winner if reliable else None}
+            if reliable:
+                winners.append(winner)
+        reliable_winner = winners[0] if winners and len(winners) == len(quality) and len(set(winners)) == 1 else None
+        comparisons.append({"left": left, "right": right, "metrics": metrics,
+                            "reliably_better": reliable_winner})
+    return {"family_columns": list(family_columns), "families": family_names,
+            "comparison_count": len(comparisons), "comparisons": comparisons}
