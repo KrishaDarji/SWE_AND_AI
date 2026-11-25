@@ -221,6 +221,43 @@ def blame_hyperparameters(rows, error_column="MRE-", configuration_columns=None,
             "high_error_count": high_count, "associations": results}
 
 
+def justify_configuration(rows, target_configuration, quality_columns=("MRE-", "ACC+"),
+                          configuration_columns=None, error_column="MRE-",
+                          accuracy_column="ACC+", neighbors=25, margin=0.0):
+    """Create an evidence-based recommendation for a candidate configuration.
+
+    The recommendation compares nearest-neighbor predictions with dataset-wide
+    baselines and states the decision rule explicitly.  It is decision support,
+    not a replacement for prospective validation.
+    """
+    rows = list(rows)
+    if not rows:
+        raise ValueError("CSV contains no data rows")
+    quality_columns = list(quality_columns)
+    configuration_columns = list(configuration_columns or
+                                 [c for c in rows[0] if c not in quality_columns])
+    prediction = predict_quality(rows, target_configuration, quality_columns,
+                                 configuration_columns, neighbors)
+    if error_column not in prediction["predictions"] or accuracy_column not in prediction["predictions"]:
+        raise ValueError("quality_columns must include error and accuracy metrics")
+    error_delta = prediction["baseline"][error_column] - prediction["predictions"][error_column]
+    accuracy_delta = prediction["predictions"][accuracy_column] - prediction["baseline"][accuracy_column]
+    recommended = error_delta >= margin and accuracy_delta >= margin
+    reasons = []
+    reasons.append("predicted error is below the dataset baseline" if error_delta >= margin
+                   else "predicted error does not improve on the dataset baseline")
+    reasons.append("predicted accuracy is at or above the dataset baseline" if accuracy_delta >= margin
+                   else "predicted accuracy is below the dataset baseline")
+    return {"recommendation": "recommend" if recommended else "do_not_recommend",
+            "configuration": dict(target_configuration), "predictions": prediction["predictions"],
+            "baseline": prediction["baseline"],
+            "deltas": {"error_reduction": error_delta, "accuracy_gain": accuracy_delta},
+            "neighbors_used": prediction["neighbors_used"],
+            "nearest_distance": prediction["nearest_distance"], "margin": margin,
+            "reasons": reasons,
+            "caveat": "Validate prospectively before production deployment."}
+
+
 class SequentialEvaluator:
     """Evaluate configurations incrementally as validation results arrive.
 
@@ -273,6 +310,10 @@ def main(argv=None):
                         help="rank hyperparameters associated with high error")
     parser.add_argument("--error", default="MRE-", dest="error_column")
     parser.add_argument("--high-quantile", type=float, default=0.75)
+    parser.add_argument("--justify", action="store_true",
+                        help="justify a candidate configuration against the baseline")
+    parser.add_argument("--target", nargs="*", metavar="KEY=VALUE")
+    parser.add_argument("--margin", type=float, default=0.0)
     parser.add_argument("--quality", nargs="+")
     parser.add_argument("--configuration", nargs="+")
     args = parser.parse_args(argv)
@@ -286,7 +327,12 @@ def main(argv=None):
         return
     with args.csv_path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    if args.blame:
+    if args.justify:
+        target = dict(item.split("=", 1) for item in (args.target or []))
+        result = justify_configuration(rows, target, args.quality or ["MRE-", "ACC+"],
+                                       args.configuration, args.error_column, args.metric,
+                                       margin=args.margin)
+    elif args.blame:
         result = blame_hyperparameters(rows, args.error_column, args.configuration,
                                        args.high_quantile)
     elif args.certify:
