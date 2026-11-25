@@ -323,10 +323,42 @@ def justify(rows):
                    "context": {"status": "defined", "interpretation": "global marginal associations describe the dataset, not causal effects or local contributions", "associations": selected_associations}})
     return result
 
+def choose(rows, cap=100):
+    """Retrospectively select an observed feasible configuration under a proxy cap."""
+    if not isinstance(cap, (int, float)) or isinstance(cap, bool) or not math.isfinite(cap) or cap < 0:
+        raise ValueError("cap must be finite and nonnegative")
+    rows = list(rows); eligible = []; invalid = 0; over_budget = 0
+    for position, row in enumerate(rows, 1):
+        settings = {field: (clean(row.get(field)) if field == "criterion" else number(row.get(field))) for field in CONFIG}
+        outcomes = {field: number(row.get(field)) for field in OUTCOMES}
+        valid = (all(settings[field] is not None for field in CONFIG) and
+                 all(outcomes[field] is not None for field in OUTCOMES) and
+                 settings["N_estimators"] >= 0)
+        if not valid:
+            invalid += 1
+            continue
+        if settings["N_estimators"] > cap:
+            over_budget += 1
+            continue
+        eligible.append((outcomes["MRE-"], -outcomes["ACC+"], -outcomes["PRED40+"], position,
+                         {"position": position, "configuration": settings, "outcomes": outcomes}))
+    result = {"status": "defined" if eligible else ("empty" if not rows else "no_feasible_row"),
+              "retrospective": True, "position_convention": "one-based original CSV data-row position",
+              "row_count": len(rows), "raw_row_count": len(rows), "valid_row_count": len(rows) - invalid,
+              "feasible_row_count": len(eligible), "invalid_exclusion_count": invalid,
+              "over_budget_exclusion_count": over_budget, "cap": cap,
+              "selected_proxy": "N_estimators", "selection_rule": ["lowest MRE-", "highest ACC+", "highest PRED40+", "earliest original CSV row position"],
+              "feasibility": "all five settings and three outcomes finite/complete; nonnegative N_estimators <= cap"}
+    result["recommendation"] = min(eligible)[4] if eligible else None
+    result["limitations"] = ("N_estimators is a configuration-based compute proxy, not measured runtime or cost; "
+                              "other settings may also affect computation. Selection is limited to eligible historical rows "
+                              "and does not guarantee performance on unseen evaluations.")
+    return result
+
 def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    rows = list(read_rows(argv[1])[1]); report = justify(rows)
-    print("Retrospective recommendation (observed complete rows; not a prediction)")
+    rows = list(read_rows(argv[1])[1]); report = choose(rows, 100)
+    print("Retrospective selection using observed outcomes (cap=100)")
     print(report)
     return
     print("Blame: marginal eta-squared associations with MRE- (lower MRE- is better)")
