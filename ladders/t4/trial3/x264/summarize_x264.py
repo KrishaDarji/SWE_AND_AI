@@ -357,6 +357,70 @@ def justify(path):
     }
 
 
+def _configuration_key(configuration):
+    try:
+        return json.dumps(configuration, sort_keys=True, separators=(",", ":"), default=str)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("configurations must be JSON-serializable mappings") from exc
+
+
+def choose_configuration(candidates, evaluate, budget=20, random_state=42):
+    """Select a low measured Performance- using only a counted callback.
+
+    Candidate settings are visible, but outcomes enter this routine only through
+    ``evaluate(configuration)``. Unique candidates are shuffled reproducibly;
+    measured ties retain the earlier evaluation order.
+    """
+    if isinstance(budget, bool) or not isinstance(budget, int) or budget <= 0:
+        raise ValueError("budget must be a positive integer")
+    candidates = list(candidates)
+    if not candidates:
+        raise ValueError("candidates must not be empty")
+    unique = []
+    seen = set()
+    for configuration in candidates:
+        if not hasattr(configuration, "keys"):
+            raise ValueError("each candidate must be a mapping")
+        key = _configuration_key(configuration)
+        if key not in seen:
+            seen.add(key)
+            unique.append((key, copy.deepcopy(dict(configuration))))
+    if not unique:
+        raise ValueError("candidates must contain a unique configuration")
+    order = list(range(len(unique)))
+    rng = np.random.RandomState(random_state)
+    rng.shuffle(order)
+    selected = order[:min(budget, len(order))]
+    observations = []
+    for evaluation_index, candidate_index in enumerate(selected):
+        key, configuration = unique[candidate_index]
+        outcome = _number(evaluate(copy.deepcopy(configuration)))
+        if outcome is None:
+            raise ValueError("evaluation callback must return a finite numeric outcome")
+        observations.append({"evaluation_index": evaluation_index, "candidate_key": key,
+                             "configuration": configuration, "outcome": outcome})
+    best = min(observations, key=lambda item: (item["outcome"], item["evaluation_index"]))
+    return {"budget": budget, "budget_used": len(observations), "candidate_count": len(candidates),
+            "unique_candidate_count": len(unique), "evaluation_order": observations,
+            "recommended_identifier": best["candidate_key"],
+            "recommendation": {"configuration": copy.deepcopy(best["configuration"]),
+                                "performance": best["outcome"]},
+            "strategy": "reproducibly shuffled unique candidates, measured through callback; lower is better",
+            "limitations": ["Random search can miss the global optimum.",
+                            "The recommendation is supported only by the measured evaluations."]}
+
+
+def audit_observed_minimum(records):
+    """Retrospectively report the full-data minimum; never used by selection."""
+    usable = [(i, row, _number(row.get(OUTCOME, ""))) for i, row in enumerate(records)]
+    usable = [(i, row, value) for i, row, value in usable if value is not None]
+    if not usable:
+        raise ValueError("no usable audit records")
+    minimum = min(usable, key=lambda item: (item[2], item[0]))
+    return {"observed_minimum": {"record_id": minimum[0], "performance": minimum[2]},
+            "audit_only": True}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
