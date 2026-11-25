@@ -4,12 +4,21 @@ import argparse
 import csv
 import json
 import math
+import numpy as np
 from pathlib import Path
 
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.impute import SimpleImputer
+from sklearn.metrics import mean_absolute_error
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils.validation import check_array
 
 
 OUTCOME = "Performance-"
+MISSING_SETTING = "__MISSING_SETTING__"
 
 
 def _number(value):
@@ -68,6 +77,97 @@ def summarize(path):
     else:
         result["numeric_statistics"][OUTCOME] = {"count": 0}
     return result
+
+
+def _read_valid_rows(path):
+    with Path(path).open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        fields = reader.fieldnames or []
+        if OUTCOME not in fields:
+            raise ValueError(f"missing target column {OUTCOME!r}")
+        settings = [f for f in fields if f != OUTCOME]
+        valid = []
+        invalid_target = 0
+        for row in reader:
+            target = _number(row.get(OUTCOME, ""))
+            if target is None:
+                invalid_target += 1
+                continue
+            valid.append((row, target))
+    if not valid:
+        raise ValueError("no rows with finite Performance- targets")
+    return settings, valid, invalid_target
+
+
+def _frame(rows, settings):
+    return [[_setting(row.get(field, "")) for field in settings] for row in rows]
+
+
+def _setting(value):
+    """Return one canonical numeric setting value, or None for missing input."""
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    try:
+        number = float(text)
+    except (TypeError, ValueError):
+        return None
+    if not math.isfinite(number):
+        return None
+    return str(number)
+
+
+def _pipeline(settings, seed=42):
+    prep = ColumnTransformer([
+        ("settings", Pipeline([
+            ("impute", SimpleImputer(strategy="most_frequent", missing_values=None, keep_empty_features=True)),
+            ("encode", OneHotEncoder(handle_unknown="ignore")),
+        ]), list(range(len(settings))))
+    ])
+    return Pipeline([("preprocess", prep), ("model", RandomForestRegressor(
+        n_estimators=200, random_state=seed, n_jobs=1))])
+
+
+def evaluate(path, random_state=42):
+    settings, valid, invalid_target = _read_valid_rows(path)
+    rows = [x[0] for x in valid]
+    y = np.asarray([x[1] for x in valid], dtype=float)
+    groups = np.asarray(["\x1f".join((_setting(r.get(f, "")) or MISSING_SETTING) for f in settings) for r in rows])
+    splitter = GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=random_state)
+    train, test = next(splitter.split(rows, y, groups))
+    model = _pipeline(settings, random_state)
+    train_frame = _frame([rows[i] for i in train], settings)
+    for column in range(len(settings)):
+        if all(row[column] is None for row in train_frame):
+            train_frame = [row[:column] + [MISSING_SETTING] + row[column + 1:] for row in train_frame]
+    model.fit(train_frame, y[train])
+    predictions = model.predict(_frame([rows[i] for i in test], settings))
+    baseline = float(np.mean(y[train]))
+    return {
+        "predictor_names": settings, "train_count": int(len(train)), "test_count": int(len(test)),
+        "test_groups": groups[test].tolist(),
+        "group_count": int(len(set(groups.tolist()))), "held_out_mae": float(mean_absolute_error(y[test], predictions)),
+        "training_mean_baseline_mae": float(mean_absolute_error(y[test], np.full(len(test), baseline))),
+        "training_mean": baseline, "invalid_target_rows": invalid_target,
+        "model_settings": {"preprocessing": "most_frequent imputation + one-hot encoding fitted on training rows", "estimator": "RandomForestRegressor", "n_estimators": 200, "random_state": random_state, "group_split": "GroupShuffleSplit(test_size=0.2)"},
+        "model": model, "settings": settings, "training_frame": train_frame,
+    }
+
+
+def predict(path, configurations, random_state=42):
+    result = evaluate(path, random_state)
+    model = result["model"]
+    missing = [f for f in result["settings"] if any(f not in c for c in configurations)]
+    if missing:
+        raise ValueError(f"missing settings in configuration: {missing}")
+    prediction_frame = _frame(configurations, result["settings"])
+    for column in range(len(result["settings"])):
+        if all(row[column] is None for row in result["training_frame"]):
+            prediction_frame = [row[:column] + [MISSING_SETTING] + row[column + 1:] for row in prediction_frame]
+    values = model.predict(prediction_frame)
+    return [float(v) for v in values]
 
 
 def main():
