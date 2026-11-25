@@ -132,6 +132,55 @@ def certify(dataset, measure=None, alpha=0.05):
             "any_credible": bool(credible)}
 
 
+def blame(dataset, measure=None, slow_fraction=0.10):
+    """Rank settings associated with the slowest measurements.
+
+    The slow group is the highest ``slow_fraction`` of observed values.  For
+    each binary setting, ``slow_rate_difference`` compares the fraction of
+    slow rows when the setting is 1 with that fraction when it is 0.  This is
+    an association screen, not a causal claim; settings can be confounded by
+    the experimental design.
+    """
+    measure = measure or dataset.measures[0]
+    if measure not in dataset.measures or not 0 < slow_fraction <= 1:
+        raise ValueError("unknown measure or slow_fraction must be between 0 and 1")
+    usable = [(row, _number(row[measure])) for row in dataset.rows]
+    usable = [(row, value) for row, value in usable if value is not None]
+    if not usable:
+        raise ValueError("measure has no numeric observations")
+    slow_count = max(1, math.ceil(len(usable) * slow_fraction))
+    cutoff = sorted(value for _, value in usable)[-slow_count]
+    slow_rows = {id(row) for row, value in usable if value >= cutoff}
+    results = []
+    for setting in dataset.settings:
+        groups = {}
+        for value in (0, 1):
+            selected = [(row, result) for row, result in usable
+                        if int(float(row[setting])) == value]
+            slow_rate = (sum(id(row) in slow_rows for row, _ in selected) /
+                         len(selected)) if selected else None
+            values = [result for _, result in selected]
+            groups[str(value)] = {"runs": len(selected), "slow_runs":
+                sum(id(row) in slow_rows for row, _ in selected),
+                "slow_rate": slow_rate,
+                "mean": statistics.fmean(values) if values else None}
+        rate_0, rate_1 = groups["0"]["slow_rate"], groups["1"]["slow_rate"]
+        mean_0, mean_1 = groups["0"]["mean"], groups["1"]["mean"]
+        results.append({"setting": setting, "by_value": groups,
+                        "slow_rate_difference": (rate_1 - rate_0
+                                                  if rate_0 is not None and rate_1 is not None
+                                                  else None),
+                        "mean_difference": (mean_1 - mean_0
+                                             if mean_0 is not None and mean_1 is not None
+                                             else None)})
+    results.sort(key=lambda item: (item["slow_rate_difference"] is None,
+                                   -(item["slow_rate_difference"] or 0),
+                                   -(item["mean_difference"] or 0), item["setting"]))
+    return {"measure": measure, "slow_fraction": slow_fraction,
+            "slow_count": slow_count, "cutoff": cutoff,
+            "method": "slow-tail association", "settings": results}
+
+
 class OnlineEvaluator:
     """Evaluate completed benchmark results incrementally, one at a time.
 
@@ -214,10 +263,15 @@ def main(argv=None):
     parser.add_argument("--certify", action="store_true")
     parser.add_argument("--online", action="store_true",
                         help="evaluate rows incrementally and report current best")
+    parser.add_argument("--blame", action="store_true",
+                        help="rank settings associated with the slowest rows")
+    parser.add_argument("--slow-fraction", type=float, default=0.10)
     parser.add_argument("--alpha", type=float, default=0.05)
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
-    if args.certify:
+    if args.blame:
+        result = blame(dataset, args.measure, args.slow_fraction)
+    elif args.certify:
         result = certify(dataset, args.measure, args.alpha)
     elif args.predict_json is not None:
         result = predict(dataset, json.loads(args.predict_json), args.measure)
