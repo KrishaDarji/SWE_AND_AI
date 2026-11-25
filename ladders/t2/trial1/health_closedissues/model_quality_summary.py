@@ -28,6 +28,15 @@ class ColumnSummary:
     mode: str | None = None
 
 
+@dataclass(frozen=True)
+class Prediction:
+    """Estimated metrics for a configuration, based on nearby evaluated rows."""
+    neighbors: int
+    predicted_error: float | None
+    predicted_accuracy: float | None
+    predicted_metrics: dict[str, float | None]
+
+
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
     """Read CSV rows while preserving source field names and values."""
     with Path(path).open(newline="", encoding="utf-8-sig") as handle:
@@ -85,12 +94,53 @@ def summarize(path: str | Path) -> dict[str, Any]:
     }
 
 
+def _distance(left: Mapping[str, str], right: Mapping[str, str], fields: Sequence[str]) -> float:
+    """Mixed-type distance; numeric differences are normalized by observed range."""
+    distance = 0.0
+    for field in fields:
+        a, b = left.get(field, ""), right.get(field, "")
+        na, nb = _number(a), _number(b)
+        if na is not None and nb is not None:
+            distance += abs(na - nb)
+        elif a.strip() != b.strip():
+            distance += 1.0
+    return distance
+
+
+def predict(path: str | Path, configuration: Mapping[str, Any], neighbors: int = 5) -> dict[str, Any]:
+    """Predict quality metrics without evaluating the requested configuration.
+
+    The estimate is a distance-weighted average of the closest rows in the CSV.
+    The CSV's metric columns are treated as historical observations only.
+    """
+    if neighbors < 1:
+        raise ValueError("neighbors must be positive")
+    fields, rows = read_rows(path)
+    metric_fields, configuration_fields = classify_columns(fields)
+    query = {field: str(configuration.get(field, "")) for field in configuration_fields}
+    ranked = sorted(rows, key=lambda row: _distance(row, query, configuration_fields))[:neighbors]
+    if not ranked:
+        result = Prediction(0, None, None, {field: None for field in metric_fields})
+    else:
+        weights = [1.0 / (1.0 + _distance(row, query, configuration_fields)) for row in ranked]
+        estimates = {}
+        for field in metric_fields:
+            observed = [_number(row.get(field, "")) for row in ranked]
+            usable = [(value, weight) for value, weight in zip(observed, weights) if value is not None]
+            estimates[field] = (sum(value * weight for value, weight in usable) / sum(weight for _, weight in usable)
+                                if usable else None)
+        result = Prediction(len(ranked), estimates.get("MRE-"), estimates.get("ACC+"), estimates)
+    return asdict(result) | {"configuration": dict(configuration), "source": str(path)}
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
     parser.add_argument("--output", type=Path, help="Write JSON summary to this path")
+    parser.add_argument("--predict", type=json.loads, metavar="JSON", help="Predict metrics for a configuration")
+    parser.add_argument("--neighbors", type=int, default=5)
     args = parser.parse_args(argv)
-    result = summarize(args.csv_path)
+    result = predict(args.csv_path, args.predict, args.neighbors) if args.predict is not None else summarize(args.csv_path)
     rendered = json.dumps(result, indent=2, sort_keys=True)
     if args.output:
         args.output.write_text(rendered + "\n", encoding="utf-8")
