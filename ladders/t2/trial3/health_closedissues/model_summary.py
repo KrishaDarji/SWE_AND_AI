@@ -520,3 +520,60 @@ def suggest_smallest_change(path, error_column="MRE-"):
             "baseline_error": baseline_error, "recommendation": None,
             "change_count": None, "candidate_count": 0,
             "selection": "no observed one-hyperparameter improvement"}
+
+
+def compare_with_historical_baseline(path, quality_columns=None, neighbors=5,
+                                     prediction_weight=0.5):
+    """Compare the selector with the first valid observed configuration.
+
+    The first complete row is treated as the historical baseline.  Both that
+    row and the configuration selected by ``choose_configuration`` are scored
+    using their observed quality values, so the comparison is reproducible and
+    does not claim that the selector's choice caused the difference.
+    """
+    columns, rows = _read(path)
+    quality = list(quality_columns or [name for name in columns
+                                      if name.lower().startswith(DEFAULT_QUALITY_PREFIXES)])
+    if not quality:
+        raise ValueError("at least one quality column is required")
+    unknown = set(quality).difference(columns)
+    if unknown:
+        raise ValueError("Unknown quality columns: " + ", ".join(sorted(unknown)))
+    config_columns = [name for name in columns if name not in quality]
+    valid = []
+    for index, row in enumerate(rows):
+        values = {name: _number(row.get(name, "")) for name in quality}
+        if all(value is not None for value in values.values()):
+            valid.append((index, row, values))
+    if not valid:
+        raise ValueError("no rows contain finite values for every quality column")
+    baseline_index, baseline_row, baseline_quality = valid[0]
+    selected = choose_configuration(path, quality_columns=quality,
+                                    neighbors=neighbors,
+                                    prediction_weight=prediction_weight)
+    selected_config = selected["recommended_configuration"]
+    selected_row = next((item for item in valid
+                         if all(str(item[1].get(name, "")) == str(selected_config.get(name, ""))
+                                for name in config_columns)), None)
+    if selected_row is None:
+        raise ValueError("selector returned a configuration not observed in the data")
+    selected_index, _, selected_quality = selected_row
+    deltas = {}
+    for name in quality:
+        raw_delta = selected_quality[name] - baseline_quality[name]
+        deltas[name] = {"baseline": baseline_quality[name],
+                        "selected": selected_quality[name],
+                        "delta": raw_delta,
+                        "improved": raw_delta < 0 if name.lower().startswith("mre") else raw_delta > 0}
+    improved_count = sum(item["improved"] for item in deltas.values())
+    return {"selection": "balanced observed and predicted quality",
+            "baseline": {"row_index": baseline_index,
+                          "configuration": {name: baseline_row[name] for name in config_columns},
+                          "quality": baseline_quality},
+            "selected": {"row_index": selected_index,
+                          "configuration": selected_config,
+                          "quality": selected_quality},
+            "quality_columns": quality, "deltas": deltas,
+            "metrics_improved": improved_count,
+            "all_metrics_improved": improved_count == len(quality),
+            "caveat": "The first observed row is a historical baseline; this comparison is observational."}
