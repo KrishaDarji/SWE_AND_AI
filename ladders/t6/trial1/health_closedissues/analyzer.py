@@ -355,6 +355,67 @@ def choose(rows, cap=100):
                               "and does not guarantee performance on unseen evaluations.")
     return result
 
+def _eligible_rows(rows, cap):
+    if not isinstance(cap, (int, float)) or isinstance(cap, bool) or not math.isfinite(cap) or cap < 0:
+        raise ValueError("cap must be finite and nonnegative")
+    eligible = []; invalid = 0; over_budget = 0
+    for position, row in enumerate(rows, 1):
+        settings = {field: (clean(row.get(field)) if field == "criterion" else number(row.get(field))) for field in CONFIG}
+        outcomes = {field: number(row.get(field)) for field in OUTCOMES}
+        if not (all(value is not None for value in settings.values()) and
+                all(value is not None for value in outcomes.values()) and
+                settings["N_estimators"] >= 0):
+            invalid += 1; continue
+        if settings["N_estimators"] > cap:
+            over_budget += 1; continue
+        eligible.append({"position": position, "configuration": settings, "outcomes": outcomes})
+    return eligible, invalid, over_budget
+
+def _classify_difference(difference, tolerance):
+    if abs(difference) <= tolerance: return "tie"
+    return "win" if difference > 0 else "loss"
+
+def compare_baseline(rows, cap=100, seeds=range(42, 52), tie_tolerance=1e-12):
+    """Compare deterministic historical selection with uniformly sampled feasible rows."""
+    if not isinstance(tie_tolerance, (int, float)) or isinstance(tie_tolerance, bool) or not math.isfinite(tie_tolerance) or tie_tolerance < 0:
+        raise ValueError("tie_tolerance must be finite and nonnegative")
+    rows = list(rows); seeds = list(seeds)
+    if any(not isinstance(seed, int) or isinstance(seed, bool) for seed in seeds):
+        raise ValueError("seeds must be integers")
+    eligible, invalid, over_budget = _eligible_rows(rows, cap)
+    selector = choose(rows, cap)
+    result = {"status": "defined" if eligible else ("empty" if not rows else "no_feasible_row"),
+              "raw_row_count": len(rows), "valid_row_count": len(rows) - invalid,
+              "feasible_row_count": len(eligible), "invalid_exclusion_count": invalid,
+              "over_budget_exclusion_count": over_budget, "cap": cap,
+              "seeds": seeds, "tie_tolerance": tie_tolerance,
+              "tie_tolerance_rule": "fixed absolute finite nonnegative tolerance; ties satisfy abs(difference) <= tolerance",
+              "selection_rule": selector["selection_rule"],
+              "baseline_rule": "one eligible historical row uniformly sampled with fresh random.Random(seed) per seed",
+              "population_rule": "both methods use complete finite configurations/outcomes and nonnegative N_estimators <= cap",
+              "selector": selector.get("recommendation"), "trials": [],
+              "primary_difference": "baseline MRE- minus selector MRE-; positive favors selector",
+              "secondary_difference_rules": {"ACC+": "baseline ACC+ minus selector ACC+; positive favors baseline",
+                                               "PRED40+": "baseline PRED40+ minus selector PRED40+; positive favors baseline"},
+              "interpretation": "The selector inspects historical outcomes across feasible rows; the baseline samples one row. This is retrospective benchmarking, not an equal-evaluation-budget search experiment or proof of superior future performance. N_estimators is a compute proxy, not measured runtime or evaluation cost.",
+              "seed_interpretation": "Seeds are repeated random baseline selections from one historical dataset, not independent LLM trials or new datasets; win counts do not establish significance, confidence, or generalization guarantees."}
+    if not eligible: return result
+    selected = selector["recommendation"]
+    for seed in seeds:
+        sampled = random.Random(seed).choice(eligible)
+        baseline = {"position": sampled["position"], "configuration": dict(sampled["configuration"]), "outcomes": dict(sampled["outcomes"])}
+        differences = {name: baseline["outcomes"][name] - selected["outcomes"][name] for name in OUTCOMES}
+        result["trials"].append({"seed": seed, "selector": selected, "baseline": baseline,
+                                 "mre_difference": differences["MRE-"],
+                                 "classification": _classify_difference(differences["MRE-"], tie_tolerance),
+                                 "secondary_differences": differences})
+    diffs = [trial["mre_difference"] for trial in result["trials"]]
+    classes = Counter(trial["classification"] for trial in result["trials"])
+    result["summary"] = {"mean_difference": sum(diffs) / len(diffs) if diffs else None,
+                          "median_difference": _median(diffs) if diffs else None,
+                          "wins": classes.get("win", 0), "ties": classes.get("tie", 0), "losses": classes.get("loss", 0)}
+    return result
+
 def _complete(row):
     settings = {field: (clean(row.get(field)) if field == "criterion" else number(row.get(field))) for field in CONFIG}
     outcomes = {field: number(row.get(field)) for field in OUTCOMES}
@@ -462,7 +523,7 @@ def spot(rows, threshold=3.5, min_sample=3):
             "interpretation": "Unusual results warrant investigation, not proof of measurement error; very good results can also be unusual. This is marginal outcome screening, not configuration-conditioned anomaly detection or a validated error classifier."}
 
 def main(argv):
-    if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    rows = list(read_rows(argv[1])[1]); report = spot(rows)
+    if len(argv) not in (2, 3): raise SystemExit("usage: analyzer.py DATASET.csv [--race]")
+    rows = list(read_rows(argv[1])[1]); report = compare_baseline(rows) if len(argv) == 3 and argv[2] == "--race" else spot(rows)
     print(json.dumps(report, allow_nan=False, indent=2, sort_keys=True))
 if __name__ == "__main__": main(sys.argv)
