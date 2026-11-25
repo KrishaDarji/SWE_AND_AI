@@ -7,8 +7,9 @@ from .estimate import EffortEstimate, estimate_effort
 from .certify import CostComparison, certify_less_costly
 from .assess import ProposalAssessment, assess_proposal
 from .blame import FactorAssociation, BlameReport, blame_factors
+from .justify import EstimateJustification, justify_estimate
 
 __all__ = ["Project", "DatasetSummary", "load_projects", "summarize_projects",
            "EffortEstimate", "estimate_effort", "CostComparison", "certify_less_costly",
            "ProposalAssessment", "assess_proposal", "FactorAssociation", "BlameReport",
-           "blame_factors"]
+           "blame_factors", "EstimateJustification", "justify_estimate"]
