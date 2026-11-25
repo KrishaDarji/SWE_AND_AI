@@ -152,12 +152,56 @@ def render(data):
     print("assumptions=comma-separated CSV with one header; whitespace is stripped; missing tokens are '', ?, NA, N/A, null, NULL, None; categorical tokens are never parsed as numbers.")
     print("limitations=only declared outcomes receive numeric validation; unknown columns are unclassified; no units or metric formulas are inferred.")
 
+def _betacf(a,b,x):
+    qab,qap,qam=a+b,a+1,a-1; c=1.; d=1.-qab*x/qap; d=max(abs(d),1e-300)*(1 if d>=0 else -1); h=d
+    for m in range(1,201):
+        m2=2*m; aa=m*(b-m)*x/((qam+m2)*(a+m2)); d=1+aa*d; d=max(abs(d),1e-300)*(1 if d>=0 else -1); c=1+aa/c; c=max(abs(c),1e-300)*(1 if c>=0 else -1); d=1/d; h*=d*c; aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2)); d=1+aa*d; d=max(abs(d),1e-300)*(1 if d>=0 else -1); c=1+aa/c; c=max(abs(c),1e-300)*(1 if c>=0 else -1); d=1/d; dl=d*c; h*=dl
+        if abs(dl-1)<3e-14: break
+    return h
+def _ibeta(x,a,b):
+    if x in (0,1): return x
+    f=math.exp(math.lgamma(a+b)-math.lgamma(a)-math.lgamma(b)+a*math.log(x)+b*math.log1p(-x)); return f*_betacf(a,b,x)/a if x < (a+1)/(a+b+2) else 1-f*_betacf(b,a,1-x)/b
+def t_cdf(t,df):
+    if not math.isfinite(t) or df<=0:return None
+    if t==0:return .5
+    z=abs(t); n=max(2000,int(z*1000)); n += n%2
+    scale=math.exp(math.lgamma((df+1)/2)-math.lgamma(df/2))/math.sqrt(df*math.pi)
+    h=z/n; total=0.
+    for i in range(n+1):
+        q=i*h; w=1 if i in (0,n) else (4 if i%2 else 2)
+        total += w*scale*(1+q*q/df)**(-(df+1)/2)
+    area=total*h/3; return .5+area if t>0 else .5-area
+def welch_test(reference,candidate,threshold=None):
+    r=[float(x) for x in reference if x is not None and math.isfinite(float(x))]; c=[float(x) for x in candidate if x is not None and math.isfinite(float(x))]; out={"reference":numeric_summary(r),"candidate":numeric_summary(c)}
+    if len(r)<2 or len(c)<2: out["status"]="insufficient samples"; return out
+    vr,vc=statistics.variance(r),statistics.variance(c); diff=statistics.fmean(c)-statistics.fmean(r); se=math.sqrt(vr/len(r)+vc/len(c)); out.update(difference=diff,standard_error=se)
+    if se==0: out["status"]="zero standard error"; return out
+    df=(vr/len(r)+vc/len(c))**2/((vr/len(r))**2/(len(r)-1)+(vc/len(c))**2/(len(c)-1)); t=diff/se; lo,hi=0.,20.
+    while t_cdf(hi,df)<.975: hi*=2
+    for _ in range(80):
+        mid=(lo+hi)/2
+        if t_cdf(mid,df)<.975: lo=mid
+        else: hi=mid
+    crit=(lo+hi)/2; p=2*min(t_cdf(t,df),1-t_cdf(t,df)); out.update(df=df,t=t,p_two_sided=max(0.,min(1.,p)),ci95=(diff-crit*se,diff+crit*se))
+    if threshold is not None:
+        if not math.isfinite(threshold) or threshold<0: raise ValueError("threshold must be finite and nonnegative")
+        out["threshold"]={"value":threshold,"point_meets":diff<=-threshold,"interval_supports":out["ci95"][1]<=-threshold}
+    return out
+def certify(path):
+    r=[]; c=[]
+    for p in load(path)["projects"]:
+        v=p["values"]; y=_effort(v.get("Effort-","")); tool=_cell(v.get("tool",""))
+        if y is not None and tool in ("n","h"): (r if tool=="n" else c).append(y)
+    threshold=.1*statistics.fmean(r) if r else None; result=welch_test(r,c,threshold) if threshold is not None else welch_test(r,c)
+    print("certify comparison: reference tool=n, candidate tool=h, outcome=Effort- (lower is better)"); print(f"reference={result['reference']} candidate={result['candidate']}"); print(f"difference(candidate-reference)={result.get('difference')} test={result.get('p_two_sided')} df={result.get('df')} ci95={result.get('ci95')} threshold_formula=10% of reference mean Effort- threshold={threshold}"); print("interpretation=statistical evidence, point-estimate improvement, and whole-interval support are separate; nonsignificance is not equivalence."); print("caveat=historical projects differ in size and other characteristics; this comparison does not establish causal tool effects, productivity improvement, or future performance; effort units are not invented.")
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
     ap.add_argument("--estimate", action="store_true")
+    ap.add_argument("--certify", action="store_true")
     args = ap.parse_args(argv)
-    try: render_estimate(pathlib.Path(args.dataset)) if args.estimate else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
