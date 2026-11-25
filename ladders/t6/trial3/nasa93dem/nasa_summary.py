@@ -434,6 +434,71 @@ def render_spot(path, threshold=3.5, min_reference=3):
     examples = [r for r in result["records"] if r["status"] in ("flagged", "undefined", "invalid_or_missing")]
     for r in examples[:12]: print("example=" + str(r))
 
+def classify_difference(difference, tolerance):
+    """Classify baseline-minus-estimator MAE; positive favors the estimator."""
+    if not math.isfinite(tolerance) or tolerance < 0:
+        raise ValueError("tolerance must be finite and nonnegative")
+    if not math.isfinite(difference):
+        return "undefined"
+    if difference > tolerance: return "win"
+    if difference < -tolerance: return "loss"
+    return "tie"
+
+def race(rows, seeds=range(42, 52), tolerance=1e-9):
+    """Compare categorical KNN with a training-mean baseline on grouped splits."""
+    if not math.isfinite(tolerance) or tolerance < 0:
+        raise ValueError("tolerance must be finite and nonnegative")
+    results = []
+    for seed in seeds:
+        try:
+            train, test = split_groups(rows, seed)
+        except ValueError as exc:
+            results.append({"seed": seed, "status": "insufficient groups", "error": str(exc)})
+            continue
+        model = CategoricalKNN(train)
+        train_invalid = sum(_effort(p["values"].get("Effort-", "")) is None for p in train)
+        test_invalid = sum(_effort(p["values"].get("Effort-", "")) is None for p in test)
+        scored = []
+        for p in test:
+            y = _effort(p["values"].get("Effort-", ""))
+            if y is None or model.training_mean is None: continue
+            pred = model.predict({c: p["values"].get(c, "") for c in PREDICTORS})
+            scored.append({"position": p.get("position"), "idX": p["values"].get("idX", ""),
+                           "actual": y, "prediction": pred,
+                           "baseline_prediction": model.training_mean,
+                           "model_error": abs(y - pred),
+                           "baseline_error": abs(y - model.training_mean)})
+        mae = statistics.fmean(x["model_error"] for x in scored) if scored else None
+        bmae = statistics.fmean(x["baseline_error"] for x in scored) if scored else None
+        diff = bmae - mae if mae is not None and bmae is not None else None
+        results.append({"seed": seed, "status": "comparable" if scored else "no evaluable test targets",
+                        "train_rows": len(train), "test_rows": len(test),
+                        "train_groups": len(_groups(train)), "test_groups": len(_groups(test)),
+                        "evaluated": len(scored), "excluded_train_targets": train_invalid,
+                        "excluded_test_targets": test_invalid, "mae": mae,
+                        "baseline_mae": bmae, "paired_difference": diff,
+                        "classification": classify_difference(diff, tolerance) if diff is not None else "undefined",
+                        "scored": scored})
+    comparable = [x for x in results if x.get("paired_difference") is not None]
+    diffs = [x["paired_difference"] for x in comparable]
+    model_maes = [x["mae"] for x in comparable]; baseline_maes = [x["baseline_mae"] for x in comparable]
+    counts = {label: sum(x["classification"] == label for x in comparable) for label in ("win", "tie", "loss")}
+    return {"tolerance": tolerance, "seeds": results, "comparable_count": len(comparable),
+            "mean_difference": statistics.fmean(diffs) if diffs else None,
+            "median_difference": median(diffs),
+            "estimator_mean_mae": statistics.fmean(model_maes) if model_maes else None,
+            "baseline_mean_mae": statistics.fmean(baseline_maes) if baseline_maes else None,
+            "wins": counts["win"], "ties": counts["tie"], "losses": counts["loss"]}
+
+def render_race(path, tolerance=1e-9):
+    result = race(load(path)["projects"], tolerance=tolerance)
+    print("NASA93 grouped race: categorical estimator versus training-mean baseline")
+    print(f"tie_tolerance={result['tolerance']} direction=baseline_MAE_minus_estimator_MAE; positive favors estimator")
+    for x in result["seeds"]:
+        print("seed_result=" + str({k: v for k, v in x.items() if k != "scored"}))
+    print("summary=" + str({k: result[k] for k in ("comparable_count", "mean_difference", "median_difference", "estimator_mean_mae", "baseline_mean_mae", "wins", "ties", "losses")}))
+    print("interpretation=repeated overlapping grouped splits of one historical dataset; not independent LLM trials or datasets; no significance, causation, or future superiority claim; effort units are not invented")
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Summarize NASA93 historical projects")
     ap.add_argument("dataset", help="CSV dataset path")
@@ -445,9 +510,11 @@ def main(argv=None):
     ap.add_argument("--choose", action="store_true")
     ap.add_argument("--fix", action="store_true")
     ap.add_argument("--spot", action="store_true")
+    ap.add_argument("--race", action="store_true")
+    ap.add_argument("--tie-tolerance", type=float, default=1e-9)
     ap.add_argument("--effort-cap", type=float, default=100)
     args = ap.parse_args(argv)
-    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render_fix(pathlib.Path(args.dataset), args.effort_cap) if args.fix else render_spot(pathlib.Path(args.dataset)) if args.spot else render(load(pathlib.Path(args.dataset)))
+    try: certify(pathlib.Path(args.dataset)) if args.certify else render_justify(pathlib.Path(args.dataset)) if args.justify else render_estimate(pathlib.Path(args.dataset)) if args.estimate else render_flow(pathlib.Path(args.dataset)) if args.flow else render_blame(load(pathlib.Path(args.dataset))) if args.blame else render_choose(pathlib.Path(args.dataset), args.effort_cap) if args.choose else render_fix(pathlib.Path(args.dataset), args.effort_cap) if args.fix else render_spot(pathlib.Path(args.dataset)) if args.spot else render_race(pathlib.Path(args.dataset), args.tie_tolerance) if args.race else render(load(pathlib.Path(args.dataset)))
     except (OSError, csv.Error) as exc: print(f"error: {exc}", file=sys.stderr); return 2
     return 0
 if __name__ == "__main__": raise SystemExit(main())
