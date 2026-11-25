@@ -9,9 +9,15 @@ from pathlib import Path
 
 import numpy as np
 import sklearn
+from sklearn.compose import ColumnTransformer
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import GroupShuffleSplit
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import OneHotEncoder
 
 
 MISSING = {"", "?", "na", "n/a", "none", "null"}
+OUTCOMES = {"Kloc+", "Effort-", "Defects-"}
 
 
 def parse_value(value):
@@ -87,6 +93,62 @@ def summarize(path):
         "limitations": ["No units are inferred.", "Numeric category codes are not converted into continuous quantities.", "The summary is descriptive and does not establish causal relationships."],
         "tooling": {"python": sys.version.split()[0], "scikit_learn": sklearn.__version__},
     }
+
+
+def descriptor_columns(columns):
+    return [c for c in columns if not c.endswith("X") and c not in OUTCOMES]
+
+
+def build_model(predictors):
+    prep = ColumnTransformer([("categorical", Pipeline([
+        ("onehot", OneHotEncoder(handle_unknown="ignore")),
+    ]), list(range(len(predictors))))], remainder="drop")
+    estimator = RandomForestRegressor(n_estimators=200, random_state=42, n_jobs=1)
+    return Pipeline([("preprocess", prep), ("estimator", estimator)])
+
+
+def prepare_learning_data(path):
+    columns, rows = load_csv(path)
+    predictors = descriptor_columns(columns)
+    if "Effort-" not in columns:
+        raise ValueError("CSV must contain Effort-")
+    X = [{c: ("<MISSING>" if row[c] is None else str(row[c])) for c in predictors} for row in rows]
+    y = np.asarray([float(row["Effort-"]) for row in rows], dtype=float)
+    configurations = [tuple(item[c] for c in predictors) for item in X]
+    group_ids = {configuration: number for number, configuration in enumerate(dict.fromkeys(configurations))}
+    groups = np.asarray([group_ids[configuration] for configuration in configurations])
+    return columns, predictors, X, y, groups
+
+
+def evaluate(path):
+    columns, predictors, X, y, groups = prepare_learning_data(path)
+    splitter = GroupShuffleSplit(n_splits=1, test_size=0.25, random_state=42)
+    train, test = next(splitter.split(X, y, groups=groups))
+    model = build_model(predictors)
+    matrix = [[row[c] for c in predictors] for row in X]
+    model.fit([matrix[i] for i in train], y[train])
+    predictions = model.predict([matrix[i] for i in test])
+    baseline = float(np.mean(y[train]))
+    return {"columns": columns, "predictors": predictors, "train_count": len(train),
+            "test_count": len(test), "model": model, "train_indices": train,
+            "test_indices": test, "mae": float(np.mean(np.abs(y[test] - predictions))),
+            "baseline_mae": float(np.mean(np.abs(y[test] - baseline))),
+            "predictions": predictions, "training_mean": baseline,
+            "settings": {"test_size": 0.25, "random_state": 42, "grouping": "identical descriptor configurations",
+                         "estimator": "RandomForestRegressor(n_estimators=200, random_state=42, n_jobs=1)",
+                         "missing_values": "explicit <MISSING> categorical token"}}
+
+
+def fit_final_model(path):
+    _, predictors, X, y, _ = prepare_learning_data(path)
+    model = build_model(predictors)
+    model.fit([[row[c] for c in predictors] for row in X], y)
+    return model, predictors
+
+
+def predict_proposal(model, predictors, proposal):
+    row = [("<MISSING>" if proposal.get(c) is None else str(proposal.get(c))) for c in predictors]
+    return float(model.predict([row])[0])
 
 
 def main():
