@@ -1,78 +1,109 @@
 #!/usr/bin/env python3
-"""Detect suspicious quality measurements in a historical HPO CSV."""
+"""Compare a nearest-neighbor configuration optimizer with random search."""
+
 import argparse
 import csv
-import math
-import statistics
-import json
+import random
+from pathlib import Path
+
+NUMERIC = ("N_estimators", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth")
+CATEGORICAL = ("criterion",)
+TARGETS = ("MRE-", "ACC+", "PRED40+")
 
 
-def _finite(value):
-    try:
-        number = float(value.strip())
-    except (AttributeError, TypeError, ValueError):
-        return None
-    return number if math.isfinite(number) else None
-
-
-def _parameters(values):
-    center = statistics.median(values)
-    mad = statistics.median(abs(item - center) for item in values)
-    if mad:
-        scale = mad / 0.6744897501960817
-    elif len(values) >= 2:
-        quartiles = statistics.quantiles(values, n=4, method="inclusive")
-        scale = (quartiles[2] - quartiles[0]) / 1.349
-    else:
-        scale = 0.0
-    return center, mad, scale
-
-
-def detect(path, threshold=3.5, measurement_columns=None):
-    """Return malformed rows and robust outliers for outcome-like columns."""
+def read_rows(path):
     with open(path, newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    if not rows or not rows[0]:
-        raise ValueError("CSV has no data rows or header")
-    names = list(rows[0])
-    if measurement_columns is None:
-        # Outcome columns in this dataset use metric suffixes; exclude tunables.
-        measurement_columns = [name for name in names if name.endswith(("-", "+"))]
-    missing = [name for name in measurement_columns if name not in names]
+    required = set(NUMERIC + CATEGORICAL + TARGETS)
+    if not rows:
+        raise ValueError("dataset contains no rows")
+    missing = required.difference(rows[0])
     if missing:
-        raise ValueError("unknown measurement column(s): " + ", ".join(missing))
-    report = {"rows": len(rows), "columns": {}}
-    for column in measurement_columns:
-        values = []
-        invalid = []
-        for row_number, row in enumerate(rows, 2):
-            number = _finite(row.get(column))
-            if number is None:
-                invalid.append(row_number)
-            else:
-                values.append((row_number, number))
-        if not values:
-            report["columns"][column] = {"valid": 0, "invalid_rows": invalid, "outliers": [], "median": None, "scale": 0.0}
-            continue
-        numbers = [number for _, number in values]
-        center, mad, scale = _parameters(numbers)
-        outliers = []
-        for row_number, number in values:
-            score = abs(number - center) / scale if scale else 0.0
-            if score > threshold:
-                outliers.append({"row": row_number, "value": number, "score": score})
-        report["columns"][column] = {"valid": len(values), "invalid_rows": invalid,
-                                      "median": center, "mad": mad, "scale": scale, "outliers": outliers}
-    return report
+        raise ValueError("missing columns: " + ", ".join(sorted(missing)))
+    return rows
+
+
+def numeric_ranges(rows):
+    result = {}
+    for name in NUMERIC:
+        values = [float(row[name]) for row in rows]
+        low, high = min(values), max(values)
+        result[name] = (low, high - low or 1.0)
+    return result
+
+
+def distance(configuration, row, ranges):
+    total = 0.0
+    for name in NUMERIC:
+        low, span = ranges[name]
+        total += ((float(configuration[name]) - float(row[name])) / span) ** 2
+    total += sum(str(configuration[name]) != str(row[name]) for name in CATEGORICAL)
+    return total ** 0.5
+
+
+def _predict(training, configuration, neighbors, ranges):
+    """Inverse-distance prediction of the three objectives."""
+    if not training or neighbors < 1:
+        raise ValueError("training must be non-empty and neighbors must be positive")
+    ranked = sorted(((distance(configuration, row, ranges), index, row)
+                     for index, row in enumerate(training)), key=lambda item: item[0])
+    selected = ranked[:min(neighbors, len(ranked))]
+    if selected[0][0] == 0:
+        return {name: float(selected[0][2][name]) for name in TARGETS}
+    weights = [1.0 / item[0] for item in selected]
+    return {name: sum(weight * float(item[2][name]) for weight, item in zip(weights, selected)) / sum(weights)
+            for name in TARGETS}
+
+
+def predict(training, configuration, neighbors=5):
+    """Inverse-distance prediction of the three objectives."""
+    return _predict(training, configuration, neighbors, numeric_ranges(training))
+
+
+def score(row):
+    """Higher is better: accuracy, coverage, and inverse error."""
+    return (float(row["ACC+"]) + float(row["PRED40+"]) + (1.0 - float(row["MRE-"]))) / 3.0
+
+
+def optimize(training, candidates, neighbors=5):
+    ranges = numeric_ranges(training)
+    return max(candidates, key=lambda row: score(_predict(training, row, neighbors, ranges)))
+
+
+def random_search(training, candidates, seed=7, budget=10):
+    if budget < 1:
+        raise ValueError("budget must be positive")
+    rng = random.Random(seed)
+    sample = rng.sample(candidates, min(budget, len(candidates)))
+    return max(sample, key=score)
+
+
+def run(rows, holdout_fraction=0.2, seed=7, budget=10, neighbors=5):
+    if len(rows) < 3:
+        raise ValueError("at least three rows are required")
+    split = max(1, min(len(rows) - 1, int(len(rows) * (1.0 - holdout_fraction))))
+    training, candidates = rows[:split], rows[split:]
+    surrogate = optimize(training, candidates, neighbors)
+    baseline = random_search(training, candidates, seed, budget)
+    return {"rows": len(rows), "training": len(training), "candidates": len(candidates),
+            "surrogate": surrogate, "baseline": baseline,
+            "surrogate_score": score(surrogate), "baseline_score": score(baseline)}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("csv_path")
-    parser.add_argument("--threshold", type=float, default=3.5)
+    parser.add_argument("dataset", type=Path)
+    parser.add_argument("--holdout-fraction", type=float, default=0.2)
+    parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument("--budget", type=int, default=10)
+    parser.add_argument("--neighbors", type=int, default=5)
     args = parser.parse_args()
-    report = detect(args.csv_path, args.threshold)
-    print(json.dumps(report, indent=2, sort_keys=True))
+    result = run(read_rows(args.dataset), args.holdout_fraction, args.seed, args.budget, args.neighbors)
+    print("rows={rows} training={training} candidates={candidates}".format(**result))
+    print("surrogate_score={:.6f}".format(result["surrogate_score"]))
+    print("baseline_score={:.6f}".format(result["baseline_score"]))
+    print("surrogate_configuration=" + ",".join(str(result["surrogate"][k]) for k in NUMERIC + CATEGORICAL))
+    print("baseline_configuration=" + ",".join(str(result["baseline"][k]) for k in NUMERIC + CATEGORICAL))
 
 
 if __name__ == "__main__":
