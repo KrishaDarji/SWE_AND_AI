@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Summaries and nearest-neighbor encoding-time predictions for x264 CSV data."""
+"""Summaries, predictions, and statistical certification for x264 measurements."""
 
 import argparse
 import csv
 import json
+import math
 import statistics
 from dataclasses import dataclass
 from pathlib import Path
@@ -24,7 +25,6 @@ def _number(value):
 
 
 def load_dataset(path):
-    """Load a rectangular CSV, classifying binary columns as settings."""
     with Path(path).open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         if not reader.fieldnames:
@@ -46,15 +46,12 @@ def _stats(values):
     if not values:
         return {"count": 0, "min": None, "max": None, "mean": None,
                 "median": None, "stdev": None}
-    return {
-        "count": len(values), "min": min(values), "max": max(values),
-        "mean": statistics.fmean(values), "median": statistics.median(values),
-        "stdev": statistics.stdev(values) if len(values) > 1 else 0.0,
-    }
+    return {"count": len(values), "min": min(values), "max": max(values),
+            "mean": statistics.fmean(values), "median": statistics.median(values),
+            "stdev": statistics.stdev(values) if len(values) > 1 else 0.0}
 
 
 def summarize(dataset):
-    """Return JSON-serializable dataset, quality, and setting-level summaries."""
     quality = {name: _stats(_number(row[name]) for row in dataset.rows)
                for name in dataset.measures}
     settings = {}
@@ -62,11 +59,9 @@ def summarize(dataset):
         by_value = {}
         for value in (0, 1):
             selected = [row for row in dataset.rows if int(float(row[setting])) == value]
-            by_value[str(value)] = {
-                "runs": len(selected),
+            by_value[str(value)] = {"runs": len(selected),
                 "measures": {name: _stats(_number(row[name]) for row in selected)
-                              for name in dataset.measures},
-            }
+                              for name in dataset.measures}}
         settings[setting] = by_value
     return {"run_count": len(dataset.rows), "setting_count": len(dataset.settings),
             "settings": list(dataset.settings), "measures": list(dataset.measures),
@@ -74,11 +69,6 @@ def summarize(dataset):
 
 
 def predict(dataset, configuration, measure=None):
-    """Predict a measure using exact-match or minimum-Hamming-distance rows.
-
-    Configuration must provide every binary setting as 0 or 1. Ties are averaged;
-    the returned metadata exposes whether the estimate was exact or approximate.
-    """
     measure = measure or dataset.measures[0]
     if measure not in dataset.measures:
         raise ValueError("unknown measure: " + measure)
@@ -94,9 +84,9 @@ def predict(dataset, configuration, measure=None):
         raise ValueError("setting values must be 0 or 1")
     candidates = []
     for row in dataset.rows:
-        distance = sum(int(float(row[name])) != target[name] for name in dataset.settings)
         value = _number(row[measure])
         if value is not None:
+            distance = sum(int(float(row[name])) != target[name] for name in dataset.settings)
             candidates.append((distance, value))
     best_distance = min(distance for distance, _ in candidates)
     values = [value for distance, value in candidates if distance == best_distance]
@@ -105,17 +95,58 @@ def predict(dataset, configuration, measure=None):
             "exact_match": best_distance == 0}
 
 
+def certify(dataset, measure=None, alpha=0.05):
+    """Test whether each setting's value 1 improves the measure over value 0.
+
+    The p-value uses a Welch statistic with a normal reference distribution.
+    It is a conservative, dependency-free screening test, not a replacement
+    for a randomized repeated-run analysis.
+    """
+    measure = measure or dataset.measures[0]
+    if measure not in dataset.measures or not 0 < alpha < 1:
+        raise ValueError("unknown measure or alpha must be between 0 and 1")
+    results = {}
+    for setting in dataset.settings:
+        groups = [[_number(row[measure]) for row in dataset.rows
+                   if int(float(row[setting])) == value] for value in (0, 1)]
+        groups = [[x for x in group if x is not None] for group in groups]
+        if min(map(len, groups)) < 2:
+            results[setting] = {"measure": measure, "mean_0": None, "mean_1": None,
+                "improvement": None, "z": None, "p_value": None, "alpha": alpha,
+                "credible": False, "counts": [len(groups[0]), len(groups[1])],
+                "status": "not_testable"}
+            continue
+        means = [statistics.fmean(group) for group in groups]
+        variances = [statistics.variance(group) for group in groups]
+        standard_error = math.sqrt(variances[0] / len(groups[0]) +
+                                   variances[1] / len(groups[1]))
+        z = (means[1] - means[0]) / standard_error if standard_error else 0.0
+        p_value = math.erfc(abs(z) / math.sqrt(2.0)) if standard_error else (0.0 if z else 1.0)
+        results[setting] = {"measure": measure, "mean_0": means[0], "mean_1": means[1],
+            "improvement": means[1] - means[0], "z": z, "p_value": p_value,
+            "alpha": alpha, "credible": means[1] > means[0] and p_value < alpha,
+            "counts": [len(groups[0]), len(groups[1])], "status": "tested"}
+    credible = [name for name, result in results.items() if result["credible"]]
+    return {"measure": measure, "alpha": alpha, "method": "Welch z approximation",
+            "settings": results, "credible_improvements": credible,
+            "any_credible": bool(credible)}
+
+
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Summarize or predict encoder measurements")
+    parser = argparse.ArgumentParser(description="Summarize, predict, or certify encoder measurements")
     parser.add_argument("csv_path", type=Path)
-    parser.add_argument("--predict-json", metavar="JSON", help="setting values as a JSON object")
-    parser.add_argument("--measure", help="measurement column to predict")
+    parser.add_argument("--predict-json", metavar="JSON")
+    parser.add_argument("--measure")
+    parser.add_argument("--certify", action="store_true")
+    parser.add_argument("--alpha", type=float, default=0.05)
     args = parser.parse_args(argv)
     dataset = load_dataset(args.csv_path)
-    if args.predict_json is None:
-        result = summarize(dataset)
-    else:
+    if args.certify:
+        result = certify(dataset, args.measure, args.alpha)
+    elif args.predict_json is not None:
         result = predict(dataset, json.loads(args.predict_json), args.measure)
+    else:
+        result = summarize(dataset)
     print(json.dumps(result, indent=2, sort_keys=True))
 
 
