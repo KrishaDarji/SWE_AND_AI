@@ -1,0 +1,8 @@
+treatment,model,tokens_total,input_tokens,cached_input_tokens,output_tokens,llm_hours,usd_api_price,source
+1,gpt-5.6-luna,46415519,45862558,43387392,552961,1.058,2.03,teammate's archived Codex sessions (per-call last_token_usage; task_complete durations)
+2,gpt-5.6-luna,71250025,70567552,67017472,653882,1.397,2.84,teammate's archived Codex sessions (per-call last_token_usage; task_complete durations)
+3,gpt-5.6-luna,66825762,66148946,63284480,648225,1.512,2.62,teammate's archived Codex sessions (per-call last_token_usage; task_complete durations)
+4,gpt-5.6-luna + gpt-6.1-sol (trial 1),55040697,54142591,51172864,898106,3.48,8.83,~/.codex/sessions token_usage_record per call; task_started->task_complete
+5,gpt-5.6-luna,45810700,45042856,42583296,767844,2.16,2.26,~/.codex/sessions token_usage_record per call; task_started->task_complete
+6,gpt-5.6-luna,46746196,46042061,43476224,704135,2.08,2.23,~/.codex/sessions token_usage_record per call; task_started->task_complete
+setup,gpt-6.1-sol,262465063,261841087,257319808,623976,3.01,40.04,~/.codex/sessions orchestration chat (not part of any treatment)

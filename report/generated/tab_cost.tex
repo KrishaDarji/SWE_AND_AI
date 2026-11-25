@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrr}
+\toprule
+Treatment & tokens & cached & LLM hours & \$ at API prices \\
+\midrule
+T1 Python & 46M & 95\% & 1.1 & \$2.03 \\
+T2 Python+reuse & 71M & 95\% & 1.4 & \$2.84 \\
+T3 sklearn & 67M & 96\% & 1.5 & \$2.62 \\
+T4 sklearn+reuse & 55M & 95\% & 3.5 & \$8.83 \\
+T5 ezr & 46M & 95\% & 2.2 & \$2.26 \\
+T6 ezr+reuse & 47M & 94\% & 2.1 & \$2.23 \\
+\midrule All six LLM arms & 332M & & 11.7 & \$20.81 \\
+Setup and planning chat & 262M & & 3.0 & \$40.04 \\
+\bottomrule
+\end{tabular}

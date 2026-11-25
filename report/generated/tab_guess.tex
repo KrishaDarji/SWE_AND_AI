@@ -1,0 +1,16 @@
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & \multicolumn{3}{c}{x264 (seconds)} & \multicolumn{3}{c}{NASA93 (effort)} & \multicolumn{3}{c}{Health (MRE)} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-10}
+Treatment & MAE & hit & rank & MAE & hit & rank & MAE & hit & rank \\
+\midrule
+T1 Python & 22.1 & 0.68 & 4 & 702 & 0.26 & \textbf{0} & 0.025 & 0.83 & 3 \\
+T2 Python+reuse & 19.5 & 0.75 & 5 & 291 & 0.37 & \textbf{0} & 0.028 & 0.82 & 2 \\
+T3 sklearn & 0.4 & 1.00 & \textbf{0} & 375 & 0.37 & \textbf{0} & 0.013 & 0.97 & \textbf{0} \\
+T4 sklearn+reuse & 0.4 & 1.00 & 1 & 732 & 0.11 & 1 & 0.013 & 0.98 & 1 \\
+T5 ezr & 24.3 & 0.67 & 3 & 837 & 0.11 & 1 & 0.093 & 0.32 & 4 \\
+T6 ezr+reuse & 30.9 & 0.54 & 6 & 837 & 0.11 & 1 & 0.161 & 0.05 & 5 \\
+T7 human team & 19.5 & 0.75 & 2 & 621 & 0.21 & 1 & 0.025 & 0.85 & 1 \\
+\midrule Guess the average & 131 & -- & 7 & 673 & -- & 1 & 0.161 & -- & 6 \\
+\bottomrule
+\end{tabular}

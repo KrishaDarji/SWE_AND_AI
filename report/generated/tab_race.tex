@@ -1,0 +1,16 @@
+\begin{tabular}{lrrrrlr}
+\toprule
+ & \multicolumn{4}{c}{x264: tuner, 200 unseen configs} & \multicolumn{2}{c}{Health: selector} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-7}
+Treatment & regret & beats random & rank@10 & rank@20 & how it picked & regret \\
+\midrule
+T1 Python & 0.06 & 33\% & 4 & 4 & full history$^*$, held-out & 0.65 \\
+T2 Python+reuse & 0.03 & 60\% & 2 & 1 & full history$^*$ & 0.04 \\
+T3 sklearn & 0.00 & 80\% & 0 & 0 & held-out & 0.21 \\
+T4 sklearn+reuse & 0.06 & 48\% & 3 & 2 & full history$^*$ & 0.00 \\
+T5 ezr & 0.04 & 57\% & 2 & 1 & full history$^*$ & 0.00 \\
+T6 ezr+reuse & 0.06 & 43\% & 3 & 2 & full history$^*$ & 0.00 \\
+T7 human team & 0.01 & 50\% & 1 & 0 & budget 20 & 0.21 \\
+\midrule Random search & 0.06 & -- & 3 & 3 & budget 20 & 0.29 \\
+\bottomrule
+\end{tabular}

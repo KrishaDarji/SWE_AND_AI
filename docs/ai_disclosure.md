@@ -21,6 +21,8 @@ These are notes for the report's AI-disclosure section. Verify each item and edi
 7. **Model drift.** Treatment 4 trial 1 used a different, larger model from all other runs, which breaks the "same model" protocol.
 8. **Inconsistent self-reported metrics.** `error_count` was counted differently by each arm (treatments 1–3 report about 0, treatments 4–6 report 200+), and `test_pass` used mixed formats ("14/14", "1", "true").
 
+9. **Over-reported new LOC.** Treatments 1 and 3 logged about 1.5× more new lines than their saved source contains. T1 trial 1 x264 logged 96 / 132 / 107 for steps 1–3, but the source files hold 80 / 81 / 65 non-blank lines: step 1 counted blank lines, later steps apparently added test lines. Treatments 2, 4, 5 and 6 match the tags to within about 7%. The report uses the tag-derived counts. The task talk's "30–40% saving" was based on the inflated counts and is corrected in the report (8% / 8% / 24% per ladder).
+
 ## Errors in AI-assisted analysis that we caught
 
 1. **Token estimate.** Tokens were first estimated as saved prompt+response text ÷ 4. The real Codex logs showed about 200× more, because the agent rereads files every turn. Replaced with per-call usage from the logs.
