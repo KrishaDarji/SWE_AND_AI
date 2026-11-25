@@ -185,3 +185,42 @@ def blame(path):
             "status": "ok" if score is not None else "undefined: empty, insufficient, constant setting/outcome, or fewer than two groups"})
     result["ranking"].sort(key=lambda x: (x["eta_squared"] is None, -(x["eta_squared"] or 0), list(CONFIGS).index(x["field"])))
     return result
+
+def _finite_outcome(row, name):
+    return _number(row.get(name))
+
+def _justify_rows(rows):
+    eligible=[]
+    for position,row in rows:
+        settings={k:(_cat(row.get(k)) if t=="categorical" else _number(row.get(k))) for k,t in CONFIGS.items()}
+        outcomes={k:_finite_outcome(row,k) for k in OUTCOMES}
+        if all(v is not None for v in settings.values()) and all(v is not None for v in outcomes.values()):
+            eligible.append((position,settings,outcomes,row))
+    return eligible
+
+def justify(path):
+    """Select the best observed complete row and compare it with independent medians."""
+    header,rows,bad=_read(path)
+    result={"status":"ok","dataset_rows":len(rows),"malformed_row_positions":bad,
+            "position_convention":"original physical CSV row; header is position 1; blank rows are ignored and malformed rows are excluded without renumbering",
+            "selection_rule":["lowest finite MRE-","highest finite ACC+ for ties","highest finite PRED40+ for remaining ties","earliest original CSV position for remaining ties"],
+            "eligibility":"a row needs finite values for all five settings and all three outcomes; criterion is categorical and other settings are numeric",
+            "reference_convention":"each outcome median uses all finite historical values for that outcome independently; count is reported",
+            "direction":{"MRE-":"minimize","ACC+":"maximize","PRED40+":"maximize"},"recommendation":None,"references":{},"comparisons":{},"association_context":None}
+    if not header:
+        result.update(status="empty_data",message="No header or data rows are available."); return result
+    eligible=_justify_rows(rows)
+    if not eligible:
+        result.update(status="no_eligible_recommendation",message="No row has a complete finite configuration and all three finite outcomes."); return result
+    chosen=min(eligible,key=lambda x:(x[2]["MRE-"],-x[2]["ACC+"],-x[2]["PRED40+"],x[0]))
+    result["recommendation"]={"original_position":chosen[0],"configuration":chosen[1],"outcomes":chosen[2]}
+    for outcome,direction in OUTCOMES.items():
+        vals=[_number(row.get(outcome)) for _,row in rows if _number(row.get(outcome)) is not None]
+        med=_median(vals); value=chosen[2][outcome]
+        result["references"][outcome]={"median":med,"finite_count":len(vals)}
+        better=(value<med if direction=="minimize" else value>med) if med is not None else None
+        result["comparisons"][outcome]={"recommendation":value,"reference_median":med,"difference":value-med if med is not None else None,"direction":direction,"better_than_median":better}
+    assoc=blame(path)
+    result["association_context"]={"label":"global marginal historical associations, not row-level contributions or causal effects","outcome":assoc["outcome"],"grouping_conventions":assoc["conventions"],"ranking":assoc["ranking"]}
+    result["interpretation"]="This is a retrospective recommendation from observed complete rows, not a prediction for an unevaluated configuration. Differences describe the selected row relative to each independently populated historical median; secondary outcomes can trade off against the primary MRE- rule. Global association scores provide context only and do not guarantee benefit."
+    return result
