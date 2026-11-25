@@ -189,13 +189,56 @@ def print_certify(result):
     print("difference: " + repr(result.get("difference"))); print("inference: " + repr(result["inference"]))
     print("threshold: " + repr(result.get("threshold"))); print("practical: " + repr(result.get("practical")))
 
+def flow(path, neighbors=5):
+    """Replay rows in CSV order, predicting before revealing each effort."""
+    header, projects, invalid_rows, issues = load(path)
+    history = []
+    records = []
+    actual, model_errors, baseline_errors = [], [], []
+    warmup = invalid = 0
+    for project in projects:
+        prior_mean = (sum(y for _, y in history) / len(history)) if history else None
+        prediction = None
+        if history:
+            model = CategoricalNeighborModel(neighbors)
+            model.rows = list(history); model.mean = prior_mean
+            prediction = model.predict(project)
+        else:
+            warmup += 1
+        effort, kind = _target(project)
+        if kind != "valid":
+            invalid += 1
+        evaluated = prediction is not None and kind == "valid"
+        if evaluated:
+            actual.append(effort); model_errors.append(abs(effort - prediction))
+            baseline_errors.append(abs(effort - prior_mean))
+        record = {"position": project.position, "idX": project.identifier,
+                  "prediction": prediction, "baseline_prediction": prior_mean,
+                  "actual_revealed": effort if kind == "valid" else None,
+                  "outcome_kind": kind, "evaluated": evaluated,
+                  "history_count_before": len(history)}
+        records.append(record)
+        if kind == "valid": history.append((descriptor_key(project), effort))
+    return {"path": path, "records": records, "warmup_count": warmup,
+            "evaluated_count": len(actual), "invalid_outcome_count": invalid,
+            "final_history_count": len(history), "model_mae": sum(model_errors)/len(model_errors) if model_errors else None,
+            "baseline_mae": sum(baseline_errors)/len(baseline_errors) if baseline_errors else None,
+            "invalid_rows": invalid_rows, "issues": issues}
+
+def print_flow(result):
+    for key in ("warmup_count", "evaluated_count", "invalid_outcome_count", "final_history_count", "model_mae", "baseline_mae"):
+        print(f"{key}: {result[key]}")
+    print("arrival_records: " + repr(result["records"]))
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize or estimate NASA93 historical projects")
     parser.add_argument("dataset")
     parser.add_argument("--estimate", action="store_true")
     parser.add_argument("--certify", action="store_true")
+    parser.add_argument("--flow", action="store_true")
     args = parser.parse_args(argv)
-    if args.certify:
+    if args.flow: print_flow(flow(args.dataset))
+    elif args.certify:
         _, rows, _, _ = load(args.dataset); ref=[parse_float(p.values.get("Effort-", ""))[0] for p in rows if norm_cell(p.values.get("tool", "")).lower()=="n" and parse_float(p.values.get("Effort-", ""))[1]=="valid"]
         threshold=0.10*(sum(ref)/len(ref)) if ref else None; print_certify(certify(rows, threshold))
     elif args.estimate: print_estimate(estimate(args.dataset))
