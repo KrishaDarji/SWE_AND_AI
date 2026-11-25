@@ -58,6 +58,15 @@ class BlameResult:
     parameters: dict[str, list[dict[str, Any]]]
 
 
+@dataclass(frozen=True)
+class Justification:
+    """Evidence-backed recommendation for a platform configuration."""
+    configuration: dict[str, Any]
+    validation_results: dict[str, Any]
+    rationale: list[str]
+    caveats: list[str]
+
+
 def read_rows(path: str | Path) -> tuple[list[str], list[dict[str, str]]]:
     with Path(path).open(newline="", encoding="utf-8-sig") as handle:
         reader = csv.DictReader(handle)
@@ -246,6 +255,38 @@ def blame(path: str | Path, error_field: str = "MRE-", quantile: float = 0.75,
     return asdict(BlameResult(error_field, threshold, overall, parameter_reports)) | {"source": str(path)}
 
 
+def justify(path: str | Path, neighbors: int = 5, quantile: float = 0.75,
+            min_samples: int = 1) -> dict[str, Any]:
+    """Recommend the observed best configuration and explain its evidence.
+
+    The recommendation is the best complete validation row under the existing
+    multi-metric ordering.  Prediction and blame are supporting evidence; they
+    do not turn observational associations into causal claims.
+    """
+    evaluation = evaluate_file(path)
+    best = evaluation["best"]
+    if best is None:
+        raise ValueError("dataset has no validation rows")
+    fields, rows = read_rows(path)
+    metric_fields, configuration_fields = classify_columns(fields)
+    configuration = best["configuration"]
+    prediction = predict(path, configuration, neighbors)
+    blame_report = blame(path, quantile=quantile, min_samples=min_samples)
+    rationale = [
+        f"Selected the best of {evaluation['evaluated']} observed configurations using metric priorities {metric_fields}.",
+        "The selected configuration has validation results " + json.dumps(best["validation_results"], sort_keys=True) + ".",
+        f"A {prediction['neighbors']}-neighbor estimate predicts " + json.dumps(prediction['predicted_metrics'], sort_keys=True) + ".",
+    ]
+    caveats = [
+        "This is evidence from the supplied closed-issue dataset, not a causal guarantee.",
+        "Blame analysis reports associations for individual hyperparameter values and may be sparse.",
+    ]
+    return asdict(Justification(configuration, best["validation_results"], rationale, caveats)) | {
+        "source": str(path), "evaluation": evaluation, "prediction": prediction,
+        "blame": blame_report, "configuration_fields": configuration_fields,
+    }
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path); parser.add_argument("--output", type=Path)
@@ -256,8 +297,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--error-field", default="MRE-")
     parser.add_argument("--quantile", type=float, default=0.75)
     parser.add_argument("--min-samples", type=int, default=1)
+    parser.add_argument("--justify", action="store_true", help="recommend and explain a configuration")
     args = parser.parse_args(argv)
-    if args.blame: result = blame(args.csv_path, args.error_field, args.quantile, args.min_samples)
+    if args.justify: result = justify(args.csv_path, args.neighbors, args.quantile, args.min_samples)
+    elif args.blame: result = blame(args.csv_path, args.error_field, args.quantile, args.min_samples)
     elif args.evaluate: result = evaluate_file(args.csv_path)
     elif args.certify is not None:
         spec = args.certify; result = certify(args.csv_path, spec["field"], spec["a"], spec["b"], spec.get("metrics"), args.confidence, args.resamples)
