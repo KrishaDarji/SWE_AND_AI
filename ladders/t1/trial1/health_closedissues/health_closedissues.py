@@ -1,106 +1,78 @@
 #!/usr/bin/env python3
-"""Suggest the smallest configuration change likely to improve a model."""
-
+"""Detect suspicious quality measurements in a historical HPO CSV."""
 import argparse
 import csv
 import math
-from pathlib import Path
-
-NUMERIC = ("N_estimators", "Min_sample_leaves", "Min_impurity_decrease", "Max_depth")
-CATEGORICAL = ("criterion",)
-TARGETS = ("MRE-", "ACC+", "PRED40+")
+import statistics
+import json
 
 
-def read_rows(path):
+def _finite(value):
+    try:
+        number = float(value.strip())
+    except (AttributeError, TypeError, ValueError):
+        return None
+    return number if math.isfinite(number) else None
+
+
+def _parameters(values):
+    center = statistics.median(values)
+    mad = statistics.median(abs(item - center) for item in values)
+    if mad:
+        scale = mad / 0.6744897501960817
+    elif len(values) >= 2:
+        quartiles = statistics.quantiles(values, n=4, method="inclusive")
+        scale = (quartiles[2] - quartiles[0]) / 1.349
+    else:
+        scale = 0.0
+    return center, mad, scale
+
+
+def detect(path, threshold=3.5, measurement_columns=None):
+    """Return malformed rows and robust outliers for outcome-like columns."""
     with open(path, newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    required = set(NUMERIC + CATEGORICAL + TARGETS)
-    if not rows:
-        raise ValueError("dataset contains no rows")
-    missing = required.difference(rows[0])
+    if not rows or not rows[0]:
+        raise ValueError("CSV has no data rows or header")
+    names = list(rows[0])
+    if measurement_columns is None:
+        # Outcome columns in this dataset use metric suffixes; exclude tunables.
+        measurement_columns = [name for name in names if name.endswith(("-", "+"))]
+    missing = [name for name in measurement_columns if name not in names]
     if missing:
-        raise ValueError("missing columns: " + ", ".join(sorted(missing)))
-    return rows
-
-
-def _ranges(rows):
-    result = {}
-    for name in NUMERIC:
-        values = [float(row[name]) for row in rows]
-        result[name] = (min(values), max(values) - min(values) or 1.0)
-    return result
-
-
-def distance(configuration, row, ranges):
-    value = sum(((float(configuration[name]) - float(row[name])) / ranges[name][1]) ** 2
-                 for name in NUMERIC)
-    value += sum(str(configuration[name]) != str(row[name]) for name in CATEGORICAL)
-    return math.sqrt(value)
-
-
-def predict(rows, configuration, neighbors=5):
-    """Inverse-distance prediction of outcomes for a configuration."""
-    if neighbors < 1:
-        raise ValueError("neighbors must be positive")
-    for name in NUMERIC + CATEGORICAL:
-        if name not in configuration:
-            raise ValueError("configuration missing " + name)
-    ranges = _ranges(rows)
-    ranked = sorted((distance(configuration, row, ranges), i, row)
-                    for i, row in enumerate(rows))[:min(neighbors, len(rows))]
-    if ranked[0][0] == 0:
-        return {name: float(ranked[0][2][name]) for name in TARGETS}
-    weights = [1.0 / item[0] for item in ranked]
-    total = sum(weights)
-    return {name: sum(w * float(item[2][name]) for w, item in zip(weights, ranked)) / total
-            for name in TARGETS}
-
-
-def suggest(rows, baseline, neighbors=5):
-    """Return the nearest observed configuration with a predicted improvement."""
-    base = predict(rows, baseline, neighbors)
-    ranges = _ranges(rows)
-    candidates = []
-    for index, row in enumerate(rows):
-        candidate = {name: row[name] for name in NUMERIC + CATEGORICAL}
-        if all(str(candidate[name]) == str(baseline[name]) for name in candidate):
+        raise ValueError("unknown measurement column(s): " + ", ".join(missing))
+    report = {"rows": len(rows), "columns": {}}
+    for column in measurement_columns:
+        values = []
+        invalid = []
+        for row_number, row in enumerate(rows, 2):
+            number = _finite(row.get(column))
+            if number is None:
+                invalid.append(row_number)
+            else:
+                values.append((row_number, number))
+        if not values:
+            report["columns"][column] = {"valid": 0, "invalid_rows": invalid, "outliers": [], "median": None, "scale": 0.0}
             continue
-        # Each candidate is an observed configuration, so its row is the
-        # measured prediction; this avoids an O(rows^2) nested neighbor search.
-        prediction = {name: float(row[name]) for name in TARGETS}
-        improves = prediction["MRE-"] < base["MRE-"] or prediction["ACC+"] > base["ACC+"]
-        if not improves:
-            continue
-        change = distance(baseline, candidate, ranges)
-        gain = max(base["MRE-"] - prediction["MRE-"], prediction["ACC+"] - base["ACC+"])
-        candidates.append((change, -gain, index, candidate, prediction))
-    if not candidates:
-        return dict(baseline), base, False
-    change, _, _, candidate, prediction = min(candidates)
-    return candidate, prediction, True
+        numbers = [number for _, number in values]
+        center, mad, scale = _parameters(numbers)
+        outliers = []
+        for row_number, number in values:
+            score = abs(number - center) / scale if scale else 0.0
+            if score > threshold:
+                outliers.append({"row": row_number, "value": number, "score": score})
+        report["columns"][column] = {"valid": len(values), "invalid_rows": invalid,
+                                      "median": center, "mad": mad, "scale": scale, "outliers": outliers}
+    return report
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("dataset", type=Path)
-    parser.add_argument("--n-estimators", type=float, required=True)
-    parser.add_argument("--criterion", required=True)
-    parser.add_argument("--min-sample-leaves", type=float, required=True)
-    parser.add_argument("--min-impurity-decrease", type=float, required=True)
-    parser.add_argument("--max-depth", type=float, required=True)
-    parser.add_argument("--neighbors", type=int, default=5)
+    parser.add_argument("csv_path")
+    parser.add_argument("--threshold", type=float, default=3.5)
     args = parser.parse_args()
-    baseline = {"N_estimators": args.n_estimators, "criterion": args.criterion,
-                "Min_sample_leaves": args.min_sample_leaves,
-                "Min_impurity_decrease": args.min_impurity_decrease,
-                "Max_depth": args.max_depth}
-    rows = read_rows(args.dataset)
-    recommendation, result, improved = suggest(rows, baseline, args.neighbors)
-    print("improved=" + str(improved).lower())
-    print("configuration=" + ",".join(f"{k}={recommendation[k]}" for k in NUMERIC + CATEGORICAL))
-    print("predicted_error_mre=" + f"{result['MRE-']:.6f}")
-    print("predicted_accuracy=" + f"{result['ACC+']:.6f}")
-    print("predicted_pred40=" + f"{result['PRED40+']:.6f}")
+    report = detect(args.csv_path, args.threshold)
+    print(json.dumps(report, indent=2, sort_keys=True))
 
 
 if __name__ == "__main__":
