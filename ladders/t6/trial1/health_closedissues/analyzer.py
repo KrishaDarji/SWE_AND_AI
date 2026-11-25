@@ -355,14 +355,68 @@ def choose(rows, cap=100):
                               "and does not guarantee performance on unseen evaluations.")
     return result
 
+def _complete(row):
+    settings = {field: (clean(row.get(field)) if field == "criterion" else number(row.get(field))) for field in CONFIG}
+    outcomes = {field: number(row.get(field)) for field in OUTCOMES}
+    return (all(value is not None for value in settings.values()) and
+            all(value is not None for value in outcomes.values()), settings, outcomes)
+
+def _changed(old, new):
+    return [field for field in CONFIG if old[field] != new[field]]
+
+def recommend_fix(rows):
+    """Choose the simplest observed configuration that beats the first row."""
+    rows = list(rows)
+    result = {"status": "empty" if not rows else None, "row_count": len(rows),
+              "retrospective": True,
+              "selection_rule": ["fewest changed configuration fields", "lowest MRE-",
+                                 "highest ACC+", "highest PRED40+",
+                                 "earliest original CSV row position"],
+              "position_convention": "one-based original CSV data-row position",
+              "candidate_count": 0, "improving_candidate_count": 0,
+              "excluded_candidate_count": 0}
+    if not rows:
+        result.update({"recommendation": None, "reason": "input contains no data rows"})
+        return result
+    baseline_ok, base_settings, base_outcomes = _complete(rows[0])
+    result["baseline"] = {"position": 1, "configuration": base_settings, "outcomes": base_outcomes}
+    if not baseline_ok:
+        result.update({"status": "invalid_baseline", "recommendation": None,
+                       "reason": "first original CSV data row lacks complete finite settings or outcomes",
+                       "comparisons": "unavailable/unknown"})
+        return result
+    candidates = []
+    for position, row in enumerate(rows[1:], 2):
+        result["candidate_count"] += 1
+        ok, settings, outcomes = _complete(row)
+        if not ok:
+            result["excluded_candidate_count"] += 1
+            continue
+        if outcomes["MRE-"] < base_outcomes["MRE-"]:
+            changed = _changed(base_settings, settings)
+            candidates.append((len(changed), outcomes["MRE-"], -outcomes["ACC+"],
+                               -outcomes["PRED40+"], position, changed, settings, outcomes))
+    result["improving_candidate_count"] = len(candidates)
+    if not candidates:
+        result.update({"status": "no_improving_candidate", "recommendation": None,
+                       "reason": "no complete observed candidate has strictly lower MRE- than baseline"})
+        return result
+    _, _, _, _, position, changed, settings, outcomes = min(candidates)
+    fields = [{"field": field, "old": base_settings[field], "new": settings[field]}
+              for field in changed]
+    deltas = {name: outcomes[name] - base_outcomes[name] for name in OUTCOMES}
+    result.update({"status": "success", "recommendation": {"position": position,
+                 "configuration": settings, "outcomes": outcomes,
+                 "changed_fields": fields, "changed_field_count": len(fields),
+                 "absolute_mre_improvement": base_outcomes["MRE-"] - outcomes["MRE-"],
+                 "secondary_outcome_differences": {"ACC+": deltas["ACC+"],
+                                                     "PRED40+": deltas["PRED40+"]}},
+                 "limitations": "This is a retrospective comparison between observed rows. Change count is a simplicity proxy; historical differences do not prove causation or guarantee future improvement."})
+    return result
+
 def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    rows = list(read_rows(argv[1])[1]); report = choose(rows, 100)
-    print("Retrospective selection using observed outcomes (cap=100)")
+    rows = list(read_rows(argv[1])[1]); report = recommend_fix(rows)
+    print("Retrospective observed-row fix recommendation (no compute cap)")
     print(report)
-    return
-    print("Blame: marginal eta-squared associations with MRE- (lower MRE- is better)")
-    for field in report["fields"]:
-        print("%d. %s eta_squared=%s eligible=%d excluded=%d groups=%d" % (field["rank"], field["field"], field["eta_squared"], field["eligible_count"], field["excluded_count"], field["group_count"]))
-        print("   groups_low_to_high_mre:", field["groups_low_to_high_mre"])
 if __name__ == "__main__": main(sys.argv)
