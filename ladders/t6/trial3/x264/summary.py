@@ -604,6 +604,72 @@ def choose(path, budget=20, seed=42):
     names, rows, _ = read_runs(path)
     return choose_rows(rows, budget, seed)
 
+def spot_rows(rows, outcome="Performance-", radius=1, minimum_reference=3, threshold=3.5):
+    """Flag locally unusual finite outcomes for complete binary configurations.
+
+    Settings are normalized to 0/1.  References are rows (duplicates count),
+    at Hamming distance <= radius; ties at the boundary are all included.
+    A row is excluded from its own reference set.  The center is the median
+    and scale is MAD about that center.  With zero MAD, score 0 is defined
+    only when the observation equals the center; other scores are undefined.
+    """
+    if radius < 0 or minimum_reference < 0 or not math.isfinite(float(threshold)) or threshold < 0:
+        raise ValueError("radius, minimum_reference, and threshold must be nonnegative and finite")
+    if not rows:
+        return {"status":"empty_input", "flags":[], "eligible_count":0, "excluded_count":0,
+                "excluded":[], "rows_lacking_reference":[], "settings":[],
+                "policy":{"radius":radius,"minimum_reference":minimum_reference,"threshold":threshold,
+                           "reference_count":"rows","distance":"Hamming on normalized complete binary settings",
+                           "zero_scale":"score undefined unless deviation is zero"}}
+    names = list(rows[0])
+    if outcome not in names:
+        raise ValueError("required measured outcome %s is absent" % outcome)
+    settings = [name for name in names if name != outcome]
+    excluded = []
+    valid = []
+    for position, row in enumerate(rows, 1):
+        config = _configuration_from_row(row, settings)
+        raw = row.get(outcome, "")
+        value = _finite(raw)
+        if config is None:
+            excluded.append({"position":position,"reason":"invalid or incomplete binary settings",
+                             "fields":[n for n in settings if _binary_setting(row.get(n, "")) is None]})
+        elif value is None:
+            excluded.append({"position":position,"reason":"missing or nonfinite outcome" if is_missing(str(raw)) else "invalid or nonfinite outcome"})
+        else:
+            valid.append({"position":position,"configuration":config,"value":value})
+    flags, lacking = [], []
+    for item in valid:
+        refs = [other for other in valid if other["position"] != item["position"] and
+                sum(a != b for a,b in zip(item["configuration"], other["configuration"])) <= radius]
+        if len(refs) < minimum_reference or not refs:
+            lacking.append({"position":item["position"],"reference_count":len(refs)})
+            continue
+        center = statistics.median([r["value"] for r in refs])
+        scale = statistics.median([abs(r["value"]-center) for r in refs])
+        deviation = abs(item["value"]-center)
+        score = 0.0 if scale == 0 and deviation == 0 else (None if scale == 0 else deviation/scale)
+        if score is not None and score >= threshold:
+            flags.append({"position":item["position"],"settings":dict(zip(settings,item["configuration"])),
+                          "configuration":list(item["configuration"]),"observed":item["value"],
+                          "reference_count":len(refs),"distance_rule":"Hamming distance <= %s" % radius,
+                          "center":center,"scale_mad":scale,"score":score,"threshold":threshold,
+                          "reason":"unusually high or low relative to local median/MAD reference"})
+    return {"status":"ok","outcome":outcome,"direction":"lower is better","settings":settings,
+            "flags":flags,"flagged_count":len(flags),"eligible_count":len(valid),
+            "excluded_count":len(excluded),"excluded":excluded,"rows_lacking_reference":lacking,
+            "policy":{"radius":radius,"minimum_reference":minimum_reference,"threshold":threshold,
+                       "reference_count":"rows; duplicate configurations remain separate",
+                       "distance":"Hamming on normalized complete binary settings; all equal-distance neighbors included",
+                       "zero_scale":"undefined unless deviation is zero",
+                       "interpretation":"flags warrant investigation and do not prove measurement errors; unusually good and poor results can flag"}}
+
+def spot(path, outcome="Performance-", radius=1, minimum_reference=3, threshold=3.5):
+    names, rows, warnings = read_runs(path)
+    result = spot_rows(rows, outcome, radius, minimum_reference, threshold)
+    result["warnings"] = warnings
+    return result
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize X264 historical runs")
     parser.add_argument("dataset", help="CSV dataset path")
@@ -614,11 +680,13 @@ def main(argv=None):
     parser.add_argument("--flow", action="store_true", help="run preserved streaming summary")
     parser.add_argument("--choose", action="store_true", help="choose through a budgeted outcome oracle")
     parser.add_argument("--fix", action="store_true", help="recommend the smallest observed improving setting change")
+    parser.add_argument("--spot", action="store_true", help="spot unusual local measurements")
     parser.add_argument("--budget", type=int, default=20)
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args(argv)
     try:
-        if args.fix: result = fix(args.dataset)
+        if args.spot: result = spot(args.dataset)
+        elif args.fix: result = fix(args.dataset)
         elif args.choose: result = choose(args.dataset, args.budget, args.seed)
         elif args.justify: result = justify(args.dataset)
         elif args.blame: result = blame(args.dataset)
