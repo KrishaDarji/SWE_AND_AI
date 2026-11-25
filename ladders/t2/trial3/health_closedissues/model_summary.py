@@ -7,6 +7,66 @@ import statistics
 DEFAULT_QUALITY_PREFIXES = ("mre", "acc", "pred")
 
 
+def blame_high_error(path, error_column="MRE-", high_percentile=0.75):
+    """Rank configuration columns associated with unusually high error.
+
+    Numeric settings use Pearson correlation and compare the high-error group's
+    mean with the remaining rows. Categorical settings compare each level's
+    mean error and high-error rate with the whole data set. This is descriptive
+    association, not causal attribution.
+    """
+    if not 0 < high_percentile < 1:
+        raise ValueError("high_percentile must be between 0 and 1")
+    columns, rows = _read(path)
+    if error_column not in columns:
+        raise ValueError("Unknown error column: " + error_column)
+    usable = [(row, _number(row.get(error_column, ""))) for row in rows]
+    usable = [(row, error) for row, error in usable if error is not None]
+    if not usable:
+        raise ValueError("error column contains no finite values")
+    errors = [error for _, error in usable]
+    threshold = statistics.quantiles(errors, n=100, method="inclusive")[
+        min(99, max(0, int(high_percentile * 100) - 1))] if len(errors) > 1 else errors[0]
+    high = [error >= threshold for _, error in usable]
+    overall = statistics.fmean(errors)
+    results = []
+    for name in columns:
+        if name == error_column or name.lower().startswith(DEFAULT_QUALITY_PREFIXES):
+            continue
+        values = [row.get(name, "") for row, _ in usable]
+        numeric = [_number(value) for value in values]
+        if all(value is not None for value in numeric):
+            mean_x = statistics.fmean(numeric)
+            mean_y = overall
+            cov = sum((x - mean_x) * (y - mean_y) for x, y in zip(numeric, errors))
+            den_x = math.sqrt(sum((x - mean_x) ** 2 for x in numeric))
+            den_y = math.sqrt(sum((y - mean_y) ** 2 for y in errors))
+            correlation = cov / (den_x * den_y) if den_x and den_y else 0.0
+            high_values = [x for x, is_high in zip(numeric, high) if is_high]
+            low_values = [x for x, is_high in zip(numeric, high) if not is_high]
+            results.append({"hyperparameter": name, "type": "numeric",
+                            "correlation": correlation,
+                            "high_error_mean": statistics.fmean(high_values) if high_values else None,
+                            "low_error_mean": statistics.fmean(low_values) if low_values else None,
+                            "association_score": abs(correlation)})
+        else:
+            levels = []
+            for level in sorted(set(values)):
+                level_errors = [error for value, (_, error) in zip(values, usable) if value == level]
+                level_high = [is_high for value, is_high in zip(values, high) if value == level]
+                rate = statistics.fmean(level_high)
+                levels.append({"value": level, "count": len(level_errors),
+                               "mean_error": statistics.fmean(level_errors),
+                               "high_error_rate": rate})
+            spread = max((abs(item["mean_error"] - overall) for item in levels), default=0.0)
+            results.append({"hyperparameter": name, "type": "categorical",
+                            "levels": levels, "association_score": spread})
+    results.sort(key=lambda item: (-item["association_score"], item["hyperparameter"]))
+    return {"error_column": error_column, "high_error_threshold": threshold,
+            "high_error_count": sum(high), "row_count": len(usable),
+            "overall_mean_error": overall, "associations": results}
+
+
 def _number(value):
     try:
         result = float(value)
