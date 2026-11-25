@@ -8,6 +8,7 @@ from .blame import Blame, blame_slow_encodes
 from .justify import Justification, justify_configuration
 from .choose import Choice, choose_configuration
 from .suggest import Suggestion, suggest_setting_change
+from .anomaly import Anomaly, detect_anomalies
 
 __all__ = ["Certification", "DatasetSummary", "Evaluation", "Prediction",
            "StreamingEvaluator", "Blame", "blame_slow_encodes",
@@ -15,3 +16,4 @@ __all__ = ["Certification", "DatasetSummary", "Evaluation", "Prediction",
 __all__ += ["Justification", "justify_configuration"]
 __all__ += ["Choice", "choose_configuration"]
 __all__ += ["Suggestion", "suggest_setting_change"]
+__all__ += ["Anomaly", "detect_anomalies"]
