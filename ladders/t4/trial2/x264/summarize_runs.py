@@ -414,6 +414,77 @@ def repair(path: str | Path, baseline: dict[str, float | int] | None = None) -> 
             "raw_fields": dict(rows[chosen])}
 
 
+def spot(path: str | Path, score_threshold: float = 3.5,
+         min_comparisons: int = 2) -> dict:
+    """Flag unusual outcomes against leakage-safe comparable configurations.
+
+    Rows sharing a configuration are one assessment group.  For each group,
+    the expected value is the mean of the closest *other* configuration groups
+    by standardized Euclidean distance (ties at the minimum distance are all
+    retained).  The score is the absolute residual divided by a robust scale
+    (1.4826*MAD of leave-one-group-out residuals); 3.5 is a predeclared robust
+    outlier threshold.  This is candidate screening, not error confirmation.
+    """
+    from sklearn.neighbors import NearestNeighbors
+
+    settings, x, y = load_dataset(path)
+    groups, inverse = np.unique(x, axis=0, return_inverse=True)
+    group_values = np.asarray([y[inverse == i].mean() for i in range(len(groups))])
+    n_groups = len(groups)
+    nearest_groups: list[list[int]] = [[] for _ in range(n_groups)]
+    if n_groups <= 1:
+        expected_groups = np.full(n_groups, np.nan)
+        distances = np.full(n_groups, np.nan)
+    else:
+        scale = np.std(groups, axis=0)
+        scale[scale == 0] = 1.0
+        standardized = groups / scale
+        neighbor = NearestNeighbors(n_neighbors=n_groups).fit(standardized)
+        distances_all, indices_all = neighbor.kneighbors(standardized)
+        expected_groups = np.empty(n_groups)
+        distances = np.empty(n_groups)
+        for i in range(n_groups):
+            nearest_distance = distances_all[i, 1]
+            candidates = indices_all[i, 1:][distances_all[i, 1:] == nearest_distance]
+            nearest_groups[i] = [int(candidate) for candidate in candidates]
+            expected_groups[i] = group_values[candidates].mean()
+            distances[i] = nearest_distance
+    residual_groups = group_values - expected_groups
+    finite_residuals = residual_groups[np.isfinite(residual_groups)]
+    median_residual = float(np.median(finite_residuals)) if len(finite_residuals) else 0.0
+    mad = float(np.median(np.abs(finite_residuals - median_residual))) if len(finite_residuals) else 0.0
+    robust_scale = 1.4826 * mad
+    if robust_scale == 0.0:
+        robust_scale = float(np.std(finite_residuals)) if len(finite_residuals) else 0.0
+    records = []
+    for row_index, group_index in enumerate(inverse):
+        observed = float(y[row_index])
+        expected_value = expected_groups[group_index]
+        expected = float(expected_value) if np.isfinite(expected_value) else None
+        score = (abs(observed - expected) / robust_scale) if expected is not None and robust_scale > 0 else None
+        comparable_count = len(nearest_groups[group_index])
+        flag = bool(comparable_count >= min_comparisons and score is not None and score >= score_threshold)
+        records.append({"record_id": f"csv_record_{row_index + 1}", "csv_row": row_index + 2,
+                        "observed": observed, "expected": expected, "score": float(score) if score is not None else None,
+                        "threshold": float(score_threshold), "flag": flag,
+                        "comparable_configuration_groups": comparable_count,
+                        "comparison_group_ids": [f"configuration_group_{i + 1}" for i in nearest_groups[group_index]],
+                        "distance_to_comparable": float(distances[group_index]) if np.isfinite(distances[group_index]) else None,
+                        "reason": ("candidate: residual reaches predeclared robust threshold" if flag else
+                                   "not flagged: no independent reference is available" if not comparable_count else
+                                   "not flagged: residual below threshold or insufficient nearest comparisons")})
+    return {"measure": "Performance-", "lower_is_better": True,
+            "comparison_method": "leave-one-configuration-group-out nearest standardized Euclidean comparison; identical configurations remain together",
+            "anomaly_score": "absolute observed-minus-expected residual divided by 1.4826*MAD of group residuals, with standard deviation fallback",
+            "threshold": {"score": float(score_threshold), "defined_before_flags": True,
+                          "minimum_comparison_groups": int(min_comparisons)},
+            "robust_scale": float(robust_scale), "configuration_groups": int(n_groups),
+            "assessed_records": records, "flag_count": int(sum(r["flag"] for r in records)),
+            "conclusion": "Flags are candidates for investigation, not confirmed measurement errors.",
+            "limitations": ["No verified anomaly labels; detection accuracy is not claimed.",
+                            "With constant outcomes or zero residual variability, no rows are flagged."]}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("dataset", type=Path)
@@ -426,9 +497,12 @@ def main() -> None:
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--select-budget", type=int)
     parser.add_argument("--repair", action="store_true")
+    parser.add_argument("--spot", action="store_true")
     args = parser.parse_args()
     started = perf_counter()
-    if args.repair:
+    if args.spot:
+        result = spot(args.dataset)
+    elif args.repair:
         result = repair(args.dataset)
     elif args.select_budget is not None:
         result = budget_select_dataset(args.dataset, args.select_budget)
