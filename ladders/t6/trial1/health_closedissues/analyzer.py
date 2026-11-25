@@ -210,10 +210,60 @@ def flow_csv(path):
         reader = csv.DictReader(stream)
         yield from flow_rows(({(k or "").strip(): clean(v) for k, v in row.items()} for row in reader))
 
+def _quantile_groups(values, max_groups=4):
+    """Return deterministic rank bins; boundaries are setting-only quantiles."""
+    unique = sorted(set(values)); k = min(max_groups, len(unique))
+    if k <= 1: return {unique[0]: "all"} if unique else {}, []
+    groups = {}
+    boundaries = []
+    for i, value in enumerate(unique):
+        group = min(k - 1, (i * k) // len(unique))
+        groups[value] = "bin_%d" % (group + 1)
+    for i in range(1, k):
+        boundaries.append(unique[(i * len(unique) + k - 1) // k - 1])
+    return groups, boundaries
+
+def blame(rows, max_numeric_groups=4):
+    """Rank marginal configuration associations with finite MRE- (lower is better)."""
+    if not isinstance(max_numeric_groups, int) or max_numeric_groups < 1:
+        raise ValueError("max_numeric_groups must be a positive integer")
+    result = {"score": "eta_squared", "outcome": "MRE-", "lower_is_better": True,
+              "numeric_group_rule": "rank bins from sorted unique finite settings, at most %d bins" % max_numeric_groups,
+              "fields": [], "status": "defined"}
+    for field in CONFIG:
+        eligible = []
+        for row in rows:
+            y = number(row.get("MRE-")); raw = clean(row.get(field))
+            x = number(raw) if field != "criterion" else raw
+            if y is not None and x is not None: eligible.append((x, y))
+        excluded = len(rows) - len(eligible)
+        if field == "criterion":
+            groups = {x: x for x, _ in eligible}; boundaries = []
+        else:
+            groups, boundaries = _quantile_groups([x for x, _ in eligible], max_numeric_groups)
+        grouped = {}
+        for x, y in eligible: grouped.setdefault(groups[x], []).append(y)
+        n = len(eligible); mean = sum(y for _, y in eligible) / n if n else None
+        between = sum(len(v) * (sum(v) / len(v) - mean) ** 2 for v in grouped.values()) if n else 0.0
+        total = sum((y - mean) ** 2 for _, y in eligible) if n else 0.0
+        score = between / total if total > 0 else 0.0 if n else None
+        summaries = [{"group": g, "count": len(v), "mean_mre": sum(v) / len(v)}
+                     for g, v in grouped.items()]
+        summaries.sort(key=lambda z: (z["mean_mre"], z["group"]))
+        result["fields"].append({"field": field, "eligible_count": n, "excluded_count": excluded,
+            "group_count": len(grouped), "reference_mean": mean, "between_ss": between,
+            "total_ss": total, "eta_squared": score, "boundaries": boundaries,
+            "groups_low_to_high_mre": summaries,
+            "status": "empty" if not n else "constant_outcome_or_setting" if not total or len(grouped) < 2 else "defined"})
+    result["fields"].sort(key=lambda z: (-1 if z["eta_squared"] is None else -z["eta_squared"], z["field"]))
+    for i, field in enumerate(result["fields"], 1): field["rank"] = i
+    return result
+
 def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    final = None
-    for final in flow_csv(argv[1]): pass
-    print("Flow evaluation (one-based data-row positions; missing configuration fields retained as None)")
-    print("final:", final)
+    rows = list(read_rows(argv[1])[1]); report = blame(rows)
+    print("Blame: marginal eta-squared associations with MRE- (lower MRE- is better)")
+    for field in report["fields"]:
+        print("%d. %s eta_squared=%s eligible=%d excluded=%d groups=%d" % (field["rank"], field["field"], field["eta_squared"], field["eligible_count"], field["excluded_count"], field["group_count"]))
+        print("   groups_low_to_high_mre:", field["groups_low_to_high_mre"])
 if __name__ == "__main__": main(sys.argv)
