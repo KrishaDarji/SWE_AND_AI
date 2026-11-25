@@ -296,6 +296,36 @@ def justify(path, seed=42):
              "absolute_error": abs(prediction - _number(selected.get("Effort-", ""))) if _number(selected.get("Effort-", "")) is not None else None}
     return {"pre_audit": frozen, "retrospective_audit": audit}
 
+def choose(path, budget):
+    """Select the best observed record whose observed effort fits a budget.
+
+    This is retrospective selection, not prediction or causal optimization:
+    Kloc+ is only an explicitly labeled delivered-size proxy for value.
+    """
+    if not isinstance(budget, (int, float)) or isinstance(budget, bool) or not math.isfinite(budget) or budget < 0:
+        raise ValueError("budget must be a finite nonnegative number")
+    header, rows, _ = read_dataset(path)
+    outcomes = {"Kloc+", "Effort-", "Defects-"}
+    descriptors = [n for n in header if not n.endswith("X") and n not in outcomes]
+    candidates = []
+    for position, row in enumerate(rows, 1):
+        effort, size = _number(row.get("Effort-", "")), _number(row.get("Kloc+", ""))
+        if effort is not None and size is not None and effort <= budget:
+            candidates.append((size, effort, position, row))
+    if not candidates:
+        raise ValueError("no feasible records with finite Effort- and Kloc+")
+    _, effort, position, selected = max(candidates, key=lambda x: (x[0], -x[1], -x[2]))
+    identifier = selected.get("idX", "").strip() or selected.get("id", "").strip() or str(position)
+    return {"budget": budget, "feasible_count": len(candidates), "total_count": len(rows),
+            "record_identifier": identifier, "csv_position": position,
+            "descriptor_settings": {name: selected.get(name, "").strip() for name in descriptors},
+            "observed_effort": effort, "delivered_size_proxy": _number(selected.get("Kloc+", "")),
+            "selection_rule": "among finite observed Effort- <= budget, maximize observed Kloc+; tie-break lower observed Effort-, then earliest CSV record",
+            "outcome_basis": "observed outcomes in the supplied records, not predictions for unseen proposals",
+            "limitations": ["Kloc+ is a delivered-size proxy, not business value or productivity",
+                            "metadata and outcomes are not descriptor settings",
+                            "selection does not establish that settings caused outcomes or guarantee future feasibility"]}
+
 def blame_rows(rows, predictors):
     finite = [_number(r.get("Effort-", "")) for r in rows]
     finite = [x for x in finite if x is not None]
@@ -313,7 +343,8 @@ def blame_rows(rows, predictors):
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     if len(argv) not in (1, 2, 3): raise SystemExit("usage: nasa93_summary.py DATASET.csv [proposal.json] or --certify DATASET.csv THRESHOLD")
-    if len(argv) == 2 and argv[0] == "--justify": print(json.dumps(justify(argv[1]), indent=2, sort_keys=True))
+    if len(argv) == 3 and argv[0] == "--choose": print(json.dumps(choose(argv[1], float(argv[2])), indent=2, sort_keys=True))
+    elif len(argv) == 2 and argv[0] == "--justify": print(json.dumps(justify(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--flow": print(json.dumps(flow(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 2 and argv[0] == "--blame": print(json.dumps(blame(argv[1]), indent=2, sort_keys=True))
     elif len(argv) == 3 and argv[0] == "--certify": print(json.dumps(certify(argv[1], float(argv[2])), indent=2, sort_keys=True))
