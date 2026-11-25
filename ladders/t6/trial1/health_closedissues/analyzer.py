@@ -171,11 +171,49 @@ class ConfigurationPredictor:
         if set(configuration) != set(CONFIG): raise ValueError("configuration fields must exactly match predictor schema")
         return self.predict_rows([configuration], target)[0]
 
+class _Running:
+    def __init__(self): self.n = 0; self.mean = 0.0; self.m2 = 0.0
+    def add(self, x):
+        self.n += 1; delta = x - self.mean; self.mean += delta / self.n; self.m2 += delta * (x - self.mean)
+    def snapshot(self):
+        return {"count": self.n, "mean": self.mean if self.n else None,
+                "sample_variance": self.m2 / (self.n - 1) if self.n >= 2 else None}
+
+class Flow:
+    """One-pass prefix evaluator; positions are one-based data-row positions."""
+    def __init__(self):
+        self.rows_seen = 0; self.running = {name: _Running() for name in OUTCOMES}; self.best = {}
+    def update(self, row):
+        self.rows_seen += 1; position = self.rows_seen
+        for outcome in OUTCOMES:
+            value = number(row.get(outcome))
+            if value is None: continue
+            self.running[outcome].add(value)
+            old = self.best.get(outcome)
+            better = old is None or (value < old["value"] if outcome == "MRE-" else value > old["value"])
+            if better:
+                self.best[outcome] = {"value": value, "position": position,
+                                      "configuration": {key: clean(row.get(key)) for key in CONFIG}}
+        return self.snapshot()
+    def snapshot(self):
+        return {"rows_seen": self.rows_seen,
+                "outcomes": {key: value.snapshot() for key, value in self.running.items()},
+                "best": {key: {"value": val["value"], "position": val["position"],
+                                "configuration": dict(val["configuration"])} for key, val in self.best.items()}}
+
+def flow_rows(rows):
+    flow = Flow()
+    for row in rows: yield flow.update(row)
+
+def flow_csv(path):
+    with open(path, newline="", encoding="utf-8") as stream:
+        reader = csv.DictReader(stream)
+        yield from flow_rows(({(k or "").strip(): clean(v) for k, v in row.items()} for row in reader))
+
 def main(argv):
     if len(argv) != 2: raise SystemExit("usage: analyzer.py DATASET.csv")
-    headers, rows = read_rows(argv[1]); print("Model-quality prediction")
-    print("predictors:", ", ".join(CONFIG)); print("outcomes excluded:", ", ".join(OUTCOMES))
-    print("fixed comparison:", welch_comparison(rows))
-    print("secondary outcomes: ACC+ and PRED40+ are descriptive historical configurations only; no causal or guaranteed improvement claim.")
-    print("assumptions: finite MRE- values only; two-sided Welch test; 95% CI; lower MRE- is better; nonsignificance is not equivalence.")
+    final = None
+    for final in flow_csv(argv[1]): pass
+    print("Flow evaluation (one-based data-row positions; missing configuration fields retained as None)")
+    print("final:", final)
 if __name__ == "__main__": main(sys.argv)
