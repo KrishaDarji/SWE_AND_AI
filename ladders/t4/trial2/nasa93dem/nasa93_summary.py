@@ -19,6 +19,7 @@ from scipy import stats
 
 MISSING = {"", "?", "na", "n/a", "none", "null"}
 OUTCOMES = {"Kloc+", "Effort-", "Defects-"}
+SPOT_OUTCOMES = ("Kloc+", "Effort-", "Defects-")
 
 
 def parse_value(value):
@@ -51,6 +52,63 @@ def infer_type(values):
 
 def finite_numbers(values):
     return np.asarray([float(value) for value in values if value is not None and math.isfinite(float(value))], dtype=float)
+
+
+def spot_inconsistencies(path, threshold=3.5):
+    """Screen outcome columns with log1p modified z-scores and MAD scale."""
+    if not math.isfinite(float(threshold)) or float(threshold) < 0:
+        raise ValueError("threshold must be a finite nonnegative number")
+    columns, rows = load_csv(path)
+    outcomes = [name for name in SPOT_OUTCOMES if name in columns]
+    if not outcomes:
+        raise ValueError("CSV must contain at least one screening outcome")
+    fields = []
+    flags = []
+    for outcome in outcomes:
+        valid = []
+        excluded = []
+        for index, row in enumerate(rows):
+            value = row[outcome]
+            if value is None:
+                excluded.append({"record_index": index, "reason": "missing"})
+            else:
+                try:
+                    number = float(value)
+                except (TypeError, ValueError):
+                    excluded.append({"record_index": index, "reason": "non-numeric"})
+                    continue
+                if not math.isfinite(number):
+                    excluded.append({"record_index": index, "reason": "non-finite"})
+                elif number < 0:
+                    excluded.append({"record_index": index, "reason": "negative"})
+                    flags.append({"record_identifier": row.get("idX") if row.get("idX") is not None else index,
+                                  "record_index": index, "field": outcome, "observed": number,
+                                  "reference": None, "score": None, "threshold": float(threshold),
+                                  "reason": "negative value"})
+                else:
+                    valid.append((index, number))
+        transformed = np.log1p(np.asarray([value for _, value in valid], dtype=float))
+        median = float(np.median(transformed)) if transformed.size else None
+        mad = float(np.median(np.abs(transformed - median))) if transformed.size else None
+        scale = 1.4826 * mad if mad is not None else None
+        for (index, value), transformed_value in zip(valid, transformed):
+            if scale is None or scale == 0:
+                score = 0.0 if transformed_value == median else float("inf")
+            else:
+                score = float(abs(transformed_value - median) / scale)
+            if score >= float(threshold):
+                flags.append({"record_identifier": rows[index].get("idX") if rows[index].get("idX") is not None else index,
+                              "record_index": index, "field": outcome, "observed": value,
+                              "reference": float(np.expm1(median)), "score": score,
+                              "threshold": float(threshold), "reason": "robust log1p modified z-score"})
+        fields.append({"field": outcome, "valid_count": len(valid), "excluded": excluded,
+                       "reference": float(np.expm1(median)) if median is not None else None,
+                       "log1p_median": median, "mad": mad, "robust_scale": scale,
+                       "scoring_rule": "abs(log1p(observed)-median(log1p(valid)))/(1.4826*MAD(log1p(valid)))",
+                       "reference_includes_assessed_record": True})
+    return {"threshold": float(threshold), "method": "robust univariate screening after log1p",
+            "fields": fields, "flags": flags, "total_flag_count": len(flags),
+            "interpretation": "Flags are investigation candidates, not confirmed errors. Large projects can legitimately have large effort or defect counts. This does not condition on project scope, establish anomaly-detection accuracy, or quantify prediction uncertainty."}
 
 
 def summarize(path):
@@ -466,6 +524,7 @@ def main():
     parser.add_argument("--justify", action="store_true")
     parser.add_argument("--choose", action="store_true")
     parser.add_argument("--repair", action="store_true")
+    parser.add_argument("--spot", action="store_true")
     parser.add_argument("--budget", type=float, default=100.0)
     args = parser.parse_args()
     result = (repair_demonstration(args.csv_path, args.budget) if args.repair else
@@ -474,6 +533,7 @@ def main():
               rank_effort_associations(args.csv_path) if args.rank_effort_associations else
               assess_arrivals(args.csv_path) if args.assess_arrivals else
               compare_tools(args.csv_path, args.threshold) if args.compare_tools else
+              spot_inconsistencies(args.csv_path, args.threshold if args.threshold is not None else 3.5) if args.spot else
               summarize(args.csv_path))
     print(json.dumps(result, indent=2, sort_keys=False))
 
