@@ -146,6 +146,44 @@ def certify_families(rows, family_column, family_a, family_b, metric="ACC+",
             "verdict": "A reliably better than B" if reliable else "No reliable advantage for A"}
 
 
+class SequentialEvaluator:
+    """Evaluate configurations incrementally as validation results arrive.
+
+    Results are kept in arrival order; the best result is selected using the
+    requested metric direction, with earlier arrivals breaking ties.
+    """
+
+    def __init__(self, metric="ACC+", higher_is_better=True):
+        self.metric = metric
+        self.higher_is_better = higher_is_better
+        self.results = []
+        self._best = None
+
+    def add_result(self, configuration, validation_result):
+        if not isinstance(configuration, dict) or not configuration:
+            raise ValueError("configuration must be a non-empty dictionary")
+        value = _number(validation_result if not isinstance(validation_result, dict)
+                        else validation_result.get(self.metric))
+        if value is None:
+            raise ValueError("validation result must contain a finite metric value")
+        record = {"configuration": dict(configuration), self.metric: value,
+                  "index": len(self.results)}
+        self.results.append(record)
+        if (self._best is None or
+                (value > self._best[self.metric] if self.higher_is_better
+                 else value < self._best[self.metric])):
+            self._best = record
+        return self.snapshot()
+
+    def snapshot(self):
+        return {"metric": self.metric, "higher_is_better": self.higher_is_better,
+                "evaluated": len(self.results),
+                "best": None if self._best is None else dict(self._best)}
+
+    def summary(self):
+        return {**self.snapshot(), "results": [dict(result) for result in self.results]}
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv_path", type=Path)
@@ -154,9 +192,19 @@ def main(argv=None):
     parser.add_argument("--family-column", default="criterion")
     parser.add_argument("--metric", default="ACC+")
     parser.add_argument("--lower-is-better", action="store_true")
+    parser.add_argument("--sequential", action="store_true",
+                        help="evaluate JSON lines: {configuration, validation_result}")
     parser.add_argument("--quality", nargs="+")
     parser.add_argument("--configuration", nargs="+")
     args = parser.parse_args(argv)
+    if args.sequential:
+        evaluator = SequentialEvaluator(args.metric, not args.lower_is_better)
+        for line in args.csv_path.open(encoding="utf-8"):
+            if line.strip():
+                item = json.loads(line)
+                evaluator.add_result(item["configuration"], item["validation_result"])
+        print(json.dumps(evaluator.summary(), indent=2, sort_keys=True))
+        return
     with args.csv_path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
     if args.certify:
