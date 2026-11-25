@@ -343,9 +343,85 @@ def render_blame(result):
     lines.append("These are marginal historical associations, not independent causal contributions or significance tests; correlated/one-hot settings can reflect the same underlying choice, and changing a setting is not guaranteed to improve performance.")
     return "\n".join(lines)
 
+def justify(path, outcome="Performance-"):
+    """Select the lowest finite outcome among complete binary historical rows."""
+    header, records, _ = load(path)
+    if not header:
+        return {"status": "empty input", "position_convention": "nonblank data rows start at 1; blank rows are ignored"}
+    if outcome not in header:
+        return {"status": "unavailable reference", "reason": "outcome column is absent"}
+    settings = [name for name in header if name != outcome]
+    eligible = []; excluded = {"missing_outcome": 0, "invalid_outcome": 0,
+                               "invalid_settings": 0, "incomplete_settings": 0}
+    position = 0
+    with open(path, newline="", encoding="utf-8") as stream:
+        reader = csv.reader(stream); next(reader, None)
+        for row in reader:
+            if not any(cell.strip() for cell in row): continue
+            position += 1
+            values = (row + [""] * max(0, len(header) - len(row)))[:len(header)]
+            record = dict(zip(header, values)); raw = record.get(outcome, "")
+            value = _number(raw)
+            if raw.strip() in MISSING: excluded["missing_outcome"] += 1; continue
+            if value is None: excluded["invalid_outcome"] += 1; continue
+            parsed = {}; bad = False
+            for name in settings:
+                text = record.get(name, "").strip()
+                try: number = float(text)
+                except ValueError: number = None
+                if number not in (0.0, 1.0) or not math.isfinite(number): bad = True; break
+                parsed[name] = int(number)
+            if bad:
+                excluded["invalid_settings"] += 1
+                if any(record.get(name, "").strip() in MISSING for name in settings):
+                    excluded["incomplete_settings"] += 1
+                continue
+            eligible.append({"position": position, "value": value, "configuration": parsed})
+    finite = []
+    for _, recs, _ in []: pass
+    # The reference is all finite observed outcomes, including excluded configurations.
+    for rec in records:
+        val = _number(rec.get(outcome, ""))
+        if val is not None: finite.append(val)
+    if not finite:
+        return {"status": "no eligible recommendation", "eligible_count": 0, "excluded": excluded,
+                "reference": None, "position_convention": "nonblank data rows start at 1; blank rows are ignored"}
+    reference = statistics.median(finite)
+    if not eligible:
+        return {"status": "no eligible recommendation", "eligible_count": 0, "excluded": excluded,
+                "reference": {"count": len(finite), "median": reference},
+                "position_convention": "nonblank data rows start at 1; blank rows are ignored"}
+    winner = min(eligible, key=lambda x: (x["value"], x["position"]))
+    reduction = reference - winner["value"]
+    return {"status": "ok", "selection_label": "retrospective selection from measured runs",
+            "winner": winner, "eligible_count": len(eligible), "excluded": excluded,
+            "reference": {"count": len(finite), "median": reference},
+            "absolute_reduction": reduction,
+            "percentage_reduction": reduction / reference * 100 if reference != 0 else None,
+            "association": blame(path, outcome),
+            "position_convention": "nonblank data rows start at 1; blank rows are ignored"}
+
+def render_justify(result):
+    lines = ["Justify recommended encoder configuration"]
+    if result["status"] != "ok":
+        lines.append("status: %s" % result["status"])
+        if result.get("reason"): lines.append("reason: " + result["reason"])
+        if result.get("reference"): lines.append("reference: count=%d median=%s" % (result["reference"]["count"], result["reference"]["median"]))
+        lines.append("excluded: %s" % result.get("excluded", {})); lines.append(result.get("position_convention", "")); return "\n".join(lines)
+    w = result["winner"]; ref = result["reference"]
+    lines += [result["selection_label"], "position: %d; Performance-: %s" % (w["position"], w["value"]),
+              "configuration: %s" % w["configuration"], "eligible_count: %d; excluded: %s" % (result["eligible_count"], result["excluded"]),
+              "historical reference: finite observed Performance- median; count=%d; median=%s" % (ref["count"], ref["median"]),
+              "absolute_reduction: %s" % result["absolute_reduction"]]
+    lines.append("percentage_reduction: %s" % (result["percentage_reduction"] if result["percentage_reduction"] is not None else "undefined because reference is zero"))
+    lines += ["Context uses global marginal associations from all eligible rows; they are not causal effects or local contributions and do not prove changing a setting will improve performance.",
+              "Rule: choose the lowest finite Performance- among complete valid binary settings, breaking ties by earliest original nonblank row position.",
+              "This is best only among eligible measured historical configurations and does not guarantee future performance.", result["position_convention"]]
+    return "\n".join(lines)
+
 def main(argv):
     if len(argv) not in (2, 3):
-        print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
+        print("usage: x264_summary.py DATASET [predict|certify|flow|blame|justify]", file=sys.stderr); return 2
     try:
         if len(argv) == 2: print(render(summarize(argv[1])))
         elif argv[2] == "predict":
@@ -353,6 +429,7 @@ def main(argv):
         elif argv[2] == "certify": print(render_certify(certify(argv[1], 5)))
         elif argv[2] == "flow": print(render_flow(flow(argv[1])))
         elif argv[2] == "blame": print(render_blame(blame(argv[1])))
+        elif argv[2] == "justify": print(render_justify(justify(argv[1])))
         else: print("usage: x264_summary.py DATASET [predict|certify|flow|blame]", file=sys.stderr); return 2
         return 0
     except (OSError, csv.Error) as exc:
