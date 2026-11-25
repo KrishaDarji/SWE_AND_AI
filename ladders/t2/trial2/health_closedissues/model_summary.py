@@ -146,6 +146,81 @@ def certify_families(rows, family_column, family_a, family_b, metric="ACC+",
             "verdict": "A reliably better than B" if reliable else "No reliable advantage for A"}
 
 
+def blame_hyperparameters(rows, error_column="MRE-", configuration_columns=None,
+                          high_error_quantile=0.75):
+    """Describe which configuration values are associated with high error.
+
+    High error is defined as error at or above the requested empirical
+    quantile. Numeric parameters use high-vs-low error means and a Pearson
+    correlation with the high-error indicator. Categorical parameters use the
+    high-error rate for each value and the spread between those rates.
+    Results are ranked by the absolute strength of the reported association.
+    This is descriptive evidence, not a causal model.
+    """
+    rows = list(rows)
+    if not rows:
+        raise ValueError("CSV contains no data rows")
+    if not 0.0 <= high_error_quantile <= 1.0:
+        raise ValueError("high_error_quantile must be between 0 and 1")
+    columns = list(rows[0])
+    if error_column not in columns:
+        raise ValueError("Unknown error column: " + error_column)
+    configuration_columns = list(configuration_columns or
+                                 [c for c in columns if c != error_column])
+    missing = [c for c in configuration_columns if c not in columns]
+    if missing:
+        raise ValueError("Unknown columns: " + ", ".join(missing))
+    usable = [(row, _number(row[error_column])) for row in rows]
+    usable = [(row, error) for row, error in usable if error is not None]
+    if not usable:
+        raise ValueError("No rows have usable error values")
+    errors = sorted(error for _, error in usable)
+    threshold = errors[int((len(errors) - 1) * high_error_quantile)]
+    high = [error >= threshold for _, error in usable]
+    high_count = sum(high)
+    low_count = len(high) - high_count
+    results = []
+    for column in configuration_columns:
+        numeric = [_number(row[column]) for row, _ in usable]
+        if all(value is not None for value in numeric):
+            high_values = [value for value, flag in zip(numeric, high) if flag]
+            low_values = [value for value, flag in zip(numeric, high) if not flag]
+            mean_high = statistics.fmean(high_values)
+            mean_low = statistics.fmean(low_values) if low_values else mean_high
+            mean_difference = mean_high - mean_low
+            p_high = high_count / len(high)
+            # Pearson correlation with the binary high-error indicator.
+            mean_value = statistics.fmean(numeric)
+            mean_flag = p_high
+            covariance = sum((value - mean_value) * (flag - mean_flag)
+                             for value, flag in zip(numeric, high))
+            denom_value = math.sqrt(sum((value - mean_value) ** 2 for value in numeric))
+            denom_flag = math.sqrt(sum((flag - mean_flag) ** 2 for flag in high))
+            correlation = covariance / (denom_value * denom_flag) if denom_value and denom_flag else 0.0
+            results.append({"hyperparameter": column, "kind": "numeric",
+                            "association": mean_difference, "mean_high_error": mean_high,
+                            "mean_low_error": mean_low, "pearson_high_error": correlation,
+                            "strength": abs(correlation)})
+        else:
+            groups = {}
+            for (row, _), flag in zip(usable, high):
+                value = str(row[column])
+                item = groups.setdefault(value, {"count": 0, "high_error_count": 0})
+                item["count"] += 1
+                item["high_error_count"] += int(flag)
+            rates = {value: item["high_error_count"] / item["count"]
+                     for value, item in groups.items()}
+            ordered = sorted(rates.items(), key=lambda item: (-item[1], item[0]))
+            spread = ordered[0][1] - ordered[-1][1]
+            results.append({"hyperparameter": column, "kind": "categorical",
+                            "association": spread, "high_error_rate_by_value": rates,
+                            "strength": spread, "highest_rate_value": ordered[0][0]})
+    results.sort(key=lambda item: (-item["strength"], item["hyperparameter"]))
+    return {"error_column": error_column, "high_error_quantile": high_error_quantile,
+            "high_error_threshold": threshold, "row_count": len(usable),
+            "high_error_count": high_count, "associations": results}
+
+
 class SequentialEvaluator:
     """Evaluate configurations incrementally as validation results arrive.
 
@@ -194,6 +269,10 @@ def main(argv=None):
     parser.add_argument("--lower-is-better", action="store_true")
     parser.add_argument("--sequential", action="store_true",
                         help="evaluate JSON lines: {configuration, validation_result}")
+    parser.add_argument("--blame", action="store_true",
+                        help="rank hyperparameters associated with high error")
+    parser.add_argument("--error", default="MRE-", dest="error_column")
+    parser.add_argument("--high-quantile", type=float, default=0.75)
     parser.add_argument("--quality", nargs="+")
     parser.add_argument("--configuration", nargs="+")
     args = parser.parse_args(argv)
@@ -207,7 +286,10 @@ def main(argv=None):
         return
     with args.csv_path.open(newline="", encoding="utf-8") as handle:
         rows = list(csv.DictReader(handle))
-    if args.certify:
+    if args.blame:
+        result = blame_hyperparameters(rows, args.error_column, args.configuration,
+                                       args.high_quantile)
+    elif args.certify:
         result = certify_families(rows, args.family_column, *args.certify, args.metric,
                                   not args.lower_is_better)
     elif args.predict is not None:
