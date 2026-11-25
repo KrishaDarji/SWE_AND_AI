@@ -421,6 +421,80 @@ def audit_observed_minimum(records):
             "audit_only": True}
 
 
+def compare_search_strategies(path, budget=20, seeds=range(42, 52), tie_tolerance=1e-12):
+    """Compare the retained selector with uniform random search without replacement.
+
+    Both strategies see the same deduplicated candidate list and receive outcomes
+    only from their own fresh counted callback. Recommendations are frozen before
+    the full-data audit; the baseline is intentionally the same random strategy.
+    """
+    if tie_tolerance < 0 or not math.isfinite(float(tie_tolerance)):
+        raise ValueError("tie_tolerance must be finite and nonnegative")
+    settings, valid, invalid_target = _read_valid_rows(path)
+    candidates, outcomes, records = [], {}, []
+    seen = set()
+    for record_id, (row, outcome) in enumerate(valid):
+        configuration = {field: row.get(field, "") for field in settings}
+        key = _configuration_key(configuration)
+        if key not in seen:
+            seen.add(key)
+            candidates.append(configuration)
+            outcomes[key] = outcome
+            records.append({**configuration, OUTCOME: outcome})
+
+    def run_uniform(seed, callback):
+        order = list(range(len(candidates)))
+        np.random.RandomState(seed).shuffle(order)
+        selected = order[:min(budget, len(order))]
+        calls = []
+        for index in selected:
+            configuration = copy.deepcopy(candidates[index])
+            calls.append({"configuration": configuration, "performance": callback(configuration)})
+        best = min(calls, key=lambda item: (item["performance"], calls.index(item)))
+        return {"budget": budget, "budget_used": len(calls), "evaluation_order": calls,
+                "recommendation": copy.deepcopy(best)}
+
+    repetitions = []
+    for seed in seeds:
+        selector_calls = []
+        def counted(configuration):
+            value = outcomes[_configuration_key(configuration)]
+            selector_calls.append(configuration)
+            return value
+        selector = choose_configuration(candidates, counted, budget, seed)
+        baseline_calls = []
+        def baseline_callback(configuration):
+            value = outcomes[_configuration_key(configuration)]
+            baseline_calls.append(configuration)
+            return value
+        baseline = run_uniform(seed, baseline_callback)
+        selector_perf = selector["recommendation"]["performance"]
+        baseline_perf = baseline["recommendation"]["performance"]
+        difference = selector_perf - baseline_perf
+        classification = "tie" if abs(difference) <= tie_tolerance else ("selector win" if difference < 0 else "selector loss")
+        repetitions.append({"seed": seed, "selector": selector, "baseline": baseline,
+                            "difference": difference, "classification": classification,
+                            "selector_callback_count": len(selector_calls),
+                            "baseline_callback_count": len(baseline_calls)})
+    audits = [audit_observed_minimum(records)]
+    wins = sum(x["classification"] == "selector win" for x in repetitions)
+    ties = sum(x["classification"] == "tie" for x in repetitions)
+    losses = sum(x["classification"] == "selector loss" for x in repetitions)
+    differences = [x["difference"] for x in repetitions]
+    return {"outcome": OUTCOME, "direction": "lower is better", "budget": budget,
+            "seeds": list(seeds), "tie_tolerance": float(tie_tolerance),
+            "candidate_count": len(valid), "unique_candidate_count": len(candidates),
+            "strategy": "choose_configuration shuffles unique candidates randomly; baseline is uniform random without replacement",
+            "equivalent_strategies": True, "repetitions": repetitions,
+            "paired_summary": {"wins": wins, "ties": ties, "losses": losses,
+                                "mean_difference": float(np.mean(differences)),
+                                "median_difference": float(np.median(differences)),
+                                "min_difference": min(differences), "max_difference": max(differences)},
+            "audit": audits, "invalid_target_rows": invalid_target,
+            "limitations": ["Seeded repetitions are benchmark repeats, not independent LLM trials.",
+                            "No statistical superiority or project's final same procedure is claimed; analysis pending if unavailable."]}
+
+
 def repair(path, baseline=None):
     """Choose the least-changing observed configuration that improves baseline.
 
