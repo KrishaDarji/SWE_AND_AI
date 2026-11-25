@@ -130,11 +130,76 @@ def print_estimate(result):
         print(f"{key}: {result[key]}")
     print("evaluation_records: " + repr(result["records"]))
 
+def _betacf(a, b, x):
+    tiny, qab, qap, qam = 1e-300, a+b, a+1, a-1
+    c, d = 1.0, 1.0-qab*x/qap; d = max(tiny, abs(d)) * (1 if d >= 0 else -1); d = 1/d; h=d
+    for m in range(1, 10000):
+        m2=2*m; aa=m*(b-m)*x/((qam+m2)*(a+m2)); d=1+aa*d; d=max(tiny,abs(d))*(1 if d>=0 else -1); c=1+aa/c; c=max(tiny,abs(c))*(1 if c>=0 else -1); d=1/d; h*=d*c
+        aa=-(a+m)*(qab+m)*x/((a+m2)*(qap+m2)); d=1+aa*d; d=max(tiny,abs(d))*(1 if d>=0 else -1); c=1+aa/c; c=max(tiny,abs(c))*(1 if c>=0 else -1); d=1/d; delta=d*c; h*=delta
+        if abs(delta-1) < 3e-14: return h
+    raise ArithmeticError("incomplete beta continued fraction")
+
+def _ibeta(a, b, x):
+    if not 0 <= x <= 1: raise ValueError("beta argument outside [0,1]")
+    if x in (0, 1): return x
+    bt=math.exp(math.lgamma(a+b)-math.lgamma(a)-math.lgamma(b)+a*math.log(x)+b*math.log1p(-x))
+    return bt*_betacf(a,b,x)/a if x < (a+1)/(a+b+2) else 1-bt*_betacf(b,a,1-x)/b
+
+def t_cdf(t, df):
+    if df <= 0 or not math.isfinite(t): raise ValueError("invalid t input")
+    if t == 0: return .5
+    x=df/(df+t*t); tail=.5*_ibeta(df/2, .5, x)
+    return 1-tail if t > 0 else tail
+
+def t_critical_975(df):
+    lo, hi = 0.0, 1.0
+    while t_cdf(hi, df) < .975: hi *= 2
+    for _ in range(80):
+        mid=(lo+hi)/2
+        if t_cdf(mid, df) < .975: lo=mid
+        else: hi=mid
+    return (lo+hi)/2
+
+def certify(projects, threshold=None):
+    groups={"n": [], "h": []}; excluded=0
+    for p in projects:
+        tool=norm_cell(p.values.get("tool", "")).lower(); value, kind=parse_float(p.values.get("Effort-", ""))
+        if tool in groups:
+            if kind == "valid": groups[tool].append(value)
+            else: excluded += 1
+    out={"reference":"n", "candidate":"h", "excluded":excluded, "groups":{}}
+    for key, vals in groups.items():
+        n=len(vals); mean=sum(vals)/n if n else None; var=sum((x-mean)**2 for x in vals)/(n-1) if n>1 else None
+        out["groups"][key]={"count":n,"mean":mean,"sample_variance":var}
+    if threshold is not None and (not math.isfinite(threshold) or threshold < 0): raise ValueError("threshold must be finite and nonnegative")
+    out["threshold"]=threshold; a,b=groups["n"],groups["h"]
+    if len(a)<2 or len(b)<2: out["inference"]={"status":"undefined: each group needs at least two usable outcomes"}; return out
+    ma,mb=out["groups"]["n"]["mean"],out["groups"]["h"]["mean"]; va,vb=out["groups"]["n"]["sample_variance"],out["groups"]["h"]["sample_variance"]
+    diff=mb-ma; se2=va/len(a)+vb/len(b); out["difference"]=diff
+    if se2 == 0: out["inference"]={"status":"undefined: zero standard error"}; return out
+    se=math.sqrt(se2); df=se2*se2/((va/len(a))**2/(len(a)-1)+(vb/len(b))**2/(len(b)-1)); crit=t_critical_975(df); p=2*(1-t_cdf(abs(diff)/se,df)); ci=(diff-crit*se,diff+crit*se)
+    out["inference"]={"status":"defined","standard_error":se,"df":df,"t":diff/se,"p_two_sided":max(0,min(1,p)),"ci95":ci}
+    if threshold is not None:
+        out["practical"]={"point_estimate_meets":diff <= -threshold,"entire_ci_supports":ci[1] <= -threshold}
+    return out
+
+def print_certify(result):
+    print("comparison: candidate tool=h minus reference tool=n; primary outcome=Effort- (lower is better)")
+    for k,v in result["groups"].items(): print(f"{k}: {v}")
+    print("difference: " + repr(result.get("difference"))); print("inference: " + repr(result["inference"]))
+    print("threshold: " + repr(result.get("threshold"))); print("practical: " + repr(result.get("practical")))
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Summarize or estimate NASA93 historical projects")
     parser.add_argument("dataset")
     parser.add_argument("--estimate", action="store_true")
+    parser.add_argument("--certify", action="store_true")
     args = parser.parse_args(argv)
-    (print_estimate(estimate(args.dataset)) if args.estimate else print_summary(summary(args.dataset))); return 0
+    if args.certify:
+        _, rows, _, _ = load(args.dataset); ref=[parse_float(p.values.get("Effort-", ""))[0] for p in rows if norm_cell(p.values.get("tool", "")).lower()=="n" and parse_float(p.values.get("Effort-", ""))[1]=="valid"]
+        threshold=0.10*(sum(ref)/len(ref)) if ref else None; print_certify(certify(rows, threshold))
+    elif args.estimate: print_estimate(estimate(args.dataset))
+    else: print_summary(summary(args.dataset))
+    return 0
 
 if __name__ == "__main__": sys.exit(main())
