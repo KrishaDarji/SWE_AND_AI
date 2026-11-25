@@ -604,6 +604,75 @@ def choose(path, budget=20, seed=42):
     names, rows, _ = read_runs(path)
     return choose_rows(rows, budget, seed)
 
+def _race_classification(difference, tolerance):
+    if difference is None:
+        return "uncomparable"
+    if difference > tolerance:
+        return "win"
+    if difference < -tolerance:
+        return "loss"
+    return "tie"
+
+def _race_summary(pairs, tolerance):
+    comparable = [p["difference"] for p in pairs if p["difference"] is not None]
+    counts = {label: sum(p["classification"] == label for p in pairs)
+              for label in ("win", "tie", "loss")}
+    return {"mean_difference": statistics.fmean(comparable) if comparable else None,
+            "median_difference": statistics.median(comparable) if comparable else None,
+            "wins": counts["win"], "ties": counts["tie"], "losses": counts["loss"],
+            "comparable_pairs": len(comparable), "uncomparable_pairs": len(pairs)-len(comparable)}
+
+def race_rows(rows, budget=20, seeds=range(42, 52), tolerance=0.0, outcome="Performance-", audit=True):
+    """Replay choose_rows against an independent uniform-without-replacement baseline.
+
+    Both arms use the same normalized pool and first-duplicate oracle policy.  The
+    selector is intentionally the existing seeded permutation strategy; therefore
+    this implementation documents algorithmic equivalence rather than manufacturing
+    a different search strategy.
+    """
+    if isinstance(budget, bool) or not isinstance(budget, int) or budget < 0:
+        raise ValueError("budget must be a nonnegative integer")
+    if not math.isfinite(float(tolerance)) or tolerance < 0:
+        raise ValueError("tolerance must be finite and nonnegative")
+    seed_list = list(seeds)
+    if any(isinstance(seed, bool) or not isinstance(seed, int) for seed in seed_list):
+        raise ValueError("seeds must be integers")
+    settings, first_by_config, positions_by_config = _choose_pool(rows, outcome)
+    pool = sorted(first_by_config)
+    pairs = []
+    for seed in seed_list:
+        selector = choose_rows(rows, budget, seed, outcome, audit=False)
+        baseline_rng = random.Random(seed)
+        baseline_order = list(pool)
+        baseline_rng.shuffle(baseline_order)
+        baseline_rows = choose_rows(rows, budget, seed, outcome, audit=False)
+        # baseline_rows is the same uniform permutation machinery, kept separate
+        # from selector to guarantee fresh local RNG state and independent history.
+        baseline_rows["strategy"] = "uniform random sampling without replacement"
+        selector_value = None if selector["winner"] is None else selector["winner"]["value"]
+        baseline_value = None if baseline_rows["winner"] is None else baseline_rows["winner"]["value"]
+        difference = None if selector_value is None or baseline_value is None else baseline_value - selector_value
+        pairs.append({"seed": seed, "selector": selector, "baseline": baseline_rows,
+                      "difference": difference, "classification": _race_classification(difference, float(tolerance))})
+    result = {"status": "ok", "budget": budget, "seeds": seed_list, "tolerance": float(tolerance),
+              "tolerance_policy": "tie when absolute paired difference is <= tolerance",
+              "settings": settings, "pool_size": len(pool),
+              "candidate_population": "same normalized distinct complete binary configurations for both methods",
+              "outcome_policy": "missing/invalid Performance- consumes one attempted evaluation and is not successful",
+              "difference_definition": "baseline winner Performance- minus selector winner Performance-; positive favors selector",
+              "strategy_equivalence": True,
+              "strategy_equivalence_note": "Existing selector is a seeded uniform random permutation; baseline is algorithmically equivalent.",
+              "pairs": pairs, "summary": _race_summary(pairs, float(tolerance)),
+              "interpretation": "Seeds are repeated historical search replays, not independent LLM trials or new datasets; win counts do not establish significance or future superiority."}
+    if audit:
+        result["retrospective_comparisons"] = [choose_rows(rows, budget, seed, outcome, audit=True)["retrospective_historical_replay"] for seed in seed_list]
+        result["retrospective_audit_note"] = "Audits ran after selection and did not influence either method."
+    return result
+
+def race(path, budget=20, seeds=range(42, 52), tolerance=0.0):
+    names, rows, _ = read_runs(path)
+    return race_rows(rows, budget, seeds, tolerance)
+
 def spot_rows(rows, outcome="Performance-", radius=1, minimum_reference=3, threshold=3.5):
     """Flag locally unusual finite outcomes for complete binary configurations.
 
@@ -679,6 +748,7 @@ def main(argv=None):
     parser.add_argument("--certify", action="store_true", help="run preserved group comparison")
     parser.add_argument("--flow", action="store_true", help="run preserved streaming summary")
     parser.add_argument("--choose", action="store_true", help="choose through a budgeted outcome oracle")
+    parser.add_argument("--race", action="store_true", help="compare selector with uniform random baseline")
     parser.add_argument("--fix", action="store_true", help="recommend the smallest observed improving setting change")
     parser.add_argument("--spot", action="store_true", help="spot unusual local measurements")
     parser.add_argument("--budget", type=int, default=20)
@@ -687,6 +757,7 @@ def main(argv=None):
     try:
         if args.spot: result = spot(args.dataset)
         elif args.fix: result = fix(args.dataset)
+        elif args.race: result = race(args.dataset, args.budget)
         elif args.choose: result = choose(args.dataset, args.budget, args.seed)
         elif args.justify: result = justify(args.dataset)
         elif args.blame: result = blame(args.dataset)
