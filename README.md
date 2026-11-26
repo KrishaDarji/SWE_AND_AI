@@ -18,3 +18,7 @@ python3 scripts/prepare_treatments.py
 ```
 
 The seven experimental treatments and milestone plan are documented in [project.md](project.md). Results and visualization requirements are in [result.md](result.md).
+
+AI assistance and human responsibilities are documented in [docs/ai-disclosure.md](docs/ai-disclosure.md).
+
+The treatment/repeat and reset protocol is documented in [docs/experiment-protocol.md](docs/experiment-protocol.md).

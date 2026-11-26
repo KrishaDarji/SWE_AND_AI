@@ -1,0 +1,541 @@
+treatment,trial,domain,step,skill,total_loc,new_loc,new_code_percent,source_metrics
+1,1,machine-learning model configuration,01,remember,81,81,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step01/metrics.csv
+1,1,machine-learning model configuration,02,guess,98,98,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step02/metrics.csv
+treatment1,trial1,machine-learning model configuration,step03,certify,79,79,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step03/metrics.csv
+1,1,machine-learning model configuration,04,flow,46,46,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step04/metrics.csv
+1,1,machine-learning model configuration,05,blame,82,82,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step05/metrics.csv
+treatment1,trial1,machine-learning model configuration,step06,justify,60,60,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step06/metrics.csv
+1,1,machine-learning model configuration,07,choose,119,119,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step07/metrics.csv
+1,1,machine-learning model configuration,08,fix,146,146,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step08/metrics.csv
+1,1,machine-learning model configuration,9,spot,114,114,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step09/metrics.csv
+1,1,machine-learning model configuration,10,race,146,146,100.000000,experiments/runs/treatment1/trials/trial1/health_closedissues/step10/metrics.csv
+1,1,software project planning,01,remember,95,95,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step01/metrics.csv
+1,1,software project planning,02,guess,96,96,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step02/metrics.csv
+1,1,software project planning,03,certify,194,194,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step03/metrics.csv
+1,1,software project planning,4,flow,106,106,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step04/metrics.csv
+1,1,software project planning,05,blame,129,129,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step05/metrics.csv
+treatment1,trial1,software project planning,step06,justify,120,120,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step06/metrics.csv
+1,1,software project planning,07,choose,60,60,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step07/metrics.csv
+1,1,software project planning,08,fix,139,139,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step08/metrics.csv
+1,1,software project planning,09,spot,115,115,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step09/metrics.csv
+1,1,software project planning,10, race,105,105,100.000000,experiments/runs/treatment1/trials/trial1/nasa93dem/step10/metrics.csv
+1,1,x264,1,remember,96,96,100.000000,experiments/runs/treatment1/trials/trial1/x264/step01/metrics.csv
+1,1,x264,2,guess,132,132,100.000000,experiments/runs/treatment1/trials/trial1/x264/step02/metrics.csv
+1,1,x264,3,certify,107,107,100.000000,experiments/runs/treatment1/trials/trial1/x264/step03/metrics.csv
+1,1,x264,4,flow,88,88,100.000000,experiments/runs/treatment1/trials/trial1/x264/step04/metrics.csv
+1,1,video encoding,step05,blame,125,125,100.000000,experiments/runs/treatment1/trials/trial1/x264/step05/metrics.csv
+1,1,video encoding,step06,justify,122,122,100.000000,experiments/runs/treatment1/trials/trial1/x264/step06/metrics.csv
+treatment1,trial1,video encoding,step07,choose,94,94,100.000000,experiments/runs/treatment1/trials/trial1/x264/step07/metrics.csv
+treatment1,trial1,video encoding,step08,fix,118,118,100.000000,experiments/runs/treatment1/trials/trial1/x264/step08/metrics.csv
+1,1,video encoding,09,spot,99,99,100.000000,experiments/runs/treatment1/trials/trial1/x264/step09/metrics.csv
+1,1,video encoding,10,race,132,132,100.000000,experiments/runs/treatment1/trials/trial1/x264/step10/metrics.csv
+1,2,machine-learning model configuration,01,remember,110,110,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step01/metrics.csv
+1,2,machine-learning model configuration,02,guess,101,101,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step02/metrics.csv
+1,2,machine-learning model configuration,03,certify,138,138,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step03/metrics.csv
+1,2,machine-learning model configuration,04,flow,121,121,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step04/metrics.csv
+1,2,machine-learning model configuration,05,blame,147,147,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step05/metrics.csv
+1,2,machine-learning model configuration,06,justify,91,91,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step06/metrics.csv
+1,2,machine-learning model configuration,07,choose,97,97,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step07/metrics.csv
+1,2,machine-learning model configuration,08,fix,128,128,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step08/metrics.csv
+treatment1,trial2,machine-learning model configuration,step09,spot,131,131,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step09/metrics.csv
+1,2,machine-learning model configuration,10,race,69,69,100.000000,experiments/runs/treatment1/trials/trial2/health_closedissues/step10/metrics.csv
+1,2,software project planning,01,remember,130,130,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step01/metrics.csv
+1,2,software project planning,02,guess,63,63,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step02/metrics.csv
+1,2,software project planning,03,certify,86,86,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step03/metrics.csv
+1,2,software project planning,04,flow,78,78,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step04/metrics.csv
+1,2,software project planning,05,blame,152,152,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step05/metrics.csv
+treatment1,trial2,software project planning,step06,justify,124,124,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step06/metrics.csv
+1,2,software project planning,07,choose,96,96,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step07/metrics.csv
+treatment1,2,software project planning,step08,fix,87,87,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step08/metrics.csv
+1,2,software project planning,09,spot,113,113,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step09/metrics.csv
+1,2,software project planning,10,race,135,135,100.000000,experiments/runs/treatment1/trials/trial2/nasa93dem/step10/metrics.csv
+treatment1,trial2,video encoding,step01,remember,76,76,100.000000,experiments/runs/treatment1/trials/trial2/x264/step01/metrics.csv
+1,2,x264,02,guess,121,121,100.000000,experiments/runs/treatment1/trials/trial2/x264/step02/metrics.csv
+1,2,x264,03,certify,76,76,100.000000,experiments/runs/treatment1/trials/trial2/x264/step03/metrics.csv
+1,2,x264,04,flow,116,116,100.000000,experiments/runs/treatment1/trials/trial2/x264/step04/metrics.csv
+1,2,video encoding,05,blame,130,130,100.000000,experiments/runs/treatment1/trials/trial2/x264/step05/metrics.csv
+1,2,video encoding,06,justify,126,126,100.000000,experiments/runs/treatment1/trials/trial2/x264/step06/metrics.csv
+1,2,video encoding,07,choose,91,91,100.000000,experiments/runs/treatment1/trials/trial2/x264/step07/metrics.csv
+1,2,x264,08,fix,89,89,100.000000,experiments/runs/treatment1/trials/trial2/x264/step08/metrics.csv
+treatment1,2,x264,step09,spot,124,124,100.000000,experiments/runs/treatment1/trials/trial2/x264/step09/metrics.csv
+1,2,video encoding,10,race,97,97,100.000000,experiments/runs/treatment1/trials/trial2/x264/step10/metrics.csv
+1,3,machine-learning model configuration,01,remember,153,153,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step01/metrics.csv
+1,3,machine-learning model configuration,02,guess,89,89,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step02/metrics.csv
+1,3,machine-learning model configuration,03,certify,55,55,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step03/metrics.csv
+1,3,machine-learning model configuration,04,flow,134,134,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step04/metrics.csv
+1,3,machine-learning model configuration,05,blame,111,111,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step05/metrics.csv
+1,3,machine-learning model configuration,06,justify,95,95,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step06/metrics.csv
+1,3,machine-learning model configuration,07,choose,49,49,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step07/metrics.csv
+1,3,machine-learning model configuration,08,fix,114,114,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step08/metrics.csv
+1,3,machine-learning model configuration,09,spot,70,70,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step09/metrics.csv
+1,3,machine-learning model configuration,10,race,117,117,100.000000,experiments/runs/treatment1/trials/trial3/health_closedissues/step10/metrics.csv
+1,3,software project planning,01,remember,103,103,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step01/metrics.csv
+1,3,software project planning,02,guess,101,101,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step02/metrics.csv
+1,3,software project planning,03,certify,105,105,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step03/metrics.csv
+1,3,software project planning,04,flow,102,102,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step04/metrics.csv
+1,3,software project planning,05,blame,86,86,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step05/metrics.csv
+1,3,software project planning,06,justify,71,71,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step06/metrics.csv
+1,3,software project planning,07,choose,65,65,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step07/metrics.csv
+1,3,software project planning,08,fix,101,101,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step08/metrics.csv
+1,3,software project planning,09,spot,114,114,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step09/metrics.csv
+1,3,software project planning,10,race,121,121,100.000000,experiments/runs/treatment1/trials/trial3/nasa93dem/step10/metrics.csv
+1,3,video encoding,01,remember,69,69,100.000000,experiments/runs/treatment1/trials/trial3/x264/step01/metrics.csv
+1,3,x264,02,guess,152,152,100.000000,experiments/runs/treatment1/trials/trial3/x264/step02/metrics.csv
+1,3,x264,03,certify,72,72,100.000000,experiments/runs/treatment1/trials/trial3/x264/step03/metrics.csv
+1,3,x264,04,flow,84,84,100.000000,experiments/runs/treatment1/trials/trial3/x264/step04/metrics.csv
+treatment1,3,video encoding,step05,blame,119,119,100.000000,experiments/runs/treatment1/trials/trial3/x264/step05/metrics.csv
+1,3,x264,06,justify,100,100,100.000000,experiments/runs/treatment1/trials/trial3/x264/step06/metrics.csv
+1,3,x264,07,choose,53,53,100.000000,experiments/runs/treatment1/trials/trial3/x264/step07/metrics.csv
+1,3,x264,08,fix,75,75,100.000000,experiments/runs/treatment1/trials/trial3/x264/step08/metrics.csv
+1,3,video encoding,step09,spot,67,67,100.000000,experiments/runs/treatment1/trials/trial3/x264/step09/metrics.csv
+1,3,x264,10,race,127,127,100.000000,experiments/runs/treatment1/trials/trial3/x264/step10/metrics.csv
+2,1,machine-learning model configuration,1,remember,137,137,100.000000,experiments/runs/treatment2/trials/trial1/health_closedissues/step01/metrics.csv
+2,1,machine-learning model configuration,2,guess,153,44,28.758170,experiments/runs/treatment2/trials/trial1/health_closedissues/step02/metrics.csv
+2,1,machine-learning model configuration,3,certify,233,81,34.763948,experiments/runs/treatment2/trials/trial1/health_closedissues/step03/metrics.csv
+2,1,machine-learning model configuration,4,flow,218,70,32.110092,experiments/runs/treatment2/trials/trial1/health_closedissues/step04/metrics.csv
+2,1,machine-learning model configuration,5,blame,273,52,19.047619,experiments/runs/treatment2/trials/trial1/health_closedissues/step05/metrics.csv
+2,1,machine-learning model configuration,6,justify,316,39,12.341772,experiments/runs/treatment2/trials/trial1/health_closedissues/step06/metrics.csv
+2,1,machine-learning model configuration,7,choose,365,45,12.328767,experiments/runs/treatment2/trials/trial1/health_closedissues/step07/metrics.csv
+2,1,machine-learning model configuration,8,fix,419,55,13.126492,experiments/runs/treatment2/trials/trial1/health_closedissues/step08/metrics.csv
+2,1,machine-learning model configuration,9,spot,494,77,15.587045,experiments/runs/treatment2/trials/trial1/health_closedissues/step09/metrics.csv
+2,1,machine-learning model configuration,10,race,539,40,7.421150,experiments/runs/treatment2/trials/trial1/health_closedissues/step10/metrics.csv
+2,1,software project planning,1,remember,91,91,100.000000,experiments/runs/treatment2/trials/trial1/nasa93dem/step01/metrics.csv
+2,1,software project planning,2,guess,136,41,30.147059,experiments/runs/treatment2/trials/trial1/nasa93dem/step02/metrics.csv
+2,1,software project planning,3,certify,192,54,28.125000,experiments/runs/treatment2/trials/trial1/nasa93dem/step03/metrics.csv
+2,1,software project planning,4,flow,257,61,23.735409,experiments/runs/treatment2/trials/trial1/nasa93dem/step04/metrics.csv
+2,1,software project planning,5,blame,314,58,18.471338,experiments/runs/treatment2/trials/trial1/nasa93dem/step05/metrics.csv
+2,1,software project planning,6,justify,354,41,11.581921,experiments/runs/treatment2/trials/trial1/nasa93dem/step06/metrics.csv
+2,1,software project planning,7,choose,402,48,11.940299,experiments/runs/treatment2/trials/trial1/nasa93dem/step07/metrics.csv
+2,1,software project planning,8,fix,442,41,9.276018,experiments/runs/treatment2/trials/trial1/nasa93dem/step08/metrics.csv
+2,1,software project planning,9,spot,504,60,11.904762,experiments/runs/treatment2/trials/trial1/nasa93dem/step09/metrics.csv
+2,1,software project planning,10,race,555,48,8.648649,experiments/runs/treatment2/trials/trial1/nasa93dem/step10/metrics.csv
+2,1,video encoding,01,remember,106,106,100.000000,experiments/runs/treatment2/trials/trial1/x264/step01/metrics.csv
+2,1,video encoding,02,guess,128,22,17.187500,experiments/runs/treatment2/trials/trial1/x264/step02/metrics.csv
+2,1,video encoding,03,certify,170,42,24.705882,experiments/runs/treatment2/trials/trial1/x264/step03/metrics.csv
+2,1,video encoding,04,flow,219,49,22.374429,experiments/runs/treatment2/trials/trial1/x264/step04/metrics.csv
+2,1,video encoding,05,blame,276,57,20.652174,experiments/runs/treatment2/trials/trial1/x264/step05/metrics.csv
+2,1,video encoding,06,justify,334,58,17.365269,experiments/runs/treatment2/trials/trial1/x264/step06/metrics.csv
+2,1,video encoding,07,choose,382,48,12.565445,experiments/runs/treatment2/trials/trial1/x264/step07/metrics.csv
+2,1,video encoding,08,fix,166,37,22.289157,experiments/runs/treatment2/trials/trial1/x264/step08/metrics.csv
+2,1,video encoding,09,spot,478,96,20.083682,experiments/runs/treatment2/trials/trial1/x264/step09/metrics.csv
+2,1,video encoding,10,race,542,63,11.623616,experiments/runs/treatment2/trials/trial1/x264/step10/metrics.csv
+2,2,machine-learning model configuration,1,remember,120,120,100.000000,experiments/runs/treatment2/trials/trial2/health_closedissues/step01/metrics.csv
+2,2,machine-learning model configuration,2,guess,133,65,48.872180,experiments/runs/treatment2/trials/trial2/health_closedissues/step02/metrics.csv
+2,2,machine-learning model configuration,3,certify,174,52,29.885057,experiments/runs/treatment2/trials/trial2/health_closedissues/step03/metrics.csv
+2,2,machine-learning model configuration,4,flow,222,48,21.621622,experiments/runs/treatment2/trials/trial2/health_closedissues/step04/metrics.csv
+2,2,machine-learning model configuration,5,blame,304,82,26.973684,experiments/runs/treatment2/trials/trial2/health_closedissues/step05/metrics.csv
+2,2,machine-learning model configuration,6,justify,350,46,13.142857,experiments/runs/treatment2/trials/trial2/health_closedissues/step06/metrics.csv
+2,2,machine-learning model configuration,7,choose,413,64,15.496368,experiments/runs/treatment2/trials/trial2/health_closedissues/step07/metrics.csv
+2,2,machine-learning model configuration,8,fix,469,56,11.940299,experiments/runs/treatment2/trials/trial2/health_closedissues/step08/metrics.csv
+2,2,machine-learning model configuration,9,spot,542,73,13.468635,experiments/runs/treatment2/trials/trial2/health_closedissues/step09/metrics.csv
+2,2,machine-learning model configuration,10,race,618,76,12.297735,experiments/runs/treatment2/trials/trial2/health_closedissues/step10/metrics.csv
+2,2,software project planning,1,remember,180,180,100.000000,experiments/runs/treatment2/trials/trial2/nasa93dem/step01/metrics.csv
+2,2,software project planning,2,guess,213,74,34.741784,experiments/runs/treatment2/trials/trial2/nasa93dem/step02/metrics.csv
+2,2,software project planning,3,certify,323,109,33.746130,experiments/runs/treatment2/trials/trial2/nasa93dem/step03/metrics.csv
+2,2,software project planning,4,flow,395,72,18.227848,experiments/runs/treatment2/trials/trial2/nasa93dem/step04/metrics.csv
+2,2,software project planning,5,blame,493,96,19.472617,experiments/runs/treatment2/trials/trial2/nasa93dem/step05/metrics.csv
+2,2,software project planning,6,justify,580,88,15.172414,experiments/runs/treatment2/trials/trial2/nasa93dem/step06/metrics.csv
+2,2,software project planning,7,choose,579,107,18.480138,experiments/runs/treatment2/trials/trial2/nasa93dem/step07/metrics.csv
+2,2,software project planning,8,fix,785,94,11.974522,experiments/runs/treatment2/trials/trial2/nasa93dem/step08/metrics.csv
+2,2,software project planning,9,spot,852,67,7.863850,experiments/runs/treatment2/trials/trial2/nasa93dem/step09/metrics.csv
+2,2,software project planning,10,race,937,85,9.071505,experiments/runs/treatment2/trials/trial2/nasa93dem/step10/metrics.csv
+2,2,video encoding,1,remember,130,130,100.000000,experiments/runs/treatment2/trials/trial2/x264/step01/metrics.csv
+2,2,video encoding,2,guess,123,29,23.577236,experiments/runs/treatment2/trials/trial2/x264/step02/metrics.csv
+2,2,video encoding,3,certify,154,31,20.129870,experiments/runs/treatment2/trials/trial2/x264/step03/metrics.csv
+2,2,video encoding,4,flow,232,68,29.310345,experiments/runs/treatment2/trials/trial2/x264/step04/metrics.csv
+2,2,video encoding,5,blame,286,52,18.181818,experiments/runs/treatment2/trials/trial2/x264/step05/metrics.csv
+2,2,video encoding,6,justify,329,43,13.069909,experiments/runs/treatment2/trials/trial2/x264/step06/metrics.csv
+2,2,video encoding,7,choose,385,57,14.805195,experiments/runs/treatment2/trials/trial2/x264/step07/metrics.csv
+2,2,video encoding,8,fix,425,40,9.411765,experiments/runs/treatment2/trials/trial2/x264/step08/metrics.csv
+2,2,video encoding,9,spot,481,54,11.226611,experiments/runs/treatment2/trials/trial2/x264/step09/metrics.csv
+2,2,video encoding,10,race,543,62,11.418048,experiments/runs/treatment2/trials/trial2/x264/step10/metrics.csv
+2,3,machine-learning model configuration,1,remember,108,108,100.000000,experiments/runs/treatment2/trials/trial3/health_closedissues/step01/metrics.csv
+2,3,machine-learning model configuration,2,guess,127,73,57.480315,experiments/runs/treatment2/trials/trial3/health_closedissues/step02/metrics.csv
+2,3,machine-learning model configuration,3,certify,184,57,30.978261,experiments/runs/treatment2/trials/trial3/health_closedissues/step03/metrics.csv
+2,3,machine-learning model configuration,4,flow,249,57,22.891566,experiments/runs/treatment2/trials/trial3/health_closedissues/step04/metrics.csv
+2,3,machine-learning model configuration,5,blame,314,65,20.700637,experiments/runs/treatment2/trials/trial3/health_closedissues/step05/metrics.csv
+2,3,machine-learning model configuration,6,justify,369,54,14.634146,experiments/runs/treatment2/trials/trial3/health_closedissues/step06/metrics.csv
+2,3,machine-learning model configuration,7,choose,456,87,19.078947,experiments/runs/treatment2/trials/trial3/health_closedissues/step07/metrics.csv
+2,3,machine-learning model configuration,8,fix,504,42,8.333333,experiments/runs/treatment2/trials/trial3/health_closedissues/step08/metrics.csv
+2,3,machine-learning model configuration,9,spot,575,70,12.173913,experiments/runs/treatment2/trials/trial3/health_closedissues/step09/metrics.csv
+2,3,machine-learning model configuration,10,race,636,60,9.433962,experiments/runs/treatment2/trials/trial3/health_closedissues/step10/metrics.csv
+2,3,software project planning,1,remember,190,190,100.000000,experiments/runs/treatment2/trials/trial3/nasa93dem/step01/metrics.csv
+2,3,software project planning,2,guess,183,34,18.579235,experiments/runs/treatment2/trials/trial3/nasa93dem/step02/metrics.csv
+2,3,software project planning,3,certify,247,64,25.910931,experiments/runs/treatment2/trials/trial3/nasa93dem/step03/metrics.csv
+2,3,software project planning,4,flow,319,72,22.570533,experiments/runs/treatment2/trials/trial3/nasa93dem/step04/metrics.csv
+2,3,software project planning,5,blame,407,89,21.867322,experiments/runs/treatment2/trials/trial3/nasa93dem/step05/metrics.csv
+2,3,software project planning,6,justify,472,65,13.771186,experiments/runs/treatment2/trials/trial3/nasa93dem/step06/metrics.csv
+2,3,software project planning,7,choose,547,75,13.711152,experiments/runs/treatment2/trials/trial3/nasa93dem/step07/metrics.csv
+2,3,software project planning,8,fix,612,61,9.967320,experiments/runs/treatment2/trials/trial3/nasa93dem/step08/metrics.csv
+2,3,software project planning,9,spot,671,59,8.792846,experiments/runs/treatment2/trials/trial3/nasa93dem/step09/metrics.csv
+2,3,software project planning,10,race,716,45,6.284916,experiments/runs/treatment2/trials/trial3/nasa93dem/step10/metrics.csv
+2,3,video encoding,1,remember,104,104,100.000000,experiments/runs/treatment2/trials/trial3/x264/step01/metrics.csv
+2,3,video encoding,2,guess,196,92,46.938776,experiments/runs/treatment2/trials/trial3/x264/step02/metrics.csv
+2,3,video encoding,3,certify,322,126,39.130435,experiments/runs/treatment2/trials/trial3/x264/step03/metrics.csv
+2,3,video encoding,4,flow,425,106,24.941176,experiments/runs/treatment2/trials/trial3/x264/step04/metrics.csv
+2,3,video encoding,5,blame,505,80,15.841584,experiments/runs/treatment2/trials/trial3/x264/step05/metrics.csv
+2,3,video encoding,6,justify,603,98,16.252073,experiments/runs/treatment2/trials/trial3/x264/step06/metrics.csv
+2,3,video encoding,7,choose,708,105,14.830508,experiments/runs/treatment2/trials/trial3/x264/step07/metrics.csv
+2,3,video encoding,8,fix,808,100,12.376238,experiments/runs/treatment2/trials/trial3/x264/step08/metrics.csv
+2,3,video encoding,9,spot,907,99,10.915105,experiments/runs/treatment2/trials/trial3/x264/step09/metrics.csv
+2,3,video encoding,10,race,1000,93,9.300000,experiments/runs/treatment2/trials/trial3/x264/step10/metrics.csv
+3,1,machine-learning model configuration,step01,remember,110,110,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step01/metrics.csv
+3,1,machine-learning model configuration,02,guess,112,112,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step02/metrics.csv
+3,1,machine-learning model configuration,03,certify,115,115,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step03/metrics.csv
+3,1,machine-learning model configuration,04,flow,139,139,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step04/metrics.csv
+3,1,machine-learning model configuration,05,blame,103,103,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step05/metrics.csv
+treatment3,trial1,health_closedissues,step06,justify,136,136,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step06/metrics.csv
+3,1,health_closedissues,07,choose,114,114,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step07/metrics.csv
+3,1,health_closedissues,08,fix,97,97,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step08/metrics.csv
+treatment3,trial1,Health-ClosedIssues,step09,spot,82,82,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step09/metrics.csv
+3,1,health_closedissues,10,race_selector,97,97,100.000000,experiments/runs/treatment3/trials/trial1/health_closedissues/step10/metrics.csv
+3,1,software project planning,01,remember,137,137,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step01/metrics.csv
+3,1,software project planning,02,guess,130,130,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step02/metrics.csv
+3,1,software project planning,03,certify,106,106,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step03/metrics.csv
+3,1,software project planning,04,flow,126,126,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step04/metrics.csv
+3,1,software project planning,05,blame,125,125,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step05/metrics.csv
+3,1,software project planning,06,justify,107,107,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step06/metrics.csv
+3,1,software project planning,07,choose,113,113,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step07/metrics.csv
+3,1,software project planning,08,fix,141,141,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step08/metrics.csv
+3,1,software project planning,step09,spot,109,109,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step09/metrics.csv
+3,1,software project planning,10,race,131,131,100.000000,experiments/runs/treatment3/trials/trial1/nasa93dem/step10/metrics.csv
+3,1,video encoding,01,remember,106,106,100.000000,experiments/runs/treatment3/trials/trial1/x264/step01/metrics.csv
+3,1,video encoding,02,guess,83,83,100.000000,experiments/runs/treatment3/trials/trial1/x264/step02/metrics.csv
+3,1,video encoding,03,certify,92,92,100.000000,experiments/runs/treatment3/trials/trial1/x264/step03/metrics.csv
+3,1,video encoding,04,flow,117,117,100.000000,experiments/runs/treatment3/trials/trial1/x264/step04/metrics.csv
+3,1,video encoding,05,blame,110,110,100.000000,experiments/runs/treatment3/trials/trial1/x264/step05/metrics.csv
+3,1,video encoding,06,justify,133,133,100.000000,experiments/runs/treatment3/trials/trial1/x264/step06/metrics.csv
+3,1,video encoding,07,choose,83,83,100.000000,experiments/runs/treatment3/trials/trial1/x264/step07/metrics.csv
+3,1,video encoding,step08,fix,77,77,100.000000,experiments/runs/treatment3/trials/trial1/x264/step08/metrics.csv
+3,1,video encoding,09,spot,138,138,100.000000,experiments/runs/treatment3/trials/trial1/x264/step09/metrics.csv
+3,1,video encoding,10,race,123,123,100.000000,experiments/runs/treatment3/trials/trial1/x264/step10/metrics.csv
+treatment3,trial2,health_closedissues,step01,remember,194,194,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step01/metrics.csv
+3,2,health_closedissues,02,guess,145,145,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step02/metrics.csv
+3,2,health_closedissues,03,certify,75,75,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step03/metrics.csv
+3,2,health_closedissues,04,flow,120,120,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step04/metrics.csv
+3,2,health_closedissues,05,blame,181,181,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step05/metrics.csv
+3,2,health_closedissues,06,justify,101,101,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step06/metrics.csv
+3,2,health_closedissues,07,choose,127,127,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step07/metrics.csv
+3,2,health_closedissues,08,fix,135,135,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step08/metrics.csv
+3,2,health_closedissues,09,spot,145,145,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step09/metrics.csv
+3,2,health_closedissues,10,race,150,150,100.000000,experiments/runs/treatment3/trials/trial2/health_closedissues/step10/metrics.csv
+3,2,nasa93dem,01,remember,128,128,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step01/metrics.csv
+3,2,nasa93dem,02,guess,102,102,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step02/metrics.csv
+3,2,nasa93dem,03,certify,149,149,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step03/metrics.csv
+3,2,NASA93DEM,04,flow,111,111,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step04/metrics.csv
+3,2,nasa93dem,05,blame,149,149,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step05/metrics.csv
+3,2,nasa93dem,06,justify,194,194,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step06/metrics.csv
+3,2,nasa93dem,07,choose,137,137,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step07/metrics.csv
+3,2,nasa93dem,08,fix,92,92,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step08/metrics.csv
+3,2,NASA93DEM,09,spot,90,90,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step09/metrics.csv
+3,2,NASA93DEM,10,race,146,146,100.000000,experiments/runs/treatment3/trials/trial2/nasa93dem/step10/metrics.csv
+3,2,x264,01,remember,144,144,100.000000,experiments/runs/treatment3/trials/trial2/x264/step01/metrics.csv
+3,2,x264,02,guess,160,160,100.000000,experiments/runs/treatment3/trials/trial2/x264/step02/metrics.csv
+3,2,x264,03,certify,119,119,100.000000,experiments/runs/treatment3/trials/trial2/x264/step03/metrics.csv
+3,2,x264,04,flow,165,165,100.000000,experiments/runs/treatment3/trials/trial2/x264/step04/metrics.csv
+3,2,x264,05,blame,149,149,100.000000,experiments/runs/treatment3/trials/trial2/x264/step05/metrics.csv
+3,2,x264,06,justify,90,90,100.000000,experiments/runs/treatment3/trials/trial2/x264/step06/metrics.csv
+3,2,x264,07,choose,105,105,100.000000,experiments/runs/treatment3/trials/trial2/x264/step07/metrics.csv
+3,2,x264,08,fix,123,123,100.000000,experiments/runs/treatment3/trials/trial2/x264/step08/metrics.csv
+3,2,x264,09,spot,137,137,100.000000,experiments/runs/treatment3/trials/trial2/x264/step09/metrics.csv
+3,2,x264,10,race,100,100,100.000000,experiments/runs/treatment3/trials/trial2/x264/step10/metrics.csv
+3,3,health_closedissues,01,remember,150,150,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step01/metrics.csv
+3,3,health_closedissues,02,guess,175,175,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step02/metrics.csv
+3,3,health_closedissues,03,certify,144,144,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step03/metrics.csv
+3,3,health_closedissues,04,flow,156,156,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step04/metrics.csv
+3,3,health_closedissues,05,blame,125,125,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step05/metrics.csv
+3,3,Health-ClosedIssues model configuration,06,justify,130,130,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step06/metrics.csv
+3,3,health_closedissues,07,choose,144,144,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step07/metrics.csv
+3,3,health_closedissues,08,fix,107,107,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step08/metrics.csv
+3,3,health_closedissues,09,spot,111,111,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step09/metrics.csv
+3,3,health_closedissues,10,race,153,153,100.000000,experiments/runs/treatment3/trials/trial3/health_closedissues/step10/metrics.csv
+3,3,nasa93dem,01,remember,160,160,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step01/metrics.csv
+3,3,nasa93dem,02,guess,128,128,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step02/metrics.csv
+3,3,nasa93dem,03,certify,96,96,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step03/metrics.csv
+3,3,nasa93dem,04,flow,150,150,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step04/metrics.csv
+3,3,nasa93dem,05,blame,126,126,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step05/metrics.csv
+3,3,NASA93DEM software-project planning,06,justify,8744.05,8744.05,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step06/metrics.csv
+3,3,nasa93dem,07,choose,100,100,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step07/metrics.csv
+3,3,nasa93dem,08,fix,123,123,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step08/metrics.csv
+3,3,nasa93dem,09,spot,137,137,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step09/metrics.csv
+3,3,nasa93dem,10,race,143,143,100.000000,experiments/runs/treatment3/trials/trial3/nasa93dem/step10/metrics.csv
+3,3,x264,01,remember,170,170,100.000000,experiments/runs/treatment3/trials/trial3/x264/step01/metrics.csv
+3,3,x264,02,guess,163,163,100.000000,experiments/runs/treatment3/trials/trial3/x264/step02/metrics.csv
+3,3,x264,03,certify,137,137,100.000000,experiments/runs/treatment3/trials/trial3/x264/step03/metrics.csv
+3,3,x264,04,flow,115,115,100.000000,experiments/runs/treatment3/trials/trial3/x264/step04/metrics.csv
+3,3,x264,05,blame,124,124,100.000000,experiments/runs/treatment3/trials/trial3/x264/step05/metrics.csv
+3,3,x264,06,justify,124,124,100.000000,experiments/runs/treatment3/trials/trial3/x264/step06/metrics.csv
+3,3,x264,07,choose,120,120,100.000000,experiments/runs/treatment3/trials/trial3/x264/step07/metrics.csv
+3,3,x264,08,fix,134,134,100.000000,experiments/runs/treatment3/trials/trial3/x264/step08/metrics.csv
+3,3,x264,09,spot_anomaly_detection,117,117,100.000000,experiments/runs/treatment3/trials/trial3/x264/step09/metrics.csv
+3,3,x264,10,race,117,117,100.000000,experiments/runs/treatment3/trials/trial3/x264/step10/metrics.csv
+4,1,health_closedissues,1,remember,196,196,100.000000,experiments/runs/treatment4/trials/trial1/health_closedissues/step01/metrics.csv
+4,1,health_closedissues,2,guess,312,183,58.653846,experiments/runs/treatment4/trials/trial1/health_closedissues/step02/metrics.csv
+4,1,health_closedissues,3,certify,484,172,35.537190,experiments/runs/treatment4/trials/trial1/health_closedissues/step03/metrics.csv
+4,1,health_closedissues,4,flow,623,139,22.311396,experiments/runs/treatment4/trials/trial1/health_closedissues/step04/metrics.csv
+4,1,health_closedissues,5,blame,788,165,20.939086,experiments/runs/treatment4/trials/trial1/health_closedissues/step05/metrics.csv
+4,1,health_closedissues,6,justify,1002,214,21.357285,experiments/runs/treatment4/trials/trial1/health_closedissues/step06/metrics.csv
+4,1,health_closedissues,7,choose,1129,127,11.248893,experiments/runs/treatment4/trials/trial1/health_closedissues/step07/metrics.csv
+4,1,health_closedissues,8,fix,1245,116,9.317269,experiments/runs/treatment4/trials/trial1/health_closedissues/step08/metrics.csv
+4,1,health_closedissues,9,spot,1410,165,11.702128,experiments/runs/treatment4/trials/trial1/health_closedissues/step09/metrics.csv
+4,1,health_closedissues,10,race,1578,168,10.646388,experiments/runs/treatment4/trials/trial1/health_closedissues/step10/metrics.csv
+4,1,nasa93dem,1,remember,131,131,100.000000,experiments/runs/treatment4/trials/trial1/nasa93dem/step01/metrics.csv
+4,1,nasa93dem,2,guess,284,153,53.873239,experiments/runs/treatment4/trials/trial1/nasa93dem/step02/metrics.csv
+4,1,nasa93dem,3,certify,406,122,30.049261,experiments/runs/treatment4/trials/trial1/nasa93dem/step03/metrics.csv
+4,1,nasa93dem,4,flow,546,140,25.641026,experiments/runs/treatment4/trials/trial1/nasa93dem/step04/metrics.csv
+4,1,nasa93dem,5,blame,701,155,22.111270,experiments/runs/treatment4/trials/trial1/nasa93dem/step05/metrics.csv
+4,1,nasa93dem,6,justify,856,155,18.107477,experiments/runs/treatment4/trials/trial1/nasa93dem/step06/metrics.csv
+4,1,nasa93dem,7,choose,976,120,12.295082,experiments/runs/treatment4/trials/trial1/nasa93dem/step07/metrics.csv
+4,1,nasa93dem,8,fix,1093,117,10.704483,experiments/runs/treatment4/trials/trial1/nasa93dem/step08/metrics.csv
+4,1,nasa93dem,9,spot,1227,134,10.920945,experiments/runs/treatment4/trials/trial1/nasa93dem/step09/metrics.csv
+4,1,nasa93dem,10,race,1380,153,11.086957,experiments/runs/treatment4/trials/trial1/nasa93dem/step10/metrics.csv
+4,1,x264,1,remember,166,166,100.000000,experiments/runs/treatment4/trials/trial1/x264/step01/metrics.csv
+4,1,video encoding,2,guess,275,109,39.636364,experiments/runs/treatment4/trials/trial1/x264/step02/metrics.csv
+4,1,x264,3,certify,431,156,36.194896,experiments/runs/treatment4/trials/trial1/x264/step03/metrics.csv
+4,1,x264,4,flow,584,153,26.198630,experiments/runs/treatment4/trials/trial1/x264/step04/metrics.csv
+4,1,x264,5,blame,763,179,23.460026,experiments/runs/treatment4/trials/trial1/x264/step05/metrics.csv
+4,1,x264,6,justify,911,148,16.245884,experiments/runs/treatment4/trials/trial1/x264/step06/metrics.csv
+4,1,x264,7,choose,1119,208,18.588025,experiments/runs/treatment4/trials/trial1/x264/step07/metrics.csv
+4,1,x264,8,fix,1233,114,9.245742,experiments/runs/treatment4/trials/trial1/x264/step08/metrics.csv
+4,1,x264,9,spot,1432,199,13.896648,experiments/runs/treatment4/trials/trial1/x264/step09/metrics.csv
+4,1,x264,10,race,1620,188,11.604938,experiments/runs/treatment4/trials/trial1/x264/step10/metrics.csv
+4,2,model configuration and quality,1,remember,68,68,100.000000,experiments/runs/treatment4/trials/trial2/health_closedissues/step01/metrics.csv
+4,2,model configuration and quality,02,guess,144,76,52.777778,experiments/runs/treatment4/trials/trial2/health_closedissues/step02/metrics.csv
+4,2,model configuration and quality,3,certify,231,87,37.662338,experiments/runs/treatment4/trials/trial2/health_closedissues/step03/metrics.csv
+4,2,model configuration and quality,4,flow,288,57,19.791667,experiments/runs/treatment4/trials/trial2/health_closedissues/step04/metrics.csv
+4,2,model configuration and quality,5,blame,360,72,20.000000,experiments/runs/treatment4/trials/trial2/health_closedissues/step05/metrics.csv
+4,2,model configuration and quality,6,justify,415,55,13.253012,experiments/runs/treatment4/trials/trial2/health_closedissues/step06/metrics.csv
+4,2,model configuration and quality,07,choose,473,58,12.262156,experiments/runs/treatment4/trials/trial2/health_closedissues/step07/metrics.csv
+4,2,model configuration and quality,8,fix,566,93,16.431095,experiments/runs/treatment4/trials/trial2/health_closedissues/step08/metrics.csv
+4,2,model configuration and quality,9,spot,633,67,10.584518,experiments/runs/treatment4/trials/trial2/health_closedissues/step09/metrics.csv
+4,2,model configuration and quality,10,race,692,59,8.526012,experiments/runs/treatment4/trials/trial2/health_closedissues/step10/metrics.csv
+4,2,software project estimation,1,remember,82,82,100.000000,experiments/runs/treatment4/trials/trial2/nasa93dem/step01/metrics.csv
+4,2,software project estimation,2,guess,132,50,37.878788,experiments/runs/treatment4/trials/trial2/nasa93dem/step02/metrics.csv
+4,2,software project estimation,3,certify,168,37,22.023810,experiments/runs/treatment4/trials/trial2/nasa93dem/step03/metrics.csv
+4,2,software project estimation,4,flow,220,53,24.090909,experiments/runs/treatment4/trials/trial2/nasa93dem/step04/metrics.csv
+4,2,software project estimation,5,blame,268,49,18.283582,experiments/runs/treatment4/trials/trial2/nasa93dem/step05/metrics.csv
+4,2,software project estimation,6,justify,332,65,19.578313,experiments/runs/treatment4/trials/trial2/nasa93dem/step06/metrics.csv
+4,2,software project estimation,07,choose,374,43,11.497326,experiments/runs/treatment4/trials/trial2/nasa93dem/step07/metrics.csv
+4,2,software project estimation,08,fix,435,62,14.252874,experiments/runs/treatment4/trials/trial2/nasa93dem/step08/metrics.csv
+4,2,software project estimation,9,spot,493,58,11.764706,experiments/runs/treatment4/trials/trial2/nasa93dem/step09/metrics.csv
+4,2,software project estimation,10,race,531,39,7.344633,experiments/runs/treatment4/trials/trial2/nasa93dem/step10/metrics.csv
+4,2,video encoding,1,remember,54,54,100.000000,experiments/runs/treatment4/trials/trial2/x264/step01/metrics.csv
+4,2,video encoding,2,guess,94,41,43.617021,experiments/runs/treatment4/trials/trial2/x264/step02/metrics.csv
+4,2,video encoding,3,certify,161,68,42.236025,experiments/runs/treatment4/trials/trial2/x264/step03/metrics.csv
+4,2,video encoding,4,flow,198,45,22.727273,experiments/runs/treatment4/trials/trial2/x264/step04/metrics.csv
+4,2,video encoding,5,blame,255,57,22.352941,experiments/runs/treatment4/trials/trial2/x264/step05/metrics.csv
+4,2,video encoding,6,justify,294,39,13.265306,experiments/runs/treatment4/trials/trial2/x264/step06/metrics.csv
+4,2,video_encoding,7,choose,355,61,17.183099,experiments/runs/treatment4/trials/trial2/x264/step07/metrics.csv
+4,2,video encoding,8,fix,407,52,12.776413,experiments/runs/treatment4/trials/trial2/x264/step08/metrics.csv
+4,2,video encoding,9,spot,477,70,14.675052,experiments/runs/treatment4/trials/trial2/x264/step09/metrics.csv
+4,2,video encoding,10,race,525,48,9.142857,experiments/runs/treatment4/trials/trial2/x264/step10/metrics.csv
+4,3,model configuration and quality,1,remember,88,88,100.000000,experiments/runs/treatment4/trials/trial3/health_closedissues/step01/metrics.csv
+4,3,model configuration and quality,2,guess,159,71,44.654088,experiments/runs/treatment4/trials/trial3/health_closedissues/step02/metrics.csv
+4,3,model configuration and quality,3,certify,238,93,39.075630,experiments/runs/treatment4/trials/trial3/health_closedissues/step03/metrics.csv
+4,3,model configuration and quality,4,flow,302,82,27.152318,experiments/runs/treatment4/trials/trial3/health_closedissues/step04/metrics.csv
+4,3,model configuration and quality,5,blame,380,78,20.526316,experiments/runs/treatment4/trials/trial3/health_closedissues/step05/metrics.csv
+4,3,model configuration and quality,6,justify,449,69,15.367483,experiments/runs/treatment4/trials/trial3/health_closedissues/step06/metrics.csv
+4,3,model configuration and quality,7,choose,501,63,12.574850,experiments/runs/treatment4/trials/trial3/health_closedissues/step07/metrics.csv
+4,3,model configuration and quality,8,fix,604,121,20.033113,experiments/runs/treatment4/trials/trial3/health_closedissues/step08/metrics.csv
+4,3,model configuration and quality,9,spot,683,79,11.566618,experiments/runs/treatment4/trials/trial3/health_closedissues/step09/metrics.csv
+4,3,model configuration and quality,10,race,760,77,10.131579,experiments/runs/treatment4/trials/trial3/health_closedissues/step10/metrics.csv
+4,3,software project estimation,1,remember,80,80,100.000000,experiments/runs/treatment4/trials/trial3/nasa93dem/step01/metrics.csv
+4,3,software project estimation,2,guess,150,70,46.666667,experiments/runs/treatment4/trials/trial3/nasa93dem/step02/metrics.csv
+4,3,software project estimation,3,certify,217,67,30.875576,experiments/runs/treatment4/trials/trial3/nasa93dem/step03/metrics.csv
+4,3,software project estimation,4,flow,280,63,22.500000,experiments/runs/treatment4/trials/trial3/nasa93dem/step04/metrics.csv
+4,3,software project estimation,5,blame,374,115,30.748663,experiments/runs/treatment4/trials/trial3/nasa93dem/step05/metrics.csv
+4,3,software project estimation,6,justify,422,48,11.374408,experiments/runs/treatment4/trials/trial3/nasa93dem/step06/metrics.csv
+4,3,software project estimation,7,choose,493,71,14.401623,experiments/runs/treatment4/trials/trial3/nasa93dem/step07/metrics.csv
+4,3,software project estimation,8,fix,586,93,15.870307,experiments/runs/treatment4/trials/trial3/nasa93dem/step08/metrics.csv
+4,3,software project estimation,9,spot,682,96,14.076246,experiments/runs/treatment4/trials/trial3/nasa93dem/step09/metrics.csv
+4,3,software project estimation,10,race,766,84,10.966057,experiments/runs/treatment4/trials/trial3/nasa93dem/step10/metrics.csv
+4,3,video encoding,1,remember,74,74,100.000000,experiments/runs/treatment4/trials/trial3/x264/step01/metrics.csv
+4,3,video encoding,2,guess,162,88,54.320988,experiments/runs/treatment4/trials/trial3/x264/step02/metrics.csv
+4,3,video encoding,3,certify,207,47,22.705314,experiments/runs/treatment4/trials/trial3/x264/step03/metrics.csv
+4,3,video encoding,4,flow,251,56,22.310757,experiments/runs/treatment4/trials/trial3/x264/step04/metrics.csv
+4,3,video encoding,5,blame,298,48,16.107383,experiments/runs/treatment4/trials/trial3/x264/step05/metrics.csv
+4,3,video encoding,6,justify,333,36,10.810811,experiments/runs/treatment4/trials/trial3/x264/step06/metrics.csv
+4,3,video encoding,7,choose,390,57,14.615385,experiments/runs/treatment4/trials/trial3/x264/step07/metrics.csv
+4,3,video encoding,8,fix,453,66,14.569536,experiments/runs/treatment4/trials/trial3/x264/step08/metrics.csv
+4,3,video encoding,9,spot,520,68,13.076923,experiments/runs/treatment4/trials/trial3/x264/step09/metrics.csv
+4,3,video encoding,10,race,589,69,11.714771,experiments/runs/treatment4/trials/trial3/x264/step10/metrics.csv
+5,1,model configuration and quality,1,remember,82,82,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step01/metrics.csv
+5,1,model configuration and quality,2,guess,79,79,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step02/metrics.csv
+5,1,model configuration and quality,3,certify,81,81,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step03/metrics.csv
+5,1,model configuration and quality,4,flow,61,61,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step04/metrics.csv
+5,1,model configuration and quality,5,blame,91,91,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step05/metrics.csv
+5,1,model configuration and quality,6,justify,59,59,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step06/metrics.csv
+5,1,model configuration and quality,7,choose,84,84,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step07/metrics.csv
+5,1,model configuration and quality,8,fix,62,62,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step08/metrics.csv
+5,1,model configuration and quality,9,spot,69,69,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step09/metrics.csv
+5,1,model configuration and quality,10,race,82,82,100.000000,experiments/runs/treatment5/trials/trial1/health_closedissues/step10/metrics.csv
+5,1,software project estimation,1,remember,81,81,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step01/metrics.csv
+5,1,software project estimation,2,guess,91,91,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step02/metrics.csv
+5,1,software project estimation,3,certify,131,131,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step03/metrics.csv
+5,1,software project estimation,4,flow,74,74,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step04/metrics.csv
+5,1,software project estimation,5,blame,67,67,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step05/metrics.csv
+5,1,software project estimation,6,justify,67,67,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step06/metrics.csv
+5,1,software project estimation,7,choose,72,72,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step07/metrics.csv
+5,1,software project estimation,8,fix,106,106,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step08/metrics.csv
+5,1,software project estimation,9,spot,81,81,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step09/metrics.csv
+5,1,software project estimation,10,race,64,64,100.000000,experiments/runs/treatment5/trials/trial1/nasa93dem/step10/metrics.csv
+5,1,video encoding,1,remember,94,94,100.000000,experiments/runs/treatment5/trials/trial1/x264/step01/metrics.csv
+5,1,video encoding,2,guess,91,91,100.000000,experiments/runs/treatment5/trials/trial1/x264/step02/metrics.csv
+5,1,video encoding,3,certify,79,79,100.000000,experiments/runs/treatment5/trials/trial1/x264/step03/metrics.csv
+5,1,video encoding,4,flow,61,61,100.000000,experiments/runs/treatment5/trials/trial1/x264/step04/metrics.csv
+5,1,video encoding,5,blame,107,107,100.000000,experiments/runs/treatment5/trials/trial1/x264/step05/metrics.csv
+5,1,video encoding,6,justify,75,75,100.000000,experiments/runs/treatment5/trials/trial1/x264/step06/metrics.csv
+5,1,video encoding,7,choose,73,73,100.000000,experiments/runs/treatment5/trials/trial1/x264/step07/metrics.csv
+5,1,video encoding,8,fix,75,75,100.000000,experiments/runs/treatment5/trials/trial1/x264/step08/metrics.csv
+5,1,video encoding,9,spot,78,78,100.000000,experiments/runs/treatment5/trials/trial1/x264/step09/metrics.csv
+5,1,video encoding,10,race,58,58,100.000000,experiments/runs/treatment5/trials/trial1/x264/step10/metrics.csv
+5,2,model configuration and quality,1,remember,50,50,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step01/metrics.csv
+5,2,model configuration and quality,2,guess,92,92,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step02/metrics.csv
+5,2,model configuration and quality,3,certify,64,64,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step03/metrics.csv
+5,2,model configuration and quality,4,flow,77,77,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step04/metrics.csv
+5,2,model configuration and quality,5,blame,101,101,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step05/metrics.csv
+5,2,model configuration and quality,6,justify,57,57,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step06/metrics.csv
+5,2,model configuration and quality,7,choose,50,50,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step07/metrics.csv
+5,2,model configuration and quality,8,fix,97,97,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step08/metrics.csv
+5,2,model configuration and quality,9,spot,92,92,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step09/metrics.csv
+5,2,model configuration and quality,10,race,80,80,100.000000,experiments/runs/treatment5/trials/trial2/health_closedissues/step10/metrics.csv
+5,2,software project estimation,1,remember,84,84,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step01/metrics.csv
+5,2,software project estimation,2,guess,119,119,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step02/metrics.csv
+5,2,software project estimation,3,certify,132,132,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step03/metrics.csv
+5,2,software project estimation,4,flow,63,63,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step04/metrics.csv
+5,2,software project estimation,5,blame,70,70,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step05/metrics.csv
+5,2,software project estimation,6,justify,112,112,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step06/metrics.csv
+5,2,software project estimation,7,choose,64,64,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step07/metrics.csv
+5,2,software project estimation,8,fix,117,117,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step08/metrics.csv
+5,2,software project estimation,9,spot,74,74,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step09/metrics.csv
+5,2,software project estimation,10,race,63,63,100.000000,experiments/runs/treatment5/trials/trial2/nasa93dem/step10/metrics.csv
+5,2,video encoding,1,remember,84,84,100.000000,experiments/runs/treatment5/trials/trial2/x264/step01/metrics.csv
+5,2,video encoding,2,guess,81,81,100.000000,experiments/runs/treatment5/trials/trial2/x264/step02/metrics.csv
+5,2,video encoding,3,certify,139,139,100.000000,experiments/runs/treatment5/trials/trial2/x264/step03/metrics.csv
+5,2,video encoding,4,flow,49,49,100.000000,experiments/runs/treatment5/trials/trial2/x264/step04/metrics.csv
+5,2,video encoding,5,blame,47,47,100.000000,experiments/runs/treatment5/trials/trial2/x264/step05/metrics.csv
+5,2,video encoding,6,justify,68,68,100.000000,experiments/runs/treatment5/trials/trial2/x264/step06/metrics.csv
+5,2,video encoding,7,choose,62,62,100.000000,experiments/runs/treatment5/trials/trial2/x264/step07/metrics.csv
+5,2,video encoding,8,fix,89,89,100.000000,experiments/runs/treatment5/trials/trial2/x264/step08/metrics.csv
+5,2,video encoding,9,spot,85,85,100.000000,experiments/runs/treatment5/trials/trial2/x264/step09/metrics.csv
+5,2,video encoding,10,race,96,96,100.000000,experiments/runs/treatment5/trials/trial2/x264/step10/metrics.csv
+5,3,model configuration and quality,1,remember,48,48,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step01/metrics.csv
+5,3,model configuration and quality,2,guess,73,73,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step02/metrics.csv
+5,3,model configuration and quality,3,certify,80,80,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step03/metrics.csv
+5,3,model configuration and quality,4,flow,80,80,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step04/metrics.csv
+5,3,model configuration and quality,5,blame,83,83,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step05/metrics.csv
+5,3,model configuration and quality,6,justify,51,51,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step06/metrics.csv
+5,3,model configuration and quality,7,choose,87,87,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step07/metrics.csv
+5,3,model configuration and quality,8,fix,80,80,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step08/metrics.csv
+5,3,model configuration and quality,9,spot,74,74,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step09/metrics.csv
+5,3,model configuration and quality,10,race,52,52,100.000000,experiments/runs/treatment5/trials/trial3/health_closedissues/step10/metrics.csv
+5,3,software project estimation,1,remember,89,89,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step01/metrics.csv
+5,3,software project estimation,2,guess,72,72,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step02/metrics.csv
+5,3,software project estimation,3,certify,74,74,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step03/metrics.csv
+5,3,software project estimation,4,flow,96,96,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step04/metrics.csv
+5,3,software project estimation,5,blame,78,78,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step05/metrics.csv
+5,3,software project estimation,6,justify,84,84,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step06/metrics.csv
+5,3,software project estimation,7,choose,74,74,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step07/metrics.csv
+5,3,software project estimation,8,fix,114,114,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step08/metrics.csv
+5,3,software project estimation,9,spot,49,49,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step09/metrics.csv
+5,3,software project estimation,10,race,92,92,100.000000,experiments/runs/treatment5/trials/trial3/nasa93dem/step10/metrics.csv
+5,3,video encoding,1,remember,90,90,100.000000,experiments/runs/treatment5/trials/trial3/x264/step01/metrics.csv
+5,3,video encoding,2,guess,90,90,100.000000,experiments/runs/treatment5/trials/trial3/x264/step02/metrics.csv
+5,3,video encoding,3,certify,93,93,100.000000,experiments/runs/treatment5/trials/trial3/x264/step03/metrics.csv
+5,3,video encoding,4,flow,86,86,100.000000,experiments/runs/treatment5/trials/trial3/x264/step04/metrics.csv
+5,3,video encoding,5,blame,66,66,100.000000,experiments/runs/treatment5/trials/trial3/x264/step05/metrics.csv
+5,3,video encoding,6,justify,63,63,100.000000,experiments/runs/treatment5/trials/trial3/x264/step06/metrics.csv
+5,3,video encoding,7,choose,53,53,100.000000,experiments/runs/treatment5/trials/trial3/x264/step07/metrics.csv
+5,3,video encoding,8,fix,70,70,100.000000,experiments/runs/treatment5/trials/trial3/x264/step08/metrics.csv
+5,3,video encoding,9,spot,87,87,100.000000,experiments/runs/treatment5/trials/trial3/x264/step09/metrics.csv
+5,3,video encoding,10,race,73,73,100.000000,experiments/runs/treatment5/trials/trial3/x264/step10/metrics.csv
+6,1,model configuration and quality,1,remember,65,65,100.000000,experiments/runs/treatment6/trials/trial1/health_closedissues/step01/metrics.csv
+6,1,model configuration and quality,2,guess,126,61,48.412698,experiments/runs/treatment6/trials/trial1/health_closedissues/step02/metrics.csv
+6,1,model configuration and quality,3,certify,170,46,27.058824,experiments/runs/treatment6/trials/trial1/health_closedissues/step03/metrics.csv
+6,1,model configuration and quality,4,flow,204,43,21.078431,experiments/runs/treatment6/trials/trial1/health_closedissues/step04/metrics.csv
+6,1,model configuration and quality,5,blame,252,54,21.428571,experiments/runs/treatment6/trials/trial1/health_closedissues/step05/metrics.csv
+6,1,model configuration and quality,6,justify,317,66,20.820189,experiments/runs/treatment6/trials/trial1/health_closedissues/step06/metrics.csv
+6,1,model configuration and quality,7,choose,348,31,8.908046,experiments/runs/treatment6/trials/trial1/health_closedissues/step07/metrics.csv
+6,1,model configuration and quality,8,fix,399,58,14.536341,experiments/runs/treatment6/trials/trial1/health_closedissues/step08/metrics.csv
+6,1,model configuration and quality,9,spot,442,50,11.312217,experiments/runs/treatment6/trials/trial1/health_closedissues/step09/metrics.csv
+6,1,model configuration and quality,10,race,500,60,12.000000,experiments/runs/treatment6/trials/trial1/health_closedissues/step10/metrics.csv
+6,1,software project estimation,1,remember,62,62,100.000000,experiments/runs/treatment6/trials/trial1/nasa93dem/step01/metrics.csv
+6,1,software project estimation,2,guess,112,50,44.642857,experiments/runs/treatment6/trials/trial1/nasa93dem/step02/metrics.csv
+6,1,software project estimation,3,certify,168,58,34.523810,experiments/runs/treatment6/trials/trial1/nasa93dem/step03/metrics.csv
+6,1,software project estimation,4,flow,209,42,20.095694,experiments/runs/treatment6/trials/trial1/nasa93dem/step04/metrics.csv
+6,1,software project estimation,5,blame,251,42,16.733068,experiments/runs/treatment6/trials/trial1/nasa93dem/step05/metrics.csv
+6,1,software project estimation,6,justify,300,50,16.666667,experiments/runs/treatment6/trials/trial1/nasa93dem/step06/metrics.csv
+6,1,software project estimation,7,choose,329,30,9.118541,experiments/runs/treatment6/trials/trial1/nasa93dem/step07/metrics.csv
+6,1,software project estimation,8,fix,389,61,15.681234,experiments/runs/treatment6/trials/trial1/nasa93dem/step08/metrics.csv
+6,1,software project estimation,9,spot,458,70,15.283843,experiments/runs/treatment6/trials/trial1/nasa93dem/step09/metrics.csv
+6,1,software project estimation,10,race,521,63,12.092131,experiments/runs/treatment6/trials/trial1/nasa93dem/step10/metrics.csv
+6,1,video encoding,1,remember,99,99,100.000000,experiments/runs/treatment6/trials/trial1/x264/step01/metrics.csv
+6,1,video encoding,2,guess,180,93,51.666667,experiments/runs/treatment6/trials/trial1/x264/step02/metrics.csv
+6,1,video encoding,3,certify,242,62,25.619835,experiments/runs/treatment6/trials/trial1/x264/step03/metrics.csv
+6,1,video encoding,4,flow,306,64,20.915033,experiments/runs/treatment6/trials/trial1/x264/step04/metrics.csv
+6,1,video encoding,5,blame,393,87,22.137405,experiments/runs/treatment6/trials/trial1/x264/step05/metrics.csv
+6,1,video encoding,6,justify,459,66,14.379085,experiments/runs/treatment6/trials/trial1/x264/step06/metrics.csv
+6,1,video encoding,7,choose,545,95,17.431193,experiments/runs/treatment6/trials/trial1/x264/step07/metrics.csv
+6,1,video encoding,8,fix,621,76,12.238325,experiments/runs/treatment6/trials/trial1/x264/step08/metrics.csv
+6,1,video encoding,9,spot,696,75,10.775862,experiments/runs/treatment6/trials/trial1/x264/step09/metrics.csv
+6,1,video encoding,10,race,748,52,6.951872,experiments/runs/treatment6/trials/trial1/x264/step10/metrics.csv
+6,2,model configuration and quality,1,remember,68,68,100.000000,experiments/runs/treatment6/trials/trial2/health_closedissues/step01/metrics.csv
+6,2,model configuration and quality,2,guess,146,79,54.109589,experiments/runs/treatment6/trials/trial2/health_closedissues/step02/metrics.csv
+6,2,model configuration and quality,3,certify,226,95,42.035398,experiments/runs/treatment6/trials/trial2/health_closedissues/step03/metrics.csv
+6,2,model configuration and quality,4,flow,313,118,37.699681,experiments/runs/treatment6/trials/trial2/health_closedissues/step04/metrics.csv
+6,2,model configuration and quality,5,blame,393,80,20.356234,experiments/runs/treatment6/trials/trial2/health_closedissues/step05/metrics.csv
+6,2,model configuration and quality,6,justify,459,66,14.379085,experiments/runs/treatment6/trials/trial2/health_closedissues/step06/metrics.csv
+6,2,model configuration and quality,7,choose,536,77,14.365672,experiments/runs/treatment6/trials/trial2/health_closedissues/step07/metrics.csv
+6,2,model configuration and quality,8,fix,597,61,10.217755,experiments/runs/treatment6/trials/trial2/health_closedissues/step08/metrics.csv
+6,2,model configuration and quality,9,spot,651,91,13.978495,experiments/runs/treatment6/trials/trial2/health_closedissues/step09/metrics.csv
+6,2,model configuration and quality,10,race,693,58,8.369408,experiments/runs/treatment6/trials/trial2/health_closedissues/step10/metrics.csv
+6,2,software project estimation,1,remember,75,75,100.000000,experiments/runs/treatment6/trials/trial2/nasa93dem/step01/metrics.csv
+6,2,software project estimation,2,guess,124,47,37.903226,experiments/runs/treatment6/trials/trial2/nasa93dem/step02/metrics.csv
+6,2,software project estimation,3,certify,183,60,32.786885,experiments/runs/treatment6/trials/trial2/nasa93dem/step03/metrics.csv
+6,2,software project estimation,4,flow,224,42,18.750000,experiments/runs/treatment6/trials/trial2/nasa93dem/step04/metrics.csv
+6,2,software project estimation,5,blame,280,59,21.071429,experiments/runs/treatment6/trials/trial2/nasa93dem/step05/metrics.csv
+6,2,software project estimation,6,justify,352,73,20.738636,experiments/runs/treatment6/trials/trial2/nasa93dem/step06/metrics.csv
+6,2,software project estimation,7,choose,406,55,13.546798,experiments/runs/treatment6/trials/trial2/nasa93dem/step07/metrics.csv
+6,2,software project estimation,8,fix,389,62,15.938303,experiments/runs/treatment6/trials/trial2/nasa93dem/step08/metrics.csv
+6,2,software project estimation,9,spot,438,50,11.415525,experiments/runs/treatment6/trials/trial2/nasa93dem/step09/metrics.csv
+6,2,software project estimation,10,race,479,46,9.603340,experiments/runs/treatment6/trials/trial2/nasa93dem/step10/metrics.csv
+6,2,video encoding,1,remember,86,86,100.000000,experiments/runs/treatment6/trials/trial2/x264/step01/metrics.csv
+6,2,video encoding,2,guess,148,73,49.324324,experiments/runs/treatment6/trials/trial2/x264/step02/metrics.csv
+6,2,video encoding,3,certify,210,67,31.904762,experiments/runs/treatment6/trials/trial2/x264/step03/metrics.csv
+6,2,video encoding,4,flow,284,76,26.760563,experiments/runs/treatment6/trials/trial2/x264/step04/metrics.csv
+6,2,video encoding,5,blame,334,52,15.568862,experiments/runs/treatment6/trials/trial2/x264/step05/metrics.csv
+6,2,video encoding,6,justify,408,76,18.627451,experiments/runs/treatment6/trials/trial2/x264/step06/metrics.csv
+6,2,video encoding,7,choose,488,80,16.393443,experiments/runs/treatment6/trials/trial2/x264/step07/metrics.csv
+6,2,video encoding,8,fix,551,63,11.433757,experiments/runs/treatment6/trials/trial2/x264/step08/metrics.csv
+6,2,video encoding,9,spot,623,72,11.556982,experiments/runs/treatment6/trials/trial2/x264/step09/metrics.csv
+6,2,video encoding,10,race,694,73,10.518732,experiments/runs/treatment6/trials/trial2/x264/step10/metrics.csv
+6,3,model configuration and quality,1,remember,81,81,100.000000,experiments/runs/treatment6/trials/trial3/health_closedissues/step01/metrics.csv
+6,3,model configuration and quality,2,guess,90,77,85.555556,experiments/runs/treatment6/trials/trial3/health_closedissues/step02/metrics.csv
+6,3,model configuration and quality,3,certify,144,51,35.416667,experiments/runs/treatment6/trials/trial3/health_closedissues/step03/metrics.csv
+6,3,model configuration and quality,4,flow,175,61,34.857143,experiments/runs/treatment6/trials/trial3/health_closedissues/step04/metrics.csv
+6,3,model configuration and quality,5,blame,223,48,21.524664,experiments/runs/treatment6/trials/trial3/health_closedissues/step05/metrics.csv
+6,3,model configuration and quality,6,justify,290,43,14.827586,experiments/runs/treatment6/trials/trial3/health_closedissues/step06/metrics.csv
+6,3,model configuration and quality,7,choose,333,37,11.111111,experiments/runs/treatment6/trials/trial3/health_closedissues/step07/metrics.csv
+6,3,model configuration and quality,8,fix,347,56,16.138329,experiments/runs/treatment6/trials/trial3/health_closedissues/step08/metrics.csv
+6,3,model configuration and quality,9,spot,457,68,14.879650,experiments/runs/treatment6/trials/trial3/health_closedissues/step09/metrics.csv
+6,3,model configuration and quality,10,race,510,47,9.215686,experiments/runs/treatment6/trials/trial3/health_closedissues/step10/metrics.csv
+6,3,software project estimation,1,remember,83,83,100.000000,experiments/runs/treatment6/trials/trial3/nasa93dem/step01/metrics.csv
+6,3,software project estimation,2,guess,163,59,36.196319,experiments/runs/treatment6/trials/trial3/nasa93dem/step02/metrics.csv
+6,3,software project estimation,3,certify,189,55,29.100529,experiments/runs/treatment6/trials/trial3/nasa93dem/step03/metrics.csv
+6,3,software project estimation,4,flow,217,30,13.824885,experiments/runs/treatment6/trials/trial3/nasa93dem/step04/metrics.csv
+6,3,software project estimation,5,blame,277,39,14.079422,experiments/runs/treatment6/trials/trial3/nasa93dem/step05/metrics.csv
+6,3,software project estimation,6,justify,286,41,14.335664,experiments/runs/treatment6/trials/trial3/nasa93dem/step06/metrics.csv
+6,3,software project estimation,7,choose,318,33,10.377358,experiments/runs/treatment6/trials/trial3/nasa93dem/step07/metrics.csv
+6,3,software project estimation,8,fix,365,48,13.150685,experiments/runs/treatment6/trials/trial3/nasa93dem/step08/metrics.csv
+6,3,software project estimation,9,spot,421,57,13.539192,experiments/runs/treatment6/trials/trial3/nasa93dem/step09/metrics.csv
+6,3,software project estimation,10,race,485,68,14.020619,experiments/runs/treatment6/trials/trial3/nasa93dem/step10/metrics.csv
+6,3,video encoding,1,remember,77,77,100.000000,experiments/runs/treatment6/trials/trial3/x264/step01/metrics.csv
+6,3,video encoding,2,guess,164,87,53.048780,experiments/runs/treatment6/trials/trial3/x264/step02/metrics.csv
+6,3,video encoding,3,certify,258,78,30.232558,experiments/runs/treatment6/trials/trial3/x264/step03/metrics.csv
+6,3,video encoding,4,flow,326,62,19.018405,experiments/runs/treatment6/trials/trial3/x264/step04/metrics.csv
+6,3,video encoding,5,blame,368,70,19.021739,experiments/runs/treatment6/trials/trial3/x264/step05/metrics.csv
+6,3,video encoding,6,justify,445,78,17.528090,experiments/runs/treatment6/trials/trial3/x264/step06/metrics.csv
+6,3,video encoding,7,choose,514,72,14.007782,experiments/runs/treatment6/trials/trial3/x264/step07/metrics.csv
+6,3,video encoding,8,fix,590,83,14.067797,experiments/runs/treatment6/trials/trial3/x264/step08/metrics.csv
+6,3,video encoding,9,spot,655,66,10.076336,experiments/runs/treatment6/trials/trial3/x264/step09/metrics.csv
+6,3,video encoding,10,race,719,66,9.179416,experiments/runs/treatment6/trials/trial3/x264/step10/metrics.csv

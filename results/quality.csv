@@ -1,0 +1,7 @@
+domain,objective,effect,treatment_mean,baseline_mean,p_value,significant,treatment_wins,source
+x264,Performance-,5.332873333333339,-275.67982666666666,-281.0127,0.01996007984031936,True,True,results/treatment7_ladder.json step 3
+nasa93dem,Effort-,648.7779833487511,-296.53478260869565,-945.3127659574468,0.001996007984031936,True,True,results/treatment7_ladder.json step 3
+nasa93dem,Defects-,3001.0402405180384,-2245.108695652174,-5246.148936170212,0.003992015968063872,True,True,results/treatment7_ladder.json step 3
+health_closedissues,MRE-,-0.007365733916033346,-0.6918733431524791,-0.6845076092364457,0.7445109780439122,False,False,results/treatment7_ladder.json step 3
+health_closedissues,ACC+,-0.004733525586564147,0.5063355761974837,0.5110691017840479,0.688622754491018,False,False,results/treatment7_ladder.json step 3
+health_closedissues,PRED40+,-0.020952380952380945,0.15714285714285714,0.17809523809523808,0.5129740518962076,False,False,results/treatment7_ladder.json step 3

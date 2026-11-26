@@ -1,0 +1,9 @@
+treatment,domain,steps,steps_with_errors,error_count_total,failed_tests,source
+2,nasa93dem,30,0,0,9,results/metrics.csv
+2,x264,30,0,0,3,results/metrics.csv
+5,health_closedissues,30,22,88,0,results/metrics.csv
+5,nasa93dem,30,26,81,0,results/metrics.csv
+5,x264,30,22,47,0,results/metrics.csv
+6,health_closedissues,29,24,65,0,results/metrics.csv
+6,nasa93dem,30,29,59,0,results/metrics.csv
+6,x264,30,29,71,0,results/metrics.csv

@@ -1,0 +1,9 @@
+treatment,domain,steps,new_loc_total,total_loc_median,reuse_percent,test_pass_percent,runtime_seconds_total,error_count_total,quality_status
+2,nasa93dem,30,2269.000,407.000,82.476,70.000,1.292,0,available only in treatment7_ladder.csv
+2,x264,30,2147.000,334.000,81.277,90.000,8.362,0,available only in treatment7_ladder.csv
+5,health_closedissues,30,2218.000,80.000,0.000,100.000,96.250,88,available only in treatment7_ladder.csv
+5,nasa93dem,30,2554.000,81.000,0.000,100.000,1.220,81,available only in treatment7_ladder.csv
+5,x264,30,2362.000,79.000,0.000,100.000,13.780,47,available only in treatment7_ladder.csv
+6,health_closedissues,29,1848.000,317.000,80.197,100.000,6.630,65,available only in treatment7_ladder.csv
+6,nasa93dem,30,1610.000,286.000,81.176,100.000,1.080,59,available only in treatment7_ladder.csv
+6,x264,30,2226.000,408.000,81.800,100.000,5.700,71,available only in treatment7_ladder.csv
