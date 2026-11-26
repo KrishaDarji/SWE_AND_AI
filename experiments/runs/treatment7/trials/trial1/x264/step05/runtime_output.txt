@@ -1,0 +1,55 @@
+{
+  "dataset": "x264",
+  "step": 5,
+  "skill": "blame",
+  "requirement": "Explain which settings are responsible for slow encodes.",
+  "result": {
+    "findings": [
+      {
+        "feature": "ref_9",
+        "objective": "Performance-",
+        "effect": 285.91080285427427,
+        "best_group_mean": 362.6970602409639,
+        "worst_group_mean": 648.6078630952381,
+        "best_group_size": 332,
+        "worst_group_size": 168
+      },
+      {
+        "feature": "ref_1",
+        "objective": "Performance-",
+        "effect": 282.28719704484945,
+        "best_group_mean": 277.5347094972067,
+        "worst_group_mean": 559.8219065420561,
+        "best_group_size": 179,
+        "worst_group_size": 321
+      },
+      {
+        "feature": "no_mixed_refs",
+        "objective": "Performance-",
+        "effect": 71.33224731079366,
+        "best_group_mean": 421.5276569037657,
+        "worst_group_mean": 492.8599042145594,
+        "best_group_size": 239,
+        "worst_group_size": 261
+      },
+      {
+        "feature": "no_fast_pskip",
+        "objective": "Performance-",
+        "effect": 67.76969526068643,
+        "best_group_mean": 427.99564835164836,
+        "worst_group_mean": 495.7653436123348,
+        "best_group_size": 273,
+        "worst_group_size": 227
+      },
+      {
+        "feature": "rc_lookahead_60",
+        "objective": "Performance-",
+        "effect": 16.308312535450966,
+        "best_group_mean": 453.15303048780487,
+        "worst_group_mean": 469.46134302325584,
+        "best_group_size": 328,
+        "worst_group_size": 172
+      }
+    ]
+  }
+}

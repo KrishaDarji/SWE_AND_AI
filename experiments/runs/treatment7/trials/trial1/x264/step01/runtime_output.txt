@@ -1,0 +1,104 @@
+{
+  "dataset": "x264",
+  "step": 1,
+  "skill": "remember",
+  "requirement": "Summarize the encoder settings and quality measures in our historical runs.",
+  "result": {
+    "rows": 500,
+    "features": [
+      "no_asm",
+      "no_8x8dct",
+      "no_cabac",
+      "no_deblock",
+      "no_fast_pskip",
+      "no_mbtree",
+      "no_mixed_refs",
+      "no_weightb",
+      "rc_lookahead",
+      "rc_lookahead_20",
+      "rc_lookahead_40",
+      "rc_lookahead_60",
+      "ref",
+      "ref_1",
+      "ref_5",
+      "ref_9"
+    ],
+    "objectives": {
+      "Performance-": {
+        "count": 500,
+        "min": 244.23,
+        "max": 821.963,
+        "mean": 458.76309,
+        "std": 166.30326388095304
+      }
+    },
+    "best": [
+      {
+        "score": 1.0,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "1",
+          "no_cabac": "1",
+          "no_deblock": "1",
+          "no_fast_pskip": "0",
+          "no_mbtree": "0",
+          "no_mixed_refs": "0",
+          "no_weightb": "0",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "1",
+          "rc_lookahead_40": "0",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "1",
+          "ref_5": "0",
+          "ref_9": "0",
+          "Performance-": "244.230"
+        }
+      },
+      {
+        "score": 0.9999186475413383,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "1",
+          "no_cabac": "1",
+          "no_deblock": "1",
+          "no_fast_pskip": "0",
+          "no_mbtree": "0",
+          "no_mixed_refs": "1",
+          "no_weightb": "0",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "1",
+          "rc_lookahead_40": "0",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "1",
+          "ref_5": "0",
+          "ref_9": "0",
+          "Performance-": "244.277"
+        }
+      },
+      {
+        "score": 0.9998736440535679,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "1",
+          "no_cabac": "1",
+          "no_deblock": "0",
+          "no_fast_pskip": "0",
+          "no_mbtree": "0",
+          "no_mixed_refs": "0",
+          "no_weightb": "1",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "1",
+          "rc_lookahead_40": "0",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "1",
+          "ref_5": "0",
+          "ref_9": "0",
+          "Performance-": "244.303"
+        }
+      }
+    ]
+  }
+}

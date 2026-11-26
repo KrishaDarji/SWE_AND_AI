@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+2,7,1,software project estimation,guess,286,0,1,0.06,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",286,3,Effort- MAE 553 vs mean-baseline 728; Defects- MAE 2.81e+03 vs mean-baseline 3.61e+03

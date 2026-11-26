@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+6,7,1,software project estimation,justify,528,0,1,0.16,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",528,2,

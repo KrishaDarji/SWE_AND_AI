@@ -1,0 +1,16 @@
+<section id="progress" class="alt">
+<div class="head"><p class="eyebrow">03 · WHAT WE RAN</p><h2>All 7 treatments run: 570 steps</h2></div>
+<table class="data tight rise" style="--i:1">
+<tr><th style="width:6%">#</th><th style="width:30%">Who writes · background</th><th style="width:16%">Reuse?</th><th style="width:16%;text-align:right">Steps done</th><th style="width:32%">Status</th></tr>
+<tr><td>1</td><td>LLM · plain Python</td><td>No</td><td style="text-align:right">90/90</td><td>1 run flagged invalid (race)</td></tr>
+<tr><td>2</td><td>LLM · plain Python</td><td>Yes</td><td style="text-align:right">90/90</td><td>Done</td></tr>
+<tr><td>3</td><td>LLM · scikit-learn</td><td>No</td><td style="text-align:right">90/90</td><td>Done</td></tr>
+<tr><td>4</td><td>LLM · scikit-learn</td><td>Yes</td><td style="text-align:right">90/90</td><td>Done</td></tr>
+<tr><td>5</td><td>LLM · ezr</td><td>No</td><td style="text-align:right">90/90</td><td>Done</td></tr>
+<tr><td>6</td><td>LLM · ezr</td><td>Yes</td><td style="text-align:right">90/90</td><td>Done</td></tr>
+<tr><td>7</td><td>Human team</td><td>Yes</td><td style="text-align:right">30/30</td><td>Done, 1 run per domain</td></tr>
+</table>
+<p class="txt">10 skills (remember → race) × 3 domains: x264 (1,152 rows), NASA93 (93), Health (10,000). LLM arms: 3 repeats, fresh context per step.</p>
+<div class="foot"><p class="flabel">Shrinking code at scale</p><div class="pnum"></div></div>
+<aside>~1:00. What we ran: every treatment finished the full ladder on all three domains. Six LLM arms (three backgrounds, with and without a reuse instruction), 90 steps each, plus our own human run, 30 steps. One LLM run flagged itself as invalid: its race step gave the race more evaluations than the baseline. We kept it in the data and report it as a known flaw.</aside>
+</section>

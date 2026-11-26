@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+3,7,1,open-source project health,certify,366,0,1,0.7,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",366,4,MRE-: wins=True same=False p=0.001; ACC+: wins=True same=False p=0.021; PRED40+: wins=False same=True p=0.145

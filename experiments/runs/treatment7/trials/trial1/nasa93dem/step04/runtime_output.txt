@@ -1,0 +1,50 @@
+{
+  "dataset": "nasa93dem",
+  "step": 4,
+  "skill": "flow",
+  "requirement": "Assess project proposals as they arrive during portfolio planning.",
+  "result": {
+    "seen": 93,
+    "available": 93,
+    "stopped_early": false,
+    "estimate_at_stop": {
+      "Effort-": 624.4118279569892,
+      "Defects-": 3761.7634408602153
+    },
+    "mean_of_all_rows": {
+      "Effort-": 624.4118279569892,
+      "Defects-": 3761.7634408602153
+    },
+    "best_so_far": {
+      "idX": "58",
+      "centerX": "2",
+      "YearX": "1979",
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "h",
+      "rely": "h",
+      "data": "l",
+      "cplx": "h",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "n",
+      "pvol": "l",
+      "acap": "n",
+      "pcap": "n",
+      "pcon": "n",
+      "apex": "n",
+      "plex": "n",
+      "ltex": "h",
+      "tool": "n",
+      "site": "n",
+      "sced": "l",
+      "Kloc+": "0.9",
+      "Effort-": "8.4",
+      "Defects-": "28",
+      "MonthsX": "4.9"
+    }
+  }
+}

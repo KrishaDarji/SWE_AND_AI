@@ -1,0 +1,1 @@
+Choose a configuration that minimizes error under a compute budget.

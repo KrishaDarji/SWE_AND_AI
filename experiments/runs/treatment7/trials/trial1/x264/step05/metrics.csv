@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+5,7,1,video encoding,blame,481,52,1,0.05,0,"new files: src/core/blame.py, src/ladder/step05_blame.py; LOC = non-blank non-comment source lines, tests excluded",429,2,top factor ref_9 for Performance-

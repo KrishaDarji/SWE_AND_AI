@@ -1,0 +1,19 @@
+<section id="metrics">
+<div class="head"><p class="eyebrow">04 · INTERNAL VS EXTERNAL</p><h2>Internal metrics describe the build; external ones, what users get</h2></div>
+<p class="small rise" style="--i:1"><b>Internal:</b> LOC, tokens, $, run time, errors. <b>External</b>, per task (✓ = measured on all 7 treatments):</p>
+<table class="data tight rise" style="--i:2">
+<tr><th style="width:15%">Task</th><th style="width:85%">External metric (example)</th></tr>
+<tr><td>remember</td><td>% of summary stats that match a reference</td></tr>
+<tr><td><b>guess ✓</b></td><td>MAE; hit rate (within 5% / 25% / 0.05); Spearman ρ</td></tr>
+<tr><td>certify</td><td>false alarms on A/A runs; misses on an injected difference</td></tr>
+<tr><td>flow</td><td>error after each batch; how fast it settles</td></tr>
+<tr><td>blame</td><td>precision@3 of blamed settings vs held-out importance</td></tr>
+<tr><td>justify</td><td>% of decisions the explanation’s rule reproduces</td></tr>
+<tr><td>choose</td><td>regret of the pick at a fixed evaluation budget</td></tr>
+<tr><td>fix</td><td>% of bad configs repaired; size of the change</td></tr>
+<tr><td>spot</td><td>precision@10 / recall@10 on known anomalies</td></tr>
+<tr><td><b>race ✓</b></td><td>regret vs the best; win rate vs random, same budget</td></tr>
+</table>
+<div class="foot"><p class="flabel">Shrinking code at scale</p><div class="pnum"></div></div>
+<aside>~0:50. Fenton's split. Internal metrics guide the build: lines, tokens, dollars, run time. External metrics say whether the system does anything useful. Here is one for each task. We measured two of them across all seven treatments, guess and race, on one shared split, with no new LLM calls: we ran each treatment's saved code. The other eight are defined, not measured.</aside>
+</section>

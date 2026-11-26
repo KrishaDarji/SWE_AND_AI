@@ -1,0 +1,55 @@
+{
+  "dataset": "nasa93dem",
+  "step": 5,
+  "skill": "blame",
+  "requirement": "Explain which project factors are associated with excessive effort.",
+  "result": {
+    "findings": [
+      {
+        "feature": "rely",
+        "objective": "Defects-",
+        "effect": 11685.897435897436,
+        "best_group_mean": 2694.102564102564,
+        "worst_group_mean": 14380.0,
+        "best_group_size": 39,
+        "worst_group_size": 2
+      },
+      {
+        "feature": "plex",
+        "objective": "Defects-",
+        "effect": 11014.857142857143,
+        "best_group_mean": 2458.6428571428573,
+        "worst_group_mean": 13473.5,
+        "best_group_size": 14,
+        "worst_group_size": 4
+      },
+      {
+        "feature": "cplx",
+        "objective": "Defects-",
+        "effect": 10643.255172413794,
+        "best_group_mean": 2523.344827586207,
+        "worst_group_mean": 13166.6,
+        "best_group_size": 58,
+        "worst_group_size": 5
+      },
+      {
+        "feature": "time",
+        "objective": "Defects-",
+        "effect": 7557.236111111111,
+        "best_group_mean": 2006.888888888889,
+        "worst_group_mean": 9564.125,
+        "best_group_size": 18,
+        "worst_group_size": 8
+      },
+      {
+        "feature": "Kloc+",
+        "objective": "Defects-",
+        "effect": 6026.928307123035,
+        "best_group_mean": 780.7021276595744,
+        "worst_group_mean": 6807.630434782609,
+        "best_group_size": 47,
+        "worst_group_size": 46
+      }
+    ]
+  }
+}

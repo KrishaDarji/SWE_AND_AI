@@ -1,0 +1,10 @@
+<section id="lessons" class="alt">
+<div class="head"><p class="eyebrow">13 · LESSONS LEARNED</p><h2>Measure what users get, and fix the rules first</h2></div>
+<div class="row rise" style="--i:1"><p class="k">External early</p><p class="v">The cheapest code predicted worst. Check usefulness at every step, not just LOC and cost.</p></div>
+<div class="row rise" style="--i:2"><p class="k">One test suite</p><p class="v">We built the shared split at the end: 94 programs, each needing its own adapter. Freeze the split and the API first.</p></div>
+<div class="row rise" style="--i:3"><p class="k">What it may see</p><p class="v">Most Health selectors read every recorded answer. State what a method is allowed to look at.</p></div>
+<div class="row rise" style="--i:4"><p class="k">Same model</p><p class="v">T4 trial 1 ran on gpt-6.1-sol, everything else on gpt-5.6-luna. Pin the model.</p></div>
+<div class="row rise" style="--i:5"><p class="k">6 + 2R</p><p class="v">LLM runs wrote their own metrics (one logged 8,744 LOC). Budget for “whoops, fix it” rounds.</p></div>
+<div class="foot"><p class="flabel">Shrinking code at scale</p><div class="pnum"></div></div>
+<aside>~0:50. Five lessons. Measure external quality from the start: the leanest code was the worst predictor. Freeze one shared test split and a fixed interface before running, because scoring 94 saved programs afterwards meant writing an adapter for each. Say what a method may look at: most Health selectors simply read every answer. Pin the model. And plan for fix-it rounds, because LLM runs reporting their own metrics made mistakes.</aside>
+</section>

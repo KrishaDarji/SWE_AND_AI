@@ -1,0 +1,11 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+1,7,1,software project estimation,remember,202,26,1,0.04,0,"new files: src/domains/nasa93dem/__init__.py; LOC = non-blank non-comment source lines, tests excluded",176,5,
+2,7,1,software project estimation,guess,286,0,1,0.06,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",286,3,Effort- MAE 553 vs mean-baseline 728; Defects- MAE 2.81e+03 vs mean-baseline 3.61e+03
+3,7,1,software project estimation,certify,370,0,1,0.18,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",370,4,Effort-: wins=False same=False p=0.946; Defects-: wins=True same=False p=0.002
+4,7,1,software project estimation,flow,433,0,1,0.07,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",433,3,stopped after 93 of 93 rows
+5,7,1,software project estimation,blame,485,0,1,0.05,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",485,2,top factor rely for Defects-
+6,7,1,software project estimation,justify,528,0,1,0.16,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",528,2,
+7,7,1,software project estimation,choose,576,0,1,0.46,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",576,3,"score 1.000, beats 100.0% of rows, 20 evaluations"
+8,7,1,software project estimation,fix,624,0,1,0.06,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",624,2,"cplx: xh -> h, predicted gain 0.615"
+9,7,1,software project estimation,spot,674,0,1,0.12,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",674,2,most unusual row index 60 (z 6.22)
+10,7,1,software project estimation,race,710,0,1,2.78,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",710,3,"shared 1.000 vs random 0.998, same=False, wins=True"

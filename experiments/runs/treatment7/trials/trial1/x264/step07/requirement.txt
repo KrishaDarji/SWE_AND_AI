@@ -1,0 +1,1 @@
+Select a configuration that minimizes encoding time under a budget.

@@ -1,0 +1,130 @@
+{
+  "dataset": "x264",
+  "step": 9,
+  "skill": "spot",
+  "requirement": "Detect an anomalous benchmark result or possible measurement error.",
+  "result": {
+    "findings": [
+      {
+        "row_index": 220,
+        "score": 1.137516733578433,
+        "largest_deviation": 2.183961405952886,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "0",
+          "no_cabac": "0",
+          "no_deblock": "1",
+          "no_fast_pskip": "1",
+          "no_mbtree": "1",
+          "no_mixed_refs": "0",
+          "no_weightb": "1",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "1",
+          "rc_lookahead_40": "0",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "0",
+          "ref_5": "0",
+          "ref_9": "1",
+          "Performance-": "821.963"
+        }
+      },
+      {
+        "row_index": 23,
+        "score": 1.1321130520438965,
+        "largest_deviation": 2.181339689518553,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "0",
+          "no_cabac": "0",
+          "no_deblock": "1",
+          "no_fast_pskip": "1",
+          "no_mbtree": "1",
+          "no_mixed_refs": "0",
+          "no_weightb": "0",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "0",
+          "rc_lookahead_40": "1",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "0",
+          "ref_5": "0",
+          "ref_9": "1",
+          "Performance-": "821.527"
+        }
+      },
+      {
+        "row_index": 209,
+        "score": 1.1315359719711662,
+        "largest_deviation": 2.181237466630058,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "0",
+          "no_cabac": "0",
+          "no_deblock": "1",
+          "no_fast_pskip": "1",
+          "no_mbtree": "1",
+          "no_mixed_refs": "0",
+          "no_weightb": "1",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "0",
+          "rc_lookahead_40": "0",
+          "rc_lookahead_60": "1",
+          "ref": "1",
+          "ref_1": "0",
+          "ref_5": "0",
+          "ref_9": "1",
+          "Performance-": "821.510"
+        }
+      },
+      {
+        "row_index": 178,
+        "score": 1.1273704682165533,
+        "largest_deviation": 2.1090200024641277,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "0",
+          "no_cabac": "1",
+          "no_deblock": "1",
+          "no_fast_pskip": "1",
+          "no_mbtree": "1",
+          "no_mixed_refs": "0",
+          "no_weightb": "1",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "0",
+          "rc_lookahead_40": "1",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "0",
+          "ref_5": "0",
+          "ref_9": "1",
+          "Performance-": "809.500"
+        }
+      },
+      {
+        "row_index": 303,
+        "score": 1.126621573030831,
+        "largest_deviation": 2.156162793393428,
+        "row": {
+          "no_asm": "1",
+          "no_8x8dct": "0",
+          "no_cabac": "0",
+          "no_deblock": "0",
+          "no_fast_pskip": "1",
+          "no_mbtree": "1",
+          "no_mixed_refs": "0",
+          "no_weightb": "1",
+          "rc_lookahead": "1",
+          "rc_lookahead_20": "0",
+          "rc_lookahead_40": "1",
+          "rc_lookahead_60": "0",
+          "ref": "1",
+          "ref_1": "0",
+          "ref_5": "0",
+          "ref_9": "1",
+          "Performance-": "817.340"
+        }
+      }
+    ]
+  }
+}

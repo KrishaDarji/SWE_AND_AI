@@ -1,0 +1,26 @@
+\begin{tabular}{@{}rp{0.78\linewidth}l@{}}
+\toprule
+\multicolumn{3}{@{}l}{\textbf{Health} --- client: Machine-learning platform maintainer} \\
+\midrule
+1 & Summarize model-quality metrics and configuration settings. & \texttt{remember} \\
+2 & Find configurations with unusually strong prediction quality. & \texttt{remember} \\
+3 & Predict model error and accuracy before a full evaluation. & \texttt{guess} \\
+4 & Predict whether a configuration will meet the PRED40 target. & \texttt{guess} \\
+5 & Tell us whether an apparent quality improvement is meaningful or noise. & \texttt{certify} \\
+6 & Tell us whether one configuration family is reliably better than another. & \texttt{certify} \\
+7 & Evaluate configurations as validation results arrive one at a time. & \texttt{flow} \\
+8 & Stop evaluation when the model-quality estimate is stable enough to act. & \texttt{flow} \\
+9 & Explain which hyperparameters are associated with high model error. & \texttt{blame} \\
+10 & Explain which settings are associated with strong accuracy. & \texttt{blame} \\
+11 & Justify a recommended configuration to the platform team. & \texttt{justify} \\
+12 & Explain the trade-off between error, accuracy, and PRED40 performance. & \texttt{justify} \\
+13 & Choose a configuration that minimizes error under a compute budget. & \texttt{choose} \\
+14 & Choose a configuration that balances accuracy and prediction quality. & \texttt{choose} \\
+15 & Suggest the smallest hyperparameter change that improves error. & \texttt{fix} \\
+16 & Recommend a low-cost repair for a configuration with poor accuracy. & \texttt{fix} \\
+17 & Spot an unusual model-quality result or possible measurement error. & \texttt{spot} \\
+18 & Detect a configuration whose behavior is unlike similar settings. & \texttt{spot} \\
+19 & Compare our configuration selector against a historical baseline. & \texttt{race} \\
+20 & Determine whether the selector wins across repeated validation samples. & \texttt{race} \\
+\bottomrule
+\end{tabular}

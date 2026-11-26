@@ -1,0 +1,42 @@
+{
+  "dataset": "health_closedissues",
+  "step": 2,
+  "skill": "guess",
+  "requirement": "Predict model error and accuracy before a full evaluation.",
+  "result": {
+    "train": 400,
+    "test": 100,
+    "k": 5,
+    "errors": {
+      "MRE-": {
+        "model_mae": 0.06629307804925773,
+        "baseline_mae": 0.1779840942426708
+      },
+      "ACC+": {
+        "model_mae": 0.03828388335929446,
+        "baseline_mae": 0.09494400832499784
+      },
+      "PRED40+": {
+        "model_mae": 0.09657142857142857,
+        "baseline_mae": 0.20168571428571427
+      }
+    },
+    "example": {
+      "row": {
+        "MRE-": "0.3070692194403535",
+        "ACC+": "0.7603332265299584",
+        "PRED40+": "0.5714285714285714",
+        "N_estimators": "60",
+        "criterion": "squared_error",
+        "Min_sample_leaves": "1",
+        "Min_impurity_decrease": "6.75",
+        "Max_depth": "1"
+      },
+      "prediction": {
+        "MRE-": 0.4256553755522827,
+        "ACC+": 0.605831464274271,
+        "PRED40+": 0.39999999999999997
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+<section id="absolute" style="gap:28px">
+<div class="head"><p class="eyebrow">08 · INTERNAL: SHRINKING-CODE CURVE</p><h2>Yet each step still costs ~65 new lines</h2></div>
+<div class="chart">
+<svg class="draw" aria-label="Line chart of median new lines of code per ladder step. LLM without reuse stays between 92 and 109 lines. LLM with reuse starts at 93, then stays flat between 61 and 72 lines. The human team falls from 198 to 84, 84, 63, 52, 43, 48, 48, 50 and 36 lines." width="1200" height="500" viewBox="0 0 1200 500" style="position:absolute;left:90px;top:0px;width:1200px;height:500px">
+<g stroke="#D8D2C5" stroke-width="1"><line x1="20" y1="20" x2="1180" y2="20"/><line x1="20" y1="130" x2="1180" y2="130"/><line x1="20" y1="240" x2="1180" y2="240"/><line x1="20" y1="350" x2="1180" y2="350"/></g>
+<line x1="20" y1="460" x2="1180" y2="460" stroke="#8C8576" stroke-width="2"/>
+<polyline fill="none" stroke="#8E5BB5" stroke-width="4" stroke-dasharray="14 10" stroke-linejoin="round" points="40,222.4 164,224.6 288,253.2 412,238.5 536,219.5 660,242.2 784,256.9 908,220.9 1032,233.4 1156,221.7"/>
+<polyline fill="none" stroke="#2F6FB0" stroke-width="4" stroke-linejoin="round" points="40,255.4 164,318.5 288,310.4 412,319.2 536,315.5 660,324.3 784,326.5 908,306.7 1032,300.9 1156,314.1"/>
+<polyline fill="none" stroke="#C2621A" stroke-width="4" stroke-linejoin="round" points="40,24.4 164,275.2 288,275.2 412,321.4 536,345.6 660,365.4 784,354.4 908,354.4 1032,350 1156,380.8"/>
+<g fill="#8E5BB5" stroke="#F7F5F0" stroke-width="2"><circle cx="40" cy="222.4" r="7"/><circle cx="164" cy="224.6" r="7"/><circle cx="288" cy="253.2" r="7"/><circle cx="412" cy="238.5" r="7"/><circle cx="536" cy="219.5" r="7"/><circle cx="660" cy="242.2" r="7"/><circle cx="784" cy="256.9" r="7"/><circle cx="908" cy="220.9" r="7"/><circle cx="1032" cy="233.4" r="7"/><circle cx="1156" cy="221.7" r="7"/></g>
+<g fill="#2F6FB0" stroke="#F7F5F0" stroke-width="2"><circle cx="40" cy="255.4" r="7"/><circle cx="164" cy="318.5" r="7"/><circle cx="288" cy="310.4" r="7"/><circle cx="412" cy="319.2" r="7"/><circle cx="536" cy="315.5" r="7"/><circle cx="660" cy="324.3" r="7"/><circle cx="784" cy="326.5" r="7"/><circle cx="908" cy="306.7" r="7"/><circle cx="1032" cy="300.9" r="7"/><circle cx="1156" cy="314.1" r="7"/></g>
+<g fill="#C2621A" stroke="#F7F5F0" stroke-width="2"><circle cx="40" cy="24.4" r="7"/><circle cx="164" cy="275.2" r="7"/><circle cx="288" cy="275.2" r="7"/><circle cx="412" cy="321.4" r="7"/><circle cx="536" cy="345.6" r="7"/><circle cx="660" cy="365.4" r="7"/><circle cx="784" cy="354.4" r="7"/><circle cx="908" cy="354.4" r="7"/><circle cx="1032" cy="350" r="7"/><circle cx="1156" cy="380.8" r="7"/></g>
+</svg>
+<p class="yl" style="top:4px">200</p><p class="yl" style="top:114px">150</p><p class="yl" style="top:224px">100</p><p class="yl" style="top:334px">50</p><p class="yl" style="top:444px">0</p>
+<p class="xl" style="left:100px">1</p><p class="xl" style="left:224px">2</p><p class="xl" style="left:348px">3</p><p class="xl" style="left:472px">4</p><p class="xl" style="left:596px">5</p><p class="xl" style="left:720px">6</p><p class="xl" style="left:844px">7</p><p class="xl" style="left:968px">8</p><p class="xl" style="left:1092px">9</p><p class="xl" style="left:1216px">10</p>
+<p class="sl s-purple" style="top:190px">LLM, no reuse · 108</p>
+<p class="sl s-blue" style="top:282px">LLM + reuse · 66</p>
+<p class="sl s-orange" style="top:348px">Human team · 36</p>
+</div>
+<p class="caption">Median new LOC per ladder step, averaged over the three backgrounds (9 runs each). Steps 6–10 cost 0.84–0.99× steps 1–5 for the LLM + reuse arms, and 0.43× for the human team.</p>
+<div class="foot"><p class="flabel">Shrinking code at scale</p><div class="pnum"></div></div>
+<aside>~1:15. This is the honest twist. Reuse makes LLM steps cheaper, about 65 lines instead of about 105. But the cost per step doesn’t keep shrinking: step 10 costs about the same as step 2. Only the human team shows a real downward curve, from 198 lines to 36. So for LLMs we support reuse, but not shrinking.</aside>
+</section>

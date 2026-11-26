@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+9,7,1,video encoding,spot,670,50,1,0.15,0,"new files: src/core/spot.py, src/ladder/step09_spot.py; LOC = non-blank non-comment source lines, tests excluded",620,2,most unusual row index 220 (z 1.14)

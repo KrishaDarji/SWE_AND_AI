@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+2,7,1,open-source project health,guess,282,0,1,0.13,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",282,3,MRE- MAE 0.0663 vs mean-baseline 0.178; ACC+ MAE 0.0383 vs mean-baseline 0.0949; PRED40+ MAE 0.0966 vs mean-baseline 0.202

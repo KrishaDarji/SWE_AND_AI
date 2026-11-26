@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+10,7,1,open-source project health,race,706,0,1,3.43,0,"new files: none (all reused); LOC = non-blank non-comment source lines, tests excluded",706,3,"shared 0.891 vs random 0.838, same=False, wins=True"

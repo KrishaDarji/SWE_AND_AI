@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+2,7,1,video encoding,guess,282,84,1,0.27,0,"new files: src/core/guess.py, src/ladder/step02_guess.py; LOC = non-blank non-comment source lines, tests excluded",198,3,Performance- MAE 28 vs mean-baseline 133

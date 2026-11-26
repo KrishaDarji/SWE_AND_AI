@@ -1,0 +1,67 @@
+{
+  "dataset": "nasa93dem",
+  "step": 6,
+  "skill": "justify",
+  "requirement": "Justify an estimate to a skeptical project sponsor.",
+  "result": {
+    "recommendation": {
+      "idX": "58",
+      "centerX": "2",
+      "YearX": "1979",
+      "prec": "h",
+      "flex": "h",
+      "resl": "h",
+      "team": "vh",
+      "pmat": "h",
+      "rely": "h",
+      "data": "l",
+      "cplx": "h",
+      "ruse": "n",
+      "docu": "n",
+      "time": "n",
+      "stor": "n",
+      "pvol": "l",
+      "acap": "n",
+      "pcap": "n",
+      "pcon": "n",
+      "apex": "n",
+      "plex": "n",
+      "ltex": "h",
+      "tool": "n",
+      "site": "n",
+      "sced": "l",
+      "Kloc+": "0.9",
+      "Effort-": "8.4",
+      "Defects-": "28",
+      "MonthsX": "4.9"
+    },
+    "dataset": "nasa93dem",
+    "reasons": [
+      {
+        "feature": "rely",
+        "value": "h",
+        "objective": "Defects-",
+        "direction": "lower is better",
+        "effect": 11685.897435897436,
+        "explanation": "rely=h is one of the strongest observed separators for Defects-; lower is better, with an oriented group difference of 11685.897."
+      },
+      {
+        "feature": "plex",
+        "value": "n",
+        "objective": "Defects-",
+        "direction": "lower is better",
+        "effect": 11014.857142857143,
+        "explanation": "plex=n is one of the strongest observed separators for Defects-; lower is better, with an oriented group difference of 11014.857."
+      },
+      {
+        "feature": "cplx",
+        "value": "h",
+        "objective": "Defects-",
+        "direction": "lower is better",
+        "effect": 10643.255172413794,
+        "explanation": "cplx=h is one of the strongest observed separators for Defects-; lower is better, with an oriented group difference of 10643.255."
+      }
+    ],
+    "text": "Recommendation for the engineering manager: this row was selected using the shared ranking machinery. The main evidence is rely=h is one of the strongest observed separators for Defects-; lower is better, with an oriented group difference of 11685.897. plex=n is one of the strongest observed separators for Defects-; lower is better, with an oriented group difference of 11014.857. cplx=h is one of the strongest observed separators for Defects-; lower is better, with an oriented group difference of 10643.255."
+  }
+}

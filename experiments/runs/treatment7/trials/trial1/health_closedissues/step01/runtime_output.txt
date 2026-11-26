@@ -1,0 +1,80 @@
+{
+  "dataset": "health_closedissues",
+  "step": 1,
+  "skill": "remember",
+  "requirement": "Summarize model-quality metrics and configuration settings.",
+  "result": {
+    "rows": 500,
+    "features": [
+      "N_estimators",
+      "criterion",
+      "Min_sample_leaves",
+      "Min_impurity_decrease",
+      "Max_depth"
+    ],
+    "objectives": {
+      "MRE-": {
+        "count": 500,
+        "min": 0.057437408,
+        "max": 1.0,
+        "mean": 0.7117331369643947,
+        "std": 0.20342196005663243
+      },
+      "ACC+": {
+        "count": 500,
+        "min": 0.36334508170458185,
+        "max": 0.9311118231336111,
+        "mean": 0.4934770906758532,
+        "std": 0.1064920818833491
+      },
+      "PRED40+": {
+        "count": 500,
+        "min": 0.0,
+        "max": 1.0,
+        "mean": 0.1397142857142857,
+        "std": 0.2625431354257499
+      }
+    },
+    "best": [
+      {
+        "score": 0.9611979166813932,
+        "row": {
+          "MRE-": "0.16715758468335787",
+          "ACC+": "0.9311118231336111",
+          "PRED40+": "1",
+          "N_estimators": "140",
+          "criterion": "poisson",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "3.5",
+          "Max_depth": "13"
+        }
+      },
+      {
+        "score": 0.8992644845891599,
+        "row": {
+          "MRE-": "0.19175257731958764",
+          "ACC+": "0.8404357577699454",
+          "PRED40+": "1",
+          "N_estimators": "180",
+          "criterion": "squared_error",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "4.75",
+          "Max_depth": "4"
+        }
+      },
+      {
+        "score": 0.8977149172456569,
+        "row": {
+          "MRE-": "0.17113402061855668",
+          "ACC+": "0.8253764818968279",
+          "PRED40+": "1",
+          "N_estimators": "180",
+          "criterion": "squared_error",
+          "Min_sample_leaves": "1",
+          "Min_impurity_decrease": "5.25",
+          "Max_depth": "13"
+        }
+      }
+    ]
+  }
+}

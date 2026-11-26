@@ -1,0 +1,39 @@
+dataset,treatment,trial,status,access,median_pick,median_regret,win_rate_vs_random
+x264,1,1,ok,budget 20,261.2585,0.03033465509466938,0.5
+x264,1,2,ok,budget 20,257.927,0.014847734023810375,0.7
+x264,1,3,ok,budget 20,723.51,2.179172264395654,0.0
+x264,2,1,ok,budget 20,257.927,0.014847734023810375,0.9
+x264,2,2,ok,budget 20,310.793,0.2606023698731388,0.0
+x264,2,3,ok,budget 20,254.733,0.0,0.95
+x264,3,1,ok,budget 20,254.733,0.0,0.95
+x264,3,2,ok,budget 20,257.407,0.012430444827698313,0.9
+x264,3,3,ok,budget 20,254.733,0.0,0.95
+x264,4,1,ok,budget 20,254.733,0.0,0.9
+x264,4,2,ok,budget 20,261.2585,0.03033465509466938,0.5
+x264,4,3,ok,budget 20,260.73699999999997,0.027910392948953314,0.55
+x264,5,1,ok,budget 20,257.927,0.014847734023810375,0.7
+x264,5,2,ok,budget 20,254.733,0.0,0.95
+x264,5,3,ok,budget 20,254.733,0.0,0.55
+x264,6,1,ok,budget 20,257.927,0.014847734023810375,0.7
+x264,6,2,ok,budget 20,257.927,0.014847734023810375,0.7
+x264,6,3,ok,budget 20,268.017,0.06175244169451968,0.4
+x264,7,1,ok,budget 20,254.733,0.0,0.95
+health_closedissues,1,1,n/a: no configuration recommended (estimator-vs-baseline comparison),,,,
+health_closedissues,1,2,ok,full history,0.8905743740795287,1.1010560815731973,0.0
+health_closedissues,1,3,ok,held-out,0.16715758468335787,0.2066642388929352,0.7
+health_closedissues,2,1,ok,full history,0.029749631811487497,0.03678077203204664,1.0
+health_closedissues,2,2,ok,full history,0.029749631811487497,0.03678077203204664,1.0
+health_closedissues,2,3,ok,full history,0.029749631811487497,0.03678077203204664,1.0
+health_closedissues,3,1,n/a: no single configuration recommended (online block-by-block selection scored on ACC+),,,,
+health_closedissues,3,2,ok,held-out,0.16892488954344623,0.20884923525127458,0.7
+health_closedissues,3,3,ok,held-out,0.16892488954344623,0.20884923525127458,0.8
+health_closedissues,4,1,ok,full history,0.0,0.0,1.0
+health_closedissues,4,2,ok,full history,0.0,0.0,1.0
+health_closedissues,4,3,ok,full history,0.0,0.0,1.0
+health_closedissues,5,1,ok,full history,0.0,0.0,1.0
+health_closedissues,5,2,ok,full history,0.0,0.0,1.0
+health_closedissues,5,3,ok,full history,0.0,0.0,1.0
+health_closedissues,6,1,ok,full history,0.0,0.0,1.0
+health_closedissues,6,2,ok,full history,0.0,0.0,1.0
+health_closedissues,6,3,ok,full history,0.0,0.0,1.0
+health_closedissues,7,1,ok,budget 20,0.1690721649484536,0.2090313182811362,0.8

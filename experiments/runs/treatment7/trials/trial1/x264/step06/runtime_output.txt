@@ -1,0 +1,55 @@
+{
+  "dataset": "x264",
+  "step": 6,
+  "skill": "justify",
+  "requirement": "Justify a recommended configuration to a platform administrator.",
+  "result": {
+    "recommendation": {
+      "no_asm": "1",
+      "no_8x8dct": "1",
+      "no_cabac": "1",
+      "no_deblock": "1",
+      "no_fast_pskip": "0",
+      "no_mbtree": "0",
+      "no_mixed_refs": "0",
+      "no_weightb": "0",
+      "rc_lookahead": "1",
+      "rc_lookahead_20": "1",
+      "rc_lookahead_40": "0",
+      "rc_lookahead_60": "0",
+      "ref": "1",
+      "ref_1": "1",
+      "ref_5": "0",
+      "ref_9": "0",
+      "Performance-": "244.230"
+    },
+    "dataset": "x264",
+    "reasons": [
+      {
+        "feature": "ref_9",
+        "value": "0",
+        "objective": "Performance-",
+        "direction": "lower is better",
+        "effect": 285.91080285427427,
+        "explanation": "ref_9=0 is one of the strongest observed separators for Performance-; lower is better, with an oriented group difference of 285.911."
+      },
+      {
+        "feature": "ref_1",
+        "value": "1",
+        "objective": "Performance-",
+        "direction": "lower is better",
+        "effect": 282.28719704484945,
+        "explanation": "ref_1=1 is one of the strongest observed separators for Performance-; lower is better, with an oriented group difference of 282.287."
+      },
+      {
+        "feature": "no_mixed_refs",
+        "value": "0",
+        "objective": "Performance-",
+        "direction": "lower is better",
+        "effect": 71.33224731079366,
+        "explanation": "no_mixed_refs=0 is one of the strongest observed separators for Performance-; lower is better, with an oriented group difference of 71.332."
+      }
+    ],
+    "text": "Recommendation for the video-platform engineer: this row was selected using the shared ranking machinery. The main evidence is ref_9=0 is one of the strongest observed separators for Performance-; lower is better, with an oriented group difference of 285.911. ref_1=1 is one of the strongest observed separators for Performance-; lower is better, with an oriented group difference of 282.287. no_mixed_refs=0 is one of the strongest observed separators for Performance-; lower is better, with an oriented group difference of 71.332."
+  }
+}

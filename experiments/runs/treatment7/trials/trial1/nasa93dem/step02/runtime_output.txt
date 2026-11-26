@@ -1,0 +1,58 @@
+{
+  "dataset": "nasa93dem",
+  "step": 2,
+  "skill": "guess",
+  "requirement": "Estimate effort before approving a new project proposal.",
+  "result": {
+    "train": 75,
+    "test": 18,
+    "k": 5,
+    "errors": {
+      "Effort-": {
+        "model_mae": 553.4677777777778,
+        "baseline_mae": 727.8886666666666
+      },
+      "Defects-": {
+        "model_mae": 2814.5555555555557,
+        "baseline_mae": 3605.6644444444446
+      }
+    },
+    "example": {
+      "row": {
+        "idX": "18",
+        "centerX": "1",
+        "YearX": "1984",
+        "prec": "h",
+        "flex": "h",
+        "resl": "h",
+        "team": "vh",
+        "pmat": "n",
+        "rely": "n",
+        "data": "l",
+        "cplx": "h",
+        "ruse": "n",
+        "docu": "n",
+        "time": "n",
+        "stor": "n",
+        "pvol": "l",
+        "acap": "h",
+        "pcap": "h",
+        "pcon": "n",
+        "apex": "h",
+        "plex": "n",
+        "ltex": "h",
+        "tool": "n",
+        "site": "n",
+        "sced": "n",
+        "Kloc+": "31.5",
+        "Effort-": "60",
+        "Defects-": "986",
+        "MonthsX": "17.6"
+      },
+      "prediction": {
+        "Effort-": 66.0,
+        "Defects-": 755.8
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+1,7,1,software project estimation,remember,202,26,1,0.04,0,"new files: src/domains/nasa93dem/__init__.py; LOC = non-blank non-comment source lines, tests excluded",176,5,

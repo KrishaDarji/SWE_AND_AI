@@ -1,0 +1,16 @@
+<section id="cost">
+<div class="head"><p class="eyebrow">06 · INTERNAL: COST</p><h2>All 6 LLM arms: 332M tokens, 11.7 h, ~$21 at API prices</h2></div>
+<table class="data tight rise" style="--i:1">
+<tr><th style="width:22%">Treatment</th><th style="width:15%;text-align:right">New LOC / run</th><th style="width:17%;text-align:right">Tokens, 9 runs</th><th style="width:15%;text-align:right">LLM time</th><th style="width:16%;text-align:right">$ (API price)</th><th style="width:15%;text-align:right">Code runs</th></tr>
+<tr><td>1 · Plain</td><td style="text-align:right">1,046</td><td style="text-align:right">46M</td><td style="text-align:right">1.1 h</td><td style="text-align:right">$2.0</td><td style="text-align:right">4.1 s</td></tr>
+<tr><td>2 · Plain + reuse</td><td style="text-align:right">673</td><td style="text-align:right">71M</td><td style="text-align:right">1.4 h</td><td style="text-align:right">$2.8</td><td style="text-align:right">2.6 s</td></tr>
+<tr><td>3 · sklearn</td><td style="text-align:right">1,298</td><td style="text-align:right">67M</td><td style="text-align:right">1.5 h</td><td style="text-align:right">$2.6</td><td style="text-align:right">26.7 s</td></tr>
+<tr><td>4 · sklearn + reuse</td><td style="text-align:right">787</td><td style="text-align:right">55M</td><td style="text-align:right">3.5 h</td><td style="text-align:right">$8.8</td><td style="text-align:right">9.8 s</td></tr>
+<tr><td>5 · ezr</td><td style="text-align:right">791</td><td style="text-align:right">46M</td><td style="text-align:right">2.2 h</td><td style="text-align:right">$2.3</td><td style="text-align:right">1.7 s</td></tr>
+<tr><td>6 · ezr + reuse</td><td style="text-align:right">569</td><td style="text-align:right">47M</td><td style="text-align:right">2.1 h</td><td style="text-align:right">$2.2</td><td style="text-align:right">1.3 s</td></tr>
+<tr><td>7 · Human team</td><td style="text-align:right">706 / 26 / 22</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td style="text-align:right">5.6 s</td></tr>
+</table>
+<p class="small">From Codex logs; ~92–95% of tokens are cached input. gpt-5.6-luna throughout, except T4 trial 1 (gpt-6.1-sol). LOC and code run time: median per 10-step run. Tokens: per-call usage. LLM time: active turn time, incl. reruns. T1–T3 from a teammate’s archived sessions; some overlap, so upper bounds. Setup chat: 262M tokens, $40.</p>
+<div class="foot"><p class="flabel">Shrinking code at scale</p><div class="pnum"></div></div>
+<aside>~1:15. The numbers you asked for, from the Codex session logs, counting each call’s own token usage and each turn’s active time. Each arm took 46 to 71 million tokens for its nine ten-step runs, over 90 percent of it cached input, because the agent rereads the code every turn. One to three and a half hours of LLM time per arm. At API list prices, 2 to 3 dollars per arm, except scikit-learn with reuse at about 9 dollars: one of its trials ran on the bigger gpt-6.1-sol. All six arms: 332 million tokens, under 12 hours, about 21 dollars. Our setup and planning chat cost another 40, more than all the runs. Well under the 100-dollar budget, and covered by our ChatGPT plans.</aside>
+</section>

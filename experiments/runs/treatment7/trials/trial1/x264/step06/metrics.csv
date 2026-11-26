@@ -1,0 +1,2 @@
+step,treatment,trial,domain,skill,total_loc,new_loc,test_pass,runtime_seconds,error_count,notes,reused_loc,tests_run,quality
+6,7,1,video encoding,justify,524,43,1,0.05,0,"new files: src/core/justify.py, src/ladder/step06_justify.py; LOC = non-blank non-comment source lines, tests excluded",481,2,

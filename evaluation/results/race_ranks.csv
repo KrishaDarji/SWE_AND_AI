@@ -1,0 +1,17 @@
+dataset,who,rank,median_regret
+x264,T7,0,0.0
+x264,T3,0,0.0
+x264,T5,1,0.012430444827698313
+x264,T2,1,0.014847734023810375
+x264,T6,2,0.020393553275659292
+x264,T4,2,0.025725535406313733
+x264,random search,3,0.03033465509466938
+x264,T1,4,0.062324223562061486
+health_closedissues,T4,0,0.0
+health_closedissues,T5,0,0.0
+health_closedissues,T6,0,0.0
+health_closedissues,T2,1,0.03678077203204664
+health_closedissues,T3,2,0.20884923525127458
+health_closedissues,T7,3,0.2090313182811362
+health_closedissues,random search,4,0.2941551347860525
+health_closedissues,T1,5,0.6538601602330663

@@ -1,37 +1,38 @@
-"""Step 10: compare the shared chooser with a simple baseline."""
+"""Step 10: race the shared chooser against random search, judged by `same`."""
 
 from __future__ import annotations
 
+import random
+from statistics import median
 from typing import Dict, Sequence
 
+from .certify import same
 from .choose import choose
 from .datasets import DatasetSpec
-from .fix import _score
-from .remember import rank_rows
+from .remember import bounds, score
 
 
-def race(spec: DatasetSpec, rows: Sequence[Dict[str, str]], budget: int = 20) -> Dict[str, object]:
-    """Race the shared chooser against a first-rows baseline.
-
-    Both methods receive the same number of candidate evaluations. Scores are
-    evaluated against the full dataset objective ranges after selection.
-    """
+def race(spec: DatasetSpec, rows: Sequence[Dict[str, str]], budget: int = 20, repeats: int = 10) -> Dict[str, object]:
+    """Both methods get the same evaluation budget; repeat with different seeds."""
 
     if budget < 1:
         raise ValueError("budget must be positive")
     budget = min(budget, len(rows))
-    shared = choose(spec, rows, budget=budget)
-    baseline_candidates = list(rows[:budget])
-    baseline = rank_rows(spec, baseline_candidates, top_k=1)[0][1]
-    shared_score = _score(spec, shared["selected"], rows)
-    baseline_score = _score(spec, baseline, rows)
+    full = bounds(spec, rows)
+    shared, baseline = [], []
+    for seed in range(repeats):
+        shared.append(choose(spec, rows, budget=budget, seed=seed)["score"])
+        sample = random.Random(seed).sample(list(rows), budget)
+        baseline.append(max(score(spec, row, full) for row in sample))
+    indistinguishable = same(shared, baseline)
     return {
         "dataset": spec.name,
         "budget": budget,
-        "shared_score": shared_score,
-        "baseline_score": baseline_score,
-        "improvement": shared_score - baseline_score,
-        "shared_wins": shared_score > baseline_score,
-        "shared_selected": shared["selected"],
-        "baseline_selected": baseline,
+        "repeats": repeats,
+        "shared_median": median(shared),
+        "baseline_median": median(baseline),
+        "shared_scores": shared,
+        "baseline_scores": baseline,
+        "same": indistinguishable,
+        "shared_wins": not indistinguishable and median(shared) > median(baseline),
     }

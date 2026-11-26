@@ -1,0 +1,29 @@
+{
+  "dataset": "nasa93dem",
+  "step": 3,
+  "skill": "certify",
+  "requirement": "Tell us whether one process is genuinely less costly than another.",
+  "result": {
+    "contrast": "pmat=h (n=43) vs pmat=l (n=20)",
+    "Effort-": {
+      "effect": 26.076279069767452,
+      "treatment_mean": -791.5837209302325,
+      "baseline_mean": -817.66,
+      "p_value": 0.9460269865067467,
+      "significant": false,
+      "cliffs": 0.22790697674418606,
+      "same": false,
+      "treatment_wins": false
+    },
+    "Defects-": {
+      "effect": 5208.576744186046,
+      "treatment_mean": -2701.0232558139537,
+      "baseline_mean": -7909.6,
+      "p_value": 0.0024987506246876563,
+      "significant": true,
+      "cliffs": 0.413953488372093,
+      "same": false,
+      "treatment_wins": true
+    }
+  }
+}

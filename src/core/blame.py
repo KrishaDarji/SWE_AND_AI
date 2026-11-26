@@ -5,7 +5,7 @@ from __future__ import annotations
 from statistics import mean, median
 from typing import Dict, List, Sequence
 
-from .datasets import DatasetSpec
+from .datasets import DatasetSpec, features as feature_columns
 from .remember import as_number
 
 
@@ -32,9 +32,8 @@ def blame(spec: DatasetSpec, rows: Sequence[Dict[str, str]], top_k: int = 10) ->
 
     if not rows:
         return []
-    features = [feature for feature in rows[0] if feature not in spec.objectives]
     findings: List[Dict[str, object]] = []
-    for feature in features:
+    for feature in feature_columns(spec, rows):
         groups = [group for group in _groups(rows, feature) if group]
         for objective in spec.objectives:
             group_means = []

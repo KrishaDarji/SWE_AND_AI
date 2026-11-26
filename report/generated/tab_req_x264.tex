@@ -1,0 +1,26 @@
+\begin{tabular}{@{}rp{0.78\linewidth}l@{}}
+\toprule
+\multicolumn{3}{@{}l}{\textbf{x264} --- client: Video-platform performance engineer} \\
+\midrule
+1 & Summarize the encoder settings and quality measures in our historical runs. & \texttt{remember} \\
+2 & Find encoding configurations that provide unusually good quality for their cost. & \texttt{remember} \\
+3 & Predict encoding time before running a new configuration. & \texttt{guess} \\
+4 & Predict output quality from the configuration settings. & \texttt{guess} \\
+5 & Tell us whether a faster configuration is meaningfully faster or within normal noise. & \texttt{certify} \\
+6 & Tell us whether a quality improvement is statistically credible. & \texttt{certify} \\
+7 & Evaluate configurations as benchmark results arrive one at a time. & \texttt{flow} \\
+8 & Stop testing when the evidence is sufficient for a recommendation. & \texttt{flow} \\
+9 & Explain which settings are responsible for slow encodes. & \texttt{blame} \\
+10 & Explain which settings cause quality loss. & \texttt{blame} \\
+11 & Justify a recommended configuration to a platform administrator. & \texttt{justify} \\
+12 & Explain the trade-off between speed, resource use, and quality. & \texttt{justify} \\
+13 & Select the best configuration under a quality constraint. & \texttt{choose} \\
+14 & Select a configuration that minimizes encoding time under a budget. & \texttt{choose} \\
+15 & Suggest the smallest setting change that improves a slow configuration. & \texttt{fix} \\
+16 & Suggest a low-risk repair for a configuration that produces poor quality. & \texttt{fix} \\
+17 & Detect an anomalous benchmark result or possible measurement error. & \texttt{spot} \\
+18 & Detect an unusual configuration that does not behave like similar runs. & \texttt{spot} \\
+19 & Compare our tuner against a baseline search strategy. & \texttt{race} \\
+20 & Identify which recommendation wins across repeated benchmark runs. & \texttt{race} \\
+\bottomrule
+\end{tabular}
