@@ -92,9 +92,11 @@ class SemanticSkillTests(unittest.TestCase):
     def test_race_gives_both_methods_the_same_budget(self):
         result = race(SPEC, rows(), budget=2)
         self.assertEqual(result["budget"], 2)
-        self.assertIn("shared_selected", result)
-        self.assertIn("baseline_selected", result)
-        self.assertIn("improvement", result)
+        self.assertIn("shared_median", result)
+        self.assertIn("baseline_median", result)
+        self.assertIn("shared_wins", result)
+        self.assertEqual(len(result["shared_scores"]), result["repeats"])
+        self.assertEqual(len(result["baseline_scores"]), result["repeats"])
 
 
 if __name__ == "__main__":
